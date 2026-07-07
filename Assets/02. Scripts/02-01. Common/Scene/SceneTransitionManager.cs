@@ -17,6 +17,26 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         base.Awake();
     }
 
+    private void Start()
+    {
+        bool hasSubScene = false;
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            if (scene.name != "PersistentScene")
+            {
+                _currentLoadedSubScene = scene.name;
+                hasSubScene = true;
+                break;
+            }
+        }
+
+        if (!hasSubScene)
+        {
+            LoadSceneAsync(ESceneNames.HomeScene).Forget();
+        }
+    }
+
     public async UniTask LoadSceneAsync(ESceneNames eSceneName, CancellationToken cancellationToken = default)
     {
         if (_isTransitioning)
@@ -28,13 +48,42 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
 
         try
         {
-            await UnloadCurrentSubSceneAsync(cancellationToken);
-            await LoadAndActivateSceneAsync(eSceneName.ToString(), cancellationToken);
+            string actualSceneName = GetActualSceneName(eSceneName);
+            string oldSceneName = _currentLoadedSubScene;
+
+            // 1. 신규 씬을 먼저 Additive로 로드
+            await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
+
+            // 2. 신규 씬 로드가 완전히 끝난 뒤에 이전 서브 씬을 언로드 (단일 씬 언로드 에러 방지)
+            if (!string.IsNullOrEmpty(oldSceneName) && oldSceneName != actualSceneName)
+            {
+                AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(oldSceneName);
+                if (unloadOp != null)
+                {
+                    await unloadOp.WithCancellation(cancellationToken);
+                }
+            }
         }
         finally
         {
             CleanupTransition();
         }
+    }
+
+    private string GetActualSceneName(ESceneNames eSceneName)
+    {
+        string enumName = eSceneName.ToString();
+        for (int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings; i++)
+        {
+            string path = UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i);
+            string sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
+            string cleanedName = System.Text.RegularExpressions.Regex.Replace(sceneName, @"^\d+_", "");
+            if (cleanedName == enumName)
+            {
+                return sceneName;
+            }
+        }
+        return enumName;
     }
 
     private void PrepareTransition()
@@ -46,20 +95,6 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         if (UIManager.Instance != null && UIManager.Instance.PopupHandler != null)
         {
             UIManager.Instance.PopupHandler.ClearAllPopups();
-        }
-    }
-
-    private async UniTask UnloadCurrentSubSceneAsync(CancellationToken cancellationToken)
-    {
-        if (string.IsNullOrEmpty(_currentLoadedSubScene))
-        {
-            return;
-        }
-
-        AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(_currentLoadedSubScene);
-        if (unloadOp != null)
-        {
-            await unloadOp.WithCancellation(cancellationToken);
         }
     }
 

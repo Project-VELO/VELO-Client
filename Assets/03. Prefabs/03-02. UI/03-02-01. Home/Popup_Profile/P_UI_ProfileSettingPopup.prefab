@@ -1061,6 +1061,7 @@ GameObject:
   - component: {fileID: 7334393363368853835}
   - component: {fileID: 2214309453057969515}
   - component: {fileID: 1610806259290029915}
+  - component: {fileID: 4579158883119935841}
   m_Layer: 5
   m_Name: P_UI_ProfileSettingPopup
   m_TagString: Untagged
@@ -1086,7 +1087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 106, y: -342}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7334393363368853835
@@ -1152,6 +1153,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4579158883119935841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665510960767055877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5612fc46d2ce2904eaffe94327f7ed75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ProfileSettingPopup
+  _closeButton: {fileID: 4219652773439960376}
 --- !u!1001 &396090357963554026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1453,6 +1467,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
+--- !u!114 &4219652773439960376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3534035232639039112, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
+  m_PrefabInstance: {fileID: 829891065028494256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &5661567105294823951 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4978079370031215039, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}

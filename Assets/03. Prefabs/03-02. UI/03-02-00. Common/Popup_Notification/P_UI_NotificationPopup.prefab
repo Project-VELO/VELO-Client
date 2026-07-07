@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3420270946465010222}
   - component: {fileID: 578911750337906946}
   - component: {fileID: 7287691158194067799}
+  - component: {fileID: 3288571104857954015}
   m_Layer: 5
   m_Name: P_UI_NotificationPopup
   m_TagString: Untagged
@@ -103,6 +104,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3288571104857954015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535339762395280497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edb42f925615c849b67a8977873e98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_NotificationPopup
+  _closeButton: {fileID: 7502434408433684091}
 --- !u!1 &3004612059491028441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1146,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4978079370031215039, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
   m_PrefabInstance: {fileID: 6419153433465567475}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7502434408433684091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3534035232639039112, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
+  m_PrefabInstance: {fileID: 6419153433465567475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &7338448799431047229
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
+using VInspector;
 
 public abstract class UI_Popup : MonoBehaviour
 {
+    [Foldout("Hierarchy")]
+    [SerializeField]
+    private UnityEngine.UI.Button _closeButton;
+
     public bool IsClosing { get; private set; }
 
     private UI_SpriteAnimator[] _spriteAnimators;
@@ -11,6 +16,10 @@ public abstract class UI_Popup : MonoBehaviour
     protected virtual void Awake()
     {
         _spriteAnimators = GetComponentsInChildren<UI_SpriteAnimator>(true);
+        if (_closeButton != null)
+        {
+            _closeButton.onClick.AddListener(OnCloseButtonClicked);
+        }
     }
 
     public virtual void InitPopup()
@@ -70,5 +79,9 @@ public abstract class UI_Popup : MonoBehaviour
 
     public void OnCloseButtonClicked()
     {
+        if (UIManager.Instance != null && UIManager.Instance.PopupHandler != null)
+        {
+            UIManager.Instance.PopupHandler.ClosePopup(this);
+        }
     }
 }

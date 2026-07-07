@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 
 public class SceneEnumGenerator : EnumGeneratorBase
@@ -14,7 +15,8 @@ public class SceneEnumGenerator : EnumGeneratorBase
                 if (!scene.enabled) continue;
 
                 string sceneName = Path.GetFileNameWithoutExtension(scene.path);
-                writer.WriteLine($"    {sceneName.Replace(" ", "_")},");
+                string cleanedName = Regex.Replace(sceneName, @"^\d+_", "");
+                writer.WriteLine($"    {cleanedName.Replace(" ", "_")},");
             }
         });
     }

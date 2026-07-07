@@ -1,4 +1,10 @@
 public enum ESceneNames
 {
-    SampleScene,
+    PersistentScene,
+    HomeScene,
+    SpaceScene,
+    StorySelectScene,
+    StoryScene,
+    ShopScene,
+    CollectionScene,
 }

@@ -29,6 +29,7 @@ public class UI_PopupHandler
             }
         }
         _isClosing = false;
+        InputHandler.ChangeToPlayerInput();
     }
 
     public void OpenPopup(UI_Popup popup)

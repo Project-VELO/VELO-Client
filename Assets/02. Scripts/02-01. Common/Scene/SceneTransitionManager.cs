@@ -6,11 +6,34 @@ using VInspector;
 
 public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionManager>
 {
+    private const string PersistentSceneName = "PersistentScene";
+
     private string _currentLoadedSubScene;
     private bool _isTransitioning;
 
     public string CurrentLoadedSubScene => _currentLoadedSubScene;
     public bool IsTransitioning => _isTransitioning;
+
+    public static string SanitizeIdentifier(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return "_";
+        }
+        string sanitized = System.Text.RegularExpressions.Regex.Replace(input, @"[^a-zA-Z0-9_]", "_");
+        if (char.IsDigit(sanitized[0]))
+        {
+            sanitized = "_" + sanitized;
+        }
+        sanitized = System.Text.RegularExpressions.Regex.Replace(sanitized, @"_+", "_");
+        return sanitized;
+    }
+
+    public static string CleanSceneName(string sceneName)
+    {
+        string cleaned = System.Text.RegularExpressions.Regex.Replace(sceneName, @"^\d+_", "");
+        return SanitizeIdentifier(cleaned);
+    }
 
     protected override void Awake()
     {
@@ -23,7 +46,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
-            if (scene.name != "PersistentScene")
+            if (scene.name != PersistentSceneName)
             {
                 _currentLoadedSubScene = scene.name;
                 hasSubScene = true;
@@ -33,7 +56,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
 
         if (!hasSubScene)
         {
-            LoadSceneAsync(ESceneNames.HomeScene).Forget();
+            LoadSceneAsync(ESceneNames.HomeScene, this.GetCancellationTokenOnDestroy()).Forget();
         }
     }
 
@@ -44,15 +67,24 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
             return;
         }
 
+        string actualSceneName = GetActualSceneName(eSceneName);
+        if (_currentLoadedSubScene == actualSceneName)
+        {
+            return;
+        }
+
         PrepareTransition();
 
         try
         {
-            string actualSceneName = GetActualSceneName(eSceneName);
             string oldSceneName = _currentLoadedSubScene;
 
             // 1. 신규 씬을 먼저 Additive로 로드
-            await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
+            bool isLoaded = await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
+            if (!isLoaded)
+            {
+                return;
+            }
 
             // 2. 신규 씬 로드가 완전히 끝난 뒤에 이전 서브 씬을 언로드 (단일 씬 언로드 에러 방지)
             if (!string.IsNullOrEmpty(oldSceneName) && oldSceneName != actualSceneName)
@@ -77,7 +109,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         {
             string path = UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i);
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
-            string cleanedName = System.Text.RegularExpressions.Regex.Replace(sceneName, @"^\d+_", "");
+            string cleanedName = CleanSceneName(sceneName);
             if (cleanedName == enumName)
             {
                 return sceneName;
@@ -98,13 +130,13 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         }
     }
 
-    private async UniTask LoadAndActivateSceneAsync(string sceneName, CancellationToken cancellationToken)
+    private async UniTask<bool> LoadAndActivateSceneAsync(string sceneName, CancellationToken cancellationToken)
     {
         AsyncOperation loadOp = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         if (loadOp == null)
         {
             Debug.LogError($"'{sceneName}' 로드 실패. 빌드 프로필 확인해보세요");
-            return;
+            return false;
         }
 
         await loadOp.WithCancellation(cancellationToken);
@@ -113,6 +145,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         SceneManager.SetActiveScene(newlyLoadedScene);
         _currentLoadedSubScene = sceneName;
         await UniTask.Yield(cancellationToken);
+        return true;
     }
 
     private void CleanupTransition()

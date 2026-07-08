@@ -12,7 +12,7 @@ public class TagEnumGenerator : EnumGeneratorBase
             HashSet<string> usedNames = new HashSet<string>();
             foreach (string tag in tags)
             {
-                string safeName = SceneTransitionManager.SanitizeIdentifier(tag);
+                string safeName = IdentifierUtils.SanitizeIdentifier(tag);
                 if (usedNames.Add(safeName))
                 {
                     writer.WriteLine($"    {safeName},");

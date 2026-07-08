@@ -17,7 +17,7 @@ public class LayerEnumGenerator : EnumGeneratorBase
                 string layerName = LayerMask.LayerToName(i);
                 if (!string.IsNullOrEmpty(layerName))
                 {
-                    string safeName = SceneTransitionManager.SanitizeIdentifier(layerName);
+                    string safeName = IdentifierUtils.SanitizeIdentifier(layerName);
                     if (usedNames.Add(safeName))
                     {
                         writer.WriteLine($"    {safeName} = {i},");

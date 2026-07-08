@@ -1,6 +1,6 @@
 {
     "dotrush.roslyn.projectOrSolutionFiles": [
-        "c:\\Unity Project\\VELO-Client\\VELO-Client.sln"
+        "${workspaceFolder}\\VELO-Client.sln"
     ],
     "files.exclude": {
         "**/.git": true,

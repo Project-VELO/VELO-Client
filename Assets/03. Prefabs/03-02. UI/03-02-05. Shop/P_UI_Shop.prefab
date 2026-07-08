@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c631c62499831104e85ba8b889fbe859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Shop
-  _backButton: {fileID: 434224422196865066}
 --- !u!1 &3193823707637154507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,19 +1057,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8840646562457632225, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4818176911223885774}
   m_SourcePrefab: {fileID: 100100000, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
---- !u!114 &434224422196865066 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3044039246268868860, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+--- !u!1 &6235370486418865463 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8840646562457632225, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
   m_PrefabInstance: {fileID: 3186355417192317142}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &4818176911223885774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6235370486418865463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 3935e5e1ada15cc47b57f924ca9eeb0b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::UI_SceneTransitionButton
+  _targetScene: 1
 --- !u!224 &8221451213226700573 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6782494770783006667, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}

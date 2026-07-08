@@ -57,7 +57,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac93953afc1e5b4baca0ffb09ca1e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Space
-  _backButton: {fileID: 4666331515353667273}
 --- !u!1 &8637009297318497592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,24 +1133,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8840646562457632225, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5656102474246571300}
   m_SourcePrefab: {fileID: 100100000, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+--- !u!1 &1174581257833087956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8840646562457632225, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+  m_PrefabInstance: {fileID: 7709241563178188341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5656102474246571300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174581257833087956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3935e5e1ada15cc47b57f924ca9eeb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_SceneTransitionButton
+  _targetScene: 1
 --- !u!224 &3809193524887196158 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6782494770783006667, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
   m_PrefabInstance: {fileID: 7709241563178188341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4666331515353667273 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3044039246268868860, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
-  m_PrefabInstance: {fileID: 7709241563178188341}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &7952909725276810591
 PrefabInstance:
   m_ObjectHideFlags: 0

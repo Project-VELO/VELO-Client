@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0d77775bc753b4092e13b4ee75ab63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_SelectStory
-  _backButton: {fileID: 4348678576239935185}
 --- !u!1 &1313377653836649081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1766,7 @@ GameObject:
   - component: {fileID: 5728226029557217799}
   - component: {fileID: 1101575690381454493}
   - component: {fileID: 4348678576239935185}
+  - component: {fileID: 5329577731038618527}
   m_Layer: 5
   m_Name: "P_UI_Button_\uB4A4\uB85C\uAC00\uAE30"
   m_TagString: Untagged
@@ -1876,6 +1876,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5329577731038618527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122044315810633407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3935e5e1ada15cc47b57f924ca9eeb0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_SceneTransitionButton
+  _targetScene: 1
 --- !u!1 &6568368389912778389
 GameObject:
   m_ObjectHideFlags: 0

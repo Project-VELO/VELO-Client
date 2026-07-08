@@ -3,7 +3,7 @@ public enum ESceneNames
     PersistentScene,
     HomeScene,
     SpaceScene,
-    StorySelectScene,
+    SelectStoryScene,
     StoryScene,
     ShopScene,
     CollectionScene,

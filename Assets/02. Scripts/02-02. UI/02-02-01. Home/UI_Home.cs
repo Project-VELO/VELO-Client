@@ -30,6 +30,9 @@ public class UI_Home : MonoBehaviour
     [SerializeField]
     private Button _collectionButton;
 
+    [SerializeField]
+    private Button _enterStoryButton;
+
     [Foldout("Hierarchy")]
     [Header("Popups")]
     [SerializeField]
@@ -72,6 +75,11 @@ public class UI_Home : MonoBehaviour
         {
             _collectionButton.onClick.AddListener(() => LoadScene(ESceneNames.CollectionScene));
         }
+
+        if (_enterStoryButton != null)
+        {
+            _enterStoryButton.onClick.AddListener(() => LoadScene(ESceneNames.SelectStoryScene));
+        }
     }
 
     private void OpenProfileSettingPopup()
@@ -110,7 +118,7 @@ public class UI_Home : MonoBehaviour
     {
         if (SceneTransitionManager.Instance != null)
         {
-            SceneTransitionManager.Instance.LoadSceneAsync(sceneName).Forget();
+            SceneTransitionManager.Instance.LoadSceneAsync(sceneName, this.GetCancellationTokenOnDestroy()).Forget();
         }
     }
 }

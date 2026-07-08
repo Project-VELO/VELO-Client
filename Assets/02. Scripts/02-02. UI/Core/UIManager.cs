@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         PopupHandler = new UI_PopupHandler();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         if (PopupHandler != null)
         {
@@ -76,6 +76,14 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         if (_popupSetting != null)
         {
             PopupHandler.OpenPopup(_popupSetting);
+        }
+    }
+
+    public void OpenProfileSettingPopup(UI_ProfileSettingPopup popup)
+    {
+        if (popup != null)
+        {
+            PopupHandler.OpenPopup(popup);
         }
     }
 

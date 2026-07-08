@@ -84,9 +84,9 @@ public class UI_Home : MonoBehaviour
 
     private void OpenProfileSettingPopup()
     {
-        if (_profileSettingPopup != null)
+        if (UIManager.Instance != null && _profileSettingPopup != null)
         {
-            UIManager.Instance.PopupHandler.OpenPopup(_profileSettingPopup);
+            UIManager.Instance.OpenProfileSettingPopup(_profileSettingPopup);
         }
     }
 

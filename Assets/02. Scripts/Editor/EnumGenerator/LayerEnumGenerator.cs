@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,12 +11,21 @@ public class LayerEnumGenerator : EnumGeneratorBase
     {
         Generate("ELayers.cs", "ELayers", (writer) =>
         {
+            HashSet<string> usedNames = new HashSet<string>();
             for (int i = 0; i < MAX_LAYERS; i++)
             {
                 string layerName = LayerMask.LayerToName(i);
                 if (!string.IsNullOrEmpty(layerName))
                 {
-                    writer.WriteLine($"    {layerName.Replace(" ", "_")} = {i},");
+                    string safeName = SceneTransitionManager.SanitizeIdentifier(layerName);
+                    if (usedNames.Add(safeName))
+                    {
+                        writer.WriteLine($"    {safeName} = {i},");
+                    }
+                    else
+                    {
+                        Debug.LogError($"[LayerEnumGenerator] Duplicate layer enum name detected: {safeName} (Layer index: {i})");
+                    }
                 }
             }
         });

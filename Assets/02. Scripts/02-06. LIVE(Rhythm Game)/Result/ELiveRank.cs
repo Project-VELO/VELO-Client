@@ -1,7 +1,7 @@
 /// <summary>
-/// 리듬게임 플레이 결과에 따라 부여되는 정확도 기반 랭크입니다.
+/// 라이브 플레이 결과에 따라 부여되는 정확도 기반 랭크입니다.
 /// </summary>
-public enum ERhythmRank
+public enum ELiveRank
 {
     /// <summary>
     /// 정확도 100% 달성 및 모든 노트 PERFECT 판정인 경우입니다.

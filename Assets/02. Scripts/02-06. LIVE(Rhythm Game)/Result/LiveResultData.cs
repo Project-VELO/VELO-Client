@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// 리듬게임 완료 시 생성되는 플레이 결과 정보를 전달하는 DTO 클래스입니다.
+/// 라이브 완료 시 생성되는 플레이 결과 정보를 전달하는 DTO 클래스입니다.
 /// </summary>
 [Serializable]
-public class RhythmResultData
+public class LiveResultData
 {
     [SerializeField]
     private string _playResultId;
@@ -32,7 +32,7 @@ public class RhythmResultData
     private int _score = 0;
 
     [SerializeField]
-    private ERhythmRank _rank = ERhythmRank.FAILED;
+    private ELiveRank _rank = ELiveRank.FAILED;
 
     [SerializeField]
     private int _perfectCount = 0;
@@ -83,7 +83,7 @@ public class RhythmResultData
     public string FailReason { get => _failReason; set => _failReason = value; }
     
     public int Score { get => _score; set => _score = value; }
-    public ERhythmRank Rank { get => _rank; set => _rank = value; }
+    public ELiveRank Rank { get => _rank; set => _rank = value; }
     
     public int PerfectCount { get => _perfectCount; set => _perfectCount = value; }
     public int GreatCount { get => _greatCount; set => _greatCount = value; }

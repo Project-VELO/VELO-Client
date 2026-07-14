@@ -11,7 +11,7 @@ public class SongRecord
     private int _bestScore = 0;
 
     [SerializeField]
-    private ERhythmRank _bestRank = ERhythmRank.FAILED;
+    private ELiveRank _bestRank = ELiveRank.FAILED;
 
     [SerializeField]
     private bool _isFullCombo = false;
@@ -22,7 +22,7 @@ public class SongRecord
         set { _bestScore = value; }
     }
 
-    public ERhythmRank BestRank
+    public ELiveRank BestRank
     {
         get { return _bestRank; }
         set { _bestRank = value; }
@@ -41,7 +41,7 @@ public class SongRecord
     /// <param name="rank">갱신할 랭크</param>
     /// <param name="isFullCombo">풀콤보 여부</param>
     /// <returns>기록이 갱신되었으면 true, 그렇지 않으면 false</returns>
-    public bool TryUpdateRecord(int score, ERhythmRank rank, bool isFullCombo)
+    public bool TryUpdateRecord(int score, ELiveRank rank, bool isFullCombo)
     {
         if (score > _bestScore || (score == _bestScore && isFullCombo && !_isFullCombo))
         {

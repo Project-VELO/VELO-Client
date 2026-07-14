@@ -85,39 +85,61 @@ public class PlayerData
     /// <summary>
     /// 신규 게임 시작 시 플레이어의 초기 상태 데이터를 생성합니다.
     /// </summary>
-    public void InitPlayerData()
+    /// <param name="config">기본값 설정 에셋 (null일 경우 소스코드 내 디폴트 값 사용)</param>
+    public void InitPlayerData(NewGameConfig config = null)
     {
-        _level = 1;
-        _exp = 0;
-        _money = 1000;
-        _hype = 10;
-        _gem = 0;
-        _currentChapterId = "PROLOGUE";
-        _currentWeekId = "WEEK_001";
-        _currentDayId = "DAY_001";
-        _selectedCostumeId = "COSTUME_001"; // 기본 의상: 허름한 제복
-        _selectedAccessoryId = "ACCESSORY_001"; // 기본 악세서리: 녹슨 목걸이
-        _dormitoryLevel = 1;
-
-        // 초기 카드 지급: 기본 카드 5장, 교체 카드 5장
-        _ownedCardIds.Clear();
-        for (int i = 1; i <= 10; i++)
+        if (config != null)
         {
-            _ownedCardIds.Add($"CARD_{i:D3}");
+            _level = config.StartLevel;
+            _exp = 0;
+            _money = config.StartMoney;
+            _hype = config.StartHype;
+            _gem = 0;
+            _currentChapterId = config.StartChapterId;
+            _currentWeekId = config.StartWeekId;
+            _currentDayId = config.StartDayId;
+            _selectedCostumeId = config.StartCostumeId;
+            _selectedAccessoryId = config.StartAccessoryId;
+            _dormitoryLevel = 1;
+
+            _ownedCardIds.Clear();
+            _ownedCardIds.AddRange(config.InitialCardIds);
+
+            _selectedCardIds.Clear();
+            _selectedCardIds.AddRange(config.InitialSelectedCardIds);
         }
-
-        // 초기 덱 편성: 기본 카드 5장 자동 배치
-        _selectedCardIds.Clear();
-        for (int i = 1; i <= 5; i++)
+        else
         {
-            _selectedCardIds.Add($"CARD_{i:D3}");
+            _level = 1;
+            _exp = 0;
+            _money = 1000;
+            _hype = 10;
+            _gem = 0;
+            _currentChapterId = "PROLOGUE";
+            _currentWeekId = "WEEK_001";
+            _currentDayId = "DAY_001";
+            _selectedCostumeId = "COSTUME_001";
+            _selectedAccessoryId = "ACCESSORY_001";
+            _dormitoryLevel = 1;
+
+            _ownedCardIds.Clear();
+            for (int i = 1; i <= 10; i++)
+            {
+                _ownedCardIds.Add($"CARD_{i:D3}");
+            }
+
+            _selectedCardIds.Clear();
+            for (int i = 1; i <= 5; i++)
+            {
+                _selectedCardIds.Add($"CARD_{i:D3}");
+            }
         }
 
         // 초기 의상 및 악세서리 보유 설정
         _ownedCostumeIds.Clear();
-        _ownedCostumeIds.Add("COSTUME_001");
+        _ownedCostumeIds.Add(_selectedCostumeId);
         _ownedAccessoryIds.Clear();
-        _ownedAccessoryIds.Add("ACCESSORY_001");
+        _ownedAccessoryIds.Add(_selectedAccessoryId);
 
         _storyProgresses.Clear();
         _scheduleProgresses.Clear();

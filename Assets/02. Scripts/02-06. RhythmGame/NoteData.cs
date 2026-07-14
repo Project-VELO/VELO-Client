@@ -14,7 +14,7 @@ public class NoteData
     private int _timeMs;
 
     [SerializeField]
-    private int _lane;
+    private int _lane = 1;
 
     [SerializeField]
     private ENoteType _noteType = ENoteType.NORMAL;
@@ -24,7 +24,11 @@ public class NoteData
 
     public string NoteId { get => _noteId; set => _noteId = value; }
     public int TimeMs { get => _timeMs; set => _timeMs = value; }
-    public int Lane { get => _lane; set => _lane = value; }
+    public int Lane 
+    { 
+        get => _lane; 
+        set => _lane = Mathf.Clamp(value, 1, 6); 
+    }
     public ENoteType NoteType { get => _noteType; set => _noteType = value; }
     public int HoldDurationMs { get => _holdDurationMs; set => _holdDurationMs = value; }
 }

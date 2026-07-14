@@ -43,7 +43,7 @@ public class SongRecord
     /// <returns>기록이 갱신되었으면 true, 그렇지 않으면 false</returns>
     public bool TryUpdateRecord(int score, ERhythmRank rank, bool isFullCombo)
     {
-        if (score > _bestScore)
+        if (score > _bestScore || (score == _bestScore && isFullCombo && !_isFullCombo))
         {
             _bestScore = score;
             _bestRank = rank;

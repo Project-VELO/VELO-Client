@@ -1348,6 +1348,14 @@ PrefabInstance:
       propertyPath: m_text
       value: PRACTICE ROOM
       objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text
       value: "4. \uC5F0\uC2B5\uC2E4"

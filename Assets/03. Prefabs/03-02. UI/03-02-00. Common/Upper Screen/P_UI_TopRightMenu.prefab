@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4124725157474360092}
   - component: {fileID: 3558395344319144729}
   m_Layer: 5
-  m_Name: P_UI_Buttons_TopRight
+  m_Name: P_UI_TopRightMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -24, y: -24}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!225 &4124725157474360092
@@ -66,8 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
-    m_Right: 0
-    m_Top: 0
+    m_Right: 24
+    m_Top: 24
     m_Bottom: 0
   m_ChildAlignment: 2
   m_Spacing: 38

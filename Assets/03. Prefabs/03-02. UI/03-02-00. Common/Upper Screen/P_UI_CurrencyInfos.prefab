@@ -36,11 +36,11 @@ RectTransform:
   - {fileID: 7624350836284386495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 410, y: -25}
   m_SizeDelta: {x: 664, y: 68}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!225 &5520962143787850167
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -185,11 +185,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4202490732042899156, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_text
-      value: GEM
+      value: HYPE
       objectReference: {fileID: 0}
     - target: {fileID: 4375486266854911403, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_Name
-      value: P_UI_CurrencyInfo_Gem
+      value: P_UI_CurrencyInfo_Hype
       objectReference: {fileID: 0}
     - target: {fileID: 4638136409989115477, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_Pivot.x
@@ -291,11 +291,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4202490732042899156, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_text
-      value: HYPE
+      value: GEM
       objectReference: {fileID: 0}
     - target: {fileID: 4375486266854911403, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_Name
-      value: P_UI_CurrencyInfo_Hype
+      value: P_UI_CurrencyInfo_Gem
       objectReference: {fileID: 0}
     - target: {fileID: 4638136409989115477, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_Pivot.x

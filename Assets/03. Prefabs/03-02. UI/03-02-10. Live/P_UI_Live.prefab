@@ -29,13 +29,13 @@ RectTransform:
   m_GameObject: {fileID: 903619696653183194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4371014305286141240}
   - {fileID: 5191720706349664541}
   - {fileID: 5665466466313485992}
-  - {fileID: 3953660325892232967}
+  - {fileID: 948887217196006832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -332,9 +332,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7396d565c15cb46bfb08d33c523961, type: 3}
---- !u!224 &3953660325892232967 stripped
+--- !u!224 &948887217196006832 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 445417318136818259, guid: bf7396d565c15cb46bfb08d33c523961, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4457251136870990052, guid: bf7396d565c15cb46bfb08d33c523961, type: 3}
   m_PrefabInstance: {fileID: 3526399522438036820}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3956075004316368637
@@ -573,6 +573,10 @@ PrefabInstance:
     - target: {fileID: 4411013496848609026, guid: 9341c0e2dc7884344b774ef2a730593d, type: 3}
       propertyPath: m_Name
       value: P_UI_Live_ComboPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600004891413690606, guid: 9341c0e2dc7884344b774ef2a730593d, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4280690214
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

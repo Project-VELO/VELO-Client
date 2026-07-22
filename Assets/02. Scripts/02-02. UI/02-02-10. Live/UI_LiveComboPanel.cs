@@ -2,20 +2,18 @@ using UnityEngine;
 using TMPro;
 using VInspector;
 
-namespace VELO.UI
+public class UI_LiveComboPanel : MonoBehaviour
 {
-    public class UI_LiveComboPanel : MonoBehaviour
-    {
-        [Foldout("Components")]
-        [SerializeField] private TMP_Text _comboTitleText;
-        [SerializeField] private TMP_Text _comboCountText;
+    [Foldout("Hierarchy")]
+    [Header("Components")]
+    [SerializeField]
+    private TMP_Text _comboTitleText;
 
-        public void SetCombo(int combo)
-        {
-            if (_comboCountText != null)
-            {
-                _comboCountText.text = combo > 0 ? combo.ToString() : "";
-            }
-        }
+    [SerializeField]
+    private TMP_Text _comboCountText;
+
+    public void SetCombo(int combo)
+    {
+        _comboCountText.text = combo > 0 ? combo.ToString() : "";
     }
 }

@@ -7,9 +7,6 @@ public class UI_LiveComboPanel : MonoBehaviour
     [Foldout("Hierarchy")]
     [Header("Components")]
     [SerializeField]
-    private TMP_Text _comboTitleText;
-
-    [SerializeField]
     private TMP_Text _comboCountText;
 
     public void SetCombo(int combo)

@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 903619696653183194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4371014305286141240}
@@ -60,7 +60,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VELO.UI.UI_Live
   _scorePanel: {fileID: 2847603872265214019}
   _comboPanel: {fileID: 8829413437513937196}
-  _hitPanel: {fileID: 0}
+  _judgementPanel: {fileID: 4062653190545271091}
   _noteLanes: {fileID: 525830219100174263}
 --- !u!1001 &2845806957866469716
 PrefabInstance:
@@ -337,6 +337,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4457251136870990052, guid: bf7396d565c15cb46bfb08d33c523961, type: 3}
   m_PrefabInstance: {fileID: 3526399522438036820}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4062653190545271091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 617336350576235623, guid: bf7396d565c15cb46bfb08d33c523961, type: 3}
+  m_PrefabInstance: {fileID: 3526399522438036820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1ba3d22e5e42942bc0d62b74d7d6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VELO.UI.UI_LiveHitPanel
 --- !u!1001 &3956075004316368637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600004891413690606, guid: 9341c0e2dc7884344b774ef2a730593d, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4280690214
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,13 +7,35 @@ using VInspector;
 [RequireComponent(typeof(CanvasRenderer))]
 public class UI_TrapezoidLanes : MaskableGraphic
 {
+    private static readonly List<float> CUMULATIVE_TOP_RATIOS = new List<float>
+    {
+        0f,
+        42f / 252f,
+        81f / 252f,
+        126f / 252f,
+        171f / 252f,
+        210f / 252f,
+        1f
+    };
+
+    private static readonly List<float> CUMULATIVE_BOTTOM_RATIOS = new List<float>
+    {
+        0f,
+        239f / 1410f,
+        484f / 1410f,
+        705f / 1410f,
+        926f / 1410f,
+        1171f / 1410f,
+        1f
+    };
+
     [Foldout("Hierarchy")]
     [Header("Trapezoid Dimensions")]
     [SerializeField]
-    private float _topWidth = 340f;
+    private float _topWidth = 252f;
 
     [SerializeField]
-    private float _bottomWidth = 1447.17f;
+    private float _bottomWidth = 1410f;
 
     [Header("Hit Line Specifications")]
     [SerializeField]
@@ -23,7 +45,7 @@ public class UI_TrapezoidLanes : MaskableGraphic
     private float _hitLineYFromBottom = 125.99f;
 
     [SerializeField]
-    private float _targetHitLineWidth = 1318.01f;
+    private float _targetHitLineWidth = 1274.91f;
 
     [Header("Lane Colors (6 Lanes)")]
     [SerializeField]
@@ -100,14 +122,17 @@ public class UI_TrapezoidLanes : MaskableGraphic
         int numLanes = 6;
         for (int i = 0; i < numLanes; i++)
         {
-            float t1 = (float)i / numLanes;
-            float t2 = (float)(i + 1) / numLanes;
+            float topT1 = CUMULATIVE_TOP_RATIOS[i];
+            float topT2 = CUMULATIVE_TOP_RATIOS[i + 1];
 
-            float topX1 = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, t1);
-            float topX2 = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, t2);
+            float botT1 = CUMULATIVE_BOTTOM_RATIOS[i];
+            float botT2 = CUMULATIVE_BOTTOM_RATIOS[i + 1];
 
-            float botX1 = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, t1);
-            float botX2 = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, t2);
+            float topX1 = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, topT1);
+            float topX2 = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, topT2);
+
+            float botX1 = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, botT1);
+            float botX2 = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, botT2);
 
             Color laneColor = (i < _laneColors.Count) ? _laneColors[i] : color;
 
@@ -124,9 +149,10 @@ public class UI_TrapezoidLanes : MaskableGraphic
         {
             for (int i = 1; i < numLanes; i++)
             {
-                float t = (float)i / numLanes;
-                float topX = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, t);
-                float botX = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, t);
+                float topT = CUMULATIVE_TOP_RATIOS[i];
+                float botT = CUMULATIVE_BOTTOM_RATIOS[i];
+                float topX = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, topT);
+                float botX = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, botT);
 
                 Vector2 topPos = new Vector2(topX, halfH);
                 Vector2 botPos = new Vector2(botX, -halfH);

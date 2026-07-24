@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1447.17, y: 1080}
+  m_SizeDelta: {x: 1410, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5252896501776660199
 CanvasRenderer:
@@ -65,11 +65,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  _topWidth: 340
-  _bottomWidth: 1447.17
+  _topWidth: 252
+  _bottomWidth: 1410
   _useHitLineSpecs: 1
   _hitLineYFromBottom: 125.99
-  _targetHitLineWidth: 1318.01
+  _targetHitLineWidth: 1274.91
   _laneColors:
   - {r: 1, g: 0.67, b: 0.65, a: 0.85}
   - {r: 0.89, g: 0.89, b: 0.89, a: 0.85}

@@ -1,6 +1,6 @@
 {
     "dotrush.roslyn.projectOrSolutionFiles": [
-        "${workspaceFolder}\\VELO-Client.sln"
+        "VELO-Client.sln"
     ],
     "files.exclude": {
         "**/.git": true,

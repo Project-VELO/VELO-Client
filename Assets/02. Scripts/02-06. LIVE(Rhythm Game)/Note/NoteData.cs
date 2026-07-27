@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// 개별 노트의 타이밍, 위치 및 유형 정보를 저장하는 DTO 클래스입니다.
+/// 개별 노트의 타이밍, 위치 및 유형 정보를 저장하는 가변 데이터 모델 클래스입니다.
 /// </summary>
 [Serializable]
 public class NoteData
@@ -31,4 +31,9 @@ public class NoteData
     }
     public ENoteType NoteType { get => _noteType; set => _noteType = value; }
     public int HoldDurationMs { get => _holdDurationMs; set => _holdDurationMs = value; }
+
+    public NoteDataDTO ToDTO()
+    {
+        return new NoteDataDTO(this);
+    }
 }

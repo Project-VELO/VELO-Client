@@ -17,14 +17,4 @@ public enum ENoteType
     /// 길게 누르고 있어야 하는 롱노트입니다. (추후 확장용)
     /// </summary>
     LONG,
-
-    /// <summary>
-    /// 드래그로 입력하는 슬라이드 노트입니다. (추후 확장용)
-    /// </summary>
-    SLIDE,
-
-    /// <summary>
-    /// 튕겨서 입력하는 플릭 노트입니다. (추후 확장용)
-    /// </summary>
-    FLICK
 }

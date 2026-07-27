@@ -112,11 +112,7 @@ public class UI_TrapezoidLanes : MaskableGraphic
 
         float tHit = Mathf.Clamp01(_hitLineYFromBottom / height);
 
-        float effectiveBottomWidth = _bottomWidth;
-        if (_useHitLineSpecs && tHit < 1f)
-        {
-            effectiveBottomWidth = (_targetHitLineWidth - _topWidth * tHit) / (1f - tHit);
-        }
+        float effectiveBottomWidth = GetEffectiveBottomWidth();
 
         // Draw 6 Lanes
         int numLanes = 6;
@@ -214,5 +210,88 @@ public class UI_TrapezoidLanes : MaskableGraphic
             end + normal,
             start + normal,
             col);
+    }
+
+
+    private float GetEffectiveBottomWidth()
+    {
+        Rect rect = GetPixelAdjustedRect();
+        float height = rect.height > 0 ? rect.height : 1080f;
+        float tHit = Mathf.Clamp01(_hitLineYFromBottom / height);
+
+        if (_useHitLineSpecs && tHit < 1f)
+        {
+            return (_targetHitLineWidth - _topWidth * tHit) / (1f - tHit);
+        }
+
+        return _bottomWidth;
+    }
+
+    public Vector2 GetLaneCenterPosition(int laneIndex, float verticalRatio)
+    {
+        int laneArrayIndex = laneIndex - 1;
+        float topT1 = CUMULATIVE_TOP_RATIOS[laneArrayIndex];
+        float topT2 = CUMULATIVE_TOP_RATIOS[laneArrayIndex + 1];
+        float botT1 = CUMULATIVE_BOTTOM_RATIOS[laneArrayIndex];
+        float botT2 = CUMULATIVE_BOTTOM_RATIOS[laneArrayIndex + 1];
+
+        float effectiveBottomWidth = GetEffectiveBottomWidth();
+        float topXCenter = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, (topT1 + topT2) * 0.5f);
+        float botXCenter = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, (botT1 + botT2) * 0.5f);
+
+        Rect rect = GetPixelAdjustedRect();
+        float height = rect.height > 0 ? rect.height : 1080f;
+        float halfH = height * 0.5f;
+
+        float x = Mathf.Lerp(botXCenter, topXCenter, verticalRatio);
+        float y = Mathf.Lerp(-halfH, halfH, verticalRatio);
+
+        return new Vector2(x, y);
+    }
+
+    public float GetHitLineVerticalRatio()
+    {
+        Rect rect = GetPixelAdjustedRect();
+        float height = rect.height > 0 ? rect.height : 1080f;
+        return Mathf.Clamp01(_hitLineYFromBottom / height);
+    }
+
+
+    public void GetTrackEdgesAtRatio(float verticalRatio, out float leftX, out float rightX, out float y)
+    {
+        float effectiveBottomWidth = GetEffectiveBottomWidth();
+
+        Rect rect = GetPixelAdjustedRect();
+        float height = rect.height > 0 ? rect.height : 1080f;
+        float halfH = height * 0.5f;
+
+        float topLeftX = -_topWidth * 0.5f;
+        float topRightX = _topWidth * 0.5f;
+        float botLeftX = -effectiveBottomWidth * 0.5f;
+        float botRightX = effectiveBottomWidth * 0.5f;
+
+        leftX = Mathf.Lerp(botLeftX, topLeftX, verticalRatio);
+        rightX = Mathf.Lerp(botRightX, topRightX, verticalRatio);
+        y = Mathf.Lerp(-halfH, halfH, verticalRatio);
+    }
+
+
+    public void GetLaneBoundsAtRatio(int laneIndex, float verticalRatio, out float leftX, out float rightX)
+    {
+        int laneArrayIndex = laneIndex - 1;
+        float topT1 = CUMULATIVE_TOP_RATIOS[laneArrayIndex];
+        float topT2 = CUMULATIVE_TOP_RATIOS[laneArrayIndex + 1];
+        float botT1 = CUMULATIVE_BOTTOM_RATIOS[laneArrayIndex];
+        float botT2 = CUMULATIVE_BOTTOM_RATIOS[laneArrayIndex + 1];
+
+        float effectiveBottomWidth = GetEffectiveBottomWidth();
+
+        float topLeftX = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, topT1);
+        float topRightX = Mathf.Lerp(-_topWidth * 0.5f, _topWidth * 0.5f, topT2);
+        float botLeftX = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, botT1);
+        float botRightX = Mathf.Lerp(-effectiveBottomWidth * 0.5f, effectiveBottomWidth * 0.5f, botT2);
+
+        leftX = Mathf.Lerp(botLeftX, topLeftX, verticalRatio);
+        rightX = Mathf.Lerp(botRightX, topRightX, verticalRatio);
     }
 }

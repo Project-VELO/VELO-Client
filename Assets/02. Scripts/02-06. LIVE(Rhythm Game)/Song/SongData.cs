@@ -6,8 +6,15 @@ using UnityEngine;
 /// 게임에 수록된 곡의 메타데이터를 저장하는 DTO 클래스입니다.
 /// </summary>
 [Serializable]
-public class SongData
+public class SongData : ISerializationCallbackReceiver
 {
+    [Serializable]
+    private struct ChartEntry
+    {
+        public EDifficulty Difficulty;
+        public ChartMetadata Metadata;
+    }
+
     [SerializeField]
     private string _songId;
 
@@ -29,8 +36,11 @@ public class SongData
     [SerializeField]
     private string _coverImagePath;
 
-    // Json 직렬화 연동성을 고려하여 Dictionary 형태로 구성하며, 
-    // 직렬화를 위해 별도 List wrapping 구조를 적용할 수도 있습니다.
+    // Dictionary는 JsonUtility로 직렬화되지 않으므로, List<ChartEntry>로 감싸 직렬화하고
+    // ISerializationCallbackReceiver를 통해 런타임에는 Dictionary로 접근할 수 있도록 동기화합니다.
+    [SerializeField]
+    private List<ChartEntry> _chartEntries = new List<ChartEntry>();
+
     private Dictionary<EDifficulty, ChartMetadata> _charts = new Dictionary<EDifficulty, ChartMetadata>();
 
     public string SongId { get => _songId; set => _songId = value; }
@@ -42,4 +52,22 @@ public class SongData
     public string CoverImagePath { get => _coverImagePath; set => _coverImagePath = value; }
 
     public Dictionary<EDifficulty, ChartMetadata> Charts => _charts;
+
+    public void OnBeforeSerialize()
+    {
+        _chartEntries.Clear();
+        foreach (var pair in _charts)
+        {
+            _chartEntries.Add(new ChartEntry { Difficulty = pair.Key, Metadata = pair.Value });
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        _charts.Clear();
+        foreach (var entry in _chartEntries)
+        {
+            _charts[entry.Difficulty] = entry.Metadata;
+        }
+    }
 }

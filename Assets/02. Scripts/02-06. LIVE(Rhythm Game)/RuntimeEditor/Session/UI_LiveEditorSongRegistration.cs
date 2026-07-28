@@ -4,13 +4,19 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using VInspector;
 
 /// <summary>
-/// StreamingAssets/Songs에 등록되지 않은 오디오 파일을 찾아, 곡 제목/BPM/작곡가/난이도를
+/// StreamingAssets/Songs에 등록되지 않은 오디오 파일을 찾아, 곡 제목/BPM/작곡가를
 /// UI에서 직접 입력받아 SongData(song_info.json)로 등록하는 UGUI 패널입니다.
+/// 난이도는 채보를 만들 때 고르므로 이 패널에서는 다루지 않습니다.
 /// </summary>
 public class UI_LiveEditorSongRegistration : MonoBehaviour
 {
+    public Action<string> OnSongRegistered;
+    public Action OnBackClicked;
+
+    [Foldout("Hierarchy")]
     [SerializeField]
     private TMP_Dropdown _unregisteredAudioDropdown;
 
@@ -24,40 +30,28 @@ public class UI_LiveEditorSongRegistration : MonoBehaviour
     private TMP_InputField _composerInput;
 
     [SerializeField]
-    private TMP_Dropdown _difficultyDropdown;
-
-    [SerializeField]
     private Button _registerButton;
 
     [SerializeField]
-    private LiveEditorController _controller;
+    private Button _backButton;
 
+    private LiveEditorController _controller;
     private List<string> _unregisteredAudioPaths;
 
     public void Init(LiveEditorController controller)
     {
         _controller = controller;
 
-        PopulateDifficultyDropdown();
-        RefreshUnregisteredAudioDropdown();
         _registerButton.onClick.AddListener(OnRegisterClicked);
+        _backButton.onClick.AddListener(NotifyBack);
     }
 
-    private void PopulateDifficultyDropdown()
+    /// <summary>
+    /// 패널이 열릴 때마다 호출되어, 그 사이 새로 추가된 음원 파일까지 목록에 반영합니다.
+    /// </summary>
+    public void RefreshPanel()
     {
-        var options = new List<string>();
-        foreach (EDifficulty difficulty in Enum.GetValues(typeof(EDifficulty)))
-        {
-            options.Add($"난이도: {difficulty}");
-        }
-
-        _difficultyDropdown.ClearOptions();
-        _difficultyDropdown.AddOptions(options);
-    }
-
-    private void RefreshUnregisteredAudioDropdown()
-    {
-        _unregisteredAudioPaths = _controller.ChartIO.GetUnregisteredAudioFilePaths();
+        _unregisteredAudioPaths = _controller.SongIO.GetUnregisteredAudioFilePaths();
 
         var options = new List<string>();
         foreach (string path in _unregisteredAudioPaths)
@@ -67,6 +61,10 @@ public class UI_LiveEditorSongRegistration : MonoBehaviour
 
         _unregisteredAudioDropdown.ClearOptions();
         _unregisteredAudioDropdown.AddOptions(options);
+
+        _titleInput.text = string.Empty;
+        _bpmInput.text = string.Empty;
+        _composerInput.text = string.Empty;
     }
 
     private void OnRegisterClicked()
@@ -91,11 +89,14 @@ public class UI_LiveEditorSongRegistration : MonoBehaviour
         string audioPath = _unregisteredAudioPaths[_unregisteredAudioDropdown.value];
         string songId = Path.GetFileNameWithoutExtension(audioPath);
 
-        _controller.ChartIO.RegisterSong(audioPath, songId, _titleInput.text, bpm, _composerInput.text);
+        _controller.SongIO.RegisterSong(audioPath, songId, _titleInput.text, bpm, _composerInput.text);
 
-        var difficulty = (EDifficulty)_difficultyDropdown.value;
-        _controller.LoadSongAndChart(songId, difficulty);
+        RefreshPanel();
+        OnSongRegistered?.Invoke(songId);
+    }
 
-        RefreshUnregisteredAudioDropdown();
+    private void NotifyBack()
+    {
+        OnBackClicked?.Invoke();
     }
 }

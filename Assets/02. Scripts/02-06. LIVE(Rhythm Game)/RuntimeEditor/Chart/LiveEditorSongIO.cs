@@ -3,41 +3,14 @@ using System.IO;
 using UnityEngine;
 
 /// <summary>
-/// StreamingAssets 경로의 채보(ChartData) 및 곡 메타데이터(SongData) JSON 입출력을 전담하는 클래스입니다.
-/// 저장 직전 LiveEditorChartValidator를 통해 유효성 검사를 수행하며, 검사에 실패하면 저장하지 않습니다.
+/// StreamingAssets/Songs 아래의 곡 메타데이터(song_info.json) 입출력과 신규 음원 등록을 전담하는 클래스입니다.
+/// 채보 파일 자체는 LiveEditorChartIO가 다룹니다.
 /// </summary>
-public class LiveEditorChartIO
+public class LiveEditorSongIO
 {
-    private readonly LiveEditorChartValidator _validator = new LiveEditorChartValidator();
-
-    public bool SaveChart(string path, ChartData chart, SongData song, out List<string> errors)
+    public string GetSongInfoPath(string songId)
     {
-        errors = _validator.Validate(chart, song);
-        if (errors.Count > 0)
-        {
-            return false;
-        }
-
-        string directory = Path.GetDirectoryName(path);
-        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
-        {
-            Directory.CreateDirectory(directory);
-        }
-
-        string json = JsonUtility.ToJson(chart, true);
-        File.WriteAllText(path, json);
-        return true;
-    }
-
-    public ChartData LoadChart(string path)
-    {
-        if (!File.Exists(path))
-        {
-            return null;
-        }
-
-        string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<ChartData>(json);
+        return Path.Combine(Application.streamingAssetsPath, "Songs", songId, "song_info.json");
     }
 
     public void SaveSong(string path, SongData song)
@@ -63,16 +36,6 @@ public class LiveEditorChartIO
         return JsonUtility.FromJson<SongData>(json);
     }
 
-    public string GetChartPath(string songId, EDifficulty difficulty)
-    {
-        return Path.Combine(Application.streamingAssetsPath, "Charts", $"{songId}_{difficulty}.json");
-    }
-
-    public string GetSongInfoPath(string songId)
-    {
-        return Path.Combine(Application.streamingAssetsPath, "Songs", songId, "song_info.json");
-    }
-
     public List<string> GetAllSongIds()
     {
         var songIds = new List<string>();
@@ -91,15 +54,17 @@ public class LiveEditorChartIO
         return songIds;
     }
 
-
+    /// <summary>
+    /// Songs 폴더 바로 아래에 놓인, 아직 곡으로 등록되지 않은 음원 파일 경로를 찾습니다.
+    /// </summary>
     public List<string> GetUnregisteredAudioFilePaths()
     {
-        var result = new List<string>();
+        var audioFilePaths = new List<string>();
         string songsRoot = Path.Combine(Application.streamingAssetsPath, "Songs");
 
         if (!Directory.Exists(songsRoot))
         {
-            return result;
+            return audioFilePaths;
         }
 
         foreach (string filePath in Directory.GetFiles(songsRoot))
@@ -107,13 +72,16 @@ public class LiveEditorChartIO
             string extension = Path.GetExtension(filePath).ToLowerInvariant();
             if (extension == ".mp3" || extension == ".wav")
             {
-                result.Add(filePath);
+                audioFilePaths.Add(filePath);
             }
         }
 
-        return result;
+        return audioFilePaths;
     }
 
+    /// <summary>
+    /// 음원 파일을 곡 전용 폴더로 옮기고 곡 메타데이터를 생성합니다.
+    /// </summary>
     public void RegisterSong(string audioFilePath, string songId, string title, float bpm, string composer)
     {
         string songFolder = Path.Combine(Application.streamingAssetsPath, "Songs", songId);

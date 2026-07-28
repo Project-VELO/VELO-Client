@@ -21,7 +21,7 @@ public class LiveEditorUndoRedoManager : MonoBehaviour
         command.Execute();
         _undoStack.Push(command);
         _redoStack.Clear();
-        _timeline.SyncNoteVisuals();
+        _timeline.RefreshNoteVisuals();
     }
 
     public void Undo()
@@ -34,7 +34,7 @@ public class LiveEditorUndoRedoManager : MonoBehaviour
         ICommand command = _undoStack.Pop();
         command.Undo();
         _redoStack.Push(command);
-        _timeline.SyncNoteVisuals();
+        _timeline.RefreshNoteVisuals();
     }
 
     public void Redo()
@@ -47,7 +47,7 @@ public class LiveEditorUndoRedoManager : MonoBehaviour
         ICommand command = _redoStack.Pop();
         command.Execute();
         _undoStack.Push(command);
-        _timeline.SyncNoteVisuals();
+        _timeline.RefreshNoteVisuals();
     }
 
     public void Clear()

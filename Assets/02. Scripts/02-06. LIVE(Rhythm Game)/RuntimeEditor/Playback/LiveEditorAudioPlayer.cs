@@ -1,0 +1,185 @@
+using System;
+using System.IO;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Networking;
+using VInspector;
+
+/// <summary>
+/// StreamingAssets 음원 파일의 런타임 로드/재생, 탐색, 배속 조절, 메트로놈 기능을 전담하는 클래스입니다.
+/// 코루틴 대신 UniTask + CancellationToken 기반으로 오디오를 로드하며,
+/// 로드가 끝나야 곡 길이를 알 수 있으므로 완료 시점을 OnClipLoaded로 통지합니다.
+/// </summary>
+public class LiveEditorAudioPlayer : MonoBehaviour
+{
+    public Action OnClipLoaded;
+
+    // AudioSource.time에 클립 길이를 그대로 대입하면 재생 위치가 범위를 벗어나므로 끝에서 살짝 앞을 최대값으로 삼습니다.
+    private const float CLIP_END_MARGIN_SECONDS = 0.01f;
+
+    [Foldout("Hierarchy")]
+    [SerializeField]
+    private AudioSource _audioSource;
+
+    [SerializeField]
+    private AudioSource _metronomeAudio;
+
+    [Foldout("Project")]
+    [SerializeField]
+    private AudioClip _metronomeTickClip;
+
+    private bool _isMetronomeEnabled;
+    private int _nextMetronomeBeatIndex;
+    private int _playbackTimeMs;
+    private ChartData _chart;
+
+    public AudioSource Audio => _audioSource;
+    public float PlaybackSpeed { get => _audioSource.pitch; set => _audioSource.pitch = value; }
+    public bool IsMetronomeEnabled { get => _isMetronomeEnabled; set => _isMetronomeEnabled = value; }
+    public bool IsPlaying => _audioSource.isPlaying;
+    public bool IsClipLoaded => _audioSource.clip != null;
+    public int ClipLengthMs => _audioSource.clip == null ? 0 : Mathf.RoundToInt(_audioSource.clip.length * 1000f);
+
+    // AudioSource.time은 클립이 없거나 재생이 멈춘 상태에서 유효하지 않으므로, 그 밖의 구간은 별도로 보관한 값을 사용합니다.
+    public int CurrentTimeMs => IsPlayingClip ? Mathf.RoundToInt(_audioSource.time * 1000f) : _playbackTimeMs;
+
+    private bool IsPlayingClip => _audioSource.clip != null && _audioSource.isPlaying;
+
+    private void Update()
+    {
+        if (!IsPlayingClip)
+        {
+            return;
+        }
+
+        _playbackTimeMs = Mathf.RoundToInt(_audioSource.time * 1000f);
+
+        if (_isMetronomeEnabled)
+        {
+            UpdateMetronome();
+        }
+    }
+
+    public void Init(SongData song)
+    {
+        string audioPath = Path.Combine(Application.streamingAssetsPath, "Songs", song.SongId, song.AudioFilePath);
+        LoadAudioAsync(audioPath, this.GetCancellationTokenOnDestroy()).Forget();
+    }
+
+    public void SetChart(ChartData chart)
+    {
+        _chart = chart;
+        _nextMetronomeBeatIndex = 0;
+    }
+
+    public void Play()
+    {
+        if (_audioSource.clip == null)
+        {
+            return;
+        }
+
+        // 정지 중 마디 탐색으로 옮겨둔 위치에서 이어서 재생합니다.
+        _audioSource.time = ToClampedSeconds(_playbackTimeMs);
+        _audioSource.Play();
+    }
+
+    /// <summary>
+    /// 멈추는 순간의 재생 위치를 직접 붙잡아 둡니다. Update의 갱신에만 기대면 프레임이 밀렸을 때 위치가 어긋납니다.
+    /// </summary>
+    public void Pause()
+    {
+        if (IsPlayingClip)
+        {
+            _playbackTimeMs = Mathf.RoundToInt(_audioSource.time * 1000f);
+        }
+
+        _audioSource.Pause();
+    }
+
+    public void SetSpeed(float speed)
+    {
+        PlaybackSpeed = speed;
+    }
+
+    /// <summary>
+    /// 재생 위치를 절대 시각으로 이동시키고, 이동한 위치에 맞춰 메트로놈 비트 카운터를 다시 맞춥니다.
+    /// </summary>
+    public void SetPlaybackTime(int timeMs)
+    {
+        if (_audioSource.clip == null)
+        {
+            return;
+        }
+
+        float seconds = ToClampedSeconds(timeMs);
+        _audioSource.time = seconds;
+        _playbackTimeMs = Mathf.RoundToInt(seconds * 1000f);
+        ResyncMetronomeBeatIndex();
+    }
+
+    private float ToClampedSeconds(int timeMs)
+    {
+        float maxSeconds = Mathf.Max(0f, _audioSource.clip.length - CLIP_END_MARGIN_SECONDS);
+        return Mathf.Clamp(timeMs / 1000f, 0f, maxSeconds);
+    }
+
+    public void SeekByGridStep(int direction, ESnapDivision division)
+    {
+        if (ReferenceEquals(_chart, null) || _audioSource.clip == null)
+        {
+            return;
+        }
+
+        double beat = LiveEditorBpmTimeConverter.TimeMsToBeat(_chart, CurrentTimeMs);
+        double gridUnit = 1.0 / (int)division;
+        double newBeat = Math.Max(0.0, beat + direction * gridUnit);
+        SetPlaybackTime(LiveEditorBpmTimeConverter.BeatToTimeMs(_chart, newBeat));
+    }
+
+    private async UniTaskVoid LoadAudioAsync(string audioPath, CancellationToken cancellationToken)
+    {
+        string url = "file://" + audioPath;
+        using UnityWebRequest request = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.MPEG);
+
+        await request.SendWebRequest().ToUniTask(cancellationToken: cancellationToken);
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError($"[LiveEditorAudioPlayer] 오디오 로드 실패: {request.error} ({audioPath})");
+            return;
+        }
+
+        _audioSource.clip = DownloadHandlerAudioClip.GetContent(request);
+        OnClipLoaded?.Invoke();
+    }
+
+    private void ResyncMetronomeBeatIndex()
+    {
+        if (ReferenceEquals(_chart, null))
+        {
+            return;
+        }
+
+        double beat = LiveEditorBpmTimeConverter.TimeMsToBeat(_chart, CurrentTimeMs);
+        _nextMetronomeBeatIndex = Mathf.Max(0, Mathf.CeilToInt((float)beat));
+    }
+
+    private void UpdateMetronome()
+    {
+        if (ReferenceEquals(_chart, null))
+        {
+            return;
+        }
+
+        int currentTimeMs = CurrentTimeMs;
+        int nextBeatTimeMs = LiveEditorBpmTimeConverter.BeatToTimeMs(_chart, _nextMetronomeBeatIndex);
+
+        if (currentTimeMs >= nextBeatTimeMs)
+        {
+            _metronomeAudio.PlayOneShot(_metronomeTickClip);
+            _nextMetronomeBeatIndex++;
+        }
+    }
+}

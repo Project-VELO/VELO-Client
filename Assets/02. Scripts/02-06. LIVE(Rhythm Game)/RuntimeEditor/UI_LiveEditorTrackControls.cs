@@ -1,0 +1,134 @@
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using VInspector;
+
+/// <summary>
+/// 스냅 분박, 배속, 메트로놈 등 트랙 표시/재생 관련 컨트롤과 현재 마디 표시를 담당하는 UGUI 패널입니다.
+/// 하이스피드는 버튼으로 미세 조절해야 해서 UI_LiveEditorHiSpeedControl이 따로 담당합니다.
+/// </summary>
+public class UI_LiveEditorTrackControls : MonoBehaviour
+{
+    private const int UNBOUND_BAR_INDEX = -1;
+
+    private static readonly List<ESnapDivision> SnapDivisions = new List<ESnapDivision>
+    {
+        ESnapDivision.Quarter,
+        ESnapDivision.Eighth,
+        ESnapDivision.Twelfth,
+        ESnapDivision.Sixteenth,
+        ESnapDivision.ThirtySecond,
+    };
+
+    private static readonly List<string> SnapOptions = new List<string>
+    {
+        "스냅: 1/4박", "스냅: 1/8박", "스냅: 1/12박", "스냅: 1/16박", "스냅: 1/32박",
+    };
+
+    private static readonly List<float> PlaybackSpeeds = new List<float> { 0.5f, 0.75f, 1.0f, 1.5f };
+
+    private static readonly List<string> PlaybackSpeedOptions = new List<string>
+    {
+        "배속: 0.5x", "배속: 0.75x", "배속: 1.0x", "배속: 1.5x",
+    };
+
+    [Foldout("Hierarchy")]
+    [SerializeField]
+    private TMP_Dropdown _snapDropdown;
+
+    [SerializeField]
+    private TMP_Dropdown _speedDropdown;
+
+    [SerializeField]
+    private Toggle _metronomeToggle;
+
+    [SerializeField]
+    private TMP_Text _barIndicatorText;
+
+    [SerializeField]
+    private LiveEditorTimeline _timeline;
+
+    [SerializeField]
+    private LiveEditorAudioPlayer _audioPlayer;
+
+    private int _lastShownBarIndex = UNBOUND_BAR_INDEX;
+    private int _lastShownBarCount = UNBOUND_BAR_INDEX;
+
+    private void Update()
+    {
+        RefreshBarIndicator();
+    }
+
+    public void Init()
+    {
+        InitSnapDropdown();
+        InitSpeedDropdown();
+
+        _metronomeToggle.onValueChanged.AddListener(OnMetronomeToggled);
+    }
+
+    private void InitSnapDropdown()
+    {
+        _snapDropdown.ClearOptions();
+        _snapDropdown.AddOptions(SnapOptions);
+        _snapDropdown.SetValueWithoutNotify(SnapDivisions.IndexOf(_timeline.SnapDivision));
+        _snapDropdown.onValueChanged.AddListener(OnSnapChanged);
+    }
+
+    private void InitSpeedDropdown()
+    {
+        _speedDropdown.ClearOptions();
+        _speedDropdown.AddOptions(PlaybackSpeedOptions);
+        _speedDropdown.SetValueWithoutNotify(PlaybackSpeeds.IndexOf(1.0f));
+        _speedDropdown.onValueChanged.AddListener(OnSpeedChanged);
+    }
+
+    /// <summary>
+    /// 매 프레임 문자열을 새로 만들면 GC가 발생하므로, 표시 중인 마디나 총 마디 수가 실제로 바뀌었을 때만 갱신합니다.
+    /// </summary>
+    private void RefreshBarIndicator()
+    {
+        if (!_timeline.BarLayout.IsBuilt)
+        {
+            return;
+        }
+
+        int barIndex = _timeline.GetCurrentBarIndex();
+        int barCount = _timeline.BarLayout.BarCount;
+
+        if (barIndex == _lastShownBarIndex && barCount == _lastShownBarCount)
+        {
+            return;
+        }
+
+        _lastShownBarIndex = barIndex;
+        _lastShownBarCount = barCount;
+        _barIndicatorText.text = $"마디: {barIndex + 1} / {barCount}";
+    }
+
+    private void OnSnapChanged(int index)
+    {
+        if (index < 0 || index >= SnapDivisions.Count)
+        {
+            return;
+        }
+
+        _timeline.SnapDivision = SnapDivisions[index];
+    }
+
+    private void OnSpeedChanged(int index)
+    {
+        if (index < 0 || index >= PlaybackSpeeds.Count)
+        {
+            return;
+        }
+
+        _audioPlayer.SetSpeed(PlaybackSpeeds[index]);
+    }
+
+    private void OnMetronomeToggled(bool isOn)
+    {
+        _audioPlayer.IsMetronomeEnabled = isOn;
+    }
+}

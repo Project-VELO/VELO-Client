@@ -6,4 +6,7 @@ public enum EPoolable
     EditorNoteNormal,
     EditorNoteGhost,
     EditorNoteLong,
+    EditorBarLine,
+    EditorBarLabel,
+    EditorListItem,
 }

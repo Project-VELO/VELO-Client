@@ -8,7 +8,7 @@ using System.Collections.Generic;
 /// </summary>
 public static class LiveEditorBpmTimeConverter
 {
-    private const int GridSubdivisionsPerBeat = 24;
+    private const int GRID_SUBDIVISIONS_PER_BEAT = 24;
 
     private readonly struct Segment
     {
@@ -52,7 +52,7 @@ public static class LiveEditorBpmTimeConverter
     public static bool IsOnGrid(ChartData chart, int timeMs, int toleranceMs = 2)
     {
         double beat = TimeMsToBeat(chart, timeMs);
-        double gridUnit = 1.0 / GridSubdivisionsPerBeat;
+        double gridUnit = 1.0 / GRID_SUBDIVISIONS_PER_BEAT;
         double nearestGridBeat = Math.Round(beat / gridUnit) * gridUnit;
         int nearestGridTimeMs = BeatToTimeMs(chart, nearestGridBeat);
         return Math.Abs(nearestGridTimeMs - timeMs) <= toleranceMs;
@@ -114,26 +114,5 @@ public static class LiveEditorBpmTimeConverter
             }
         }
         return result;
-    }
-
-
-    public static void FillGridTimesInRange(ChartData chart, int startTimeMs, int endTimeMs, ESnapDivision division, List<int> results)
-    {
-        results.Clear();
-
-        double gridUnit = 1.0 / (int)division;
-        double startBeat = TimeMsToBeat(chart, startTimeMs);
-        double beat = Math.Ceiling(startBeat / gridUnit) * gridUnit;
-
-        while (true)
-        {
-            int timeMs = BeatToTimeMs(chart, beat);
-            if (timeMs > endTimeMs)
-            {
-                break;
-            }
-            results.Add(timeMs);
-            beat += gridUnit;
-        }
     }
 }

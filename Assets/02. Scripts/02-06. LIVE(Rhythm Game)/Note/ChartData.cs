@@ -9,6 +9,8 @@ using UnityEngine;
 [Serializable]
 public class ChartData
 {
+    private const int DEFAULT_BEATS_PER_BAR = 4;
+
     [SerializeField]
     private string _songId;
 
@@ -19,6 +21,9 @@ public class ChartData
     private int _offsetMs;
 
     [SerializeField]
+    private int _beatsPerBar = DEFAULT_BEATS_PER_BAR;
+
+    [SerializeField]
     private List<BpmChangeData> _bpmChanges = new List<BpmChangeData>();
 
     [SerializeField]
@@ -27,6 +32,14 @@ public class ChartData
     public string SongId { get => _songId; set => _songId = value; }
     public double BaseBpm { get => _baseBpm; set => _baseBpm = value; }
     public int OffsetMs { get => _offsetMs; set => _offsetMs = value; }
+
+    // _beatsPerBar 필드가 없던 시절에 저장된 채보 JSON은 역직렬화 시 0이 되므로, 게터에서 기본 박자로 보정합니다.
+    public int BeatsPerBar
+    {
+        get => _beatsPerBar > 0 ? _beatsPerBar : DEFAULT_BEATS_PER_BAR;
+        set => _beatsPerBar = Mathf.Max(1, value);
+    }
+
     public List<BpmChangeData> BpmChanges => _bpmChanges;
     public List<NoteData> Notes => _notes;
 

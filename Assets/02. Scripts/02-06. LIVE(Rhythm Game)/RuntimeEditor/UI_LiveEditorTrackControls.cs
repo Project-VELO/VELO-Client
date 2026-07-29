@@ -4,8 +4,8 @@ using UnityEngine;
 using VInspector;
 
 /// <summary>
-/// 스냅 분박, 배속 등 트랙 표시/재생 관련 컨트롤과 현재 마디 표시를 담당하는 UGUI 패널입니다.
-/// 하이스피드는 버튼으로 미세 조절해야 해서 UI_LiveEditorHiSpeedControl이 따로 담당합니다.
+/// 스냅 분박 선택과 현재 마디 표시를 담당하는 UGUI 패널입니다.
+/// 배속과 하이스피드는 버튼으로 미세 조절해야 해서 각각 전용 컨트롤 클래스가 담당합니다.
 /// </summary>
 public class UI_LiveEditorTrackControls : MonoBehaviour
 {
@@ -25,28 +25,15 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
         "스냅: 1/4박", "스냅: 1/8박", "스냅: 1/12박", "스냅: 1/16박", "스냅: 1/32박",
     };
 
-    private static readonly List<float> PlaybackSpeeds = new List<float> { 0.5f, 0.75f, 1.0f, 1.5f };
-
-    private static readonly List<string> PlaybackSpeedOptions = new List<string>
-    {
-        "배속: 0.5x", "배속: 0.75x", "배속: 1.0x", "배속: 1.5x",
-    };
-
     [Foldout("Hierarchy")]
     [SerializeField]
     private TMP_Dropdown _snapDropdown;
-
-    [SerializeField]
-    private TMP_Dropdown _speedDropdown;
 
     [SerializeField]
     private TMP_Text _barIndicatorText;
 
     [SerializeField]
     private LiveEditorTimeline _timeline;
-
-    [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
 
     private int _lastShownBarIndex = UNBOUND_BAR_INDEX;
     private int _lastShownBarCount = UNBOUND_BAR_INDEX;
@@ -58,24 +45,10 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
 
     public void Init()
     {
-        InitSnapDropdown();
-        InitSpeedDropdown();
-    }
-
-    private void InitSnapDropdown()
-    {
         _snapDropdown.ClearOptions();
         _snapDropdown.AddOptions(SnapOptions);
         _snapDropdown.SetValueWithoutNotify(SnapDivisions.IndexOf(_timeline.SnapDivision));
         _snapDropdown.onValueChanged.AddListener(OnSnapChanged);
-    }
-
-    private void InitSpeedDropdown()
-    {
-        _speedDropdown.ClearOptions();
-        _speedDropdown.AddOptions(PlaybackSpeedOptions);
-        _speedDropdown.SetValueWithoutNotify(PlaybackSpeeds.IndexOf(1.0f));
-        _speedDropdown.onValueChanged.AddListener(OnSpeedChanged);
     }
 
     /// <summary>
@@ -109,15 +82,5 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
         }
 
         _timeline.SnapDivision = SnapDivisions[index];
-    }
-
-    private void OnSpeedChanged(int index)
-    {
-        if (index < 0 || index >= PlaybackSpeeds.Count)
-        {
-            return;
-        }
-
-        _audioPlayer.SetSpeed(PlaybackSpeeds[index]);
     }
 }

@@ -13,6 +13,12 @@ public class LiveEditorTimeline : MonoBehaviour
     [SerializeField]
     private ESnapDivision _snapDivision = ESnapDivision.Sixteenth;
 
+    [Header("Scroll")]
+    [Tooltip("노트가 나타나기 시작하는 트랙 깊이입니다. 1이면 트랙 맨 뒤이며, 낮출수록 노트가 판정선까지 오면서 겪는 확대 배율이 줄어듭니다. 트랙 아트웍은 바뀌지 않습니다.")]
+    [Range(LiveEditorScrollMapper.MIN_SPAWN_RATIO, LiveEditorScrollMapper.MAX_SPAWN_RATIO)]
+    [SerializeField]
+    private float _noteSpawnRatio = LiveEditorScrollMapper.MAX_SPAWN_RATIO;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UI_LiveTrackLanes _lanes;
@@ -39,9 +45,29 @@ public class LiveEditorTimeline : MonoBehaviour
 
     private void Awake()
     {
+        RefreshScrollShape();
+
         _noteRenderer.Init(_lanes, _barLayout, _scrollMapper);
         _gridRenderer.Init(_lanes, _barLayout, _scrollMapper);
         _barLabelRenderer.Init(_lanes, _barLayout, _scrollMapper);
+    }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// 플레이 도중 인스펙터에서 등장 지점을 바꿔 가며 눈으로 확인할 수 있도록, 값이 바뀔 때마다 즉시 반영합니다.
+    /// </summary>
+    private void OnValidate()
+    {
+        RefreshScrollShape();
+    }
+#endif
+
+    /// <summary>
+    /// 노트 등장 지점을 스크롤 매퍼에 반영합니다.
+    /// </summary>
+    private void RefreshScrollShape()
+    {
+        _scrollMapper.SpawnRatio = _noteSpawnRatio;
     }
 
     public void SetChart(ChartData chart)

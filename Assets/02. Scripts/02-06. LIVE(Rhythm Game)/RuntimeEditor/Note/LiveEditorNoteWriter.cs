@@ -1,22 +1,24 @@
 using System.Collections.Generic;
-using UnityEngine;
-using VInspector;
 
 /// <summary>
 /// 노트의 추가·이동·삭제 커맨드 생성을 한곳에서 담당합니다.
 /// 키보드 레코딩과 마우스 편집이 같은 규칙으로 노트를 다루도록, 배치 가능 여부 판정도 여기서 처리합니다.
+///
+/// 유니티 생명주기를 쓰지 않으므로 컴포넌트가 아니며, LiveEditorNoteEditing이 생성해 소유합니다.
 /// </summary>
-public class LiveEditorNoteWriter : MonoBehaviour
+public class LiveEditorNoteWriter
 {
     // 6번 레인은 고스트 노트 전용이며, 나머지 레인에는 고스트 노트를 놓을 수 없습니다.
     public const int GHOST_LANE = 6;
 
-    [Foldout("Hierarchy")]
-    [SerializeField]
-    private LiveEditorController _controller;
+    private readonly LiveEditorController _controller;
+    private readonly LiveEditorUndoRedoManager _undoRedoManager;
 
-    [SerializeField]
-    private LiveEditorUndoRedoManager _undoRedoManager;
+    public LiveEditorNoteWriter(LiveEditorController controller, LiveEditorUndoRedoManager undoRedoManager)
+    {
+        _controller = controller;
+        _undoRedoManager = undoRedoManager;
+    }
 
     public NoteData AddNote(int lane, int timeMs, ENoteType noteType)
     {

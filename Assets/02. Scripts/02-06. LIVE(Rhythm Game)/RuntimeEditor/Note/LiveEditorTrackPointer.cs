@@ -1,24 +1,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using VInspector;
 
 /// <summary>
 /// 화면 좌표를 트랙 위의 레인과 격자 셀로 변환하는 것을 전담합니다.
-/// 사다리꼴 트랙은 높이에 따라 레인 폭이 달라지므로, 세로 비율을 먼저 구한 뒤 그 높이에서의 레인 경계와 비교합니다.
+/// 세로 비율을 먼저 구한 뒤 그 높이에서의 레인 경계와 비교하므로, 트랙이 어떤 모양이든 같은 방식으로 동작합니다.
+///
+/// 유니티 생명주기를 쓰지 않으므로 컴포넌트가 아니며, LiveEditorNoteEditing이 씬 참조를 넘겨 생성합니다.
 /// </summary>
-public class LiveEditorTrackPointer : MonoBehaviour
+public class LiveEditorTrackPointer
 {
     private const int LANE_COUNT = 6;
 
-    [Foldout("Hierarchy")]
-    [SerializeField]
-    private LiveEditorTimeline _timeline;
+    private readonly LiveEditorTimeline _timeline;
+    private readonly RectTransform _laneAreaRect;
+    private readonly Canvas _canvas;
 
-    [SerializeField]
-    private RectTransform _laneAreaRect;
-
-    [SerializeField]
-    private Canvas _canvas;
+    public LiveEditorTrackPointer(LiveEditorTimeline timeline, RectTransform laneAreaRect, Canvas canvas)
+    {
+        _timeline = timeline;
+        _laneAreaRect = laneAreaRect;
+        _canvas = canvas;
+    }
 
     /// <summary>
     /// 클릭 지점이 트랙 안쪽일 때만 레인/셀을 돌려줍니다. 트랙 바깥 클릭은 좌표를 보정하지 않고 그대로 실패 처리합니다.
@@ -82,6 +84,7 @@ public class LiveEditorTrackPointer : MonoBehaviour
 
     /// <summary>
     /// Screen Space - Overlay 캔버스는 카메라를 함께 넘기면 좌표 변환 결과가 어긋나므로 반드시 null을 전달해야 합니다.
+    /// 월드 스페이스 캔버스에서는 반대로 카메라를 넘겨야 평면과의 교점을 제대로 구합니다.
     /// </summary>
     private Camera GetEventCamera()
     {

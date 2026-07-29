@@ -16,13 +16,10 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
 
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LiveEditorEditContext _editContext;
+    private LiveEditorNoteEditing _noteEditing;
 
     [SerializeField]
     private LiveEditorAudioPlayer _audioPlayer;
-
-    [SerializeField]
-    private LiveEditorNoteWriter _noteWriter;
 
     private readonly List<InputAction> _laneKeyActions = new List<InputAction>();
 
@@ -70,16 +67,16 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
 
     private void RecordNoteOnLane(int lane)
     {
-        if (!_editContext.CanEdit)
+        if (!_noteEditing.EditContext.CanEdit)
         {
             return;
         }
 
-        if (!_editContext.TryGetCellAtTime(_audioPlayer.CurrentTimeMs, out int timeMs))
+        if (!_noteEditing.EditContext.TryGetCellAtTime(_audioPlayer.CurrentTimeMs, out int timeMs))
         {
             return;
         }
 
-        _noteWriter.AddNote(lane, timeMs);
+        _noteEditing.NoteWriter.AddNote(lane, timeMs);
     }
 }

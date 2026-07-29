@@ -16,24 +16,18 @@ public class LiveEditorEditShortcuts : MonoBehaviour
     private LiveEditorController _controller;
 
     [SerializeField]
-    private LiveEditorNoteSelection _selection;
-
-    [SerializeField]
-    private LiveEditorNoteWriter _noteWriter;
+    private LiveEditorNoteEditing _noteEditing;
 
     [SerializeField]
     private LiveEditorAudioPlayer _audioPlayer;
-
-    [SerializeField]
-    private LiveEditorUndoRedoManager _undoRedoManager;
 
     private readonly List<InputAction> _actions = new List<InputAction>();
     private readonly List<NoteData> _clipboardNotes = new List<NoteData>();
 
     private void Awake()
     {
-        BindAction("Undo", "<Keyboard>/ctrl+z", _ => _undoRedoManager.Undo());
-        BindAction("Redo", "<Keyboard>/ctrl+y", _ => _undoRedoManager.Redo());
+        BindAction("Undo", "<Keyboard>/ctrl+z", _ => _controller.UndoRedo.Undo());
+        BindAction("Redo", "<Keyboard>/ctrl+y", _ => _controller.UndoRedo.Redo());
         BindAction("Copy", "<Keyboard>/ctrl+c", _ => CopySelection());
         BindAction("Paste", "<Keyboard>/ctrl+v", _ => PasteClipboard());
         BindAction("Mirror", "<Keyboard>/ctrl+m", _ => MirrorSelection());
@@ -87,7 +81,7 @@ public class LiveEditorEditShortcuts : MonoBehaviour
     private void CopySelection()
     {
         _clipboardNotes.Clear();
-        _clipboardNotes.AddRange(_selection.Notes);
+        _clipboardNotes.AddRange(_noteEditing.Selection.Notes);
     }
 
     private void PasteClipboard()
@@ -98,27 +92,27 @@ public class LiveEditorEditShortcuts : MonoBehaviour
         }
 
         int timeOffsetMs = _audioPlayer.CurrentTimeMs - _clipboardNotes[0].TimeMs;
-        _undoRedoManager.PushCommand(new PasteCommand(_controller.CurrentChart.Notes, _clipboardNotes, timeOffsetMs));
+        _controller.UndoRedo.PushCommand(new PasteCommand(_controller.CurrentChart.Notes, _clipboardNotes, timeOffsetMs));
     }
 
     private void MirrorSelection()
     {
-        if (_selection.Count == 0)
+        if (_noteEditing.Selection.Count == 0)
         {
             return;
         }
 
-        _undoRedoManager.PushCommand(new MirrorCommand(new List<NoteData>(_selection.Notes)));
+        _controller.UndoRedo.PushCommand(new MirrorCommand(new List<NoteData>(_noteEditing.Selection.Notes)));
     }
 
     private void DeleteSelection()
     {
-        if (_selection.Count == 0)
+        if (_noteEditing.Selection.Count == 0)
         {
             return;
         }
 
-        _noteWriter.DeleteNotes(new List<NoteData>(_selection.Notes));
-        _selection.Clear();
+        _noteEditing.NoteWriter.DeleteNotes(new List<NoteData>(_noteEditing.Selection.Notes));
+        _noteEditing.Selection.Clear();
     }
 }

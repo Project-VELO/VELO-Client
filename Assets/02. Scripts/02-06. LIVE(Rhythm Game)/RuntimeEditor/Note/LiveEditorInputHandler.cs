@@ -11,16 +11,7 @@ public class LiveEditorInputHandler : MonoBehaviour
 {
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LiveEditorEditContext _editContext;
-
-    [SerializeField]
-    private LiveEditorTrackPointer _trackPointer;
-
-    [SerializeField]
-    private LiveEditorNoteSelection _selection;
-
-    [SerializeField]
-    private LiveEditorNoteWriter _noteWriter;
+    private LiveEditorNoteEditing _noteEditing;
 
     private NoteData _pendingLongNoteStart;
     private NoteData _draggingNote;
@@ -35,7 +26,7 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        if (!_editContext.CanEdit)
+        if (!_noteEditing.EditContext.CanEdit)
         {
             CancelDrag();
             return;
@@ -61,7 +52,7 @@ public class LiveEditorInputHandler : MonoBehaviour
 
     private void HandleLeftPress(Mouse mouse)
     {
-        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
+        if (!_noteEditing.TrackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
         {
             return;
         }
@@ -73,33 +64,33 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        NoteData existing = _selection.FindNoteNear(lane, timeMs);
+        NoteData existing = _noteEditing.Selection.FindNoteNear(lane, timeMs);
         if (existing == null)
         {
-            _noteWriter.AddNote(lane, timeMs);
+            _noteEditing.NoteWriter.AddNote(lane, timeMs);
             return;
         }
 
         bool isMultiSelect = Keyboard.current != null && Keyboard.current.ctrlKey.isPressed;
-        _selection.Select(existing, isMultiSelect);
+        _noteEditing.Selection.Select(existing, isMultiSelect);
         BeginDrag(existing);
     }
 
     private void HandleRightPress(Mouse mouse)
     {
-        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
+        if (!_noteEditing.TrackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
         {
             return;
         }
 
-        NoteData existing = _selection.FindNoteNear(lane, timeMs);
+        NoteData existing = _noteEditing.Selection.FindNoteNear(lane, timeMs);
         if (existing == null)
         {
             return;
         }
 
-        _selection.Remove(existing);
-        _noteWriter.DeleteNote(existing);
+        _noteEditing.Selection.Remove(existing);
+        _noteEditing.NoteWriter.DeleteNote(existing);
     }
 
     private void BeginDrag(NoteData note)
@@ -121,7 +112,7 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
+        if (!_noteEditing.TrackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
         {
             return;
         }
@@ -131,7 +122,7 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        if (!_noteWriter.CanPlaceAt(_draggingNote, lane, timeMs))
+        if (!_noteEditing.NoteWriter.CanPlaceAt(_draggingNote, lane, timeMs))
         {
             return;
         }
@@ -167,19 +158,19 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        _noteWriter.MoveNote(note, _dragOriginLane, _dragOriginTimeMs);
+        _noteEditing.NoteWriter.MoveNote(note, _dragOriginLane, _dragOriginTimeMs);
     }
 
     private void HandleLongNoteClick(int lane, int timeMs)
     {
         if (_pendingLongNoteStart == null || _pendingLongNoteStart.Lane != lane)
         {
-            _pendingLongNoteStart = _noteWriter.AddNote(lane, timeMs, ENoteType.LONG);
+            _pendingLongNoteStart = _noteEditing.NoteWriter.AddNote(lane, timeMs, ENoteType.LONG);
             return;
         }
 
         int holdDurationMs = Mathf.Max(0, timeMs - _pendingLongNoteStart.TimeMs);
-        _noteWriter.ResizeHold(_pendingLongNoteStart, _pendingLongNoteStart.HoldDurationMs, holdDurationMs);
+        _noteEditing.NoteWriter.ResizeHold(_pendingLongNoteStart, _pendingLongNoteStart.HoldDurationMs, holdDurationMs);
         _pendingLongNoteStart = null;
     }
 }

@@ -24,9 +24,6 @@ public class LiveEditorController : MonoBehaviour
     private LiveEditorTimeline _timeline;
 
     [SerializeField]
-    private LiveEditorUndoRedoManager _undoRedoManager;
-
-    [SerializeField]
     private UI_LiveEditorPanel _uiPanel;
 
     [SerializeField]
@@ -34,6 +31,8 @@ public class LiveEditorController : MonoBehaviour
 
     private readonly LiveEditorChartIO _chartIO = new LiveEditorChartIO();
     private readonly LiveEditorSongIO _songIO = new LiveEditorSongIO();
+
+    private LiveEditorUndoRedoManager _undoRedoManager;
 
     private EEditorState _state = EEditorState.Editing;
     private ChartData _currentChart;
@@ -44,9 +43,15 @@ public class LiveEditorController : MonoBehaviour
     public ChartData CurrentChart => _currentChart;
     public SongData CurrentSong => _currentSong;
     public EDifficulty CurrentDifficulty => _currentDifficulty;
-    public bool HasUnsavedChanges => _undoRedoManager.HasUnsavedChanges;
+    public bool HasUnsavedChanges => UndoRedo.HasUnsavedChanges;
     public LiveEditorChartIO ChartIO => _chartIO;
     public LiveEditorSongIO SongIO => _songIO;
+
+    /// <summary>
+    /// 편집 이력은 채보 상태와 한 몸이므로 이 클래스가 소유하고, 커맨드를 쌓는 쪽에서 여기로 접근합니다.
+    /// 다른 컴포넌트의 Awake에서 먼저 요청할 수 있어 실행 순서에 기대지 않도록 첫 접근 시점에 만듭니다.
+    /// </summary>
+    public LiveEditorUndoRedoManager UndoRedo => _undoRedoManager ??= new LiveEditorUndoRedoManager(_timeline);
 
     private void Awake()
     {
@@ -105,7 +110,7 @@ public class LiveEditorController : MonoBehaviour
         _audioPlayer.SetChart(chart);
         _audioPlayer.Init(song);
         _timeline.SetChart(chart);
-        _undoRedoManager.Clear();
+        UndoRedo.Clear();
         SetState(EEditorState.Editing);
     }
 
@@ -137,7 +142,7 @@ public class LiveEditorController : MonoBehaviour
 
         _timeline.SetChart(null);
         _timeline.InitBarLayout(null, 0);
-        _undoRedoManager.Clear();
+        UndoRedo.Clear();
     }
 
     public bool SaveCurrentChart(out List<string> errors)
@@ -154,7 +159,7 @@ public class LiveEditorController : MonoBehaviour
 
         if (isSaved)
         {
-            _undoRedoManager.MarkSaved();
+            UndoRedo.MarkSaved();
         }
 
         return isSaved;

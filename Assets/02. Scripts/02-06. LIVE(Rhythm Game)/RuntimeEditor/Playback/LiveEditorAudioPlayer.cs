@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 using VInspector;
 
 /// <summary>
-/// StreamingAssets 음원 파일의 런타임 로드/재생, 탐색, 배속 조절, 메트로놈 기능을 전담하는 클래스입니다.
+/// StreamingAssets 음원 파일의 런타임 로드/재생, 탐색, 배속 조절을 전담하는 클래스입니다.
 /// 코루틴 대신 UniTask + CancellationToken 기반으로 오디오를 로드하며,
 /// 로드가 끝나야 곡 길이를 알 수 있으므로 완료 시점을 OnClipLoaded로 통지합니다.
 /// </summary>
@@ -22,21 +22,11 @@ public class LiveEditorAudioPlayer : MonoBehaviour
     [SerializeField]
     private AudioSource _audioSource;
 
-    [SerializeField]
-    private AudioSource _metronomeAudio;
-
-    [Foldout("Project")]
-    [SerializeField]
-    private AudioClip _metronomeTickClip;
-
-    private bool _isMetronomeEnabled;
-    private int _nextMetronomeBeatIndex;
     private int _playbackTimeMs;
     private ChartData _chart;
 
     public AudioSource Audio => _audioSource;
     public float PlaybackSpeed { get => _audioSource.pitch; set => _audioSource.pitch = value; }
-    public bool IsMetronomeEnabled { get => _isMetronomeEnabled; set => _isMetronomeEnabled = value; }
     public bool IsPlaying => _audioSource.isPlaying;
     public bool IsClipLoaded => _audioSource.clip != null;
     public int ClipLengthMs => _audioSource.clip == null ? 0 : Mathf.RoundToInt(_audioSource.clip.length * 1000f);
@@ -54,11 +44,6 @@ public class LiveEditorAudioPlayer : MonoBehaviour
         }
 
         _playbackTimeMs = Mathf.RoundToInt(_audioSource.time * 1000f);
-
-        if (_isMetronomeEnabled)
-        {
-            UpdateMetronome();
-        }
     }
 
     public void Init(SongData song)
@@ -70,7 +55,6 @@ public class LiveEditorAudioPlayer : MonoBehaviour
     public void SetChart(ChartData chart)
     {
         _chart = chart;
-        _nextMetronomeBeatIndex = 0;
     }
 
     public void Play()
@@ -103,9 +87,6 @@ public class LiveEditorAudioPlayer : MonoBehaviour
         PlaybackSpeed = speed;
     }
 
-    /// <summary>
-    /// 재생 위치를 절대 시각으로 이동시키고, 이동한 위치에 맞춰 메트로놈 비트 카운터를 다시 맞춥니다.
-    /// </summary>
     public void SetPlaybackTime(int timeMs)
     {
         if (_audioSource.clip == null)
@@ -116,7 +97,6 @@ public class LiveEditorAudioPlayer : MonoBehaviour
         float seconds = ToClampedSeconds(timeMs);
         _audioSource.time = seconds;
         _playbackTimeMs = Mathf.RoundToInt(seconds * 1000f);
-        ResyncMetronomeBeatIndex();
     }
 
     private float ToClampedSeconds(int timeMs)
@@ -153,33 +133,5 @@ public class LiveEditorAudioPlayer : MonoBehaviour
 
         _audioSource.clip = DownloadHandlerAudioClip.GetContent(request);
         OnClipLoaded?.Invoke();
-    }
-
-    private void ResyncMetronomeBeatIndex()
-    {
-        if (ReferenceEquals(_chart, null))
-        {
-            return;
-        }
-
-        double beat = LiveEditorBpmTimeConverter.TimeMsToBeat(_chart, CurrentTimeMs);
-        _nextMetronomeBeatIndex = Mathf.Max(0, Mathf.CeilToInt((float)beat));
-    }
-
-    private void UpdateMetronome()
-    {
-        if (ReferenceEquals(_chart, null))
-        {
-            return;
-        }
-
-        int currentTimeMs = CurrentTimeMs;
-        int nextBeatTimeMs = LiveEditorBpmTimeConverter.BeatToTimeMs(_chart, _nextMetronomeBeatIndex);
-
-        if (currentTimeMs >= nextBeatTimeMs)
-        {
-            _metronomeAudio.PlayOneShot(_metronomeTickClip);
-            _nextMetronomeBeatIndex++;
-        }
     }
 }

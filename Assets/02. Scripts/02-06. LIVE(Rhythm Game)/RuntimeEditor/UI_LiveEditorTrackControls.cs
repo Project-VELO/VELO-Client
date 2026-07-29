@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 스냅 분박, 배속, 메트로놈 등 트랙 표시/재생 관련 컨트롤과 현재 마디 표시를 담당하는 UGUI 패널입니다.
+/// 스냅 분박, 배속 등 트랙 표시/재생 관련 컨트롤과 현재 마디 표시를 담당하는 UGUI 패널입니다.
 /// 하이스피드는 버튼으로 미세 조절해야 해서 UI_LiveEditorHiSpeedControl이 따로 담당합니다.
 /// </summary>
 public class UI_LiveEditorTrackControls : MonoBehaviour
@@ -41,9 +40,6 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
     private TMP_Dropdown _speedDropdown;
 
     [SerializeField]
-    private Toggle _metronomeToggle;
-
-    [SerializeField]
     private TMP_Text _barIndicatorText;
 
     [SerializeField]
@@ -64,8 +60,6 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
     {
         InitSnapDropdown();
         InitSpeedDropdown();
-
-        _metronomeToggle.onValueChanged.AddListener(OnMetronomeToggled);
     }
 
     private void InitSnapDropdown()
@@ -125,10 +119,5 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
         }
 
         _audioPlayer.SetSpeed(PlaybackSpeeds[index]);
-    }
-
-    private void OnMetronomeToggled(bool isOn)
-    {
-        _audioPlayer.IsMetronomeEnabled = isOn;
     }
 }

@@ -46,8 +46,15 @@ public class LiveEditorAudioPlayer : MonoBehaviour
         _playbackTimeMs = Mathf.RoundToInt(_audioSource.time * 1000f);
     }
 
+    /// <summary>
+    /// 편집 중 다른 곡으로 바꿀 수 있으므로, 이전 곡의 재생 상태와 위치를 먼저 완전히 비웁니다.
+    /// </summary>
     public void Init(SongData song)
     {
+        _audioSource.Stop();
+        _audioSource.clip = null;
+        _playbackTimeMs = 0;
+
         string audioPath = Path.Combine(Application.streamingAssetsPath, "Songs", song.SongId, song.AudioFilePath);
         LoadAudioAsync(audioPath, this.GetCancellationTokenOnDestroy()).Forget();
     }

@@ -44,6 +44,7 @@ public class LiveEditorController : MonoBehaviour
     public ChartData CurrentChart => _currentChart;
     public SongData CurrentSong => _currentSong;
     public EDifficulty CurrentDifficulty => _currentDifficulty;
+    public bool HasUnsavedChanges => _undoRedoManager.HasUnsavedChanges;
     public LiveEditorChartIO ChartIO => _chartIO;
     public LiveEditorSongIO SongIO => _songIO;
 
@@ -149,7 +150,14 @@ public class LiveEditorController : MonoBehaviour
         }
 
         string path = _chartIO.GetChartPath(_currentChart.SongId, _currentDifficulty);
-        return _chartIO.SaveChart(path, _currentChart, _currentSong, out errors);
+        bool isSaved = _chartIO.SaveChart(path, _currentChart, _currentSong, out errors);
+
+        if (isSaved)
+        {
+            _undoRedoManager.MarkSaved();
+        }
+
+        return isSaved;
     }
 
     private ChartData CreateEmptyChart(SongData song, EDifficulty difficulty)

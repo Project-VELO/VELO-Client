@@ -3020,7 +3020,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1513099326}
+  m_Father: {fileID: 1072451294}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &387995989
 GameObject:
@@ -4298,6 +4298,110 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542183505}
   m_CullTransparentMesh: 1
+--- !u!1 &550503988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550503989}
+  - component: {fileID: 550503993}
+  - component: {fileID: 550503992}
+  - component: {fileID: 550503991}
+  - component: {fileID: 550503990}
+  m_Layer: 0
+  m_Name: Session
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &550503989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550503988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1513099326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550503990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550503988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a76ea18099f05b4f9a6debfd6cde3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartDeleter
+  _controller: {fileID: 1513099325}
+  _flow: {fileID: 550503993}
+  _confirmPopup: {fileID: 668207778}
+  _deleteButton: {fileID: 1991352684}
+--- !u!114 &550503991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550503988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013ba7fcb60efe84392d7967d1eeb534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartSwitcher
+  _controller: {fileID: 1513099325}
+  _flow: {fileID: 550503993}
+  _saveChangesPopup: {fileID: 1676873142}
+  _changeChartButton: {fileID: 501327583}
+--- !u!114 &550503992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550503988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4003a05e932e7b24fb80325839938a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartSelectFlow
+  _controller: {fileID: 1513099325}
+  _songSelectPopup: {fileID: 556107707}
+  _difficultySelectPopup: {fileID: 234352686}
+  _confirmPopup: {fileID: 668207778}
+--- !u!114 &550503993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550503988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e7f12cee0ba2e4d8b629f6ce319f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorFlow
+  _controller: {fileID: 1513099325}
+  _chartSelectFlow: {fileID: 550503992}
+  _startPopup: {fileID: 631340757}
+  _songRegistrationPanel: {fileID: 954019057}
+  _editorOnlyPanels:
+  - {fileID: 1139110908}
+  - {fileID: 910473476}
+  - {fileID: 2004606066}
+  - {fileID: 1739368177}
 --- !u!1 &556107702
 GameObject:
   m_ObjectHideFlags: 0
@@ -6208,6 +6312,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940567481}
   m_CullTransparentMesh: 1
+--- !u!1 &944031854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944031855}
+  - component: {fileID: 944031858}
+  - component: {fileID: 944031857}
+  - component: {fileID: 944031856}
+  m_Layer: 0
+  m_Name: Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &944031855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944031854}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1513099326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &944031856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944031854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b600f8e2c5d9bf498e4cc9799f73752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorPlaybackButton
+  _playbackControl: {fileID: 1072451292}
+  _audioPlayer: {fileID: 1072451295}
+  _playPauseButton: {fileID: 1926820752}
+  _label: {fileID: 889945719}
+--- !u!114 &944031857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944031854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d52730765e868f429a42b15fd5fba71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorPlaybackSpeedControl
+  _fineStep: 0.1
+  _coarseStep: 0.5
+  _audioPlayer: {fileID: 1072451295}
+  _valueText: {fileID: 676410048}
+  _coarseDownButton: {fileID: 1305362102}
+  _fineDownButton: {fileID: 1644690895}
+  _fineUpButton: {fileID: 294909478}
+  _coarseUpButton: {fileID: 329285896}
+--- !u!114 &944031858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944031854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82b9134675f0f0a4a97f0de1aaa62d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorHiSpeedControl
+  _fineStep: 0.1
+  _coarseStep: 1
+  _timeline: {fileID: 1103871490}
+  _valueText: {fileID: 305632343}
+  _coarseDownButton: {fileID: 1061230350}
+  _fineDownButton: {fileID: 1467790509}
+  _fineUpButton: {fileID: 1985352414}
+  _coarseUpButton: {fileID: 1541464744}
 --- !u!1 &952313495
 GameObject:
   m_ObjectHideFlags: 0
@@ -7977,6 +8171,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071996516}
   m_CullTransparentMesh: 1
+--- !u!1 &1072451291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1072451294}
+  - component: {fileID: 1072451295}
+  - component: {fileID: 1072451292}
+  - component: {fileID: 1072451293}
+  m_Layer: 0
+  m_Name: Playback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1072451292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072451291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b001d513077ec6947ab3edd5098b6c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorPlaybackControl
+  _controller: {fileID: 1513099325}
+  _audioPlayer: {fileID: 1072451295}
+  _timeline: {fileID: 1103871490}
+--- !u!114 &1072451293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072451291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2ac58cee9527a44af4415132db9681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNavigationShortcuts
+  _playbackControl: {fileID: 1072451292}
+--- !u!4 &1072451294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072451291}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 365808378}
+  m_Father: {fileID: 1513099326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072451295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072451291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b8ee51e21566949a3c9fb666079606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorAudioPlayer
+  _audioSource: {fileID: 365808377}
 --- !u!1 &1072576027
 GameObject:
   m_ObjectHideFlags: 0
@@ -8555,6 +8825,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095737098}
   m_CullTransparentMesh: 1
+--- !u!1 &1103871489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103871494}
+  - component: {fileID: 1103871490}
+  - component: {fileID: 1103871493}
+  - component: {fileID: 1103871492}
+  - component: {fileID: 1103871491}
+  m_Layer: 0
+  m_Name: Track
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1103871490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103871489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebf91197244af446a6d334efd200c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorTimeline
+  _snapDivision: 1
+  _noteSpawnRatio: 1
+  _lanes: {fileID: 971251312}
+  _noteRenderer: {fileID: 1103871493}
+  _gridRenderer: {fileID: 1103871492}
+  _barLabelRenderer: {fileID: 1103871491}
+--- !u!114 &1103871491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103871489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0cfb9a476ae1e47a69ae7e08e5e3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorBarLabelRenderer
+  _maxBarLabelCount: 12
+  _horizontalOffset: -60
+  _barLabelLayer: {fileID: 1179229933}
+--- !u!114 &1103871492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103871489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d1dae0a894a3448ade9e262c8fc0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorGridRenderer
+  _maxSubdivisionLineCount: 320
+  _maxBarLineCount: 12
+  _thicknessCompensation: 1
+  _gridLineLayer: {fileID: 123449466}
+--- !u!114 &1103871493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103871489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d38bc02eecd38345b88595737bd2b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteRenderer
+  _noteHeight: 22.523577
+  _minNoteHeight: 0
+  _thicknessFalloff: 0.5
+  _noteLayer: {fileID: 1142410481}
+--- !u!4 &1103871494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103871489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1513099326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120946633
 GameObject:
   m_ObjectHideFlags: 0
@@ -9045,7 +9415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorTrackControls
   _snapDropdown: {fileID: 1265420104}
   _barIndicatorText: {fileID: 256742380}
-  _timeline: {fileID: 1513099323}
+  _timeline: {fileID: 1103871490}
 --- !u!224 &1142410481 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4138834326169068398, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
@@ -11939,29 +12309,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1513099326}
   - component: {fileID: 1513099325}
-  - component: {fileID: 1513099324}
-  - component: {fileID: 1513099323}
-  - component: {fileID: 1513099322}
-  - component: {fileID: 1513099321}
-  - component: {fileID: 1513099320}
-  - component: {fileID: 1513099331}
-  - component: {fileID: 1513099330}
-  - component: {fileID: 1513099329}
-  - component: {fileID: 1513099328}
-  - component: {fileID: 1513099327}
-  - component: {fileID: 1513099333}
-  - component: {fileID: 1513099332}
-  - component: {fileID: 1513099335}
-  - component: {fileID: 1513099334}
-  - component: {fileID: 1513099337}
-  - component: {fileID: 1513099336}
-  - component: {fileID: 1513099341}
-  - component: {fileID: 1513099340}
-  - component: {fileID: 1513099339}
-  - component: {fileID: 1513099338}
-  - component: {fileID: 1513099344}
-  - component: {fileID: 1513099343}
-  - component: {fileID: 1513099342}
   m_Layer: 0
   m_Name: Manager_LiveEditor
   m_TagString: Untagged
@@ -11969,83 +12316,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1513099320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177597b67ca185a4db58aed7a9e25d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorEditShortcuts
-  _controller: {fileID: 1513099325}
-  _selection: {fileID: 1513099340}
-  _noteWriter: {fileID: 1513099339}
-  _audioPlayer: {fileID: 1513099324}
-  _undoRedoManager: {fileID: 1513099322}
---- !u!114 &1513099321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d41b15a051da563419c3ef505b6aa71a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorInputHandler
-  _editContext: {fileID: 1513099341}
-  _trackPointer: {fileID: 1513099328}
-  _selection: {fileID: 1513099340}
-  _noteWriter: {fileID: 1513099339}
---- !u!114 &1513099322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a847aa726c168a74594959bc387430e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorUndoRedoManager
-  _timeline: {fileID: 1513099323}
---- !u!114 &1513099323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ebf91197244af446a6d334efd200c92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorTimeline
-  _snapDivision: 1
-  _noteSpawnRatio: 1
-  _lanes: {fileID: 971251312}
-  _noteRenderer: {fileID: 1513099331}
-  _gridRenderer: {fileID: 1513099330}
-  _barLabelRenderer: {fileID: 1513099329}
---- !u!114 &1513099324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b8ee51e21566949a3c9fb666079606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorAudioPlayer
-  _audioSource: {fileID: 365808377}
 --- !u!114 &1513099325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12058,9 +12328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7681016ad4beeb74a8a4dc8091e9a7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LiveEditorController
-  _audioPlayer: {fileID: 1513099324}
-  _timeline: {fileID: 1513099323}
-  _undoRedoManager: {fileID: 1513099322}
+  _audioPlayer: {fileID: 1072451295}
+  _timeline: {fileID: 1103871490}
   _uiPanel: {fileID: 1139110913}
   _trackControls: {fileID: 1139110914}
 --- !u!4 &1513099326
@@ -12076,296 +12345,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 365808378}
+  - {fileID: 1072451294}
+  - {fileID: 1103871494}
+  - {fileID: 2107055716}
+  - {fileID: 550503989}
+  - {fileID: 944031855}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1513099327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2ac58cee9527a44af4415132db9681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNavigationShortcuts
-  _playbackControl: {fileID: 1513099333}
---- !u!114 &1513099328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d927aa8cafc4434dbebe959adb3c2c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorTrackPointer
-  _timeline: {fileID: 1513099323}
-  _laneAreaRect: {fileID: 971251311}
-  _canvas: {fileID: 869292355}
---- !u!114 &1513099329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0cfb9a476ae1e47a69ae7e08e5e3cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorBarLabelRenderer
-  _maxBarLabelCount: 12
-  _horizontalOffset: -60
-  _barLabelLayer: {fileID: 1179229933}
---- !u!114 &1513099330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d1dae0a894a3448ade9e262c8fc0cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorGridRenderer
-  _maxSubdivisionLineCount: 320
-  _maxBarLineCount: 12
-  _thicknessCompensation: 1
-  _gridLineLayer: {fileID: 123449466}
---- !u!114 &1513099331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d38bc02eecd38345b88595737bd2b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteRenderer
-  _noteHeight: 22.523577
-  _minNoteHeight: 0
-  _thicknessFalloff: 0.5
-  _noteLayer: {fileID: 1142410481}
---- !u!114 &1513099332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e7f12cee0ba2e4d8b629f6ce319f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorFlow
-  _controller: {fileID: 1513099325}
-  _popupPresenter: {fileID: 1513099335}
-  _chartSelectFlow: {fileID: 1513099343}
-  _startPopup: {fileID: 631340757}
-  _songRegistrationPanel: {fileID: 954019057}
-  _editorOnlyPanels:
-  - {fileID: 1139110908}
-  - {fileID: 910473476}
-  - {fileID: 2004606066}
-  - {fileID: 1739368177}
---- !u!114 &1513099333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b001d513077ec6947ab3edd5098b6c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorPlaybackControl
-  _controller: {fileID: 1513099325}
-  _audioPlayer: {fileID: 1513099324}
-  _timeline: {fileID: 1513099323}
---- !u!114 &1513099334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a76ea18099f05b4f9a6debfd6cde3b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartDeleter
-  _controller: {fileID: 1513099325}
-  _flow: {fileID: 1513099332}
-  _popupPresenter: {fileID: 1513099335}
-  _confirmPopup: {fileID: 668207778}
-  _deleteButton: {fileID: 1991352684}
---- !u!114 &1513099335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e318dbee183574c8791d6023ab17bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorPopupPresenter
---- !u!114 &1513099336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b600f8e2c5d9bf498e4cc9799f73752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorPlaybackButton
-  _playbackControl: {fileID: 1513099333}
-  _audioPlayer: {fileID: 1513099324}
-  _playPauseButton: {fileID: 1926820752}
-  _label: {fileID: 889945719}
---- !u!114 &1513099337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b9134675f0f0a4a97f0de1aaa62d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorHiSpeedControl
-  _fineStep: 0.1
-  _coarseStep: 1
-  _timeline: {fileID: 1513099323}
-  _valueText: {fileID: 305632343}
-  _coarseDownButton: {fileID: 1061230350}
-  _fineDownButton: {fileID: 1467790509}
-  _fineUpButton: {fileID: 1985352414}
-  _coarseUpButton: {fileID: 1541464744}
---- !u!114 &1513099338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fac67c69f566de4b85f74a15f226159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorLaneKeyRecorder
-  _editContext: {fileID: 1513099341}
-  _audioPlayer: {fileID: 1513099324}
-  _noteWriter: {fileID: 1513099339}
---- !u!114 &1513099339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96215a48fe785b48879060a4ce86b68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteWriter
-  _controller: {fileID: 1513099325}
-  _undoRedoManager: {fileID: 1513099322}
---- !u!114 &1513099340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b33a1aa7c0ac1e64c91a1151d6694b73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteSelection
-  _controller: {fileID: 1513099325}
---- !u!114 &1513099341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7f0dadfcb69e04c834f8d0e7d33fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorEditContext
-  _controller: {fileID: 1513099325}
-  _timeline: {fileID: 1513099323}
---- !u!114 &1513099342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 013ba7fcb60efe84392d7967d1eeb534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartSwitcher
-  _controller: {fileID: 1513099325}
-  _flow: {fileID: 1513099332}
-  _popupPresenter: {fileID: 1513099335}
-  _saveChangesPopup: {fileID: 1676873142}
-  _changeChartButton: {fileID: 501327583}
---- !u!114 &1513099343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4003a05e932e7b24fb80325839938a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorChartSelectFlow
-  _controller: {fileID: 1513099325}
-  _popupPresenter: {fileID: 1513099335}
-  _songSelectPopup: {fileID: 556107707}
-  _difficultySelectPopup: {fileID: 234352686}
-  _confirmPopup: {fileID: 668207778}
---- !u!114 &1513099344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513099319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d52730765e868f429a42b15fd5fba71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorPlaybackSpeedControl
-  _fineStep: 0.1
-  _coarseStep: 0.5
-  _audioPlayer: {fileID: 1513099324}
-  _valueText: {fileID: 676410048}
-  _coarseDownButton: {fileID: 1305362102}
-  _fineDownButton: {fileID: 1644690895}
-  _fineUpButton: {fileID: 294909478}
-  _coarseUpButton: {fileID: 329285896}
 --- !u!1 &1519229035
 GameObject:
   m_ObjectHideFlags: 0
@@ -15053,6 +15039,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2031452494831410218, guid: 32791c5203d463046ac9b206f4530ab9, type: 3}
+      propertyPath: _noteLanes
+      value: 
+      objectReference: {fileID: 971251312}
     - target: {fileID: 2233742946245831633, guid: 32791c5203d463046ac9b206f4530ab9, type: 3}
       propertyPath: _hitLineWidth
       value: 6
@@ -16358,8 +16348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be872cf8c46a5e74daf1281674336bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_LiveEditorProgressBar
-  _audioPlayer: {fileID: 1513099324}
-  _playbackControl: {fileID: 1513099333}
+  _audioPlayer: {fileID: 1072451295}
+  _playbackControl: {fileID: 1072451292}
   _barRect: {fileID: 1876176772}
   _fillRect: {fileID: 418850624}
   _timeText: {fileID: 1358496789}
@@ -16608,6 +16598,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062088947}
   m_CullTransparentMesh: 1
+--- !u!1 &2107055715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107055716}
+  - component: {fileID: 2107055720}
+  - component: {fileID: 2107055719}
+  - component: {fileID: 2107055718}
+  - component: {fileID: 2107055717}
+  m_Layer: 0
+  m_Name: NoteEditing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107055716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107055715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1513099326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2107055717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107055715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fac67c69f566de4b85f74a15f226159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorLaneKeyRecorder
+  _noteEditing: {fileID: 2107055720}
+  _audioPlayer: {fileID: 1072451295}
+--- !u!114 &2107055718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107055715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177597b67ca185a4db58aed7a9e25d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorEditShortcuts
+  _controller: {fileID: 1513099325}
+  _noteEditing: {fileID: 2107055720}
+  _audioPlayer: {fileID: 1072451295}
+--- !u!114 &2107055719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107055715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41b15a051da563419c3ef505b6aa71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorInputHandler
+  _noteEditing: {fileID: 2107055720}
+--- !u!114 &2107055720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107055715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf22c8e2ac245a341a3333e449cf49e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteEditing
+  _controller: {fileID: 1513099325}
+  _timeline: {fileID: 1103871490}
+  _laneAreaRect: {fileID: 971251311}
+  _canvas: {fileID: 869292355}
 --- !u!1 &2116035152
 GameObject:
   m_ObjectHideFlags: 0

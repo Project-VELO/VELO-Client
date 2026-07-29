@@ -4,8 +4,9 @@ using VInspector;
 
 /// <summary>
 /// 채보 에디터 진입부터 편집 시작까지의 화면 전환을 총괄합니다.
-/// 시작 팝업 → (곡 등록 | 곡 선택 → 난이도 선택) → 편집 순서로 진행하며, 편집에 들어가기 전에는
+/// 시작 팝업 → (곡 등록 | 곡·난이도 선택) → 편집 순서로 진행하며, 편집에 들어가기 전에는
 /// 팝업을 닫을 수 없게 하여 곡/채보가 없는 상태로 에디터에 남는 경우를 막습니다.
+/// 곡·난이도 선택 구간 자체는 UI_LiveEditorChartSelectFlow가 담당합니다.
 /// </summary>
 public class UI_LiveEditorFlow : MonoBehaviour
 {
@@ -17,26 +18,18 @@ public class UI_LiveEditorFlow : MonoBehaviour
     private UI_LiveEditorPopupPresenter _popupPresenter;
 
     [SerializeField]
+    private UI_LiveEditorChartSelectFlow _chartSelectFlow;
+
+    [SerializeField]
     private UI_LiveEditorStartPopup _startPopup;
-
-    [SerializeField]
-    private UI_LiveEditorSongSelectPopup _songSelectPopup;
-
-    [SerializeField]
-    private UI_LiveEditorDifficultySelectPopup _difficultySelectPopup;
-
-    [SerializeField]
-    private UI_LiveEditorConfirmPopup _confirmPopup;
 
     [SerializeField]
     private UI_LiveEditorSongRegistration _songRegistrationPanel;
 
+    [Header("Editor Only UI")]
     [SerializeField]
-    private GameObject _editorControlPanel;
+    private List<GameObject> _editorOnlyPanels = new List<GameObject>();
 
-    private ELiveEditorChartMode _mode = ELiveEditorChartMode.Create;
-    private string _selectedSongId;
-    private EDifficulty _selectedDifficulty;
     private bool _isEditing;
 
     private void Awake()
@@ -50,11 +43,8 @@ public class UI_LiveEditorFlow : MonoBehaviour
         _songRegistrationPanel.OnSongRegistered = OnSongRegistered;
         _songRegistrationPanel.OnBackClicked = ShowStartPopup;
 
-        _songSelectPopup.OnSongSelected = OnSongSelected;
-        _songSelectPopup.OnBackClicked = ShowStartPopup;
-
-        _difficultySelectPopup.OnDifficultyConfirmed = OnDifficultyConfirmed;
-        _difficultySelectPopup.OnBackClicked = ShowSongSelect;
+        _chartSelectFlow.OnBackToStartRequested = ShowStartPopup;
+        _chartSelectFlow.OnChartOpened = EnterEditing;
     }
 
     private void Start()
@@ -85,19 +75,40 @@ public class UI_LiveEditorFlow : MonoBehaviour
         ShowStartPopup();
     }
 
+    /// <summary>
+    /// 편집 도중 다른 채보로 갈아탈 때 호출합니다. 곡 선택부터 다시 진행합니다.
+    /// </summary>
+    public void ReturnToChartSelect()
+    {
+        _isEditing = false;
+        ShowSongSelectForLoad();
+    }
+
     private void ShowStartPopup()
     {
         _popupPresenter.CloseLatest();
         _songRegistrationPanel.gameObject.SetActive(false);
-        _editorControlPanel.SetActive(false);
+        SetEditorUiActive(false);
 
         _popupPresenter.Open(_startPopup);
+    }
+
+    /// <summary>
+    /// 편집용 UI는 채보를 열기 전에는 쓸 일이 없으므로 함께 켜고 끕니다.
+    /// 씬에는 꺼진 상태로 저장해 두어 진입 시점의 SetActive 호출에 기대지 않습니다.
+    /// </summary>
+    private void SetEditorUiActive(bool isActive)
+    {
+        foreach (GameObject panel in _editorOnlyPanels)
+        {
+            panel.SetActive(isActive);
+        }
     }
 
     private void ShowSongRegistration()
     {
         _popupPresenter.CloseLatest();
-        _editorControlPanel.SetActive(false);
+        SetEditorUiActive(false);
 
         _songRegistrationPanel.gameObject.SetActive(true);
         _songRegistrationPanel.RefreshPanel();
@@ -105,84 +116,31 @@ public class UI_LiveEditorFlow : MonoBehaviour
 
     private void OnSongRegistered(string songId)
     {
-        _songRegistrationPanel.gameObject.SetActive(false);
         ShowSongSelectForCreate();
     }
 
     private void ShowSongSelectForCreate()
     {
-        _mode = ELiveEditorChartMode.Create;
-        ShowSongSelect();
+        ShowSongSelect(ELiveEditorChartMode.Create);
     }
 
     private void ShowSongSelectForLoad()
     {
-        _mode = ELiveEditorChartMode.Load;
-        ShowSongSelect();
+        ShowSongSelect(ELiveEditorChartMode.Load);
     }
 
-    private void ShowSongSelect()
+    private void ShowSongSelect(ELiveEditorChartMode mode)
     {
-        _popupPresenter.CloseLatest();
+        _songRegistrationPanel.gameObject.SetActive(false);
+        SetEditorUiActive(false);
 
-        bool isCreateMode = _mode == ELiveEditorChartMode.Create;
-        string title = isCreateMode ? "채보를 만들 곡 선택" : "불러올 채보의 곡 선택";
-
-        // 불러오기 흐름에서는 저장된 채보가 하나도 없는 곡을 목록에서 제외합니다.
-        List<string> allSongIds = _controller.SongIO.GetAllSongIds();
-        List<string> songIds = isCreateMode ? allSongIds : _controller.ChartIO.GetSongIdsWithCharts(allSongIds);
-        _songSelectPopup.RefreshSongs(title, songIds);
-
-        _popupPresenter.Open(_songSelectPopup);
+        _chartSelectFlow.ShowSongSelect(mode);
     }
 
-    private void OnSongSelected(string songId)
+    private void EnterEditing()
     {
-        _selectedSongId = songId;
-
-        _popupPresenter.CloseLatest();
-        _difficultySelectPopup.RefreshDifficulties(songId, _mode, _controller.ChartIO.GetSavedDifficulties(songId));
-
-        _popupPresenter.Open(_difficultySelectPopup);
-    }
-
-    private void OnDifficultyConfirmed(EDifficulty difficulty)
-    {
-        _selectedDifficulty = difficulty;
-
-        bool isOverwriting = _mode == ELiveEditorChartMode.Create && _controller.ChartIO.HasChart(_selectedSongId, difficulty);
-        if (!isOverwriting)
-        {
-            OpenEditor();
-            return;
-        }
-
-        // 난이도 팝업 위에 그대로 겹쳐 띄워, 취소하면 난이도 선택으로 자연스럽게 돌아가게 합니다.
-        _confirmPopup.SetMessage($"{_selectedSongId} / {difficulty} 채보가 이미 있습니다.\n빈 채보로 덮어쓸까요?", "덮어쓰기");
-        _confirmPopup.OnConfirmed = OnOverwriteConfirmed;
-        _confirmPopup.OnCanceled = _popupPresenter.CloseLatest;
-        _popupPresenter.Open(_confirmPopup);
-    }
-
-    private void OnOverwriteConfirmed()
-    {
-        _popupPresenter.CloseLatest();
-        OpenEditor();
-    }
-
-    private void OpenEditor()
-    {
-        bool isOpened = _controller.OpenChart(_selectedSongId, _selectedDifficulty, _mode == ELiveEditorChartMode.Create);
-        if (!isOpened)
-        {
-            return;
-        }
-
-        // 편집으로 넘어갈 때는 남아 있는 팝업을 한 번에 정리해야 에디터 입력 차단이 함께 풀립니다.
-        _popupPresenter.CloseAll();
-
         _isEditing = true;
         _songRegistrationPanel.gameObject.SetActive(false);
-        _editorControlPanel.SetActive(true);
+        SetEditorUiActive(true);
     }
 }

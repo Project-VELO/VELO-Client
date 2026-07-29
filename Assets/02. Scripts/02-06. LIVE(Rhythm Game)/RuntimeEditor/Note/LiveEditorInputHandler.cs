@@ -1,194 +1,185 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VInspector;
 
 /// <summary>
-/// 실시간 키보드 레코딩(1~6)과 마우스 클릭을 처리하여 노트를 배치/선택하는 클래스입니다.
-/// 배치 위치는 항상 화면에 그려진 격자 셀에서 직접 산출하므로, 보이는 격자와 실제 노트 시각이 어긋나지 않습니다.
+/// 트랙 위 마우스 조작으로 노트를 배치·선택·이동·삭제하는 입력을 전담합니다.
+/// 좌클릭은 빈 칸이면 배치, 이미 노트가 있으면 선택과 동시에 드래그 이동을 시작하고, 우클릭은 즉시 삭제합니다.
+/// 키보드 레코딩은 LiveEditorLaneKeyRecorder가 담당합니다.
 /// </summary>
 public class LiveEditorInputHandler : MonoBehaviour
 {
-    private const int GHOST_LANE = 6;
-
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LiveEditorController _controller;
-
-    [SerializeField]
-    private LiveEditorTimeline _timeline;
-
-    [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
-
-    [SerializeField]
-    private LiveEditorUndoRedoManager _undoRedoManager;
+    private LiveEditorEditContext _editContext;
 
     [SerializeField]
     private LiveEditorTrackPointer _trackPointer;
 
-    private readonly List<InputAction> _laneKeyActions = new List<InputAction>();
-    private readonly LiveEditorNoteSelection _selection = new LiveEditorNoteSelection();
+    [SerializeField]
+    private LiveEditorNoteSelection _selection;
+
+    [SerializeField]
+    private LiveEditorNoteWriter _noteWriter;
 
     private NoteData _pendingLongNoteStart;
-
-    public IReadOnlyList<NoteData> Selection => _selection.Notes;
-
-    private void Awake()
-    {
-        BindLaneKeyActions();
-    }
-
-    private void OnEnable()
-    {
-        foreach (InputAction action in _laneKeyActions)
-        {
-            action.Enable();
-        }
-    }
+    private NoteData _draggingNote;
+    private int _dragOriginLane;
+    private int _dragOriginTimeMs;
 
     private void Update()
     {
-        HandleMouseClick();
-    }
-
-    private void OnDisable()
-    {
-        foreach (InputAction action in _laneKeyActions)
+        Mouse mouse = Mouse.current;
+        if (mouse == null)
         {
-            action.Disable();
+            return;
+        }
+
+        if (!_editContext.CanEdit)
+        {
+            CancelDrag();
+            return;
+        }
+
+        if (_draggingNote != null)
+        {
+            UpdateDrag(mouse);
+            return;
+        }
+
+        if (mouse.rightButton.wasPressedThisFrame)
+        {
+            HandleRightPress(mouse);
+            return;
+        }
+
+        if (mouse.leftButton.wasPressedThisFrame)
+        {
+            HandleLeftPress(mouse);
         }
     }
 
-    private void OnDestroy()
+    private void HandleLeftPress(Mouse mouse)
     {
-        foreach (InputAction action in _laneKeyActions)
+        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
         {
-            action.Dispose();
+            return;
         }
 
-        _laneKeyActions.Clear();
-    }
-
-    public void ClearSelection()
-    {
-        _selection.Clear();
-    }
-
-    private void BindLaneKeyActions()
-    {
-        var laneBindings = new List<string> { "<Keyboard>/1", "<Keyboard>/2", "<Keyboard>/3", "<Keyboard>/4", "<Keyboard>/5", "<Keyboard>/6" };
-
-        for (int i = 0; i < laneBindings.Count; i++)
+        bool isLongNoteModifier = Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
+        if (isLongNoteModifier && lane != LiveEditorNoteWriter.GHOST_LANE)
         {
-            int lane = i + 1;
-            var action = new InputAction($"Lane{lane}", binding: laneBindings[i]);
-            action.performed += _ => RecordNoteOnLane(lane);
-            _laneKeyActions.Add(action);
+            HandleLongNoteClick(lane, timeMs);
+            return;
         }
+
+        NoteData existing = _selection.FindNoteNear(lane, timeMs);
+        if (existing == null)
+        {
+            _noteWriter.AddNote(lane, timeMs);
+            return;
+        }
+
+        bool isMultiSelect = Keyboard.current != null && Keyboard.current.ctrlKey.isPressed;
+        _selection.Select(existing, isMultiSelect);
+        BeginDrag(existing);
+    }
+
+    private void HandleRightPress(Mouse mouse)
+    {
+        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
+        {
+            return;
+        }
+
+        NoteData existing = _selection.FindNoteNear(lane, timeMs);
+        if (existing == null)
+        {
+            return;
+        }
+
+        _selection.Remove(existing);
+        _noteWriter.DeleteNote(existing);
+    }
+
+    private void BeginDrag(NoteData note)
+    {
+        _draggingNote = note;
+        _dragOriginLane = note.Lane;
+        _dragOriginTimeMs = note.TimeMs;
     }
 
     /// <summary>
-    /// 재생 중 눌린 키를 현재 재생 위치에서 가장 가까운 격자 셀로 스냅해 배치합니다.
+    /// 드래그 도중에는 커맨드를 쌓지 않고 노트 값만 바꿔 실시간 미리보기를 보여 주고,
+    /// 버튼을 놓는 시점에 원래 위치를 담은 이동 커맨드 하나만 남깁니다.
     /// </summary>
-    private void RecordNoteOnLane(int lane)
+    private void UpdateDrag(Mouse mouse)
     {
-        if (!CanEdit())
+        if (!mouse.leftButton.isPressed)
+        {
+            EndDrag();
+            return;
+        }
+
+        if (!_trackPointer.TryGetCellTime(mouse.position.ReadValue(), out int lane, out int timeMs))
         {
             return;
         }
 
-        double barPosition = _timeline.BarLayout.GetBarPosition(_audioPlayer.CurrentTimeMs);
-
-        if (!_timeline.BarLayout.TryGetCellAtBarPosition(barPosition, _timeline.SnapDivision, out int barIndex, out int cellIndex))
+        if (_draggingNote.Lane == lane && _draggingNote.TimeMs == timeMs)
         {
             return;
         }
 
-        AddNote(lane, _timeline.GetCellTimeMs(barIndex, cellIndex));
+        if (!_noteWriter.CanPlaceAt(_draggingNote, lane, timeMs))
+        {
+            return;
+        }
+
+        _draggingNote.Lane = lane;
+        _draggingNote.TimeMs = timeMs;
     }
 
-    private void HandleMouseClick()
+    /// <summary>
+    /// 드래그 도중 편집이 막히면(팝업 표시, 채보 닫힘 등) 이동 커맨드를 남길 수 없으므로,
+    /// 커맨드 없이 옮겨진 값이 그대로 굳지 않도록 원래 위치로 되돌립니다.
+    /// </summary>
+    private void CancelDrag()
     {
-        Mouse mouse = Mouse.current;
-
-        if (mouse == null || !mouse.leftButton.wasPressedThisFrame)
+        if (_draggingNote == null)
         {
             return;
         }
 
-        if (!CanEdit())
+        _draggingNote.Lane = _dragOriginLane;
+        _draggingNote.TimeMs = _dragOriginTimeMs;
+        _draggingNote = null;
+    }
+
+    private void EndDrag()
+    {
+        NoteData note = _draggingNote;
+        _draggingNote = null;
+
+        bool isMoved = note.Lane != _dragOriginLane || note.TimeMs != _dragOriginTimeMs;
+        if (!isMoved)
         {
             return;
         }
 
-        if (!_trackPointer.TryGetCell(mouse.position.ReadValue(), out int lane, out int barIndex, out int cellIndex))
-        {
-            return;
-        }
-
-        int cellTimeMs = _timeline.GetCellTimeMs(barIndex, cellIndex);
-        bool isLongNoteModifier = Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
-
-        if (isLongNoteModifier && lane != GHOST_LANE)
-        {
-            HandleLongNoteClick(lane, cellTimeMs);
-            return;
-        }
-
-        NoteData existing = _selection.FindNoteNear(_controller.CurrentChart, lane, cellTimeMs);
-
-        if (existing != null)
-        {
-            bool isMultiSelect = Keyboard.current != null && Keyboard.current.ctrlKey.isPressed;
-            _selection.Select(existing, isMultiSelect);
-            return;
-        }
-
-        AddNote(lane, cellTimeMs);
+        _noteWriter.MoveNote(note, _dragOriginLane, _dragOriginTimeMs);
     }
 
     private void HandleLongNoteClick(int lane, int timeMs)
     {
         if (_pendingLongNoteStart == null || _pendingLongNoteStart.Lane != lane)
         {
-            _pendingLongNoteStart = new NoteData
-            {
-                NoteId = Guid.NewGuid().ToString(),
-                TimeMs = timeMs,
-                Lane = lane,
-                NoteType = ENoteType.LONG,
-                HoldDurationMs = 0,
-            };
-            _undoRedoManager.PushCommand(new AddNoteCommand(_controller.CurrentChart.Notes, _pendingLongNoteStart));
+            _pendingLongNoteStart = _noteWriter.AddNote(lane, timeMs, ENoteType.LONG);
             return;
         }
 
         int holdDurationMs = Mathf.Max(0, timeMs - _pendingLongNoteStart.TimeMs);
-        _undoRedoManager.PushCommand(new ResizeHoldCommand(_pendingLongNoteStart, _pendingLongNoteStart.HoldDurationMs, holdDurationMs));
+        _noteWriter.ResizeHold(_pendingLongNoteStart, _pendingLongNoteStart.HoldDurationMs, holdDurationMs);
         _pendingLongNoteStart = null;
-    }
-
-    private void AddNote(int lane, int timeMs)
-    {
-        var note = new NoteData
-        {
-            NoteId = Guid.NewGuid().ToString(),
-            TimeMs = timeMs,
-            Lane = lane,
-            NoteType = lane == GHOST_LANE ? ENoteType.GHOST : ENoteType.NORMAL,
-        };
-
-        _undoRedoManager.PushCommand(new AddNoteCommand(_controller.CurrentChart.Notes, note));
-    }
-
-    private bool CanEdit()
-    {
-        // 정지 상태에서 원하는 마디에 노트를 놓는 것이 기본 작업 흐름이므로, 편집은 테스트 플레이와 팝업 표시 중에만 막습니다.
-        return !InputHandler.IsInputBlocked
-            && _controller.State != LiveEditorController.EEditorState.TestPlay
-            && !ReferenceEquals(_controller.CurrentChart, null)
-            && _timeline.BarLayout.IsBuilt;
     }
 }

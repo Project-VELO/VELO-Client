@@ -56,6 +56,22 @@ public class LiveEditorTrackPointer : MonoBehaviour
     }
 
     /// <summary>
+    /// 화면 좌표를 레인과 격자 셀의 절대 시각으로 한 번에 변환합니다.
+    /// </summary>
+    public bool TryGetCellTime(Vector2 screenPosition, out int lane, out int timeMs)
+    {
+        timeMs = 0;
+
+        if (!TryGetCell(screenPosition, out lane, out int barIndex, out int cellIndex))
+        {
+            return false;
+        }
+
+        timeMs = _timeline.GetCellTimeMs(barIndex, cellIndex);
+        return true;
+    }
+
+    /// <summary>
     /// 트랙 위의 레인/격자선/노트 마커는 모두 레이캐스트 대상에서 제외되어 있으므로,
     /// 이 검사에 걸리는 것은 패널의 드롭다운·버튼 같은 실제 UI 컨트롤뿐입니다.
     /// </summary>

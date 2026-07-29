@@ -6,7 +6,7 @@ using VInspector;
 
 /// <summary>
 /// Undo/Redo, 복사/붙여넣기, 대칭, 삭제 등 편집 단축키를 처리하는 클래스입니다.
-/// LiveEditorInputHandler가 관리하는 선택(Selection)을 대상으로 커맨드를 생성합니다.
+/// 마우스 편집과 공유하는 선택(LiveEditorNoteSelection)을 대상으로 커맨드를 생성합니다.
 /// 재생 및 탐색 단축키는 LiveEditorNavigationShortcuts가 담당합니다.
 /// </summary>
 public class LiveEditorEditShortcuts : MonoBehaviour
@@ -16,7 +16,10 @@ public class LiveEditorEditShortcuts : MonoBehaviour
     private LiveEditorController _controller;
 
     [SerializeField]
-    private LiveEditorInputHandler _inputHandler;
+    private LiveEditorNoteSelection _selection;
+
+    [SerializeField]
+    private LiveEditorNoteWriter _noteWriter;
 
     [SerializeField]
     private LiveEditorAudioPlayer _audioPlayer;
@@ -84,7 +87,7 @@ public class LiveEditorEditShortcuts : MonoBehaviour
     private void CopySelection()
     {
         _clipboardNotes.Clear();
-        _clipboardNotes.AddRange(_inputHandler.Selection);
+        _clipboardNotes.AddRange(_selection.Notes);
     }
 
     private void PasteClipboard()
@@ -100,22 +103,22 @@ public class LiveEditorEditShortcuts : MonoBehaviour
 
     private void MirrorSelection()
     {
-        if (_inputHandler.Selection.Count == 0)
+        if (_selection.Count == 0)
         {
             return;
         }
 
-        _undoRedoManager.PushCommand(new MirrorCommand(new List<NoteData>(_inputHandler.Selection)));
+        _undoRedoManager.PushCommand(new MirrorCommand(new List<NoteData>(_selection.Notes)));
     }
 
     private void DeleteSelection()
     {
-        if (_inputHandler.Selection.Count == 0)
+        if (_selection.Count == 0)
         {
             return;
         }
 
-        _undoRedoManager.PushCommand(new DeleteNoteCommand(_controller.CurrentChart.Notes, new List<NoteData>(_inputHandler.Selection)));
-        _inputHandler.ClearSelection();
+        _noteWriter.DeleteNotes(new List<NoteData>(_selection.Notes));
+        _selection.Clear();
     }
 }

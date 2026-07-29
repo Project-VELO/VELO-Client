@@ -17,9 +17,6 @@ public class UI_LiveEditorChartSelectFlow : MonoBehaviour
     private LiveEditorController _controller;
 
     [SerializeField]
-    private UI_LiveEditorPopupPresenter _popupPresenter;
-
-    [SerializeField]
     private UI_LiveEditorSongSelectPopup _songSelectPopup;
 
     [SerializeField]
@@ -31,6 +28,9 @@ public class UI_LiveEditorChartSelectFlow : MonoBehaviour
     private ELiveEditorChartMode _mode = ELiveEditorChartMode.Create;
     private string _selectedSongId;
     private EDifficulty _selectedDifficulty;
+
+    // 자체 상태가 없어 누가 만들어도 결과가 같으므로, 씬에서 참조를 배선하지 않고 직접 만들어 씁니다.
+    private readonly UI_LiveEditorPopupPresenter _popupPresenter = new UI_LiveEditorPopupPresenter();
 
     private void Awake()
     {

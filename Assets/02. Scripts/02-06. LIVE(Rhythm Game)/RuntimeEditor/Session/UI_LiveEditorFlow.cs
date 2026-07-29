@@ -15,9 +15,6 @@ public class UI_LiveEditorFlow : MonoBehaviour
     private LiveEditorController _controller;
 
     [SerializeField]
-    private UI_LiveEditorPopupPresenter _popupPresenter;
-
-    [SerializeField]
     private UI_LiveEditorChartSelectFlow _chartSelectFlow;
 
     [SerializeField]
@@ -29,6 +26,9 @@ public class UI_LiveEditorFlow : MonoBehaviour
     [Header("Editor Only UI")]
     [SerializeField]
     private List<GameObject> _editorOnlyPanels = new List<GameObject>();
+
+    // 자체 상태가 없어 누가 만들어도 결과가 같으므로, 씬에서 참조를 배선하지 않고 직접 만들어 씁니다.
+    private readonly UI_LiveEditorPopupPresenter _popupPresenter = new UI_LiveEditorPopupPresenter();
 
     private bool _isEditing;
 

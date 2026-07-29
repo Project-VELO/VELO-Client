@@ -17,13 +17,13 @@ public class UI_LiveEditorChartDeleter : MonoBehaviour
     private UI_LiveEditorFlow _flow;
 
     [SerializeField]
-    private UI_LiveEditorPopupPresenter _popupPresenter;
-
-    [SerializeField]
     private UI_LiveEditorConfirmPopup _confirmPopup;
 
     [SerializeField]
     private Button _deleteButton;
+
+    // 자체 상태가 없어 누가 만들어도 결과가 같으므로, 씬에서 참조를 배선하지 않고 직접 만들어 씁니다.
+    private readonly UI_LiveEditorPopupPresenter _popupPresenter = new UI_LiveEditorPopupPresenter();
 
     private void Awake()
     {

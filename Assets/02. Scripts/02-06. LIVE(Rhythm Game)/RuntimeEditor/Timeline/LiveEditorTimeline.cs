@@ -15,7 +15,7 @@ public class LiveEditorTimeline : MonoBehaviour
 
     [Foldout("Hierarchy")]
     [SerializeField]
-    private UI_TrapezoidLanes _lanes;
+    private UI_LiveTrackLanes _lanes;
 
     [SerializeField]
     private LiveEditorNoteRenderer _noteRenderer;
@@ -32,7 +32,7 @@ public class LiveEditorTimeline : MonoBehaviour
     private double _currentBarPosition;
 
     public ESnapDivision SnapDivision { get => _snapDivision; set => _snapDivision = value; }
-    public UI_TrapezoidLanes Lanes => _lanes;
+    public UI_LiveTrackLanes Lanes => _lanes;
     public LiveEditorBarLayout BarLayout => _barLayout;
     public double CurrentBarPosition => _currentBarPosition;
     public float HiSpeed { get => _scrollMapper.HiSpeed; set => _scrollMapper.HiSpeed = value; }

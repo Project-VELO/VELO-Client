@@ -23,7 +23,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
     private readonly List<RectTransform> _subdivisionLines = new List<RectTransform>();
     private readonly List<RectTransform> _barLines = new List<RectTransform>();
 
-    private UI_TrapezoidLanes _lanes;
+    private UI_LiveTrackLanes _lanes;
     private LiveEditorBarLayout _barLayout;
     private LiveEditorScrollMapper _scrollMapper;
 
@@ -33,7 +33,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
         FillLinePool(_barLines, EPoolable.EditorBarLine, _maxBarLineCount);
     }
 
-    public void Init(UI_TrapezoidLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
+    public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
     {
         _lanes = lanes;
         _barLayout = barLayout;

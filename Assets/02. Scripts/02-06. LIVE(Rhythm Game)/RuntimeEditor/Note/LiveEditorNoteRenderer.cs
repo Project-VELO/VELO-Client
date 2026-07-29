@@ -21,12 +21,12 @@ public class LiveEditorNoteRenderer : MonoBehaviour
     private readonly HashSet<string> _livingNoteIds = new HashSet<string>();
     private readonly List<string> _staleNoteIds = new List<string>();
 
-    private UI_TrapezoidLanes _lanes;
+    private UI_LiveTrackLanes _lanes;
     private LiveEditorBarLayout _barLayout;
     private LiveEditorScrollMapper _scrollMapper;
     private ChartData _chart;
 
-    public void Init(UI_TrapezoidLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
+    public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
     {
         _lanes = lanes;
         _barLayout = barLayout;

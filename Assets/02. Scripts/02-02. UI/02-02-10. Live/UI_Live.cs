@@ -15,10 +15,10 @@ public class UI_Live : MonoBehaviour
     private UI_LiveHitPanel _judgementPanel;
 
     [SerializeField]
-    private UI_TrapezoidLanes _noteLanes;
+    private UI_LiveTrackLanes _noteLanes;
 
     public UI_LiveScorePanel ScorePanel => _scorePanel;
     public UI_LiveComboPanel ComboPanel => _comboPanel;
     public UI_LiveHitPanel JudgementPanel => _judgementPanel;
-    public UI_TrapezoidLanes NoteLanes => _noteLanes;
+    public UI_LiveTrackLanes NoteLanes => _noteLanes;
 }

@@ -28,7 +28,7 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
     private readonly List<int> _boundBarIndices = new List<int>();
     private readonly List<string> _barNumberTexts = new List<string>();
 
-    private UI_TrapezoidLanes _lanes;
+    private UI_LiveTrackLanes _lanes;
     private LiveEditorBarLayout _barLayout;
     private LiveEditorScrollMapper _scrollMapper;
 
@@ -37,7 +37,7 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
         FillLabelPool();
     }
 
-    public void Init(UI_TrapezoidLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
+    public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
     {
         _lanes = lanes;
         _barLayout = barLayout;

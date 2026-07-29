@@ -16,6 +16,12 @@ public class LiveEditorGridRenderer : MonoBehaviour
     [SerializeField]
     private int _maxBarLineCount = 16;
 
+    [Header("Thickness")]
+    [Tooltip("멀리 있는 선의 두께를 되살리는 정도입니다. 1이면 어느 높이에서나 화면상 두께가 같고, 0이면 보정을 끕니다. 0에서는 원경의 선이 1픽셀 아래로 내려가 스크롤할 때 깜빡입니다.")]
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float _thicknessCompensation = 1f;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private RectTransform _gridLineLayer;
@@ -27,10 +33,14 @@ public class LiveEditorGridRenderer : MonoBehaviour
     private LiveEditorBarLayout _barLayout;
     private LiveEditorScrollMapper _scrollMapper;
 
+    // 매 프레임 두께에 원근 보정을 곱하므로, 배율이 누적되지 않도록 프리팹 원본 두께를 따로 기억해 둡니다.
+    private float _subdivisionLineThickness;
+    private float _barLineThickness;
+
     private void Awake()
     {
-        FillLinePool(_subdivisionLines, EPoolable.EditorGridLine, _maxSubdivisionLineCount);
-        FillLinePool(_barLines, EPoolable.EditorBarLine, _maxBarLineCount);
+        _subdivisionLineThickness = FillLinePool(_subdivisionLines, EPoolable.EditorGridLine, _maxSubdivisionLineCount);
+        _barLineThickness = FillLinePool(_barLines, EPoolable.EditorBarLine, _maxBarLineCount);
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
@@ -61,7 +71,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
             float barRatio = _scrollMapper.ToVerticalRatio(barIndex, currentBarPosition, hitLineRatio);
             if (_scrollMapper.IsRatioVisible(barRatio) && usedBarLineCount < _barLines.Count)
             {
-                PlaceLine(_barLines[usedBarLineCount], barRatio);
+                PlaceLine(_barLines[usedBarLineCount], _barLineThickness, barRatio);
                 usedBarLineCount++;
             }
 
@@ -93,38 +103,52 @@ public class LiveEditorGridRenderer : MonoBehaviour
                 continue;
             }
 
-            PlaceLine(_subdivisionLines[usedLineCount], ratio);
+            PlaceLine(_subdivisionLines[usedLineCount], _subdivisionLineThickness, ratio);
             usedLineCount++;
         }
 
         return usedLineCount;
     }
 
-    private void PlaceLine(RectTransform lineTransform, float verticalRatio)
+    /// <summary>
+    /// 선을 배치하면서 두께에 원근 보정을 곱합니다.
+    /// 3D 트랙에서 누운 선은 멀어질수록 거리의 제곱으로 얇아지는데, 화면 두께가 1픽셀 아래로 내려가면
+    /// 스크롤할 때 픽셀에 걸렸다 말았다 하며 깜빡이므로 트랙이 알려 주는 배율로 되돌려 줍니다.
+    /// </summary>
+    private void PlaceLine(RectTransform lineTransform, float baseThickness, float verticalRatio)
     {
         _lanes.GetTrackEdgesAtRatio(verticalRatio, out float leftX, out float rightX, out float y);
 
         lineTransform.gameObject.SetActive(true);
         lineTransform.anchoredPosition = new Vector2((leftX + rightX) * 0.5f, y);
-        lineTransform.sizeDelta = new Vector2(rightX - leftX, lineTransform.sizeDelta.y);
+        float compensation = Mathf.Lerp(1f, _lanes.GetFlatThicknessCompensationAtRatio(verticalRatio), _thicknessCompensation);
+        lineTransform.sizeDelta = new Vector2(rightX - leftX, baseThickness * compensation);
     }
 
-    private void FillLinePool(List<RectTransform> lines, EPoolable poolType, int capacity)
+    /// <summary>
+    /// 선 오브젝트를 미리 확보하고, 프리팹에 설정된 원본 두께를 돌려줍니다.
+    /// </summary>
+    private float FillLinePool(List<RectTransform> lines, EPoolable poolType, int capacity)
     {
+        float baseThickness = 0f;
+
         while (lines.Count < capacity)
         {
             GameObject go = PoolManager.Instance.Pop(poolType);
 
             if (go == null)
             {
-                return;
+                break;
             }
 
             RectTransform rectTransform = go.GetComponent<RectTransform>();
+            baseThickness = rectTransform.sizeDelta.y;
             rectTransform.SetParent(_gridLineLayer, false);
             rectTransform.gameObject.SetActive(false);
             lines.Add(rectTransform);
         }
+
+        return baseThickness;
     }
 
     private static void DeactivateFrom(List<RectTransform> lines, int startIndex)

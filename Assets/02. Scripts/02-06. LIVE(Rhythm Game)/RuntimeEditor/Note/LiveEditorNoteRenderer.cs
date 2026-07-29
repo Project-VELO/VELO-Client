@@ -10,8 +10,18 @@ using VInspector;
 public class LiveEditorNoteRenderer : MonoBehaviour
 {
     [Header("Note Marker")]
+    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.")]
     [SerializeField]
     private float _noteHeight = 16f;
+
+    [Tooltip("멀리 있는 노트가 보이지 않을 만큼 얇아지지 않도록 보장하는 최소 두께입니다.")]
+    [SerializeField]
+    private float _minNoteHeight = 4f;
+
+    [Tooltip("멀어질수록 노트가 얇아지는 정도입니다. 1이면 원근에 완전히 비례해 얇아지고, 0이면 어디서나 두께가 같습니다. 값이 클수록 두께 변화가 눈에 띕니다.")]
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float _thicknessFalloff = 0.5f;
 
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -98,8 +108,24 @@ public class LiveEditorNoteRenderer : MonoBehaviour
 
             // 사다리꼴 트랙은 높이에 따라 레인 폭이 달라지므로, 노트 가로 폭을 그 높이의 레인 폭에 맞춰 늘립니다.
             _lanes.GetLaneBoundsAtRatio(note.Lane, ratio, out float leftX, out float rightX);
-            handle.RectTransform.sizeDelta = new Vector2(rightX - leftX, _noteHeight);
+            handle.RectTransform.sizeDelta = new Vector2(rightX - leftX, GetNoteHeightAtRatio(ratio));
         }
+    }
+
+    /// <summary>
+    /// 노트 두께를 그 높이의 원근 배율만큼 조정합니다.
+    /// 폭만 커지고 두께가 고정이면 다가오는 것이 아니라 옆으로 늘어나는 것처럼 보이므로 두 값을 같은 비율로 묶되,
+    /// 그대로 두면 두께가 다섯 배 넘게 변해 눈에 거슬리므로 감소량을 조절할 수 있게 했습니다.
+    ///
+    /// 화면상 두께는 넘긴 배율에 정비례하므로, "두께 고정" 배율과 "원근 완전 비례" 배율을 그대로 섞으면
+    /// 화면에서도 그 비율만큼 정확히 섞입니다. 트랙이 2D든 3D든 같은 결과가 나옵니다.
+    /// </summary>
+    private float GetNoteHeightAtRatio(float verticalRatio)
+    {
+        float constantScale = _lanes.GetFlatThicknessCompensationAtRatio(verticalRatio);
+        float perspectiveScale = _lanes.GetPerspectiveThicknessScaleAtRatio(verticalRatio);
+
+        return Mathf.Max(_minNoteHeight, _noteHeight * Mathf.Lerp(constantScale, perspectiveScale, _thicknessFalloff));
     }
 
     private void AcquireNoteVisual(NoteData note)

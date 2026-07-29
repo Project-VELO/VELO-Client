@@ -17,6 +17,15 @@ public class LiveEditorPlaybackControl : MonoBehaviour
     [SerializeField]
     private LiveEditorTimeline _timeline;
 
+    /// <summary>
+    /// 재생 위치를 절대 시각으로 옮깁니다. 진행바로 임의 지점을 찍어 이동할 때 사용합니다.
+    /// </summary>
+    public void SetPlaybackTime(int timeMs)
+    {
+        _audioPlayer.SetPlaybackTime(timeMs);
+        _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);
+    }
+
     public void SetPlaybackBar(int barIndex)
     {
         if (!_timeline.BarLayout.IsBuilt)
@@ -24,8 +33,7 @@ public class LiveEditorPlaybackControl : MonoBehaviour
             return;
         }
 
-        _audioPlayer.SetPlaybackTime(_timeline.BarLayout.GetBarStartTimeMs(barIndex));
-        _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);
+        SetPlaybackTime(_timeline.BarLayout.GetBarStartTimeMs(barIndex));
     }
 
     public void SeekByBar(int direction)

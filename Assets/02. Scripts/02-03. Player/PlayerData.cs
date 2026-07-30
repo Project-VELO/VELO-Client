@@ -6,7 +6,7 @@ using UnityEngine;
 /// 플레이어의 계정 재화, 진행 상태, 세이브 정보를 저장하는 DTO 클래스입니다.
 /// </summary>
 [Serializable]
-public class PlayerData
+public class PlayerData : ISerializationCallbackReceiver
 {
     [SerializeField]
     private int _level = 1;
@@ -53,8 +53,14 @@ public class PlayerData
     [SerializeField]
     private int _dormitoryLevel = 1;
 
-    // JSON 직렬화를 위해 Serializable 딕셔너리 구조가 권장되나, 
+    // 곡 기록은 List로 감싸 직렬화하고 ISerializationCallbackReceiver로 Dictionary와 동기화합니다.
+    // 키 조립은 SongRecordKey를 통해서만 수행합니다.
+    [SerializeField]
+    private List<SongRecordEntry> _songRecordEntries = new List<SongRecordEntry>();
+
+    // JSON 직렬화를 위해 Serializable 딕셔너리 구조가 권장되나,
     // 기본 C# 딕셔너리로 선언하고 로드 시 파싱할 수 있도록 구성합니다.
+    // 아래 두 딕셔너리도 _songRecords와 동일한 방식으로 직렬화해야 하나, 세이브 계층 작업 시 함께 정리합니다.
     private Dictionary<string, EStoryStatus> _storyProgresses = new Dictionary<string, EStoryStatus>();
     private Dictionary<string, EScheduleStatus> _scheduleProgresses = new Dictionary<string, EScheduleStatus>();
     private Dictionary<string, SongRecord> _songRecords = new Dictionary<string, SongRecord>();
@@ -81,6 +87,24 @@ public class PlayerData
     public Dictionary<string, EStoryStatus> StoryProgresses => _storyProgresses;
     public Dictionary<string, EScheduleStatus> ScheduleProgresses => _scheduleProgresses;
     public Dictionary<string, SongRecord> SongRecords => _songRecords;
+
+    public void OnBeforeSerialize()
+    {
+        _songRecordEntries.Clear();
+        foreach (var pair in _songRecords)
+        {
+            _songRecordEntries.Add(new SongRecordEntry { Key = pair.Key, Record = pair.Value });
+        }
+    }
+
+    public void OnAfterDeserialize()
+    {
+        _songRecords.Clear();
+        foreach (var entry in _songRecordEntries)
+        {
+            _songRecords[entry.Key] = entry.Record;
+        }
+    }
 
     /// <summary>
     /// 신규 게임 시작 시 플레이어의 초기 상태 데이터를 생성합니다.
@@ -144,5 +168,6 @@ public class PlayerData
         _storyProgresses.Clear();
         _scheduleProgresses.Clear();
         _songRecords.Clear();
+        _songRecordEntries.Clear();
     }
 }

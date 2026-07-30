@@ -16,6 +16,9 @@ public class UI_LiveEditorPanel : MonoBehaviour
     [SerializeField]
     private Button _playtestButton;
 
+    [SerializeField]
+    private UI_LiveEditorToast _toast;
+
     private LiveEditorController _controller;
 
     public void Init(LiveEditorController controller)
@@ -37,6 +40,10 @@ public class UI_LiveEditorPanel : MonoBehaviour
         bool isSaved = _controller.SaveCurrentChart(out List<string> errors);
         if (isSaved)
         {
+            if (_toast != null)
+            {
+                _toast.Show("채보 저장을 완료했습니다.");
+            }
             return;
         }
 

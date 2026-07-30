@@ -32,6 +32,7 @@ public class LiveEditorController : MonoBehaviour
     private readonly LiveEditorChartIO _chartIO = new LiveEditorChartIO();
     private readonly LiveEditorSongIO _songIO = new LiveEditorSongIO();
 
+    private LiveEditorSongMetadataWriter _songMetadataWriter;
     private LiveEditorUndoRedoManager _undoRedoManager;
 
     private EEditorState _state = EEditorState.Editing;
@@ -52,6 +53,8 @@ public class LiveEditorController : MonoBehaviour
     /// 다른 컴포넌트의 Awake에서 먼저 요청할 수 있어 실행 순서에 기대지 않도록 첫 접근 시점에 만듭니다.
     /// </summary>
     public LiveEditorUndoRedoManager UndoRedo => _undoRedoManager ??= new LiveEditorUndoRedoManager(_timeline);
+
+    private LiveEditorSongMetadataWriter SongMetadataWriter => _songMetadataWriter ??= new LiveEditorSongMetadataWriter(_songIO);
 
     private void Awake()
     {
@@ -173,6 +176,7 @@ public class LiveEditorController : MonoBehaviour
 
         if (isSaved)
         {
+            SongMetadataWriter.WriteChartMetadata(_currentSong, _currentDifficulty, _currentChart);
             UndoRedo.MarkSaved();
         }
 
@@ -200,8 +204,9 @@ public class LiveEditorController : MonoBehaviour
 
     private void OnAudioClipLoaded()
     {
-        // 곡 길이를 알 수 있는 최초 시점이므로, 저장 시 유효성 검사에 쓰이는 SongData.Duration도 여기서 채워 둡니다.
-        _currentSong.Duration = _audioPlayer.ClipLengthMs / 1000f;
+        // 곡 길이를 알 수 있는 최초 시점이므로, 저장 시 유효성 검사에 쓰이는 SongData.Duration을 채우고
+        // 곡 선택 화면이 읽을 수 있도록 파일에도 반영합니다.
+        SongMetadataWriter.WriteDuration(_currentSong, _audioPlayer.ClipLengthMs / 1000f);
 
         _timeline.InitBarLayout(_currentChart, _audioPlayer.ClipLengthMs);
         _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);

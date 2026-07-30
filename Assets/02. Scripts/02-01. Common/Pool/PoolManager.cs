@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 internal class Pool
 {
     private GameObject _prefab;
+    private Transform _parent;
     private IObjectPool<GameObject> _pool;
 
     // Pop으로 꺼내 간 오브젝트를 따로 기억합니다.
@@ -20,7 +21,11 @@ internal class Pool
         {
             if (_root == null)
             {
+                // 부모를 지정하지 않으면 루트가 "그 순간의 활성 씬"에 생깁니다.
+                // 씬 로드 직후에는 아직 활성 씬이 바뀌기 전이라 루트만 엉뚱한 씬에 남아 풀 오브젝트가 새어 나가므로,
+                // 항상 풀 매니저 아래에 매답니다.
                 GameObject go = new GameObject() { name = $"{_prefab.name}Pool" };
+                go.transform.SetParent(_parent, false);
                 _root = go.transform;
             }
             return _root;
@@ -29,9 +34,10 @@ internal class Pool
 
     public int LivingCount => _livingObjects.Count;
 
-    public Pool(GameObject prefab)
+    public Pool(GameObject prefab, Transform parent)
     {
         _prefab = prefab;
+        _parent = parent;
         _pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
     }
 
@@ -115,12 +121,53 @@ internal class Pool
 }
 #endregion
 
+/// <summary>
+/// 오브젝트 풀을 총괄합니다. PersistentScene에 상주하며, 어떤 프리팹을 어떤 타입으로 풀링할지는
+/// 각 씬의 PoolRegistrar가 런타임에 등록하고 씬이 내려갈 때 해제합니다.
+/// 이렇게 하면 씬 전용 프리팹이 퍼시스턴트 프리팹에 묶이지 않고, 풀 오브젝트의 수명도 매니저와 일치합니다.
+/// </summary>
 public class PoolManager : MonoBehaviourSingleton<PoolManager>
 {
     [SerializeField]
     private List<PoolInfo> _poolInfos = new();
 
     private Dictionary<EPoolable, Pool> _pools = new();
+    private Dictionary<EPoolable, GameObject> _registeredPrefabs = new();
+
+    /// <summary>
+    /// 씬이 자기 프리팹을 풀에 등록합니다. 같은 타입에 다른 프리팹이 들어오면 기존 풀을 비우고 교체합니다.
+    /// </summary>
+    public void RegisterPool(EPoolable type, GameObject prefab)
+    {
+        if (prefab == null)
+        {
+            Debug.LogError($"[ObjectPool] '{type}'에 등록하려는 프리팹이 비어 있습니다!");
+            return;
+        }
+
+        if (_registeredPrefabs.TryGetValue(type, out GameObject registered) && registered != prefab)
+        {
+            Debug.LogWarning($"[ObjectPool] '{type}'에 이미 다른 프리팹이 등록되어 있어 교체합니다. 등록 주체가 겹치는지 확인이 필요합니다.");
+            UnregisterPool(type);
+        }
+
+        _registeredPrefabs[type] = prefab;
+    }
+
+    /// <summary>
+    /// 등록을 해제하고 해당 풀을 비웁니다. 풀 오브젝트는 매니저 아래에 있어 씬 언로드로는 정리되지 않으므로,
+    /// 등록을 건 쪽이 반드시 해제해 주어야 합니다.
+    /// </summary>
+    public void UnregisterPool(EPoolable type)
+    {
+        if (_pools.TryGetValue(type, out Pool pool))
+        {
+            pool.Clear();
+            _pools.Remove(type);
+        }
+
+        _registeredPrefabs.Remove(type);
+    }
 
     /// <summary>
     /// 오브젝트를 풀로 반환합니다. 반환에 실패하면 그 오브젝트는 풀의 관리를 벗어나 주인 없이 남으므로,
@@ -170,6 +217,12 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager>
 
     private GameObject GetPrefabOnType(EPoolable type)
     {
+        if (_registeredPrefabs.TryGetValue(type, out GameObject registered))
+        {
+            return registered;
+        }
+
+        // 인스펙터에 직접 채워 둔 항목은 씬 등록 없이도 쓸 수 있게 남겨 둡니다.
         foreach (var poolInfo in _poolInfos)
         {
             if (type == poolInfo.Type)
@@ -177,13 +230,14 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager>
                 return poolInfo.Prefab;
             }
         }
-        Debug.LogError($"[ObjectPool] '{type}' 타입에 대한 프리팹이 _poolInfos에 등록되지 않았습니다!");
+
+        Debug.LogError($"[ObjectPool] '{type}' 타입에 대한 프리팹이 등록되지 않았습니다! 해당 씬에 PoolRegistrar가 있는지 확인해 주세요.");
         return null;
     }
 
     private void CreatePool(EPoolable type, GameObject go)
     {
-        _pools.Add(type, new Pool(go));
+        _pools.Add(type, new Pool(go, transform));
     }
 
     public void Clear()

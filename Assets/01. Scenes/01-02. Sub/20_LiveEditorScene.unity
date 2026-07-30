@@ -4676,43 +4676,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 590698220}
-  - component: {fileID: 590698219}
+  - component: {fileID: 590698221}
   m_Layer: 0
-  m_Name: Manager_Pool
+  m_Name: Pool_Registrar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &590698219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590698218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b14beb59de6a2b94aaefc2ef06494960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PoolManager
-  _isDontDestroyOnLoad: 0
-  _lazyInitialization: 0
-  _poolInfos:
-  - Type: 1
-    Prefab: {fileID: 1156422523065778570, guid: 1d29cada07cdc3e4dbb8e9da55c7a0d4, type: 3}
-  - Type: 2
-    Prefab: {fileID: 8574093929993658564, guid: 17681816d223ffc40833dc7856e900ca, type: 3}
-  - Type: 3
-    Prefab: {fileID: 2732597805570092809, guid: 2d9fd50e51ba6e244b375a8d9a476cc0, type: 3}
-  - Type: 4
-    Prefab: {fileID: 6671396236928425393, guid: 4528ff194557e8b489c08773d0c6dc47, type: 3}
-  - Type: 5
-    Prefab: {fileID: 1156422523065778570, guid: 39eb95858ec4218468287e816208d68d, type: 3}
-  - Type: 6
-    Prefab: {fileID: 275794545756765712, guid: 9380dc89b4a9c774a98c0a553dbe4ca9, type: 3}
-  - Type: 7
-    Prefab: {fileID: 3978850592986456496, guid: 88516f5a8e70b63459c5921a2f8d530b, type: 3}
 --- !u!4 &590698220
 Transform:
   m_ObjectHideFlags: 0
@@ -4728,6 +4699,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &590698221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590698218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c947ebd919ac91f43b65eebf075f8f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolRegistrar
+  _poolInfos:
+  - Type: 1
+    Prefab: {fileID: 1156422523065778570, guid: 1d29cada07cdc3e4dbb8e9da55c7a0d4, type: 3}
+  - Type: 2
+    Prefab: {fileID: 8574093929993658564, guid: 17681816d223ffc40833dc7856e900ca, type: 3}
+  - Type: 3
+    Prefab: {fileID: 2732597805570092809, guid: 2d9fd50e51ba6e244b375a8d9a476cc0, type: 3}
+  - Type: 4
+    Prefab: {fileID: 6671396236928425393, guid: 4528ff194557e8b489c08773d0c6dc47, type: 3}
+  - Type: 5
+    Prefab: {fileID: 1156422523065778570, guid: 39eb95858ec4218468287e816208d68d, type: 3}
+  - Type: 6
+    Prefab: {fileID: 275794545756765712, guid: 9380dc89b4a9c774a98c0a553dbe4ca9, type: 3}
+  - Type: 7
+    Prefab: {fileID: 3978850592986456496, guid: 88516f5a8e70b63459c5921a2f8d530b, type: 3}
 --- !u!1 &631340753
 GameObject:
   m_ObjectHideFlags: 0

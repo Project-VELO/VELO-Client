@@ -9,4 +9,5 @@ public enum EPoolable
     EditorBarLine,
     EditorBarLabel,
     EditorListItem,
+    MusicSelectSongItem,
 }

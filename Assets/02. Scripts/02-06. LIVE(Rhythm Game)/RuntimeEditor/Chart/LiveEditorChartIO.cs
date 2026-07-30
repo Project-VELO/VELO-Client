@@ -14,7 +14,7 @@ public class LiveEditorChartIO
 
     public string GetChartPath(string songId, EDifficulty difficulty)
     {
-        return Path.Combine(Application.streamingAssetsPath, "Charts", $"{songId}_{difficulty}.json");
+        return LiveSongPaths.GetWorkingChartPath(songId, difficulty);
     }
 
     public bool SaveChart(string path, ChartData chart, SongData song, out List<string> errors)

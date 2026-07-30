@@ -10,7 +10,7 @@ public class LiveEditorSongIO
 {
     public string GetSongInfoPath(string songId)
     {
-        return Path.Combine(Application.streamingAssetsPath, "Songs", songId, "song_info.json");
+        return LiveSongPaths.GetWorkingSongInfoPath(songId);
     }
 
     public void SaveSong(string path, SongData song)
@@ -39,7 +39,7 @@ public class LiveEditorSongIO
     public List<string> GetAllSongIds()
     {
         var songIds = new List<string>();
-        string songsRoot = Path.Combine(Application.streamingAssetsPath, "Songs");
+        string songsRoot = LiveSongPaths.WorkingSongsRoot;
 
         if (!Directory.Exists(songsRoot))
         {
@@ -60,7 +60,7 @@ public class LiveEditorSongIO
     public List<string> GetUnregisteredAudioFilePaths()
     {
         var audioFilePaths = new List<string>();
-        string songsRoot = Path.Combine(Application.streamingAssetsPath, "Songs");
+        string songsRoot = LiveSongPaths.WorkingSongsRoot;
 
         if (!Directory.Exists(songsRoot))
         {
@@ -84,7 +84,7 @@ public class LiveEditorSongIO
     /// </summary>
     public void RegisterSong(string audioFilePath, string songId, string title, float bpm, string composer)
     {
-        string songFolder = Path.Combine(Application.streamingAssetsPath, "Songs", songId);
+        string songFolder = LiveSongPaths.GetWorkingSongFolder(songId);
         Directory.CreateDirectory(songFolder);
 
         string destinationAudioFileName = "audio" + Path.GetExtension(audioFilePath);

@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -66,7 +65,11 @@ public class LiveEditorAudioPlayer : MonoBehaviour
         _isSourcePlaying = false;
         _isPlaybackFinished = false;
 
-        string audioPath = Path.Combine(Application.streamingAssetsPath, "Songs", song.SongId, song.AudioFilePath);
+        // 편집 중인 곡은 작업 공간에서, 수록된 곡은 자신의 수록 폴더에서 음원을 읽습니다.
+        string audioPath = string.IsNullOrEmpty(song.FolderPath)
+            ? LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath)
+            : LiveSongPaths.GetPublishedAudioPath(song.FolderPath, song.AudioFilePath);
+
         LoadAudioAsync(audioPath, this.GetCancellationTokenOnDestroy()).Forget();
     }
 

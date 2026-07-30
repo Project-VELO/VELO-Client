@@ -53,6 +53,12 @@ public class SongData : ISerializationCallbackReceiver
 
     public Dictionary<EDifficulty, ChartMetadata> Charts => _charts;
 
+    // 아래 두 값은 곡이 어느 폴더에서 읽혔는지를 런타임에 주입받는 값입니다.
+    // 자동 구현 프로퍼티라 JsonUtility 직렬화 대상이 아니므로, 곡의 소속 챕터는 파일이 아니라
+    // 수록 공간의 폴더 구조가 계속 유일한 출처로 남습니다.
+    public string ChapterId { get; set; }
+    public string FolderPath { get; set; }
+
     public void OnBeforeSerialize()
     {
         _chartEntries.Clear();

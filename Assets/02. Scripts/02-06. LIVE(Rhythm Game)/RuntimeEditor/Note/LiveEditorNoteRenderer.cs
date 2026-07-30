@@ -23,6 +23,11 @@ public class LiveEditorNoteRenderer : MonoBehaviour
     [SerializeField]
     private float _thicknessFalloff = 0.5f;
 
+    [Tooltip("노트 양옆에 남기는 여백을 레인 폭에 대한 비율로 지정합니다. 인접한 레인에 같은 박자로 놓인 노트가 한 덩어리로 보이지 않게 합니다. 픽셀이 아닌 비율이므로 원근에 따라 여백도 함께 좁아집니다.")]
+    [Range(0f, 0.25f)]
+    [SerializeField]
+    private float _horizontalPaddingRatio = 0.04f;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private RectTransform _noteLayer;
@@ -107,8 +112,10 @@ public class LiveEditorNoteRenderer : MonoBehaviour
             handle.RectTransform.anchoredPosition = _lanes.GetLaneCenterPosition(note.Lane, ratio);
 
             // 사다리꼴 트랙은 높이에 따라 레인 폭이 달라지므로, 노트 가로 폭을 그 높이의 레인 폭에 맞춰 늘립니다.
+            // 레인 폭을 꽉 채우면 인접한 레인의 같은 박자 노트와 맞닿아 한 덩어리로 보이므로 양옆을 조금 덜어냅니다.
             _lanes.GetLaneBoundsAtRatio(note.Lane, ratio, out float leftX, out float rightX);
-            handle.RectTransform.sizeDelta = new Vector2(rightX - leftX, GetNoteHeightAtRatio(ratio));
+            float noteWidth = (rightX - leftX) * (1f - _horizontalPaddingRatio * 2f);
+            handle.RectTransform.sizeDelta = new Vector2(noteWidth, GetNoteHeightAtRatio(ratio));
         }
     }
 

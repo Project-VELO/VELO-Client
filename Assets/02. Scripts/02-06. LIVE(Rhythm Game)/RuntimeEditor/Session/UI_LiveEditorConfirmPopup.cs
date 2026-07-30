@@ -26,6 +26,9 @@ public class UI_LiveEditorConfirmPopup : UI_Popup
     [SerializeField]
     private Button _cancelButton;
 
+    [SerializeField]
+    private TMP_Text _cancelButtonLabel;
+
     protected override void Awake()
     {
         base.Awake();
@@ -34,10 +37,19 @@ public class UI_LiveEditorConfirmPopup : UI_Popup
         _cancelButton.onClick.AddListener(NotifyCanceled);
     }
 
-    public void SetMessage(string message, string confirmLabel)
+    /// <summary>
+    /// 두 선택지가 모두 진행을 뜻하는 경우도 있어(예: 기존 채보를 지우거나 그대로 불러오기)
+    /// 취소 쪽 문구도 호출하는 곳에서 정할 수 있게 열어 둡니다. 넘기지 않으면 단순 취소로 봅니다.
+    /// </summary>
+    public void SetMessage(string message, string confirmLabel, string cancelLabel = "취소")
     {
         _messageText.text = message;
         _confirmButtonLabel.text = confirmLabel;
+
+        if (_cancelButtonLabel != null)
+        {
+            _cancelButtonLabel.text = cancelLabel;
+        }
     }
 
     private void NotifyConfirmed()

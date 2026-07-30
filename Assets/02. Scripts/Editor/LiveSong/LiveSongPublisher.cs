@@ -49,18 +49,17 @@ public class LiveSongPublisher
             return false;
         }
 
+        // 복사를 시작한 뒤에 실패하면 이전 수록본과 새 파일이 뒤섞이므로, 필요한 원본이 모두 있는지 먼저 확인합니다.
+        if (!ValidateSources(song, difficulties, out error))
+        {
+            return false;
+        }
+
         string songFolder = LiveSongPaths.GetPublishedSongFolder(chapterFolder, songId);
         Directory.CreateDirectory(songFolder);
 
-        if (!CopyAudio(song, songFolder, out error))
-        {
-            return false;
-        }
-
-        if (!CopyCharts(songId, songFolder, difficulties, out error))
-        {
-            return false;
-        }
+        CopyAudio(song, songFolder);
+        CopyCharts(songId, songFolder, difficulties);
 
         // 곡 정보를 복사하기 전에 확정해야 수록본에도 함께 반영됩니다.
         EnsureDuration(song);
@@ -117,7 +116,10 @@ public class LiveSongPublisher
         return songIds;
     }
 
-    private bool CopyAudio(SongData song, string songFolder, out string error)
+    /// <summary>
+    /// 수록에 필요한 원본이 모두 있는지 한 번에 확인합니다. 한 파일이라도 없으면 수록 폴더를 건드리지 않고 중단합니다.
+    /// </summary>
+    private bool ValidateSources(SongData song, List<EDifficulty> difficulties, out string error)
     {
         error = null;
 
@@ -128,27 +130,32 @@ public class LiveSongPublisher
             return false;
         }
 
-        File.Copy(sourceAudioPath, LiveSongPaths.GetPublishedAudioPath(songFolder, song.AudioFilePath), true);
-        return true;
-    }
-
-    private bool CopyCharts(string songId, string songFolder, List<EDifficulty> difficulties, out string error)
-    {
-        error = null;
-
         foreach (EDifficulty difficulty in difficulties)
         {
-            string sourceChartPath = _chartIO.GetChartPath(songId, difficulty);
+            string sourceChartPath = _chartIO.GetChartPath(song.SongId, difficulty);
             if (!File.Exists(sourceChartPath))
             {
                 error = $"채보 파일을 찾지 못했습니다: {sourceChartPath}";
                 return false;
             }
-
-            File.Copy(sourceChartPath, LiveSongPaths.GetPublishedChartPath(songFolder, songId, difficulty), true);
         }
 
         return true;
+    }
+
+    private void CopyAudio(SongData song, string songFolder)
+    {
+        string sourceAudioPath = LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath);
+        File.Copy(sourceAudioPath, LiveSongPaths.GetPublishedAudioPath(songFolder, song.AudioFilePath), true);
+    }
+
+    private void CopyCharts(string songId, string songFolder, List<EDifficulty> difficulties)
+    {
+        foreach (EDifficulty difficulty in difficulties)
+        {
+            string sourceChartPath = _chartIO.GetChartPath(songId, difficulty);
+            File.Copy(sourceChartPath, LiveSongPaths.GetPublishedChartPath(songFolder, songId, difficulty), true);
+        }
     }
 
     private string ToAssetPath(string absolutePath)

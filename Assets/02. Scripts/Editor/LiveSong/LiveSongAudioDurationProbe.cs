@@ -21,7 +21,8 @@ public static class LiveSongAudioDurationProbe
             return false;
         }
 
-        string tempAssetPath = TEMP_ASSET_PATH_WITHOUT_EXTENSION + Path.GetExtension(audioFilePath);
+        // 경로를 고정하면 같은 이름의 기존 에셋을 덮어쓴 뒤 finally에서 지워 버릴 수 있어, 비어 있는 경로를 새로 받습니다.
+        string tempAssetPath = AssetDatabase.GenerateUniqueAssetPath(TEMP_ASSET_PATH_WITHOUT_EXTENSION + Path.GetExtension(audioFilePath));
 
         try
         {

@@ -4,16 +4,22 @@ using UnityEngine;
 /// 진입 컨텍스트와 수록 목록을 대조해, 곡 선택 화면이 처음 열어야 할 챕터와 곡을 정합니다.
 /// 지정곡이 있으면 그 곡이 속한 챕터를 열고, 없으면 해금된 첫 챕터의 첫 곡을 자동 선택합니다.
 /// </summary>
-public class LiveSongSelectionResolver
+public static class LiveSongSelectionResolver
 {
-    public bool TryResolve(LiveSongCatalog catalog, LiveEntryContext context, out int chapterIndex, out int songIndex)
+    public static bool TryResolve(LiveSongCatalog catalog, LiveEntryContext context, out int chapterIndex, out int songIndex)
     {
         chapterIndex = -1;
         songIndex = 0;
 
-        if (context.HasDesignatedSong && TryResolveDesignated(catalog, context.DesignatedSongId, out chapterIndex, out songIndex))
+        if (context.HasDesignatedSong)
         {
-            return true;
+            if (TryResolveDesignated(catalog, context.DesignatedSongId, out chapterIndex, out songIndex))
+            {
+                return true;
+            }
+
+            // 지정 상태를 남겨 두면 곡 목록이 잠긴 채로 열려 자유 선택으로 대체한 의미가 없어집니다.
+            context.ClearDesignatedSong();
         }
 
         chapterIndex = FindFirstUnlockedChapterIndex(catalog);
@@ -22,7 +28,7 @@ public class LiveSongSelectionResolver
         return chapterIndex >= 0;
     }
 
-    private bool TryResolveDesignated(LiveSongCatalog catalog, string designatedSongId, out int chapterIndex, out int songIndex)
+    private static bool TryResolveDesignated(LiveSongCatalog catalog, string designatedSongId, out int chapterIndex, out int songIndex)
     {
         chapterIndex = catalog.FindChapterIndex(designatedSongId);
         songIndex = catalog.FindSongIndex(chapterIndex, designatedSongId);
@@ -40,7 +46,7 @@ public class LiveSongSelectionResolver
         return false;
     }
 
-    private int FindFirstUnlockedChapterIndex(LiveSongCatalog catalog)
+    private static int FindFirstUnlockedChapterIndex(LiveSongCatalog catalog)
     {
         for (int i = 0; i < catalog.Chapters.Count; i++)
         {

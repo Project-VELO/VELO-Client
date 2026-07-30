@@ -65,6 +65,9 @@ public class UI_MusicSelectSongDetail : MonoBehaviour
 
     public void Clear()
     {
+        // 어느 경로로 비우든 진행 중이던 커버 로드가 방금 초기화한 화면을 덮어쓰지 않도록 세대를 넘깁니다.
+        _refreshGeneration++;
+
         _songNameText.text = EMPTY_VALUE_TEXT;
         _bpmText.text = $"BPM {EMPTY_VALUE_TEXT}";
         _lengthText.text = UNKNOWN_LENGTH_TEXT;

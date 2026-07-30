@@ -36,7 +36,7 @@ public class UI_MusicSelectChapterTabs : MonoBehaviour
         _nextButton.onClick.AddListener(SelectNextChapter);
     }
 
-    public void RefreshChapters(List<LiveChapterData> chapters)
+    public void RefreshChapters(IReadOnlyList<LiveChapterData> chapters)
     {
         _chapterCount = Mathf.Min(chapters.Count, _tabs.Count);
 

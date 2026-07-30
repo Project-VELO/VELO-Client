@@ -37,6 +37,16 @@ public class LiveEntryContext : POCOSingleton<LiveEntryContext>
         SelectedDifficulty = difficulty;
     }
 
+    /// <summary>
+    /// 지정곡이 수록 목록에 없을 때 호출합니다. 지정 상태만 남겨 두면 곡 목록이 잠긴 채로 열려
+    /// 플레이어가 어떤 곡도 고를 수 없게 되므로, 자유 선택으로 대체하기 전에 제약을 함께 풀어 줍니다.
+    /// </summary>
+    public void ClearDesignatedSong()
+    {
+        DesignatedSongId = null;
+        SelectedSongId = null;
+    }
+
     public void Clear()
     {
         EntryType = EEntryType.HOME_LIVE;

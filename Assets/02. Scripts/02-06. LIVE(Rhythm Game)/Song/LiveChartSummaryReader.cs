@@ -72,15 +72,15 @@ public class LiveChartSummaryReader
             return summary;
         }
 
-        summary.HasChart = true;
-
         ChartData chart = JsonUtility.FromJson<ChartData>(File.ReadAllText(chartPath));
-        if (ReferenceEquals(chart, null))
+        if (ReferenceEquals(chart, null) || ReferenceEquals(chart.Notes, null))
         {
-            Debug.LogWarning($"[LiveChartSummaryReader] 채보 파싱에 실패했습니다: {chartPath}");
+            // 읽을 수 없는 채보를 선택 가능으로 두면 난이도 버튼이 열린 채 플레이로 넘어가므로, 파일이 있어도 없는 것으로 답합니다.
+            Debug.LogWarning($"[LiveChartSummaryReader] 채보 파싱에 실패해 선택 불가로 둡니다: {chartPath}");
             return summary;
         }
 
+        summary.HasChart = true;
         summary.NoteCount = chart.Notes.Count;
 
         return summary;

@@ -148,7 +148,7 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager>
         if (_registeredPrefabs.TryGetValue(type, out GameObject registered) && registered != prefab)
         {
             Debug.LogWarning($"[ObjectPool] '{type}'에 이미 다른 프리팹이 등록되어 있어 교체합니다. 등록 주체가 겹치는지 확인이 필요합니다.");
-            UnregisterPool(type);
+            ClearPool(type);
         }
 
         _registeredPrefabs[type] = prefab;
@@ -157,16 +157,29 @@ public class PoolManager : MonoBehaviourSingleton<PoolManager>
     /// <summary>
     /// 등록을 해제하고 해당 풀을 비웁니다. 풀 오브젝트는 매니저 아래에 있어 씬 언로드로는 정리되지 않으므로,
     /// 등록을 건 쪽이 반드시 해제해 주어야 합니다.
+    /// 씬 전환은 새 씬을 모두 띄운 뒤 이전 씬을 내리므로, 등록해 둔 프리팹이 그대로 남아 있을 때만 해제합니다.
+    /// 그렇지 않으면 물러나는 씬이 새 씬의 등록을 지워 Pop이 실패합니다.
     /// </summary>
-    public void UnregisterPool(EPoolable type)
+    public void UnregisterPool(EPoolable type, GameObject prefab)
     {
-        if (_pools.TryGetValue(type, out Pool pool))
+        if (!_registeredPrefabs.TryGetValue(type, out GameObject registered) || registered != prefab)
         {
-            pool.Clear();
-            _pools.Remove(type);
+            return;
         }
 
+        ClearPool(type);
         _registeredPrefabs.Remove(type);
+    }
+
+    private void ClearPool(EPoolable type)
+    {
+        if (!_pools.TryGetValue(type, out Pool pool))
+        {
+            return;
+        }
+
+        pool.Clear();
+        _pools.Remove(type);
     }
 
     /// <summary>

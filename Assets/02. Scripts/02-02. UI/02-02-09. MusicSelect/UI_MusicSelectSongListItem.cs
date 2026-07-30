@@ -37,6 +37,10 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     [SerializeField]
     private TMP_Text _rankText;
 
+    [Foldout("Project")]
+    [SerializeField]
+    private Sprite _placeholderCover;
+
     private int _itemIndex;
 
     private void Awake()
@@ -50,6 +54,9 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _songNameText.text = songTitle;
         _rankText.text = ReferenceEquals(bestRecord, null) ? UNPLAYED_RANK_TEXT : bestRecord.BestRank.ToString();
         _button.interactable = isInteractable;
+
+        // 커버는 나중에 비동기로 도착하므로, 풀에서 재사용된 행이 이전 곡의 커버를 달고 나오지 않도록 먼저 지웁니다.
+        _coverImage.sprite = _placeholderCover;
 
         SetSelected(false);
     }
@@ -81,6 +88,7 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _itemIndex = 0;
         _button.interactable = true;
         _rankText.text = UNPLAYED_RANK_TEXT;
+        _coverImage.sprite = _placeholderCover;
         SetSelected(false);
     }
 

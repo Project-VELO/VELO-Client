@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// 수록 공간에서 읽어온 챕터·곡 목록을 보관하고 조회를 제공하는 싱글톤입니다.
@@ -10,7 +11,8 @@ public class LiveSongCatalog : POCOSingleton<LiveSongCatalog>
     private readonly List<LiveChapterData> _chapters = new List<LiveChapterData>();
     private readonly Dictionary<string, SongData> _songsBySongId = new Dictionary<string, SongData>();
 
-    public List<LiveChapterData> Chapters => _chapters;
+    // 목록을 그대로 노출하면 화면이나 에디터 툴에서 실수로 비울 수 있어, 읽기 전용으로만 내보냅니다.
+    public IReadOnlyList<LiveChapterData> Chapters => _chapters;
     public bool IsBuilt { get; private set; }
 
     /// <summary>
@@ -40,6 +42,12 @@ public class LiveSongCatalog : POCOSingleton<LiveSongCatalog>
         {
             foreach (SongData song in chapter.Songs)
             {
+                // 중복을 조용히 덮어쓰면 TryGetSong이 엉뚱한 챕터를 가리켜 지정곡 진입이 어긋나므로 수록 단계에서 잡아야 합니다.
+                if (_songsBySongId.ContainsKey(song.SongId))
+                {
+                    Debug.LogWarning($"[LiveSongCatalog] SongId가 챕터 간에 중복되어 나중 곡이 앞선 곡을 덮어씁니다: {song.SongId}");
+                }
+
                 _songsBySongId[song.SongId] = song;
             }
         }
@@ -88,7 +96,7 @@ public class LiveSongCatalog : POCOSingleton<LiveSongCatalog>
             return -1;
         }
 
-        List<SongData> songs = _chapters[chapterIndex].Songs;
+        IReadOnlyList<SongData> songs = _chapters[chapterIndex].Songs;
         for (int i = 0; i < songs.Count; i++)
         {
             if (songs[i].SongId == songId)

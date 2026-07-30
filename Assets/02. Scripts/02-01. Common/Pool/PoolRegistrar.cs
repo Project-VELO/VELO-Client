@@ -50,7 +50,7 @@ public class PoolRegistrar : MonoBehaviour
 
         foreach (PoolInfo poolInfo in _poolInfos)
         {
-            PoolManager.Instance.UnregisterPool(poolInfo.Type);
+            PoolManager.Instance.UnregisterPool(poolInfo.Type, poolInfo.Prefab);
         }
     }
 }

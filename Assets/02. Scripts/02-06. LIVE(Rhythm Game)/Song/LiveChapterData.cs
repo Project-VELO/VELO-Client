@@ -14,7 +14,13 @@ public class LiveChapterData
     public string UnlockStoryId { get; set; }
     public string FolderPath { get; set; }
 
-    public List<SongData> Songs => _songs;
+    // 목록을 그대로 노출하면 화면이나 에디터 툴에서 실수로 비울 수 있어, 읽기 전용으로만 내보냅니다.
+    public IReadOnlyList<SongData> Songs => _songs;
 
     public bool HasUnlockCondition => !string.IsNullOrEmpty(UnlockStoryId);
+
+    public void AddSong(SongData song)
+    {
+        _songs.Add(song);
+    }
 }

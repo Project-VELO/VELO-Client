@@ -25,6 +25,7 @@ public class LiveEditorAudioPlayer : MonoBehaviour
     private bool _isSourcePlaying;
     private bool _isPlaybackFinished;
     private ChartData _chart;
+    private CancellationTokenSource _loadCancellation;
 
     public AudioSource Audio => _audioSource;
     public float PlaybackSpeed { get => _audioSource.pitch; set => _audioSource.pitch = value; }
@@ -59,6 +60,10 @@ public class LiveEditorAudioPlayer : MonoBehaviour
     /// </summary>
     public void Init(SongData song)
     {
+        // 이전 곡의 로드를 끊지 않으면, 늦게 끝난 요청이 새 곡의 클립을 덮어쓰고 OnClipLoaded까지 태워
+        // 이전 곡의 길이가 새 곡의 song_info.json에 기록됩니다.
+        CancelLoad();
+
         _audioSource.Stop();
         _audioSource.clip = null;
         _playbackTimeMs = 0;
@@ -70,7 +75,25 @@ public class LiveEditorAudioPlayer : MonoBehaviour
             ? LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath)
             : LiveSongPaths.GetPublishedAudioPath(song.FolderPath, song.AudioFilePath);
 
-        LoadAudioAsync(audioPath, this.GetCancellationTokenOnDestroy()).Forget();
+        _loadCancellation = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+        LoadAudioAsync(audioPath, _loadCancellation.Token).Forget();
+    }
+
+    private void OnDestroy()
+    {
+        CancelLoad();
+    }
+
+    private void CancelLoad()
+    {
+        if (_loadCancellation == null)
+        {
+            return;
+        }
+
+        _loadCancellation.Cancel();
+        _loadCancellation.Dispose();
+        _loadCancellation = null;
     }
 
     public void SetChart(ChartData chart)

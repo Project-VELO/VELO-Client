@@ -87,7 +87,7 @@ public class LiveSongCatalogLoader
             SongData song = LoadSong(songFolder, chapter.ChapterId);
             if (!ReferenceEquals(song, null))
             {
-                chapter.Songs.Add(song);
+                chapter.AddSong(song);
             }
         }
     }

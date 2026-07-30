@@ -42,9 +42,35 @@ public class SongCoverLoader
         return cover;
     }
 
+    /// <summary>
+    /// 캐시를 비우면서 만들어 둔 리소스도 함께 파괴합니다.
+    /// 여기서 만든 Texture2D와 Sprite는 씬에 매여 있지 않아, 참조만 버리면 화면을 드나들 때마다 쌓입니다.
+    /// </summary>
     public void Clear()
     {
+        foreach (Sprite cover in _covers.Values)
+        {
+            DestroyCover(cover);
+        }
+
         _covers.Clear();
+    }
+
+    private void DestroyCover(Sprite cover)
+    {
+        if (cover == null)
+        {
+            return;
+        }
+
+        // 스프라이트를 먼저 없앤 뒤 원본 텍스처를 정리해야 파괴된 텍스처를 참조하는 순간이 생기지 않습니다.
+        Texture2D texture = cover.texture;
+        UnityEngine.Object.Destroy(cover);
+
+        if (texture != null)
+        {
+            UnityEngine.Object.Destroy(texture);
+        }
     }
 
     /// <summary>

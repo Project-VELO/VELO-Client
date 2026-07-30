@@ -30,7 +30,7 @@ public class UI_MusicSelectSongList : MonoBehaviour
         _coverLoader = coverLoader;
     }
 
-    public void RefreshSongs(List<SongData> songs, bool isSelectable)
+    public void RefreshSongs(IReadOnlyList<SongData> songs, bool isSelectable)
     {
         ReleaseItems();
         _refreshGeneration++;
@@ -98,7 +98,7 @@ public class UI_MusicSelectSongList : MonoBehaviour
         return string.IsNullOrEmpty(song.Title) ? song.SongId : song.Title;
     }
 
-    private async UniTaskVoid LoadCoversAsync(List<SongData> songs, int generation, CancellationToken cancellationToken)
+    private async UniTaskVoid LoadCoversAsync(IReadOnlyList<SongData> songs, int generation, CancellationToken cancellationToken)
     {
         for (int i = 0; i < songs.Count; i++)
         {

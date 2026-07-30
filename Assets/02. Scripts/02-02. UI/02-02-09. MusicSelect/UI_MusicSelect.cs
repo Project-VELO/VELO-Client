@@ -48,7 +48,6 @@ public class UI_MusicSelect : MonoBehaviour
 
     private readonly LiveChartSummaryReader _chartSummaryReader = new LiveChartSummaryReader();
     private readonly SongCoverLoader _coverLoader = new SongCoverLoader();
-    private readonly LiveSongSelectionResolver _selectionResolver = new LiveSongSelectionResolver();
 
     private int _chapterIndex = -1;
     private EDifficulty _difficulty = EDifficulty.NORMAL;
@@ -71,6 +70,12 @@ public class UI_MusicSelect : MonoBehaviour
         InitCatalog();
     }
 
+    // 커버는 씬에 매이지 않는 리소스라, 화면을 떠날 때 캐시가 직접 정리해 주어야 드나들 때마다 쌓이지 않습니다.
+    private void OnDestroy()
+    {
+        _coverLoader.Clear();
+    }
+
     private void InitButtons()
     {
         // 뒤로가기 위치는 진입 경로에 따라 달라지므로 UI_SceneTransitionButton(고정 대상)을 쓸 수 없습니다.
@@ -87,8 +92,7 @@ public class UI_MusicSelect : MonoBehaviour
         catalog.Rebuild();
 
         // 연습실 LIVE만 화면 이름을 달리 표기합니다.
-        bool isPractice = LiveEntryContext.Instance.EntryType == EEntryType.PRACTICE_LIVE;
-        _subTitleText.text = isPractice ? PRACTICE_TITLE : DEFAULT_TITLE;
+        _subTitleText.text = LiveEntryContext.Instance.EntryType == EEntryType.PRACTICE_LIVE ? PRACTICE_TITLE : DEFAULT_TITLE;
 
         if (catalog.Chapters.Count == 0)
         {
@@ -99,7 +103,7 @@ public class UI_MusicSelect : MonoBehaviour
 
         _chapterTabs.RefreshChapters(catalog.Chapters);
 
-        if (!_selectionResolver.TryResolve(catalog, LiveEntryContext.Instance, out int chapterIndex, out int songIndex))
+        if (!LiveSongSelectionResolver.TryResolve(catalog, LiveEntryContext.Instance, out int chapterIndex, out int songIndex))
         {
             Debug.LogWarning("[UI_MusicSelect] 해금된 챕터가 없습니다.");
             RefreshEmptyState();
@@ -114,7 +118,7 @@ public class UI_MusicSelect : MonoBehaviour
         _chapterIndex = chapterIndex;
         _chapterTabs.SetSelectedIndex(chapterIndex);
 
-        List<SongData> songs = LiveSongCatalog.Instance.Chapters[chapterIndex].Songs;
+        IReadOnlyList<SongData> songs = LiveSongCatalog.Instance.Chapters[chapterIndex].Songs;
 
         // 스케줄 LIVE는 지정곡 외의 곡을 고를 수 없으므로 목록 자체를 잠급니다.
         _songList.RefreshSongs(songs, !LiveEntryContext.Instance.HasDesignatedSong);
@@ -148,8 +152,7 @@ public class UI_MusicSelect : MonoBehaviour
         _recordPanel.RefreshRecord(PlayerDataProvider.Instance.GetSongRecord(_selectedSong.SongId, difficulty));
 
         // 카드 편성이 갖춰지지 않았거나 채보가 없으면 플레이할 수 없습니다.
-        bool hasEnoughCards = PlayerDataProvider.Instance.Data.SelectedCardIds.Count >= REQUIRED_CARD_COUNT;
-        _liveReadyButton.interactable = summary.HasChart && hasEnoughCards;
+        _liveReadyButton.interactable = summary.HasChart && PlayerDataProvider.Instance.Data.SelectedCardIds.Count >= REQUIRED_CARD_COUNT;
     }
 
     private void RefreshEmptyState()

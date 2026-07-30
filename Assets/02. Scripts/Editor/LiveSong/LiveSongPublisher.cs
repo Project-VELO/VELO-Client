@@ -1,0 +1,138 @@
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+/// <summary>
+/// 채보 작업 공간(Songs/, Charts/)의 결과물을 곡 선택 화면이 읽는 수록 공간(LiveSongs/)으로 옮기는 것을 전담합니다.
+/// 수록 폴더는 음원까지 포함한 자기 완결적 묶음으로 만들어, 작업 중인 채보가 곡 선택 화면에 새어 나오지 않게 합니다.
+/// </summary>
+public class LiveSongPublisher
+{
+    private readonly LiveEditorSongIO _songIO = new LiveEditorSongIO();
+    private readonly LiveEditorChartIO _chartIO = new LiveEditorChartIO();
+
+    public string CreateChapterFolder(int order, string chapterId)
+    {
+        string chapterFolder = LiveSongPaths.GetPublishedChapterFolder(order, chapterId);
+        Directory.CreateDirectory(chapterFolder);
+
+        // 표시명을 손볼 자리를 미리 만들어 둡니다. 파일이 없어도 폴더명으로 동작하므로 덮어쓰지는 않습니다.
+        string chapterInfoPath = LiveSongPaths.GetPublishedChapterInfoPath(chapterFolder);
+        if (!File.Exists(chapterInfoPath))
+        {
+            var info = new ChapterInfo { DisplayName = chapterId, UnlockStoryId = string.Empty };
+            File.WriteAllText(chapterInfoPath, JsonUtility.ToJson(info, true));
+        }
+
+        AssetDatabase.Refresh();
+        return chapterFolder;
+    }
+
+    /// <summary>
+    /// 곡 메타데이터·음원·선택한 난이도의 채보를 챕터 폴더로 복사합니다. 이미 수록되어 있으면 덮어씁니다.
+    /// </summary>
+    public bool Publish(string songId, string chapterFolder, List<EDifficulty> difficulties, out string error)
+    {
+        error = null;
+
+        SongData song = _songIO.LoadSong(_songIO.GetSongInfoPath(songId));
+        if (ReferenceEquals(song, null))
+        {
+            error = $"{LiveSongPaths.SONG_INFO_FILE_NAME}을 읽지 못했습니다: {songId}";
+            return false;
+        }
+
+        if (difficulties.Count == 0)
+        {
+            error = $"수록할 난이도를 하나 이상 선택해야 합니다: {songId}";
+            return false;
+        }
+
+        string songFolder = LiveSongPaths.GetPublishedSongFolder(chapterFolder, songId);
+        Directory.CreateDirectory(songFolder);
+
+        if (!CopyAudio(song, songFolder, out error))
+        {
+            return false;
+        }
+
+        if (!CopyCharts(songId, songFolder, difficulties, out error))
+        {
+            return false;
+        }
+
+        File.Copy(_songIO.GetSongInfoPath(songId), LiveSongPaths.GetPublishedSongInfoPath(songFolder), true);
+
+        AssetDatabase.Refresh();
+        return true;
+    }
+
+    /// <summary>
+    /// 수록을 취소합니다. 폴더만 지우면 Unity가 만들어 둔 메타 파일이 남아 경고가 뜨므로 AssetDatabase로 지웁니다.
+    /// </summary>
+    public bool Unpublish(string chapterFolder, string songId)
+    {
+        string songFolder = LiveSongPaths.GetPublishedSongFolder(chapterFolder, songId);
+        if (!Directory.Exists(songFolder))
+        {
+            return false;
+        }
+
+        return AssetDatabase.DeleteAsset(ToAssetPath(songFolder));
+    }
+
+    public List<string> GetPublishedSongIds(string chapterFolder)
+    {
+        var songIds = new List<string>();
+
+        foreach (string songFolder in LiveSongPaths.GetPublishedSongFolders(chapterFolder))
+        {
+            songIds.Add(Path.GetFileName(songFolder));
+        }
+
+        return songIds;
+    }
+
+    private bool CopyAudio(SongData song, string songFolder, out string error)
+    {
+        error = null;
+
+        string sourceAudioPath = LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath);
+        if (!File.Exists(sourceAudioPath))
+        {
+            error = $"음원 파일을 찾지 못했습니다: {sourceAudioPath}";
+            return false;
+        }
+
+        File.Copy(sourceAudioPath, LiveSongPaths.GetPublishedAudioPath(songFolder, song.AudioFilePath), true);
+        return true;
+    }
+
+    private bool CopyCharts(string songId, string songFolder, List<EDifficulty> difficulties, out string error)
+    {
+        error = null;
+
+        foreach (EDifficulty difficulty in difficulties)
+        {
+            string sourceChartPath = _chartIO.GetChartPath(songId, difficulty);
+            if (!File.Exists(sourceChartPath))
+            {
+                error = $"채보 파일을 찾지 못했습니다: {sourceChartPath}";
+                return false;
+            }
+
+            File.Copy(sourceChartPath, LiveSongPaths.GetPublishedChartPath(songFolder, songId, difficulty), true);
+        }
+
+        return true;
+    }
+
+    private string ToAssetPath(string absolutePath)
+    {
+        string normalized = absolutePath.Replace('\\', '/');
+        string dataPath = Application.dataPath.Replace('\\', '/');
+
+        return "Assets" + normalized.Substring(dataPath.Length);
+    }
+}

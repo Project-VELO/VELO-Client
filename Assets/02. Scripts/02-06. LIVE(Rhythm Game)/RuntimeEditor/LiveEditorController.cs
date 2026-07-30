@@ -90,11 +90,25 @@ public class LiveEditorController : MonoBehaviour
             return false;
         }
 
-        ChartData chart = isNew ? CreateEmptyChart(song, difficulty) : _chartIO.LoadChart(_chartIO.GetChartPath(songId, difficulty));
-        if (chart == null)
+        ChartData chart;
+
+        if (isNew)
         {
-            Debug.LogError($"[LiveEditorController] 채보를 찾을 수 없습니다: {songId} / {difficulty}");
-            return false;
+            // 실패 사유는 CreateEmptyChart가 이미 남기므로 여기서 덧붙이지 않습니다.
+            chart = CreateEmptyChart(song, difficulty);
+            if (chart == null)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            chart = _chartIO.LoadChart(_chartIO.GetChartPath(songId, difficulty));
+            if (chart == null)
+            {
+                Debug.LogError($"[LiveEditorController] 채보를 찾을 수 없습니다: {songId} / {difficulty}");
+                return false;
+            }
         }
 
         _currentDifficulty = difficulty;
@@ -165,16 +179,20 @@ public class LiveEditorController : MonoBehaviour
         return isSaved;
     }
 
+    /// <summary>
+    /// 빈 채보를 만들어 곧바로 파일로 남깁니다. 이후 목록에서 "불러오기" 대상으로 잡히게 하기 위함입니다.
+    /// 파일로 남기지 못했다면 저장된 채보를 편집하는 것처럼 열려서는 안 되므로 실패로 처리합니다.
+    /// </summary>
     private ChartData CreateEmptyChart(SongData song, EDifficulty difficulty)
     {
         var chart = new ChartData();
         chart.SongId = song.SongId;
         chart.BaseBpm = song.Bpm;
 
-        // 새 채보는 이 시점에 곧바로 파일로 남겨, 이후 목록에서 "불러오기" 대상으로 잡히게 합니다.
         if (!_chartIO.SaveChart(_chartIO.GetChartPath(song.SongId, difficulty), chart, song, out List<string> errors))
         {
             Debug.LogError($"[LiveEditorController] 빈 채보 저장 실패:\n{string.Join("\n", errors)}");
+            return null;
         }
 
         return chart;

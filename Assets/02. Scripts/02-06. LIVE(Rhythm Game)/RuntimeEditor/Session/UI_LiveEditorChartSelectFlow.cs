@@ -98,16 +98,14 @@ public class UI_LiveEditorChartSelectFlow : MonoBehaviour
     }
 
     /// <summary>
-    /// 기존 채보 파일을 지우고 빈 채보로 새로 시작합니다.
-    /// 빈 채보는 OpenChart가 곧바로 파일로 남기므로, 여기서는 지우는 것까지만 책임집니다.
+    /// 기존 채보를 빈 채보로 바꿉니다.
+    ///
+    /// 먼저 지우지 않고 덮어쓰는 이유는 두 가지입니다.
+    /// 하나는 OpenChart가 곡 정보를 읽지 못해 중간에 실패하면 기존 채보만 사라진 채로 끝나기 때문이고,
+    /// 다른 하나는 파일을 지우면 Unity가 만든 .meta도 함께 사라져 새 파일이 다른 GUID를 받기 때문입니다.
     /// </summary>
     private void ReplaceExistingChart()
     {
-        if (!_controller.ChartIO.DeleteChart(_selectedSongId, _selectedDifficulty))
-        {
-            Debug.LogError($"[UI_LiveEditorChartSelectFlow] 삭제할 채보 파일을 찾을 수 없습니다: {_selectedSongId} / {_selectedDifficulty}");
-        }
-
         _popupPresenter.CloseLatest();
         OpenEditor(true);
     }

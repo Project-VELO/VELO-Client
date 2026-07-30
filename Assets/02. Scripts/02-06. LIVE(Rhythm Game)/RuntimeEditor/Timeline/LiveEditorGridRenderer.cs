@@ -6,6 +6,7 @@ using VInspector;
 /// 마디 경계선과 분박선을 그리는 것을 전담합니다.
 /// 선의 위치를 절대 시각이 아닌 마디 좌표에서 직접 산출하므로 BPM 변환 없이 매 프레임 GC 할당 없이 갱신됩니다.
 /// 선 오브젝트는 Awake에서 최대 개수만큼 풀에서 미리 확보한 뒤, 이후에는 활성/비활성 토글만 수행합니다.
+/// 확보한 선은 매 프레임 반환하지 않으므로 파괴될 때 한 번에 풀로 되돌려 줍니다.
 /// </summary>
 public class LiveEditorGridRenderer : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class LiveEditorGridRenderer : MonoBehaviour
     {
         _subdivisionLineThickness = FillLinePool(_subdivisionLines, EPoolable.EditorGridLine, _maxSubdivisionLineCount);
         _barLineThickness = FillLinePool(_barLines, EPoolable.EditorBarLine, _maxBarLineCount);
+    }
+
+    private void OnDestroy()
+    {
+        ReturnLinePool(_subdivisionLines, EPoolable.EditorGridLine);
+        ReturnLinePool(_barLines, EPoolable.EditorBarLine);
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
@@ -149,6 +156,28 @@ public class LiveEditorGridRenderer : MonoBehaviour
         }
 
         return baseThickness;
+    }
+
+    /// <summary>
+    /// 확보해 둔 선을 풀로 되돌립니다.
+    /// 풀은 꺼내 간 오브젝트를 추적하므로 반환하지 않고 사라지면 사용량 집계가 실제와 어긋나고,
+    /// 풀 정리 시점에 주인 없는 오브젝트가 남습니다.
+    /// 풀이 먼저 파괴된 뒤라면 되돌릴 곳이 없으므로 목록만 비웁니다.
+    /// </summary>
+    private static void ReturnLinePool(List<RectTransform> lines, EPoolable poolType)
+    {
+        if (PoolManager.HasInstance)
+        {
+            foreach (RectTransform line in lines)
+            {
+                if (line != null)
+                {
+                    PoolManager.Instance.Push(poolType, line.gameObject);
+                }
+            }
+        }
+
+        lines.Clear();
     }
 
     private static void DeactivateFrom(List<RectTransform> lines, int startIndex)

@@ -37,6 +37,29 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
         FillLabelPool();
     }
 
+    /// <summary>
+    /// 확보해 둔 라벨을 풀로 되돌립니다.
+    /// 풀은 꺼내 간 오브젝트를 추적하므로 반환하지 않고 사라지면 사용량 집계가 실제와 어긋나고,
+    /// 풀 정리 시점에 주인 없는 오브젝트가 남습니다.
+    /// 풀이 먼저 파괴된 뒤라면 되돌릴 곳이 없으므로 목록만 비웁니다.
+    /// </summary>
+    private void OnDestroy()
+    {
+        if (PoolManager.HasInstance)
+        {
+            foreach (TMP_Text label in _barLabels)
+            {
+                if (label != null)
+                {
+                    PoolManager.Instance.Push(EPoolable.EditorBarLabel, label.gameObject);
+                }
+            }
+        }
+
+        _barLabels.Clear();
+        _boundBarIndices.Clear();
+    }
+
     public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
     {
         _lanes = lanes;

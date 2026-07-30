@@ -62,10 +62,33 @@ public class LiveSongPublisher
             return false;
         }
 
+        // 곡 정보를 복사하기 전에 확정해야 수록본에도 함께 반영됩니다.
+        EnsureDuration(song);
         File.Copy(_songIO.GetSongInfoPath(songId), LiveSongPaths.GetPublishedSongInfoPath(songFolder), true);
 
         AssetDatabase.Refresh();
         return true;
+    }
+
+    /// <summary>
+    /// 곡 길이는 음원을 실제로 읽어야 알 수 있어 song_info.json에 비어 있는 경우가 많습니다.
+    /// 채보 에디터로 곡을 한 번 열어야만 값이 생기는 상태에 기대지 않도록, 수록 시점에 직접 확정합니다.
+    /// </summary>
+    private void EnsureDuration(SongData song)
+    {
+        string audioPath = LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath);
+        if (!LiveSongAudioDurationProbe.TryMeasureSeconds(audioPath, out float seconds))
+        {
+            return;
+        }
+
+        if (Mathf.Approximately(song.Duration, seconds))
+        {
+            return;
+        }
+
+        song.Duration = seconds;
+        _songIO.SaveSong(_songIO.GetSongInfoPath(song.SongId), song);
     }
 
     /// <summary>

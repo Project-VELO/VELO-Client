@@ -7,4 +7,7 @@ public enum ESceneNames
     StoryScene,
     ShopScene,
     CollectionScene,
+    OfficeScene,
+    MusicSelectScene,
+    LiveScene,
 }

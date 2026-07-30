@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. Scenes/01-02. Sub/06_CollectionScene.unity
     guid: b443b7c296be1ae4b88bfc496ca463f7
+  - enabled: 1
+    path: Assets/01. Scenes/01-02. Sub/08_OfficeScene.unity
+    guid: 51303c3538a08bc4a87b8b9948540a07
+  - enabled: 1
+    path: Assets/01. Scenes/01-02. Sub/09_MusicSelectScene.unity
+    guid: f59a2413f1cdc114797a2806d4d3b5de
+  - enabled: 1
+    path: Assets/01. Scenes/01-02. Sub/10_LiveScene.unity
+    guid: 8ba9def3a3f4af34495d967342b97979
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

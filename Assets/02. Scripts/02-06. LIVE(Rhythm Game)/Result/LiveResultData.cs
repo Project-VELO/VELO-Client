@@ -35,6 +35,12 @@ public class LiveResultData
     private ELiveRank _rank = ELiveRank.FAILED;
 
     [SerializeField]
+    private float _accuracy = 0f;
+
+    [SerializeField]
+    private int _totalNoteCount = 0;
+
+    [SerializeField]
     private int _perfectCount = 0;
 
     [SerializeField]
@@ -84,6 +90,16 @@ public class LiveResultData
     
     public int Score { get => _score; set => _score = value; }
     public ELiveRank Rank { get => _rank; set => _rank = value; }
+
+    /// <summary>
+    /// 백분율 정확도입니다. 랭크 판정의 근거이자 결과 화면 표시 값입니다.
+    /// </summary>
+    public float Accuracy { get => _accuracy; set => _accuracy = value; }
+
+    /// <summary>
+    /// 채보의 전체 노트 개수입니다. 귀신 노트 오입력은 포함하지 않습니다.
+    /// </summary>
+    public int TotalNoteCount { get => _totalNoteCount; set => _totalNoteCount = value; }
     
     public int PerfectCount { get => _perfectCount; set => _perfectCount = value; }
     public int GreatCount { get => _greatCount; set => _greatCount = value; }

@@ -10,4 +10,5 @@ public enum ESceneNames
     OfficeScene,
     MusicSelectScene,
     LiveScene,
+    LiveResultScene,
 }

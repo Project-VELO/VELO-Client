@@ -46,6 +46,12 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private TMP_Text _subTitleText;
 
+    [Foldout("Hierarchy")]
+    [Header("Popups")]
+    // 이 화면에서만 열고 닫는 팝업이라 PersistentScene이 아니라 09_MusicSelectScene에 두고 여기서 참조합니다.
+    [SerializeField]
+    private UI_PhotocardSelectPopup _photocardSelectPopup;
+
     private readonly LiveChartSummaryReader _chartSummaryReader = new LiveChartSummaryReader();
     private readonly SongCoverLoader _coverLoader = new SongCoverLoader();
 
@@ -181,8 +187,14 @@ public class UI_MusicSelect : MonoBehaviour
 
         LiveEntryContext.Instance.SetSelection(_selectedSong.SongId, _difficulty);
 
-        // TODO: 포토카드 선택 팝업 구현 시 UIManager.Instance.PopupHandler.OpenPopup(...)으로 교체합니다.
-        Debug.LogWarning($"[UI_MusicSelect] 포토카드 선택 팝업이 아직 구현되지 않았습니다. (선택 곡={_selectedSong.SongId}, 난이도={_difficulty})");
+        // 팝업 스택은 PersistentScene의 UIManager가 들고 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
+        if (UIManager.Instance == null)
+        {
+            Debug.LogWarning("[UI_MusicSelect] UIManager가 없어 포토카드 선택 팝업을 열지 못했습니다. PersistentScene이 로드되어 있는지 확인해 주세요.");
+            return;
+        }
+
+        UIManager.Instance.PopupHandler.OpenPopup(_photocardSelectPopup);
     }
 
     // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.

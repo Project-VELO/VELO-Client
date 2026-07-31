@@ -22,7 +22,7 @@ public class UI_LiveEditorPlaybackSpeedControl : MonoBehaviour
 
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     [SerializeField]
     private TMP_Text _valueText;

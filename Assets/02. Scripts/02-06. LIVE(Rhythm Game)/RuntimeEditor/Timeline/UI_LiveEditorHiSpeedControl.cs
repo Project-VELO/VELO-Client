@@ -73,7 +73,7 @@ public class UI_LiveEditorHiSpeedControl : MonoBehaviour
 
     /// <summary>
     /// 0.1씩 더하다 보면 부동소수점 오차가 쌓여 4.9999 같은 값이 되므로 소수점 둘째 자리로 반올림해 고정합니다.
-    /// 상·하한 제한 자체는 LiveEditorScrollMapper가 담당합니다.
+    /// 상·하한 제한 자체는 LiveScrollMapper가 담당합니다.
     /// </summary>
     private void SetHiSpeed(float hiSpeed)
     {
@@ -87,8 +87,8 @@ public class UI_LiveEditorHiSpeedControl : MonoBehaviour
     {
         _valueText.text = $"{_timeline.HiSpeed:0.00}x";
 
-        bool isAtMin = _timeline.HiSpeed <= LiveEditorScrollMapper.MIN_HI_SPEED;
-        bool isAtMax = _timeline.HiSpeed >= LiveEditorScrollMapper.MAX_HI_SPEED;
+        bool isAtMin = _timeline.HiSpeed <= LiveScrollMapper.MIN_HI_SPEED;
+        bool isAtMax = _timeline.HiSpeed >= LiveScrollMapper.MAX_HI_SPEED;
 
         _coarseDownButton.interactable = !isAtMin;
         _fineDownButton.interactable = !isAtMin;

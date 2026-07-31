@@ -18,7 +18,7 @@ public class UI_LiveEditorPlaybackButton : MonoBehaviour
     private LiveEditorPlaybackControl _playbackControl;
 
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     [SerializeField]
     private Button _playPauseButton;

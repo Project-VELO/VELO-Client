@@ -58,7 +58,7 @@ public class LiveEditorInputHandler : MonoBehaviour
         }
 
         bool isLongNoteModifier = Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
-        if (isLongNoteModifier && lane != LiveEditorNoteWriter.GHOST_LANE)
+        if (isLongNoteModifier && lane != LiveLane.GHOST)
         {
             HandleLongNoteClick(lane, timeMs);
             return;

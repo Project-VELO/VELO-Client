@@ -29,8 +29,8 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
     private readonly List<string> _barNumberTexts = new List<string>();
 
     private UI_LiveTrackLanes _lanes;
-    private LiveEditorBarLayout _barLayout;
-    private LiveEditorScrollMapper _scrollMapper;
+    private LiveBarLayout _barLayout;
+    private LiveScrollMapper _scrollMapper;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
         _boundBarIndices.Clear();
     }
 
-    public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
+    public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
     {
         _lanes = lanes;
         _barLayout = barLayout;

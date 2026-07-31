@@ -16,8 +16,6 @@ using VInspector;
 [RequireComponent(typeof(CanvasRenderer))]
 public class UI_LiveTrackLanes : MaskableGraphic
 {
-    private const int LANE_COUNT = 6;
-
     private static readonly List<float> CUMULATIVE_LANE_RATIOS = new List<float>
     {
         0f,
@@ -112,7 +110,7 @@ public class UI_LiveTrackLanes : MaskableGraphic
         float halfWidth = rect.width * 0.5f;
         float halfLength = rect.height * 0.5f;
 
-        for (int i = 0; i < LANE_COUNT; i++)
+        for (int i = 0; i < LiveLane.COUNT; i++)
         {
             float leftX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i]);
             float rightX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i + 1]);
@@ -126,7 +124,7 @@ public class UI_LiveTrackLanes : MaskableGraphic
                 laneColor);
         }
 
-        for (int i = 1; i < LANE_COUNT; i++)
+        for (int i = 1; i < LiveLane.COUNT; i++)
         {
             float x = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i]);
             AddThickLine(vh, new Vector2(x, -halfLength), new Vector2(x, halfLength), _dividerWidth, _dividerColor);

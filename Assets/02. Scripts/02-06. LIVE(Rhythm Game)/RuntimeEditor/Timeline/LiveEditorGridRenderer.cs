@@ -31,8 +31,8 @@ public class LiveEditorGridRenderer : MonoBehaviour
     private readonly List<RectTransform> _barLines = new List<RectTransform>();
 
     private UI_LiveTrackLanes _lanes;
-    private LiveEditorBarLayout _barLayout;
-    private LiveEditorScrollMapper _scrollMapper;
+    private LiveBarLayout _barLayout;
+    private LiveScrollMapper _scrollMapper;
 
     // 매 프레임 두께에 원근 보정을 곱하므로, 배율이 누적되지 않도록 프리팹 원본 두께를 따로 기억해 둡니다.
     private float _subdivisionLineThickness;
@@ -50,7 +50,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
         ReturnLinePool(_barLines, EPoolable.EditorBarLine);
     }
 
-    public void Init(UI_LiveTrackLanes lanes, LiveEditorBarLayout barLayout, LiveEditorScrollMapper scrollMapper)
+    public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
     {
         _lanes = lanes;
         _barLayout = barLayout;

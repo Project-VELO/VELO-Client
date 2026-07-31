@@ -3,9 +3,9 @@ public enum EPoolable
 {
     Empty,
     EditorGridLine,
-    EditorNoteNormal,
-    EditorNoteGhost,
-    EditorNoteLong,
+    LiveNoteNormal,
+    LiveNoteGhost,
+    LiveNoteLong,
     EditorBarLine,
     EditorBarLabel,
     EditorListItem,

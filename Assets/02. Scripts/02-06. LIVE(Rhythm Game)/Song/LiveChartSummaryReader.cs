@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using UnityEngine;
 
 /// <summary>
 /// 수록된 채보 파일에서 곡 선택 화면 표시에 필요한 값(노트 수, 난이도 레벨)을 뽑아냅니다.
@@ -66,17 +64,10 @@ public class LiveChartSummaryReader
             Level = GetAuthoredLevel(song, difficulty),
         };
 
-        string chartPath = LiveSongPaths.GetPublishedChartPath(song.FolderPath, song.SongId, difficulty);
-        if (!File.Exists(chartPath))
+        // 읽을 수 없는 채보를 선택 가능으로 두면 난이도 버튼이 열린 채 플레이로 넘어가므로, 파일이 있어도 없는 것으로 답합니다.
+        ChartData chart = LiveChartLoader.LoadPublished(song, difficulty);
+        if (ReferenceEquals(chart, null))
         {
-            return summary;
-        }
-
-        ChartData chart = JsonUtility.FromJson<ChartData>(File.ReadAllText(chartPath));
-        if (ReferenceEquals(chart, null) || ReferenceEquals(chart.Notes, null))
-        {
-            // 읽을 수 없는 채보를 선택 가능으로 두면 난이도 버튼이 열린 채 플레이로 넘어가므로, 파일이 있어도 없는 것으로 답합니다.
-            Debug.LogWarning($"[LiveChartSummaryReader] 채보 파싱에 실패해 선택 불가로 둡니다: {chartPath}");
             return summary;
         }
 

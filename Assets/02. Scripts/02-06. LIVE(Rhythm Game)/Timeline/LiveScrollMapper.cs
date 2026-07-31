@@ -9,7 +9,7 @@ using UnityEngine;
 /// 마디 좌표를 깊이에 정비례하는 값으로만 옮기면 노트가 월드 공간에서 등속으로 다가오게 되고,
 /// 화면상의 가속과 확대는 카메라가 알아서 처리합니다.
 /// </summary>
-public class LiveEditorScrollMapper
+public class LiveScrollMapper
 {
     // 하이스피드 1.0배일 때 히트라인부터 트랙 최상단까지 보이는 마디 수입니다.
     private const float BASE_VISIBLE_BAR_COUNT = 4f;

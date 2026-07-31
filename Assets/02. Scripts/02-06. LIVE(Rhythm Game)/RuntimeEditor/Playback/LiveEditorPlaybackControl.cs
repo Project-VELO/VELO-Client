@@ -12,7 +12,7 @@ public class LiveEditorPlaybackControl : MonoBehaviour
     private LiveEditorController _controller;
 
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     [SerializeField]
     private LiveEditorTimeline _timeline;

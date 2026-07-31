@@ -108,7 +108,7 @@ public class LiveEditorChartValidator
     {
         foreach (NoteData note in chart.Notes)
         {
-            if (!LiveEditorBpmTimeConverter.IsOnGrid(chart, note.TimeMs))
+            if (!LiveBpmTimeConverter.IsOnGrid(chart, note.TimeMs))
             {
                 errors.Add($"[{note.NoteId}] TimeMs({note.TimeMs})가 그리드 스냅 위치에 정렬되어 있지 않습니다.");
             }

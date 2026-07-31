@@ -6,7 +6,7 @@ using System.Collections.Generic;
 /// 그리드 스냅 계산을 전담하는 정적 유틸리티 클래스입니다.
 /// 그리드 해상도는 4/8/16/24/32분박을 모두 나눠 떨어지게 하는 비트당 24칸(LCM) 해상도로 고정합니다.
 /// </summary>
-public static class LiveEditorBpmTimeConverter
+public static class LiveBpmTimeConverter
 {
     private const int GRID_SUBDIVISIONS_PER_BEAT = 24;
 

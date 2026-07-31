@@ -19,7 +19,7 @@ public class LiveEditorEditShortcuts : MonoBehaviour
     private LiveEditorNoteEditing _noteEditing;
 
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     private readonly List<InputAction> _actions = new List<InputAction>();
     private readonly List<NoteData> _clipboardNotes = new List<NoteData>();

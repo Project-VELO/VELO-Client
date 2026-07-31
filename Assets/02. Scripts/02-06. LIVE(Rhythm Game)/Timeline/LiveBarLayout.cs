@@ -7,20 +7,20 @@ using UnityEngine;
 /// 매 프레임 호출되는 조회 API(GetBarPosition 등)는 미리 구축된 마디 테이블만 이진 탐색하여 GC 할당이 없으며,
 /// 정확한 시각이 필요한 편집 시점 API(GetCellTimeMs)에서만 BPM 변환기를 사용합니다.
 /// </summary>
-public class LiveEditorBarLayout
+public class LiveBarLayout
 {
     private const int DEFAULT_BEATS_PER_BAR = 4;
 
     // 잘못된 BPM이나 곡 길이가 입력됐을 때 마디 생성이 무한히 반복되는 것을 막는 상한입니다.
     private const int MAX_BAR_COUNT = 4096;
 
-    private readonly List<LiveEditorBarInfo> _bars = new List<LiveEditorBarInfo>();
+    private readonly List<LiveBarInfo> _bars = new List<LiveBarInfo>();
 
     private ChartData _chart;
     private int _beatsPerBar = DEFAULT_BEATS_PER_BAR;
     private int _songLengthMs;
 
-    public IReadOnlyList<LiveEditorBarInfo> Bars => _bars;
+    public IReadOnlyList<LiveBarInfo> Bars => _bars;
     public int BarCount => _bars.Count;
     public int BeatsPerBar => _beatsPerBar;
     public int SongLengthMs => _songLengthMs;
@@ -45,10 +45,10 @@ public class LiveEditorBarLayout
         for (int barIndex = 0; barIndex < MAX_BAR_COUNT; barIndex++)
         {
             double startBeat = (double)barIndex * _beatsPerBar;
-            int startTimeMs = LiveEditorBpmTimeConverter.BeatToTimeMs(chart, startBeat);
-            int endTimeMs = LiveEditorBpmTimeConverter.BeatToTimeMs(chart, startBeat + _beatsPerBar);
+            int startTimeMs = LiveBpmTimeConverter.BeatToTimeMs(chart, startBeat);
+            int endTimeMs = LiveBpmTimeConverter.BeatToTimeMs(chart, startBeat + _beatsPerBar);
 
-            _bars.Add(new LiveEditorBarInfo(barIndex, startTimeMs, endTimeMs, startBeat));
+            _bars.Add(new LiveBarInfo(barIndex, startTimeMs, endTimeMs, startBeat));
 
             if (endTimeMs >= songLengthMs)
             {
@@ -62,7 +62,7 @@ public class LiveEditorBarLayout
         return _beatsPerBar * (int)division;
     }
 
-    public bool TryGetBar(int barIndex, out LiveEditorBarInfo bar)
+    public bool TryGetBar(int barIndex, out LiveBarInfo bar)
     {
         if (barIndex < 0 || barIndex >= _bars.Count)
         {
@@ -96,7 +96,7 @@ public class LiveEditorBarLayout
         }
 
         int barIndex = FindBarIndexByTime(timeMs);
-        LiveEditorBarInfo bar = _bars[barIndex];
+        LiveBarInfo bar = _bars[barIndex];
         int durationMs = bar.DurationMs;
 
         if (durationMs <= 0)
@@ -118,7 +118,7 @@ public class LiveEditorBarLayout
         }
 
         double beat = (double)barIndex * _beatsPerBar + (double)cellIndex / (int)division;
-        return LiveEditorBpmTimeConverter.BeatToTimeMs(_chart, beat);
+        return LiveBpmTimeConverter.BeatToTimeMs(_chart, beat);
     }
 
     /// <summary>

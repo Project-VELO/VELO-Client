@@ -9,8 +9,6 @@ using System.Collections.Generic;
 public class LiveEditorNoteWriter
 {
     // 6번 레인은 고스트 노트 전용이며, 나머지 레인에는 고스트 노트를 놓을 수 없습니다.
-    public const int GHOST_LANE = 6;
-
     private readonly LiveEditorController _controller;
     private readonly LiveEditorUndoRedoManager _undoRedoManager;
 
@@ -69,7 +67,7 @@ public class LiveEditorNoteWriter
     public bool CanPlaceAt(NoteData note, int lane, int timeMs)
     {
         bool isGhostNote = note.NoteType == ENoteType.GHOST;
-        if (isGhostNote != (lane == GHOST_LANE))
+        if (isGhostNote != (lane == LiveLane.GHOST))
         {
             return false;
         }
@@ -92,6 +90,6 @@ public class LiveEditorNoteWriter
 
     public static ENoteType GetNoteTypeForLane(int lane)
     {
-        return lane == GHOST_LANE ? ENoteType.GHOST : ENoteType.NORMAL;
+        return lane == LiveLane.GHOST ? ENoteType.GHOST : ENoteType.NORMAL;
     }
 }

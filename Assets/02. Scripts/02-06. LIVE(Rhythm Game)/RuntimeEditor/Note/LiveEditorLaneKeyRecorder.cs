@@ -19,7 +19,7 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
     private LiveEditorNoteEditing _noteEditing;
 
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     private readonly List<InputAction> _laneKeyActions = new List<InputAction>();
 

@@ -9,8 +9,6 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class LiveEditorTrackPointer
 {
-    private const int LANE_COUNT = 6;
-
     private readonly LiveEditorTimeline _timeline;
     private readonly RectTransform _laneAreaRect;
     private readonly Canvas _canvas;
@@ -93,7 +91,7 @@ public class LiveEditorTrackPointer
 
     private bool TryGetLaneAtPoint(float localX, float verticalRatio, out int lane)
     {
-        for (int candidateLane = 1; candidateLane <= LANE_COUNT; candidateLane++)
+        for (int candidateLane = LiveLane.FIRST; candidateLane <= LiveLane.COUNT; candidateLane++)
         {
             _timeline.Lanes.GetLaneBoundsAtRatio(candidateLane, verticalRatio, out float leftX, out float rightX);
 

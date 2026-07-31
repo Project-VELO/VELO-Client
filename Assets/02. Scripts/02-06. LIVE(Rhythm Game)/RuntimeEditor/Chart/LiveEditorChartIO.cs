@@ -38,13 +38,7 @@ public class LiveEditorChartIO
 
     public ChartData LoadChart(string path)
     {
-        if (!File.Exists(path))
-        {
-            return null;
-        }
-
-        string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<ChartData>(json);
+        return LiveChartLoader.Load(path);
     }
 
     /// <summary>

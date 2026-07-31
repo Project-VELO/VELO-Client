@@ -10,7 +10,7 @@ using VInspector;
 /// 코루틴 대신 UniTask + CancellationToken 기반으로 오디오를 로드하며,
 /// 로드가 끝나야 곡 길이를 알 수 있으므로 완료 시점을 OnClipLoaded로 통지합니다.
 /// </summary>
-public class LiveEditorAudioPlayer : MonoBehaviour
+public class LiveAudioPlayer : MonoBehaviour
 {
     public Action OnClipLoaded;
 
@@ -168,10 +168,10 @@ public class LiveEditorAudioPlayer : MonoBehaviour
             return;
         }
 
-        double beat = LiveEditorBpmTimeConverter.TimeMsToBeat(_chart, CurrentTimeMs);
+        double beat = LiveBpmTimeConverter.TimeMsToBeat(_chart, CurrentTimeMs);
         double gridUnit = 1.0 / (int)division;
         double newBeat = Math.Max(0.0, beat + direction * gridUnit);
-        SetPlaybackTime(LiveEditorBpmTimeConverter.BeatToTimeMs(_chart, newBeat));
+        SetPlaybackTime(LiveBpmTimeConverter.BeatToTimeMs(_chart, newBeat));
     }
 
     private async UniTaskVoid LoadAudioAsync(string audioPath, CancellationToken cancellationToken)
@@ -183,7 +183,7 @@ public class LiveEditorAudioPlayer : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError($"[LiveEditorAudioPlayer] 오디오 로드 실패: {request.error} ({audioPath})");
+            Debug.LogError($"[LiveAudioPlayer] 오디오 로드 실패: {request.error} ({audioPath})");
             return;
         }
 

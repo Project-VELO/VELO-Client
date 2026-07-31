@@ -13,7 +13,7 @@ public class UI_LiveEditorProgressBar : MonoBehaviour, IPointerDownHandler, IDra
 
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LiveEditorAudioPlayer _audioPlayer;
+    private LiveAudioPlayer _audioPlayer;
 
     [SerializeField]
     private LiveEditorPlaybackControl _playbackControl;

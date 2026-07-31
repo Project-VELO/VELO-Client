@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using VInspector;
 
 public class UIManager : MonoBehaviourSingleton<UIManager>
@@ -40,7 +41,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // 키보드가 없는 플랫폼에서는 Keyboard.current가 null이므로 매 프레임 존재 여부를 확인합니다.
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             HandleEscapeInput();
         }

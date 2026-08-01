@@ -14,6 +14,12 @@ public class LiveScoreTracker
     public int BadCount { get; private set; }
 
     /// <summary>
+    /// 귀신 레인 오입력 횟수입니다. 채보에 없는 입력이라 노트 판정 개수와 뒤섞이면 정확도의 분모와
+    /// 결과 화면의 BAD 개수가 실제 노트 수보다 부풀려지므로, BadCount와 분리해 따로 셉니다(3-I-6-1).
+    /// </summary>
+    public int GhostMisinputCount { get; private set; }
+
+    /// <summary>
     /// 판정이 끝난 노트 수입니다. 귀신 노트 오입력은 채보에 없는 입력이므로 포함하지 않습니다(3-I-6-1).
     /// </summary>
     public int JudgedNoteCount => PerfectCount + GreatCount + GoodCount + BadCount;
@@ -29,6 +35,7 @@ public class LiveScoreTracker
         GreatCount = 0;
         GoodCount = 0;
         BadCount = 0;
+        GhostMisinputCount = 0;
     }
 
     public void Apply(EJudgement judgement)
@@ -39,11 +46,11 @@ public class LiveScoreTracker
     }
 
     /// <summary>
-    /// 귀신 노트 오입력을 기록합니다. 점수는 주지 않고 BAD 개수만 늘립니다(3-I-6-1).
+    /// 귀신 노트 오입력을 기록합니다. 점수도 주지 않고 노트 판정 개수에도 넣지 않으며, 콤보만 끊습니다(3-I-6-1).
     /// </summary>
     public void AddGhostMisinput()
     {
-        BadCount++;
+        GhostMisinputCount++;
         Combo = 0;
     }
 

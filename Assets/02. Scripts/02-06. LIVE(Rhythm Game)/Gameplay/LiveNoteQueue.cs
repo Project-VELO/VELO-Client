@@ -42,7 +42,12 @@ public class LiveNoteQueue
         }
     }
 
-    public void InitNotes(ChartData chart)
+    /// <summary>
+    /// 채보의 노트를 대기열로 싣습니다.
+    /// startTimeMs를 지정하면 그보다 앞선 노트는 아예 싣지 않습니다. 곡 중간부터 시작하는 채보 에디터의
+    /// 테스트 플레이에서 이미 지나간 노트가 첫 프레임에 한꺼번에 BAD로 쏟아지는 것을 막기 위함입니다.
+    /// </summary>
+    public void InitNotes(ChartData chart, int startTimeMs = 0)
     {
         for (int i = 0; i < LiveLane.COUNT; i++)
         {
@@ -60,7 +65,7 @@ public class LiveNoteQueue
 
         foreach (NoteData note in chart.Notes)
         {
-            if (!LiveLane.IsValid(note.Lane))
+            if (!LiveLane.IsValid(note.Lane) || note.TimeMs < startTimeMs)
             {
                 continue;
             }

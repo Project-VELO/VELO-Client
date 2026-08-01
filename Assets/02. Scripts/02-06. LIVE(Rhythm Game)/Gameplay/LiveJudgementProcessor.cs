@@ -32,9 +32,13 @@ public class LiveJudgementProcessor : MonoBehaviour
     public int TotalNoteCount => _noteQueue.TotalNoteCount;
     public bool HasGhostFailed => _hasGhostFailed;
 
-    public void InitSession(ChartData chart)
+    /// <summary>
+    /// 한 판의 집계를 처음 상태로 되돌립니다.
+    /// startTimeMs는 곡 중간부터 시작할 때만 지정하며, 그보다 앞선 노트는 이번 판의 집계 대상에서 빠집니다.
+    /// </summary>
+    public void InitSession(ChartData chart, int startTimeMs = 0)
     {
-        _noteQueue.InitNotes(chart);
+        _noteQueue.InitNotes(chart, startTimeMs);
         _scoreTracker.Clear();
         _holdTracker.Clear();
         _expiredNotes.Clear();

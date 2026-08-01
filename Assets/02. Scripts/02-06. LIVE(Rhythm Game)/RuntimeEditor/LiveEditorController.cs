@@ -131,14 +131,12 @@ public class LiveEditorController : MonoBehaviour
         SetState(EEditorState.Editing);
     }
 
+    /// <summary>
+    /// 편집 상태를 바꿉니다. 테스트 플레이의 진입·종료 절차는 LiveEditorTestPlayController가 맡으므로,
+    /// 이 메서드는 상태 값과 그에 딸린 재생 정지만 처리합니다.
+    /// </summary>
     public void SetState(EEditorState newState)
     {
-        if (newState == EEditorState.TestPlay)
-        {
-            Debug.LogWarning("[LiveEditorController] TestPlay 상태는 아직 잠금 처리되어 있습니다. (판정 엔진 미구현)");
-            return;
-        }
-
         _state = newState;
 
         if (_state == EEditorState.Paused)

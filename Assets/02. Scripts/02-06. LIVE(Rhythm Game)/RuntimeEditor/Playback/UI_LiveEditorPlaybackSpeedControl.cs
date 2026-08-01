@@ -40,6 +40,7 @@ public class UI_LiveEditorPlaybackSpeedControl : MonoBehaviour
     private Button _coarseUpButton;
 
     private float _speed = DEFAULT_SPEED;
+    private bool _isInteractable = true;
 
     private void Awake()
     {
@@ -50,6 +51,20 @@ public class UI_LiveEditorPlaybackSpeedControl : MonoBehaviour
     }
 
     private void Start()
+    {
+        SetSpeed(DEFAULT_SPEED);
+    }
+
+    /// <summary>
+    /// 배속 조절 가능 여부를 바꿉니다. 테스트 플레이는 배속 1.0을 전제로 판정하므로 그동안 잠급니다.
+    /// </summary>
+    public void SetInteractable(bool isInteractable)
+    {
+        _isInteractable = isInteractable;
+        RefreshSpeed();
+    }
+
+    public void ResetSpeed()
     {
         SetSpeed(DEFAULT_SPEED);
     }
@@ -92,9 +107,9 @@ public class UI_LiveEditorPlaybackSpeedControl : MonoBehaviour
         bool isAtMin = _speed <= MIN_SPEED;
         bool isAtMax = _speed >= MAX_SPEED;
 
-        _coarseDownButton.interactable = !isAtMin;
-        _fineDownButton.interactable = !isAtMin;
-        _fineUpButton.interactable = !isAtMax;
-        _coarseUpButton.interactable = !isAtMax;
+        _coarseDownButton.interactable = _isInteractable && !isAtMin;
+        _fineDownButton.interactable = _isInteractable && !isAtMin;
+        _fineUpButton.interactable = _isInteractable && !isAtMax;
+        _coarseUpButton.interactable = _isInteractable && !isAtMax;
     }
 }

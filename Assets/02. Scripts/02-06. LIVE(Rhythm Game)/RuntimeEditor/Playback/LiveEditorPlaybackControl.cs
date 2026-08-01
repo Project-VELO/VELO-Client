@@ -4,6 +4,13 @@ using VInspector;
 /// <summary>
 /// 재생/일시정지와 마디·분박 단위 위치 이동을 전담합니다.
 /// 정지 상태에서는 Update의 스크롤 갱신이 재생 시각을 따라오지 않으므로, 위치를 옮긴 직후 직접 갱신해 줍니다.
+///
+/// 위치 이동은 테스트 플레이 중에도 그대로 쓸 수 있습니다. 테스트 플레이는 편집만 막은 상태이므로,
+/// 확인하고 싶은 구간으로 진행바를 옮겨 가며 반복해서 쳐 보는 것이 오히려 기본 사용법입니다.
+/// 다만 판정 기준 시각은 LiveEditorTestPlayController가 쥐고 있으므로 옮긴 사실을 알려 다시 맞추게 합니다.
+///
+/// 재생/일시정지만은 테스트 플레이 중에 막습니다. 여기서 상태를 바꾸면 테스트 플레이가 종료 절차를 거치지 않고
+/// 풀려 버려, 판정 UI와 입력이 켜진 채로 남기 때문입니다. 중단은 테스트 플레이 버튼으로 합니다.
 /// </summary>
 public class LiveEditorPlaybackControl : MonoBehaviour
 {
@@ -17,13 +24,16 @@ public class LiveEditorPlaybackControl : MonoBehaviour
     [SerializeField]
     private LiveEditorTimeline _timeline;
 
+    [SerializeField]
+    private LiveEditorTestPlayController _testPlayController;
+
     /// <summary>
     /// 재생 위치를 절대 시각으로 옮깁니다. 진행바로 임의 지점을 찍어 이동할 때 사용합니다.
     /// </summary>
     public void SetPlaybackTime(int timeMs)
     {
         _audioPlayer.SetPlaybackTime(timeMs);
-        _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);
+        RefreshAfterSeek();
     }
 
     public void SetPlaybackBar(int barIndex)
@@ -44,12 +54,12 @@ public class LiveEditorPlaybackControl : MonoBehaviour
     public void SeekByGridStep(int direction)
     {
         _audioPlayer.SeekByGridStep(direction, _timeline.SnapDivision);
-        _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);
+        RefreshAfterSeek();
     }
 
     public void TogglePlayPause()
     {
-        if (ReferenceEquals(_controller.CurrentChart, null))
+        if (_testPlayController.IsTestPlaying || ReferenceEquals(_controller.CurrentChart, null))
         {
             return;
         }
@@ -62,5 +72,11 @@ public class LiveEditorPlaybackControl : MonoBehaviour
 
         _audioPlayer.Play();
         _controller.SetState(LiveEditorController.EEditorState.Editing);
+    }
+
+    private void RefreshAfterSeek()
+    {
+        _timeline.RefreshScroll(_audioPlayer.CurrentTimeMs);
+        _testPlayController.NotifySeeked();
     }
 }

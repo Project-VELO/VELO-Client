@@ -13,6 +13,12 @@ public static class LiveJudgementRule
     /// </summary>
     public const int JUDGEABLE_WINDOW_MS = GOOD_WINDOW_MS;
 
+    /// <summary>
+    /// 롱노트를 끝까지 유지한 것으로 인정하는 조기 해제 허용치입니다.
+    /// 종료 시각에 정확히 맞춰 떼는 것은 사람이 할 수 없으므로, 단타와 같은 유효 입력 폭만큼 앞서 떼도 인정합니다.
+    /// </summary>
+    public const int HOLD_RELEASE_TOLERANCE_MS = GOOD_WINDOW_MS;
+
     public const int PERFECT_SCORE = 100;
     public const int GREAT_SCORE = 80;
     public const int GOOD_SCORE = 60;

@@ -42,6 +42,7 @@ public class LiveGameController : MonoBehaviour
     private void Awake()
     {
         _playInput.OnLanePressed += PressLane;
+        _playInput.OnLaneReleased += ReleaseLane;
         _judgementProcessor.OnGhostFailed += FinishPlay;
         _conductor.AudioPlayer.OnClipLoaded += OnAudioClipLoaded;
     }
@@ -59,6 +60,7 @@ public class LiveGameController : MonoBehaviour
     private void OnDestroy()
     {
         _playInput.OnLanePressed -= PressLane;
+        _playInput.OnLaneReleased -= ReleaseLane;
         _judgementProcessor.OnGhostFailed -= FinishPlay;
         _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
     }
@@ -166,6 +168,16 @@ public class LiveGameController : MonoBehaviour
         }
 
         _judgementProcessor.PressLane(lane, _conductor.SongTimeMs);
+    }
+
+    private void ReleaseLane(int lane)
+    {
+        if (_state != ELiveGameState.Playing)
+        {
+            return;
+        }
+
+        _judgementProcessor.ReleaseLane(lane, _conductor.SongTimeMs);
     }
 
     /// <summary>

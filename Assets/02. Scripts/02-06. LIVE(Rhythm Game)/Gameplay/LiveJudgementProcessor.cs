@@ -5,7 +5,8 @@ using VInspector;
 
 /// <summary>
 /// 레인 입력과 만료된 노트를 판정으로 바꾸고, 그 결과를 집계와 화면 표시로 잇는 조정자입니다.
-/// 판정 규칙 자체는 LiveJudgementRule이, 노트 선택은 LiveNoteQueue가, 누적은 LiveScoreTracker가 맡습니다.
+/// 판정 규칙 자체는 LiveJudgementRule이, 노트 선택은 LiveNoteQueue가, 롱노트 유지 감시는 LiveHoldTracker가,
+/// 누적은 LiveScoreTracker가 맡습니다.
 /// </summary>
 public class LiveJudgementProcessor : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class LiveJudgementProcessor : MonoBehaviour
 
     private readonly LiveNoteQueue _noteQueue = new LiveNoteQueue();
     private readonly LiveScoreTracker _scoreTracker = new LiveScoreTracker();
+    private readonly LiveHoldTracker _holdTracker = new LiveHoldTracker();
     private readonly List<NoteData> _expiredNotes = new List<NoteData>();
+    private readonly List<LiveHoldTracker.LiveHoldResult> _holdResults = new List<LiveHoldTracker.LiveHoldResult>();
 
     // 귀신 실패가 확정되면 남은 노트와 입력을 더 이상 집계하지 않습니다. 결과는 실패 시점까지만 저장합니다(3-I-6).
     private bool _hasGhostFailed;
@@ -33,7 +36,9 @@ public class LiveJudgementProcessor : MonoBehaviour
     {
         _noteQueue.InitNotes(chart);
         _scoreTracker.Clear();
+        _holdTracker.Clear();
         _expiredNotes.Clear();
+        _holdResults.Clear();
         _hasGhostFailed = false;
 
         RefreshHud();
@@ -53,7 +58,16 @@ public class LiveJudgementProcessor : MonoBehaviour
 
         if (_noteQueue.TryTake(lane, songTimeMs, out NoteData note, out int errorMs))
         {
-            ApplyJudgement(note, LiveJudgementRule.Judge(errorMs));
+            EJudgement judgement = LiveJudgementRule.Judge(errorMs);
+
+            // 롱노트는 끝까지 유지해야 판정이 확정되므로, 시작 판정만 맡겨 두고 지금은 집계하지 않습니다.
+            if (LiveHoldTracker.IsHoldNote(note))
+            {
+                _holdTracker.BeginHold(note, judgement);
+                return;
+            }
+
+            ApplyJudgement(note, judgement);
             return;
         }
 
@@ -69,7 +83,23 @@ public class LiveJudgementProcessor : MonoBehaviour
     }
 
     /// <summary>
-    /// 유효 입력 시간이 지난 노트를 모두 BAD로 처리합니다.
+    /// 눌러 둔 롱노트를 뗀 순간을 판정합니다. 단타 노트를 뗀 것이라면 붙잡아 둔 롱노트가 없으므로 아무 일도 하지 않습니다.
+    /// </summary>
+    public void ReleaseLane(int lane, int songTimeMs)
+    {
+        if (_hasGhostFailed)
+        {
+            return;
+        }
+
+        if (_holdTracker.TryReleaseLane(lane, songTimeMs, out LiveHoldTracker.LiveHoldResult result))
+        {
+            ApplyJudgement(result.Note, result.Judgement);
+        }
+    }
+
+    /// <summary>
+    /// 유효 입력 시간이 지난 노트를 모두 BAD로 처리하고, 끝까지 눌러 유지한 롱노트를 확정합니다.
     /// </summary>
     public void RefreshExpiredNotes(int songTimeMs)
     {
@@ -81,12 +111,17 @@ public class LiveJudgementProcessor : MonoBehaviour
         _expiredNotes.Clear();
         _noteQueue.CollectExpired(songTimeMs, _expiredNotes);
         ApplyBadToCollectedNotes();
+
+        _holdResults.Clear();
+        _holdTracker.CollectCompleted(songTimeMs, _holdResults);
+        ApplyCollectedHoldResults();
     }
 
     /// <summary>
     /// 완주 시점에 아직 판정되지 않은 노트를 모두 BAD로 마무리합니다.
     /// 마지막 노트가 곡 끝에 붙어 있으면 유효 입력 시간이 끝나기 전에 곡이 먼저 끝날 수 있는데,
     /// 그대로 두면 정확도의 분모(전체 노트 수)에는 들어가면서 판정 개수에는 빠져 결과가 어긋납니다.
+    /// 유지 중이던 롱노트도 더 이상 끝까지 눌렀는지 확인할 수 없으므로 같은 이유로 BAD로 닫습니다.
     /// </summary>
     public void FlushRemainingNotes()
     {
@@ -95,9 +130,21 @@ public class LiveJudgementProcessor : MonoBehaviour
             return;
         }
 
+        _holdResults.Clear();
+        _holdTracker.CollectRemaining(_holdResults);
+        ApplyCollectedHoldResults();
+
         _expiredNotes.Clear();
         _noteQueue.CollectRemaining(_expiredNotes);
         ApplyBadToCollectedNotes();
+    }
+
+    private void ApplyCollectedHoldResults()
+    {
+        for (int i = 0; i < _holdResults.Count; i++)
+        {
+            ApplyJudgement(_holdResults[i].Note, _holdResults[i].Judgement);
+        }
     }
 
     private void ApplyBadToCollectedNotes()

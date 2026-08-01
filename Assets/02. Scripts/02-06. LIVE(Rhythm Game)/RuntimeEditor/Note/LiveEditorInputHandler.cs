@@ -9,6 +9,14 @@ using VInspector;
 /// </summary>
 public class LiveEditorInputHandler : MonoBehaviour
 {
+    /// <summary>
+    /// 롱노트 배치(Shift+클릭) 허용 여부입니다.
+    /// 판정은 LiveHoldTracker에 구현되어 있지만 1차 MVP 채보에는 롱노트를 쓰지 않기로 했으므로,
+    /// 실수로 배치되어 의도와 다르게 플레이되는 것을 막기 위해 입력 단계에서만 잠가 둡니다.
+    /// 롱노트를 쓰기로 하면 이 값만 true로 되돌리면 됩니다.
+    /// </summary>
+    private const bool IS_LONG_NOTE_PLACEMENT_ENABLED = false;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private LiveEditorNoteEditing _noteEditing;
@@ -57,7 +65,7 @@ public class LiveEditorInputHandler : MonoBehaviour
             return;
         }
 
-        bool isLongNoteModifier = Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
+        bool isLongNoteModifier = IS_LONG_NOTE_PLACEMENT_ENABLED && Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
         if (isLongNoteModifier && lane != LiveLane.GHOST)
         {
             HandleLongNoteClick(lane, timeMs);

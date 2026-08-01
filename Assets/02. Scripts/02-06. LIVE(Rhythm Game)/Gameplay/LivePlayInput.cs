@@ -15,6 +15,11 @@ public class LivePlayInput : MonoBehaviour
 {
     public Action<int> OnLanePressed;
 
+    /// <summary>
+    /// 키를 뗀 순간을 알립니다. 롱노트의 유지 판정에만 쓰이며, 단타 노트는 이 통지를 무시합니다.
+    /// </summary>
+    public Action<int> OnLaneReleased;
+
     private const string LIVE_ACTION_MAP_NAME = "Live";
     private const string LANE_ACTION_NAME_PREFIX = "Lane";
 
@@ -23,7 +28,8 @@ public class LivePlayInput : MonoBehaviour
     private InputActionAsset _inputActions;
 
     private readonly InputAction[] _laneActions = new InputAction[LiveLane.COUNT];
-    private readonly Action<InputAction.CallbackContext>[] _laneCallbacks = new Action<InputAction.CallbackContext>[LiveLane.COUNT];
+    private readonly Action<InputAction.CallbackContext>[] _pressCallbacks = new Action<InputAction.CallbackContext>[LiveLane.COUNT];
+    private readonly Action<InputAction.CallbackContext>[] _releaseCallbacks = new Action<InputAction.CallbackContext>[LiveLane.COUNT];
 
     private InputActionMap _liveActionMap;
     private bool _isAcceptingInput;
@@ -44,7 +50,8 @@ public class LivePlayInput : MonoBehaviour
         {
             if (_laneActions[i] != null)
             {
-                _laneActions[i].performed += _laneCallbacks[i];
+                _laneActions[i].performed += _pressCallbacks[i];
+                _laneActions[i].canceled += _releaseCallbacks[i];
             }
         }
 
@@ -62,7 +69,8 @@ public class LivePlayInput : MonoBehaviour
         {
             if (_laneActions[i] != null)
             {
-                _laneActions[i].performed -= _laneCallbacks[i];
+                _laneActions[i].performed -= _pressCallbacks[i];
+                _laneActions[i].canceled -= _releaseCallbacks[i];
             }
         }
 
@@ -104,17 +112,37 @@ public class LivePlayInput : MonoBehaviour
             _laneActions[i] = action;
 
             // 구독 해제를 위해 델리게이트 인스턴스를 그대로 보관합니다. 매번 새로 만들면 -=가 아무것도 지우지 못합니다.
-            _laneCallbacks[i] = _ => PressLane(lane);
+            _pressCallbacks[i] = _ => PressLane(lane);
+            _releaseCallbacks[i] = _ => ReleaseLane(lane);
         }
     }
 
     private void PressLane(int lane)
     {
-        if (!_isAcceptingInput || InputHandler.IsInputBlocked)
+        if (!IsInputAccepted())
         {
             return;
         }
 
         OnLanePressed?.Invoke(lane);
+    }
+
+    /// <summary>
+    /// 뗀 입력도 누른 입력과 같은 조건으로 막습니다. 일시정지 도중 뗀 것을 뒤늦게 통지하면
+    /// 멈춰 있는 재생 시각으로 롱노트가 실패 처리되기 때문입니다.
+    /// </summary>
+    private void ReleaseLane(int lane)
+    {
+        if (!IsInputAccepted())
+        {
+            return;
+        }
+
+        OnLaneReleased?.Invoke(lane);
+    }
+
+    private bool IsInputAccepted()
+    {
+        return _isAcceptingInput && !InputHandler.IsInputBlocked;
     }
 }

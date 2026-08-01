@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6646801162410544223}
   - component: {fileID: 8310210128822521523}
   - component: {fileID: 2031452494831410218}
+  - component: {fileID: 4731809475051714713}
   m_Layer: 0
   m_Name: P_UI_Live
   m_TagString: Untagged
@@ -121,6 +122,22 @@ MonoBehaviour:
   _comboPanel: {fileID: 8829413437513937196}
   _judgementPanel: {fileID: 4062653190545271091}
   _noteLanes: {fileID: 0}
+  _countdownPanel: {fileID: 0}
+  _laneFeedback: {fileID: 4731809475051714713}
+--- !u!114 &4731809475051714713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903619696653183194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5e24b59799c1a41a867ce2a0a62325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveLaneFeedback
+  _litSeconds: 0.08
+  _laneHighlights: []
 --- !u!1001 &3526399522438036820
 PrefabInstance:
   m_ObjectHideFlags: 0

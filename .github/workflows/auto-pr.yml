@@ -18,8 +18,9 @@ jobs:
         id: check_pr
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          COUNT=$(gh pr list --head ${{ github.ref_name }} --state open --json number --jq 'length')
+          COUNT=$(gh pr list --head "$BRANCH" --state open --json number --jq 'length')
           echo "exists=$COUNT" >> $GITHUB_OUTPUT
       - name: Set up Python
         if: steps.check_pr.outputs.exists == '0'
@@ -49,13 +50,15 @@ jobs:
           MINGYU_PAT: ${{ secrets.MINGYU_PERSONAL_TOKEN }}
           JUNBEOM_PAT: ${{ secrets.JUNBEOM_PERSONAL_TOKEN }}
           BOT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
         run: |
           PR_OBJ=$(jq 'if type=="array" then .[0] else . end' pr_info.json)
           TITLE=$(echo "$PR_OBJ" | jq -r '.title')
           BODY=$(echo "$PR_OBJ" | jq -r '.body')
           AI_LABELS=$(echo "$PR_OBJ" | jq -r '.labels | join(",")')
           
-          case "${{ github.actor }}" in
+          case "$ACTOR" in
             "Mingyu0626")
               USER_LABEL="🍎최민규"
               SELECT_TOKEN=$MINGYU_PAT
@@ -65,7 +68,7 @@ jobs:
               SELECT_TOKEN=$JUNBEOM_PAT
               ;;
             *)
-              USER_LABEL="${{ github.actor }}"
+              USER_LABEL="$ACTOR"
               SELECT_TOKEN=$BOT_TOKEN
               ;;
           esac
@@ -84,9 +87,9 @@ jobs:
           
           GH_TOKEN=$SELECT_TOKEN gh pr create \
             --base main \
-            --head ${{ github.ref_name }} \
+            --head "$BRANCH" \
             --title "$TITLE" \
             --body-file pr_body.md \
             --label "$ALL_LABELS" \
-            --assignee "${{ github.actor }}" \
+            --assignee "$ACTOR" \
             --draft || true

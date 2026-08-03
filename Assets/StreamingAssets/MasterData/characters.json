@@ -1,0 +1,109 @@
+{
+    "SchemaVersion": 1,
+    "Items": [
+        {
+            "CharacterId": "CHAR_JIWOO",
+            "DisplayName": "지우",
+            "IsMember": true,
+            "MemberOrder": 0,
+            "PortraitPath": "Characters/Jiwoo",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE", "EXP_SAD", "EXP_ANGRY", "EXP_SURPRISED", "EXP_CRY"]
+        },
+        {
+            "CharacterId": "CHAR_HANA",
+            "DisplayName": "하나",
+            "IsMember": true,
+            "MemberOrder": 1,
+            "PortraitPath": "Characters/Hana",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE", "EXP_SAD", "EXP_ANGRY", "EXP_SURPRISED", "EXP_CRY"]
+        },
+        {
+            "CharacterId": "CHAR_RIA",
+            "DisplayName": "리아",
+            "IsMember": true,
+            "MemberOrder": 2,
+            "PortraitPath": "Characters/Ria",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE", "EXP_SAD", "EXP_ANGRY", "EXP_SURPRISED", "EXP_CRY"]
+        },
+        {
+            "CharacterId": "CHAR_MINA",
+            "DisplayName": "미나",
+            "IsMember": true,
+            "MemberOrder": 3,
+            "PortraitPath": "Characters/Mina",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE", "EXP_SAD", "EXP_ANGRY", "EXP_SURPRISED", "EXP_CRY"]
+        },
+        {
+            "CharacterId": "CHAR_SEOYUN",
+            "DisplayName": "서윤",
+            "IsMember": true,
+            "MemberOrder": 4,
+            "PortraitPath": "Characters/Seoyun",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE", "EXP_SAD", "EXP_ANGRY", "EXP_SURPRISED", "EXP_CRY"]
+        },
+        {
+            "CharacterId": "CHAR_P",
+            "DisplayName": "P",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_MUMYEONG",
+            "DisplayName": "무명",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "Characters/Mumyeong",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_SMILE"]
+        },
+        {
+            "CharacterId": "CHAR_JUHUI",
+            "DisplayName": "강주희",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "Characters/Juhui",
+            "ExpressionIds": ["EXP_NORMAL", "EXP_ANGRY"]
+        },
+        {
+            "CharacterId": "CHAR_DIRECTOR_KIM",
+            "DisplayName": "김 전무",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_DIRECTOR_CHOI",
+            "DisplayName": "최 상무",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_HWANYEONG",
+            "DisplayName": "환영",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_MONGGU",
+            "DisplayName": "몽구",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_GHOST_MAIDEN",
+            "DisplayName": "처녀 귀신",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        }
+    ]
+}

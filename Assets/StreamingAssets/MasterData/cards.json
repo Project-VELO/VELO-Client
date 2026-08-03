@@ -1,0 +1,95 @@
+{
+    "SchemaVersion": 1,
+    "Items": [
+        {
+            "CardId": "CARD_JIWOO_FIRST_STAGE",
+            "CharacterId": "CHAR_JIWOO",
+            "CardName": "첫 번째 무대 지우",
+            "ImagePath": "Cards/Jiwoo_FirstStage",
+            "Grade": 1,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_HANA_FIRST_STAGE",
+            "CharacterId": "CHAR_HANA",
+            "CardName": "첫 번째 무대 하나",
+            "ImagePath": "Cards/Hana_FirstStage",
+            "Grade": 1,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_RIA_FIRST_STAGE",
+            "CharacterId": "CHAR_RIA",
+            "CardName": "첫 번째 무대 리아",
+            "ImagePath": "Cards/Ria_FirstStage",
+            "Grade": 1,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_MINA_FIRST_STAGE",
+            "CharacterId": "CHAR_MINA",
+            "CardName": "첫 번째 무대 미나",
+            "ImagePath": "Cards/Mina_FirstStage",
+            "Grade": 1,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_SEOYUN_FIRST_STAGE",
+            "CharacterId": "CHAR_SEOYUN",
+            "CardName": "첫 번째 무대 서윤",
+            "ImagePath": "Cards/Seoyun_FirstStage",
+            "Grade": 1,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_JIWOO_HAPPY",
+            "CharacterId": "CHAR_JIWOO",
+            "CardName": "행복한 지우",
+            "ImagePath": "Cards/Jiwoo_Happy",
+            "Grade": 2,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_HANA_HAPPY",
+            "CharacterId": "CHAR_HANA",
+            "CardName": "행복한 하나",
+            "ImagePath": "Cards/Hana_Happy",
+            "Grade": 2,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_RIA_HAPPY",
+            "CharacterId": "CHAR_RIA",
+            "CardName": "행복한 리아",
+            "ImagePath": "Cards/Ria_Happy",
+            "Grade": 2,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_MINA_HAPPY",
+            "CharacterId": "CHAR_MINA",
+            "CardName": "행복한 미나",
+            "ImagePath": "Cards/Mina_Happy",
+            "Grade": 2,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        },
+        {
+            "CardId": "CARD_SEOYUN_HAPPY",
+            "CharacterId": "CHAR_SEOYUN",
+            "CardName": "행복한 서윤",
+            "ImagePath": "Cards/Seoyun_Happy",
+            "Grade": 2,
+            "Stats": { "ScoreBonus": 0, "Hp": 100, "HealingAmount": 0.0 },
+            "SkillId": ""
+        }
+    ]
+}

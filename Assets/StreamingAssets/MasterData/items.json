@@ -1,0 +1,33 @@
+{
+    "SchemaVersion": 1,
+    "Items": [
+        {
+            "ItemId": "ITEM_COSTUME_SHABBY_UNIFORM",
+            "ItemTypeName": "COSTUME",
+            "DisplayName": "허름한 제복",
+            "Description": "신규 게임 시작 시 기본으로 착용하는 의상입니다.",
+            "IconPath": "Items/Costume_ShabbyUniform"
+        },
+        {
+            "ItemId": "ITEM_COSTUME_MIDNIGHT_STAGE",
+            "ItemTypeName": "COSTUME",
+            "DisplayName": "자정의 무대 의상",
+            "Description": "교체 동작 확인을 위한 두 번째 의상입니다.",
+            "IconPath": "Items/Costume_MidnightStage"
+        },
+        {
+            "ItemId": "ITEM_ACCESSORY_RUSTED_NECKLACE",
+            "ItemTypeName": "ACCESSORY",
+            "DisplayName": "녹슨 목걸이",
+            "Description": "신규 게임 시작 시 기본으로 착용하는 악세사리입니다.",
+            "IconPath": "Items/Accessory_RustedNecklace"
+        },
+        {
+            "ItemId": "ITEM_ACCESSORY_SILVER_CROSS",
+            "ItemTypeName": "ACCESSORY",
+            "DisplayName": "은빛 십자가",
+            "Description": "교체 동작 확인을 위한 두 번째 악세사리입니다.",
+            "IconPath": "Items/Accessory_SilverCross"
+        }
+    ]
+}

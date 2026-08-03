@@ -1,0 +1,45 @@
+{
+    "SchemaVersion": 1,
+    "Items": [
+        {
+            "StoryId": "STORY_PROLOGUE_01",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 1,
+            "Title": "자정의 오페라",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_02",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 2,
+            "Title": "흑백의 성벽",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_03",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 3,
+            "Title": "옥상 위의 데자뷔",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_CH02_01",
+            "ChapterId": "CHAPTER_02",
+            "ChapterOrder": 2,
+            "EpisodeNumber": 1,
+            "Title": "해금 동작 확인용 샘플",
+            "UnlockTypeName": "WEEK_CLEAR",
+            "UnlockTargetId": "WEEK_001",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "SchemaVersion": 1,
+    "Items": [
+        {
+            "ScheduleId": "SCHEDULE_W1_D1_01",
+            "ChapterId": "PROLOGUE",
+            "WeekId": "WEEK_001",
+            "WeekOrder": 1,
+            "DayId": "DAY_001",
+            "DayOrder": 1,
+            "ScheduleOrder": 1,
+            "ScheduleTypeName": "LIVE",
+            "Title": "오늘의 LIVE 준비",
+            "Description": "지정곡을 B랭크 이상으로 클리어하세요.",
+            "IsRequired": true,
+            "ClearCondition": {
+                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "RequiredDifficultyName": "NORMAL",
+                "MinimumRankName": "B",
+                "MinimumScore": 0,
+                "TargetStoryId": ""
+            },
+            "RewardId": "REWARD_LIVE_BASE"
+        },
+        {
+            "ScheduleId": "SCHEDULE_W1_D1_02",
+            "ChapterId": "PROLOGUE",
+            "WeekId": "WEEK_001",
+            "WeekOrder": 1,
+            "DayId": "DAY_001",
+            "DayOrder": 1,
+            "ScheduleOrder": 2,
+            "ScheduleTypeName": "STORY",
+            "Title": "프롤로그 감상",
+            "Description": "지정된 스토리를 끝까지 감상하세요.",
+            "IsRequired": true,
+            "ClearCondition": {
+                "TargetSongId": "",
+                "RequiredDifficultyName": "NORMAL",
+                "MinimumRankName": "B",
+                "MinimumScore": 0,
+                "TargetStoryId": "STORY_PROLOGUE_01"
+            },
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "ScheduleId": "SCHEDULE_W1_D1_03",
+            "ChapterId": "PROLOGUE",
+            "WeekId": "WEEK_001",
+            "WeekOrder": 1,
+            "DayId": "DAY_001",
+            "DayOrder": 1,
+            "ScheduleOrder": 3,
+            "ScheduleTypeName": "LIVE",
+            "Title": "연습 삼아 한 곡 더",
+            "Description": "지정곡을 한 번 더 클리어하세요.",
+            "IsRequired": true,
+            "ClearCondition": {
+                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "RequiredDifficultyName": "NORMAL",
+                "MinimumRankName": "B",
+                "MinimumScore": 0,
+                "TargetStoryId": ""
+            },
+            "RewardId": "REWARD_LIVE_BASE"
+        }
+    ]
+}

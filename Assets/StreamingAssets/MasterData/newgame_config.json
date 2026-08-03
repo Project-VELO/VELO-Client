@@ -1,0 +1,31 @@
+{
+    "SchemaVersion": 1,
+    "StartLevel": 1,
+    "StartMoney": 1000,
+    "StartHype": 10,
+    "StartExp": 0,
+    "StartChapterId": "PROLOGUE",
+    "StartWeekId": "WEEK_001",
+    "StartDayId": "DAY_001",
+    "StartCostumeId": "ITEM_COSTUME_SHABBY_UNIFORM",
+    "StartAccessoryId": "ITEM_ACCESSORY_RUSTED_NECKLACE",
+    "OwnedCardIds": [
+        "CARD_JIWOO_FIRST_STAGE",
+        "CARD_HANA_FIRST_STAGE",
+        "CARD_RIA_FIRST_STAGE",
+        "CARD_MINA_FIRST_STAGE",
+        "CARD_SEOYUN_FIRST_STAGE",
+        "CARD_JIWOO_HAPPY",
+        "CARD_HANA_HAPPY",
+        "CARD_RIA_HAPPY",
+        "CARD_MINA_HAPPY",
+        "CARD_SEOYUN_HAPPY"
+    ],
+    "SelectedCardIds": [
+        "CARD_JIWOO_FIRST_STAGE",
+        "CARD_HANA_FIRST_STAGE",
+        "CARD_RIA_FIRST_STAGE",
+        "CARD_MINA_FIRST_STAGE",
+        "CARD_SEOYUN_FIRST_STAGE"
+    ]
+}

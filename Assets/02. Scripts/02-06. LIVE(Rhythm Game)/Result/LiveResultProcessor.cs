@@ -1,5 +1,8 @@
 /// <summary>
-/// 결과 화면 진입 시 한 번만 수행해야 하는 뒤처리(보상 지급, 최고 기록 갱신)를 정해진 순서로 묶습니다.
+/// 결과 화면 진입 시 한 번만 수행해야 하는 뒤처리를 기획서 3-K-3의 순서대로 묶습니다.
+///
+/// 결과 확정 → 최고 기록 갱신 여부 확인 → 보상 지급 → 일일 스케줄 완료 조건 확인 → 진행 상태 저장
+///
 /// 결과 데이터의 지급 완료 표시를 관문으로 삼으므로, 화면을 다시 열어도 두 번 실행되지 않습니다(3-J-3).
 /// </summary>
 public static class LiveResultProcessor
@@ -17,5 +20,11 @@ public static class LiveResultProcessor
         LiveRewardService.GrantReward(result, isFirstClear);
         result.IsNewBest = LiveRecordService.TryUpdateRecord(result);
         result.IsRewardClaimed = true;
+
+        // 연습실 LIVE와 조건 미충족은 이 안에서 걸러지므로 여기서 진입 경로를 따로 보지 않습니다.
+        GameProgressService.Instance.ApplyLiveResult(result);
+
+        // 스케줄이 완료되지 않았더라도 보상과 최고 기록은 이미 바뀌었으므로 반드시 저장합니다.
+        PlayerDataProvider.Instance.Save();
     }
 }

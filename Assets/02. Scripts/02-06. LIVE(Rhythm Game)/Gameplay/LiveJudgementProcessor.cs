@@ -116,6 +116,12 @@ public class LiveJudgementProcessor : MonoBehaviour
         _noteQueue.CollectExpired(songTimeMs, _expiredNotes);
         ApplyBadToCollectedNotes();
 
+        // 만료 처리 도중 귀신 노트가 실패했다면 그 시점에서 플레이가 끝나므로, 롱노트는 더 이상 확정하지 않습니다(3-I-6).
+        if (_hasGhostFailed)
+        {
+            return;
+        }
+
         _holdResults.Clear();
         _holdTracker.CollectCompleted(songTimeMs, _holdResults);
         ApplyCollectedHoldResults();
@@ -182,6 +188,10 @@ public class LiveJudgementProcessor : MonoBehaviour
     private void FailByGhostNote()
     {
         _hasGhostFailed = true;
+
+        // 실패 시점 이후는 집계하지 않으므로, 눌러 둔 롱노트도 판정되지 않은 채로 놓아 줍니다.
+        _holdTracker.Clear();
+
         OnGhostFailed?.Invoke();
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 /// <summary>
@@ -123,9 +124,15 @@ public class LiveHoldTracker
         }
     }
 
+    /// <summary>
+    /// 허용치를 롱노트 길이로 제한합니다. 길이가 허용치보다 짧으면 인정 구간이 시작 시각보다 앞으로 가 버려,
+    /// 누르자마자 떼도 끝까지 유지한 것이 됩니다. 격자가 촘촘한 채보에서는 그 길이가 쉽게 나옵니다
+    /// (1/16박은 200BPM에서 75ms라 허용치 125ms보다 짧습니다).
+    /// </summary>
     private EJudgement GetJudgementOnRelease(int laneIndex, NoteData note, int songTimeMs)
     {
-        bool isHeldToEnd = songTimeMs >= GetHoldEndTimeMs(note) - LiveJudgementRule.HOLD_RELEASE_TOLERANCE_MS;
+        int toleranceMs = Math.Min(LiveJudgementRule.HOLD_RELEASE_TOLERANCE_MS, note.HoldDurationMs);
+        bool isHeldToEnd = songTimeMs >= GetHoldEndTimeMs(note) - toleranceMs;
 
         return isHeldToEnd ? _startJudgements[laneIndex] : EJudgement.BAD;
     }

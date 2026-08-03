@@ -13,6 +13,10 @@ using VInspector;
 ///
 /// 목적지는 이 클래스가 정하지 않고 ScheduleShortcutRouter에 맡깁니다.
 /// 행이 목적지를 알면 홈과 사무실에서 이동 규칙이 어긋날 수 있습니다.
+///
+/// _completedRoot를 뺀 나머지 참조는 인스펙터에서 반드시 채워야 하며 null 검사를 하지 않습니다.
+/// 하나라도 비면 행이 제 역할을 못 하는데, 검사로 감싸면 예외 대신 빈 행이 조용히 그려져
+/// 배선 누락을 한참 뒤에야 발견하게 됩니다. 첫 실행에서 바로 터지는 편이 낫습니다.
 /// </summary>
 public class UI_ScheduleRow : MonoBehaviour
 {
@@ -36,7 +40,10 @@ public class UI_ScheduleRow : MonoBehaviour
     private TMP_Text _shortcutLabel;
 
     /// <summary>
-    /// 완료 체크 표시입니다. 완료된 행에서만 켭니다(기획서.txt:838).
+    /// 완료 체크 표시입니다. 완료된 행에서만 켭니다(기획서 3-E-6-1).
+    ///
+    /// 위 필드들과 달리 이것만 비어 있어도 됩니다. 현재 프리팹에는 체크 표시용 오브젝트가 없고,
+    /// 기획서가 요구하는 완료 표시는 라벨 교체와 클릭 차단으로 이미 충족되기 때문입니다.
     /// </summary>
     [SerializeField]
     private GameObject _completedRoot;
@@ -46,10 +53,7 @@ public class UI_ScheduleRow : MonoBehaviour
 
     private void Awake()
     {
-        if (_shortcutButton != null)
-        {
-            _shortcutButton.onClick.AddListener(MoveToSchedule);
-        }
+        _shortcutButton.onClick.AddListener(MoveToSchedule);
     }
 
     /// <summary>
@@ -71,11 +75,7 @@ public class UI_ScheduleRow : MonoBehaviour
         }
 
         _titleText.text = schedule.Title;
-
-        if (_typeText != null)
-        {
-            _typeText.text = GetTypeLabel(schedule.ScheduleType);
-        }
+        _typeText.text = GetTypeLabel(schedule.ScheduleType);
 
         SetCompleted(isCompleted);
     }

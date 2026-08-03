@@ -236,9 +236,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6603501083392588141}
     m_Modifications:
+    - target: {fileID: 1447901529610554752, guid: f389d74a93e0bad44bdb327ff23d7fdf, type: 3}
+      propertyPath: m_text
+      value: "P\uB2D8! \uC5B4\uB514 \uC788\uB2E4\uAC00 \uC774\uC81C \uC628\uAC70\uC5D0\uC694!"
+      objectReference: {fileID: 0}
     - target: {fileID: 4581991336494234236, guid: f389d74a93e0bad44bdb327ff23d7fdf, type: 3}
       propertyPath: m_Name
       value: P_UI_Panel_Dialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5039833789765453953, guid: f389d74a93e0bad44bdb327ff23d7fdf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5471299904101209682, guid: f389d74a93e0bad44bdb327ff23d7fdf, type: 3}
+      propertyPath: m_text
+      value: "\uB9AC\uC544"
       objectReference: {fileID: 0}
     - target: {fileID: 6946654913062840921, guid: f389d74a93e0bad44bdb327ff23d7fdf, type: 3}
       propertyPath: m_Pivot.x

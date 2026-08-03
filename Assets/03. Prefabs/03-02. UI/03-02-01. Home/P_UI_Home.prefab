@@ -123,15 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0c7e87887344a4882664368d70b283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Home
-  _profileButton: {fileID: 0}
-  _notificationButton: {fileID: 0}
-  _mailboxButton: {fileID: 0}
-  _settingButton: {fileID: 0}
-  _spaceButton: {fileID: 0}
-  _shopButton: {fileID: 0}
-  _collectionButton: {fileID: 0}
-  _enterStoryButton: {fileID: 0}
-  _profileSettingPopup: {fileID: 0}
+  _liveButton: {fileID: 4271418439739330122}
+  _spaceButton: {fileID: 4972786826506558835}
+  _enterStoryButton: {fileID: 2942980191701392669}
+  _currencyHud: {fileID: 9162124047387074208}
+  _todaySchedules: {fileID: 1648929481456067801}
+  _tomorrowScheduleRoot: {fileID: 6396933215853653331}
 --- !u!1 &3079025372597192438
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +456,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1972905670682638210, guid: 386e9336f1bbb7d4d9bbf2bf4fa66bca, type: 3}
   m_PrefabInstance: {fileID: 3753399758912802421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4972786826506558835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8148175508834784006, guid: 386e9336f1bbb7d4d9bbf2bf4fa66bca, type: 3}
+  m_PrefabInstance: {fileID: 3753399758912802421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &3980365665900026151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -556,6 +564,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8219e9c8c6e905e42b2a73bed6af3cb4, type: 3}
+--- !u!114 &2942980191701392669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2299801878730277946, guid: 8219e9c8c6e905e42b2a73bed6af3cb4, type: 3}
+  m_PrefabInstance: {fileID: 3980365665900026151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &7332895539404759067 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5980416228041537852, guid: 8219e9c8c6e905e42b2a73bed6af3cb4, type: 3}
@@ -738,9 +757,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10424842286d6f242a2cc495870542df, type: 3}
+--- !u!114 &1648929481456067801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3386446046016775873, guid: 10424842286d6f242a2cc495870542df, type: 3}
+  m_PrefabInstance: {fileID: 4043456330797711896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bd34fd33437074bb569524d18643d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_TodayScheduleList
 --- !u!224 &4229629337907957948 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 193539770114347684, guid: 10424842286d6f242a2cc495870542df, type: 3}
+  m_PrefabInstance: {fileID: 4043456330797711896}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6396933215853653331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6979249846995267403, guid: 10424842286d6f242a2cc495870542df, type: 3}
   m_PrefabInstance: {fileID: 4043456330797711896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4071864218019336648
@@ -947,6 +982,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7328422432699806877, guid: e9c9aed0d947d3944b6165783e63d130, type: 3}
   m_PrefabInstance: {fileID: 6034688407979648050}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4271418439739330122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7563977349607991928, guid: e9c9aed0d947d3944b6165783e63d130, type: 3}
+  m_PrefabInstance: {fileID: 6034688407979648050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &7614446068679206318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1097,6 +1143,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2022870569752798205, guid: e92a7c306b23054428f888f0484bee7d, type: 3}
   m_PrefabInstance: {fileID: 7614446068679206318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9162124047387074208 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1625118988250675982, guid: e92a7c306b23054428f888f0484bee7d, type: 3}
+  m_PrefabInstance: {fileID: 7614446068679206318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5850d1b1014ff15409447c6317ba8b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_CurrencyHud
 --- !u!1001 &7966925503605389212
 PrefabInstance:
   m_ObjectHideFlags: 0

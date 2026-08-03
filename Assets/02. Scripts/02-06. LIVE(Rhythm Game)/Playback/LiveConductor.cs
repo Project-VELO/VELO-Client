@@ -123,7 +123,12 @@ public class LiveConductor : MonoBehaviour
         }
 
         double songSeconds = _lastDspTime - _dspSongStartTime + _interpolatedSeconds;
-        SongTimeMs = (int)(songSeconds * MS_PER_SECOND);
+        int songTimeMs = (int)(songSeconds * MS_PER_SECOND);
+
+        // 메워 둔 시간은 dspTime이 갱신되는 순간 0으로 돌아가므로, 그 프레임의 계산값이 직전보다 뒤로 밀릴 수 있습니다.
+        // 판정 시각이 되감기면 이미 지나간 노트가 유효 입력 구간에 다시 들어오므로 앞으로만 흐르게 고정합니다.
+        // 실제 재생 위치와 어긋난 경우는 RefreshDriftCorrection이 SongTimeMs를 직접 덮어써 되돌립니다.
+        SongTimeMs = Mathf.Max(SongTimeMs, songTimeMs);
     }
 
     /// <summary>

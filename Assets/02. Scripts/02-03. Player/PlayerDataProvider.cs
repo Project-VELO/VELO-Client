@@ -22,10 +22,15 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
         }
     }
 
-    public void InitData(NewGameConfig config = null)
+    /// <summary>
+    /// 신규 게임 상태로 초기화합니다. 설정을 넘기지 않으면 마스터 데이터의 newgame_config.json을 사용합니다.
+    /// </summary>
+    public void InitData(NewGameConfigData config = null)
     {
+        MasterDataProvider.Instance.Build();
+
         _data = new PlayerData();
-        _data.InitPlayerData(config);
+        _data.InitPlayerData(config ?? MasterDataProvider.Instance.NewGameConfig);
     }
 
     /// <summary>

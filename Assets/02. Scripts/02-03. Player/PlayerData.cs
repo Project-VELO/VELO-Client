@@ -107,57 +107,36 @@ public class PlayerData : ISerializationCallbackReceiver
     }
 
     /// <summary>
-    /// 신규 게임 시작 시 플레이어의 초기 상태 데이터를 생성합니다.
+    /// 신규 게임 시작 시 플레이어의 초기 상태 데이터를 생성합니다(기획서 3-C-3).
     /// </summary>
-    /// <param name="config">기본값 설정 에셋 (null일 경우 소스코드 내 디폴트 값 사용)</param>
-    public void InitPlayerData(NewGameConfig config = null)
+    /// <param name="config">newgame_config.json에서 읽은 초기 지급 설정입니다.</param>
+    public void InitPlayerData(NewGameConfigData config)
     {
-        if (config != null)
+        // 설정 파일을 읽지 못하면 카드도 편성도 없는 상태가 되어 곡 선택 화면에서 플레이가 막힙니다.
+        // 조용히 빈 상태로 시작해 원인을 찾기 어렵게 만드는 대신, 여기서 분명히 알립니다.
+        if (ReferenceEquals(config, null))
         {
-            _level = config.StartLevel;
-            _exp = 0;
-            _money = config.StartMoney;
-            _hype = config.StartHype;
-            _gem = 0;
-            _currentChapterId = config.StartChapterId;
-            _currentWeekId = config.StartWeekId;
-            _currentDayId = config.StartDayId;
-            _selectedCostumeId = config.StartCostumeId;
-            _selectedAccessoryId = config.StartAccessoryId;
-            _dormitoryLevel = 1;
-
-            _ownedCardIds.Clear();
-            _ownedCardIds.AddRange(config.InitialCardIds);
-
-            _selectedCardIds.Clear();
-            _selectedCardIds.AddRange(config.InitialSelectedCardIds);
+            Debug.LogError($"[PlayerData] 신규 게임 설정을 읽지 못했습니다. {MasterDataPaths.NEW_GAME_CONFIG_FILE_NAME}을 확인해 주세요.");
+            config = new NewGameConfigData();
         }
-        else
-        {
-            _level = 1;
-            _exp = 0;
-            _money = 1000;
-            _hype = 10;
-            _gem = 0;
-            _currentChapterId = "PROLOGUE";
-            _currentWeekId = "WEEK_001";
-            _currentDayId = "DAY_001";
-            _selectedCostumeId = "COSTUME_001";
-            _selectedAccessoryId = "ACCESSORY_001";
-            _dormitoryLevel = 1;
 
-            _ownedCardIds.Clear();
-            for (int i = 1; i <= 10; i++)
-            {
-                _ownedCardIds.Add($"CARD_{i:D3}");
-            }
+        _level = config.StartLevel;
+        _exp = config.StartExp;
+        _money = config.StartMoney;
+        _hype = config.StartHype;
+        _gem = 0;
+        _currentChapterId = config.StartChapterId;
+        _currentWeekId = config.StartWeekId;
+        _currentDayId = config.StartDayId;
+        _selectedCostumeId = config.StartCostumeId;
+        _selectedAccessoryId = config.StartAccessoryId;
+        _dormitoryLevel = 1;
 
-            _selectedCardIds.Clear();
-            for (int i = 1; i <= 5; i++)
-            {
-                _selectedCardIds.Add($"CARD_{i:D3}");
-            }
-        }
+        _ownedCardIds.Clear();
+        _ownedCardIds.AddRange(config.OwnedCardIds);
+
+        _selectedCardIds.Clear();
+        _selectedCardIds.AddRange(config.SelectedCardIds);
 
         // 초기 의상 및 악세서리 보유 설정
         _ownedCostumeIds.Clear();

@@ -8,23 +8,47 @@ using System.Collections.Generic;
 public static class StoryProgressService
 {
     /// <summary>
-    /// 신규 게임의 스토리 해금 상태를 만듭니다(기획서 3-C-3).
+    /// 마스터 데이터의 스토리 가운데 진행 기록이 없는 것을 채웁니다(기획서 3-C-3).
     /// 해금 조건이 없는 스토리는 열린 상태로, 조건이 걸린 스토리는 잠긴 상태로 시작합니다.
+    /// 무언가 채워졌으면 true를 돌려주므로, 호출부는 이때만 저장하면 됩니다.
+    ///
+    /// 기존 기록은 건드리지 않습니다. 신규 게임뿐 아니라 세이브를 불러온 뒤에도 호출하기 때문입니다.
+    /// 기록이 비어 있는 세이브를 그대로 두면 해금 조건이 걸린 챕터가 전부 잠겨 곡 선택 화면에서 진행할 수 없고,
+    /// stories.json에 스토리를 추가한 뒤 기존 세이브를 열면 그 스토리가 목록에서 사라집니다.
     /// </summary>
-    public static void InitStoryProgresses(GameProgressData progress)
+    public static bool SyncStoryProgresses(GameProgressData progress)
     {
-        progress.StoryProgresses.Clear();
+        bool isChanged = false;
 
         foreach (KeyValuePair<string, StoryData> pair in MasterDataProvider.Instance.Stories)
         {
             StoryData story = pair.Value;
+
+            if (!ReferenceEquals(progress.GetStoryProgress(story.StoryId), null))
+            {
+                continue;
+            }
 
             progress.StoryProgresses[story.StoryId] = new StoryProgress
             {
                 Status = story.UnlockType == EUnlockType.NONE ? EStoryStatus.UNLOCKED : EStoryStatus.LOCKED,
                 IsNew = false,
             };
+
+            isChanged = true;
         }
+
+        // 이미 마무리한 주차로 열려야 할 스토리를 뒤늦게 추가한 경우를 흡수합니다.
+        // 위에서 잠긴 상태로 만들어 두기만 하면 그 주차를 다시 마무리할 방법이 없어 영영 잠깁니다.
+        foreach (string weekId in progress.CompletedWeekIds)
+        {
+            if (UnlockStoriesByWeek(progress, weekId).Count > 0)
+            {
+                isChanged = true;
+            }
+        }
+
+        return isChanged;
     }
 
     /// <summary>

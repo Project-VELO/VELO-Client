@@ -19,7 +19,8 @@ public class SaveService
     /// <summary>
     /// 저장이 최종 실패했을 때 알립니다. 사용자 안내 팝업은 공통 팝업 작업에서 이 이벤트에 연결합니다.
     /// </summary>
-    public Action OnSaveFailed;
+    /// event로 선언한 것은 외부에서 대입으로 기존 구독자를 지워 버리지 못하게 하기 위해서입니다.
+    public event Action OnSaveFailed;
 
     /// <summary>
     /// 저장은 원자적으로 수행합니다. 임시 파일에 먼저 쓰고 기존 파일을 백업으로 돌린 뒤 교체하므로,

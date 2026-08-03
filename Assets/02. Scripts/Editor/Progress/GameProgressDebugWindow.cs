@@ -52,6 +52,8 @@ public class GameProgressDebugWindow : EditorWindow
         EditorGUILayout.LabelField("세이브", EditorStyles.boldLabel);
         EditorGUILayout.LabelField(SavePaths.SaveFilePath, EditorStyles.miniLabel);
 
+        bool isResetRequested;
+
         using (new EditorGUILayout.HorizontalScope())
         {
             if (GUILayout.Button("JSON 보기"))
@@ -65,11 +67,19 @@ public class GameProgressDebugWindow : EditorWindow
                 EditorUtility.RevealInFinder(SavePaths.SaveRoot);
             }
 
-            if (GUILayout.Button("신규 게임 리셋"))
-            {
-                PlayerDataProvider.Instance.ResetToNewGame();
-                _saveJson = string.Empty;
-            }
+            isResetRequested = GUILayout.Button("신규 게임 리셋");
+        }
+
+        // 세이브 파일을 즉시 지우는 되돌릴 수 없는 조작이라, 옆 버튼을 누르려다 잘못 눌리면 QA 진행분이 사라집니다.
+        // 확인 창은 가로 그룹 밖에서 띄웁니다. 모달이 OnGUI 도중 이벤트를 가져가면 레이아웃 경고가 납니다.
+        if (isResetRequested && EditorUtility.DisplayDialog(
+                "신규 게임 리셋",
+                "현재 세이브 데이터가 초기화됩니다. 계속하시겠습니까?",
+                "리셋",
+                "취소"))
+        {
+            PlayerDataProvider.Instance.ResetToNewGame();
+            _saveJson = string.Empty;
         }
 
         if (!string.IsNullOrEmpty(_saveJson))

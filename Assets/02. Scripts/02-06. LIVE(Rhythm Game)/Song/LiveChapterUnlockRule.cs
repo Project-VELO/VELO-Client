@@ -18,9 +18,9 @@ public static class LiveChapterUnlockRule
             return true;
         }
 
-        StoryProgress progress = PlayerDataProvider.Instance.Data.Progress.GetStoryProgress(chapter.UnlockStoryId);
+        IStoryProgress progress = GameProgressService.Instance.GetStoryProgress(chapter.UnlockStoryId);
 
-        // 신규 게임을 만들 때 stories.json의 모든 스토리에 진행 상태를 채우므로,
+        // 신규 게임을 만들 때와 세이브를 불러올 때 stories.json의 모든 스토리에 진행 상태를 채우므로,
         // 기록이 없다는 것은 chapter_info.json이 존재하지 않는 스토리를 가리킨다는 뜻입니다.
         // 조용히 열어 두면 오타를 발견하지 못하므로 잠근 채로 알립니다.
         if (ReferenceEquals(progress, null))

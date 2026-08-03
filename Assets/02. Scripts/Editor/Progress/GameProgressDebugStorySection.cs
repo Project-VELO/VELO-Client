@@ -19,7 +19,7 @@ public class GameProgressDebugStorySection
 
     private void DrawStoryRow(StoryData story)
     {
-        StoryProgress progress = GameProgressService.Instance.GetStoryProgress(story.StoryId);
+        IStoryProgress progress = GameProgressService.Instance.GetStoryProgress(story.StoryId);
         string state = ReferenceEquals(progress, null)
             ? "기록 없음"
             : $"{progress.Status}{(progress.IsNew ? " · NEW" : string.Empty)}";

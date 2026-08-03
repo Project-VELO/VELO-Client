@@ -5,9 +5,11 @@ using UnityEngine;
 /// 스토리 한 편에 대한 플레이어의 진행 상태입니다.
 ///
 /// 제목·해금 조건 같은 기획 값은 마스터 데이터(StoryData)에 있고, 여기에는 플레이어마다 달라지는 것만 둡니다.
+///
+/// 값을 바꾸는 것은 진행 서비스뿐입니다. 화면에는 IStoryProgress로 넘겨 읽기만 하도록 합니다.
 /// </summary>
 [Serializable]
-public class StoryProgress
+public class StoryProgress : IStoryProgress
 {
     [SerializeField]
     private EStoryStatus _status = EStoryStatus.LOCKED;

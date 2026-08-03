@@ -39,6 +39,15 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
         if (ReferenceEquals(_data, null))
         {
             InitData();
+            return;
+        }
+
+        // 불러온 세이브에 진행 기록이 없는 스토리를 채웁니다.
+        // 스키마 버전이 다른 세이브는 경고만 남기고 통과하고, 진행 데이터가 통째로 없으면 빈 상태로 복구되므로,
+        // 이 보정이 없으면 해금 조건이 걸린 챕터가 전부 잠긴 채로 게임이 시작됩니다.
+        if (StoryProgressService.SyncStoryProgresses(_data.Progress))
+        {
+            Save();
         }
     }
 
@@ -52,14 +61,19 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
         _data = new PlayerData();
         _data.InitPlayerData(config ?? MasterDataProvider.Instance.NewGameConfig);
 
-        StoryProgressService.InitStoryProgresses(_data.Progress);
+        StoryProgressService.SyncStoryProgresses(_data.Progress);
 
         Save();
     }
 
+    /// <summary>
+    /// Data 프로퍼티가 아니라 _data를 직접 넘깁니다.
+    /// Data 게터는 값이 없으면 Load()를 부르고 Load()는 다시 이 메서드에 닿으므로,
+    /// 프로퍼티를 쓰면 저장이 호출 순서에 따라 재진입할 수 있는 경로가 생깁니다.
+    /// </summary>
     public bool Save()
     {
-        return _saveService.Save(Data);
+        return _saveService.Save(_data);
     }
 
     /// <summary>

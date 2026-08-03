@@ -29,10 +29,26 @@ public static class DayProgressService
             return DayFinishResult.Failed;
         }
 
+        // 날짜 위치를 상태를 바꾸기 전에 확인합니다.
+        // "목록에 없는 날짜"와 "주차의 마지막 날짜"를 같이 취급하면, 데이터 조회에 실패했을 때
+        // 주차가 마무리되고 스토리가 잘못 해금됩니다. 날짜 순서는 문자열 ID로 알 수 없으므로
+        // 마스터 데이터의 DayOrder 정렬 결과를 따릅니다.
+        List<string> dayIds = MasterDataQuery.GetDayIdsByWeek(data.CurrentWeekId);
+        int currentIndex = dayIds.IndexOf(data.CurrentDayId);
+
+        if (currentIndex < 0)
+        {
+            Debug.LogWarning($"[DayProgressService] 현재 날짜를 주차 목록에서 찾지 못해 하루를 마무리하지 않습니다: {data.CurrentWeekId} / {data.CurrentDayId}");
+            return DayFinishResult.Failed;
+        }
+
         progress.CompletedDayKeys.Add(DayProgressKey.Create(data.CurrentWeekId, data.CurrentDayId));
 
-        if (TryGetNextDayId(data.CurrentWeekId, data.CurrentDayId, out string nextDayId))
+        bool hasNextDay = currentIndex < dayIds.Count - 1;
+
+        if (hasNextDay)
         {
+            string nextDayId = dayIds[currentIndex + 1];
             data.CurrentDayId = nextDayId;
             return DayFinishResult.ToNextDay(nextDayId);
         }
@@ -76,31 +92,5 @@ public static class DayProgressService
         List<string> unlockedStoryIds = StoryProgressService.UnlockStoriesByWeek(progress, data.CurrentWeekId);
 
         return DayFinishResult.ToWeekEnd(unlockedStoryIds);
-    }
-
-    /// <summary>
-    /// 같은 주차의 다음 날짜를 찾습니다. 마지막 날짜였다면 false를 돌려줍니다.
-    /// 날짜 순서는 문자열 ID로 알 수 없으므로 마스터 데이터의 DayOrder 정렬 결과를 따릅니다.
-    /// </summary>
-    private static bool TryGetNextDayId(string weekId, string currentDayId, out string nextDayId)
-    {
-        nextDayId = string.Empty;
-
-        List<string> dayIds = MasterDataQuery.GetDayIdsByWeek(weekId);
-        int currentIndex = dayIds.IndexOf(currentDayId);
-
-        if (currentIndex < 0)
-        {
-            Debug.LogWarning($"[DayProgressService] 현재 날짜를 주차 목록에서 찾지 못했습니다: {weekId} / {currentDayId}");
-            return false;
-        }
-
-        if (currentIndex >= dayIds.Count - 1)
-        {
-            return false;
-        }
-
-        nextDayId = dayIds[currentIndex + 1];
-        return true;
     }
 }

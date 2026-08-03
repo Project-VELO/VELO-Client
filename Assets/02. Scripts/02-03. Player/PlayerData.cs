@@ -140,10 +140,20 @@ public class PlayerData
         _selectedCardIds.AddRange(config.SelectedCardIds);
 
         // 초기 의상 및 악세서리 보유 설정
+        // 설정을 읽지 못해 ID가 비어 있을 때 그대로 넣으면 보유 목록에 빈 항목이 남고,
+        // 의상 목록 화면에서 마스터 데이터 조회에 실패하는 행이 생깁니다.
         _ownedCostumeIds.Clear();
-        _ownedCostumeIds.Add(_selectedCostumeId);
         _ownedAccessoryIds.Clear();
-        _ownedAccessoryIds.Add(_selectedAccessoryId);
+
+        if (!string.IsNullOrEmpty(_selectedCostumeId))
+        {
+            _ownedCostumeIds.Add(_selectedCostumeId);
+        }
+
+        if (!string.IsNullOrEmpty(_selectedAccessoryId))
+        {
+            _ownedAccessoryIds.Add(_selectedAccessoryId);
+        }
 
         Progress.Clear();
     }

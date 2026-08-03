@@ -24,7 +24,7 @@ public static class LiveResultProcessor
         // 연습실 LIVE와 조건 미충족은 이 안에서 걸러지므로 여기서 진입 경로를 따로 보지 않습니다.
         GameProgressService.Instance.ApplyLiveResult(result);
 
-        // 스케줄이 완료되지 않았더라도 보상과 최고 기록은 이미 바뀌었으므로 반드시 저장합니다.
+        // 보상·최고 기록·스케줄 완료를 한 번에 저장합니다. ApplyLiveResult가 따로 저장하지 않는 것은 이 때문입니다.
         PlayerDataProvider.Instance.Save();
     }
 }

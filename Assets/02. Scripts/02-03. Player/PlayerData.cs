@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 플레이어의 계정 재화, 진행 상태, 세이브 정보를 저장하는 DTO 클래스입니다.
+/// 플레이어의 재화·보유물·현재 위치와 게임 진행 상태를 담는 세이브 파일의 최상위 객체입니다.
+///
+/// 진행 상태는 GameProgressData가 따로 들고 있습니다. 재화·보유물과는 바뀌는 시점이 다르고,
+/// 한 클래스에 모으면 Convention의 200줄 제한을 넘기 때문입니다.
 /// </summary>
 [Serializable]
-public class PlayerData : ISerializationCallbackReceiver
+public class PlayerData
 {
+    // 기본값을 0으로 두는 것은 의도적입니다. 실제 저장을 거친 데이터만 버전을 갖게 되므로,
+    // 빈 JSON처럼 내용이 없는 파일을 유효한 세이브로 오인하지 않는 판별 근거가 됩니다.
+    [SerializeField]
+    private int _schemaVersion = SaveSchema.UNSAVED_VERSION;
+
     [SerializeField]
     private int _level = 1;
 
@@ -32,11 +40,12 @@ public class PlayerData : ISerializationCallbackReceiver
     [SerializeField]
     private string _currentDayId = "DAY_001";
 
+    // 실제 값은 newgame_config.json이 채웁니다. 코드에 ID를 박아 두면 마스터 데이터와 어긋날 때 알아채기 어렵습니다.
     [SerializeField]
-    private string _selectedCostumeId = "COSTUME_001";
+    private string _selectedCostumeId = string.Empty;
 
     [SerializeField]
-    private string _selectedAccessoryId = "ACCESSORY_001";
+    private string _selectedAccessoryId = string.Empty;
 
     [SerializeField]
     private List<string> _ownedCardIds = new List<string>();
@@ -53,17 +62,10 @@ public class PlayerData : ISerializationCallbackReceiver
     [SerializeField]
     private int _dormitoryLevel = 1;
 
-    // 곡 기록은 List로 감싸 직렬화하고 ISerializationCallbackReceiver로 Dictionary와 동기화합니다.
-    // 키 조립은 SongRecordKey를 통해서만 수행합니다.
     [SerializeField]
-    private List<SongRecordEntry> _songRecordEntries = new List<SongRecordEntry>();
+    private GameProgressData _progress = new GameProgressData();
 
-    // JSON 직렬화를 위해 Serializable 딕셔너리 구조가 권장되나,
-    // 기본 C# 딕셔너리로 선언하고 로드 시 파싱할 수 있도록 구성합니다.
-    // 아래 두 딕셔너리도 _songRecords와 동일한 방식으로 직렬화해야 하나, 세이브 계층 작업 시 함께 정리합니다.
-    private Dictionary<string, EStoryStatus> _storyProgresses = new Dictionary<string, EStoryStatus>();
-    private Dictionary<string, EScheduleStatus> _scheduleProgresses = new Dictionary<string, EScheduleStatus>();
-    private Dictionary<string, SongRecord> _songRecords = new Dictionary<string, SongRecord>();
+    public int SchemaVersion { get => _schemaVersion; set => _schemaVersion = value; }
 
     public int Level { get => _level; set => _level = value; }
     public int Exp { get => _exp; set => _exp = value; }
@@ -84,30 +86,27 @@ public class PlayerData : ISerializationCallbackReceiver
     public List<string> OwnedCostumeIds => _ownedCostumeIds;
     public List<string> OwnedAccessoryIds => _ownedAccessoryIds;
 
-    public Dictionary<string, EStoryStatus> StoryProgresses => _storyProgresses;
-    public Dictionary<string, EScheduleStatus> ScheduleProgresses => _scheduleProgresses;
-    public Dictionary<string, SongRecord> SongRecords => _songRecords;
-
-    public void OnBeforeSerialize()
+    /// <summary>
+    /// 스토리·스케줄·날짜·주차 진행 상태입니다. 값을 바꿀 때는 GameProgressService를 통해야 저장이 함께 이루어집니다.
+    /// </summary>
+    public GameProgressData Progress
     {
-        _songRecordEntries.Clear();
-        foreach (var pair in _songRecords)
+        get
         {
-            _songRecordEntries.Add(new SongRecordEntry { Key = pair.Key, Record = pair.Value });
-        }
-    }
+            // 구버전 세이브나 손상된 파일을 읽으면 null이 될 수 있습니다.
+            // 진행 상태가 통째로 없다고 게임을 못 켜게 할 이유는 없으므로 빈 상태로 복구합니다.
+            if (ReferenceEquals(_progress, null))
+            {
+                _progress = new GameProgressData();
+            }
 
-    public void OnAfterDeserialize()
-    {
-        _songRecords.Clear();
-        foreach (var entry in _songRecordEntries)
-        {
-            _songRecords[entry.Key] = entry.Record;
+            return _progress;
         }
     }
 
     /// <summary>
     /// 신규 게임 시작 시 플레이어의 초기 상태 데이터를 생성합니다(기획서 3-C-3).
+    /// 스토리 해금 초기 상태는 마스터 데이터의 해금 조건을 봐야 하므로 여기가 아니라 StoryProgressService가 채웁니다.
     /// </summary>
     /// <param name="config">newgame_config.json에서 읽은 초기 지급 설정입니다.</param>
     public void InitPlayerData(NewGameConfigData config)
@@ -119,6 +118,8 @@ public class PlayerData : ISerializationCallbackReceiver
             Debug.LogError($"[PlayerData] 신규 게임 설정을 읽지 못했습니다. {MasterDataPaths.NEW_GAME_CONFIG_FILE_NAME}을 확인해 주세요.");
             config = new NewGameConfigData();
         }
+
+        _schemaVersion = SaveSchema.CURRENT_VERSION;
 
         _level = config.StartLevel;
         _exp = config.StartExp;
@@ -144,9 +145,6 @@ public class PlayerData : ISerializationCallbackReceiver
         _ownedAccessoryIds.Clear();
         _ownedAccessoryIds.Add(_selectedAccessoryId);
 
-        _storyProgresses.Clear();
-        _scheduleProgresses.Clear();
-        _songRecords.Clear();
-        _songRecordEntries.Clear();
+        Progress.Clear();
     }
 }

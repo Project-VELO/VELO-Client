@@ -28,10 +28,10 @@ public static class LiveRecordService
         PlayerData data = PlayerDataProvider.Instance.Data;
         string key = SongRecordKey.Create(result.SongId, result.Difficulty);
 
-        if (!data.SongRecords.TryGetValue(key, out SongRecord record))
+        if (!data.Progress.SongRecords.TryGetValue(key, out SongRecord record))
         {
             record = new SongRecord();
-            data.SongRecords[key] = record;
+            data.Progress.SongRecords[key] = record;
         }
 
         return record.TryUpdateRecord(result.Score, result.Rank, result.IsFullCombo);

@@ -1,13 +1,18 @@
 using System;
 
 /// <summary>
-/// 플레이어 데이터를 씬 사이에서 공유하기 위한 싱글톤입니다.
-/// 아직 세이브 계층이 없어 디스크 입출력은 하지 않고, 최초 접근 시 신규 게임 상태로 초기화한 값만 들고 있습니다.
-/// 저장·로드가 붙는 시점에는 이 클래스만 교체하면 되도록 조회 경로를 이곳으로 모았습니다.
+/// 플레이어 데이터를 씬 사이에서 공유하고, 세이브 파일과의 입출력을 중개하는 싱글톤입니다.
+///
+/// 최초 접근 시 세이브를 불러오고, 없거나 손상되었으면 신규 게임을 만들어 즉시 저장합니다.
+/// 진행 상태를 바꾼 뒤의 저장은 GameProgressService가 호출하므로, 화면 코드가 저장을 신경 쓸 필요는 없습니다.
 /// </summary>
 public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
 {
+    private readonly SaveService _saveService = new SaveService();
+
     private PlayerData _data;
+
+    public SaveService SaveService => _saveService;
 
     public PlayerData Data
     {
@@ -15,7 +20,7 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
         {
             if (ReferenceEquals(_data, null))
             {
-                InitData();
+                Load();
             }
 
             return _data;
@@ -23,7 +28,22 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
     }
 
     /// <summary>
-    /// 신규 게임 상태로 초기화합니다. 설정을 넘기지 않으면 마스터 데이터의 newgame_config.json을 사용합니다.
+    /// 세이브를 불러옵니다. 없거나 손상되어 복구에 실패하면 신규 게임을 만들고 곧바로 저장합니다(기획서 3-K-2, 3-K-4).
+    /// </summary>
+    public void Load()
+    {
+        MasterDataProvider.Instance.Build();
+
+        _data = _saveService.Load();
+
+        if (ReferenceEquals(_data, null))
+        {
+            InitData();
+        }
+    }
+
+    /// <summary>
+    /// 신규 게임 상태로 초기화하고 저장합니다. 설정을 넘기지 않으면 마스터 데이터의 newgame_config.json을 사용합니다.
     /// </summary>
     public void InitData(NewGameConfigData config = null)
     {
@@ -31,6 +51,24 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
 
         _data = new PlayerData();
         _data.InitPlayerData(config ?? MasterDataProvider.Instance.NewGameConfig);
+
+        StoryProgressService.InitStoryProgresses(_data.Progress);
+
+        Save();
+    }
+
+    public bool Save()
+    {
+        return _saveService.Save(Data);
+    }
+
+    /// <summary>
+    /// 세이브를 지우고 신규 게임으로 되돌립니다. 디버그 도구에서 사용합니다.
+    /// </summary>
+    public void ResetToNewGame()
+    {
+        _saveService.Delete();
+        InitData();
     }
 
     /// <summary>
@@ -44,7 +82,7 @@ public class PlayerDataProvider : POCOSingleton<PlayerDataProvider>
         }
 
         string key = SongRecordKey.Create(songId, difficulty);
-        return Data.SongRecords.TryGetValue(key, out SongRecord record) ? record : null;
+        return Data.Progress.SongRecords.TryGetValue(key, out SongRecord record) ? record : null;
     }
 
     /// <summary>

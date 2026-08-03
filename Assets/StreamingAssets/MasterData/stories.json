@@ -36,7 +36,27 @@
             "ChapterId": "CHAPTER_02",
             "ChapterOrder": 2,
             "EpisodeNumber": 1,
-            "Title": "해금 동작 확인용 샘플",
+            "Title": "[임시] CHAPTER 02 1화",
+            "UnlockTypeName": "WEEK_CLEAR",
+            "UnlockTargetId": "WEEK_001",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_CH02_02",
+            "ChapterId": "CHAPTER_02",
+            "ChapterOrder": 2,
+            "EpisodeNumber": 2,
+            "Title": "[임시] CHAPTER 02 2화",
+            "UnlockTypeName": "WEEK_CLEAR",
+            "UnlockTargetId": "WEEK_001",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_CH02_03",
+            "ChapterId": "CHAPTER_02",
+            "ChapterOrder": 2,
+            "EpisodeNumber": 3,
+            "Title": "[임시] CHAPTER 02 3화",
             "UnlockTypeName": "WEEK_CLEAR",
             "UnlockTargetId": "WEEK_001",
             "RewardId": "REWARD_STORY_DEFAULT"

@@ -74,5 +74,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# 기획서 원본 PDF (용량 문제로 제외, 추출 텍스트만 추적)
-/docs/기획서/*.pdf
+# 기획서 원본과 변환본, 작업 계획 문서는 버전 관리에서 제외한다
+/docs/기획서/
+/docs/plans/

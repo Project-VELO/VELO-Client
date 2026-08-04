@@ -32,31 +32,131 @@
             "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
-            "StoryId": "STORY_CH02_01",
-            "ChapterId": "CHAPTER_02",
-            "ChapterOrder": 2,
+            "StoryId": "STORY_PROLOGUE_04",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 4,
+            "Title": "찢겨진 목줄",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_05",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 5,
+            "Title": "컷씬 : 빛바랜 낙원",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_06",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 6,
+            "Title": "붉은 낙인",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_07",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 7,
+            "Title": "흙투성이 구두와 단 한 번의 생방송",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_08",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 8,
+            "Title": "전화 한 통",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_09",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 9,
+            "Title": "비참한 퇴장",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_10",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 10,
+            "Title": "불 꺼진 낙원",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_11",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 11,
+            "Title": "컷씬: 심연에서 날아온 초대장",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_12",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 12,
+            "Title": "붉은 거울",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_PROLOGUE_13",
+            "ChapterId": "PROLOGUE",
+            "ChapterOrder": 0,
+            "EpisodeNumber": 13,
+            "Title": "몽환의 도서관",
+            "UnlockTypeName": "NONE",
+            "UnlockTargetId": "",
+            "RewardId": "REWARD_STORY_DEFAULT"
+        },
+        {
+            "StoryId": "STORY_CH01_01",
+            "ChapterId": "CHAPTER_01",
+            "ChapterOrder": 1,
             "EpisodeNumber": 1,
-            "Title": "[임시] CHAPTER 02 1화",
+            "Title": "[임시] CHAPTER 01 1화",
             "UnlockTypeName": "WEEK_CLEAR",
             "UnlockTargetId": "WEEK_001",
             "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
-            "StoryId": "STORY_CH02_02",
-            "ChapterId": "CHAPTER_02",
-            "ChapterOrder": 2,
+            "StoryId": "STORY_CH01_02",
+            "ChapterId": "CHAPTER_01",
+            "ChapterOrder": 1,
             "EpisodeNumber": 2,
-            "Title": "[임시] CHAPTER 02 2화",
+            "Title": "[임시] CHAPTER 01 2화",
             "UnlockTypeName": "WEEK_CLEAR",
             "UnlockTargetId": "WEEK_001",
             "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
-            "StoryId": "STORY_CH02_03",
-            "ChapterId": "CHAPTER_02",
-            "ChapterOrder": 2,
+            "StoryId": "STORY_CH01_03",
+            "ChapterId": "CHAPTER_01",
+            "ChapterOrder": 1,
             "EpisodeNumber": 3,
-            "Title": "[임시] CHAPTER 02 3화",
+            "Title": "[임시] CHAPTER 01 3화",
             "UnlockTypeName": "WEEK_CLEAR",
             "UnlockTargetId": "WEEK_001",
             "RewardId": "REWARD_STORY_DEFAULT"

@@ -11,8 +11,6 @@ using VInspector;
 /// </summary>
 public class UI_MusicSelect : MonoBehaviour
 {
-    // 기획서 SCREEN-007: 카드 편성이 플레이 필수 조건이며 편성 슬롯은 5장입니다.
-    private const int REQUIRED_CARD_COUNT = 5;
     private const string PRACTICE_TITLE = "연습실 라이브";
     private const string DEFAULT_TITLE = "라이브 선택";
 
@@ -41,16 +39,22 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private Button _liveReadyButton;
 
+    /// <summary>
+    /// 준비 화면을 거치지 않는 즉시 시작 버튼입니다(기획서 10.2의 "플레이 버튼").
+    /// </summary>
+    [SerializeField]
+    private Button _playButton;
+
     [Foldout("Hierarchy")]
     [Header("Texts")]
     [SerializeField]
     private TMP_Text _subTitleText;
 
     [Foldout("Hierarchy")]
-    [Header("Popups")]
-    // 이 화면에서만 열고 닫는 팝업이라 PersistentScene이 아니라 09_MusicSelectScene에 두고 여기서 참조합니다.
+    [Header("Live Entry")]
+    // 편성 검사와 팝업·씬 진입은 같은 오브젝트의 진입 게이트가 맡습니다(200줄 규칙에 따른 분할).
     [SerializeField]
-    private UI_PhotocardSelectPopup _photocardSelectPopup;
+    private UI_MusicSelectLiveEntry _liveEntry;
 
     private readonly LiveChartSummaryReader _chartSummaryReader = new LiveChartSummaryReader();
     private readonly SongCoverLoader _coverLoader = new SongCoverLoader();
@@ -73,6 +77,10 @@ public class UI_MusicSelect : MonoBehaviour
 
     private void Start()
     {
+        // 곡 선택 화면에 온 시점에는 항상 기본 편성이 현재 편성이어야 합니다(기획서 3-H-4).
+        // 결과 확인·준비 팝업 닫기가 이미 폐기하지만, 일시정지 그만두기처럼 LIVE를 우회 이탈한 경로의 잔존을 여기서 마저 정리합니다.
+        LiveLoadoutContext.Instance.Clear();
+
         InitCatalog();
     }
 
@@ -86,7 +94,8 @@ public class UI_MusicSelect : MonoBehaviour
     {
         // 뒤로가기 위치는 진입 경로에 따라 달라지므로 UI_SceneTransitionButton(고정 대상)을 쓸 수 없습니다.
         _backButton.onClick.AddListener(() => LoadScene(LiveEntryBackTarget.GetBackScene(LiveEntryContext.Instance.EntryType)));
-        _liveReadyButton.onClick.AddListener(OpenPhotocardSelect);
+        _liveReadyButton.onClick.AddListener(() => _liveEntry.OpenPreparePopup(_selectedSong, _difficulty));
+        _playButton.onClick.AddListener(() => _liveEntry.StartLiveDirectly(_selectedSong, _difficulty));
     }
 
     /// <summary>
@@ -141,7 +150,7 @@ public class UI_MusicSelect : MonoBehaviour
 
         if (!_difficultyTabs.TryGetDefaultDifficulty(out EDifficulty difficulty))
         {
-            Debug.LogWarning($"[UI_MusicSelect] 수록된 채보가 없는 곡이라 플레이할 수 없습니다: {_selectedSong.SongId}");
+            Debug.LogWarning($"[UI_MusicSelect] NORMAL 채보가 수록되지 않은 곡이라 플레이할 수 없습니다: {_selectedSong.SongId}");
         }
 
         SetDifficulty(difficulty);
@@ -157,8 +166,10 @@ public class UI_MusicSelect : MonoBehaviour
         _songDetail.RefreshSong(_selectedSong, summary);
         _recordPanel.RefreshRecord(PlayerDataProvider.Instance.GetSongRecord(_selectedSong.SongId, difficulty));
 
-        // 카드 편성이 갖춰지지 않았거나 채보가 없으면 플레이할 수 없습니다.
-        _liveReadyButton.interactable = summary.HasChart && PlayerDataProvider.Instance.Data.SelectedCardIds.Count >= REQUIRED_CARD_COUNT;
+        // 채보 없음만 버튼 비활성 사유로 남깁니다. 카드 편성 미달은 조용한 비활성 대신
+        // 클릭 시 안내 팝업으로 차단합니다(기획서 16-15 + SCREEN-011 포토카드 미편성 안내).
+        _liveReadyButton.interactable = summary.HasChart;
+        _playButton.interactable = summary.HasChart;
     }
 
     private void RefreshEmptyState()
@@ -171,6 +182,7 @@ public class UI_MusicSelect : MonoBehaviour
         _songDetail.Clear();
         _recordPanel.Clear();
         _liveReadyButton.interactable = false;
+        _playButton.interactable = false;
     }
 
     /// <summary>
@@ -178,25 +190,6 @@ public class UI_MusicSelect : MonoBehaviour
     /// 실제 LIVE 시작(리듬게임 씬 이동)은 이 팝업 안의 라이브 스타트 버튼이 담당하므로,
     /// 여기서는 선택 결과만 컨텍스트에 남기고 팝업을 엽니다.
     /// </summary>
-    private void OpenPhotocardSelect()
-    {
-        if (ReferenceEquals(_selectedSong, null))
-        {
-            return;
-        }
-
-        LiveEntryContext.Instance.SetSelection(_selectedSong.SongId, _difficulty);
-
-        // 팝업 스택은 PersistentScene의 UIManager가 들고 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
-        if (UIManager.Instance == null)
-        {
-            Debug.LogWarning("[UI_MusicSelect] UIManager가 없어 포토카드 선택 팝업을 열지 못했습니다. PersistentScene이 로드되어 있는지 확인해 주세요.");
-            return;
-        }
-
-        UIManager.Instance.PopupHandler.OpenPopup(_photocardSelectPopup);
-    }
-
     // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
     private void LoadScene(ESceneNames sceneName)
     {

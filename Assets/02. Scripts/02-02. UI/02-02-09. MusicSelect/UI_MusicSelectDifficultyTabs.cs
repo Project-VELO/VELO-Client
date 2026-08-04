@@ -7,7 +7,8 @@ using VInspector;
 
 /// <summary>
 /// EASY / NORMAL / HARD 난이도 버튼을 관리합니다.
-/// 세 버튼을 항상 표시하되, 수록된 채보 파일이 있는 난이도만 선택할 수 있게 합니다.
+/// 1차 MVP는 NORMAL만 사용합니다(기획서 10.4, 16-8) — 세 버튼을 항상 표시하되
+/// EASY와 HARD는 채보가 있어도 클릭할 수 없고, NORMAL도 채보가 수록된 곡에서만 선택됩니다.
 /// </summary>
 public class UI_MusicSelectDifficultyTabs : MonoBehaviour
 {
@@ -86,25 +87,13 @@ public class UI_MusicSelectDifficultyTabs : MonoBehaviour
     }
 
     /// <summary>
-    /// 기본 난이도는 기획서상 NORMAL이지만, NORMAL 채보가 아직 없는 곡은 존재하는 첫 난이도로 대신합니다.
-    /// 선택 가능한 난이도가 하나도 없으면 false를 돌려주어 호출부가 플레이를 막게 합니다.
+    /// 모든 LIVE에 NORMAL이 자동 적용됩니다(기획서 16-8). 다른 난이도로의 폴백은 두지 않으므로
+    /// NORMAL 채보가 없는 곡은 false를 돌려주어 호출부가 플레이를 막게 합니다.
     /// </summary>
     public bool TryGetDefaultDifficulty(out EDifficulty difficulty)
     {
         difficulty = EDifficulty.NORMAL;
-
-        if (_availableDifficulties.Count == 0)
-        {
-            return false;
-        }
-
-        if (_availableDifficulties.Contains(EDifficulty.NORMAL))
-        {
-            return true;
-        }
-
-        difficulty = _availableDifficulties[0];
-        return true;
+        return _availableDifficulties.Contains(EDifficulty.NORMAL);
     }
 
     public bool IsAvailable(EDifficulty difficulty)
@@ -115,7 +104,10 @@ public class UI_MusicSelectDifficultyTabs : MonoBehaviour
     private void RefreshTab(EDifficulty difficulty, Button button, TMP_Text levelText, SongData song, LiveChartSummaryReader summaryReader)
     {
         bool isAvailable = _availableDifficulties.Contains(difficulty);
-        button.interactable = isAvailable;
+
+        // EASY와 HARD는 채보가 수록돼 있어도 클릭할 수 없습니다(기획서 10.4 "표시되어도 클릭되지 않는다").
+        // 레벨 표기는 정보 제공이므로 그대로 둡니다.
+        button.interactable = isAvailable && difficulty == EDifficulty.NORMAL;
 
         if (!isAvailable || ReferenceEquals(song, null))
         {

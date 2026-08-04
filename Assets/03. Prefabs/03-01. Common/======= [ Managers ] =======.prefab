@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6178717577852619333}
   - component: {fileID: 7481914343358396774}
+  - component: {fileID: 5600200330653321767}
   m_Layer: 0
   m_Name: Manager_UI
   m_TagString: Untagged
@@ -49,6 +50,20 @@ MonoBehaviour:
   _popupNotification: {fileID: 0}
   _popupMailbox: {fileID: 0}
   _popupSetting: {fileID: 0}
+  _loadingPanel: {fileID: 0}
+  _errorPopup: {fileID: 0}
+--- !u!114 &5600200330653321767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904694856549323555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ceedf7d76eb1a642a4f0344adf56d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveFailureNotifier
 --- !u!1 &1366726931785097325
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,6 +37,24 @@ public class StoryExitFlow
     }
 
     /// <summary>
+    /// 대본을 읽지 못했을 때입니다. 기획서 3-L은 "오류 팝업 <b>후</b> 스토리 목록 복귀"로 정하고 있어,
+    /// 곧바로 되돌리지 않고 안내를 닫는 시점에 복귀시킵니다.
+    ///
+    /// 안내를 띄우지 못하는 상황(PersistentScene 없이 단독 실행)에서는 UIManager가 콜백을 그대로 실행하므로,
+    /// 어느 경우에도 빈 감상 화면에 갇히지 않습니다.
+    /// </summary>
+    public void NotifyErrorAndReturn(string message, CancellationToken cancellationToken)
+    {
+        if (UIManager.Instance == null)
+        {
+            ReturnToStoryList(cancellationToken);
+            return;
+        }
+
+        UIManager.Instance.OpenErrorPopup(message, () => ReturnToStoryList(cancellationToken));
+    }
+
+    /// <summary>
     /// 진행 중인 전환이 끝나기를 먼저 기다립니다.
     ///
     /// 대본을 읽지 못해 화면이 뜨자마자 되돌아가는 경우, 이 화면을 띄운 전환이 아직 끝나지 않아

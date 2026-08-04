@@ -72,10 +72,10 @@ public class StoryPlaybackController : MonoBehaviour
     {
         string storyId = StoryEntryContext.Instance.SelectedStoryId;
 
-        // 대상이나 대본이 없으면 화면을 유지할 수 없습니다. 기획서 3-L이 목록 복귀를 명시합니다.
+        // 대상이나 대본이 없으면 화면을 유지할 수 없습니다. 기획서 3-L이 오류 안내 후 목록 복귀를 명시합니다.
         if (!StoryScriptResolver.TryResolve(storyId, out _story, out StoryScriptData script))
         {
-            _exitFlow.ReturnToStoryList(this.GetCancellationTokenOnDestroy());
+            _exitFlow.NotifyErrorAndReturn(ErrorMessages.STORY_SCRIPT_MISSING, this.GetCancellationTokenOnDestroy());
             return;
         }
 

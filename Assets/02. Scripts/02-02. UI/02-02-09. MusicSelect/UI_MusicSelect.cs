@@ -87,7 +87,7 @@ public class UI_MusicSelect : MonoBehaviour
         if (catalog.Chapters.Count == 0)
         {
             Debug.LogWarning($"[UI_MusicSelect] 수록된 곡이 없습니다. {LiveSongPaths.PublishedRoot} 아래에 챕터 폴더와 곡을 수록해 주세요.");
-            _selection.Clear();
+            RefuseWhenSongDataMissing();
             return;
         }
 
@@ -96,11 +96,25 @@ public class UI_MusicSelect : MonoBehaviour
         if (!LiveSongSelectionResolver.TryResolve(catalog, LiveEntryContext.Instance, out int chapterIndex, out int songIndex))
         {
             Debug.LogWarning("[UI_MusicSelect] 해금된 챕터가 없습니다.");
-            _selection.Clear();
+            RefuseWhenSongDataMissing();
             return;
         }
 
         _selection.SetChapter(chapterIndex, songIndex);
+    }
+
+    /// <summary>
+    /// 고를 수 있는 곡이 하나도 없을 때입니다. 기획서 3-L은 "오류 팝업 후 곡 선택 화면 유지"로 정하고 있어,
+    /// 안내만 띄우고 다른 화면으로 밀어내지 않습니다.
+    /// </summary>
+    private void RefuseWhenSongDataMissing()
+    {
+        _selection.Clear();
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OpenErrorPopup(ErrorMessages.SONG_DATA_MISSING);
+        }
     }
 
     /// <summary>

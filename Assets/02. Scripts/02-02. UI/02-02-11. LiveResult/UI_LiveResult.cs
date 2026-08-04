@@ -114,6 +114,10 @@ public class UI_LiveResult : MonoBehaviour
         LiveResultData result = LiveResultContext.Instance.Result;
         bool hasCompletedSchedule = !ReferenceEquals(result, null) && result.HasCompletedSchedule;
 
+        // 확인은 카드·의상·악세사리를 기본 편성으로 되돌리는 경로입니다(기획서 3-J-5).
+        // 다시 플레이하기(RetryLive)는 컨텍스트를 남겨 직전 편성을 유지합니다.
+        LiveLoadoutContext.Instance.Clear();
+
         LiveResultContext.Instance.Clear();
         LoadScene(LiveResultReturnTarget.GetReturnScene(hasCompletedSchedule));
     }

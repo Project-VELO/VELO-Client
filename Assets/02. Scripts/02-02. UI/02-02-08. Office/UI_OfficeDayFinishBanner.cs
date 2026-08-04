@@ -46,20 +46,14 @@ public class UI_OfficeDayFinishBanner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// KillAndCancelAwait는 취소 시 트윈을 끊고 await도 함께 취소시킵니다.
+    /// 기본값 Kill은 취소를 정상 완료로 처리하므로, 씬 언로드 중에도 PlayAsync가 다음 줄로 진행됩니다.
+    /// </summary>
     private async UniTask FadeAsync(float target, CancellationToken cancellationToken)
     {
-        Tween tween = _canvasGroup.DOFade(target, _fadeDuration).SetUpdate(true);
-
-        try
-        {
-            await UniTask.WaitUntil(() => !tween.IsActive() || !tween.IsPlaying(), cancellationToken: cancellationToken);
-        }
-        finally
-        {
-            if (tween.IsActive())
-            {
-                tween.Kill();
-            }
-        }
+        await _canvasGroup.DOFade(target, _fadeDuration)
+            .SetUpdate(true)
+            .ToUniTask(TweenCancelBehaviour.KillAndCancelAwait, cancellationToken);
     }
 }

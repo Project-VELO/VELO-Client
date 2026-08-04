@@ -90,22 +90,16 @@ public class UI_OfficeTodayPanel : MonoBehaviour
         _dateText.text = $"{weekOrder}주차 {dayIndex + 1}일차";
     }
 
+    /// <summary>
+    /// KillAndCancelAwait는 취소 시 트윈을 끊고 await도 함께 취소시킵니다.
+    /// 기본값 Kill은 취소를 정상 완료로 처리하므로, 씬 언로드 중에도 SwapAsync가 다음 줄로 진행됩니다.
+    /// </summary>
     private async UniTask FadeAsync(float from, float to, CancellationToken cancellationToken)
     {
         _canvasGroup.alpha = from;
 
-        Tween tween = _canvasGroup.DOFade(to, _swapFadeDuration).SetUpdate(true);
-
-        try
-        {
-            await UniTask.WaitUntil(() => !tween.IsActive() || !tween.IsPlaying(), cancellationToken: cancellationToken);
-        }
-        finally
-        {
-            if (tween.IsActive())
-            {
-                tween.Kill();
-            }
-        }
+        await _canvasGroup.DOFade(to, _swapFadeDuration)
+            .SetUpdate(true)
+            .ToUniTask(TweenCancelBehaviour.KillAndCancelAwait, cancellationToken);
     }
 }

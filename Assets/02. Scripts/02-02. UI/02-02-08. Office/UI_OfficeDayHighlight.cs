@@ -63,22 +63,13 @@ public class UI_OfficeDayHighlight : MonoBehaviour
         gameObject.SetActive(true);
         ApplySize(cell);
 
-        Tween tween = _rect.DOMove(GetWorldCenter(cell), _slideDuration)
+        // Kill이 아니라 KillAndCancelAwait입니다. Kill은 취소를 정상 완료로 처리해 await가 그냥 반환되므로,
+        // 씬 언로드로 취소된 뒤에도 하루 마무리 시퀀스의 다음 단계가 파괴 중인 화면을 계속 건드립니다.
+        // 취소 시 트윈을 끊는 것은 두 값이 동일하며, 다음 진입은 SnapTo로 다시 놓으므로 도착 보정은 필요 없습니다.
+        await _rect.DOMove(GetWorldCenter(cell), _slideDuration)
             .SetEase(Ease.InOutQuad)
-            .SetUpdate(true);
-
-        try
-        {
-            await UniTask.WaitUntil(() => !tween.IsActive() || !tween.IsPlaying(), cancellationToken: cancellationToken);
-        }
-        finally
-        {
-            // 취소(씬 언로드)면 트윈을 끊습니다. 다음 진입은 SnapTo로 다시 놓으므로 도착 보정은 필요 없습니다.
-            if (tween.IsActive())
-            {
-                tween.Kill();
-            }
-        }
+            .SetUpdate(true)
+            .ToUniTask(TweenCancelBehaviour.KillAndCancelAwait, cancellationToken);
     }
 
     /// <summary>

@@ -107,7 +107,22 @@ public class UI_OfficeDayFinishFlow : MonoBehaviour
 
         UIManager.Instance.PopupHandler.OpenPopup(_weekCompletePopup);
 
-        await _popupClosedSource.Task.AttachExternalCancellation(cancellationToken);
+        try
+        {
+            await _popupClosedSource.Task.AttachExternalCancellation(cancellationToken);
+        }
+        finally
+        {
+            // 구독을 건 쪽에서 거둡니다. 팝업은 씬에 배치되어 재사용되므로 통지 뒤에도 구독이 남으면
+            // 다음에 어떤 경로로 닫히든 이미 끝난 시퀀스의 콜백이 다시 불립니다.
+            // 씬 언로드로 취소된 경우에도 같은 자리에서 정리되므로 경로마다 따로 지울 필요가 없습니다.
+            if (_weekCompletePopup != null)
+            {
+                _weekCompletePopup.OnClosed = null;
+            }
+
+            _popupClosedSource = null;
+        }
     }
 
     private void NotifyPopupClosed()

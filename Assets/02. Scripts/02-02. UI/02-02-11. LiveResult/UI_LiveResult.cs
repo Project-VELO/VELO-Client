@@ -105,10 +105,17 @@ public class UI_LiveResult : MonoBehaviour
         LoadScene(ESceneNames.LiveScene);
     }
 
+    /// <summary>
+    /// 확인 버튼입니다. 이번 결과로 스케줄이 완료되었으면 사무실, 아니면 곡 선택 화면입니다(기획서 9.4, 3-J-6).
+    /// 목적지를 결과에서 먼저 읽은 뒤에 컨텍스트를 비웁니다. 순서를 바꾸면 읽을 결과가 없습니다.
+    /// </summary>
     private void ReturnToEntryScreen()
     {
+        LiveResultData result = LiveResultContext.Instance.Result;
+        bool hasCompletedSchedule = !ReferenceEquals(result, null) && result.HasCompletedSchedule;
+
         LiveResultContext.Instance.Clear();
-        LoadScene(LiveResultReturnTarget.GetReturnScene(LiveEntryContext.Instance.EntryType));
+        LoadScene(LiveResultReturnTarget.GetReturnScene(hasCompletedSchedule));
     }
 
     private static string GetSongTitle(string songId)

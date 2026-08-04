@@ -116,4 +116,13 @@ public class LiveResultData
     public int EarnedMoney { get => _earnedMoney; set => _earnedMoney = value; }
     public int EarnedHype { get => _earnedHype; set => _earnedHype = value; }
     public int EarnedExp { get => _earnedExp; set => _earnedExp = value; }
+
+    /// <summary>
+    /// 이번 결과 처리로 일일 스케줄이 하나라도 완료되었는지 여부입니다.
+    /// 결과 화면의 확인 버튼이 사무실로 갈지 곡 선택으로 갈지 이 값으로 정합니다(기획서 9.4).
+    ///
+    /// 위 필드들과 달리 백킹 필드 없이 둡니다. 결과 화면을 다시 여는 동안만 의미가 있는 세션 값이라
+    /// 직렬화 대상에서 빼기 위해서입니다. 자동 프로퍼티는 JsonUtility와 인스펙터 어느 쪽에도 잡히지 않습니다.
+    /// </summary>
+    public bool HasCompletedSchedule { get; set; }
 }

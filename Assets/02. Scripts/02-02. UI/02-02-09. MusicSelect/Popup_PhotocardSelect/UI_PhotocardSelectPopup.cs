@@ -5,9 +5,13 @@ using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 라이브 준비 단계에서 편성을 확인하는 팝업입니다.
+/// 라이브 준비 단계에서 편성을 확인·변경하는 팝업입니다(SCREEN-008).
 /// 무엇을 플레이할지는 곡 선택 화면이 팝업을 열기 전에 이미 LiveEntryContext에 확정해 두므로,
-/// 이 팝업은 편성 화면 전환과 LIVE 시작(리듬게임 씬 이동)만 책임집니다.
+/// 이 팝업은 편성 편집(임시 적용)과 LIVE 시작(리듬게임 씬 이동)만 책임집니다.
+///
+/// 편성 값 자체는 LiveLoadoutContext가 들고 있습니다. 열릴 때 기본 편성에서 초기화하고,
+/// 뒤로가기·ESC로 닫히면 폐기합니다(기획서 3-H-4). 플레이로 씬을 떠날 때는 CloseAsync가 불리지 않으므로
+/// (SceneTransitionManager의 ClearAllPopups는 비활성화만 합니다) 변경분이 그대로 현재 LIVE에 유지됩니다.
 /// </summary>
 public class UI_PhotocardSelectPopup : UI_Popup
 {
@@ -15,6 +19,15 @@ public class UI_PhotocardSelectPopup : UI_Popup
     [Header("Sub Panels")]
     [SerializeField]
     private UI_PhotocardSelectTabs _settingTabs;
+
+    [SerializeField]
+    private UI_PhotocardSlotList _slotList;
+
+    [SerializeField]
+    private UI_OwnedCardList _ownedCardList;
+
+    [SerializeField]
+    private UI_ItemSettingPanel _itemSettingPanel;
 
     [Foldout("Hierarchy")]
     [Header("Buttons")]
@@ -31,6 +44,7 @@ public class UI_PhotocardSelectPopup : UI_Popup
         base.Awake();
 
         _settingTabs.OnTabSelected = SetTab;
+        _ownedCardList.OnCardClicked = SwapCard;
 
         InitButtons();
     }
@@ -41,9 +55,25 @@ public class UI_PhotocardSelectPopup : UI_Popup
     /// </summary>
     public override async UniTask OpenAsync()
     {
+        // 보통은 여기서 기본 편성이 복사됩니다. 이미 초기화되어 있으면 그대로 유지됩니다(InitFromPlayerData 참고).
+        LiveLoadoutContext.Instance.InitFromPlayerData();
+
         _settingTabs.SetSelectedTab(EPhotocardSelectTab.PHOTOCARD);
+        _ownedCardList.ResetPage();
+        RefreshPhotocards();
+        _itemSettingPanel.RefreshItems();
 
         await base.OpenAsync();
+    }
+
+    /// <summary>
+    /// 뒤로가기·ESC로 닫히는 경로입니다. 이 화면에서 변경한 편성을 폐기해 기본 편성으로 복원합니다(기획서 3-H-4).
+    /// </summary>
+    public override async UniTask CloseAsync()
+    {
+        LiveLoadoutContext.Instance.Clear();
+
+        await base.CloseAsync();
     }
 
     private void InitButtons()
@@ -64,12 +94,49 @@ public class UI_PhotocardSelectPopup : UI_Popup
         _settingTabs.SetSelectedTab(tab);
     }
 
+    private void SwapCard(string cardId)
+    {
+        if (LiveLoadoutContext.Instance.TrySwapCard(cardId))
+        {
+            RefreshPhotocards();
+        }
+    }
+
+    /// <summary>
+    /// 초기화 버튼입니다. 보고 있는 탭의 편성만 기본값으로 되돌리고 즉시 반영합니다(기획서 3-H-3-1).
+    /// </summary>
+    private void ResetSetting()
+    {
+        if (_settingTabs.SelectedTab == EPhotocardSelectTab.PHOTOCARD)
+        {
+            LiveLoadoutContext.Instance.ResetPhotocards();
+            RefreshPhotocards();
+            return;
+        }
+
+        LiveLoadoutContext.Instance.ResetItems();
+        _itemSettingPanel.RefreshItems();
+    }
+
+    private void RefreshPhotocards()
+    {
+        _slotList.RefreshSlots();
+        _ownedCardList.RefreshCards();
+    }
+
     /// <summary>
     /// 곡과 난이도는 팝업을 열기 전에 이미 확정되어 있으므로 여기서는 씬만 넘깁니다.
     /// 팝업을 따로 닫지 않아도 SceneTransitionManager가 전환 직전에 열린 팝업을 모두 정리합니다.
     /// </summary>
     private void StartLive()
     {
+        // 편성 미달 안내는 곡 선택 화면이 팝업을 열기 전에 처리합니다. 여기 도달했다면 정상이어야 하므로 방어만 둡니다.
+        if (!LiveLoadoutRule.IsCurrentLoadoutPlayable())
+        {
+            Debug.LogWarning("[UI_PhotocardSelectPopup] 편성이 유효하지 않아 LIVE를 시작할 수 없습니다.");
+            return;
+        }
+
         // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
         if (SceneTransitionManager.Instance == null)
         {
@@ -78,10 +145,5 @@ public class UI_PhotocardSelectPopup : UI_Popup
         }
 
         SceneTransitionManager.Instance.LoadSceneAsync(ESceneNames.LiveScene, this.GetCancellationTokenOnDestroy()).Forget();
-    }
-
-    private void ResetSetting()
-    {
-        // TODO: 포토카드·의상 데이터 구조가 확정되면 _settingTabs.SelectedTab에 해당하는 편성을 초기화합니다.
     }
 }

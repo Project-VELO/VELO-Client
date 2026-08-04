@@ -29,6 +29,12 @@ public class UI_PhotocardSelectPopup : UI_Popup
     [SerializeField]
     private UI_ItemSettingPanel _itemSettingPanel;
 
+    /// <summary>
+    /// 편성 미달 안내 팝업입니다. 이 팝업 위에 겹쳐 열리므로 편성을 고치던 상태가 유지됩니다.
+    /// </summary>
+    [SerializeField]
+    private UI_CardShortagePopup _cardShortagePopup;
+
     [Foldout("Hierarchy")]
     [Header("Buttons")]
     // 포토카드 세팅 패널과 의상 & 악세서리 패널이 같은 버튼을 각자 하나씩 들고 있어, 두 벌을 모두 받아 같은 동작에 묶습니다.
@@ -130,10 +136,15 @@ public class UI_PhotocardSelectPopup : UI_Popup
     /// </summary>
     private void StartLive()
     {
-        // 편성 미달 안내는 곡 선택 화면이 팝업을 열기 전에 처리합니다. 여기 도달했다면 정상이어야 하므로 방어만 둡니다.
+        // 편성이 5장 규칙을 채우지 못하면 여기서 진입을 막습니다(기획서 16-15). 준비 화면 자체는 막지 않으므로,
+        // 안내를 닫고 빈 슬롯을 채운 뒤 다시 시작할 수 있습니다.
         if (!LiveLoadoutRule.IsCurrentLoadoutPlayable())
         {
-            Debug.LogWarning("[UI_PhotocardSelectPopup] 편성이 유효하지 않아 LIVE를 시작할 수 없습니다.");
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.PopupHandler.OpenPopup(_cardShortagePopup);
+            }
+
             return;
         }
 

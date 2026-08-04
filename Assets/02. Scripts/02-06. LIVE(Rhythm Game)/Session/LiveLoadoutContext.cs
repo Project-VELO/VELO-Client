@@ -52,7 +52,8 @@ public class LiveLoadoutContext : POCOSingleton<LiveLoadoutContext>
             return false;
         }
 
-        // 기본 편성이 5장 미만인 손상 상태면 슬롯이 비어 있을 수 있습니다. 교체가 아니라 진입 차단의 영역입니다.
+        // 슬롯 수는 멤버 수로 고정이므로(ResetPhotocards) 범위를 벗어날 일이 없습니다.
+        // 마스터 데이터가 실행 중에 바뀌는 경우에만 걸리는 방어입니다.
         if (slotIndex >= _cardIds.Count)
         {
             return false;
@@ -89,11 +90,14 @@ public class LiveLoadoutContext : POCOSingleton<LiveLoadoutContext>
 
     /// <summary>
     /// 초기화 버튼(포토카드 탭)입니다. 슬롯을 비우는 기능이 아니라 기본 편성 복원입니다(기획서 3-H-3-1).
+    ///
+    /// 저장된 목록을 그대로 옮기지 않고 멤버 슬롯에 배치해 받습니다. 그래야 칸 수가 항상 멤버 수와 같아,
+    /// 기본 편성이 모자라거나 순서가 어긋난 세이브에서도 모든 칸을 교체로 채울 수 있습니다.
     /// </summary>
     public void ResetPhotocards()
     {
         _cardIds.Clear();
-        _cardIds.AddRange(PlayerDataProvider.Instance.Data.SelectedCardIds);
+        _cardIds.AddRange(LiveLoadoutRule.BuildSlotCardIds(PlayerDataProvider.Instance.Data.SelectedCardIds));
     }
 
     /// <summary>

@@ -6,8 +6,9 @@ using VInspector;
 /// 곡 선택 화면의 LIVE 진입 게이트입니다. P_UI_MusicSelect 루트에 UI_MusicSelect와 나란히 붙습니다
 /// (화면 총괄과 진입 시퀀스를 나누는 UI_Office / UI_OfficeDayFinishFlow와 같은 분할).
 ///
-/// 두 진입 경로(준비 화면 경유·즉시 시작) 모두 편성 검사를 거칩니다 —
-/// 편성이 5장 규칙을 채우지 못하면 안내 팝업으로 진입을 차단합니다(기획서 16-15, SCREEN-011).
+/// 편성이 5장 규칙을 채우지 못하면 안내 팝업으로 차단하되, 막는 것은 리듬게임 진입입니다
+/// (기획서 16-15 "리듬게임 진입이 차단된다", 10.4 "카드 5장 미만이면 플레이가 막힌다").
+/// 준비 화면은 편성을 고치는 화면이므로 막지 않습니다 — 막으면 모자란 편성을 되돌릴 방법이 없어집니다.
 /// </summary>
 public class UI_MusicSelectLiveEntry : MonoBehaviour
 {
@@ -21,17 +22,12 @@ public class UI_MusicSelectLiveEntry : MonoBehaviour
 
     /// <summary>
     /// LIVE 준비 버튼입니다. 선택 결과를 컨텍스트에 확정하고 편성 팝업을 엽니다(기획서 10.3).
-    /// 실제 LIVE 시작은 팝업 안의 라이브 스타트 버튼이 담당합니다.
+    /// 실제 LIVE 시작은 팝업 안의 라이브 스타트 버튼이 담당하며, 편성 검사도 그쪽에서 합니다.
     /// </summary>
     public void OpenPreparePopup(SongData song, EDifficulty difficulty)
     {
         // 팝업 스택은 PersistentScene의 UIManager가 들고 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
         if (ReferenceEquals(song, null) || UIManager.Instance == null)
-        {
-            return;
-        }
-
-        if (RefuseWhenCardShortage())
         {
             return;
         }

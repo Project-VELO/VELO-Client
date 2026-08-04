@@ -1189,6 +1189,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2108610021753835771, guid: 5507994de97632248b066f3008dcbd12, type: 3}
+      propertyPath: _cardShortagePopup
+      value: 
+      objectReference: {fileID: 1260910463}
     - target: {fileID: 5261408155816678607, guid: 5507994de97632248b066f3008dcbd12, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -18,14 +18,69 @@ public static class LiveLoadoutRule
     /// </summary>
     public static bool TryGetSlotIndex(string cardId, out int slotIndex)
     {
+        return TryGetSlotIndex(MasterDataQuery.GetMembersInSlotOrder(), cardId, out slotIndex);
+    }
+
+    /// <summary>
+    /// 저장된 편성 목록을 멤버 슬롯에 배치한 작업용 목록으로 만듭니다. 길이는 항상 멤버 수와 같고,
+    /// 각 칸에는 그 멤버의 카드만 들어가며, 대응되는 카드가 없는 칸은 빈 값으로 둡니다.
+    ///
+    /// 목록을 위치 그대로 복사하지 않는 것은 "N번째 항목이 N번째 멤버"라는 보장이 저장 데이터에 없기 때문입니다.
+    /// 길이가 모자란 세이브를 그대로 옮기면 뒤쪽 슬롯이 아예 존재하지 않게 되어, 교체로도 채울 수 없는 칸이 생깁니다.
+    /// </summary>
+    public static List<string> BuildSlotCardIds(IReadOnlyList<string> sourceCardIds)
+    {
+        List<CharacterData> members = MasterDataQuery.GetMembersInSlotOrder();
+        var slotCardIds = new List<string>(members.Count);
+
+        for (int i = 0; i < members.Count; i++)
+        {
+            slotCardIds.Add(string.Empty);
+        }
+
+        if (ReferenceEquals(sourceCardIds, null))
+        {
+            return slotCardIds;
+        }
+
+        for (int i = 0; i < sourceCardIds.Count; i++)
+        {
+            if (TryGetSlotIndex(members, sourceCardIds[i], out int slotIndex))
+            {
+                slotCardIds[slotIndex] = sourceCardIds[i];
+            }
+        }
+
+        return slotCardIds;
+    }
+
+    /// <summary>
+    /// 지금 LIVE에 적용될 편성(임시 편성이 있으면 그것, 없으면 기본 편성)이 플레이 가능한지 검사합니다.
+    /// 미달이면 리듬게임 진입을 차단하고 안내 팝업을 띄워야 합니다(기획서 16-15, SCREEN-011).
+    ///
+    /// 기본 편성은 슬롯 배치를 거친 뒤에 봅니다. 준비 화면이 실제로 적용할 편성이 그것이므로,
+    /// 순서만 어긋난 세이브를 열어 보지도 못하게 막지 않기 위해서입니다.
+    /// </summary>
+    public static bool IsCurrentLoadoutPlayable()
+    {
+        LiveLoadoutContext loadout = LiveLoadoutContext.Instance;
+
+        if (loadout.IsInitialized)
+        {
+            return IsLoadoutValid(loadout.CardIds);
+        }
+
+        return IsLoadoutValid(BuildSlotCardIds(PlayerDataProvider.Instance.Data.SelectedCardIds));
+    }
+
+    private static bool TryGetSlotIndex(List<CharacterData> members, string cardId, out int slotIndex)
+    {
         slotIndex = -1;
 
         if (!MasterDataProvider.Instance.TryGetCard(cardId, out CardData card))
         {
             return false;
         }
-
-        List<CharacterData> members = MasterDataQuery.GetMembersInSlotOrder();
 
         for (int i = 0; i < members.Count; i++)
         {
@@ -37,21 +92,6 @@ public static class LiveLoadoutRule
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// 지금 LIVE에 적용될 편성(임시 편성이 있으면 그것, 없으면 기본 편성)이 플레이 가능한지 검사합니다.
-    /// 미달이면 리듬게임 진입을 차단하고 안내 팝업을 띄워야 합니다(기획서 16-15, SCREEN-011).
-    /// </summary>
-    public static bool IsCurrentLoadoutPlayable()
-    {
-        LiveLoadoutContext loadout = LiveLoadoutContext.Instance;
-
-        IReadOnlyList<string> cardIds = loadout.IsInitialized
-            ? loadout.CardIds
-            : PlayerDataProvider.Instance.Data.SelectedCardIds;
-
-        return IsLoadoutValid(cardIds);
     }
 
     /// <summary>

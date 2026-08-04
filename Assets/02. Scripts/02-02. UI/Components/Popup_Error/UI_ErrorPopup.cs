@@ -16,6 +16,11 @@ using VInspector;
 /// </summary>
 public class UI_ErrorPopup : UI_Popup
 {
+    /// <summary>
+    /// 안내가 완전히 닫혔음을 알립니다. 팝업이 하나뿐이라, 밀려 있는 다음 안내는 이 시점에야 열 수 있습니다.
+    /// </summary>
+    public Action OnClosed;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private TMP_Text _messageText;
@@ -44,5 +49,6 @@ public class UI_ErrorPopup : UI_Popup
         await base.CloseAsync();
 
         onConfirmed?.Invoke();
+        OnClosed?.Invoke();
     }
 }

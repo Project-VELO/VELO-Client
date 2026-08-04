@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 1901004253287637264}
   - component: {fileID: 8643023576485206191}
   - component: {fileID: 8828849340306103827}
+  - component: {fileID: 5568981656162177251}
   m_Layer: 5
   m_Name: P_UI_Reward
   m_TagString: Untagged
@@ -363,6 +364,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5568981656162177251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612919953331777137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c54f51fcd21934cb845b4a9aa5fac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_StoryRewardPopup
+  _closeButton: {fileID: 3443848472737730320}
+  _messageText: {fileID: 4754943146621260076}
+  _moneyText: {fileID: 954592599783222677}
+  _hypeText: {fileID: 4109814420217682966}
+  _expText: {fileID: 8524876572857623776}
 --- !u!1 &3887023681760688700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,9 +1179,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: EXP
+      objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name
-      value: P_UI_Panel_Reward (2)
+      value: P_UI_Panel_Reward_EXP
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1175,6 +1201,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4311096086228500573, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
   m_PrefabInstance: {fileID: 3932535384102803065}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8524876572857623776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+  m_PrefabInstance: {fileID: 3932535384102803065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &5612112829141999372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1263,15 +1300,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: MONEY
+      objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name
-      value: P_UI_Panel_Reward
+      value: P_UI_Panel_Reward_MONEY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+--- !u!114 &954592599783222677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+  m_PrefabInstance: {fileID: 5612112829141999372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &8518046249072582481 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4311096086228500573, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
@@ -1365,15 +1421,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_text
+      value: HYPE
+      objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name
-      value: P_UI_Panel_Reward (1)
+      value: P_UI_Panel_Reward_HYPE
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+--- !u!114 &4109814420217682966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4673995390341640857, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+  m_PrefabInstance: {fileID: 8779099502712336015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &4756284405201252050 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4311096086228500573, guid: 8050c52fb883d8841bc497b767aed684, type: 3}

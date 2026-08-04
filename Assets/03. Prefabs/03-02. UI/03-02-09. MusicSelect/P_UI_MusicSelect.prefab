@@ -4470,6 +4470,7 @@ GameObject:
   - component: {fileID: 6225226058741702413}
   - component: {fileID: 8445910372815556759}
   - component: {fileID: 5422550155179544193}
+  - component: {fileID: 2863680427923248261}
   m_Layer: 5
   m_Name: P_UI_MusicSelect
   m_TagString: Untagged
@@ -4582,11 +4583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d3de356e7ca4954780b2a1b2d7be826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelect
-  _chapterTabs: {fileID: 8294595233501653246}
-  _songList: {fileID: 5392559435484169249}
-  _songDetail: {fileID: 456165535789355231}
-  _difficultyTabs: {fileID: 3777630355940235883}
-  _recordPanel: {fileID: 7060025327362497961}
+  _selection: {fileID: 2863680427923248261}
   _backButton: {fileID: 7697176542749912751}
   _liveReadyButton: {fileID: 54888272384959369}
   _playButton: {fileID: 1278252940530228269}
@@ -4606,6 +4603,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectLiveEntry
   _photocardSelectPopup: {fileID: 0}
   _cardShortagePopup: {fileID: 0}
+--- !u!114 &2863680427923248261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342336592605960873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd60ca614ab0f94caf959a08b6f6756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectSelection
+  _chapterTabs: {fileID: 8294595233501653246}
+  _songList: {fileID: 5392559435484169249}
+  _songDetail: {fileID: 456165535789355231}
+  _difficultyTabs: {fileID: 3777630355940235883}
+  _recordPanel: {fileID: 7060025327362497961}
 --- !u!1 &6358914819631575422
 GameObject:
   m_ObjectHideFlags: 0

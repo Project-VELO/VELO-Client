@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -7,7 +6,10 @@ using VInspector;
 
 /// <summary>
 /// 라이브 곡 선택 화면(09_MusicSelectScene)의 총괄 컨트롤러입니다.
-/// 수록 목록을 읽어 챕터 탭·곡 목록·곡 상세를 이어 주고, 진입 경로에 따른 지정곡 고정과 뒤로가기 위치를 처리합니다.
+/// 수록 목록을 읽어 화면을 세우고, 진입 경로에 따른 뒤로가기 위치와 LIVE 진입 배선을 처리합니다.
+///
+/// 무엇을 고를지의 연쇄(챕터 → 곡 → 난이도 → 상세·기록)는 UI_MusicSelectSelection이,
+/// LIVE 진입 게이트는 UI_MusicSelectLiveEntry가 맡습니다.
 /// </summary>
 public class UI_MusicSelect : MonoBehaviour
 {
@@ -17,19 +19,7 @@ public class UI_MusicSelect : MonoBehaviour
     [Foldout("Hierarchy")]
     [Header("Sub Panels")]
     [SerializeField]
-    private UI_MusicSelectChapterTabs _chapterTabs;
-
-    [SerializeField]
-    private UI_MusicSelectSongList _songList;
-
-    [SerializeField]
-    private UI_MusicSelectSongDetail _songDetail;
-
-    [SerializeField]
-    private UI_MusicSelectDifficultyTabs _difficultyTabs;
-
-    [SerializeField]
-    private UI_MusicSelectRecordPanel _recordPanel;
+    private UI_MusicSelectSelection _selection;
 
     [Foldout("Hierarchy")]
     [Header("Buttons")]
@@ -56,21 +46,12 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private UI_MusicSelectLiveEntry _liveEntry;
 
-    private readonly LiveChartSummaryReader _chartSummaryReader = new LiveChartSummaryReader();
-    private readonly SongCoverLoader _coverLoader = new SongCoverLoader();
-
-    private int _chapterIndex = -1;
-    private EDifficulty _difficulty = EDifficulty.NORMAL;
     private SongData _selectedSong;
+    private EDifficulty _difficulty = EDifficulty.NORMAL;
 
     private void Awake()
     {
-        _songList.Init(_coverLoader);
-        _songDetail.Init(_coverLoader);
-
-        _chapterTabs.OnChapterSelected = chapterIndex => SetChapter(chapterIndex, 0);
-        _songList.OnSongSelected = SetSong;
-        _difficultyTabs.OnDifficultySelected = SetDifficulty;
+        _selection.OnSelectionChanged = SetSelection;
 
         InitButtons();
     }
@@ -82,12 +63,6 @@ public class UI_MusicSelect : MonoBehaviour
         LiveLoadoutContext.Instance.Clear();
 
         InitCatalog();
-    }
-
-    // 커버는 씬에 매이지 않는 리소스라, 화면을 떠날 때 캐시가 직접 정리해 주어야 드나들 때마다 쌓이지 않습니다.
-    private void OnDestroy()
-    {
-        _coverLoader.Clear();
     }
 
     private void InitButtons()
@@ -112,84 +87,35 @@ public class UI_MusicSelect : MonoBehaviour
         if (catalog.Chapters.Count == 0)
         {
             Debug.LogWarning($"[UI_MusicSelect] 수록된 곡이 없습니다. {LiveSongPaths.PublishedRoot} 아래에 챕터 폴더와 곡을 수록해 주세요.");
-            RefreshEmptyState();
+            _selection.Clear();
             return;
         }
 
-        _chapterTabs.RefreshChapters(catalog.Chapters);
+        _selection.RefreshChapters(catalog.Chapters);
 
         if (!LiveSongSelectionResolver.TryResolve(catalog, LiveEntryContext.Instance, out int chapterIndex, out int songIndex))
         {
             Debug.LogWarning("[UI_MusicSelect] 해금된 챕터가 없습니다.");
-            RefreshEmptyState();
+            _selection.Clear();
             return;
         }
 
-        SetChapter(chapterIndex, songIndex);
-    }
-
-    private void SetChapter(int chapterIndex, int songIndex)
-    {
-        _chapterIndex = chapterIndex;
-        _chapterTabs.SetSelectedIndex(chapterIndex);
-
-        IReadOnlyList<SongData> songs = LiveSongCatalog.Instance.Chapters[chapterIndex].Songs;
-
-        // 스케줄 LIVE는 지정곡 외의 곡을 고를 수 없으므로 목록 자체를 잠급니다.
-        _songList.RefreshSongs(songs, !LiveEntryContext.Instance.HasDesignatedSong);
-
-        SetSong(Mathf.Clamp(songIndex, 0, songs.Count - 1));
-    }
-
-    private void SetSong(int songIndex)
-    {
-        _songList.SetSelectedIndex(songIndex);
-        _selectedSong = LiveSongCatalog.Instance.Chapters[_chapterIndex].Songs[songIndex];
-
-        _difficultyTabs.RefreshDifficulties(_selectedSong, _chartSummaryReader);
-
-        if (!_difficultyTabs.TryGetDefaultDifficulty(out EDifficulty difficulty))
-        {
-            Debug.LogWarning($"[UI_MusicSelect] NORMAL 채보가 수록되지 않은 곡이라 플레이할 수 없습니다: {_selectedSong.SongId}");
-        }
-
-        SetDifficulty(difficulty);
-    }
-
-    private void SetDifficulty(EDifficulty difficulty)
-    {
-        _difficulty = difficulty;
-        _difficultyTabs.SetSelectedDifficulty(difficulty);
-
-        LiveChartSummary summary = _chartSummaryReader.GetSummary(_selectedSong, difficulty);
-
-        _songDetail.RefreshSong(_selectedSong, summary);
-        _recordPanel.RefreshRecord(PlayerDataProvider.Instance.GetSongRecord(_selectedSong.SongId, difficulty));
-
-        // 채보 없음만 버튼 비활성 사유로 남깁니다. 카드 편성 미달은 조용한 비활성 대신
-        // 클릭 시 안내 팝업으로 차단합니다(기획서 16-15 + SCREEN-011 포토카드 미편성 안내).
-        _liveReadyButton.interactable = summary.HasChart;
-        _playButton.interactable = summary.HasChart;
-    }
-
-    private void RefreshEmptyState()
-    {
-        _selectedSong = null;
-        _chapterIndex = -1;
-
-        _songList.RefreshSongs(null, false);
-        _difficultyTabs.RefreshDifficulties(null, _chartSummaryReader);
-        _songDetail.Clear();
-        _recordPanel.Clear();
-        _liveReadyButton.interactable = false;
-        _playButton.interactable = false;
+        _selection.SetChapter(chapterIndex, songIndex);
     }
 
     /// <summary>
-    /// 곡 선택 화면의 책임은 "무엇을 플레이할지" 확정하는 데까지입니다.
-    /// 실제 LIVE 시작(리듬게임 씬 이동)은 이 팝업 안의 라이브 스타트 버튼이 담당하므로,
-    /// 여기서는 선택 결과만 컨텍스트에 남기고 팝업을 엽니다.
+    /// 채보 없음만 버튼 비활성 사유로 남깁니다. 카드 편성 미달은 조용한 비활성 대신
+    /// 클릭 시 안내 팝업으로 차단합니다(기획서 16-15 + SCREEN-011 포토카드 미편성 안내).
     /// </summary>
+    private void SetSelection(SongData song, EDifficulty difficulty, bool hasChart)
+    {
+        _selectedSong = song;
+        _difficulty = difficulty;
+
+        _liveReadyButton.interactable = hasChart;
+        _playButton.interactable = hasChart;
+    }
+
     // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.
     private void LoadScene(ESceneNames sceneName)
     {

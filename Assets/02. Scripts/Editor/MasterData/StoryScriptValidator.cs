@@ -66,7 +66,8 @@ public class StoryScriptValidator
         if (string.IsNullOrEmpty(line.SpeakerId))
         {
             // 단역은 characters.json에 없고 원고 표기(speakerRaw)만 있습니다. 화면은 그 값을 화자명으로 씁니다.
-            if (string.IsNullOrEmpty(line.SpeakerName))
+            // 공백만 든 칸은 시트에서 실수로 스페이스를 넣은 경우이며, 화면에는 빈 이름표로 나가므로 걸러 냅니다.
+            if (string.IsNullOrWhiteSpace(line.SpeakerName))
             {
                 report.AddError($"[대본] {location}이 {line.LineType}인데 화자가 비어 있습니다.");
             }

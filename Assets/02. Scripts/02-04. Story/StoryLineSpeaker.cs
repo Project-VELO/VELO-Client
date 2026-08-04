@@ -24,6 +24,7 @@ public static class StoryLineSpeaker
             return MasterDataProvider.Instance.GetCharacterDisplayName(line.SpeakerId);
         }
 
-        return string.IsNullOrEmpty(line.SpeakerName) ? string.Empty : line.SpeakerName;
+        // 공백만 든 칸은 이름이 없는 것으로 봅니다. 그대로 내보내면 빈 이름표만 뜹니다.
+        return string.IsNullOrWhiteSpace(line.SpeakerName) ? string.Empty : line.SpeakerName;
     }
 }

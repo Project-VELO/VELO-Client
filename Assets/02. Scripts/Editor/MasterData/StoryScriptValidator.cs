@@ -65,7 +65,12 @@ public class StoryScriptValidator
 
         if (string.IsNullOrEmpty(line.SpeakerId))
         {
-            report.AddError($"[대본] {location}이 {line.LineType}인데 화자가 비어 있습니다.");
+            // 단역은 characters.json에 없고 원고 표기(speakerRaw)만 있습니다. 화면은 그 값을 화자명으로 씁니다.
+            if (string.IsNullOrEmpty(line.SpeakerName))
+            {
+                report.AddError($"[대본] {location}이 {line.LineType}인데 화자가 비어 있습니다.");
+            }
+
             return;
         }
 

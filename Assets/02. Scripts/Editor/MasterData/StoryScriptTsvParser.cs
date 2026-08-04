@@ -16,6 +16,11 @@ public class StoryScriptTsvParser
     public const string COLUMN_LINE_ID = "lineId";
     public const string COLUMN_LINE_TYPE = "lineType";
     public const string COLUMN_SPEAKER_ID = "speakerId";
+
+    /// <summary>
+    /// 원고에 적힌 화자 표기입니다. characters.json에 없는 단역의 이름이 여기에만 있습니다.
+    /// </summary>
+    public const string COLUMN_SPEAKER_RAW = "speakerRaw";
     public const string COLUMN_TEXT = "text";
     public const string COLUMN_BACKGROUND_ID = "backgroundId";
     public const string COLUMN_CHARACTER_ID = "characterId";
@@ -140,6 +145,7 @@ public class StoryScriptTsvParser
             LineId = lineId,
             LineType = MasterDataEnum.Parse(rawLineType, ELineType.NARRATION, $"{storyId} {rowNumber}행"),
             SpeakerId = GetCell(cells, columns, COLUMN_SPEAKER_ID),
+            SpeakerName = GetCell(cells, columns, COLUMN_SPEAKER_RAW),
             Text = GetCell(cells, columns, COLUMN_TEXT),
             BackgroundId = GetCell(cells, columns, COLUMN_BACKGROUND_ID),
             CharacterId = GetCell(cells, columns, COLUMN_CHARACTER_ID),

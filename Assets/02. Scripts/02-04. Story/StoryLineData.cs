@@ -27,6 +27,15 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string SpeakerId;
 
     /// <summary>
+    /// 원고에 적힌 화자 표기입니다. 단역을 위해 존재합니다.
+    ///
+    /// characters.json에는 주요 인물만 있고 "막내 작가"·"메인 PD"·"귀신1" 같은 단역은 없습니다.
+    /// 그런 화자에게 억지로 ID를 부여하면 초상과 표정 목록까지 딸려 와야 해서, 원고 표기를 그대로 씁니다.
+    /// SpeakerId가 있으면 characters.json의 표시명이 우선하고, 없을 때만 이 값이 화자명으로 나갑니다.
+    /// </summary>
+    public string SpeakerName;
+
+    /// <summary>
     /// 화면에 출력할 문장입니다. 한 화면에 한 문장만 표시하므로(기획서 6.7) 여기서 이미 끊겨 있어야 합니다.
     /// </summary>
     public string Text;

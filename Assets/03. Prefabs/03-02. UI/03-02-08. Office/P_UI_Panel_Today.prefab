@@ -300,6 +300,9 @@ GameObject:
   - component: {fileID: 2573042711680822366}
   - component: {fileID: 5569190292603532836}
   - component: {fileID: 4266950484541006063}
+  - component: {fileID: 7951441837120866408}
+  - component: {fileID: 2905381009610628636}
+  - component: {fileID: 2337073773429587931}
   m_Layer: 5
   m_Name: P_UI_Panel_Today
   m_TagString: Untagged
@@ -367,6 +370,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7951441837120866408
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095393091987985752}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2905381009610628636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095393091987985752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bd34fd33437074bb569524d18643d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_TodayScheduleList
+  _rows:
+  - {fileID: 9088646646472424680}
+  - {fileID: 7307512802070129585}
+  - {fileID: 78960892170227700}
+--- !u!114 &2337073773429587931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095393091987985752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b2d42bc74d2244dace631050059ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeTodayPanel
+  _dateText: {fileID: 204655222806444197}
+  _scheduleList: {fileID: 2905381009610628636}
+  _canvasGroup: {fileID: 7951441837120866408}
+  _swapFadeDuration: 0.25
 --- !u!1 &2473784870806927932
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +753,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
+--- !u!114 &78960892170227700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3721462710349347576, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
+  m_PrefabInstance: {fileID: 3656302899430454540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
 --- !u!224 &3838537906171316182 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 574479424129266394, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
@@ -813,6 +871,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 574479424129266394, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
   m_PrefabInstance: {fileID: 5585608569966069264}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9088646646472424680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3721462710349347576, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
+  m_PrefabInstance: {fileID: 5585608569966069264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
 --- !u!1001 &6254596853065470281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -915,3 +984,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 574479424129266394, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
   m_PrefabInstance: {fileID: 6254596853065470281}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7307512802070129585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3721462710349347576, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
+  m_PrefabInstance: {fileID: 6254596853065470281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow

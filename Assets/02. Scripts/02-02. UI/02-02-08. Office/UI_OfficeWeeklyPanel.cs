@@ -9,7 +9,7 @@ using VInspector;
 /// <summary>
 /// 주간 스케줄 표입니다(기획서 9.2 "7일의 잠금·현재·완료 상태 표시").
 ///
-/// 칸은 프리팹에 미리 배치된 7개를 씁니다. 1차 MVP의 주차는 7일 고정이라(기획서 3-E-1)
+/// 칸은 프리팹에 미리 배치된 7개를 씁니다. 주차가 7일 고정이라(기획서 3-E-1)
 /// 풀에서 꺼낼 이유가 없고, 고정 배치가 레이아웃도 안정적입니다(UI_MusicSelectChapterTabs와 같은 방식).
 /// </summary>
 public class UI_OfficeWeeklyPanel : MonoBehaviour

@@ -72,7 +72,7 @@ public class UI_OfficeDayCell : MonoBehaviour
     }
 
     /// <summary>
-    /// 표시할 날짜가 없는 남는 칸을 숨깁니다. 1차 MVP는 7일 고정이라 정상 데이터에서는 불리지 않습니다.
+    /// 표시할 날짜가 없는 남는 칸을 숨깁니다. 주차가 7일 고정이라 정상 데이터에서는 불리지 않습니다.
     /// </summary>
     public void Clear()
     {

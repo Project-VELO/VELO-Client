@@ -3,9 +3,6 @@
 /// </summary>
 public enum ELiveGameState
 {
-    /// <summary>
-    /// 곡과 채보, 음원을 불러오는 중입니다.
-    /// </summary>
     Loading,
 
     /// <summary>
@@ -13,9 +10,6 @@ public enum ELiveGameState
     /// </summary>
     Countdown,
 
-    /// <summary>
-    /// 곡이 흐르며 판정이 이루어지는 중입니다.
-    /// </summary>
     Playing,
 
     /// <summary>

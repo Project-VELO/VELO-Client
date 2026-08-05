@@ -5,8 +5,7 @@ using VInspector;
 
 /// <summary>
 /// 리듬게임 한 판의 진행 상태를 관리합니다(SCREEN-009).
-/// 카운트다운 → 플레이 → 일시정지 → 종료로 이어지는 전환과 입력 전달만 맡고,
-/// 무엇을 플레이할지는 LivePlaySession이, 일시정지 팝업 표시는 LivePauseController가 담당합니다.
+/// 카운트다운 → 플레이 → 일시정지 → 종료로 이어지는 전환과 입력 전달만 맡습니다.
 ///
 /// 일시정지에 Time.timeScale을 쓰지 않습니다. 음악은 어차피 따로 멈춰야 하고,
 /// SceneTransitionManager가 화면을 옮길 때마다 timeScale을 1로 되돌리기 때문에 상태로 다루는 편이 안전합니다.

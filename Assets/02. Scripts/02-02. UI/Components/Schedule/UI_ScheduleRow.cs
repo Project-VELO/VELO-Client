@@ -7,16 +7,12 @@ using VInspector;
 /// <summary>
 /// 일일 스케줄 한 건을 표시하는 행입니다.
 ///
-/// 홈 화면과 사무실 화면이 같은 클래스를 씁니다. 기획서 9.2(기획서.txt:1998)가 사무실의 오늘의 스케줄 표를
-/// "홈 화면과 동일"이라고 못박고 있고, 두 화면이 각자 구현하면 완료 표시 규칙(기획서 3-E-6-1)이 갈라져
-/// 같은 스케줄이 화면마다 다르게 보입니다. 기획서 16-6이 금지하는 상황입니다.
+/// 홈과 사무실이 같은 클래스를 씁니다(기획서 9.2). 각자 구현하면 완료 표시 규칙이 갈라져
+/// 같은 스케줄이 화면마다 다르게 보입니다. 같은 이유로 목적지도 이 클래스가 정하지 않고
+/// ScheduleShortcutRouter에 맡깁니다.
 ///
-/// 목적지는 이 클래스가 정하지 않고 ScheduleShortcutRouter에 맡깁니다.
-/// 행이 목적지를 알면 홈과 사무실에서 이동 규칙이 어긋날 수 있습니다.
-///
-/// _completedRoot를 뺀 나머지 참조는 인스펙터에서 반드시 채워야 하며 null 검사를 하지 않습니다.
-/// 하나라도 비면 행이 제 역할을 못 하는데, 검사로 감싸면 예외 대신 빈 행이 조용히 그려져
-/// 배선 누락을 한참 뒤에야 발견하게 됩니다. 첫 실행에서 바로 터지는 편이 낫습니다.
+/// _completedRoot를 뺀 참조는 인스펙터 필수이며 null 검사를 하지 않습니다. 검사로 감싸면 예외 대신
+/// 빈 행이 조용히 그려져 배선 누락을 한참 뒤에야 발견하게 됩니다.
 /// </summary>
 public class UI_ScheduleRow : MonoBehaviour
 {
@@ -30,9 +26,6 @@ public class UI_ScheduleRow : MonoBehaviour
     [SerializeField]
     private TMP_Text _titleText;
 
-    /// <summary>
-    /// 스케줄 유형입니다. 기획서 4.2가 제목·유형·완료 상태·바로가기 네 가지 표시를 요구합니다.
-    /// </summary>
     [SerializeField]
     private TMP_Text _typeText;
 
@@ -40,10 +33,8 @@ public class UI_ScheduleRow : MonoBehaviour
     private TMP_Text _shortcutLabel;
 
     /// <summary>
-    /// 완료 체크 표시입니다. 완료된 행에서만 켭니다(기획서 3-E-6-1).
-    ///
-    /// 위 필드들과 달리 이것만 비어 있어도 됩니다. 현재 프리팹에는 체크 표시용 오브젝트가 없고,
-    /// 기획서가 요구하는 완료 표시는 라벨 교체와 클릭 차단으로 이미 충족되기 때문입니다.
+    /// 완료 체크 표시입니다. 위 필드들과 달리 이것만 비어 있어도 됩니다.
+    /// 프리팹에 체크용 오브젝트가 없고, 완료 표시는 라벨 교체와 클릭 차단으로 이미 충족되기 때문입니다.
     /// </summary>
     [SerializeField]
     private GameObject _completedRoot;
@@ -58,8 +49,7 @@ public class UI_ScheduleRow : MonoBehaviour
 
     /// <summary>
     /// 스케줄 하나를 행에 채웁니다.
-    /// entryType은 이 행이 놓인 화면이 결정합니다. 홈은 HOME_LIVE, 사무실은 SCHEDULE_LIVE입니다
-    /// (기획서.txt:440, 447-448).
+    /// entryType은 이 행이 놓인 화면이 결정합니다. 홈은 HOME_LIVE, 사무실은 SCHEDULE_LIVE입니다.
     /// </summary>
     public void SetSchedule(ScheduleData schedule, bool isCompleted, EEntryType entryType)
     {
@@ -104,7 +94,7 @@ public class UI_ScheduleRow : MonoBehaviour
     }
 
     /// <summary>
-    /// 완료 여부에 따라 같은 자리의 표시를 바꿉니다(기획서.txt:823-843).
+    /// 완료 여부에 따라 같은 자리의 표시를 바꿉니다.
     /// 완료된 행은 버튼을 없애지 않고 라벨만 "완료"로 바꿉니다. 행 높이가 변하면 표가 흔들립니다.
     ///
     /// interactable을 끄는 것으로 마우스오버 강조와 중복 완료 진입이 함께 막힙니다.

@@ -15,7 +15,7 @@ public static class MasterDataSchema
     public const int NOT_MEMBER_ORDER = -1;
 
     /// <summary>
-    /// 최소 점수 조건을 두지 않는 스케줄의 값입니다. 1차 MVP의 모든 LIVE 스케줄이 여기에 해당합니다(기획서 3-E-2-1).
+    /// 최소 점수 조건을 두지 않는 스케줄의 값입니다. 현재 모든 LIVE 스케줄이 여기에 해당합니다(기획서 3-E-2-1).
     /// </summary>
     public const int NO_SCORE_REQUIREMENT = 0;
 }

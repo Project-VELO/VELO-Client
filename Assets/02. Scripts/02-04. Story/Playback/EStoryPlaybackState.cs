@@ -1,8 +1,7 @@
 /// <summary>
 /// 스토리 감상 화면의 재생 단계입니다.
 ///
-/// 기획서 6.3의 NEXT 2단계 동작과 6.4의 팝업 중 입력 차단을 상태로 구분하기 위한 값입니다.
-/// 같은 NEXT 클릭이라도 출력 중이면 "즉시 전체 출력", 출력이 끝났으면 "다음 대사"로 갈라집니다.
+/// 같은 NEXT 클릭이라도 출력 중이면 "즉시 전체 출력", 출력이 끝났으면 "다음 대사"로 갈라집니다(기획서 6.3).
 /// </summary>
 public enum EStoryPlaybackState
 {
@@ -16,9 +15,6 @@ public enum EStoryPlaybackState
     /// </summary>
     TYPING,
 
-    /// <summary>
-    /// 현재 줄이 다 출력되어 다음 입력을 기다립니다.
-    /// </summary>
     WAITING_NEXT,
 
     /// <summary>

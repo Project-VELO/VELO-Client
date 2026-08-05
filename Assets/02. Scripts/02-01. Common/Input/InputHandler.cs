@@ -28,13 +28,13 @@ public static class InputHandler
     public static void ChangeToUIInput()
     {
         CurrentMode = EInputMode.UI;
-        BlockInput(); // 인게임 로직 차단
+        BlockInput();
     }
 
     public static void ChangeToPlayerInput()
     {
         CurrentMode = EInputMode.Player;
-        UnblockInput(); // 인게임 로직 허용
+        UnblockInput();
     }
 
     public static void TriggerCancelEvent() => OnCancelEvent?.Invoke();

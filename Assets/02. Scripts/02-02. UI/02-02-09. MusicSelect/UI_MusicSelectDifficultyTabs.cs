@@ -7,7 +7,7 @@ using VInspector;
 
 /// <summary>
 /// EASY / NORMAL / HARD 난이도 버튼을 관리합니다.
-/// 1차 MVP는 NORMAL만 사용합니다(기획서 10.4, 16-8) — 세 버튼을 항상 표시하되
+/// NORMAL만 사용합니다(기획서 10.4, 16-8) — 세 버튼을 항상 표시하되
 /// EASY와 HARD는 채보가 있어도 클릭할 수 없고, NORMAL도 채보가 수록된 곡에서만 선택됩니다.
 /// </summary>
 public class UI_MusicSelectDifficultyTabs : MonoBehaviour

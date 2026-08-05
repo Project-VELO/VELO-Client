@@ -3,13 +3,12 @@ using System.IO;
 using UnityEngine;
 
 /// <summary>
-/// 마스터 데이터 JSON 파일을 읽어 목록으로 돌려주는 것을 전담합니다(LiveSongCatalogLoader와 같은 역할).
+/// 마스터 데이터 JSON 파일을 읽어 목록으로 돌려주는 것을 전담합니다.
 /// 디스크 접근과 파싱만 담당하고, 읽어온 결과의 보관과 조회는 MasterDataProvider가 맡습니다.
 ///
-/// 디스크 접근을 이 클래스와 StoryScriptLoader에만 두는 이유가 있습니다.
-/// StreamingAssets를 File API로 읽는 방식은 Android에서 동작하지 않으므로(APK 내부 경로라 UnityWebRequest가 필요합니다),
+/// 디스크 접근을 이 클래스와 StoryScriptLoader에만 두는 이유는, StreamingAssets를 File API로 읽는
+/// 방식이 Android에서 동작하지 않기 때문입니다(APK 내부 경로라 UnityWebRequest가 필요합니다).
 /// 모바일로 확장할 때 교체 지점이 이 두 파일로만 모이도록 격리합니다.
-/// 1차 MVP는 키보드 6키와 마우스 휠을 쓰는 PC 게임이라 지금은 File API로 충분합니다.
 /// </summary>
 public class MasterDataLoader
 {

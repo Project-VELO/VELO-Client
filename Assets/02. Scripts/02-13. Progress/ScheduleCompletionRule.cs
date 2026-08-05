@@ -57,7 +57,7 @@ public static class ScheduleCompletionRule
             return false;
         }
 
-        // 최소 점수는 1차 MVP에서 사용하지 않지만(NO_SCORE_REQUIREMENT), 조건이 걸리면 함께 검사합니다.
+        // 최소 점수는 현재 사용하지 않지만(NO_SCORE_REQUIREMENT), 조건이 걸리면 함께 검사합니다.
         return condition.MinimumScore <= MasterDataSchema.NO_SCORE_REQUIREMENT || condition.MinimumScore <= result.Score;
     }
 }

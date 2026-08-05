@@ -7,9 +7,6 @@ using VInspector;
 ///
 /// 같은 NEXT 클릭이라도 출력 중이면 "즉시 전체 출력", 출력이 끝났으면 "다음 대사",
 /// 마지막 줄이면 "완료 후 목록 복귀"로 갈라집니다(기획서 6.3). 이 분기를 상태로 고정합니다.
-///
-/// 줄 재생은 StoryLinePlayer가, 완료·복귀는 StoryExitFlow가, 진입 대상 확정은 StoryScriptResolver가
-/// 맡습니다. 이 클래스에 남은 것은 상태 전이와 입력 분기뿐입니다.
 /// </summary>
 public class StoryPlaybackController : MonoBehaviour
 {

@@ -15,7 +15,7 @@ public enum ENoteType
 
     /// <summary>
     /// 시작 타이밍에 맞춰 누른 뒤 HoldDurationMs 동안 유지해야 하는 롱노트입니다.
-    /// 판정은 LiveHoldTracker에 구현되어 있으나 1차 MVP 채보에서는 쓰지 않기로 하여
+    /// 판정은 LiveHoldTracker에 구현되어 있으나 현재 채보에서는 쓰지 않기로 하여
     /// 에디터의 배치 경로가 잠겨 있습니다(LiveEditorInputHandler.IS_LONG_NOTE_PLACEMENT_ENABLED).
     /// </summary>
     LONG,

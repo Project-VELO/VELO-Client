@@ -7,9 +7,8 @@ using UnityEngine;
 /// <summary>
 /// 대사 한 줄을 한 글자씩 출력합니다(기획서 6.7 "한 글자씩 한 문장만 출력").
 ///
-/// 문자열은 줄이 시작될 때 한 번만 대입하고, 그 뒤로는 TMP의 maxVisibleCharacters(정수)만 바꿉니다.
-/// 매 프레임 Substring으로 부분 문자열을 만들면 타이핑이 도는 내내 GC가 쌓여
-/// AGENTS.md의 "Update에서 GC 할당 금지"에 정면으로 걸립니다. 아래 루프의 할당은 0입니다.
+/// 문자열은 줄이 시작될 때 한 번만 대입하고, 그 뒤로는 TMP의 maxVisibleCharacters만 바꿉니다.
+/// 매 프레임 Substring으로 부분 문자열을 만들면 타이핑이 도는 내내 GC가 쌓입니다. 아래 루프의 할당은 0입니다.
 ///
 /// 글자마다 UniTask.Delay를 걸지 않는 것도 같은 이유입니다. UniTask.Yield는 캐시된 awaitable을
 /// 돌려주어 할당이 없고, 경과 시간을 누적하는 방식이라 프레임률이 낮아도 속도가 밀리지 않습니다.

@@ -6,12 +6,11 @@ using VInspector;
 
 /// <summary>
 /// 라이브 준비 단계에서 편성을 확인·변경하는 팝업입니다(SCREEN-008).
-/// 무엇을 플레이할지는 곡 선택 화면이 팝업을 열기 전에 이미 LiveEntryContext에 확정해 두므로,
-/// 이 팝업은 편성 편집(임시 적용)과 LIVE 시작(리듬게임 씬 이동)만 책임집니다.
+/// 무엇을 플레이할지는 이미 LiveEntryContext에 확정돼 있으므로 편성 편집과 LIVE 시작만 책임집니다.
 ///
 /// 편성 값 자체는 LiveLoadoutContext가 들고 있습니다. 열릴 때 기본 편성에서 초기화하고,
-/// 뒤로가기·ESC로 닫히면 폐기합니다(기획서 3-H-4). 플레이로 씬을 떠날 때는 CloseAsync가 불리지 않으므로
-/// (SceneTransitionManager의 ClearAllPopups는 비활성화만 합니다) 변경분이 그대로 현재 LIVE에 유지됩니다.
+/// 뒤로가기·ESC로 닫히면 폐기합니다(기획서 3-H-4). 플레이로 씬을 떠날 때는 CloseAsync가 불리지 않아
+/// 변경분이 그대로 현재 LIVE에 유지됩니다.
 /// </summary>
 public class UI_PhotocardSelectPopup : UI_Popup
 {

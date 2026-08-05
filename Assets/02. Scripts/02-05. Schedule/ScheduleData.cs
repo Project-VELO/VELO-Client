@@ -32,7 +32,7 @@ public class ScheduleData : ISerializationCallbackReceiver
 
     /// <summary>
     /// 같은 날짜 안에서 스케줄을 나열하는 순서입니다.
-    /// 1차 MVP에서는 세 스케줄 모두 처음부터 진행할 수 있으므로 표시 순서일 뿐 선행 조건이 아닙니다(기획서 3-E-2-2).
+    /// 세 스케줄 모두 처음부터 진행할 수 있으므로 표시 순서일 뿐 선행 조건이 아닙니다(기획서 3-E-2-2).
     /// </summary>
     public int ScheduleOrder;
 
@@ -45,7 +45,7 @@ public class ScheduleData : ISerializationCallbackReceiver
     public string Description;
 
     /// <summary>
-    /// 하루 완료 판정에 포함되는 필수 스케줄인지 여부입니다. 1차 MVP의 세 스케줄은 모두 필수입니다.
+    /// 하루 완료 판정에 포함되는 필수 스케줄인지 여부입니다. 현재 세 스케줄은 모두 필수입니다.
     /// </summary>
     public bool IsRequired = true;
 

@@ -64,14 +64,13 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         {
             string oldSceneName = _currentLoadedSubScene;
 
-            // 1. 신규 씬을 먼저 Additive로 로드
             bool isLoaded = await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
             if (!isLoaded)
             {
                 return;
             }
 
-            // 2. 신규 씬 로드가 완전히 끝난 뒤에 이전 서브 씬을 언로드 (단일 씬 언로드 에러 방지)
+            // 언로드가 먼저 끝나면 씬이 하나도 남지 않는 순간이 생겨 단일 씬 언로드 에러가 납니다.
             if (!string.IsNullOrEmpty(oldSceneName) && oldSceneName != actualSceneName)
             {
                 AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(oldSceneName);

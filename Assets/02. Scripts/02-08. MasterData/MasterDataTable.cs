@@ -3,14 +3,11 @@ using System.Collections.Generic;
 
 /// <summary>
 /// 마스터 데이터 JSON 파일의 최상위 래퍼입니다.
-/// JsonUtility는 List를 최상위로 직렬화하지 못하므로, 모든 테이블 파일은 이 객체를 루트로 갖습니다.
+/// JsonUtility는 List를 최상위로 직렬화하지 못하므로 모든 테이블 파일은 이 객체를 루트로 갖습니다.
+/// 제네릭 필드 직렬화가 지원되므로 테이블마다 구체 래퍼를 만들지 않고 이 하나를 재사용합니다.
 ///
-/// 제네릭 필드 직렬화가 지원되므로 테이블마다 구체 래퍼 클래스를 만들지 않고 이 하나를 재사용합니다.
-/// 사용 예: JsonUtility.FromJson&lt;MasterDataTable&lt;StoryData&gt;&gt;(json)
-///
-/// 필드가 public인 것은 의도적입니다. 마스터 데이터는 사람이 직접 편집하는 파일이라
-/// [SerializeField] private 방식의 밑줄 접두사가 JSON 키에 그대로 노출되면 곤란합니다.
-/// (Convention 1-b-(2)가 Serializable·DTO 클래스에 한해 public 필드를 허용합니다)
+/// 필드가 public인 것은 의도적입니다. 사람이 직접 편집하는 파일이라 밑줄 접두사가
+/// JSON 키에 그대로 노출되면 곤란합니다(Convention 1-b-(2)).
 /// </summary>
 [Serializable]
 public class MasterDataTable<T>

@@ -1,15 +1,13 @@
 /// <summary>
 /// 스토리 관련 화면 사이에서 값을 옮기는 싱글톤입니다.
-/// LiveEntryContext와 같은 형태로, MonoBehaviour가 아니어서 서브씬이 언로드되어도 값이 남고
-/// PersistentScene에 오브젝트를 두지 않아도 됩니다.
+/// MonoBehaviour가 아니어서 서브씬이 언로드되어도 값이 남고 PersistentScene에 오브젝트를 두지 않아도 됩니다.
 ///
 /// 세 방향의 전달을 담당합니다.
 ///   ① 홈·사무실의 스토리 스케줄 바로가기 → 스토리 목록 (강조할 회차)
 ///   ② 스토리 목록 → 스토리 감상 (감상할 회차)
 ///   ③ 스토리 감상 → 스토리 목록 (완료 결과와 보상)
 ///
-/// ③이 필요한 것은 보상 안내 팝업이 감상 화면이 아니라 목록 화면에서 뜨기 때문입니다
-/// (기획서.txt:1372, 1381, 2711).
+/// ③이 필요한 것은 보상 안내 팝업이 감상 화면이 아니라 목록 화면에서 뜨기 때문입니다.
 /// </summary>
 public class StoryEntryContext : POCOSingleton<StoryEntryContext>
 {
@@ -55,13 +53,13 @@ public class StoryEntryContext : POCOSingleton<StoryEntryContext>
 
     #region ③ 스토리 감상 → 스토리 목록
     /// <summary>
-    /// 마지막까지 읽어 완료한 회차입니다. 중간에 나왔다면 비어 있습니다(기획서.txt:919-923).
+    /// 마지막까지 읽어 완료한 회차입니다. 중간에 나왔다면 비어 있습니다.
     /// </summary>
     public string LastCompletedStoryId { get; private set; }
 
     /// <summary>
     /// 이번에 최초 완료해 보상이 지급되었는지 여부입니다.
-    /// 재감상은 보상을 주지 않으므로 팝업도 띄우지 않습니다(기획서.txt:1375-1376, 2714).
+    /// 재감상은 보상을 주지 않으므로 팝업도 띄우지 않습니다.
     /// </summary>
     public bool HasPendingReward { get; private set; }
 

@@ -4,11 +4,8 @@ using UnityEngine;
 /// <summary>
 /// 스토리 한 회차의 기획 메타데이터입니다(stories.json).
 ///
-/// 진행 상태(LOCKED/UNLOCKED/COMPLETED)와 NEW 표시 여부는 플레이어마다 다르므로 여기가 아니라 세이브 데이터에 있습니다.
+/// 진행 상태와 NEW 표시 여부는 플레이어마다 다르므로 여기가 아니라 세이브 데이터에 있습니다.
 /// 이 클래스는 어느 플레이어에게나 같은 값만 담습니다.
-///
-/// 대사는 StoryScripts/{StoryId}.json에 따로 있으며, 경로는 MasterDataPaths가 StoryId에서 유도합니다.
-/// 첫 배경과 첫 대사 역시 대본 파일의 첫 줄이 이미 갖고 있어 여기에 중복해 두지 않습니다.
 ///
 /// 필드가 public인 것은 의도적입니다. 사람이 직접 편집하는 JSON이라
 /// [SerializeField] private 방식의 밑줄 접두사가 키에 노출되면 곤란합니다(Convention 1-b-(2)).

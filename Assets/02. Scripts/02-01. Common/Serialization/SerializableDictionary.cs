@@ -6,9 +6,6 @@ using UnityEngine;
 /// JsonUtility가 Dictionary를 직렬화하지 못하므로, 키와 값을 각각 List로 펼쳐 저장하고
 /// 역직렬화 시 Dictionary로 되돌리는 컨테이너입니다.
 ///
-/// 제네릭 필드 직렬화는 Unity 2020.1부터 지원되므로, 타입 조합마다 구체 서브클래스를 만들 필요가 없습니다.
-/// 마스터 데이터와 세이브 데이터 양쪽이 이 클래스 하나를 공유합니다.
-///
 /// TKey와 TValue는 반드시 JsonUtility가 직렬화할 수 있는 타입이어야 합니다.
 /// (기본형, string, enum, [Serializable]이 붙은 클래스·구조체)
 /// </summary>

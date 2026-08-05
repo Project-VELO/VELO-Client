@@ -5,12 +5,9 @@ using VInspector;
 /// <summary>
 /// "보이지만 누를 수 없음"을 고정하는 컴포넌트입니다.
 ///
-/// 1차 MVP는 상점·도감·우편·공지·이벤트·가챠·숙소 강화를 클릭 불가로, 랭킹을 비활성으로 둡니다
-/// (기획서.txt:52-81). 스페이스의 스튜디오·숙소도 같습니다(기획서.txt:1974-1975, 1992).
-///
 /// interactable만 끄면 라벨과 아이콘이 밝게 남습니다. 버튼 프리팹 대부분이 TargetGraphic으로
 /// 배경 이미지 하나만 지정해 두어 색 전환이 그 하나에만 걸리기 때문입니다.
-/// 어둡게 보이려면 CanvasGroup 알파를 함께 낮춰야 합니다(기획서.txt:1717).
+/// 어둡게 보이려면 CanvasGroup 알파를 함께 낮춰야 합니다.
 /// </summary>
 public class UI_DisabledButton : MonoBehaviour
 {

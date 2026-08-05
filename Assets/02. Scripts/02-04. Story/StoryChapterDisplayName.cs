@@ -1,12 +1,10 @@
 /// <summary>
 /// 챕터 ID를 화면에 출력할 문자열로 바꿉니다.
 ///
-/// stories.json에 표시명 필드가 없어 코드에서 변환합니다. 챕터가 둘뿐인 1차 MVP에
-/// chapters.json 같은 마스터 테이블을 새로 만들면 MasterDataProvider·Paths·Loader 세 파일을
-/// 함께 고쳐야 해서, 얻는 것에 비해 건드리는 범위가 큽니다.
+/// stories.json에 표시명 필드가 없어 코드에서 변환합니다. 챕터가 둘뿐인데 chapters.json 같은
+/// 마스터 테이블을 새로 만들면 Provider·Paths·Loader 세 파일을 함께 고쳐야 해 범위가 큽니다.
 ///
-/// 표시 문구는 기획 소관이므로 아래 표 한 곳만 고치면 전 화면에 반영되도록 몰아 두었습니다.
-/// 챕터가 늘거나 한글 부제가 붙으면 이 파일만 손보면 됩니다.
+/// 챕터가 늘거나 한글 부제가 붙으면 아래 표 한 곳만 고치면 전 화면에 반영됩니다.
 /// </summary>
 public static class StoryChapterDisplayName
 {

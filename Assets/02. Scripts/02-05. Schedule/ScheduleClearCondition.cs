@@ -18,18 +18,18 @@ public class ScheduleClearCondition : ISerializationCallbackReceiver
     public string TargetSongId;
 
     /// <summary>
-    /// JSON에 적는 요구 난이도 이름입니다("EASY" / "NORMAL" / "HARD"). 1차 MVP는 모두 NORMAL입니다.
+    /// JSON에 적는 요구 난이도 이름입니다("EASY" / "NORMAL" / "HARD"). 현재 데이터는 모두 NORMAL입니다.
     /// </summary>
     public string RequiredDifficultyName;
 
     /// <summary>
-    /// JSON에 적는 최소 랭크 이름입니다("PERFECT_S" / "S" / "A" / "B" / "C"). 1차 MVP는 모두 B입니다.
+    /// JSON에 적는 최소 랭크 이름입니다("PERFECT_S" / "S" / "A" / "B" / "C"). 현재 데이터는 모두 B입니다.
     /// </summary>
     public string MinimumRankName;
 
     /// <summary>
     /// 최소 점수 조건입니다. MasterDataSchema.NO_SCORE_REQUIREMENT(0)이면 점수 조건을 보지 않습니다.
-    /// 1차 MVP의 모든 LIVE 스케줄이 여기에 해당합니다.
+    /// 현재 모든 LIVE 스케줄이 여기에 해당합니다.
     /// </summary>
     public int MinimumScore = MasterDataSchema.NO_SCORE_REQUIREMENT;
 

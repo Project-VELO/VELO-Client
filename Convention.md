@@ -238,6 +238,44 @@
 
 
 
+**1-a-(11).** 비교 연산자는 항상 **오른쪽으로 입을 벌리는 `<`, `<=`만 사용**한다. `>`와 `>=`는 사용하지 않는다.
+
+- 작은 값을 왼쪽에 두면 수직선 위의 순서와 읽는 순서가 일치한다. 범위 검사에서 특히 분명하다.
+
+- **예외를 두지 않는다.** `list.Count > 0` 같은 관용구도 `0 < list.Count`로 쓴다.
+
+- 제네릭 타입 인자(`List<int>`), 람다 화살표(`=>`), 표현식 본문 멤버(`=> _hp;`), XML 주석 태그(`<summary>`)에 쓰인 `<`와 `>`는 비교 연산자가 아니므로 이 규칙과 무관하다.
+
+* ❌ **지양할 예시**
+
+&#x20; ```csharp
+
+&#x20; bool isAlive = _hp > 0;
+
+&#x20; bool isFull = count >= MAX_COUNT;
+
+&#x20; bool isInRange = index >= 0 && index < _items.Count;
+
+&#x20; public bool HasPopups => _popups.Count > 0;
+
+&#x20; ```
+
+* ✅ **권장할 예시**
+
+&#x20; ```csharp
+
+&#x20; bool isAlive = 0 < _hp;
+
+&#x20; bool isFull = MAX_COUNT <= count;
+
+&#x20; bool isInRange = 0 <= index && index < _items.Count;
+
+&#x20; public bool HasPopups => 0 < _popups.Count;
+
+&#x20; ```
+
+
+
 ### 1-b. 필드 및 프로퍼티
 
 

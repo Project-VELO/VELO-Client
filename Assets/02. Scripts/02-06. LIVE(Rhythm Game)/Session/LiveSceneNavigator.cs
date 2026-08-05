@@ -17,6 +17,23 @@ public static class LiveSceneNavigator
             return;
         }
 
+        MoveAsync(sceneName, cancellationToken).Forget();
+    }
+
+    /// <summary>
+    /// 진행 중인 전환이 끝나기를 먼저 기다립니다.
+    ///
+    /// 곡이나 채보를 읽지 못해 화면이 뜨자마자 되돌아가는 경우(LiveGameController.Start), 이 화면을 띄운
+    /// 전환이 아직 끝나지 않아 SceneTransitionManager의 중복 방지 가드에 걸립니다. 그러면 요청이 조용히
+    /// 버려져 검은 리듬게임 화면에 갇힙니다. 기획서 16-15는 이 상황을 "진입 차단"으로 정하고 있습니다.
+    /// </summary>
+    private static async UniTaskVoid MoveAsync(ESceneNames sceneName, CancellationToken cancellationToken)
+    {
+        while (SceneTransitionManager.Instance.IsTransitioning)
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
+        }
+
         SceneTransitionManager.Instance.LoadSceneAsync(sceneName, cancellationToken).Forget();
     }
 }

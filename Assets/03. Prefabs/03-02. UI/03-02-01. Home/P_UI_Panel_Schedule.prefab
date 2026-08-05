@@ -498,13 +498,14 @@ GameObject:
   - component: {fileID: 4766326771283429947}
   - component: {fileID: 1546790939764611823}
   - component: {fileID: 1929131652616867599}
+  - component: {fileID: 8890874284416880171}
   m_Layer: 5
-  m_Name: Image_Lock
+  m_Name: Image_ScheduleState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4766326771283429947
 RectTransform:
   m_ObjectHideFlags: 0
@@ -562,6 +563,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8890874284416880171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111232036259594576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84229986f7ffd84409680f5a2e441f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleStateIcon
+  _icon: {fileID: 1929131652616867599}
+  _lockedSprite: {fileID: 0}
+  _availableSprite: {fileID: 0}
+  _completedSprite: {fileID: 0}
 --- !u!1 &3238480544809405400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,8 +1379,7 @@ MonoBehaviour:
   _rewardMoneyText: {fileID: 2979553638226284115}
   _rewardExpText: {fileID: 4553932621347656785}
   _shortcutLabel: {fileID: 5255484786351323646}
-  _lockIcon: {fileID: 2111232036259594576}
-  _completedRoot: {fileID: 0}
+  _stateIcon: {fileID: 8890874284416880171}
 --- !u!1 &7414906180243642294
 GameObject:
   m_ObjectHideFlags: 0

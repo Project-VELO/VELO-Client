@@ -29,7 +29,7 @@ public class UI_WeekCompletePopup : UI_Popup
     /// </summary>
     public void SetResult(int unlockedStoryCount)
     {
-        _messageText.text = unlockedStoryCount > 0
+        _messageText.text = 0 < unlockedStoryCount
             ? string.Format(UNLOCK_MESSAGE_FORMAT, unlockedStoryCount)
             : NO_UNLOCK_MESSAGE;
     }

@@ -55,7 +55,7 @@ public class LiveSongPublishWindow : EditorWindow
     {
         EditorGUILayout.LabelField("챕터", EditorStyles.boldLabel);
 
-        if (_chapterFolders.Count > 0)
+        if (0 < _chapterFolders.Count)
         {
             string[] names = _chapterFolders.Select(Path.GetFileName).ToArray();
             _chapterIndex = EditorGUILayout.Popup("수록 대상", Mathf.Clamp(_chapterIndex, 0, names.Length - 1), names);

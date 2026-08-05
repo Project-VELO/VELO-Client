@@ -25,7 +25,7 @@ public static class LiveSongSelectionResolver
         chapterIndex = FindFirstUnlockedChapterIndex(catalog);
         songIndex = 0;
 
-        return chapterIndex >= 0;
+        return 0 <= chapterIndex;
     }
 
     private static bool TryResolveDesignated(LiveSongCatalog catalog, string designatedSongId, out int chapterIndex, out int songIndex)
@@ -33,7 +33,7 @@ public static class LiveSongSelectionResolver
         chapterIndex = catalog.FindChapterIndex(designatedSongId);
         songIndex = catalog.FindSongIndex(chapterIndex, designatedSongId);
 
-        if (chapterIndex >= 0 && songIndex >= 0)
+        if (0 <= chapterIndex && 0 <= songIndex)
         {
             return true;
         }

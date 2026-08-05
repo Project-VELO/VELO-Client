@@ -20,7 +20,7 @@ public class LiveCountdown : MonoBehaviour
     {
         UI_LiveCountdownPanel panel = _liveUI.CountdownPanel;
 
-        for (int remainingSeconds = COUNTDOWN_SECONDS; remainingSeconds > 0; remainingSeconds--)
+        for (int remainingSeconds = COUNTDOWN_SECONDS; 0 < remainingSeconds; remainingSeconds--)
         {
             if (panel != null)
             {

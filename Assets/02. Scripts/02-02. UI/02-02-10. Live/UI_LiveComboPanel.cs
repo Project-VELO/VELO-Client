@@ -11,6 +11,6 @@ public class UI_LiveComboPanel : MonoBehaviour
 
     public void SetCombo(int combo)
     {
-        _comboCountText.text = combo > 0 ? combo.ToString() : "";
+        _comboCountText.text = 0 < combo ? combo.ToString() : "";
     }
 }

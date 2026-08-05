@@ -24,7 +24,7 @@ public class LiveBarLayout
     public int BarCount => _bars.Count;
     public int BeatsPerBar => _beatsPerBar;
     public int SongLengthMs => _songLengthMs;
-    public bool IsBuilt => _bars.Count > 0;
+    public bool IsBuilt => 0 < _bars.Count;
 
     /// <summary>
     /// 곡 길이를 모두 덮을 때까지 마디를 생성합니다. 곡을 새로 불러올 때마다 한 번씩만 호출됩니다.
@@ -50,7 +50,7 @@ public class LiveBarLayout
 
             _bars.Add(new LiveBarInfo(barIndex, startTimeMs, endTimeMs, startBeat));
 
-            if (endTimeMs >= songLengthMs)
+            if (songLengthMs <= endTimeMs)
             {
                 break;
             }
@@ -64,7 +64,7 @@ public class LiveBarLayout
 
     public bool TryGetBar(int barIndex, out LiveBarInfo bar)
     {
-        if (barIndex < 0 || barIndex >= _bars.Count)
+        if (barIndex < 0 || _bars.Count <= barIndex)
         {
             bar = default;
             return false;
@@ -139,13 +139,13 @@ public class LiveBarLayout
         cellIndex = Mathf.RoundToInt((float)((barPosition - barIndex) * cellsPerBar));
 
         // 마디 끝으로 반올림된 셀은 다음 마디의 첫 셀과 같은 위치이므로 다음 마디로 넘깁니다.
-        if (cellIndex >= cellsPerBar)
+        if (cellsPerBar <= cellIndex)
         {
             barIndex++;
             cellIndex = 0;
         }
 
-        if (barIndex < 0 || barIndex >= _bars.Count)
+        if (barIndex < 0 || _bars.Count <= barIndex)
         {
             return false;
         }

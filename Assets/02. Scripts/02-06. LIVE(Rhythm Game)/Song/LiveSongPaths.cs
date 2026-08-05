@@ -137,7 +137,7 @@ public static class LiveSongPaths
         }
 
         int separatorIndex = folderName.IndexOf(CHAPTER_ORDER_SEPARATOR);
-        if (separatorIndex <= 0 || separatorIndex >= folderName.Length - 1)
+        if (separatorIndex <= 0 || folderName.Length - 1 <= separatorIndex)
         {
             return true;
         }

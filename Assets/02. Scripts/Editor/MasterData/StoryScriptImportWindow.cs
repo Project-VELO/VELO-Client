@@ -82,7 +82,7 @@ public class StoryScriptImportWindow : EditorWindow
         var builder = new System.Text.StringBuilder();
 
         // 오류가 있어도 정상적인 회차는 저장합니다. 한 줄의 오타 때문에 전체 변환이 막히면 작업이 더뎌집니다.
-        if (errors.Count > 0)
+        if (0 < errors.Count)
         {
             builder.AppendLine($"건너뛴 행 {errors.Count}건");
 

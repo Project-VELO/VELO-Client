@@ -7,5 +7,5 @@ public class LiveChartSummary
     public int NoteCount { get; set; }
     public int Level { get; set; }
 
-    public bool HasLevel => Level > 0;
+    public bool HasLevel => 0 < Level;
 }

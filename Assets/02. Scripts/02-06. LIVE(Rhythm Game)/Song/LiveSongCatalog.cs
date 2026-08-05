@@ -91,7 +91,7 @@ public class LiveSongCatalog : POCOSingleton<LiveSongCatalog>
 
     public int FindSongIndex(int chapterIndex, string songId)
     {
-        if (chapterIndex < 0 || chapterIndex >= _chapters.Count || string.IsNullOrEmpty(songId))
+        if (chapterIndex < 0 || _chapters.Count <= chapterIndex || string.IsNullOrEmpty(songId))
         {
             return -1;
         }

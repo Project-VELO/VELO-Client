@@ -85,7 +85,7 @@ public class UI_OfficeTodayPanel : MonoBehaviour
         }
 
         List<ScheduleData> schedules = GameProgressService.Instance.GetTodaySchedules();
-        int weekOrder = schedules.Count > 0 ? schedules[0].WeekOrder : 1;
+        int weekOrder = 0 < schedules.Count ? schedules[0].WeekOrder : 1;
 
         _dateText.text = $"{weekOrder}주차 {dayIndex + 1}일차";
     }

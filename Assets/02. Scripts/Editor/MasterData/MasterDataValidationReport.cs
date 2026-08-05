@@ -16,7 +16,7 @@ public class MasterDataValidationReport
     public IReadOnlyList<string> Warnings => _warnings;
     public IReadOnlyList<string> Summaries => _summaries;
 
-    public bool HasError => _errors.Count > 0;
+    public bool HasError => 0 < _errors.Count;
 
     public void AddError(string message)
     {

@@ -20,7 +20,7 @@ public class LiveEditorChartIO
     public bool SaveChart(string path, ChartData chart, SongData song, out List<string> errors)
     {
         errors = _validator.Validate(chart, song);
-        if (errors.Count > 0)
+        if (0 < errors.Count)
         {
             return false;
         }
@@ -95,7 +95,7 @@ public class LiveEditorChartIO
 
         foreach (string songId in songIds)
         {
-            if (GetSavedDifficulties(songId).Count > 0)
+            if (0 < GetSavedDifficulties(songId).Count)
             {
                 songIdsWithCharts.Add(songId);
             }

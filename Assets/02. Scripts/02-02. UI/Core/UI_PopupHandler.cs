@@ -23,7 +23,7 @@ public class UI_PopupHandler
     private Stack<PopupEntry> _popups = new Stack<PopupEntry>();
     private bool _isClosing = false;
 
-    public bool HasPopups => _popups.Count > 0;
+    public bool HasPopups => 0 < _popups.Count;
 
     public void Init()
     {
@@ -36,7 +36,7 @@ public class UI_PopupHandler
 
     public void ClearAllPopups()
     {
-        while (_popups.Count > 0)
+        while (0 < _popups.Count)
         {
             PopupEntry entry = _popups.Pop();
             if (entry.Popup != null)

@@ -82,6 +82,6 @@ public class LiveEditorNavigationShortcuts : MonoBehaviour
             return;
         }
 
-        _playbackControl.SeekByGridStep(scrollDelta > 0f ? 1 : -1);
+        _playbackControl.SeekByGridStep(0f < scrollDelta ? 1 : -1);
     }
 }

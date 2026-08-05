@@ -65,7 +65,7 @@ public class LiveEditorChartValidator
             }
 
             int endTimeMs = note.TimeMs + note.HoldDurationMs;
-            if (songDurationMs > 0 && endTimeMs > songDurationMs)
+            if (0 < songDurationMs && songDurationMs < endTimeMs)
             {
                 errors.Add($"[{note.NoteId}] 롱노트 종료 시각({endTimeMs}ms)이 곡 길이({songDurationMs}ms)를 초과합니다.");
             }

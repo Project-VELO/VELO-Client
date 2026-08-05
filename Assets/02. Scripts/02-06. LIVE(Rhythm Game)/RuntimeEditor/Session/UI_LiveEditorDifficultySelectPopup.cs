@@ -91,7 +91,7 @@ public class UI_LiveEditorDifficultySelectPopup : UI_Popup
 
     private void SelectDifficulty(int itemIndex)
     {
-        if (itemIndex < 0 || itemIndex >= _difficulties.Count)
+        if (itemIndex < 0 || _difficulties.Count <= itemIndex)
         {
             return;
         }
@@ -103,7 +103,7 @@ public class UI_LiveEditorDifficultySelectPopup : UI_Popup
 
     private void NotifyConfirmed()
     {
-        if (_selectedIndex < 0 || _selectedIndex >= _difficulties.Count)
+        if (_selectedIndex < 0 || _difficulties.Count <= _selectedIndex)
         {
             return;
         }

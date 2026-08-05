@@ -76,7 +76,7 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
 
     private void OnSnapChanged(int index)
     {
-        if (index < 0 || index >= SnapDivisions.Count)
+        if (index < 0 || SnapDivisions.Count <= index)
         {
             return;
         }

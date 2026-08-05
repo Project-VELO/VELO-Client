@@ -49,7 +49,7 @@ public class UI_OfficeWeeklyPanel : MonoBehaviour
 
         for (int i = 0; i < _dayCells.Count; i++)
         {
-            if (i >= dayIds.Count)
+            if (dayIds.Count <= i)
             {
                 _dayCells[i].Clear();
                 continue;
@@ -59,7 +59,7 @@ public class UI_OfficeWeeklyPanel : MonoBehaviour
             _dayCells[i].RefreshState(GameProgressService.Instance.GetDayViewState(weekId, dayIds[i]));
         }
 
-        if (dayIds.Count > _dayCells.Count)
+        if (_dayCells.Count < dayIds.Count)
         {
             Debug.LogWarning($"[UI_OfficeWeeklyPanel] 표시할 칸이 모자랍니다. 날짜 {dayIds.Count}건 / 칸 {_dayCells.Count}개");
         }

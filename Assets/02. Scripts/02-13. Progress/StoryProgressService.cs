@@ -42,7 +42,7 @@ public static class StoryProgressService
         // 위에서 잠긴 상태로 만들어 두기만 하면 그 주차를 다시 마무리할 방법이 없어 영영 잠깁니다.
         foreach (string weekId in progress.CompletedWeekIds)
         {
-            if (UnlockStoriesByWeek(progress, weekId).Count > 0)
+            if (0 < UnlockStoriesByWeek(progress, weekId).Count)
             {
                 isChanged = true;
             }

@@ -43,7 +43,7 @@ public class UI_TodayScheduleList : MonoBehaviour
                 continue;
             }
 
-            if (i >= schedules.Count)
+            if (schedules.Count <= i)
             {
                 row.Clear();
                 continue;
@@ -55,7 +55,7 @@ public class UI_TodayScheduleList : MonoBehaviour
             row.SetSchedule(schedule, isCompleted, _entryType);
         }
 
-        if (schedules.Count > _rows.Count)
+        if (_rows.Count < schedules.Count)
         {
             Debug.LogWarning($"[UI_TodayScheduleList] 표시할 행이 모자랍니다. 스케줄 {schedules.Count}건 / 행 {_rows.Count}개");
         }

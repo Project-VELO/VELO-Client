@@ -26,7 +26,7 @@ public static class LiveResultProcessor
         // 조건 미충족과 이미 완료된 스케줄은 이 안에서 걸러지므로 여기서 진입 경로를 따로 보지 않습니다.
         // 이번에 완료된 스케줄이 있어야만 확인 버튼이 사무실로 향합니다(기획서 9.4, LiveResultReturnTarget).
         List<string> completedScheduleIds = GameProgressService.Instance.ApplyLiveResult(result);
-        result.HasCompletedSchedule = completedScheduleIds.Count > 0;
+        result.HasCompletedSchedule = 0 < completedScheduleIds.Count;
 
         // 보상·최고 기록·스케줄 완료를 한 번에 저장합니다. ApplyLiveResult가 따로 저장하지 않는 것은 이 때문입니다.
         PlayerDataProvider.Instance.Save();

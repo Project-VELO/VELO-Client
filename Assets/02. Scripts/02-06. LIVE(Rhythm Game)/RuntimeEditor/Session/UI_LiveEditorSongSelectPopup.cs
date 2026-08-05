@@ -67,7 +67,7 @@ public class UI_LiveEditorSongSelectPopup : UI_Popup
 
     private void NotifySongSelected(int itemIndex)
     {
-        if (itemIndex < 0 || itemIndex >= _songIds.Count)
+        if (itemIndex < 0 || _songIds.Count <= itemIndex)
         {
             return;
         }

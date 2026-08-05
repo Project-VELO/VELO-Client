@@ -95,7 +95,7 @@ public class LiveEditorTrackPointer
         {
             _timeline.Lanes.GetLaneBoundsAtRatio(candidateLane, verticalRatio, out float leftX, out float rightX);
 
-            if (localX >= leftX && localX <= rightX)
+            if (leftX <= localX && localX <= rightX)
             {
                 lane = candidateLane;
                 return true;

@@ -16,8 +16,8 @@ public class LiveEditorUndoRedoManager
 
     private bool _hasUnsavedChanges;
 
-    public bool CanUndo => _undoStack.Count > 0;
-    public bool CanRedo => _redoStack.Count > 0;
+    public bool CanUndo => 0 < _undoStack.Count;
+    public bool CanRedo => 0 < _redoStack.Count;
 
     /// <summary>
     /// Undo로 되돌려도 저장본과 같아졌다고 단정할 수 없으므로, 편집이 일어나면 저장 전까지 계속 true로 둡니다.

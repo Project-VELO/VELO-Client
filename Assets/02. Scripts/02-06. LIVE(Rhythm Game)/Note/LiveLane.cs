@@ -16,6 +16,6 @@ public static class LiveLane
 
     public static bool IsValid(int lane)
     {
-        return lane >= FIRST && lane <= LAST;
+        return FIRST <= lane && lane <= LAST;
     }
 }

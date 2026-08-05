@@ -79,7 +79,7 @@ public class GameProgressService : POCOSingleton<GameProgressService>
         // 바로가기가 아니라 스토리 목록을 통해 완료한 경우에도 스케줄을 완료로 인정합니다(기획서 3-E-2-3).
         List<string> completedScheduleIds = ScheduleProgressService.SyncStorySchedules(Data);
 
-        if (isFirstCompletion || completedScheduleIds.Count > 0)
+        if (isFirstCompletion || 0 < completedScheduleIds.Count)
         {
             Save();
         }
@@ -105,7 +105,7 @@ public class GameProgressService : POCOSingleton<GameProgressService>
     /// </summary>
     public void SyncStorySchedules()
     {
-        if (ScheduleProgressService.SyncStorySchedules(Data).Count > 0)
+        if (0 < ScheduleProgressService.SyncStorySchedules(Data).Count)
         {
             Save();
         }

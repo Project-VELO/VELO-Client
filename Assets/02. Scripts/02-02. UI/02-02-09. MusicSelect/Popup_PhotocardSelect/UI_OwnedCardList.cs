@@ -88,7 +88,7 @@ public class UI_OwnedCardList : MonoBehaviour
             }
         }
 
-        _leftButton.interactable = _pageIndex > 0;
+        _leftButton.interactable = 0 < _pageIndex;
         _rightButton.interactable = _pageIndex < GetMaxPageIndex();
     }
 

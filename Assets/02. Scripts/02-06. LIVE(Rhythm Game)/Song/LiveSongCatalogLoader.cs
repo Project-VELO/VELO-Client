@@ -19,7 +19,7 @@ public class LiveSongCatalogLoader
         foreach (string chapterFolder in chapterFolders)
         {
             LiveChapterData chapter = LoadChapter(chapterFolder);
-            if (chapter.Songs.Count > 0)
+            if (0 < chapter.Songs.Count)
             {
                 chapters.Add(chapter);
             }

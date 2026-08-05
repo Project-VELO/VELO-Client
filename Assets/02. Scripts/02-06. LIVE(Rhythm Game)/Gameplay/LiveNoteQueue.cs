@@ -73,7 +73,7 @@ public class LiveNoteQueue
             _laneNotes[note.Lane - LiveLane.FIRST].Add(note);
             TotalNoteCount++;
 
-            if (note.TimeMs > LastNoteTimeMs)
+            if (LastNoteTimeMs < note.TimeMs)
             {
                 LastNoteTimeMs = note.TimeMs;
             }
@@ -104,7 +104,7 @@ public class LiveNoteQueue
         List<NoteData> notes = _laneNotes[laneIndex];
         int head = _laneHeads[laneIndex];
 
-        if (head >= notes.Count)
+        if (notes.Count <= head)
         {
             return false;
         }
@@ -112,7 +112,7 @@ public class LiveNoteQueue
         NoteData candidate = notes[head];
         int candidateErrorMs = songTimeMs - candidate.TimeMs;
 
-        if (candidateErrorMs < -LiveJudgementRule.JUDGEABLE_WINDOW_MS || candidateErrorMs > LiveJudgementRule.JUDGEABLE_WINDOW_MS)
+        if (candidateErrorMs < -LiveJudgementRule.JUDGEABLE_WINDOW_MS || LiveJudgementRule.JUDGEABLE_WINDOW_MS < candidateErrorMs)
         {
             return false;
         }
@@ -134,7 +134,7 @@ public class LiveNoteQueue
             List<NoteData> notes = _laneNotes[laneIndex];
             int head = _laneHeads[laneIndex];
 
-            while (head < notes.Count && songTimeMs - notes[head].TimeMs > LiveJudgementRule.JUDGEABLE_WINDOW_MS)
+            while (head < notes.Count && LiveJudgementRule.JUDGEABLE_WINDOW_MS < songTimeMs - notes[head].TimeMs)
             {
                 expiredNotes.Add(notes[head]);
                 head++;

@@ -37,7 +37,7 @@ public static class LiveSongAudioDurationProbe
             }
 
             seconds = clip.length;
-            return seconds > 0f;
+            return 0f < seconds;
         }
         finally
         {

@@ -97,7 +97,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
     {
         for (int cellIndex = 1; cellIndex < cellsPerBar; cellIndex++)
         {
-            if (usedLineCount >= _subdivisionLines.Count)
+            if (_subdivisionLines.Count <= usedLineCount)
             {
                 break;
             }

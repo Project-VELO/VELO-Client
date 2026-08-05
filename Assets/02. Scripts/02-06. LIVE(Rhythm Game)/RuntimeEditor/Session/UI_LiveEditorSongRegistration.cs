@@ -75,7 +75,7 @@ public class UI_LiveEditorSongRegistration : MonoBehaviour
             return;
         }
 
-        if (_unregisteredAudioDropdown.value < 0 || _unregisteredAudioDropdown.value >= _unregisteredAudioPaths.Count)
+        if (_unregisteredAudioDropdown.value < 0 || _unregisteredAudioPaths.Count <= _unregisteredAudioDropdown.value)
         {
             return;
         }

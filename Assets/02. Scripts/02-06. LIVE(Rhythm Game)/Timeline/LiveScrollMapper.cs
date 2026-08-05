@@ -69,7 +69,7 @@ public class LiveScrollMapper
 
     public bool IsRatioVisible(float verticalRatio)
     {
-        return verticalRatio >= 0f && verticalRatio <= _spawnRatio;
+        return 0f <= verticalRatio && verticalRatio <= _spawnRatio;
     }
 
     /// <summary>

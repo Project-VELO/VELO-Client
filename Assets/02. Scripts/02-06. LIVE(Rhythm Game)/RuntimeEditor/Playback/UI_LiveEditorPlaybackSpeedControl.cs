@@ -105,7 +105,7 @@ public class UI_LiveEditorPlaybackSpeedControl : MonoBehaviour
         _valueText.text = $"{_speed:0.00}x";
 
         bool isAtMin = _speed <= MIN_SPEED;
-        bool isAtMax = _speed >= MAX_SPEED;
+        bool isAtMax = MAX_SPEED <= _speed;
 
         _coarseDownButton.interactable = _isInteractable && !isAtMin;
         _fineDownButton.interactable = _isInteractable && !isAtMin;

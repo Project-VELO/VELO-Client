@@ -88,7 +88,7 @@ public class UI_LiveEditorHiSpeedControl : MonoBehaviour
         _valueText.text = $"{_timeline.HiSpeed:0.00}x";
 
         bool isAtMin = _timeline.HiSpeed <= LiveScrollMapper.MIN_HI_SPEED;
-        bool isAtMax = _timeline.HiSpeed >= LiveScrollMapper.MAX_HI_SPEED;
+        bool isAtMax = LiveScrollMapper.MAX_HI_SPEED <= _timeline.HiSpeed;
 
         _coarseDownButton.interactable = !isAtMin;
         _fineDownButton.interactable = !isAtMin;

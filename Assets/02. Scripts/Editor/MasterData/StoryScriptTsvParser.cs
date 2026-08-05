@@ -160,7 +160,7 @@ public class StoryScriptTsvParser
     /// </summary>
     private string GetCell(string[] cells, Dictionary<string, int> columns, string columnName)
     {
-        if (!columns.TryGetValue(columnName, out int index) || index >= cells.Length)
+        if (!columns.TryGetValue(columnName, out int index) || cells.Length <= index)
         {
             return string.Empty;
         }
@@ -173,7 +173,7 @@ public class StoryScriptTsvParser
     /// </summary>
     private string Unquote(string value)
     {
-        if (value.Length >= 2 && value[0] == '"' && value[value.Length - 1] == '"')
+        if (2 <= value.Length && value[0] == '"' && value[value.Length - 1] == '"')
         {
             return value.Substring(1, value.Length - 2).Replace("\"\"", "\"");
         }

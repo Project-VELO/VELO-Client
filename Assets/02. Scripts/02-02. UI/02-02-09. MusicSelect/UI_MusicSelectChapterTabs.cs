@@ -40,7 +40,7 @@ public class UI_MusicSelectChapterTabs : MonoBehaviour
     {
         _chapterCount = Mathf.Min(chapters.Count, _tabs.Count);
 
-        if (chapters.Count > _tabs.Count)
+        if (_tabs.Count < chapters.Count)
         {
             Debug.LogWarning($"[UI_MusicSelectChapterTabs] 수록된 챕터({chapters.Count})가 탭 버튼({_tabs.Count})보다 많아 뒷부분이 표시되지 않습니다.");
         }
@@ -74,7 +74,7 @@ public class UI_MusicSelectChapterTabs : MonoBehaviour
 
     public bool IsSelectable(int chapterIndex)
     {
-        return chapterIndex >= 0 && chapterIndex < _chapterCount && _tabs[chapterIndex].IsUnlocked;
+        return 0 <= chapterIndex && chapterIndex < _chapterCount && _tabs[chapterIndex].IsUnlocked;
     }
 
     private void SelectPreviousChapter()

@@ -134,7 +134,7 @@ public class MasterDataValidateWindow : EditorWindow
         }
 
         builder.AppendLine($"편성 멤버 {members.Count}명: {string.Join(", ", members.ConvertAll(member => member.DisplayName))}");
-        builder.AppendLine($"스토리 {stories.Count}편 (표시 순서 첫 항목: {(stories.Count > 0 ? stories[0].Title : "없음")})");
+        builder.AppendLine($"스토리 {stories.Count}편 (표시 순서 첫 항목: {(0 < stories.Count ? stories[0].Title : "없음")})");
 
         return builder.ToString();
     }

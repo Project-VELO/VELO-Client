@@ -22,7 +22,7 @@ public class UI_PhotocardSlotList : MonoBehaviour
         for (int i = 0; i < _slotItems.Count; i++)
         {
             // 기본 편성이 5장 미만인 손상 세이브면 남는 슬롯이 생깁니다. 진입은 어차피 차단되므로 표시만 비웁니다.
-            if (i >= cardIds.Count)
+            if (cardIds.Count <= i)
             {
                 _slotItems[i].SetUnknownCard(string.Empty);
                 continue;

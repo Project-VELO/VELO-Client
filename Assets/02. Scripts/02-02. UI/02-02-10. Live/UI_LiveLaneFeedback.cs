@@ -44,7 +44,7 @@ public class UI_LiveLaneFeedback : MonoBehaviour
     {
         int index = lane - LiveLane.FIRST;
 
-        if (index < 0 || index >= LiveLane.COUNT)
+        if (index < 0 || LiveLane.COUNT <= index)
         {
             return;
         }
@@ -64,7 +64,7 @@ public class UI_LiveLaneFeedback : MonoBehaviour
 
     private void SetHighlight(int index, bool isLit)
     {
-        if (index >= _laneHighlights.Count || _laneHighlights[index] == null)
+        if (_laneHighlights.Count <= index || _laneHighlights[index] == null)
         {
             return;
         }

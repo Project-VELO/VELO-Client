@@ -33,27 +33,27 @@ public static class LiveRankEvaluator
             return ELiveRank.FAILED;
         }
 
-        if (totalNoteCount > 0 && perfectCount == totalNoteCount)
+        if (0 < totalNoteCount && perfectCount == totalNoteCount)
         {
             return ELiveRank.PERFECT_S;
         }
 
-        if (accuracy >= S_ACCURACY)
+        if (S_ACCURACY <= accuracy)
         {
             return ELiveRank.S;
         }
 
-        if (accuracy >= A_ACCURACY)
+        if (A_ACCURACY <= accuracy)
         {
             return ELiveRank.A;
         }
 
-        if (accuracy >= B_ACCURACY)
+        if (B_ACCURACY <= accuracy)
         {
             return ELiveRank.B;
         }
 
-        if (accuracy >= CLEAR_ACCURACY)
+        if (CLEAR_ACCURACY <= accuracy)
         {
             return ELiveRank.C;
         }

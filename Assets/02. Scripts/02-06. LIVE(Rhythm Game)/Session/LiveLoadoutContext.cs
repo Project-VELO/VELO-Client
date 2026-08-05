@@ -54,7 +54,7 @@ public class LiveLoadoutContext : POCOSingleton<LiveLoadoutContext>
 
         // 슬롯 수는 멤버 수로 고정이므로(ResetPhotocards) 범위를 벗어날 일이 없습니다.
         // 마스터 데이터가 실행 중에 바뀌는 경우에만 걸리는 방어입니다.
-        if (slotIndex >= _cardIds.Count)
+        if (_cardIds.Count <= slotIndex)
         {
             return false;
         }

@@ -92,7 +92,7 @@ public class LiveScoreTracker
 
         Combo++;
 
-        if (Combo > MaxCombo)
+        if (MaxCombo < Combo)
         {
             MaxCombo = Combo;
         }

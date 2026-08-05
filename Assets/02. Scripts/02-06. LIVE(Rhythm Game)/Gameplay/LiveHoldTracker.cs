@@ -34,7 +34,7 @@ public class LiveHoldTracker
     /// </summary>
     public static bool IsHoldNote(NoteData note)
     {
-        return !ReferenceEquals(note, null) && note.NoteType == ENoteType.LONG && note.HoldDurationMs > 0;
+        return !ReferenceEquals(note, null) && note.NoteType == ENoteType.LONG && 0 < note.HoldDurationMs;
     }
 
     public void Clear()
@@ -132,7 +132,7 @@ public class LiveHoldTracker
     private EJudgement GetJudgementOnRelease(int laneIndex, NoteData note, int songTimeMs)
     {
         int toleranceMs = Math.Min(LiveJudgementRule.HOLD_RELEASE_TOLERANCE_MS, note.HoldDurationMs);
-        bool isHeldToEnd = songTimeMs >= GetHoldEndTimeMs(note) - toleranceMs;
+        bool isHeldToEnd = GetHoldEndTimeMs(note) - toleranceMs <= songTimeMs;
 
         return isHeldToEnd ? _startJudgements[laneIndex] : EJudgement.BAD;
     }

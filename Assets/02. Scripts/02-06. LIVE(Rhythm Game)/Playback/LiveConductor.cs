@@ -35,7 +35,7 @@ public class LiveConductor : MonoBehaviour
     public int SongTimeMs { get; private set; }
     public int ClipLengthMs => _audioPlayer.ClipLengthMs;
     public bool IsRunning => _isRunning;
-    public bool IsSongFinished => _audioPlayer.IsClipLoaded && SongTimeMs >= _audioPlayer.ClipLengthMs;
+    public bool IsSongFinished => _audioPlayer.IsClipLoaded && _audioPlayer.ClipLengthMs <= SongTimeMs;
 
     private void Update()
     {
@@ -112,7 +112,7 @@ public class LiveConductor : MonoBehaviour
     {
         double dspTime = AudioSettings.dspTime;
 
-        if (dspTime > _lastDspTime)
+        if (_lastDspTime < dspTime)
         {
             _lastDspTime = dspTime;
             _interpolatedSeconds = 0.0;

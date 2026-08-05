@@ -105,7 +105,7 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
 
         for (int barIndex = startBarIndex; barIndex <= endBarIndex; barIndex++)
         {
-            if (usedLabelCount >= _barLabels.Count || barIndex >= _barNumberTexts.Count)
+            if (_barLabels.Count <= usedLabelCount || _barNumberTexts.Count <= barIndex)
             {
                 break;
             }

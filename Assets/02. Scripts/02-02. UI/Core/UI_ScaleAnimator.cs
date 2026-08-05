@@ -23,21 +23,30 @@ public class UI_ScaleAnimator : MonoBehaviour
     [SerializeField]
     private Vector3 _targetScale = Vector3.one;
 
-    public async UniTask PlayOpenAsync(CancellationToken ct)
+    /// <summary>
+    /// 취소되면 트윈을 함께 죽입니다(TweenCancelBehaviour.Kill).
+    /// 팝업이 연출 도중 파괴될 때 트윈만 살아남으면 이미 사라진 transform의 스케일을 계속 건드립니다.
+    /// </summary>
+    public async UniTask PlayOpenAsync(CancellationToken cancellationToken)
     {
         transform.localScale = _startScale;
-        var tween = transform.DOScale(_targetScale, _openDuration)
+        Tween tween = transform.DOScale(_targetScale, _openDuration)
             .SetEase(_openEase)
             .SetUpdate(true);
-        await UniTask.WaitUntil(() => !tween.IsActive() || !tween.IsPlaying(), cancellationToken: ct);
+
+        await tween.ToUniTask(TweenCancelBehaviour.Kill, cancellationToken);
     }
 
-    public async UniTask PlayCloseAsync(CancellationToken ct)
+    /// <summary>
+    /// 취소 시 동작은 PlayOpenAsync와 같습니다.
+    /// </summary>
+    public async UniTask PlayCloseAsync(CancellationToken cancellationToken)
     {
         transform.localScale = _targetScale;
-        var tween = transform.DOScale(_startScale, _closeDuration)
+        Tween tween = transform.DOScale(_startScale, _closeDuration)
             .SetEase(_closeEase)
             .SetUpdate(true);
-        await UniTask.WaitUntil(() => !tween.IsActive() || !tween.IsPlaying(), cancellationToken: ct);
+
+        await tween.ToUniTask(TweenCancelBehaviour.Kill, cancellationToken);
     }
 }

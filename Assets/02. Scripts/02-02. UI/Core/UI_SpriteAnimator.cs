@@ -9,8 +9,6 @@ using VInspector;
 
 public class UI_SpriteAnimator : MonoBehaviour
 {
-    public Action OnAnimationComplete;
-
     [Foldout("Hierarchy")]
     [SerializeField]
     private Image _targetImage;
@@ -72,8 +70,6 @@ public class UI_SpriteAnimator : MonoBehaviour
             {
                 return;
             }
-
-            OnAnimationComplete?.Invoke();
 
             if (!_isLoop)
             {

@@ -1,11 +1,5 @@
-using System;
-
 public static class InputHandler
 {
-    public static Action OnCancelEvent;
-    public static Action OnNavigateEvent;
-    public static Action OnPointEvent;
-
     public enum EInputMode
     {
         Player,
@@ -36,8 +30,4 @@ public static class InputHandler
         CurrentMode = EInputMode.Player;
         UnblockInput();
     }
-
-    public static void TriggerCancelEvent() => OnCancelEvent?.Invoke();
-    public static void TriggerNavigateEvent() => OnNavigateEvent?.Invoke();
-    public static void TriggerPointEvent() => OnPointEvent?.Invoke();
 }

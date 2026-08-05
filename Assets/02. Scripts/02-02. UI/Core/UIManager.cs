@@ -85,7 +85,6 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         {
             PopupHandler.CloseLatestPopup();
         }
-        InputHandler.TriggerCancelEvent();
     }
 
     public void OpenNotificationPopup()

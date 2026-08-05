@@ -127,8 +127,7 @@ MonoBehaviour:
   _spaceButton: {fileID: 4972786826506558835}
   _enterStoryButton: {fileID: 2942980191701392669}
   _currencyHud: {fileID: 9162124047387074208}
-  _todaySchedules: {fileID: 1648929481456067801}
-  _tomorrowScheduleRoot: {fileID: 6396933215853653331}
+  _schedulePanel: {fileID: 1224153805952629892}
 --- !u!1 &3079025372597192438
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,25 +756,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10424842286d6f242a2cc495870542df, type: 3}
---- !u!114 &1648929481456067801 stripped
+--- !u!114 &1224153805952629892 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3386446046016775873, guid: 10424842286d6f242a2cc495870542df, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2945406359551557276, guid: 10424842286d6f242a2cc495870542df, type: 3}
   m_PrefabInstance: {fileID: 4043456330797711896}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9bd34fd33437074bb569524d18643d3, type: 3}
+  m_Script: {fileID: 11500000, guid: a89d4edec3054f74e9d053e346fac6d1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_TodayScheduleList
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeSchedulePanel
 --- !u!224 &4229629337907957948 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 193539770114347684, guid: 10424842286d6f242a2cc495870542df, type: 3}
-  m_PrefabInstance: {fileID: 4043456330797711896}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6396933215853653331 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6979249846995267403, guid: 10424842286d6f242a2cc495870542df, type: 3}
   m_PrefabInstance: {fileID: 4043456330797711896}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4071864218019336648

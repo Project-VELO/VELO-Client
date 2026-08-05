@@ -57,6 +57,36 @@ public static class DayProgressService
     }
 
     /// <summary>
+    /// 주차 안에서 이 날짜가 몇 번째인지입니다(1일차 = 1). 목록에 없으면 0입니다.
+    /// 마스터 데이터에 달력 날짜가 없어 DayOrder 정렬 목록의 위치로 대신합니다.
+    /// </summary>
+    public static int GetDayNumber(PlayerData data, string dayId)
+    {
+        List<string> dayIds = MasterDataQuery.GetDayIdsByWeek(data.CurrentWeekId);
+        int index = dayIds.IndexOf(dayId);
+
+        return index < 0 ? 0 : index + 1;
+    }
+
+    /// <summary>
+    /// 다음 날짜의 ID입니다. 주차의 마지막 날짜이거나 목록에 없으면 빈 문자열입니다.
+    /// TryFinishDay가 실제로 넘어갈 날짜를 고르는 것과 같은 목록·같은 순서를 씁니다.
+    /// 둘이 갈라지면 홈 화면이 예고한 내일과 실제로 넘어가는 날짜가 달라집니다.
+    /// </summary>
+    public static string GetNextDayId(PlayerData data)
+    {
+        List<string> dayIds = MasterDataQuery.GetDayIdsByWeek(data.CurrentWeekId);
+        int index = dayIds.IndexOf(data.CurrentDayId);
+
+        if (index < 0 || dayIds.Count <= index + 1)
+        {
+            return string.Empty;
+        }
+
+        return dayIds[index + 1];
+    }
+
+    /// <summary>
     /// 날짜 한 칸의 화면 상태입니다. 화면마다 같은 판정을 다시 짜면 홈과 사무실의 표시가 어긋나므로 여기로 모읍니다.
     /// </summary>
     public static EDayViewState GetDayViewState(PlayerData data, string weekId, string dayId)

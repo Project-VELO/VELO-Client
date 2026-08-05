@@ -25,14 +25,7 @@ public class UI_Home : MonoBehaviour
     private UI_CurrencyHud _currencyHud;
 
     [SerializeField]
-    private UI_TodayScheduleList _todaySchedules;
-
-    /// <summary>
-    /// 내일 스케줄 영역입니다. 기획서가 현재 날짜의 스케줄만 규정해 표시할 데이터가 없으므로,
-    /// 빈 자리가 남지 않도록 감춥니다.
-    /// </summary>
-    [SerializeField]
-    private GameObject _tomorrowScheduleRoot;
+    private UI_HomeSchedulePanel _schedulePanel;
 
     private void Start()
     {
@@ -51,15 +44,10 @@ public class UI_Home : MonoBehaviour
             _currencyHud.Refresh();
         }
 
-        if (_todaySchedules != null)
+        if (_schedulePanel != null)
         {
-            _todaySchedules.Init(EEntryType.HOME_LIVE);
-            _todaySchedules.RefreshSchedules();
-        }
-
-        if (_tomorrowScheduleRoot != null)
-        {
-            _tomorrowScheduleRoot.SetActive(false);
+            _schedulePanel.Init();
+            _schedulePanel.Refresh();
         }
     }
 

@@ -40,6 +40,35 @@ public class GameProgressService : POCOSingleton<GameProgressService>
     }
 
     /// <summary>
+    /// 내일 예정된 스케줄입니다. 주차의 마지막 날짜라면 빈 목록입니다.
+    /// </summary>
+    public List<ScheduleData> GetTomorrowSchedules()
+    {
+        return ScheduleProgressService.GetTomorrowSchedules(Data);
+    }
+
+    /// <summary>
+    /// 현재 주차의 순번입니다. WeekData 마스터 테이블이 따로 없어 오늘 스케줄의 WeekOrder에서 얻습니다.
+    /// 스케줄이 하나도 없으면 1주차로 봅니다.
+    /// </summary>
+    public int GetCurrentWeekOrder()
+    {
+        List<ScheduleData> schedules = GetTodaySchedules();
+
+        return 0 < schedules.Count ? schedules[0].WeekOrder : 1;
+    }
+
+    public int GetCurrentDayNumber()
+    {
+        return DayProgressService.GetDayNumber(Data, Data.CurrentDayId);
+    }
+
+    public int GetTomorrowDayNumber()
+    {
+        return DayProgressService.GetDayNumber(Data, DayProgressService.GetNextDayId(Data));
+    }
+
+    /// <summary>
     /// 읽기 전용 인터페이스로 돌려줍니다. 화면이 상태를 직접 바꾸면 저장이 함께 이루어지지 않아
     /// 게임을 다시 켰을 때 값이 되돌아갑니다. 기록이 없으면 null입니다.
     /// </summary>

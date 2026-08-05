@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -69,25 +68,14 @@ public class UI_OfficeTodayPanel : MonoBehaviour
 
     /// <summary>
     /// 현재 주차·날짜 표시입니다(기획서 16-6 "현재 주차와 현재 날짜가 표시된다").
-    /// 주차 번호는 마스터 데이터의 WeekData가 따로 없어 오늘 스케줄의 WeekOrder에서 얻고,
-    /// 일차 번호는 DayOrder 정렬 목록의 위치에서 얻습니다(기획 확정 전 잠정 표기).
+    /// 문구는 홈 화면과 같아야 하므로 ScheduleDayLabel이 만듭니다.
     /// </summary>
     private void RefreshHeader()
     {
-        List<string> dayIds = GameProgressService.Instance.GetCurrentWeekDayIds();
-        int dayIndex = dayIds.IndexOf(PlayerDataProvider.Instance.Data.CurrentDayId);
+        int weekOrder = GameProgressService.Instance.GetCurrentWeekOrder();
+        int dayNumber = GameProgressService.Instance.GetCurrentDayNumber();
 
-        if (dayIndex < 0)
-        {
-            Debug.LogWarning("[UI_OfficeTodayPanel] 현재 날짜를 주차 목록에서 찾지 못해 헤더를 비웁니다.");
-            _dateText.text = string.Empty;
-            return;
-        }
-
-        List<ScheduleData> schedules = GameProgressService.Instance.GetTodaySchedules();
-        int weekOrder = 0 < schedules.Count ? schedules[0].WeekOrder : 1;
-
-        _dateText.text = $"{weekOrder}주차 {dayIndex + 1}일차";
+        _dateText.text = ScheduleDayLabel.Format(weekOrder, dayNumber);
     }
 
     /// <summary>

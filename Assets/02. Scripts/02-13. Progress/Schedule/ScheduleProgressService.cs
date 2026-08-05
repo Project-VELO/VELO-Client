@@ -13,6 +13,24 @@ public static class ScheduleProgressService
     }
 
     /// <summary>
+    /// 내일 날짜의 스케줄입니다. 주차의 마지막 날짜라면 빈 목록입니다.
+    ///
+    /// 미리보기 전용이라 완료 상태를 함께 돌려주지 않습니다. 내일 스케줄은 아직 진행할 수 없으므로
+    /// 완료 여부라는 개념 자체가 없고, 세이브에도 기록이 생기지 않습니다.
+    /// </summary>
+    public static List<ScheduleData> GetTomorrowSchedules(PlayerData data)
+    {
+        string nextDayId = DayProgressService.GetNextDayId(data);
+
+        if (string.IsNullOrEmpty(nextDayId))
+        {
+            return new List<ScheduleData>();
+        }
+
+        return MasterDataQuery.GetSchedulesByDay(data.CurrentWeekId, nextDayId);
+    }
+
+    /// <summary>
     /// 오늘의 필수 스케줄이 모두 완료되었는지 여부입니다. 하루 마무리를 허용하는 조건입니다(기획서 3-E-3).
     /// 스케줄이 하나도 없는 날짜는 마무리할 수 없는 것으로 봅니다. 데이터 누락을 완료로 오인하지 않기 위해서입니다.
     /// </summary>

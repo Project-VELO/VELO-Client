@@ -1062,6 +1062,7 @@ GameObject:
   - component: {fileID: 2214309453057969515}
   - component: {fileID: 1610806259290029915}
   - component: {fileID: 4579158883119935841}
+  - component: {fileID: 3741825325137807157}
   m_Layer: 5
   m_Name: P_UI_ProfileSettingPopup
   m_TagString: Untagged
@@ -1166,6 +1167,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ProfileSettingPopup
   _closeButton: {fileID: 4219652773439960376}
+--- !u!114 &3741825325137807157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665510960767055877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &396090357963554026
 PrefabInstance:
   m_ObjectHideFlags: 0

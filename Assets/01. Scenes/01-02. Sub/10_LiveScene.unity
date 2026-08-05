@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 228892939}
   - component: {fileID: 228892938}
   - component: {fileID: 228892936}
+  - component: {fileID: 228892940}
   m_Layer: 0
   m_Name: P_UI_Live_PausePopup
   m_TagString: Untagged
@@ -302,6 +303,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228892935}
   m_CullTransparentMesh: 1
+--- !u!114 &228892940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228892935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &345617914
 GameObject:
   m_ObjectHideFlags: 0

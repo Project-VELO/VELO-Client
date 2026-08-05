@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 8643023576485206191}
   - component: {fileID: 8828849340306103827}
   - component: {fileID: 5568981656162177251}
+  - component: {fileID: 3134604831213004728}
   m_Layer: 5
   m_Name: P_UI_Reward
   m_TagString: Untagged
@@ -381,6 +382,24 @@ MonoBehaviour:
   _moneyText: {fileID: 954592599783222677}
   _hypeText: {fileID: 4109814420217682966}
   _expText: {fileID: 8524876572857623776}
+--- !u!114 &3134604831213004728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612919953331777137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &3887023681760688700
 GameObject:
   m_ObjectHideFlags: 0

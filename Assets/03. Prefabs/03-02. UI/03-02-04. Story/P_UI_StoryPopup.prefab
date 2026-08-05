@@ -825,6 +825,7 @@ GameObject:
   - component: {fileID: 3459014527808936541}
   - component: {fileID: 3793458781262414663}
   - component: {fileID: 7312074465814800266}
+  - component: {fileID: 7457754591332050903}
   m_Layer: 5
   m_Name: P_UI_StoryPopup
   m_TagString: Untagged
@@ -931,6 +932,24 @@ MonoBehaviour:
   _closeButton: {fileID: 5509335222319210207}
   _scrollRect: {fileID: 1300283004779983560}
   _itemRoot: {fileID: 1526692107447177848}
+--- !u!114 &7457754591332050903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7927162836211473224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &8519963912885498089
 GameObject:
   m_ObjectHideFlags: 0

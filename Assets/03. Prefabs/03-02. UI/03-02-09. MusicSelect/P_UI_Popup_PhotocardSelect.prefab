@@ -1952,6 +1952,7 @@ GameObject:
   - component: {fileID: 2419912551955924212}
   - component: {fileID: 2109721916293245366}
   - component: {fileID: 2108610021753835771}
+  - component: {fileID: 4936021104427102786}
   m_Layer: 5
   m_Name: P_UI_Popup_PhotocardSelect
   m_TagString: Untagged
@@ -2063,12 +2064,31 @@ MonoBehaviour:
   _slotList: {fileID: 5628769438155473417}
   _ownedCardList: {fileID: 9042126508327537459}
   _itemSettingPanel: {fileID: 9081160699142322389}
+  _cardShortagePopup: {fileID: 0}
   _liveStartButtons:
   - {fileID: 6897356236003271899}
   - {fileID: 880902891997051440}
   _resetButtons:
   - {fileID: 301222196017733456}
   - {fileID: 9117069287167088400}
+--- !u!114 &4936021104427102786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224531345225679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1227969323117846432
 GameObject:
   m_ObjectHideFlags: 0

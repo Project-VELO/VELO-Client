@@ -1574,6 +1574,7 @@ GameObject:
   - component: {fileID: 234352684}
   - component: {fileID: 234352683}
   - component: {fileID: 234352686}
+  - component: {fileID: 234352687}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_Popup_DifficultySelect
   m_TagString: Untagged
@@ -1671,6 +1672,24 @@ MonoBehaviour:
   _confirmButton: {fileID: 583726422}
   _confirmButtonLabel: {fileID: 921172558}
   _backButton: {fileID: 1035003193}
+--- !u!114 &234352687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234352681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &256742378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4415,6 +4434,7 @@ GameObject:
   - component: {fileID: 556107705}
   - component: {fileID: 556107704}
   - component: {fileID: 556107707}
+  - component: {fileID: 556107708}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_Popup_SongSelect
   m_TagString: Untagged
@@ -4510,6 +4530,24 @@ MonoBehaviour:
   _titleText: {fileID: 1370980022}
   _emptyMessageText: {fileID: 2062088949}
   _backButton: {fileID: 1821724328}
+--- !u!114 &556107708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556107702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &583726420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,6 +4776,7 @@ GameObject:
   - component: {fileID: 631340756}
   - component: {fileID: 631340755}
   - component: {fileID: 631340757}
+  - component: {fileID: 631340758}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_Popup_Start
   m_TagString: Untagged
@@ -4819,6 +4858,24 @@ MonoBehaviour:
   _registerSongButton: {fileID: 736956263}
   _createChartButton: {fileID: 954348542}
   _loadChartButton: {fileID: 696074513}
+--- !u!114 &631340758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631340753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &640852001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4866,6 +4923,7 @@ GameObject:
   - component: {fileID: 668207777}
   - component: {fileID: 668207776}
   - component: {fileID: 668207778}
+  - component: {fileID: 668207779}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_Popup_Confirm
   m_TagString: Untagged
@@ -4949,6 +5007,24 @@ MonoBehaviour:
   _confirmButtonLabel: {fileID: 1363189176}
   _cancelButton: {fileID: 1989100015}
   _cancelButtonLabel: {fileID: 472370693}
+--- !u!114 &668207779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668207774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &676410045
 GameObject:
   m_ObjectHideFlags: 0
@@ -13589,6 +13665,7 @@ GameObject:
   - component: {fileID: 1676873141}
   - component: {fileID: 1676873140}
   - component: {fileID: 1676873142}
+  - component: {fileID: 1676873143}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_Popup_SaveChanges
   m_TagString: Untagged
@@ -13671,6 +13748,24 @@ MonoBehaviour:
   _saveButton: {fileID: 310290348}
   _discardButton: {fileID: 1095737100}
   _cancelButton: {fileID: 1276517958}
+--- !u!114 &1676873143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676873138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &1681785060
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -104,7 +104,7 @@ public class UI_OfficeDayFinishFlow : MonoBehaviour
         _popupClosedSource = new UniTaskCompletionSource();
         _weekCompletePopup.OnClosed = NotifyPopupClosed;
 
-        UIManager.Instance.PopupHandler.OpenPopup(_weekCompletePopup);
+        UIManager.Instance.OpenPopup(_weekCompletePopup);
 
         try
         {

@@ -25,15 +25,6 @@ public class UI_PopupHandler
 
     public bool HasPopups => 0 < _popups.Count;
 
-    public void Init()
-    {
-        // 이벤트 구독을 UIManager로 중앙집중화하여 중복 호출 방지
-    }
-
-    public void Dispose()
-    {
-    }
-
     public void ClearAllPopups()
     {
         while (0 < _popups.Count)

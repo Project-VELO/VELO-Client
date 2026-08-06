@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,13 +8,13 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 {
     [Foldout("Hierarchy")]
     [SerializeField]
-    private UI_NotificationPopup _popupNotification;
+    private UI_Popup _popupNotification;
 
     [SerializeField]
-    private UI_MailboxPopup _popupMailbox;
+    private UI_Popup _popupMailbox;
 
     [SerializeField]
-    private UI_SettingPopup _popupSetting;
+    private UI_Popup _popupSetting;
 
     /// <summary>
     /// 씬 전환 중에만 켜지는 전체화면 로딩 패널입니다(기획서 3-L "화면 로딩 중 입력 | 입력 비활성화").
@@ -37,37 +36,20 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     private UI_ErrorPopup _errorPopup;
 
     /// <summary>
-    /// 안내가 떠 있는 동안 들어온 다음 오류들입니다. 팝업이 하나뿐이라 차례로 보여 줍니다.
+    /// 팝업 스택은 외부에 노출하지 않습니다. 바깥에서는 아래의 위임 메서드만 쓰게 해,
+    /// 화면 스크립트가 스택 내부 구조에 접근하는 2단 체인이 다시 생기지 않게 막습니다.
     /// </summary>
-    private readonly Queue<(string Message, Action OnConfirmed)> _pendingErrors = new Queue<(string, Action)>();
+    private UI_PopupHandler _popupHandler;
 
-    public UI_PopupHandler PopupHandler { get; private set; }
+    private PendingErrorPresenter _errorPresenter;
+
+    public bool HasPopups => _popupHandler != null && _popupHandler.HasPopups;
 
     protected override void Awake()
     {
         base.Awake();
-        PopupHandler = new UI_PopupHandler();
-
-        if (_errorPopup != null)
-        {
-            _errorPopup.OnClosed = ShowNextPendingError;
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (PopupHandler != null)
-        {
-            PopupHandler.Init();
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (PopupHandler != null)
-        {
-            PopupHandler.Dispose();
-        }
+        _popupHandler = new UI_PopupHandler();
+        _errorPresenter = new PendingErrorPresenter(_errorPopup, OpenPopup, this.GetCancellationTokenOnDestroy());
     }
 
     private void Update()
@@ -81,9 +63,30 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private void HandleEscapeInput()
     {
-        if (PopupHandler != null && PopupHandler.HasPopups)
+        if (HasPopups)
         {
-            PopupHandler.CloseLatestPopup();
+            CloseLatestPopup();
+        }
+    }
+
+    public void OpenPopup(UI_Popup popup)
+    {
+        _popupHandler.OpenPopup(popup);
+    }
+
+    public void CloseLatestPopup()
+    {
+        if (_popupHandler != null)
+        {
+            _popupHandler.CloseLatestPopup();
+        }
+    }
+
+    public void ClearAllPopups()
+    {
+        if (_popupHandler != null)
+        {
+            _popupHandler.ClearAllPopups();
         }
     }
 
@@ -91,7 +94,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         if (_popupNotification != null)
         {
-            PopupHandler.OpenPopup(_popupNotification);
+            OpenPopup(_popupNotification);
         }
     }
 
@@ -99,7 +102,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         if (_popupMailbox != null)
         {
-            PopupHandler.OpenPopup(_popupMailbox);
+            OpenPopup(_popupMailbox);
         }
     }
 
@@ -107,7 +110,7 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         if (_popupSetting != null)
         {
-            PopupHandler.OpenPopup(_popupSetting);
+            OpenPopup(_popupSetting);
         }
     }
 
@@ -115,69 +118,13 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
     {
         if (popup != null)
         {
-            PopupHandler.OpenPopup(popup);
+            OpenPopup(popup);
         }
     }
 
-    /// <summary>
-    /// 오류를 안내합니다(기획서 3-L). onConfirmed는 안내를 닫은 뒤에 이어서 할 일이며,
-    /// "오류 팝업 후 스토리 목록 복귀"처럼 복귀가 뒤따르는 경우에 넘깁니다.
-    ///
-    /// 팝업이 없으면(PersistentScene 없이 단독 실행) 안내를 건너뛰더라도 뒤처리는 그대로 진행합니다.
-    /// 그러지 않으면 대본을 읽지 못한 감상 화면에 갇힙니다.
-    /// </summary>
     public void OpenErrorPopup(string message, Action onConfirmed = null)
     {
-        if (_errorPopup == null)
-        {
-            Debug.LogWarning($"[UIManager] 오류 안내 팝업이 없어 문구를 표시하지 못했습니다: {message}");
-            onConfirmed?.Invoke();
-            return;
-        }
-
-        // 이미 떠 있는 안내를 덮어쓰지 않고 차례를 기다립니다. 덮어쓰면 문구만 바뀌는 것이 아니라
-        // 앞선 요청의 콜백까지 사라져, "오류 팝업 후 스토리 목록 복귀"처럼 닫기에 매인 뒤처리가 끊깁니다.
-        // (감상 화면에서 대본을 읽지 못한 안내가 떠 있는 동안 저장 실패가 겹치는 경우)
-        if (_errorPopup.gameObject.activeSelf)
-        {
-            _pendingErrors.Enqueue((message, onConfirmed));
-            return;
-        }
-
-        ShowError(message, onConfirmed);
-    }
-
-    private void ShowError(string message, Action onConfirmed)
-    {
-        _errorPopup.SetError(message, onConfirmed);
-        PopupHandler.OpenPopup(_errorPopup);
-    }
-
-    /// <summary>
-    /// 밀려 있던 다음 안내를 엽니다. 이 통지는 UI_ErrorPopup.CloseAsync 안에서 오므로,
-    /// 같은 프레임에 다시 열면 아직 끝나지 않은 닫기 뒤처리(UI_PopupHandler의 형제 순서 복원)가
-    /// 새로 연 팝업을 도로 뒤로 밀어냅니다. 그래서 한 프레임을 기다린 뒤 엽니다.
-    /// </summary>
-    private void ShowNextPendingError()
-    {
-        if (_pendingErrors.Count == 0)
-        {
-            return;
-        }
-
-        ShowNextPendingErrorAsync().Forget();
-    }
-
-    private async UniTaskVoid ShowNextPendingErrorAsync()
-    {
-        await UniTask.NextFrame(this.GetCancellationTokenOnDestroy());
-
-        if (!_pendingErrors.TryDequeue(out (string Message, Action OnConfirmed) request))
-        {
-            return;
-        }
-
-        ShowError(request.Message, request.OnConfirmed);
+        _errorPresenter.OpenErrorPopup(message, onConfirmed);
     }
 
     /// <summary>

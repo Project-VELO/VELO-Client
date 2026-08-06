@@ -141,7 +141,7 @@ public class UI_PhotocardSelectPopup : UI_Popup
         {
             if (UIManager.Instance != null)
             {
-                UIManager.Instance.PopupHandler.OpenPopup(_cardShortagePopup);
+                UIManager.Instance.OpenPopup(_cardShortagePopup);
             }
 
             return;

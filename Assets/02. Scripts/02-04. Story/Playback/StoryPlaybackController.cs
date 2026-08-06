@@ -203,7 +203,7 @@ public class StoryPlaybackController : MonoBehaviour
         }
 
         _ui.LogPopup.SetLines(_cursor.Lines);
-        UIManager.Instance.PopupHandler.OpenPopup(_ui.LogPopup);
+        UIManager.Instance.OpenPopup(_ui.LogPopup);
     }
 
     private void OpenExitConfirm()
@@ -213,7 +213,7 @@ public class StoryPlaybackController : MonoBehaviour
             return;
         }
 
-        UIManager.Instance.PopupHandler.OpenPopup(_ui.ExitConfirmPopup);
+        UIManager.Instance.OpenPopup(_ui.ExitConfirmPopup);
     }
 
     /// <summary>

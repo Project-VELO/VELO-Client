@@ -113,10 +113,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
             return;
         }
 
-        if (UIManager.Instance.PopupHandler != null)
-        {
-            UIManager.Instance.PopupHandler.ClearAllPopups();
-        }
+        UIManager.Instance.ClearAllPopups();
 
         // 로딩이 끝날 때까지 화면 전체를 덮습니다. 떠나는 화면의 버튼이 그대로 살아 있으면
         // 연속 클릭이 이미 시작된 전환 위에 또 다른 동작을 얹습니다(기획서 3-L "화면 로딩 중 입력").

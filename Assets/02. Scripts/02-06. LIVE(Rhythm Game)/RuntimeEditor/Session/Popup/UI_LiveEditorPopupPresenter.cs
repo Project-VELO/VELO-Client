@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class UI_LiveEditorPopupPresenter
 {
-    public bool HasPopups => UIManager.Instance != null && UIManager.Instance.PopupHandler.HasPopups;
+    public bool HasPopups => UIManager.Instance != null && UIManager.Instance.HasPopups;
 
     public void Open(UI_Popup popup)
     {
@@ -18,7 +18,7 @@ public class UI_LiveEditorPopupPresenter
             return;
         }
 
-        UIManager.Instance.PopupHandler.OpenPopup(popup);
+        UIManager.Instance.OpenPopup(popup);
     }
 
     public void CloseLatest()
@@ -28,7 +28,7 @@ public class UI_LiveEditorPopupPresenter
             return;
         }
 
-        UIManager.Instance.PopupHandler.CloseLatestPopup();
+        UIManager.Instance.CloseLatestPopup();
     }
 
     /// <summary>
@@ -42,6 +42,6 @@ public class UI_LiveEditorPopupPresenter
             return;
         }
 
-        UIManager.Instance.PopupHandler.ClearAllPopups();
+        UIManager.Instance.ClearAllPopups();
     }
 }

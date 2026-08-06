@@ -36,14 +36,14 @@ public class StoryPlaybackController : MonoBehaviour
 
     private void Start()
     {
-        InitButtons();
+        InitUIBindings();
         Begin();
     }
 
     /// <summary>
     /// 씬이 내려가면 타이핑 루프도 함께 끊습니다. 남겨 두면 이미 파괴된 TMP를 만지게 됩니다.
     ///
-    /// 버튼과 팝업은 UI_Story가 소유하므로 배선도 여기서 되돌립니다. 지금은 같은 씬에서 함께
+    /// 통지 콜백은 UI_Story와 팝업이 소유하므로 배선도 여기서 되돌립니다. 지금은 같은 씬에서 함께
     /// 파괴되어 문제가 드러나지 않지만, 남의 오브젝트에 건 배선을 스스로 걷지 않는 상태를
     /// 남겨 두면 팝업이 화면보다 오래 사는 구조로 바뀌는 순간 조용히 누수가 됩니다.
     /// </summary>
@@ -59,25 +59,10 @@ public class StoryPlaybackController : MonoBehaviour
             return;
         }
 
-        if (_ui.NextButton != null)
-        {
-            _ui.NextButton.onClick.RemoveListener(OnNextClicked);
-        }
-
-        if (_ui.SkipTypeWriterButton != null)
-        {
-            _ui.SkipTypeWriterButton.onClick.RemoveListener(OnSkipTypeWriterClicked);
-        }
-
-        if (_ui.LogButton != null)
-        {
-            _ui.LogButton.onClick.RemoveListener(OpenLog);
-        }
-
-        if (_ui.BackButton != null)
-        {
-            _ui.BackButton.onClick.RemoveListener(OpenExitConfirm);
-        }
+        _ui.OnNextRequested = null;
+        _ui.OnSkipTypeWriterRequested = null;
+        _ui.OnLogRequested = null;
+        _ui.OnBackRequested = null;
 
         if (_ui.LogPopup != null)
         {
@@ -91,12 +76,12 @@ public class StoryPlaybackController : MonoBehaviour
         }
     }
 
-    private void InitButtons()
+    private void InitUIBindings()
     {
-        _ui.NextButton.onClick.AddListener(OnNextClicked);
-        _ui.SkipTypeWriterButton.onClick.AddListener(OnSkipTypeWriterClicked);
-        _ui.LogButton.onClick.AddListener(OpenLog);
-        _ui.BackButton.onClick.AddListener(OpenExitConfirm);
+        _ui.OnNextRequested = OnNextClicked;
+        _ui.OnSkipTypeWriterRequested = OnSkipTypeWriterClicked;
+        _ui.OnLogRequested = OpenLog;
+        _ui.OnBackRequested = OpenExitConfirm;
 
         _ui.LogPopup.Init(_visualBinder);
 

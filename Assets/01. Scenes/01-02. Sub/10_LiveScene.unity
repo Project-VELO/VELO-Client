@@ -307,7 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LiveGameController
   _conductor: {fileID: 1175980601}
   _trackScroller: {fileID: 1764689895}
-  _judgementProcessor: {fileID: 0}
   _playInput: {fileID: 23920875}
   _liveUI: {fileID: 1892220967}
 --- !u!4 &345617916
@@ -1495,7 +1494,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1764689897}
-  - component: {fileID: 1764689896}
   - component: {fileID: 1764689895}
   m_Layer: 0
   m_Name: Track
@@ -1517,24 +1515,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LiveTrackScroller
   _noteSpawnRatio: 1
+  _noteRenderSettings:
+    NoteHeight: 16
+    MinNoteHeight: 4
+    ThicknessFalloff: 0.5
+    HorizontalPaddingRatio: 0.04
   _lanes: {fileID: 539045736}
-  _noteRenderer: {fileID: 1764689896}
---- !u!114 &1764689896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764689894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d38bc02eecd38345b88595737bd2b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveNoteRenderer
-  _noteHeight: 16
-  _minNoteHeight: 4
-  _thicknessFalloff: 0.5
-  _horizontalPaddingRatio: 0.04
   _noteLayer: {fileID: 539045735}
 --- !u!4 &1764689897
 Transform:

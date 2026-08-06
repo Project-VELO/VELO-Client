@@ -1,47 +1,54 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VInspector;
+
+/// <summary>
+/// 노트 마커의 두께·여백 튜닝값입니다. 렌더러가 POCO라 인스펙터에 직접 노출될 수 없으므로,
+/// 렌더러를 소유한 LiveTrackScroller가 이 묶음을 직렬화해 생성 시 넘깁니다.
+/// </summary>
+[Serializable]
+public class LiveNoteRenderSettings
+{
+    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.")]
+    public float NoteHeight = 16f;
+
+    [Tooltip("멀리 있는 노트가 보이지 않을 만큼 얇아지지 않도록 보장하는 최소 두께입니다.")]
+    public float MinNoteHeight = 4f;
+
+    [Tooltip("멀어질수록 노트가 얇아지는 정도입니다. 1이면 원근에 완전히 비례해 얇아지고, 0이면 어디서나 두께가 같습니다. 값이 클수록 두께 변화가 눈에 띕니다.")]
+    [Range(0f, 1f)]
+    public float ThicknessFalloff = 0.5f;
+
+    [Tooltip("노트 양옆에 남기는 여백을 레인 폭에 대한 비율로 지정합니다. 인접한 레인에 같은 박자로 놓인 노트가 한 덩어리로 보이지 않게 합니다. 픽셀이 아닌 비율이므로 원근에 따라 여백도 함께 좁아집니다.")]
+    [Range(0f, 0.25f)]
+    public float HorizontalPaddingRatio = 0.04f;
+}
 
 /// <summary>
 /// 매 프레임 노트 마커의 위치와 크기를 갱신합니다. 오브젝트를 빌리고 돌려주는 일은 LiveNoteVisualPool이 맡습니다.
 /// 노트 위치는 절대 시각이 아닌 마디 좌표를 거쳐 계산하므로 화면에 그려진 마디 격자와 항상 정렬됩니다.
+///
+/// 유니티 이벤트 메서드를 쓰지 않으므로 컴포넌트가 아니라 LiveTrackScroller가 생성해 쓰는 일반 클래스입니다.
 /// </summary>
-public class LiveNoteRenderer : MonoBehaviour
+public class LiveNoteRenderer
 {
-    [Header("Note Marker")]
-    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.")]
-    [SerializeField]
-    private float _noteHeight = 16f;
-
-    [Tooltip("멀리 있는 노트가 보이지 않을 만큼 얇아지지 않도록 보장하는 최소 두께입니다.")]
-    [SerializeField]
-    private float _minNoteHeight = 4f;
-
-    [Tooltip("멀어질수록 노트가 얇아지는 정도입니다. 1이면 원근에 완전히 비례해 얇아지고, 0이면 어디서나 두께가 같습니다. 값이 클수록 두께 변화가 눈에 띕니다.")]
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float _thicknessFalloff = 0.5f;
-
-    [Tooltip("노트 양옆에 남기는 여백을 레인 폭에 대한 비율로 지정합니다. 인접한 레인에 같은 박자로 놓인 노트가 한 덩어리로 보이지 않게 합니다. 픽셀이 아닌 비율이므로 원근에 따라 여백도 함께 좁아집니다.")]
-    [Range(0f, 0.25f)]
-    [SerializeField]
-    private float _horizontalPaddingRatio = 0.04f;
-
-    [Foldout("Hierarchy")]
-    [SerializeField]
-    private RectTransform _noteLayer;
+    private readonly LiveNoteRenderSettings _settings;
+    private readonly LiveNoteVisualPool _visualPool;
 
     // 리듬게임에서 판정이 끝난 노트를 가리는 목록입니다. 채보 데이터에서 노트를 지우면 결과 집계와
     // 다시하기가 망가지므로, 표시 여부만 따로 관리합니다. 채보 에디터는 이 목록을 채우지 않습니다.
     private readonly HashSet<string> _hiddenNoteIds = new HashSet<string>();
 
-    private LiveNoteVisualPool _visualPool;
     private UI_LiveTrackLanes _lanes;
     private LiveBarLayout _barLayout;
     private LiveScrollMapper _scrollMapper;
     private ChartData _chart;
 
-    private LiveNoteVisualPool VisualPool => _visualPool ?? (_visualPool = new LiveNoteVisualPool(_noteLayer));
+    public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer)
+    {
+        _settings = settings;
+        _visualPool = new LiveNoteVisualPool(noteLayer);
+    }
 
     public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
     {
@@ -52,7 +59,7 @@ public class LiveNoteRenderer : MonoBehaviour
 
     public void SetChart(ChartData chart)
     {
-        VisualPool.ReleaseAll();
+        _visualPool.ReleaseAll();
         _hiddenNoteIds.Clear();
         _chart = chart;
         RefreshNoteVisuals();
@@ -78,7 +85,7 @@ public class LiveNoteRenderer : MonoBehaviour
             return;
         }
 
-        VisualPool.RefreshVisuals(_chart.Notes);
+        _visualPool.RefreshVisuals(_chart.Notes);
     }
 
     public void RefreshNotePositions(double currentBarPosition)
@@ -93,7 +100,7 @@ public class LiveNoteRenderer : MonoBehaviour
         foreach (NoteData note in _chart.Notes)
         {
             LiveNoteVisualHandle handle;
-            if (!VisualPool.TryGetHandle(note.NoteId, out handle))
+            if (!_visualPool.TryGetHandle(note.NoteId, out handle))
             {
                 continue;
             }
@@ -115,7 +122,7 @@ public class LiveNoteRenderer : MonoBehaviour
             // 레인 폭을 꽉 채우면 인접한 레인의 같은 박자 노트와 맞닿아 한 덩어리로 보이므로 양옆을 조금 덜어냅니다.
             float leftX, rightX;
             _lanes.GetLaneBoundsAtRatio(note.Lane, ratio, out leftX, out rightX);
-            float noteWidth = (rightX - leftX) * (1f - _horizontalPaddingRatio * 2f);
+            float noteWidth = (rightX - leftX) * (1f - _settings.HorizontalPaddingRatio * 2f);
             handle.RectTransform.sizeDelta = new Vector2(noteWidth, GetNoteHeightAtRatio(ratio));
         }
     }
@@ -133,6 +140,6 @@ public class LiveNoteRenderer : MonoBehaviour
         float constantScale = _lanes.GetFlatThicknessCompensationAtRatio(verticalRatio);
         float perspectiveScale = _lanes.GetPerspectiveThicknessScaleAtRatio(verticalRatio);
 
-        return Mathf.Max(_minNoteHeight, _noteHeight * Mathf.Lerp(constantScale, perspectiveScale, _thicknessFalloff));
+        return Mathf.Max(_settings.MinNoteHeight, _settings.NoteHeight * Mathf.Lerp(constantScale, perspectiveScale, _settings.ThicknessFalloff));
     }
 }

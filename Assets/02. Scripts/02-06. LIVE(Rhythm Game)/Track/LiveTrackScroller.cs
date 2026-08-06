@@ -16,16 +16,21 @@ public class LiveTrackScroller : MonoBehaviour
     [SerializeField]
     private float _noteSpawnRatio = LiveScrollMapper.MAX_SPAWN_RATIO;
 
+    [Header("Note Marker")]
+    [SerializeField]
+    private LiveNoteRenderSettings _noteRenderSettings = new LiveNoteRenderSettings();
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UI_LiveTrackLanes _lanes;
 
     [SerializeField]
-    private LiveNoteRenderer _noteRenderer;
+    private RectTransform _noteLayer;
 
     private readonly LiveBarLayout _barLayout = new LiveBarLayout();
     private readonly LiveScrollMapper _scrollMapper = new LiveScrollMapper();
 
+    private LiveNoteRenderer _noteRenderer;
     private double _currentBarPosition;
 
     public UI_LiveTrackLanes Lanes => _lanes;
@@ -39,6 +44,8 @@ public class LiveTrackScroller : MonoBehaviour
     protected virtual void Awake()
     {
         RefreshScrollShape();
+
+        _noteRenderer = new LiveNoteRenderer(_noteRenderSettings, _noteLayer);
         _noteRenderer.Init(_lanes, _barLayout, _scrollMapper);
     }
 

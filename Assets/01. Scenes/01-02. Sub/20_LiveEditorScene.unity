@@ -9036,7 +9036,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1103871494}
   - component: {fileID: 1103871490}
-  - component: {fileID: 1103871493}
   - component: {fileID: 1103871492}
   - component: {fileID: 1103871491}
   m_Layer: 0
@@ -9059,8 +9058,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LiveEditorTimeline
   _noteSpawnRatio: 1
+  _noteRenderSettings:
+    NoteHeight: 22.52358
+    MinNoteHeight: 0
+    ThicknessFalloff: 0.5
+    HorizontalPaddingRatio: 0.04
   _lanes: {fileID: 971251312}
-  _noteRenderer: {fileID: 1103871493}
+  _noteLayer: {fileID: 1142410481}
   _snapDivision: 1
   _gridRenderer: {fileID: 1103871492}
   _barLabelRenderer: {fileID: 1103871491}
@@ -9095,23 +9099,6 @@ MonoBehaviour:
   _maxBarLineCount: 12
   _thicknessCompensation: 1
   _gridLineLayer: {fileID: 123449466}
---- !u!114 &1103871493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103871489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d38bc02eecd38345b88595737bd2b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveEditorNoteRenderer
-  _noteHeight: 22.523577
-  _minNoteHeight: 0
-  _thicknessFalloff: 0.5
-  _horizontalPaddingRatio: 0.04
-  _noteLayer: {fileID: 1142410481}
 --- !u!4 &1103871494
 Transform:
   m_ObjectHideFlags: 0
@@ -9662,7 +9649,6 @@ MonoBehaviour:
   _audioPlayer: {fileID: 1072451295}
   _conductor: {fileID: 1072451296}
   _playInput: {fileID: 1162494767}
-  _judgementProcessor: {fileID: 0}
   _speedControl: {fileID: 944031857}
   _liveUI: {fileID: 1892220967}
 --- !u!114 &1162494767

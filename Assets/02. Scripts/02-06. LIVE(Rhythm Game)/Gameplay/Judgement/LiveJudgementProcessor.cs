@@ -1,23 +1,26 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using VInspector;
 
 /// <summary>
-/// 레인 입력과 만료된 노트를 판정으로 바꾸고, 그 결과를 집계와 화면 표시로 잇는 조정자입니다.
+/// 레인 입력과 만료된 노트를 판정으로 바꾸고, 그 결과를 통지하는 조정자입니다.
 /// 판정 규칙 자체는 LiveJudgementRule이, 노트 선택은 LiveNoteQueue가, 롱노트 유지 감시는 LiveHoldTracker가,
 /// 누적은 LiveScoreTracker가 맡습니다.
+///
+/// 화면 표시를 직접 밀어 넣지 않고 아래 이벤트로만 알립니다. 판정 코어가 UI를 참조하면
+/// 리듬게임 씬과 채보 에디터가 같은 판정기를 공유하는 지금 구조에서 UI 구성 차이가 곧 판정기 수정이 됩니다.
 /// </summary>
 public class LiveJudgementProcessor : MonoBehaviour
 {
     public Action OnGhostFailed;
 
-    [Foldout("Hierarchy")]
-    [SerializeField]
-    private UI_Live _liveUI;
-
-    [SerializeField]
-    private LiveTrackScroller _trackScroller;
+    /// <summary>
+    /// 판정 하나가 확정될 때마다 알립니다. note가 null이면 노트 없이 귀신 레인을 누른 오입력입니다(3-I-6).
+    /// 표시(판정 문구)와 노트 숨김이 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
+    /// </summary>
+    public event Action<NoteData, EJudgement> OnNoteJudged;
+    public event Action OnScoreChanged;
+    public event Action OnSessionReset;
 
     private readonly LiveNoteQueue _noteQueue = new LiveNoteQueue();
     private readonly LiveScoreTracker _scoreTracker = new LiveScoreTracker();
@@ -45,8 +48,7 @@ public class LiveJudgementProcessor : MonoBehaviour
         _holdResults.Clear();
         _hasGhostFailed = false;
 
-        RefreshHud();
-        _liveUI.JudgementPanel.ClearJudgement();
+        OnSessionReset?.Invoke();
     }
 
     /// <summary>
@@ -81,8 +83,8 @@ public class LiveJudgementProcessor : MonoBehaviour
         }
 
         _scoreTracker.AddGhostMisinput();
-        RefreshHud();
-        _liveUI.JudgementPanel.RefreshJudgement(EJudgement.BAD);
+        OnScoreChanged?.Invoke();
+        OnNoteJudged?.Invoke(null, EJudgement.BAD);
         FailByGhostNote();
     }
 
@@ -174,10 +176,9 @@ public class LiveJudgementProcessor : MonoBehaviour
     private void ApplyJudgement(NoteData note, EJudgement judgement)
     {
         _scoreTracker.Apply(judgement);
-        _trackScroller.NoteRenderer.HideNote(note.NoteId);
 
-        RefreshHud();
-        _liveUI.JudgementPanel.RefreshJudgement(judgement);
+        OnScoreChanged?.Invoke();
+        OnNoteJudged?.Invoke(note, judgement);
 
         if (note.NoteType == ENoteType.GHOST && judgement == EJudgement.BAD)
         {
@@ -193,15 +194,5 @@ public class LiveJudgementProcessor : MonoBehaviour
         _holdTracker.Clear();
 
         OnGhostFailed?.Invoke();
-    }
-
-    private void RefreshHud()
-    {
-        _liveUI.ScorePanel.SetScore(_scoreTracker.Score);
-        _liveUI.ComboPanel.SetCombo(_scoreTracker.Combo);
-
-        // 진행도 막대는 현재까지의 정확도를 나타내므로, 전체 노트가 아니라 이미 판정된 노트를 분모로 씁니다.
-        float accuracy = LiveRankEvaluator.GetAccuracy(_scoreTracker.Score, _scoreTracker.JudgedNoteCount);
-        _liveUI.ScorePanel.SetRankProgress(accuracy * 0.01f);
     }
 }

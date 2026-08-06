@@ -61,6 +61,12 @@ public class LiveEditorTestPlayController : MonoBehaviour
 
         // 귀신 노트가 실패하면 이후 입력이 더 이상 집계되지 않아 테스트를 이어갈 의미가 없으므로 곧바로 멈춥니다.
         _judgementProcessor.OnGhostFailed += StopTestPlay;
+        _judgementProcessor.OnNoteJudged += HideJudgedNote;
+
+        if (_liveUI != null)
+        {
+            _liveUI.BindJudgement(_judgementProcessor);
+        }
 
         SetHudVisible(false);
     }
@@ -70,6 +76,7 @@ public class LiveEditorTestPlayController : MonoBehaviour
         _playInput.OnLanePressed -= PressLane;
         _playInput.OnLaneReleased -= ReleaseLane;
         _judgementProcessor.OnGhostFailed -= StopTestPlay;
+        _judgementProcessor.OnNoteJudged -= HideJudgedNote;
     }
 
     private void Update()
@@ -212,6 +219,20 @@ public class LiveEditorTestPlayController : MonoBehaviour
     {
         _timeline.NoteRenderer.ClearHiddenNotes();
         _timeline.RefreshNoteVisuals();
+    }
+
+    /// <summary>
+    /// 판정이 끝난 노트를 화면에서 지웁니다. 판정기는 화면을 모르므로, 타임라인을 쥔 이 클래스가 통지를 받아 처리합니다.
+    /// note가 null이면 노트 없이 귀신 레인을 누른 오입력이라 지울 노트가 없습니다.
+    /// </summary>
+    private void HideJudgedNote(NoteData note, EJudgement judgement)
+    {
+        if (note == null)
+        {
+            return;
+        }
+
+        _timeline.NoteRenderer.HideNote(note.NoteId);
     }
 
     private void PressLane(int lane)

@@ -23,6 +23,16 @@ public class LivePlaySession : MonoBehaviour
     public SongData Song { get; private set; }
     public ChartData Chart { get; private set; }
 
+    private void Awake()
+    {
+        _judgementProcessor.OnNoteJudged += HideJudgedNote;
+    }
+
+    private void OnDestroy()
+    {
+        _judgementProcessor.OnNoteJudged -= HideJudgedNote;
+    }
+
     /// <summary>
     /// 진입 컨텍스트가 가리키는 곡과 채보를 열어 트랙·판정기에 실은 뒤 음원 로드를 시작합니다.
     /// 곡 길이는 음원을 받아야 알 수 있으므로 마디 테이블 구축은 InitBarLayout으로 미룹니다.
@@ -85,5 +95,19 @@ public class LivePlaySession : MonoBehaviour
     {
         _trackScroller.RefreshScroll(0);
         _trackScroller.RefreshNoteVisuals();
+    }
+
+    /// <summary>
+    /// 판정이 끝난 노트를 화면에서 지웁니다. 판정기는 화면을 모르므로, 트랙을 쥔 이 클래스가 통지를 받아 처리합니다.
+    /// note가 null이면 노트 없이 귀신 레인을 누른 오입력이라 지울 노트가 없습니다.
+    /// </summary>
+    private void HideJudgedNote(NoteData note, EJudgement judgement)
+    {
+        if (note == null)
+        {
+            return;
+        }
+
+        _trackScroller.NoteRenderer.HideNote(note.NoteId);
     }
 }

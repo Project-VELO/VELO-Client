@@ -24,12 +24,39 @@ public class UI_Live : MonoBehaviour
     [SerializeField]
     private UI_LiveLaneFeedback _laneFeedback;
 
+    private LiveJudgementProcessor _judgementProcessor;
+
     public UI_LiveScorePanel ScorePanel => _scorePanel;
     public UI_LiveComboPanel ComboPanel => _comboPanel;
     public UI_LiveHitPanel JudgementPanel => _judgementPanel;
     public UI_LiveTrackLanes NoteLanes => _noteLanes;
     public UI_LiveCountdownPanel CountdownPanel => _countdownPanel;
     public UI_LiveLaneFeedback LaneFeedback => _laneFeedback;
+
+    private void OnDestroy()
+    {
+        if (_judgementProcessor == null)
+        {
+            return;
+        }
+
+        _judgementProcessor.OnNoteJudged -= RefreshJudgement;
+        _judgementProcessor.OnScoreChanged -= RefreshScoreHud;
+        _judgementProcessor.OnSessionReset -= ResetHud;
+    }
+
+    /// <summary>
+    /// 판정기의 통지를 받아 점수·콤보·판정 표시를 갱신합니다. 판정기가 UI를 직접 참조하는 대신
+    /// 화면이 도메인을 관찰하는 방향이라, 씬을 여는 컨트롤러가 이 메서드로 배선을 맡깁니다.
+    /// </summary>
+    public void BindJudgement(LiveJudgementProcessor judgementProcessor)
+    {
+        _judgementProcessor = judgementProcessor;
+
+        judgementProcessor.OnNoteJudged += RefreshJudgement;
+        judgementProcessor.OnScoreChanged += RefreshScoreHud;
+        judgementProcessor.OnSessionReset += ResetHud;
+    }
 
     /// <summary>
     /// 플레이 중에만 필요한 표시(점수·콤보·판정)를 한꺼번에 켜고 끕니다.
@@ -51,5 +78,28 @@ public class UI_Live : MonoBehaviour
         }
 
         panel.gameObject.SetActive(isVisible);
+    }
+
+    private void RefreshJudgement(NoteData note, EJudgement judgement)
+    {
+        _judgementPanel.RefreshJudgement(judgement);
+    }
+
+    private void RefreshScoreHud()
+    {
+        LiveScoreTracker tracker = _judgementProcessor.ScoreTracker;
+
+        _scorePanel.SetScore(tracker.Score);
+        _comboPanel.SetCombo(tracker.Combo);
+
+        // 진행도 막대는 현재까지의 정확도를 나타내므로, 전체 노트가 아니라 이미 판정된 노트를 분모로 씁니다.
+        float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, tracker.JudgedNoteCount);
+        _scorePanel.SetRankProgress(accuracy * 0.01f);
+    }
+
+    private void ResetHud()
+    {
+        RefreshScoreHud();
+        _judgementPanel.ClearJudgement();
     }
 }

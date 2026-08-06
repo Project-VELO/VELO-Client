@@ -40,6 +40,8 @@ public class LiveGameController : MonoBehaviour
 
     private void Awake()
     {
+        _liveUI.BindJudgement(_judgementProcessor);
+
         _playInput.OnLanePressed += PressLane;
         _playInput.OnLaneReleased += ReleaseLane;
         _judgementProcessor.OnGhostFailed += FinishPlay;

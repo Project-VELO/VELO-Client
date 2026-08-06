@@ -137,7 +137,7 @@ public class UI_PhotocardSelectPopup : UI_Popup
     {
         // 편성이 5장 규칙을 채우지 못하면 여기서 진입을 막습니다(기획서 16-15). 준비 화면 자체는 막지 않으므로,
         // 안내를 닫고 빈 슬롯을 채운 뒤 다시 시작할 수 있습니다.
-        if (!LiveLoadoutRule.IsCurrentLoadoutPlayable())
+        if (!LiveLoadoutRule.IsCurrentLoadoutPlayable(LiveLoadoutContext.Instance, PlayerDataProvider.Instance.Data))
         {
             if (UIManager.Instance != null)
             {

@@ -60,17 +60,18 @@ public static class LiveLoadoutRule
     ///
     /// 기본 편성은 슬롯 배치를 거친 뒤에 봅니다. 준비 화면이 실제로 적용할 편성이 그것이므로,
     /// 순서만 어긋난 세이브를 열어 보지도 못하게 막지 않기 위해서입니다.
+    ///
+    /// 편성과 세이브는 호출자가 넘깁니다. 규칙이 LiveLoadoutContext.Instance를 도로 읽으면
+    /// 컨텍스트가 규칙을 쓰고 규칙이 컨텍스트를 쓰는 순환이 생기기 때문입니다.
     /// </summary>
-    public static bool IsCurrentLoadoutPlayable()
+    public static bool IsCurrentLoadoutPlayable(LiveLoadoutContext loadout, PlayerData playerData)
     {
-        LiveLoadoutContext loadout = LiveLoadoutContext.Instance;
-
         if (loadout.IsInitialized)
         {
-            return IsLoadoutValid(loadout.CardIds);
+            return IsLoadoutValid(loadout.CardIds, playerData);
         }
 
-        return IsLoadoutValid(BuildSlotCardIds(PlayerDataProvider.Instance.Data.SelectedCardIds));
+        return IsLoadoutValid(BuildSlotCardIds(playerData.SelectedCardIds), playerData);
     }
 
     private static bool TryGetSlotIndex(List<CharacterData> members, string cardId, out int slotIndex)
@@ -98,7 +99,7 @@ public static class LiveLoadoutRule
     /// 편성이 규칙(5장·슬롯별 멤버 일치·보유·카드 ID 중복 없음)을 모두 지키는지 검사합니다.
     /// 멤버당 1장(3-H-1)은 슬롯-멤버 일치 검사로 함께 보장됩니다.
     /// </summary>
-    public static bool IsLoadoutValid(IReadOnlyList<string> cardIds)
+    private static bool IsLoadoutValid(IReadOnlyList<string> cardIds, PlayerData playerData)
     {
         List<CharacterData> members = MasterDataQuery.GetMembersInSlotOrder();
 
@@ -107,7 +108,7 @@ public static class LiveLoadoutRule
             return false;
         }
 
-        List<string> ownedCardIds = PlayerDataProvider.Instance.Data.OwnedCardIds;
+        List<string> ownedCardIds = playerData.OwnedCardIds;
 
         for (int i = 0; i < cardIds.Count; i++)
         {

@@ -63,7 +63,7 @@ public class UI_MusicSelectLiveEntry : MonoBehaviour
     /// </summary>
     private bool RefuseWhenCardShortage()
     {
-        if (LiveLoadoutRule.IsCurrentLoadoutPlayable())
+        if (LiveLoadoutRule.IsCurrentLoadoutPlayable(LiveLoadoutContext.Instance, PlayerDataProvider.Instance.Data))
         {
             return false;
         }

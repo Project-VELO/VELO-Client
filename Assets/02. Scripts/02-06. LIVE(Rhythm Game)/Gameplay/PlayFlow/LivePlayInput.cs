@@ -143,6 +143,6 @@ public class LivePlayInput : MonoBehaviour
 
     private bool IsInputAccepted()
     {
-        return _isAcceptingInput && !InputHandler.IsInputBlocked;
+        return _isAcceptingInput && !InputHandler.Instance.IsInputBlocked;
     }
 }

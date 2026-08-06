@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
@@ -5,6 +6,13 @@ using VInspector;
 
 public abstract class UI_Popup : MonoBehaviour
 {
+    /// <summary>
+    /// 닫기 요청을 받을 소유자(UI_PopupHandler)가 팝업을 열 때 주입합니다.
+    /// 팝업이 UIManager를 직접 호출하면 팝업 계층 전체가 매니저와 양방향으로 얽히므로,
+    /// 팝업은 이 콜백으로 요청만 하고 실제 닫기는 소유자가 결정합니다.
+    /// </summary>
+    public Action<UI_Popup> OnCloseRequested;
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UnityEngine.UI.Button _closeButton;
@@ -79,9 +87,15 @@ public abstract class UI_Popup : MonoBehaviour
 
     public void OnCloseButtonClicked()
     {
-        if (UIManager.Instance != null && UIManager.Instance.PopupHandler != null)
-        {
-            UIManager.Instance.PopupHandler.ClosePopup(this);
-        }
+        RequestClose();
+    }
+
+    /// <summary>
+    /// 열리지 않은 팝업(콜백 미주입)에서는 아무 일도 하지 않습니다.
+    /// 스택에 없는 팝업을 임의로 꺼 버리면 형제 순서 복원과 입력 모드 정리가 건너뛰어지기 때문입니다.
+    /// </summary>
+    protected void RequestClose()
+    {
+        OnCloseRequested?.Invoke(this);
     }
 }

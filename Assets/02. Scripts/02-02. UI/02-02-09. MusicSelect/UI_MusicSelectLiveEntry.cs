@@ -33,7 +33,7 @@ public class UI_MusicSelectLiveEntry : MonoBehaviour
         }
 
         LiveEntryContext.Instance.SetSelection(song.SongId, difficulty);
-        UIManager.Instance.PopupHandler.OpenPopup(_photocardSelectPopup);
+        UIManager.Instance.OpenPopup(_photocardSelectPopup);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class UI_MusicSelectLiveEntry : MonoBehaviour
 
         if (UIManager.Instance != null)
         {
-            UIManager.Instance.PopupHandler.OpenPopup(_cardShortagePopup);
+            UIManager.Instance.OpenPopup(_cardShortagePopup);
         }
 
         return true;

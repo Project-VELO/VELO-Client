@@ -62,7 +62,7 @@ public class LiveEditorNavigationShortcuts : MonoBehaviour
         var action = new InputAction(actionName, binding: binding);
         action.performed += context =>
         {
-            if (InputHandler.IsInputBlocked)
+            if (InputHandler.Instance.IsInputBlocked)
             {
                 return;
             }

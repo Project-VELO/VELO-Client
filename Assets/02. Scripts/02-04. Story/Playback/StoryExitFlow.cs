@@ -14,7 +14,7 @@ public class StoryExitFlow
     /// 마지막 NEXT 처리입니다(기획서 3-F-4, 3-J-4).
     ///
     /// CompleteStory 하나가 완료 판정 → 보상 지급 → 스케줄 동기화 → 저장을 묶어 수행합니다.
-    /// RewardService나 SyncStorySchedules를 따로 부르면 이중 지급이 됩니다.
+    /// 보상 지급이나 SyncStorySchedules를 여기서 따로 부르면 이중 지급이 됩니다.
     /// 보상 안내 팝업은 감상 화면이 아니라 목록 화면이 띄우므로 결과만 컨텍스트에 남깁니다.
     /// </summary>
     public void CompleteAndReturn(StoryData story, CancellationToken cancellationToken)

@@ -114,7 +114,7 @@ public class UI_SelectStory : MonoBehaviour
 
         if (isReady)
         {
-            UIManager.Instance.PopupHandler.OpenPopup(_rewardPopup);
+            UIManager.Instance.OpenPopup(_rewardPopup);
         }
     }
 
@@ -128,7 +128,7 @@ public class UI_SelectStory : MonoBehaviour
 
         if (ReferenceEquals(progress, null) || !progress.CanEnter)
         {
-            UIManager.Instance.PopupHandler.OpenPopup(_lockedPopup);
+            UIManager.Instance.OpenPopup(_lockedPopup);
             return;
         }
 

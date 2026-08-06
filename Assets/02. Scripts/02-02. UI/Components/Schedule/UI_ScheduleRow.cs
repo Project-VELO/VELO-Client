@@ -133,7 +133,7 @@ public class UI_ScheduleRow : MonoBehaviour
     }
 
     /// <summary>
-    /// 완료 시 받을 보상입니다. 지급이 아니라 표시이므로 RewardService가 아니라 마스터 데이터를 직접 읽습니다.
+    /// 완료 시 받을 보상입니다. 지급이 아니라 표시이므로 지급 로직(GameProgressService)이 아니라 마스터 데이터를 직접 읽습니다.
     /// 보상 데이터가 없으면 숫자 대신 빈 칸을 두어, 0을 실제 보상으로 오해하지 않게 합니다.
     /// </summary>
     private void RefreshReward(string rewardId)

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -6,6 +7,14 @@ using VInspector;
 
 public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionManager>
 {
+    /// <summary>
+    /// 전환의 시작과 끝을 알리기만 합니다. 팝업 정리·로딩 표시 같은 UI 뒤처리는 UIManager가 구독해서 수행합니다.
+    /// 씬 전환 인프라가 UI 계층을 직접 호출하면 하위 계층이 상위 구현에 매이므로 통지로 끊습니다.
+    /// 외부에서 대입으로 기존 구독자를 지우지 못하게 event로 선언합니다(선례: SaveService.OnSaveFailed).
+    /// </summary>
+    public event Action OnTransitionStarted;
+    public event Action OnTransitionFinished;
+
     private const string PersistentSceneName = "PersistentScene";
 
     private string _currentLoadedSubScene;
@@ -58,10 +67,12 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
             return;
         }
 
-        PrepareTransition();
-
         try
         {
+            // 전환 시작 통지(OnTransitionStarted)의 구독자가 예외를 던져도 finally의 CleanupTransition이
+            // 실행되어야 하므로 try 안에서 시작합니다. 밖에 두면 입력 차단과 전환 중 표시가 풀리지 않은 채 남습니다.
+            PrepareTransition();
+
             string oldSceneName = _currentLoadedSubScene;
 
             bool isLoaded = await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
@@ -105,22 +116,13 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
     private void PrepareTransition()
     {
         _isTransitioning = true;
-        InputHandler.BlockInput();
+
+        // 떠나는 화면이 걸어 둔 입력 모드(팝업의 UI 모드 등)가 다음 씬으로 새지 않도록 전환 시점마다 초기화합니다.
+        InputHandler.Instance.Reset();
+        InputHandler.Instance.BlockInput();
         Time.timeScale = 1f;
 
-        if (UIManager.Instance == null)
-        {
-            return;
-        }
-
-        if (UIManager.Instance.PopupHandler != null)
-        {
-            UIManager.Instance.PopupHandler.ClearAllPopups();
-        }
-
-        // 로딩이 끝날 때까지 화면 전체를 덮습니다. 떠나는 화면의 버튼이 그대로 살아 있으면
-        // 연속 클릭이 이미 시작된 전환 위에 또 다른 동작을 얹습니다(기획서 3-L "화면 로딩 중 입력").
-        UIManager.Instance.SetLoadingActive(true);
+        OnTransitionStarted?.Invoke();
     }
 
     private async UniTask<bool> LoadAndActivateSceneAsync(string sceneName, CancellationToken cancellationToken)
@@ -144,11 +146,8 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
     private void CleanupTransition()
     {
         _isTransitioning = false;
-        InputHandler.UnblockInput();
+        InputHandler.Instance.UnblockInput();
 
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.SetLoadingActive(false);
-        }
+        OnTransitionFinished?.Invoke();
     }
 }

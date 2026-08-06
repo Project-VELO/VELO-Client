@@ -25,15 +25,6 @@ public class UI_PopupHandler
 
     public bool HasPopups => 0 < _popups.Count;
 
-    public void Init()
-    {
-        // 이벤트 구독을 UIManager로 중앙집중화하여 중복 호출 방지
-    }
-
-    public void Dispose()
-    {
-    }
-
     public void ClearAllPopups()
     {
         while (0 < _popups.Count)
@@ -41,12 +32,13 @@ public class UI_PopupHandler
             PopupEntry entry = _popups.Pop();
             if (entry.Popup != null)
             {
+                entry.Popup.OnCloseRequested = null;
                 entry.Popup.gameObject.SetActive(false);
                 RestoreSiblingIndex(entry);
             }
         }
         _isClosing = false;
-        InputHandler.ChangeToPlayerInput();
+        InputHandler.Instance.ChangeToPlayerInput();
     }
 
     public void OpenPopup(UI_Popup popup)
@@ -64,10 +56,14 @@ public class UI_PopupHandler
         var entry = new PopupEntry(popup, popup.transform.GetSiblingIndex());
         popup.transform.SetAsLastSibling();
 
+        // 팝업이 UIManager를 역참조하지 않도록, 닫기 요청 경로를 여는 쪽에서 주입합니다.
+        // 닫힐 때 도로 비우므로, 콜백이 남아 있다는 것은 곧 이 핸들러가 열어 둔 팝업이라는 뜻입니다.
+        popup.OnCloseRequested = ClosePopup;
+
         _popups.Push(entry);
         popup.OpenAsync().Forget();
 
-        InputHandler.ChangeToUIInput();
+        InputHandler.Instance.ChangeToUIInput();
         SetPopupFocusState(popup, true);
     }
 
@@ -90,6 +86,7 @@ public class UI_PopupHandler
         if (_popups.TryPop(out PopupEntry latestEntry))
         {
             _isClosing = true;
+            latestEntry.Popup.OnCloseRequested = null;
             SetPopupFocusState(latestEntry.Popup, false);
 
             try
@@ -106,7 +103,7 @@ public class UI_PopupHandler
 
             if (_popups.Count <= 0)
             {
-                InputHandler.ChangeToPlayerInput();
+                InputHandler.Instance.ChangeToPlayerInput();
                 return;
             }
 

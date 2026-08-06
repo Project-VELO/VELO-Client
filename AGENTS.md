@@ -56,7 +56,7 @@
 
 * **예외 사항:** 동적으로 생성되는 오브젝트나 런타임에 주입되는 참조의 경우, `GetComponent`를 사용하거나 초기화(Init/Set) 메서드를 통해 외부에서 직접 참조를 주입받아 바인딩하도록 하며, 어떠한 경우에도 `Find` 계열 탐색 함수는 사용하지 않는다.
 
-* **절대 금지 (화면 전용 팝업):** 특정 화면에서만 열고 닫는 팝업을 위해 `UIManager`에 `OpenXxxPopup` 메서드나 팝업 필드를 추가하는 것을 금지한다. 팝업 프리팹은 해당 씬에 두고 화면 스크립트가 `[SerializeField]`로 참조한 뒤 `UIManager.Instance.PopupHandler.OpenPopup(...)`에 직접 넘긴다.
+* **절대 금지 (화면 전용 팝업):** 특정 화면에서만 열고 닫는 팝업을 위해 `UIManager`에 `OpenXxxPopup` 메서드나 팝업 필드를 추가하는 것을 금지한다. 팝업 프리팹은 해당 씬에 두고 화면 스크립트가 `[SerializeField]`로 참조한 뒤 `UIManager.Instance.OpenPopup(...)`에 직접 넘긴다. (팝업 스택 `UI_PopupHandler`는 `UIManager` 내부 구현이므로 바깥에서 직접 접근하지 않는다.)
   * *이유:* `UIManager`에 화면별 메서드를 쌓으면 모든 화면 작업이 같은 파일을 고치게 되어 병렬 작업 시 충돌하고, `PersistentScene` 프리팹에 화면 전용 팝업 참조가 남아 씬을 언로드해도 참조가 유지된다.
   * *선례:* `LivePauseController`(일시정지 팝업), `UI_MusicSelect`(포토카드 선택 팝업).
   * *예외:* 알림·우편·설정처럼 여러 화면이 공유하며 `Persistent Canvas`에 상주하는 팝업은 지금처럼 `UIManager`가 소유한다.

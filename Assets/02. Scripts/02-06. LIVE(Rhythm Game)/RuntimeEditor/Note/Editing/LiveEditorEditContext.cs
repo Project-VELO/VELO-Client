@@ -17,7 +17,7 @@ public class LiveEditorEditContext
     {
         get
         {
-            return !InputHandler.IsInputBlocked
+            return !InputHandler.Instance.IsInputBlocked
                 && _controller.State != LiveEditorController.EEditorState.TestPlay
                 && !ReferenceEquals(_controller.CurrentChart, null)
                 && _timeline.BarLayout.IsBuilt;

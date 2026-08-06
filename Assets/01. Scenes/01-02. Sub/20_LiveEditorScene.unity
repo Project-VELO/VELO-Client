@@ -9606,6 +9606,7 @@ MonoBehaviour:
   _playtestButtonText: {fileID: 338704635}
   _testPlayController: {fileID: 1162494765}
   _toast: {fileID: 1362229827}
+  _controller: {fileID: 1513099325}
 --- !u!114 &1139110914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12768,8 +12769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LiveEditorController
   _audioPlayer: {fileID: 1072451295}
   _timeline: {fileID: 1103871490}
-  _uiPanel: {fileID: 1139110913}
-  _trackControls: {fileID: 1139110914}
 --- !u!4 &1513099326
 Transform:
   m_ObjectHideFlags: 0

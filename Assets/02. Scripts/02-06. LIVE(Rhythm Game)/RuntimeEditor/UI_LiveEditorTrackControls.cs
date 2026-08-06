@@ -38,17 +38,17 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
     private int _lastShownBarIndex = UNBOUND_BAR_INDEX;
     private int _lastShownBarCount = UNBOUND_BAR_INDEX;
 
-    private void Update()
-    {
-        RefreshBarIndicator();
-    }
-
-    public void Init()
+    private void Awake()
     {
         _snapDropdown.ClearOptions();
         _snapDropdown.AddOptions(SnapOptions);
         _snapDropdown.SetValueWithoutNotify(SnapDivisions.IndexOf(_timeline.SnapDivision));
         _snapDropdown.onValueChanged.AddListener(OnSnapChanged);
+    }
+
+    private void Update()
+    {
+        RefreshBarIndicator();
     }
 
     /// <summary>

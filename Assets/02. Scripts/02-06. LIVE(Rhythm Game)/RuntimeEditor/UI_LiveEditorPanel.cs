@@ -31,12 +31,15 @@ public class UI_LiveEditorPanel : MonoBehaviour
     [SerializeField]
     private UI_LiveEditorToast _toast;
 
+    /// <summary>
+    /// 컨트롤러가 Init(this)로 자신을 넘겨 주면 컨트롤러→패널→테스트 플레이→컨트롤러의
+    /// 참조 순환이 생기므로, 다른 에디터 UI들처럼 패널이 인스펙터에서 컨트롤러를 직접 참조합니다.
+    /// </summary>
+    [SerializeField]
     private LiveEditorController _controller;
 
-    public void Init(LiveEditorController controller)
+    private void Awake()
     {
-        _controller = controller;
-
         _saveButton.onClick.AddListener(OnSaveClicked);
         _playtestButton.onClick.AddListener(OnPlaytestClicked);
 

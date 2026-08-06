@@ -23,12 +23,6 @@ public class LiveEditorController : MonoBehaviour
     [SerializeField]
     private LiveEditorTimeline _timeline;
 
-    [SerializeField]
-    private UI_LiveEditorPanel _uiPanel;
-
-    [SerializeField]
-    private UI_LiveEditorTrackControls _trackControls;
-
     private readonly LiveEditorChartIO _chartIO = new LiveEditorChartIO();
     private readonly LiveEditorSongIO _songIO = new LiveEditorSongIO();
 
@@ -58,9 +52,6 @@ public class LiveEditorController : MonoBehaviour
 
     private void Awake()
     {
-        _uiPanel.Init(this);
-        _trackControls.Init();
-
         _audioPlayer.OnClipLoaded += OnAudioClipLoaded;
     }
 

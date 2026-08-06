@@ -69,9 +69,9 @@ public class UI_StoryExitConfirmPopup : UI_Popup
 
     private void Close()
     {
-        if (UIManager.Instance == null || UIManager.Instance.PopupHandler == null)
+        if (OnCloseRequested == null)
         {
-            // 팝업 스택을 거치지 못하면 CloseAsync도 불리지 않으므로 여기서 직접 통지합니다.
+            // 팝업 스택 없이 열린 단독 실행입니다. CloseAsync가 불리지 않으므로 여기서 직접 통지합니다.
             gameObject.SetActive(false);
 
             if (_isConfirming)
@@ -85,6 +85,6 @@ public class UI_StoryExitConfirmPopup : UI_Popup
             return;
         }
 
-        UIManager.Instance.PopupHandler.ClosePopup(this);
+        RequestClose();
     }
 }

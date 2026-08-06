@@ -56,12 +56,13 @@ public class UI_LivePausePopup : UI_Popup
     /// </summary>
     private void ClosePopup()
     {
-        if (UIManager.Instance == null || UIManager.Instance.PopupHandler == null)
+        if (OnCloseRequested == null)
         {
+            // 팝업 스택 없이 열린 단독 실행입니다. 스택 정리가 없으므로 바로 꺼도 됩니다.
             gameObject.SetActive(false);
             return;
         }
 
-        UIManager.Instance.PopupHandler.ClosePopup(this);
+        RequestClose();
     }
 }

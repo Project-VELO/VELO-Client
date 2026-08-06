@@ -26,9 +26,16 @@ public class UI_OfficeCharacterPanel : MonoBehaviour
     [TextArea]
     private string _fixedDialog = "안녕! 오늘은 어떤 오싹한 일이 기다리고 있을까?";
 
+    [Header("Word Wrap")]
+    [SerializeField]
+    private float _maxWidthPerLine = 15f;
+
+    [SerializeField]
+    private int _maxLineCount = 3;
+
     private void Start()
     {
         _nameText.text = _speakerName;
-        _dialogText.text = _fixedDialog;
+        _dialogText.text = TextWrapUtils.Wrap(_fixedDialog, _maxWidthPerLine, _maxLineCount);
     }
 }

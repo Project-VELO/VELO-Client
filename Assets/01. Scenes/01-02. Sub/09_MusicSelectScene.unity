@@ -1487,7 +1487,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 489636781742897580, guid: 768bc29dbb652954a81d5fba8da2f7d3, type: 3}
       propertyPath: m_Name
-      value: P_UI_CardShortagePopup
+      value: P_UI_Popup_CardShortage
       objectReference: {fileID: 0}
     - target: {fileID: 489636781742897580, guid: 768bc29dbb652954a81d5fba8da2f7d3, type: 3}
       propertyPath: m_IsActive

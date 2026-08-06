@@ -88,15 +88,15 @@ GameObject:
   - component: {fileID: 8716776986958654870}
   - component: {fileID: 8431185536006096030}
   - component: {fileID: 2665175044553885505}
-  - component: {fileID: 3887088536290964363}
-  - component: {fileID: 8150623399440116621}
+  - component: {fileID: 5115770030236479856}
+  - component: {fileID: 7935236999566944865}
   m_Layer: 5
-  m_Name: P_UI_ErrorPopup
+  m_Name: P_UI_Popup_WeekComplete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4726594012125420486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3887088536290964363
+--- !u!114 &5115770030236479856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,12 +190,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 489636781742897580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a436f7323fa69564a8d5bbd15a26b607, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d454597e68fa047932d2629ea440bd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ErrorPopup
+  m_EditorClassIdentifier: Assembly-CSharp::UI_WeekCompletePopup
   _closeButton: {fileID: 825893903683541584}
   _messageText: {fileID: 6459811407544001091}
---- !u!114 &8150623399440116621
+--- !u!114 &7935236999566944865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC624\uB958\uAC00 \uBC1C\uC0DD\uD588\uC2B5\uB2C8\uB2E4."
+  m_text: "\uC774\uBC88 \uC8FC\uCC28\uB97C \uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
   m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC624\uB958 \uC548\uB0B4"
+  m_text: "\uC8FC\uCC28 \uC644\uB8CC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
   m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
@@ -677,7 +677,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 400, y: 34}
+  m_SizeDelta: {x: 400, y: 72}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5169916080338853552
 CanvasRenderer:

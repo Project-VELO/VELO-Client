@@ -216,7 +216,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 489636781742897580, guid: 70e0324e94c46ec449b5d759a4942c1c, type: 3}
       propertyPath: m_Name
-      value: P_UI_ErrorPopup
+      value: P_UI_Popup_Error
       objectReference: {fileID: 0}
     - target: {fileID: 4726594012125420486, guid: 70e0324e94c46ec449b5d759a4942c1c, type: 3}
       propertyPath: m_Pivot.x
@@ -318,7 +318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 535339762395280497, guid: eefde189b27ac1a4fb76edca36c7c99e, type: 3}
       propertyPath: m_Name
-      value: P_UI_NotificationPopup
+      value: P_UI_Popup_Notification
       objectReference: {fileID: 0}
     - target: {fileID: 535339762395280497, guid: eefde189b27ac1a4fb76edca36c7c99e, type: 3}
       propertyPath: m_IsActive
@@ -536,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1650941360461655588, guid: b4ee30ba7cf346b4a9502056007a4874, type: 3}
       propertyPath: m_Name
-      value: P_UI_MailboxPopup
+      value: P_UI_Popup_Mailbox
       objectReference: {fileID: 0}
     - target: {fileID: 1650941360461655588, guid: b4ee30ba7cf346b4a9502056007a4874, type: 3}
       propertyPath: m_IsActive

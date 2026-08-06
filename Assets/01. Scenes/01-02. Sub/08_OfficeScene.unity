@@ -854,7 +854,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 489636781742897580, guid: 1ea2f2832f55a54438dddde91b0403fd, type: 3}
       propertyPath: m_Name
-      value: P_UI_WeekCompletePopup
+      value: P_UI_Popup_WeekComplete
       objectReference: {fileID: 0}
     - target: {fileID: 489636781742897580, guid: 1ea2f2832f55a54438dddde91b0403fd, type: 3}
       propertyPath: m_IsActive

@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2612919953331777137, guid: ddd63a037ea747b49811ca8ecdc1e2c6, type: 3}
       propertyPath: m_Name
-      value: P_UI_Reward
+      value: P_UI_Popup_StoryReward
       objectReference: {fileID: 0}
     - target: {fileID: 2612919953331777137, guid: ddd63a037ea747b49811ca8ecdc1e2c6, type: 3}
       propertyPath: m_IsActive
@@ -1229,7 +1229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 489636781742897580, guid: fdbb3c986983f8f47ba36f8873223ea6, type: 3}
       propertyPath: m_Name
-      value: P_UI_LockedStoryPopup
+      value: P_UI_Popup_LockedStory
       objectReference: {fileID: 0}
     - target: {fileID: 489636781742897580, guid: fdbb3c986983f8f47ba36f8873223ea6, type: 3}
       propertyPath: m_IsActive

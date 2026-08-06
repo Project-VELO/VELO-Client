@@ -88,8 +88,10 @@ GameObject:
   - component: {fileID: 8716776986958654870}
   - component: {fileID: 8431185536006096030}
   - component: {fileID: 2665175044553885505}
+  - component: {fileID: 1020513373824757753}
+  - component: {fileID: 17720800027367831}
   m_Layer: 5
-  m_Name: P_UI_PurchaseSuccessPopup
+  m_Name: P_UI_Popup_CardShortage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,6 +181,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1020513373824757753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489636781742897580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8550c45c393a65d48b44d5b94f8a3420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_CardShortagePopup
+  _closeButton: {fileID: 825893903683541584}
+--- !u!114 &17720800027367831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489636781742897580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _openDuration: 0.3
+  _closeDuration: 0.2
+  _openEase: 27
+  _closeEase: 26
+  _startScale: {x: 0.5, y: 0.5, z: 0.5}
+  _targetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &3767303152154781350
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C1\uD488\uC744 \uC131\uACF5\uC801\uC73C\uB85C \uAD6C\uB9E4\uD588\uC2B5\uB2C8\uB2E4!"
+  m_text: "\uD3EC\uD1A0\uCE74\uB4DC 5\uC7A5 \uD3B8\uC131\uC774 \uD544\uC694\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
   m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
@@ -381,7 +414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uAD6C\uB9E4\uC644\uB8CC"
+  m_text: "\uD3EC\uD1A0\uCE74\uB4DC \uBBF8\uD3B8\uC131"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
   m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
@@ -549,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4317657727223194839
 RectTransform:
   m_ObjectHideFlags: 0
@@ -808,6 +841,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
+--- !u!114 &825893903683541584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3534035232639039112, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}
+  m_PrefabInstance: {fileID: 4214595679393017048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &9180852544135814503 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4978079370031215039, guid: ce8bf2ed634617e4a8392ac0c8b9847c, type: 3}

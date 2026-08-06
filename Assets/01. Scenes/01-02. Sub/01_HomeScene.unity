@@ -1554,7 +1554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7665510960767055877, guid: cace34474c911e74eb540fff6b6d3968, type: 3}
       propertyPath: m_Name
-      value: P_UI_ProfileSettingPopup
+      value: P_UI_Popup_ProfileSetting
       objectReference: {fileID: 0}
     - target: {fileID: 7665510960767055877, guid: cace34474c911e74eb540fff6b6d3968, type: 3}
       propertyPath: m_IsActive

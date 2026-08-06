@@ -566,7 +566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7927162836211473224, guid: aa427ad83b546814b8ebfb56052f1476, type: 3}
       propertyPath: m_Name
-      value: P_UI_StoryPopup
+      value: P_UI_Popup_StoryLog
       objectReference: {fileID: 0}
     - target: {fileID: 7927162836211473224, guid: aa427ad83b546814b8ebfb56052f1476, type: 3}
       propertyPath: m_IsActive
@@ -603,7 +603,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2831765289795637120, guid: eaad3808e39d19e4b85ad150f79fd03f, type: 3}
       propertyPath: m_Name
-      value: P_UI_StoryExitConfirmPopup
+      value: P_UI_Popup_StoryExitConfirm
       objectReference: {fileID: 0}
     - target: {fileID: 2831765289795637120, guid: eaad3808e39d19e4b85ad150f79fd03f, type: 3}
       propertyPath: m_IsActive

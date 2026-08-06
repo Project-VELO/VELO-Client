@@ -38,7 +38,7 @@ public class UI_PopupHandler
             }
         }
         _isClosing = false;
-        InputHandler.ChangeToPlayerInput();
+        InputHandler.Instance.ChangeToPlayerInput();
     }
 
     public void OpenPopup(UI_Popup popup)
@@ -63,7 +63,7 @@ public class UI_PopupHandler
         _popups.Push(entry);
         popup.OpenAsync().Forget();
 
-        InputHandler.ChangeToUIInput();
+        InputHandler.Instance.ChangeToUIInput();
         SetPopupFocusState(popup, true);
     }
 
@@ -103,7 +103,7 @@ public class UI_PopupHandler
 
             if (_popups.Count <= 0)
             {
-                InputHandler.ChangeToPlayerInput();
+                InputHandler.Instance.ChangeToPlayerInput();
                 return;
             }
 

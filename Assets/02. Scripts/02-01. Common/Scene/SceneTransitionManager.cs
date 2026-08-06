@@ -114,7 +114,10 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
     private void PrepareTransition()
     {
         _isTransitioning = true;
-        InputHandler.BlockInput();
+
+        // 떠나는 화면이 걸어 둔 입력 모드(팝업의 UI 모드 등)가 다음 씬으로 새지 않도록 전환 시점마다 초기화합니다.
+        InputHandler.Instance.Reset();
+        InputHandler.Instance.BlockInput();
         Time.timeScale = 1f;
 
         OnTransitionStarted?.Invoke();
@@ -141,7 +144,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
     private void CleanupTransition()
     {
         _isTransitioning = false;
-        InputHandler.UnblockInput();
+        InputHandler.Instance.UnblockInput();
 
         OnTransitionFinished?.Invoke();
     }

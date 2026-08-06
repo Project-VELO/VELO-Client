@@ -67,10 +67,12 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
             return;
         }
 
-        PrepareTransition();
-
         try
         {
+            // 전환 시작 통지(OnTransitionStarted)의 구독자가 예외를 던져도 finally의 CleanupTransition이
+            // 실행되어야 하므로 try 안에서 시작합니다. 밖에 두면 입력 차단과 전환 중 표시가 풀리지 않은 채 남습니다.
+            PrepareTransition();
+
             string oldSceneName = _currentLoadedSubScene;
 
             bool isLoaded = await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);

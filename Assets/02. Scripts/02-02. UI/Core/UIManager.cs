@@ -43,6 +43,12 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private PendingErrorPresenter _errorPresenter;
 
+    /// <summary>
+    /// 구독한 시점의 참조를 기억해 두었다가 그 참조로 해제합니다. 종료 순서에 따라 해제 시점에
+    /// Instance 조회가 파괴된 매니저를 새로 찾으려 들 수 있기 때문입니다.
+    /// </summary>
+    private SceneTransitionManager _subscribedTransitionManager;
+
     public bool HasPopups => _popupHandler != null && _popupHandler.HasPopups;
 
     protected override void Awake()
@@ -50,6 +56,26 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         base.Awake();
         _popupHandler = new UI_PopupHandler();
         _errorPresenter = new PendingErrorPresenter(_errorPopup, OpenPopup, this.GetCancellationTokenOnDestroy());
+    }
+
+    private void OnEnable()
+    {
+        _subscribedTransitionManager = SceneTransitionManager.Instance;
+        if (_subscribedTransitionManager != null)
+        {
+            _subscribedTransitionManager.OnTransitionStarted += HandleTransitionStarted;
+            _subscribedTransitionManager.OnTransitionFinished += HandleTransitionFinished;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_subscribedTransitionManager != null)
+        {
+            _subscribedTransitionManager.OnTransitionStarted -= HandleTransitionStarted;
+            _subscribedTransitionManager.OnTransitionFinished -= HandleTransitionFinished;
+            _subscribedTransitionManager = null;
+        }
     }
 
     private void Update()
@@ -67,6 +93,20 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
         {
             CloseLatestPopup();
         }
+    }
+
+    private void HandleTransitionStarted()
+    {
+        ClearAllPopups();
+
+        // 로딩이 끝날 때까지 화면 전체를 덮습니다. 떠나는 화면의 버튼이 그대로 살아 있으면
+        // 연속 클릭이 이미 시작된 전환 위에 또 다른 동작을 얹습니다(기획서 3-L "화면 로딩 중 입력").
+        SetLoadingActive(true);
+    }
+
+    private void HandleTransitionFinished()
+    {
+        SetLoadingActive(false);
     }
 
     public void OpenPopup(UI_Popup popup)

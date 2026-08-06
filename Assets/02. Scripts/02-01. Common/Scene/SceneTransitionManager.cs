@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -6,6 +7,14 @@ using VInspector;
 
 public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionManager>
 {
+    /// <summary>
+    /// 전환의 시작과 끝을 알리기만 합니다. 팝업 정리·로딩 표시 같은 UI 뒤처리는 UIManager가 구독해서 수행합니다.
+    /// 씬 전환 인프라가 UI 계층을 직접 호출하면 하위 계층이 상위 구현에 매이므로 통지로 끊습니다.
+    /// 외부에서 대입으로 기존 구독자를 지우지 못하게 event로 선언합니다(선례: SaveService.OnSaveFailed).
+    /// </summary>
+    public event Action OnTransitionStarted;
+    public event Action OnTransitionFinished;
+
     private const string PersistentSceneName = "PersistentScene";
 
     private string _currentLoadedSubScene;
@@ -108,16 +117,7 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         InputHandler.BlockInput();
         Time.timeScale = 1f;
 
-        if (UIManager.Instance == null)
-        {
-            return;
-        }
-
-        UIManager.Instance.ClearAllPopups();
-
-        // 로딩이 끝날 때까지 화면 전체를 덮습니다. 떠나는 화면의 버튼이 그대로 살아 있으면
-        // 연속 클릭이 이미 시작된 전환 위에 또 다른 동작을 얹습니다(기획서 3-L "화면 로딩 중 입력").
-        UIManager.Instance.SetLoadingActive(true);
+        OnTransitionStarted?.Invoke();
     }
 
     private async UniTask<bool> LoadAndActivateSceneAsync(string sceneName, CancellationToken cancellationToken)
@@ -143,9 +143,6 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         _isTransitioning = false;
         InputHandler.UnblockInput();
 
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.SetLoadingActive(false);
-        }
+        OnTransitionFinished?.Invoke();
     }
 }

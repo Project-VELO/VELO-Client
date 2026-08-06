@@ -64,6 +64,11 @@ public class StoryPlaybackController : MonoBehaviour
             _ui.NextButton.onClick.RemoveListener(OnNextClicked);
         }
 
+        if (_ui.SkipTypeWriterButton != null)
+        {
+            _ui.SkipTypeWriterButton.onClick.RemoveListener(OnSkipTypeWriterClicked);
+        }
+
         if (_ui.LogButton != null)
         {
             _ui.LogButton.onClick.RemoveListener(OpenLog);
@@ -89,6 +94,7 @@ public class StoryPlaybackController : MonoBehaviour
     private void InitButtons()
     {
         _ui.NextButton.onClick.AddListener(OnNextClicked);
+        _ui.SkipTypeWriterButton.onClick.AddListener(OnSkipTypeWriterClicked);
         _ui.LogButton.onClick.AddListener(OpenLog);
         _ui.BackButton.onClick.AddListener(OpenExitConfirm);
 
@@ -144,6 +150,24 @@ public class StoryPlaybackController : MonoBehaviour
     }
 
     /// <summary>
+    /// 출력 중인 대사의 남은 글자를 즉시 채웁니다. NEXT 1단계와 같은 동작이라 한 곳에 둡니다(기획서 6.3).
+    ///
+    /// TYPING이 아닌 상태의 클릭은 흘려보냅니다. 이 버튼은 대사 상자 전체를 덮고 있어서,
+    /// 출력이 끝난 뒤에도 반응하게 두면 읽는 도중의 아무 클릭이나 다음 대사로 이어집니다.
+    /// 진행은 NEXT만 담당한다는 경계를 여기서 지킵니다.
+    /// </summary>
+    private void OnSkipTypeWriterClicked()
+    {
+        if (_state != EStoryPlaybackState.TYPING)
+        {
+            return;
+        }
+
+        _state = EStoryPlaybackState.WAITING_NEXT;
+        _linePlayer.Skip();
+    }
+
+    /// <summary>
     /// 기획서 6.3의 NEXT 3단계입니다.
     /// 출력 중 → 즉시 전체 출력 / 출력 완료 → 다음 대사 / 마지막 대사 → 완료 후 목록 복귀.
     /// PAUSED와 FINISHING에서는 아무 반응도 하지 않습니다(기획서 6.4, 3-L).
@@ -152,8 +176,7 @@ public class StoryPlaybackController : MonoBehaviour
     {
         if (_state == EStoryPlaybackState.TYPING)
         {
-            _state = EStoryPlaybackState.WAITING_NEXT;
-            _linePlayer.Skip();
+            OnSkipTypeWriterClicked();
             return;
         }
 

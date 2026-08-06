@@ -25,6 +25,9 @@ public class UI_Story : MonoBehaviour
     private Button _nextButton;
 
     [SerializeField]
+    private Button _skipTypeWriterButton;
+
+    [SerializeField]
     private Button _logButton;
 
     [SerializeField]
@@ -41,6 +44,7 @@ public class UI_Story : MonoBehaviour
     public UI_StoryStage Stage => _stage;
     public UI_StoryDialogBox DialogBox => _dialogBox;
     public Button NextButton => _nextButton;
+    public Button SkipTypeWriterButton => _skipTypeWriterButton;
     public Button LogButton => _logButton;
     public Button BackButton => _backButton;
     public UI_StoryLogPopup LogPopup => _logPopup;

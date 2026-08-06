@@ -60,6 +60,16 @@ public class PendingErrorPresenter
         ShowError(message, onConfirmed);
     }
 
+    /// <summary>
+    /// 대기 중인 안내를 표시하지 않고 폐기합니다. 씬 전환처럼 오류의 맥락 자체가 사라지는 시점에 사용합니다.
+    /// 전환 시 팝업은 CloseAsync를 거치지 않고 꺼져 닫힘 통지가 오지 않으므로, 여기서 비우지 않으면
+    /// 이전 씬의 문구와 복귀 콜백이 다음 씬에서 오류 팝업이 닫힐 때 뒤늦게 실행됩니다.
+    /// </summary>
+    public void ClearPendingErrors()
+    {
+        _pendingErrors.Clear();
+    }
+
     private void ShowError(string message, Action onConfirmed)
     {
         _errorPopup.SetError(message, onConfirmed);

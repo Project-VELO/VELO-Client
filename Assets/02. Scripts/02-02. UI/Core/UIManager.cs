@@ -97,6 +97,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private void HandleTransitionStarted()
     {
+        // 전환으로 강제 정리되는 팝업은 닫힘 통지가 오지 않으므로, 이월될 대기 오류를 먼저 폐기합니다.
+        _errorPresenter.ClearPendingErrors();
         ClearAllPopups();
 
         // 로딩이 끝날 때까지 화면 전체를 덮습니다. 떠나는 화면의 버튼이 그대로 살아 있으면

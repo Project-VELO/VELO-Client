@@ -20,14 +20,12 @@ public class LiveGameController : MonoBehaviour
     private LiveTrackScroller _trackScroller;
 
     [SerializeField]
-    private LiveJudgementProcessor _judgementProcessor;
-
-    [SerializeField]
     private LivePlayInput _playInput;
 
     [SerializeField]
     private UI_Live _liveUI;
 
+    private LiveJudgementProcessor _judgementProcessor;
     private LivePlaySession _session;
     private LiveCountdown _countdown;
     private LiveResultDispatcher _resultDispatcher;
@@ -38,6 +36,7 @@ public class LiveGameController : MonoBehaviour
 
     private void Awake()
     {
+        _judgementProcessor = new LiveJudgementProcessor();
         _session = new LivePlaySession(_conductor, _trackScroller, _judgementProcessor, _liveUI);
         _countdown = new LiveCountdown(_liveUI.CountdownPanel);
         _resultDispatcher = new LiveResultDispatcher(_judgementProcessor);

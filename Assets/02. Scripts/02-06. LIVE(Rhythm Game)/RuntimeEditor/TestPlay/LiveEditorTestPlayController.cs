@@ -39,14 +39,13 @@ public class LiveEditorTestPlayController : MonoBehaviour
     private LivePlayInput _playInput;
 
     [SerializeField]
-    private LiveJudgementProcessor _judgementProcessor;
-
-    [SerializeField]
     private UI_LiveEditorPlaybackSpeedControl _speedControl;
 
     [Tooltip("테스트 플레이 중에만 켜지는 점수·콤보·판정 표시입니다. 리듬게임 씬과 같은 UI를 그대로 씁니다.")]
     [SerializeField]
     private UI_Live _liveUI;
+
+    private LiveJudgementProcessor _judgementProcessor;
 
     private bool _hasPendingSeek;
     private int _lastSeekFrame;
@@ -55,6 +54,8 @@ public class LiveEditorTestPlayController : MonoBehaviour
 
     private void Awake()
     {
+        _judgementProcessor = new LiveJudgementProcessor();
+
         _playInput.SetAcceptingInput(false);
         _playInput.OnLanePressed += PressLane;
         _playInput.OnLaneReleased += ReleaseLane;

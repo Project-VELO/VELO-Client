@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 /// <summary>
 /// 레인 입력과 만료된 노트를 판정으로 바꾸고, 그 결과를 통지하는 조정자입니다.
@@ -9,8 +8,10 @@ using UnityEngine;
 ///
 /// 화면 표시를 직접 밀어 넣지 않고 아래 이벤트로만 알립니다. 판정 코어가 UI를 참조하면
 /// 리듬게임 씬과 채보 에디터가 같은 판정기를 공유하는 지금 구조에서 UI 구성 차이가 곧 판정기 수정이 됩니다.
+///
+/// 유니티 이벤트 메서드를 쓰지 않으므로 컴포넌트가 아니라 각 씬의 컨트롤러가 생성해 쓰는 일반 클래스입니다.
 /// </summary>
-public class LiveJudgementProcessor : MonoBehaviour
+public class LiveJudgementProcessor
 {
     public Action OnGhostFailed;
 

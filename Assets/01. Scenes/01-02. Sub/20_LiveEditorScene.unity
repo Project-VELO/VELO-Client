@@ -9637,7 +9637,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1162494768}
   - component: {fileID: 1162494767}
-  - component: {fileID: 1162494766}
   - component: {fileID: 1162494765}
   m_Layer: 0
   m_Name: TestPlay
@@ -9663,23 +9662,9 @@ MonoBehaviour:
   _audioPlayer: {fileID: 1072451295}
   _conductor: {fileID: 1072451296}
   _playInput: {fileID: 1162494767}
-  _judgementProcessor: {fileID: 1162494766}
+  _judgementProcessor: {fileID: 0}
   _speedControl: {fileID: 944031857}
   _liveUI: {fileID: 1892220967}
---- !u!114 &1162494766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1162494764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0617525032ad1c41a2528a52a78fa7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveJudgementProcessor
-  _liveUI: {fileID: 1892220967}
-  _trackScroller: {fileID: 1103871490}
 --- !u!114 &1162494767
 MonoBehaviour:
   m_ObjectHideFlags: 0

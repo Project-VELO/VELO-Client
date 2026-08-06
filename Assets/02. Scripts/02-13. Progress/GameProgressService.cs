@@ -101,7 +101,7 @@ public class GameProgressService : POCOSingleton<GameProgressService>
 
         if (isFirstCompletion && MasterDataProvider.Instance.TryGetStory(storyId, out StoryData story))
         {
-            RewardService.TryGrant(story.RewardId);
+            GrantReward(story.RewardId);
         }
 
         // 바로가기가 아니라 스토리 목록을 통해 완료한 경우에도 스케줄을 완료로 인정합니다(기획서 3-E-2-3).
@@ -170,6 +170,28 @@ public class GameProgressService : POCOSingleton<GameProgressService>
         return true;
     }
     #endregion
+
+    /// <summary>
+    /// 보상 테이블의 수치를 재화에 반영합니다(스토리 감상 보상 등). 중복 지급 방지는 호출부의 책임입니다.
+    /// 비율 계산이 얽힌 LIVE 보상은 예외로 LiveResultProcessor가 처리합니다(클래스 주석 참고).
+    /// </summary>
+    private void GrantReward(string rewardId)
+    {
+        if (string.IsNullOrEmpty(rewardId))
+        {
+            return;
+        }
+
+        if (!MasterDataProvider.Instance.TryGetReward(rewardId, out RewardData reward))
+        {
+            UnityEngine.Debug.LogWarning($"[GameProgressService] 보상을 찾을 수 없어 지급하지 못했습니다: {rewardId}");
+            return;
+        }
+
+        Data.Money += reward.Money;
+        Data.Hype += reward.Hype;
+        Data.Exp += reward.Exp;
+    }
 
     private void Save()
     {

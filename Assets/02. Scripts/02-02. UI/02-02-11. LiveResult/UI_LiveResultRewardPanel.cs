@@ -4,7 +4,7 @@ using VInspector;
 
 /// <summary>
 /// 결과 화면에서 이번 플레이로 획득한 MONEY / HYPE / EXP를 표시합니다.
-/// 실제 지급은 LiveRewardService가 이미 끝냈으므로 이 패널은 표시만 담당합니다.
+/// 실제 지급은 LiveResultProcessor가 이미 끝냈으므로 이 패널은 표시만 담당합니다.
 /// </summary>
 public class UI_LiveResultRewardPanel : MonoBehaviour
 {

@@ -164,51 +164,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 345617916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &214574960
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 214574962}
-  - component: {fileID: 214574961}
-  m_Layer: 0
-  m_Name: ResultDispatch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &214574961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214574960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f153cbb5adb44f544bea3cea0534f858, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveResultDispatcher
-  _judgementProcessor: {fileID: 1101740622}
---- !u!4 &214574962
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214574960}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 345617916}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228892935
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +309,8 @@ MonoBehaviour:
   _conductor: {fileID: 1175980601}
   _judgementProcessor: {fileID: 1101740622}
   _playInput: {fileID: 23920875}
-  _countdown: {fileID: 803026416}
-  _resultDispatcher: {fileID: 214574961}
+  _countdown: {fileID: 0}
+  _resultDispatcher: {fileID: 0}
   _liveUI: {fileID: 1892220967}
 --- !u!4 &345617916
 Transform:
@@ -374,10 +329,8 @@ Transform:
   - {fileID: 1764689897}
   - {fileID: 1101740623}
   - {fileID: 23920876}
-  - {fileID: 803026417}
   - {fileID: 1080699965}
   - {fileID: 1247906201}
-  - {fileID: 214574962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &539045734
@@ -621,51 +574,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1175980603}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &803026415
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 803026417}
-  - component: {fileID: 803026416}
-  m_Layer: 0
-  m_Name: Countdown
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &803026416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803026415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12606776fe6f1a45acbaf59490fa1c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LiveCountdown
-  _liveUI: {fileID: 1892220967}
---- !u!4 &803026417
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803026415}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 345617916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936857451
 GameObject:
@@ -1257,8 +1165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0617525032ad1c41a2528a52a78fa7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LiveJudgementProcessor
-  _liveUI: {fileID: 1892220967}
-  _trackScroller: {fileID: 1764689895}
 --- !u!4 &1101740623
 Transform:
   m_ObjectHideFlags: 0

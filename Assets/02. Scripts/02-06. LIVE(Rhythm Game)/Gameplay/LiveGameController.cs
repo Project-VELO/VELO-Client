@@ -14,10 +14,10 @@ public class LiveGameController : MonoBehaviour
 {
     [Foldout("Hierarchy")]
     [SerializeField]
-    private LivePlaySession _session;
+    private LiveConductor _conductor;
 
     [SerializeField]
-    private LiveConductor _conductor;
+    private LiveTrackScroller _trackScroller;
 
     [SerializeField]
     private LiveJudgementProcessor _judgementProcessor;
@@ -28,6 +28,7 @@ public class LiveGameController : MonoBehaviour
     [SerializeField]
     private UI_Live _liveUI;
 
+    private LivePlaySession _session;
     private LiveCountdown _countdown;
     private LiveResultDispatcher _resultDispatcher;
 
@@ -37,6 +38,7 @@ public class LiveGameController : MonoBehaviour
 
     private void Awake()
     {
+        _session = new LivePlaySession(_conductor, _trackScroller, _judgementProcessor, _liveUI);
         _countdown = new LiveCountdown(_liveUI.CountdownPanel);
         _resultDispatcher = new LiveResultDispatcher(_judgementProcessor);
 

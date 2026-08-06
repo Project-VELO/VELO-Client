@@ -305,12 +305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ccc2a2a3b1a814594237bc2a0b77b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LiveGameController
-  _session: {fileID: 1247906200}
   _conductor: {fileID: 1175980601}
+  _trackScroller: {fileID: 1764689895}
   _judgementProcessor: {fileID: 1101740622}
   _playInput: {fileID: 23920875}
-  _countdown: {fileID: 0}
-  _resultDispatcher: {fileID: 0}
   _liveUI: {fileID: 1892220967}
 --- !u!4 &345617916
 Transform:
@@ -330,7 +328,6 @@ Transform:
   - {fileID: 1101740623}
   - {fileID: 23920876}
   - {fileID: 1080699965}
-  - {fileID: 1247906201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &539045734
@@ -1362,54 +1359,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -160}
   m_SizeDelta: {x: 520, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1247906199
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1247906201}
-  - component: {fileID: 1247906200}
-  m_Layer: 0
-  m_Name: Session
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1247906200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247906199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f639fc66640bda14a98b226c2c359e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LivePlaySession
-  _conductor: {fileID: 1175980601}
-  _trackScroller: {fileID: 1764689895}
-  _judgementProcessor: {fileID: 1101740622}
-  _liveUI: {fileID: 1892220967}
---- !u!4 &1247906201
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247906199}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 345617916}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286336376
 GameObject:
   m_ObjectHideFlags: 0

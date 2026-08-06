@@ -52,7 +52,9 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
     }
 
     /// <summary>
-    /// 매 프레임 문자열을 새로 만들면 GC가 발생하므로, 표시 중인 마디나 총 마디 수가 실제로 바뀌었을 때만 갱신합니다.
+    /// Update 경로이므로 문자열을 만들지 않는 SetText 포맷 경로로 씁니다. 보간 문자열은 값이
+    /// 바뀌는 프레임마다 GC.Alloc을 일으키지만, SetText는 TMP 내부 버퍼에 직접 씁니다.
+    /// 같은 값으로 다시 쓰면 TMP가 메시를 다시 만들므로, 값이 실제로 바뀌었을 때만 갱신합니다.
     /// </summary>
     private void RefreshBarIndicator()
     {
@@ -71,7 +73,7 @@ public class UI_LiveEditorTrackControls : MonoBehaviour
 
         _lastShownBarIndex = barIndex;
         _lastShownBarCount = barCount;
-        _barIndicatorText.text = $"마디: {barIndex + 1} / {barCount}";
+        _barIndicatorText.SetText("마디: {0} / {1}", barIndex + 1, barCount);
     }
 
     private void OnSnapChanged(int index)

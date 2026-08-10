@@ -264,7 +264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1470fe78953874944ac625c2cbe3510d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -423,6 +423,14 @@ PrefabInstance:
       propertyPath: m_text
       value: DORM
       objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text
       value: "2. \uC219\uC18C"
@@ -532,6 +540,14 @@ PrefabInstance:
     - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text
       value: OFFICE
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text
@@ -1130,6 +1146,14 @@ PrefabInstance:
       propertyPath: m_text
       value: STUDIO
       objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text
       value: "3. \uC2A4\uD29C\uB514\uC624"
@@ -1391,6 +1415,14 @@ PrefabInstance:
     - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_fontSizeBase
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_text

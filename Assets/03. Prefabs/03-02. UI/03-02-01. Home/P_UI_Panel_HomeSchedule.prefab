@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
 --- !u!1001 &5631586324614408595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1636,9 +1636,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c3a91b52d0e4f14b8a6d5c2e9f30a7b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemTomorrow
 --- !u!224 &4437893584376993008 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8336718573658471779, guid: 03e58095f0f40174e80d2369f5cd4cb3, type: 3}
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
 --- !u!1001 &7162842773992095905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
 --- !u!224 &2569713886167414828 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4669936664492144781, guid: 6aa13f51f6f973241958d9dc05c2cd71, type: 3}
@@ -2028,6 +2028,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c3a91b52d0e4f14b8a6d5c2e9f30a7b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemTomorrow

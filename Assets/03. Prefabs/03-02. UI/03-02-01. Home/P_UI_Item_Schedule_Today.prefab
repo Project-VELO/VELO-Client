@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
   _shortcutButton: {fileID: 3760817567753813788}
   _titleText: {fileID: 1413945038515942463}
   _enNameText: {fileID: 735028220741345877}

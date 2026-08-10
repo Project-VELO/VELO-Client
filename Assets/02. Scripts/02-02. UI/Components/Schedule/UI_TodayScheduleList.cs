@@ -12,7 +12,7 @@ public class UI_TodayScheduleList : MonoBehaviour
 {
     [Foldout("Hierarchy")]
     [SerializeField]
-    private List<UI_ScheduleRow> _rows = new List<UI_ScheduleRow>();
+    private List<UI_ScheduleItemToday> _rows = new List<UI_ScheduleItemToday>();
 
     private EEntryType _entryType = EEntryType.HOME_LIVE;
 
@@ -35,7 +35,7 @@ public class UI_TodayScheduleList : MonoBehaviour
 
         for (int i = 0; i < _rows.Count; i++)
         {
-            UI_ScheduleRow row = _rows[i];
+            UI_ScheduleItemToday row = _rows[i];
 
             if (row == null)
             {

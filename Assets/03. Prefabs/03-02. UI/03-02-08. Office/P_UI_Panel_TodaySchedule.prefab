@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
   _shortcutButton: {fileID: 2641058792895803663}
   _titleText: {fileID: 90871521390268134}
   _enNameText: {fileID: 1481427511581260432}

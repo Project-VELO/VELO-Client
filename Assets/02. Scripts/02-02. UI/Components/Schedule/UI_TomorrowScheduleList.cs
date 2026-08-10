@@ -8,6 +8,7 @@ using VInspector;
 /// UI_TodayScheduleList와 나누어 둔 것은 그리는 규칙이 다르기 때문입니다. 내일 스케줄은 아직
 /// 진행할 수 없어 완료 여부를 묻지 않고, 바로가기 대신 잠금과 D-1만 표시합니다. 한 클래스에
 /// 두 규칙을 넣으면 오늘 목록에도 잠금 분기가 섞여 사무실 화면까지 함께 복잡해집니다.
+/// 같은 이유로 항목 스크립트도 UI_ScheduleItemToday와 UI_ScheduleItemTomorrow로 나뉘어 있습니다.
 ///
 /// 행은 프리팹에 미리 배치된 것을 씁니다. 하루 스케줄이 3개 고정이라(기획서 3-E-1) 풀에서
 /// 꺼낼 이유가 없고, 고정 배치가 레이아웃도 안정적입니다.
@@ -20,7 +21,7 @@ public class UI_TomorrowScheduleList : MonoBehaviour
 {
     [Foldout("Hierarchy")]
     [SerializeField]
-    private List<UI_ScheduleRow> _rows = new List<UI_ScheduleRow>();
+    private List<UI_ScheduleItemTomorrow> _rows = new List<UI_ScheduleItemTomorrow>();
 
     /// <summary>
     /// 내일 스케줄을 다시 읽어 행에 채웁니다.
@@ -32,7 +33,7 @@ public class UI_TomorrowScheduleList : MonoBehaviour
 
         for (int i = 0; i < _rows.Count; i++)
         {
-            UI_ScheduleRow row = _rows[i];
+            UI_ScheduleItemTomorrow row = _rows[i];
 
             if (row == null)
             {
@@ -45,7 +46,7 @@ public class UI_TomorrowScheduleList : MonoBehaviour
                 continue;
             }
 
-            row.SetPreview(schedules[i]);
+            row.SetSchedule(schedules[i]);
         }
     }
 }

@@ -763,7 +763,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
 --- !u!224 &3838537906171316182 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 574479424129266394, guid: 0edb4ed79b51d2d49bfc5e704f2eebe0, type: 3}
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
 --- !u!1001 &6254596853065470281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,4 +994,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleRow
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday

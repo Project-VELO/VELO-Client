@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\uC124\uC815"
       objectReference: {fileID: 0}
+    - target: {fileID: 1186391820488545935, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_text
+      value: "\uC124\uC815"
+      objectReference: {fileID: 0}
     - target: {fileID: 1405397304537656472, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -174,6 +178,38 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9aec32a13c12b2040ba7bdba0cd1a9b9, type: 3}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uC124\uC815"
@@ -197,6 +233,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6171877070997805357}
     m_Modifications:
     - target: {fileID: 410033635140659474, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_text
+      value: "\uC774\uBCA4\uD2B8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186391820488545935, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_text
       value: "\uC774\uBCA4\uD2B8"
       objectReference: {fileID: 0}
@@ -284,6 +324,38 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: babdef224150762479819e797f758707, type: 3}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uC774\uBCA4\uD2B8"
@@ -307,6 +379,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6171877070997805357}
     m_Modifications:
     - target: {fileID: 410033635140659474, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_text
+      value: "\uACF5\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186391820488545935, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_text
       value: "\uACF5\uC9C0"
       objectReference: {fileID: 0}
@@ -394,6 +470,38 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a581bc72945a1984d9be3589c28d311d, type: 3}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7226552080655254045, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uACF5\uC9C0"

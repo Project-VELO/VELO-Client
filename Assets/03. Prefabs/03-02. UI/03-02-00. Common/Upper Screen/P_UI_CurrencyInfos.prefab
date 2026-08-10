@@ -161,7 +161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fabc2c96623e5c1428fb12152a13cc5e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -199,6 +199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022870569752798205}
     m_Modifications:
+    - target: {fileID: 712290350611336789, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 156988932c3d40442bdebb9ff268adea, type: 3}
     - target: {fileID: 4202490732042899156, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_text
       value: HYPE
@@ -316,6 +320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022870569752798205}
     m_Modifications:
+    - target: {fileID: 712290350611336789, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7b43773f25d3a949875ec487a49418c, type: 3}
     - target: {fileID: 4202490732042899156, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_text
       value: GEM
@@ -433,6 +441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022870569752798205}
     m_Modifications:
+    - target: {fileID: 712290350611336789, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ed574717d7d9b83469f3286aed090f6d, type: 3}
     - target: {fileID: 4375486266854911403, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
       propertyPath: m_Name
       value: P_UI_CurrencyInfo_Money

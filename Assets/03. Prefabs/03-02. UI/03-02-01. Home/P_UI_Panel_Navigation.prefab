@@ -113,6 +113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1972905670682638210}
     m_Modifications:
+    - target: {fileID: 2563036035548929327, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cb7c938bfaeb7e94a912f3bf2e081645, type: 3}
     - target: {fileID: 5750561543288876884, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
       propertyPath: m_Name
       value: P_UI_Button_Collection
@@ -223,6 +227,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1972905670682638210}
     m_Modifications:
+    - target: {fileID: 2563036035548929327, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 725add469e7e2ec4791ef5e0e81b7c99, type: 3}
     - target: {fileID: 5750561543288876884, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
       propertyPath: m_Name
       value: P_UI_Button_Space
@@ -329,6 +337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1972905670682638210}
     m_Modifications:
+    - target: {fileID: 2563036035548929327, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f4d984dff9f17134eb33e715460c0fda, type: 3}
     - target: {fileID: 5750561543288876884, guid: effe87fe31e09d8459965de394bb5a10, type: 3}
       propertyPath: m_Name
       value: P_UI_Button_Shop

@@ -553,7 +553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ebfde6187605c7d4fac5c841ab44a233, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -576,9 +576,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleStateIcon
   _icon: {fileID: 1929131652616867599}
-  _lockedSprite: {fileID: 0}
+  _lockedSprite: {fileID: 21300000, guid: cff35308e6f27414ca1294a65f98afd3, type: 3}
   _availableSprite: {fileID: 0}
-  _completedSprite: {fileID: 0}
+  _completedSprite: {fileID: 21300000, guid: ebfde6187605c7d4fac5c841ab44a233, type: 3}
 --- !u!1 &3238480544809405400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4265dd008ec69da4d97e393b698a34ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

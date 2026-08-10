@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3971783255780406506, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9aec32a13c12b2040ba7bdba0cd1a9b9, type: 3}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uC124\uC815"
@@ -276,6 +280,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3971783255780406506, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: babdef224150762479819e797f758707, type: 3}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uC774\uBCA4\uD2B8"
@@ -382,6 +390,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3971783255780406506, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a581bc72945a1984d9be3589c28d311d, type: 3}
     - target: {fileID: 7228309251528145994, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
       propertyPath: m_Name
       value: "P_UI_Button_\uACF5\uC9C0"

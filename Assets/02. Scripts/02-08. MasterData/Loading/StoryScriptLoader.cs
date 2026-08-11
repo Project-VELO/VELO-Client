@@ -53,12 +53,17 @@ public class StoryScriptLoader
     /// 배경·캐릭터·표정이 비어 있는 줄에 직전 줄의 값을 채웁니다.
     /// 기획 입력을 줄이기 위해 "바뀌는 줄에만 적는다"는 규칙을 쓰므로, 읽는 쪽에서 한 번만 펼쳐 두면
     /// 화면 코드가 매 줄마다 이전 값을 되짚지 않아도 됩니다.
+    ///
+    /// 캐릭터 칸의 NONE은 "내려라"라는 지시입니다. 빈 칸이 유지를 뜻하는 탓에 이 값이 없으면
+    /// 한 번 등장한 캐릭터를 회차가 끝날 때까지 세워 두게 됩니다.
     /// </summary>
     private void ApplyCarryOverState(StoryScriptData script)
     {
         string backgroundId = string.Empty;
-        string characterId = string.Empty;
-        string expressionId = string.Empty;
+        string leftCharacterId = string.Empty;
+        string leftExpressionId = string.Empty;
+        string rightCharacterId = string.Empty;
+        string rightExpressionId = string.Empty;
 
         foreach (StoryLineData line in script.Lines)
         {
@@ -71,23 +76,46 @@ public class StoryScriptLoader
                 backgroundId = line.BackgroundId;
             }
 
-            if (string.IsNullOrEmpty(line.CharacterId))
-            {
-                line.CharacterId = characterId;
-            }
-            else
-            {
-                characterId = line.CharacterId;
-            }
+            // 두 슬롯은 서로의 상태를 모릅니다. 왼쪽이 바뀌어도 오른쪽은 그대로 서 있어야 합니다.
+            ApplySlotState(ref line.CharacterId, ref line.ExpressionId, ref leftCharacterId, ref leftExpressionId);
+            ApplySlotState(ref line.RightCharacterId, ref line.RightExpressionId, ref rightCharacterId, ref rightExpressionId);
+        }
+    }
 
-            if (string.IsNullOrEmpty(line.ExpressionId))
-            {
-                line.ExpressionId = expressionId;
-            }
-            else
-            {
-                expressionId = line.ExpressionId;
-            }
+    /// <summary>
+    /// 슬롯 한 쪽의 캐릭터와 표정을 펼칩니다.
+    ///
+    /// 표정을 캐릭터와 함께 다루는 이유는, 캐릭터가 내려갔는데 표정만 남으면
+    /// 다음에 그 자리에 서는 다른 인물이 앞사람의 표정을 물려받기 때문입니다.
+    /// </summary>
+    private void ApplySlotState(ref string lineCharacterId, ref string lineExpressionId,
+        ref string carriedCharacterId, ref string carriedExpressionId)
+    {
+        if (lineCharacterId == StoryScriptTokens.NONE)
+        {
+            carriedCharacterId = string.Empty;
+            carriedExpressionId = string.Empty;
+            lineCharacterId = string.Empty;
+            lineExpressionId = string.Empty;
+            return;
+        }
+
+        if (string.IsNullOrEmpty(lineCharacterId))
+        {
+            lineCharacterId = carriedCharacterId;
+        }
+        else
+        {
+            carriedCharacterId = lineCharacterId;
+        }
+
+        if (string.IsNullOrEmpty(lineExpressionId))
+        {
+            lineExpressionId = carriedExpressionId;
+        }
+        else
+        {
+            carriedExpressionId = lineExpressionId;
         }
     }
 }

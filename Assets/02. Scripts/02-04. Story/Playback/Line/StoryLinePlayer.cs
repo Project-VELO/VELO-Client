@@ -35,12 +35,13 @@ public class StoryLinePlayer
     public void Play(StoryLineData line)
     {
         _ui.Stage.SetBackground(line.BackgroundId);
-        _ui.Stage.SetSpeaker(line.CharacterId, line.ExpressionId);
+        _ui.Stage.SetSpeakers(line);
         _ui.DialogBox.RefreshSpeaker(line);
+        _ui.DialogBox.RefreshBodyStyle(line.TextStyleId);
 
         // 씬 언로드와 건너뛰기 두 취소원을 하나로 묶습니다.
         _typingCts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
-        TypeAsync(line.Text, _typingCts.Token).Forget();
+        TypeAsync(line.Text, line.TextSpeed, _typingCts.Token).Forget();
     }
 
     /// <summary>
@@ -59,9 +60,9 @@ public class StoryLinePlayer
         _typingCts = null;
     }
 
-    private async UniTaskVoid TypeAsync(string text, CancellationToken cancellationToken)
+    private async UniTaskVoid TypeAsync(string text, ETextSpeed speed, CancellationToken cancellationToken)
     {
-        await _typewriter.TypeAsync(text, cancellationToken);
+        await _typewriter.TypeAsync(text, speed, cancellationToken);
 
         OnLineCompleted?.Invoke();
     }

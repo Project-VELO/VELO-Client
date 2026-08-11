@@ -51,7 +51,13 @@ public class StoryScriptValidator
             }
 
             ValidateSpeaker(provider, line, location, report);
-            ValidateExpression(provider, line, location, report);
+            ValidateExpression(provider, line.CharacterId, line.ExpressionId, location, report);
+            ValidateExpression(provider, line.RightCharacterId, line.RightExpressionId, $"{location}(오른쪽)", report);
+
+            if (!string.IsNullOrEmpty(line.CharacterId) && line.CharacterId == line.RightCharacterId)
+            {
+                report.AddError($"[대본] {location}의 좌우 슬롯에 같은 인물({line.CharacterId})이 배치되어 있습니다.");
+            }
         }
     }
 
@@ -81,23 +87,27 @@ public class StoryScriptValidator
         }
     }
 
-    private void ValidateExpression(MasterDataProvider provider, StoryLineData line, string location, MasterDataValidationReport report)
+    /// <summary>
+    /// 슬롯 한 쪽의 캐릭터와 표정을 검사합니다. 좌우가 같은 규칙을 쓰므로 슬롯을 인자로 받습니다.
+    /// </summary>
+    private void ValidateExpression(MasterDataProvider provider, string characterId, string expressionId,
+        string location, MasterDataValidationReport report)
     {
-        if (string.IsNullOrEmpty(line.ExpressionId) || string.IsNullOrEmpty(line.CharacterId))
+        if (string.IsNullOrEmpty(expressionId) || string.IsNullOrEmpty(characterId))
         {
             return;
         }
 
-        if (!provider.TryGetCharacter(line.CharacterId, out CharacterData character))
+        if (!provider.TryGetCharacter(characterId, out CharacterData character))
         {
-            report.AddError($"[대본] {location}의 등장 캐릭터 '{line.CharacterId}'를 characters.json에서 찾을 수 없습니다.");
+            report.AddError($"[대본] {location}의 등장 캐릭터 '{characterId}'를 characters.json에서 찾을 수 없습니다.");
             return;
         }
 
         // 표정이 목록에 없으면 기본 이미지로 대체되므로(기획서 3-L) 진행은 막히지 않습니다. 경고로 둡니다.
-        if (!character.ExpressionIds.Contains(line.ExpressionId))
+        if (!character.ExpressionIds.Contains(expressionId))
         {
-            report.AddWarning($"[대본] {location}의 표정 '{line.ExpressionId}'이 {line.CharacterId}의 표정 목록에 없습니다.");
+            report.AddWarning($"[대본] {location}의 표정 '{expressionId}'이 {characterId}의 표정 목록에 없습니다.");
         }
     }
 }

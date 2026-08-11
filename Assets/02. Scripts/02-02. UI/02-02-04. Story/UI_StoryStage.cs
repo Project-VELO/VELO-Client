@@ -35,13 +35,16 @@ public class UI_StoryStage : MonoBehaviour
     }
 
     /// <summary>
-    /// 화자를 세웁니다. 대본의 CharacterId가 한 줄에 하나뿐이라 왼쪽만 씁니다.
-    /// characterId가 비어 있으면(지문) 아무도 세우지 않습니다.
+    /// 이번 줄에 세울 인물들을 좌우 슬롯에 배치합니다.
+    /// 비어 있는 쪽은 아무도 세우지 않습니다(지문이거나 1인 장면).
+    ///
+    /// 두 슬롯을 한 번에 받는 이유는, 한쪽만 갱신하는 경로를 두면 2인 장면에서
+    /// 왼쪽만 바뀌고 오른쪽이 앞 줄 상태로 남는 실수가 생기기 때문입니다.
     /// </summary>
-    public void SetSpeaker(string characterId, string expressionId)
+    public void SetSpeakers(StoryLineData line)
     {
-        SetCharacter(EStoryCharacterSlot.LEFT, characterId, expressionId);
-        SetCharacter(EStoryCharacterSlot.RIGHT, null, null);
+        SetCharacter(EStoryCharacterSlot.LEFT, line.CharacterId, line.ExpressionId);
+        SetCharacter(EStoryCharacterSlot.RIGHT, line.RightCharacterId, line.RightExpressionId);
     }
 
     private void SetCharacter(EStoryCharacterSlot slot, string characterId, string expressionId)

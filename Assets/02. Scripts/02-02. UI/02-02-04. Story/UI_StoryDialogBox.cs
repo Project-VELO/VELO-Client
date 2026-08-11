@@ -20,7 +20,20 @@ public class UI_StoryDialogBox : MonoBehaviour
     [SerializeField]
     private TMP_Text _bodyText;
 
+    [Foldout("Project")]
+    [SerializeField]
+    private StoryTextStyleBinder _textStyleBinder;
+
     public TMP_Text BodyText => _bodyText;
+
+    /// <summary>
+    /// 본문 글꼴을 이번 줄의 스타일로 갈아 끼웁니다(연출표의 [디자인] 열).
+    /// 타이핑이 시작되기 전에 불러야 합니다. 글자를 찍는 도중에 크기가 바뀌면 이미 찍힌 글자까지 다시 배치됩니다.
+    /// </summary>
+    public void RefreshBodyStyle(string textStyleId)
+    {
+        _textStyleBinder.Get(textStyleId).ApplyTo(_bodyText);
+    }
 
     /// <summary>
     /// 화자명 박스를 갱신합니다.

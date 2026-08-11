@@ -32,14 +32,23 @@ public class StoryTypewriter
     /// 취소와 정상 완료가 같은 최종 상태(전체 출력)에 도달하도록 finally에서 마무리합니다.
     /// 호출부에서 "취소됐으면 마저 채워라"를 따로 하면 경로가 둘로 갈라져 언젠가 어긋납니다.
     /// </summary>
-    public async UniTask TypeAsync(string text, CancellationToken cancellationToken)
+    public async UniTask TypeAsync(string text, ETextSpeed speed, CancellationToken cancellationToken)
     {
         int totalCharacters = BeginLine(text);
+
+        // 즉시 출력은 루프를 한 바퀴도 돌 필요가 없습니다. 한 프레임이라도 돌면 첫 글자만 보였다가
+        // 채워지는 것이 눈에 띄어 "순간적으로 튀어나온다"는 연출 의도가 깨집니다.
+        if (StoryTypingSpeed.IsInstant(speed))
+        {
+            Complete(totalCharacters);
+            return;
+        }
 
         try
         {
             float elapsed = 0f;
-            float secondsPerCharacter = Mathf.Max(0.001f, _getSecondsPerCharacter());
+            float secondsPerCharacter = Mathf.Max(0.001f, StoryTypingSpeed.GetSecondsPerCharacter(speed, _getSecondsPerCharacter()));
+            bool isWordByWord = StoryTypingSpeed.IsWordByWord(speed);
 
             while (_visibleCount < totalCharacters)
             {
@@ -47,8 +56,14 @@ public class StoryTypewriter
 
                 int target = Mathf.Min(totalCharacters, (int)(elapsed / secondsPerCharacter));
 
+                if (isWordByWord)
+                {
+                    target = ExtendToWordEnd(target, totalCharacters);
+                }
+
                 // 실제로 늘어난 프레임에만 대입합니다. 매 프레임 넣으면 TMP가 메시를 다시 만듭니다.
-                if (target != _visibleCount)
+                // 단어 단위에서는 목표가 앞질러 가 있는 동안 글자 수 계산이 뒤처지므로, 되돌아가지 않도록 부등호로 막습니다.
+                if (_visibleCount < target)
                 {
                     _visibleCount = target;
                     _target.maxVisibleCharacters = target;
@@ -79,6 +94,30 @@ public class StoryTypewriter
 
         _visibleCount = 0;
         return _target.textInfo.characterCount;
+    }
+
+    /// <summary>
+    /// 도달한 지점이 단어 중간이면 그 단어의 끝까지 밀어 냅니다.
+    ///
+    /// 문자열을 자르지 않고 TMP가 이미 만들어 둔 characterInfo를 그대로 읽습니다.
+    /// Split이나 Substring으로 단어를 나누면 줄마다 배열이 새로 생겨 타이핑 중 GC가 쌓입니다.
+    /// </summary>
+    private int ExtendToWordEnd(int target, int totalCharacters)
+    {
+        if (target <= 0)
+        {
+            return 0;
+        }
+
+        TMP_CharacterInfo[] characters = _target.textInfo.characterInfo;
+        int index = target;
+
+        while (index < totalCharacters && !char.IsWhiteSpace(characters[index].character))
+        {
+            index++;
+        }
+
+        return index;
     }
 
     /// <summary>

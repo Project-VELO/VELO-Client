@@ -41,8 +41,22 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string Text;
 
     public string BackgroundId;
+
+    /// <summary>
+    /// 왼쪽에 세울 캐릭터입니다. 대부분의 줄이 한 명만 세우므로 이쪽이 기본 자리입니다.
+    /// 이름에 Left가 없는 것은 기존 대본과의 호환 때문입니다(회차 13편이 이미 이 이름으로 기록되어 있습니다).
+    /// </summary>
     public string CharacterId;
+
     public string ExpressionId;
+
+    /// <summary>
+    /// 오른쪽에 세울 캐릭터입니다. 2인 대화에서만 채웁니다.
+    /// 왼쪽과 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
+    /// </summary>
+    public string RightCharacterId;
+
+    public string RightExpressionId;
 
     /// <summary>
     /// 컷씬 일러스트 ID입니다. 원고의 [일러스트] 지시에 대응하며, 없으면 비어 있습니다.
@@ -50,18 +64,58 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string IllustrationId;
 
     /// <summary>
+    /// JSON에 적는 출력 속도 이름입니다("NORMAL" / "SLOW" / "FAST" / "INSTANT" / "WORD_BY_WORD").
+    /// 비어 있으면 NORMAL입니다.
+    /// </summary>
+    public string TextSpeedName;
+
+    /// <summary>
+    /// 대사 문구의 글꼴·크기·색 묶음 ID입니다(연출표의 [디자인] 열).
+    ///
+    /// 세 값을 따로 두지 않고 ID 하나로 묶는 이유는, 같은 조합이 여러 줄에 반복되기 때문입니다.
+    /// 시트에 매번 "명조체 24pt 밝은 회색"을 적으면 색 하나 바꿀 때 대본 전체를 고쳐야 합니다.
+    /// </summary>
+    public string TextStyleId;
+
+    /// <summary>
+    /// 화면 이펙트 ID입니다(연출표의 [화면 이펙트] 열). 진동·줌·글리치 같은 연출 하나를 가리킵니다.
+    /// </summary>
+    public string EffectId;
+
+    /// <summary>
+    /// 이 줄에서 새로 시작할 BGM ID입니다. 비어 있으면 직전 BGM을 그대로 둡니다.
+    /// 배경과 달리 캐리오버 대상이 아닙니다. 매 줄 같은 값을 채우면 같은 곡을 계속 다시 트는 지시가 됩니다.
+    ///
+    /// 재생을 멈추려면 BGM_NONE을 적습니다. 빈 값이 "유지"를 뜻하므로 중지에는 별도의 값이 필요합니다.
+    /// </summary>
+    public string BgmId;
+
+    /// <summary>
+    /// 이 줄에서 한 번 재생할 효과음 ID입니다.
+    /// </summary>
+    public string SfxId;
+
+    /// <summary>
     /// LineTypeName을 변환한 값입니다. 역직렬화 직후 채워집니다.
     /// </summary>
     [NonSerialized]
     public ELineType LineType;
 
+    /// <summary>
+    /// TextSpeedName을 변환한 값입니다. 역직렬화 직후 채워집니다.
+    /// </summary>
+    [NonSerialized]
+    public ETextSpeed TextSpeed;
+
     public void OnBeforeSerialize()
     {
         LineTypeName = MasterDataEnum.ToName(LineType);
+        TextSpeedName = MasterDataEnum.ToName(TextSpeed);
     }
 
     public void OnAfterDeserialize()
     {
         LineType = MasterDataEnum.Parse(LineTypeName, ELineType.NARRATION, $"{nameof(StoryLineData)}(line {LineId}).{nameof(LineTypeName)}");
+        TextSpeed = MasterDataEnum.Parse(TextSpeedName, ETextSpeed.NORMAL, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextSpeedName)}");
     }
 }

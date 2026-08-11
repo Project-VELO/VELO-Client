@@ -95,6 +95,7 @@ MonoBehaviour:
   _speakerRoot: {fileID: 1480983231648138649}
   _speakerText: {fileID: 5709119921821082597}
   _bodyText: {fileID: 493121355118279946}
+  _textStyleBinder: {fileID: 4471902855361028473}
 --- !u!1 &330338893064320011
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +640,7 @@ GameObject:
   - component: {fileID: 3073515681631702927}
   - component: {fileID: 857170073666146198}
   - component: {fileID: 7553068947160085202}
+  - component: {fileID: 4471902855361028473}
   m_Layer: 5
   m_Name: P_UI_Story
   m_TagString: Untagged
@@ -1527,3 +1529,438 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4471902855361028473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838749343358634847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d52535b1a64654caead7a3e1f6a46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryTextStyleBinder
+  _styles:
+    _keys:
+    - STYLE_ALERT_RED_32
+    - STYLE_CHOI
+    - STYLE_CHOI_26
+    - STYLE_DIRECTOR_BLUE_24
+    - STYLE_DIRECTOR_BLUE_26
+    - STYLE_DOKKAEBI_BROWN_26
+    - STYLE_ECHO_GRAY
+    - STYLE_FD_GRAY_26
+    - STYLE_GHOST_DARKRED_26
+    - STYLE_GHOST_RED_24
+    - STYLE_GHOST_RED_26
+    - STYLE_GHOST_RED_32
+    - STYLE_HWANYEONG
+    - STYLE_HWANYEONG_26
+    - STYLE_HWANYEONG_26_WHITE
+    - STYLE_HWANYEONG_28_CENTER
+    - STYLE_IDOL_PINK_24
+    - STYLE_IMPACT_BROWN_32
+    - STYLE_IMPACT_BROWN_36
+    - STYLE_IMPACT_GRAY_28
+    - STYLE_IMPACT_RED_32
+    - STYLE_IMPACT_RED_36
+    - STYLE_IMPACT_RED_40
+    - STYLE_IMPACT_RED_EMPH_28
+    - STYLE_IMPACT_RED_EMPH_32
+    - STYLE_IMPACT_WHITE_28
+    - STYLE_IMPACT_WHITE_32
+    - STYLE_IMPACT_WHITE_40
+    - STYLE_IMPACT_WHITE_EMPH_26
+    - STYLE_IMPACT_WHITE_EMPH_28
+    - STYLE_IMPACT_WHITE_EMPH_32
+    - STYLE_IMPACT_YELLOW_EMPH_28
+    - STYLE_JUHUI
+    - STYLE_KIM
+    - STYLE_KIM_26
+    - STYLE_KIM_RED_26
+    - STYLE_MAIL_BLUE_24
+    - STYLE_MAIL_WHITE_24
+    - STYLE_MC_BLUE_26
+    - STYLE_MEMBER
+    - STYLE_MEMBER_26
+    - STYLE_MEMBER_28
+    - STYLE_MEMBER_32
+    - STYLE_MEMBER_SHOUT_28
+    - STYLE_MEMBER_SHOUT_32
+    - STYLE_MEMBER_SHOUT_32_RED
+    - STYLE_MEMBER_TREMBLE
+    - STYLE_MEMBER_TREMBLE_HARD
+    - STYLE_MONGGU_24
+    - STYLE_MONGGU_26
+    - STYLE_MONOLOGUE
+    - STYLE_MONOLOGUE_BOLD_26
+    - STYLE_MUMYEONG_24
+    - STYLE_MUMYEONG_26
+    - STYLE_MUMYEONG_28_PURPLE
+    - STYLE_NARRATION
+    - STYLE_NARRATION_26_WHITE
+    - STYLE_NARRATION_26_WHITE_EMPH
+    - STYLE_NARRATION_28_WHITE
+    - STYLE_NARRATION_BLUE
+    - STYLE_NARRATION_GOLD
+    - STYLE_NARRATION_PURPLE
+    - STYLE_NARRATION_RED_EMPH
+    - STYLE_NARRATION_WHITE
+    - STYLE_NARRATION_WHITE_EMPH
+    - STYLE_PD_GREEN_26
+    - STYLE_PD_GREEN_BOLD_28
+    - STYLE_P_DIALOGUE
+    - STYLE_P_DIALOGUE_26
+    - STYLE_P_SHOUT_28
+    - STYLE_P_SHOUT_PLAIN_32
+    - STYLE_P_SHOUT_RED_32
+    - STYLE_P_TREMBLE_26
+    - STYLE_P_TREMBLE_28
+    - STYLE_P_TREMBLE_32
+    - STYLE_SCREAM_BLUE
+    - STYLE_SERIF_BOLD_PURPLE_32
+    - STYLE_SERIF_BOLD_RED_36
+    - STYLE_SERIF_BOLD_WHITE_28
+    - STYLE_STAFF_GRAY_24
+    - STYLE_WRITER_YELLOW_24
+    - STYLE_YOKAI_GREEN_26
+    - STYLE_YOKAI_GREEN_32
+    _values:
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.603922, g: 0.603922, b: 0.603922, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.541176, g: 0.541176, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.431373, g: 0.12549, b: 0.12549, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.647059, g: 0.164706, b: 0.164706, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.619608, g: 0.619608, b: 0.619608, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.878431, g: 0.878431, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 0.309804, g: 0.764706, b: 0.968627, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.784314, g: 0.662745, b: 0.294118, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+  _defaultStyle:
+    _font: {fileID: 0}
+    _fontSize: 24
+    _color: {r: 1, g: 1, b: 1, a: 1}
+    _fontStyle: 0

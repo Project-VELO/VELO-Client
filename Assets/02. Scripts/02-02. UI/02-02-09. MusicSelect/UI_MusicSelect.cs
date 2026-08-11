@@ -29,12 +29,6 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private Button _liveReadyButton;
 
-    /// <summary>
-    /// 준비 화면을 거치지 않는 즉시 시작 버튼입니다(기획서 10.2의 "플레이 버튼").
-    /// </summary>
-    [SerializeField]
-    private Button _playButton;
-
     [Foldout("Hierarchy")]
     [Header("Texts")]
     [SerializeField]
@@ -70,7 +64,6 @@ public class UI_MusicSelect : MonoBehaviour
         // 뒤로가기 위치는 진입 경로에 따라 달라지므로 UI_SceneTransitionButton(고정 대상)을 쓸 수 없습니다.
         _backButton.onClick.AddListener(() => LoadScene(LiveEntryBackTarget.GetBackScene(LiveEntryContext.Instance.EntryType)));
         _liveReadyButton.onClick.AddListener(() => _liveEntry.OpenPreparePopup(_selectedSong, _difficulty));
-        _playButton.onClick.AddListener(() => _liveEntry.StartLiveDirectly(_selectedSong, _difficulty));
     }
 
     /// <summary>
@@ -119,7 +112,7 @@ public class UI_MusicSelect : MonoBehaviour
 
     /// <summary>
     /// 채보 없음만 버튼 비활성 사유로 남깁니다. 카드 편성 미달은 조용한 비활성 대신
-    /// 클릭 시 안내 팝업으로 차단합니다(기획서 16-15 + SCREEN-011 포토카드 미편성 안내).
+    /// 준비 팝업의 라이브 시작에서 안내 팝업으로 차단합니다(기획서 16-15 + SCREEN-011 포토카드 미편성 안내).
     /// </summary>
     private void SetSelection(SongData song, EDifficulty difficulty, bool hasChart)
     {
@@ -127,7 +120,6 @@ public class UI_MusicSelect : MonoBehaviour
         _difficulty = difficulty;
 
         _liveReadyButton.interactable = hasChart;
-        _playButton.interactable = hasChart;
     }
 
     // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.

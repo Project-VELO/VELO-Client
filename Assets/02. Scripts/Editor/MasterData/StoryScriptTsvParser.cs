@@ -128,9 +128,13 @@ public class StoryScriptTsvParser
             return;
         }
 
-        if (string.IsNullOrWhiteSpace(text))
+        // 대사 없이 배경만 넘기는 컷을 허용합니다(연출표 없이 이미지만 있는 회차).
+        // 다만 아무 변화도 없는 줄은 시트의 실수이므로, 배경이나 일러스트 중 하나는 있어야 합니다.
+        if (string.IsNullOrWhiteSpace(text)
+            && string.IsNullOrEmpty(GetCell(cells, columns, COLUMN_BACKGROUND_ID))
+            && string.IsNullOrEmpty(GetCell(cells, columns, COLUMN_ILLUSTRATION_ID)))
         {
-            errors.Add($"{rowNumber}행: text가 비어 있습니다.");
+            errors.Add($"{rowNumber}행: text가 비어 있는데 배경·일러스트 지정도 없습니다.");
             return;
         }
 

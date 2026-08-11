@@ -36,8 +36,7 @@ public class StoryLinePlayer
     {
         _ui.Stage.SetBackground(line.BackgroundId);
         _ui.Stage.SetSpeakers(line);
-        _ui.DialogBox.RefreshSpeaker(line);
-        _ui.DialogBox.RefreshBodyStyle(line.TextStyleId);
+        _ui.DialogBox.Refresh(line);
 
         // 앞 줄의 토큰이 아직 남아 있을 수 있습니다. 팝업 없이 다음 줄로 넘어간 경로가 그렇습니다.
         // 여기서 걷지 않으면 줄마다 CancellationTokenSource가 하나씩 쌓입니다.

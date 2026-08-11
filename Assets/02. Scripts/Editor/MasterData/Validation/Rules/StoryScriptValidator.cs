@@ -45,9 +45,12 @@ public class StoryScriptValidator
             StoryLineData line = script.Lines[i];
             string location = $"{script.StoryId} {i + 1}번째 줄";
 
-            if (string.IsNullOrWhiteSpace(line.Text))
+            // 빈 대사는 배경만 넘기는 컷이라 오류가 아닙니다.
+            // 실수로 비운 줄은 가져오기 단계(StoryScriptTsvParser)에서 걸러집니다.
+            // 여기서는 배경이 캐리오버로 이미 채워져 있어 "아무 일도 하지 않는 줄"을 가려낼 수 없습니다.
+            if (string.IsNullOrWhiteSpace(line.Text) && line.LineType != ELineType.NARRATION)
             {
-                report.AddError($"[대본] {location}의 대사가 비어 있습니다.");
+                report.AddError($"[대본] {location}이 {line.LineType}인데 대사가 비어 있습니다.");
             }
 
             ValidateSpeaker(provider, line, location, report);

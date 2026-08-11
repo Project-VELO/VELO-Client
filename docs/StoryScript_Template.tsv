@@ -1,7 +1,7 @@
 ﻿storyId	lineId	lineType	speakerId	text	backgroundId	characterId	expressionId	illustrationId	speakerRaw	sceneNote	textSpeed	textStyleId	effectId	bgmId	sfxId	rightCharacterId	rightExpressionId
-STORY_PROLOGUE_01	1	NARRATION		둥, 둥.	BG_STAGE_MIDNIGHT_DARK					#0. 자정의 오페라(미래) / [장소: 특설 무대] / [시간: 00:00] / [속도] 단어 단위 툭툭 / [디자인] 굵은 고딕 36pt 붉은색 / [이펙트] 0-A 노출, 화면이 베이스에 맞춰 무겁게 진동 / [사운드] BGM 대기, SFX 심장 박동처럼 무거운 베이스 앰프 소리	WORD_BY_WORD	STYLE_IMPACT_RED_36	FX_SCREEN_RUMBLE_BASS		SFX_BASS_AMP_HEARTBEAT		
+STORY_PROLOGUE_01	1	NARRATION		둥, 둥.	0-A					#0. 자정의 오페라(미래) / [장소: 특설 무대] / [시간: 00:00] / [속도] 단어 단위 툭툭 / [디자인] 굵은 고딕 36pt 붉은색 / [이펙트] 0-A 노출, 화면이 베이스에 맞춰 무겁게 진동 / [사운드] BGM 대기, SFX 심장 박동처럼 무거운 베이스 앰프 소리	WORD_BY_WORD	STYLE_IMPACT_RED_36	FX_SCREEN_RUMBLE_BASS		SFX_BASS_AMP_HEARTBEAT		
 STORY_PROLOGUE_01	2	NARRATION		칠흑 같은 어둠 속, 심장 박동처럼 둥, 둥, 무거운 베이스 소리가 울려 퍼졌다.						[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [이펙트] 변동 없음 / [사운드] BGM 시작 - 웅장하고 기괴한 오컬트 풍의 서곡	NORMAL	STYLE_NARRATION		BGM_STORY_OCCULT_OVERTURE			
-STORY_PROLOGUE_01	3	NARRATION		일순간 수천 개의 초가 켜지며 거대한 공연장을 밝혔다.	BG_STAGE_MIDNIGHT_BLOOM					[속도] 즉시 / [디자인] 명조체 24pt 밝은 회색 / [이펙트] 0-B로 눈부시게 디졸브 전환, 블룸 강하게 / [사운드] SFX 파바박! 수천 개의 불길이 타오르는 소리	INSTANT	STYLE_NARRATION	FX_DISSOLVE_BLOOM_IN		SFX_CANDLE_IGNITE_BURST		
+STORY_PROLOGUE_01	3	NARRATION		일순간 수천 개의 초가 켜지며 거대한 공연장을 밝혔다.	0-B					[속도] 즉시 / [디자인] 명조체 24pt 밝은 회색 / [이펙트] 0-B로 눈부시게 디졸브 전환, 블룸 강하게 / [사운드] SFX 파바박! 수천 개의 불길이 타오르는 소리	INSTANT	STYLE_NARRATION	FX_DISSOLVE_BLOOM_IN		SFX_CANDLE_IGNITE_BURST		
 STORY_PROLOGUE_01	4	NARRATION		무대 위, 검은 제복을 입은 V.E.L.O 다섯 멤버가 압도적인 포스를 뿜어내며 서 있었다.				CG_VELO_STAGE_DEBUT		[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [연출] 이벤트 CG 화려하게 컷 인 / [이펙트] 일러스트 중앙으로 서서히 줌인 / [사운드] BGM 본격적인 댄스 비트로 폭발	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_SLOW	BGM_STORY_OCCULT_DROP			
 STORY_PROLOGUE_01	5	MONOLOGUE	CHAR_P	아이돌의 어원은 우상, 혹은 신에게 바치는 제물이다.				CG_VELO_STAGE_DEBUT	P(독백)	[속도] 느리게 / [디자인] 고딕체 24pt 은회색 / [연출] 이벤트 CG 유지 / [이펙트] 줌인 계속 / [사운드] BGM 유지	SLOW	STYLE_MONOLOGUE					
 STORY_PROLOGUE_01	6	MONOLOGUE	CHAR_P	인간 세상은 한 때 이 아이들을 쓰레기통에 처박았지만...				CG_VELO_STAGE_DEBUT	P(독백)	[속도] 느리게 / [디자인] 고딕체 24pt 은회색 / [연출] 이벤트 CG 유지 / [이펙트] 줌인 정지 / [사운드] BGM 유지	SLOW	STYLE_MONOLOGUE	FX_ZOOM_STOP				
@@ -11,22 +11,22 @@ STORY_PROLOGUE_01	9	DIALOGUE		끼아아아아악 !!				CG_VELO_STAGE_DEBUT	관�
 STORY_PROLOGUE_01	10	NARRATION		뼈가 울리는 듯한 소름 돋는, 그러나 미친 듯이 열광적인 환호성이었다.				CG_VELO_STAGE_DEBUT		[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [연출] 이벤트 CG 유지 / [이펙트] 흔들림 지속 / [사운드] 환호성 지속	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_01	11	NARRATION		그 환호성은 단순한 소리가 아니었다.				CG_VELO_STAGE_DEBUT		[속도] 단어 단위 툭툭 / [디자인] 명조체 24pt 흰색 / [연출] 이벤트 CG 유지 / [이펙트] 화면 흔들림 멈춤 / [사운드] BGM 볼륨 복구	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_SHAKE_STOP				
 STORY_PROLOGUE_01	12	NARRATION		객석에서 터져 나온 영령들의 폭발적인 열광이 짙고 푸른 아지랑이와 입자가 되어 허공으로 솟아오르기 시작했다.				CG_VELO_STAGE_DEBUT		[속도] 느리게 / [디자인] 명조체 24pt 밝은 회색 / [연출] 이벤트 CG 서서히 디졸브 아웃 / [이펙트] 객석 아래에서부터 푸른 아지랑이 파티클이 위로 상승 / [사운드] BGM 웅장하게 고조	SLOW	STYLE_NARRATION	FX_PARTICLE_SPIRIT_RISE				
-STORY_PROLOGUE_01	13	NARRATION		거대한 돔 공연장 전체가 기괴하고도 아름다운 영적인 에너지로 일렁였다.	BG_STAGE_MIDNIGHT_BLOOM					[속도] 느리게 / [디자인] 명조체 24pt 밝은 회색 / [연출] 일러스트 미노출 / [이펙트] 0-B 무대 배경 복구, 몽환적인 푸른빛 필터 / [사운드] BGM 유지	SLOW	STYLE_NARRATION	FX_FILTER_MYSTIC_BLUE				
-STORY_PROLOGUE_01	14	DIALOGUE	CHAR_MUMYEONG	(VIP 발코니에서 샴페인 잔을 든 채) 훌륭하군요, P씨.	BG_VIP_BALCONY				무명	[속도] 느리게 / [디자인] 우아한 명조 26pt 연보라색 / [연출] 무명 오른쪽, 여유로운 미소, 서서히 페이드 인 등장 / [이펙트] 0-C로 컷 전환, 무명 주변으로 보랏빛 기운 일렁임 / [사운드] BGM 살짝 먹먹하게 필터링 (공간감 연출)	SLOW	STYLE_MUMYEONG_26	FX_CUT_TO_BALCONY			CHAR_MUMYEONG	EXP_SMILE
+STORY_PROLOGUE_01	13	NARRATION		거대한 돔 공연장 전체가 기괴하고도 아름다운 영적인 에너지로 일렁였다.	0-B					[속도] 느리게 / [디자인] 명조체 24pt 밝은 회색 / [연출] 일러스트 미노출 / [이펙트] 0-B 무대 배경 복구, 몽환적인 푸른빛 필터 / [사운드] BGM 유지	SLOW	STYLE_NARRATION	FX_FILTER_MYSTIC_BLUE				
+STORY_PROLOGUE_01	14	DIALOGUE	CHAR_MUMYEONG	(VIP 발코니에서 샴페인 잔을 든 채) 훌륭하군요, P씨.	0-C				무명	[속도] 느리게 / [디자인] 우아한 명조 26pt 연보라색 / [연출] 무명 오른쪽, 여유로운 미소, 서서히 페이드 인 등장 / [이펙트] 0-C로 컷 전환, 무명 주변으로 보랏빛 기운 일렁임 / [사운드] BGM 살짝 먹먹하게 필터링 (공간감 연출)	SLOW	STYLE_MUMYEONG_26	FX_CUT_TO_BALCONY			CHAR_MUMYEONG	EXP_SMILE
 STORY_PROLOGUE_01	15	DIALOGUE	CHAR_MUMYEONG	인간의 얄팍한 자본 따위로는 절대 만들어낼 수 없는 완벽한 열광.					무명	[속도] 느리게 / [디자인] 우아한 명조 26pt 연보라색 / [연출] 무명 유지 / [이펙트] 변동 없음 / [사운드] BGM 유지	SLOW	STYLE_MUMYEONG_26					
 STORY_PROLOGUE_01	16	NARRATION		허공을 맴돌던 푸른 입자들이 마치 마법처럼 무명의 샴페인 잔 속으로 회오리치듯 빨려 들어간다.						[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [연출] 무명 유지 / [이펙트] 무명의 손(잔) 쪽으로 푸른 입자들이 모여드는 파티클 / [사운드] BGM 유지 + SFX 기분 좋은 마법 흡수 소리 (ASMR 톤)	NORMAL	STYLE_NARRATION	FX_PARTICLE_ABSORB_GLASS		SFX_MAGIC_ABSORB_ASMR		
 STORY_PROLOGUE_01	17	NARRATION		무명이 잔 속에 담긴 영롱한 빛을 음미하듯 입꼬리를 올린다.						[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [연출] 무명 유지, 가면 너머 안광 번뜩임 / [이펙트] 변동 없음 / [사운드] BGM 유지	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_01	18	DIALOGUE	CHAR_MUMYEONG	저, 질 좋고 묵직한 '공명'의 냄새를 맡아보시죠.					무명	[속도] 느리게 / [디자인] 우아한 명조 24pt 연보라색 / [연출] 무명 유지 / [이펙트] 변동 없음 / [사운드] BGM 유지	SLOW	STYLE_MUMYEONG_24					
 STORY_PROLOGUE_01	19	DIALOGUE	CHAR_P	당연하지. 내 새끼들 무대 씹어먹는 실력 하나는 이승 저승 통틀어 최고니까.					P	[속도] 보통 / [디자인] 고딕체 24pt 순백색 / [연출] 무명 유지 / [이펙트] 화면 살짝 줌인 / [사운드] BGM 유지	NORMAL	STYLE_P_DIALOGUE	FX_ZOOM_IN_SLIGHT				
 STORY_PROLOGUE_01	20	NARRATION		P는 난간에 기대어 무대 아래를 내려다보며 피식 웃는다.						[속도] 보통 / [디자인] 명조체 24pt 밝은 회색 / [연출] 무명 유지 / [이펙트] 변동 없음 / [사운드] BGM 유지	NORMAL	STYLE_NARRATION					
-STORY_PROLOGUE_01	21	MONOLOGUE	CHAR_P	얄팍한 자본이 지배하는 이승의 무대에서 쫓겨난 우리는, 가장 어두운 저승의 밑바닥을 딛고 올라가 다시 이승마저 완벽하게 집어삼키기로 했다.	BG_STAGE_MIDNIGHT_BLOOM				P(독백)	[속도] 느리게 / [디자인] 고딕체 24pt 은회색 / [연출] 무명 서서히 페이드 아웃 퇴장 / [이펙트] 화면 포커스 다시 무대(0-B)쪽으로 서서히 디졸브 이동 / [사운드] BGM 선명해지며 폭발적으로 고조	SLOW	STYLE_MONOLOGUE	FX_DISSOLVE_TO_STAGE			NONE	
+STORY_PROLOGUE_01	21	MONOLOGUE	CHAR_P	얄팍한 자본이 지배하는 이승의 무대에서 쫓겨난 우리는, 가장 어두운 저승의 밑바닥을 딛고 올라가 다시 이승마저 완벽하게 집어삼키기로 했다.	0-B				P(독백)	[속도] 느리게 / [디자인] 고딕체 24pt 은회색 / [연출] 무명 서서히 페이드 아웃 퇴장 / [이펙트] 화면 포커스 다시 무대(0-B)쪽으로 서서히 디졸브 이동 / [사운드] BGM 선명해지며 폭발적으로 고조	SLOW	STYLE_MONOLOGUE	FX_DISSOLVE_TO_STAGE			NONE	
 STORY_PROLOGUE_01	22	MONOLOGUE	CHAR_P	산 자와 죽은 자 모두를 홀려버릴 세상에서 가장 화려하고 기괴한 괴담(怪談), 그게 바로 우리다.					P(독백)	[속도] 느리게 / [디자인] 굵은 고딕 26pt 은회색 / [연출] 미노출 / [이펙트] 푸른 영력과 화려한 레이저가 화면을 가득 채움 / [사운드] BGM 절정	SLOW	STYLE_MONOLOGUE_BOLD_26	FX_LASER_FULLSCREEN				
 STORY_PROLOGUE_01	23	NARRATION		무대 위에서 멤버들이 화려한 엔딩 포즈를 취하는 순간.						[속도] 즉시 / [디자인] 명조체 24pt 밝은 회색 / [연출] 미노출 / [이펙트] 강렬한 화이트 아웃 플래시 (엔딩 조명) / [사운드] BGM 최고조	INSTANT	STYLE_NARRATION	FX_WHITE_OUT_FLASH				
 STORY_PROLOGUE_01	24	NARRATION		삐이이익-!!						[속도] 즉시 / [디자인] 굵은 고딕 40pt 붉은색 / [연출] 미노출 / [이펙트] 화면이 기괴하게 일그러지며 글리치 노이즈 발생 / [사운드] BGM 강제 종료 + SFX 고막을 찢는 날카로운 마이크 하울링	INSTANT	STYLE_IMPACT_RED_40	FX_GLITCH_NOISE	BGM_NONE	SFX_MIC_HOWLING		
 STORY_PROLOGUE_01	25	NARRATION		고막을 찢는 날카로운 마이크 하울링 소리와 함께 지직거리는 기괴한 노이즈가 일며,						[속도] 빠르게 / [디자인] 명조체 24pt 밝은 회색 / [연출] 미노출 / [이펙트] 화면 글리치 폭주 / [사운드] 끔찍한 전자 노이즈 지속	FAST	STYLE_NARRATION	FX_GLITCH_BURST		SFX_ELECTRIC_NOISE		
-STORY_PROLOGUE_01	26	NARRATION		스위치를 끄듯 세상이 완벽한 암흑으로 변했다.	BG_STAGE_MIDNIGHT_DARK					[속도] 즉시 / [디자인] 명조체 24pt 흰색 / [연출] 미노출 / [이펙트] 구형 TV가 꺼지듯 한순간에 완벽한 블랙아웃 (암전) / [사운드] SFX 뚝 끊어지는 무거운 정적 (1씬의 문 부서지는 소리로 연결)	INSTANT	STYLE_NARRATION_WHITE	FX_BLACKOUT_CRT		SFX_SILENCE_CUT		
+STORY_PROLOGUE_01	26	NARRATION		스위치를 끄듯 세상이 완벽한 암흑으로 변했다.	0-A					[속도] 즉시 / [디자인] 명조체 24pt 흰색 / [연출] 미노출 / [이펙트] 구형 TV가 꺼지듯 한순간에 완벽한 블랙아웃 (암전) / [사운드] SFX 뚝 끊어지는 무거운 정적 (1씬의 문 부서지는 소리로 연결)	INSTANT	STYLE_NARRATION_WHITE	FX_BLACKOUT_CRT		SFX_SILENCE_CUT		
 STORY_PROLOGUE_02	1	NARRATION		쾅 !!						#1-A. S-Tier 최상층 임원 회의실(과거/흑백) / [디자인] 굵은 고딕 40pt 붉은색 / [연출] 미노출 / 암전 상태에서 화면 강하게 덜컹거림	INSTANT	STYLE_IMPACT_RED_40	FX_SCREEN_SHAKE_HARD		SFX_IRON_DOOR_BURST		
-STORY_PROLOGUE_02	2	NARRATION		육중한 철제 문이 파열음을 내며 열려 젖혀졌다.	BG_STIER_BOARDROOM					[디자인] 명조체 24pt 밝은 회색 / 1-A 컷 인 / BGM 차갑고 숨 막히는 권력의 테마	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_STIER_POWER_COLD			
+STORY_PROLOGUE_02	2	NARRATION		육중한 철제 문이 파열음을 내며 열려 젖혀졌다.	1-A					[디자인] 명조체 24pt 밝은 회색 / 1-A 컷 인 / BGM 차갑고 숨 막히는 권력의 테마	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_STIER_POWER_COLD			
 STORY_PROLOGUE_02	3	NARRATION		온기라고는 단 1도 존재하지 않는 삭막한 무채색의 공간.						[디자인] 명조체 24pt 밝은 회색 / 화면 전체에 차가운 흑백 필터	NORMAL	STYLE_NARRATION	FX_FILTER_MONOCHROME				
 STORY_PROLOGUE_02	4	NARRATION		거대한 흑요석 테이블을 중심으로 날카로운 직선 형태의 의자들이 도열해 있고,						[디자인] 명조체 24pt 밝은 회색 / 회의실 전경을 천천히 훑는 연출(Pan)	NORMAL	STYLE_NARRATION	FX_PAN_ROOM				
 STORY_PROLOGUE_02	5	NARRATION		잿빛 벽면을 타고 흐르는 서늘한 백색 조명은 마치 단두대의 칼날 같았다.						[디자인] 명조체 24pt 밝은 회색 / 조명 이펙트가 날카롭게 점멸	SLOW	STYLE_NARRATION	FX_LIGHT_FLICKER				
@@ -56,9 +56,9 @@ STORY_PROLOGUE_02	28	DIALOGUE	CHAR_DIRECTOR_KIM	왜? 이번에도 저년들 빚�
 STORY_PROLOGUE_02	29	DIALOGUE	CHAR_DIRECTOR_KIM	야, 저번처럼 바닥에 피떡 돼서 널브러지면 그거 치우고 기사 막는 것도 다 돈이야. 목줄 꽉 쥐고 있어.					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_ZOOM_STOP				
 STORY_PROLOGUE_02	30	NARRATION		쿵-.		NONE				[디자인] 굵은 고딕 36pt 붉은색 / [연출] 김 전무 즉시 컷 아웃 퇴장 / BGM 정지	INSTANT	STYLE_IMPACT_RED_36	FX_SHAKE_BLACKOUT	BGM_NONE	SFX_HEART_DROP		
 STORY_PROLOGUE_02	31	NARRATION		수년 전, 옥상에서 허공으로 몸을 던지던 P의 첫 번째 아이돌의 창백한 얼굴이 시야를 덮치며 숨이 턱 막혀왔다.						[디자인] 명조체 24pt 밝은 회색 / 암전 속에서 소녀가 추락하는 짧은 잔상(글리치)	SLOW	STYLE_NARRATION	FX_GLITCH_FALLING_GIRL		SFX_WIND_CHOKE		
-STORY_PROLOGUE_02	32	NARRATION		손톱이 손바닥을 파고들어 피가 맺혔지만, 흑요석처럼 단단하게 뭉친 자본의 폭력 앞에서는 그 어떤 비명도 무력했다.	BG_STIER_BOARDROOM					[디자인] 명조체 24pt 밝은 회색 / 흑백의 회의실 배경 복구되며 서서히 어두워짐	SLOW	STYLE_NARRATION	FX_RECOVER_DARKEN	BGM_STIER_DESPAIR			
+STORY_PROLOGUE_02	32	NARRATION		손톱이 손바닥을 파고들어 피가 맺혔지만, 흑요석처럼 단단하게 뭉친 자본의 폭력 앞에서는 그 어떤 비명도 무력했다.	1-A					[디자인] 명조체 24pt 밝은 회색 / 흑백의 회의실 배경 복구되며 서서히 어두워짐	SLOW	STYLE_NARRATION	FX_RECOVER_DARKEN	BGM_STIER_DESPAIR			
 STORY_PROLOGUE_02	33	NARRATION		위이잉-						#1-B. S-Tier 지하 1층 제1연습실(과거/흑백) / [디자인] 굵은 고딕 32pt 흰색 / 흑백의 암전 상태 / BGM 대기	INSTANT	STYLE_IMPACT_WHITE_32	FX_BLACKOUT_MONO	BGM_NONE	SFX_AIR_PURIFIER		
-STORY_PROLOGUE_02	34	NARRATION		지옥에서 도망치듯 내려온 지하 1층. 먼지 한 톨 허락하지 않는 공기청정기의 모터 소리만이 무겁게 맴도는 새하얀 공간.	BG_STIER_PRACTICE_ROOM					[디자인] 명조체 24pt 밝은 회색 / 1-B 컷 인(흑백 필터 유지)	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_PRACTICE_AMBIENT_COLD			
+STORY_PROLOGUE_02	34	NARRATION		지옥에서 도망치듯 내려온 지하 1층. 먼지 한 톨 허락하지 않는 공기청정기의 모터 소리만이 무겁게 맴도는 새하얀 공간.	1-B					[디자인] 명조체 24pt 밝은 회색 / 1-B 컷 인(흑백 필터 유지)	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_PRACTICE_AMBIENT_COLD			
 STORY_PROLOGUE_02	35	NARRATION		차갑고 시린 백색 LED 조명이 정육점의 쇼케이스처럼 무자비하게 쏟아져 내리는 완벽한 원목 바닥에는,						[디자인] 명조체 24pt 밝은 회색 / 백색 조명 특유의 차가운 질감 강조	NORMAL	STYLE_NARRATION	FX_LIGHT_COLD				
 STORY_PROLOGUE_02	36	NARRATION		[계약 해지 및 손해배상 청구서]가 흉물스럽게 뒹굴고 있었다.						[디자인] 명조체 24pt 붉은색 강조 / 바닥에 떨어진 청구서 쪽으로 시점 이동(Tilt Down)	SLOW	STYLE_NARRATION_RED_EMPH	FX_TILT_DOWN				
 STORY_PROLOGUE_02	37	NARRATION		거울 벽에 주저앉아 있던 지우가 덜덜 떨리는 손으로 청구서를 쥔 채, 넋이 나간 P를 올려다보았다.		CHAR_JIWOO	EXP_SAD			[디자인] 명조체 24pt 밝은 회색 / [연출] 지우 왼쪽 걱정, 서서히 페이드 인 등장	NORMAL	STYLE_NARRATION	FX_FOCUS_RECOVER		SFX_PAPER_RUSTLE		
@@ -88,7 +88,7 @@ STORY_PROLOGUE_02	60	NARRATION		도살장에 갇힌 어린양들처럼 매달려
 STORY_PROLOGUE_02	61	NARRATION		거대한 벽에 부딪혀 갈 곳을 잃은 시선 아래로,						[디자인] 명조체 24pt 밝은 회색 / 화면의 흑백 톤이 가장 깊고 무겁게 가라앉음	SLOW	STYLE_NARRATION	FX_MONO_DEEPEN				
 STORY_PROLOGUE_02	62	NARRATION		아이들의 뜨거운 눈물이 낡은 구두 위로 속절없이 쏟아져 내리고 있었다.						[디자인] 명조체 24pt 흰색 / 천천히 검게 암전되며 씬 종료(2씬으로 연결) / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION_WHITE	FX_FADE_TO_BLACK	BGM_NONE			
 STORY_PROLOGUE_03	1	NARRATION		쾅-!!						#2-A. S-Tier 사옥 옥상(과거/흑백) / [디자인] 굵은 고딕 36pt 붉은색 / 암전 상태에서 벼락치듯 덜컹거림 / BGM 대기	INSTANT	STYLE_IMPACT_RED_36	FX_SCREEN_SHAKE_HARD		SFX_RUSTY_DOOR_BURST		
-STORY_PROLOGUE_03	2	NARRATION		녹슨 옥상 철문이 비명을 지르며 열렸다.	BG_STIER_ROOFTOP					[디자인] 명조체 24pt 밝은 회색 / 2-A 컷 인 / BGM 차갑고 스산한 바람 소리 중심의 앰비언스	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_ROOFTOP_WIND_AMBIENT			
+STORY_PROLOGUE_03	2	NARRATION		녹슨 옥상 철문이 비명을 지르며 열렸다.	2-A					[디자인] 명조체 24pt 밝은 회색 / 2-A 컷 인 / BGM 차갑고 스산한 바람 소리 중심의 앰비언스	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_ROOFTOP_WIND_AMBIENT			
 STORY_PROLOGUE_03	3	NARRATION		P는 마치 목이 졸린 사람처럼 거친 숨을 토해내며 칠흑 같은 옥상으로 걸어 나왔다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 좌우로 흔들림(현기증 연출)	NORMAL	STYLE_NARRATION	FX_SCREEN_SWAY		SFX_HEAVY_BREATH		
 STORY_PROLOGUE_03	4	NARRATION		살을 에는 듯한 매서운 자정의 칼바람이 뺨을 후려쳤지만, 그의 핏발 선 눈동자는 초점 없이 허공을 헤매고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 바람에 날리는 옅은 눈보라 이펙트 추가	NORMAL	STYLE_NARRATION	FX_SNOW_LIGHT				
 STORY_PROLOGUE_03	5	NARRATION		P가 비틀거리다 옥상 난간을 부여잡고 짐승처럼 헛구역질을 쏟아냈다.						[디자인] 명조체 24pt 밝은 회색 / 화면 거칠게 흔들림	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_HARD		SFX_RETCH		
@@ -114,7 +114,7 @@ STORY_PROLOGUE_03	24	DIALOGUE	CHAR_HWANYEONG	그냥 이 거대한 세상이 나 
 STORY_PROLOGUE_03	25	NARRATION		휘이익-						[디자인] 굵은 고딕 32pt 흰색 / [일러스트 1] 투명해지며 컷 아웃 / 화면 전체에 눈보라 거세짐	INSTANT	STYLE_IMPACT_WHITE_32	FX_SNOW_STORM		SFX_SHARP_WIND		
 STORY_PROLOGUE_03	26	NARRATION		서늘하 그 한마디와 함께, 소녀가 허공으로 몸을 눕혔다.				CG_HWANYEONG_FALLING		[디자인] 명조체 24pt 밝은 회색 / [일러스트 2] 허공으로 추락하는 환영의 슬픈 얼굴 컷 인 / BGM 일시 정지	NORMAL	STYLE_NARRATION	FX_SHAKE_DOWNWARD	BGM_NONE			
 STORY_PROLOGUE_03	27	DIALOGUE	CHAR_P	안돼 !!!				CG_HWANYEONG_FALLING	P	[디자인] 굵은 고딕 36pt 붉은색 / [일러스트 2] 유지	INSTANT	STYLE_IMPACT_RED_36	FX_SHAKE_FORWARD		SFX_SCREAM_P		
-STORY_PROLOGUE_03	28	NARRATION		P가 비명을 지르며 난간으로 달려가 허공을 향해 손을 뻗었다.	BG_STIER_ROOFTOP					[디자인] 명조체 24pt 밝은 회색 / [일러스트 2] 위로 빠르게 슬라이드 아웃, 2-A 배경 복구 / BGM 다급하게 재생	FAST	STYLE_NARRATION	FX_ILLUST_SLIDE_OUT_UP	BGM_ROOFTOP_SUSPENSE			
+STORY_PROLOGUE_03	28	NARRATION		P가 비명을 지르며 난간으로 달려가 허공을 향해 손을 뻗었다.	2-A					[디자인] 명조체 24pt 밝은 회색 / [일러스트 2] 위로 빠르게 슬라이드 아웃, 2-A 배경 복구 / BGM 다급하게 재생	FAST	STYLE_NARRATION	FX_ILLUST_SLIDE_OUT_UP	BGM_ROOFTOP_SUSPENSE			
 STORY_PROLOGUE_03	29	NARRATION		하지만 손끝에 닿은 것은 차갑고 텅 빈 겨울바람뿐이었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_03	30	NARRATION		까마득한 바닥으로 곤두박질치던 소녀의 잔상이 P의 동공에 끔찍하게 각인되는 순간.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐	NORMAL	STYLE_NARRATION	FX_SCREEN_DARKEN				
 STORY_PROLOGUE_03	31	NARRATION		파스 -						[디자인] 명조체 28pt 흰색 / 화면 멈춤(정적) / BGM 정지	WORD_BY_WORD	STYLE_NARRATION_28_WHITE	FX_FREEZE	BGM_NONE	SFX_SHATTER_EERIE		
@@ -149,7 +149,7 @@ STORY_PROLOGUE_03	59	NARRATION		소녀의 목소리는 겨울바람보다 서늘
 STORY_PROLOGUE_03	60	NARRATION		포개어진 손등 위로 하얀 눈송이가 하나둘 녹아내렸다.				CG_HWANYEONG_HANDS		[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 유지, 눈송이 녹는 이펙트	NORMAL	STYLE_NARRATION	FX_SNOW_MELT				
 STORY_PROLOGUE_03	61	DIALOGUE	CHAR_HWANYEONG	저 지하에 있는 아이들마저 저처럼 영원히 추운 곳에 남겨둘 건가요?				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 26pt 서늘한 푸른색 / [일러스트 3] 유지 / 화면 포커스 아웃-인	SLOW	STYLE_HWANYEONG_26	FX_FOCUS_PULSE				
 STORY_PROLOGUE_03	62	DIALOGUE	CHAR_HWANYEONG	피디님은 알잖아요. 이번엔 도망치는 게 아니라, 지키는 게 올바른 길이라는 걸.				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 26pt 흰색 강조 / [일러스트 3] 유지 / BGM 벅차오르듯 고조	SLOW	STYLE_HWANYEONG_26_WHITE					
-STORY_PROLOGUE_03	63	NARRATION		망치로 머리를 얻어맞은 듯한 충격이 P의 전신을 관통했다.	BG_STIER_ROOFTOP					[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 컷 아웃, 2-A 옥상 배경 복구	INSTANT	STYLE_NARRATION	FX_SCREEN_SHAKE_LIGHT				
+STORY_PROLOGUE_03	63	NARRATION		망치로 머리를 얻어맞은 듯한 충격이 P의 전신을 관통했다.	2-A					[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 컷 아웃, 2-A 옥상 배경 복구	INSTANT	STYLE_NARRATION	FX_SCREEN_SHAKE_LIGHT				
 STORY_PROLOGUE_03	64	NARRATION		그는 지금까지 S-Tier의 방식에 고개를 숙이는 것이 지혜로운 것이라 믿어왔다.						[디자인] 명조체 24pt 밝은 회색 / 흑백 화면에서 P의 시야가 확 트이는 연출	NORMAL	STYLE_NARRATION	FX_VIEW_OPEN				
 STORY_PROLOGUE_03	65	NARRATION		하지만 소녀의 말대로 그것은 이성이 아니라 비겁함이었고, 합리가 아니라 비열한 방관일 뿐이었다.						[디자인] 명조체 24pt 붉은색 강조 / 변동 없음	SLOW	STYLE_NARRATION_RED_EMPH					
 STORY_PROLOGUE_03	66	NARRATION		마침내 P의 목을 3년 내내 조르고 있던 과거의 죄책감과 타협의 굴레가 툭, 하고 끊어졌다.						[디자인] 명조체 24pt 흰색 / 화면을 감싸던 사슬 이펙트 부서지듯 사라짐 / BGM 절정	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_CHAIN_BREAK				
@@ -158,7 +158,7 @@ STORY_PROLOGUE_03	68	NARRATION		바닥에 웅크리고 있던 그의 어깨가 �
 STORY_PROLOGUE_03	69	DIALOGUE	CHAR_P	그래 이제야 알겠네.					P	[디자인] 고딕체 24pt 순백색 / 짙은 밤하늘 쪽으로 시야 이동(Tilt Up)	NORMAL	STYLE_P_DIALOGUE	FX_TILT_UP				
 STORY_PROLOGUE_03	70	DIALOGUE	CHAR_P	썩어빠진 룰에 순응하는 게 똑똑한 게 아니라... 내 모든 걸 걸고 저 아이들을 지켜내는 게. 비로소 내가 가야 할 길이라는 걸.					P	[디자인] 고딕체 26pt 순백색 / 밤하늘에 반짝이는 눈송이들 / BGM 웅장하고 결연하게 변환	SLOW	STYLE_P_DIALOGUE_26	FX_SNOW_SPARKLE	BGM_ROOFTOP_RESOLVE			
 STORY_PROLOGUE_03	71	NARRATION		P가 결연한 눈으로 고개를 돌리자, 환영 속의 소녀는 안도한 듯 가장 눈부신 미소를 지어 보였다.				CG_HWANYEONG_SMILE		[디자인] 명조체 24pt 밝은 회색 / [일러스트 4] 환영의 가장 눈부신 미소 컷 인	NORMAL	STYLE_NARRATION	FX_BLOOM_BRIGHT				
-STORY_PROLOGUE_03	72	NARRATION		이내 소녀의 형상은 수많은 빛나는 눈송이가 되어 겨울밤의 허공으로 부드럽게 흩어져 내렸다.	BG_STIER_ROOFTOP			CG_HWANYEONG_SMILE		[디자인] 명조체 24pt 밝은 회색 / [일러스트 4] 눈송이 파티클로 부서지며 부드럽게 페이드 아웃, 2-A 배경 복구	SLOW	STYLE_NARRATION	FX_PARTICLE_SNOW_FADE				
+STORY_PROLOGUE_03	72	NARRATION		이내 소녀의 형상은 수많은 빛나는 눈송이가 되어 겨울밤의 허공으로 부드럽게 흩어져 내렸다.	2-A			CG_HWANYEONG_SMILE		[디자인] 명조체 24pt 밝은 회색 / [일러스트 4] 눈송이 파티클로 부서지며 부드럽게 페이드 아웃, 2-A 배경 복구	SLOW	STYLE_NARRATION	FX_PARTICLE_SNOW_FADE				
 STORY_PROLOGUE_03	73	NARRATION		그녀가 남긴 옅은 온기만이 P의 굳은살 박인 손끝에 미약하게 남아있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_03	74	DIALOGUE	CHAR_P	이번엔 절대 안 뺏겨.					P	[디자인] 굵은 고딕 28pt 흰색 / 화면 미세하게 줌인 / BGM 결연하게 고조	WORD_BY_WORD	STYLE_IMPACT_WHITE_28	FX_ZOOM_IN_SLIGHT				
 STORY_PROLOGUE_03	75	DIALOGUE	CHAR_P	내 뼈와 살, 전재산을 다 뜯어 먹히는 한이 있더라도... 기필코 저 아이들을 세상에서 가장 높은 무대 위에 세우고, 반드시 성공시킨다.					P	[디자인] 굵은 고딕 28pt 순백색 / 화면 짧게 덜컹거림	INSTANT	STYLE_P_SHOUT_28	FX_SCREEN_SHAKE_LIGHT				
@@ -167,7 +167,7 @@ STORY_PROLOGUE_03	77	NARRATION		P는 흙투성이가 된 재킷을 거칠게 털
 STORY_PROLOGUE_03	78	NARRATION		그의 걸음에는 더 이상 과거에 갇힌 방관자의 망설임이나 두려움 따위는 한 점도 묻어있지 않았다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 줌아웃하며 문을 향해 이동	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT_TO_DOOR				
 STORY_PROLOGUE_03	79	NARRATION		그는 오직 자신이 지켜야 할 다섯 명의 아이들을 위해, 그리고 스스로 선택한 '올바른 길'을 걷기 위해 거대 자본의 심장부인 최상층 임원실을 향해 뚜벅뚜벅 걸음을 옮기기 시작했다.						[디자인] 명조체 24pt 흰색 / 굳건한 발걸음과 함께 서서히 검게 암전(3씬으로 연결) / BGM 페이드 아웃	SLOW	STYLE_NARRATION_WHITE	FX_FADE_TO_BLACK	BGM_NONE	SFX_HEAVY_FOOTSTEP		
 STORY_PROLOGUE_04	1	NARRATION		달칵, 끼이익-						#3-A. S-Tier 최상층 최고 임원 회의실(과거/흑백) / [디자인] 굵은 고딕 32pt 붉은색 / 흑백 필터 적용된 암전 / BGM 대기	SLOW	STYLE_IMPACT_RED_32	FX_BLACKOUT_MONO		SFX_IRON_DOOR_SLOW		
-STORY_PROLOGUE_04	2	NARRATION		P가 짐승처럼 부수고 들어왔던 육중한 철제 문이, 이번에는 기괴할 정도로 차분하고 느릿하게 열렸다.	BG_STIER_BOARDROOM					[디자인] 명조체 24pt 밝은 회색 / 3-A 배경 서서히 노출 / BGM 차갑고 서늘한 긴장감의 테마	NORMAL	STYLE_NARRATION	FX_REVEAL_SLOW	BGM_STIER_TENSION_COLD			
+STORY_PROLOGUE_04	2	NARRATION		P가 짐승처럼 부수고 들어왔던 육중한 철제 문이, 이번에는 기괴할 정도로 차분하고 느릿하게 열렸다.	3-A					[디자인] 명조체 24pt 밝은 회색 / 3-A 배경 서서히 노출 / BGM 차갑고 서늘한 긴장감의 테마	NORMAL	STYLE_NARRATION	FX_REVEAL_SLOW	BGM_STIER_TENSION_COLD			
 STORY_PROLOGUE_04	3	NARRATION		무채색의 삭막한 회의실. 코냑 잔을 부딪치며 거치적거리는 불량품 폐기의 성공을 자축하던 임원들의 시선이 일제히 문가로 향했다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐(위압감)	NORMAL	STYLE_NARRATION	FX_SCREEN_DARKEN		SFX_GLASS_CLINK_STOP		
 STORY_PROLOGUE_04	4	NARRATION		그곳에 P가 서 있었다.						[디자인] 명조체 24pt 흰색 / 변동 없음	WORD_BY_WORD	STYLE_NARRATION_WHITE					
 STORY_PROLOGUE_04	5	NARRATION		분노와 공포에 질려 헐떡이던 패잔병의 모습은 온데간데없었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
@@ -215,7 +215,7 @@ STORY_PROLOGUE_04	46	NARRATION		어른의 합리와 이성이라는 역겨운 �
 STORY_PROLOGUE_04	47	NARRATION		그의 등 뒤로 임원들의 쌍욕과 유리가 깨지는 파열음이 울려 퍼졌지만,						[디자인] 명조체 24pt 밝은 회색 / 화면 암전 시작	NORMAL	STYLE_NARRATION	FX_FADE_TO_BLACK		SFX_GLASS_SHATTER		
 STORY_PROLOGUE_04	48	NARRATION		P의 걸음은 기꺼이 스스로 십자가를 짊어진 순교자의 행진처럼 거침없었다.						[디자인] 명조체 24pt 흰색 / 완벽한 암전 / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION_WHITE	FX_BLACKOUT_FULL	BGM_NONE			
 STORY_PROLOGUE_04	49	NARRATION		위이잉-						#3-B. S-Tier 지하 1층 제1연습실(과거/흑백) / [디자인] 굵은 고딕 32pt 흰색 / 흑백 필터 암전 상태 / BGM 대기	INSTANT	STYLE_IMPACT_WHITE_32	FX_BLACKOUT_MONO		SFX_DOORLOCK_BEEP		
-STORY_PROLOGUE_04	50	NARRATION		다시 돌아온 새하얀 지하 연습실.	BG_STIER_PRACTICE_ROOM					[디자인] 명조체 24pt 밝은 회색 / 3-B 컷 인(흑백 유지) / BGM 무겁고 적막한 공기음	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_PRACTICE_SILENT_AIR			
+STORY_PROLOGUE_04	50	NARRATION		다시 돌아온 새하얀 지하 연습실.	3-B					[디자인] 명조체 24pt 밝은 회색 / 3-B 컷 인(흑백 유지) / BGM 무겁고 적막한 공기음	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_PRACTICE_SILENT_AIR			
 STORY_PROLOGUE_04	51	NARRATION		아이들은 P가 돌아올 때까지 꼼짝도 하지 못한 채 바닥에 서로를 부둥켜안고 웅크려 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_04	52	NARRATION		차가운 문이 열리고 흙투성이가 된 P가 들어서자, 다섯 소녀의 절망적인 시선이 일제히 그를 향했다.						[디자인] 명조체 24pt 밝은 회색 / 문 쪽으로 시점 이동	NORMAL	STYLE_NARRATION	FX_PAN_TO_DOOR		SFX_HEAVY_FOOTSTEP		
 STORY_PROLOGUE_04	53	DIALOGUE	CHAR_RIA	P... 주희 수석님이... 뭐래요...? 저희 진짜 이대로 끝나는 거예요...?		CHAR_RIA	EXP_SAD		리아	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 리아 왼쪽 걱정, 페이드 인 및 미세하게 떨림	NORMAL	STYLE_MEMBER_TREMBLE					
@@ -247,7 +247,7 @@ STORY_PROLOGUE_05	4	NARRATION		[컷 3]						[일러스트] 곰팡이가 핀 허�
 STORY_PROLOGUE_05	5	NARRATION		[컷 4]						[일러스트] 방송국 복도. P가 지나가는 음악방송 PD에게 허리가 끊어질 듯 90도로 굽혀 인사하며, 자체 제작한 조잡한 타이틀곡 CD를 양손으로 내밀고 있다. 난처한 표정의 PD는 손사래를 치며 외면한다. / [일러스트] 방송국 구석 쓰레기통. 방금 전 P가 건넸던, 소녀들이 환하게 웃고 있는 앨범 재킷이 쓰레기들과 함께 처박혀 있다. 그 바로 옆에 우두커니 멈춰 선 P의 낡고 흙 묻은 구두 코.							
 STORY_PROLOGUE_05	6	NARRATION		[컷 5]						[일러스트] P의 책상 위로 눈덩이처럼 쌓인 공과금 체납 고지서들. 그 배경으로, 낡은 스피커와 앰프 위에 법원 집행관이 들이닥쳐 시뻘건 [압류] 딱지를 무자비하게 붙이는 삭막한 손길.							
 STORY_PROLOGUE_05	7	NARRATION		(BGM: 희망찼던 피아노 선율이 서서히 기괴하고 무거운 베이스음으로 변주되며 페이드 아웃-)						[일러스트] 차가운 바닥에 서로 부둥켜안고 지쳐 잠든 다섯 소녀. 아이들에게 자신의 낡은 재킷을 덮어주는 P.							
-STORY_PROLOGUE_06	1	NARRATION		위이잉, 탁. 위이잉, 탁.	BG_BASEMENT_OFFICE					#5-A. 낡은 지하 사옥 P의 집무실 겸 창고 / [디자인] 굵은 고딕 28pt 회색 / BGM 대기	INSTANT	STYLE_IMPACT_GRAY_28	FX_REVEAL_OFFICE		SFX_BROKEN_FAN		
+STORY_PROLOGUE_06	1	NARRATION		위이잉, 탁. 위이잉, 탁.	5-A					#5-A. 낡은 지하 사옥 P의 집무실 겸 창고 / [디자인] 굵은 고딕 28pt 회색 / BGM 대기	INSTANT	STYLE_IMPACT_GRAY_28	FX_REVEAL_OFFICE		SFX_BROKEN_FAN		
 STORY_PROLOGUE_06	2	NARRATION		수명을 다한 낡은 선풍기가 털털거리며 눅눅한 더운 바람을 토해내고 있었다.						[디자인] 명조체 24pt 밝은 회색 / BGM 숨 막히고 답답한 절망의 테마	NORMAL	STYLE_NARRATION		BGM_BASEMENT_DESPAIR			
 STORY_PROLOGUE_06	3	NARRATION		두 평 남짓한 비좁은 집무실. 장마철의 묵은내가 밴 잿빛 벽면과 책상 위로, 세상에서 가장 폭력적이고 선명한 붉은색이 덕지덕지 피어 있었다.						[디자인] 명조체 24pt 밝은 회색 / 붉은 [압류] 딱지들 쪽으로 서서히 시점 이동	NORMAL	STYLE_NARRATION	FX_PAN_TO_SEIZURE_TAG				
 STORY_PROLOGUE_06	4	NARRATION		[압류(押留)]						[디자인] 굵은 명조 36pt 붉은색 강조 / BGM Ducking / 도장 찍히듯 무거운 타격음	INSTANT	STYLE_SERIF_BOLD_RED_36	FX_SCREEN_SHAKE_LIGHT		SFX_STAMP_HEAVY		
@@ -274,7 +274,7 @@ STORY_PROLOGUE_06	24	NARRATION		자신이 내린 호기로운 결정이, 결국 
 STORY_PROLOGUE_06	25	NARRATION		그때였다.						#5-B. 블라인드 너머의 지하 연습실 / [디자인] 명조체 28pt 흰색 / 화면 멈춤(정적) / BGM 일시 정지	WORD_BY_WORD	STYLE_NARRATION_28_WHITE	FX_FREEZE	BGM_NONE			
 STORY_PROLOGUE_06	26	NARRATION		쿵! 타닥, 쿵-!!						[디자인] 굵은 고딕 32pt 붉은색 / 화면 강하게 덜컹거림	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_SHAKE_HARD		SFX_ROUGH_STEP		
 STORY_PROLOGUE_06	27	NARRATION		얇은 합판 문 너머로, 묵직한 진동과 함께 거친 마찰음이 밀려오기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 연습실 문(블라인드) 쪽으로 시점 이동 / 새 BGM: 낡은 스마트폰의 조악한 댄스 비트	NORMAL	STYLE_NARRATION	FX_PAN_TO_BLIND	BGM_PRACTICE_CHEAP_BEAT			
-STORY_PROLOGUE_06	28	NARRATION		P는 붉어진 눈을 들어 낡은 블라인드 틈새로 연습실을 내다보았다.	BG_BASEMENT_PRACTICE_BLIND					[디자인] 명조체 24pt 밝은 회색 / 5-B 화면으로 컷 인	NORMAL	STYLE_NARRATION	FX_CUT_IN				
+STORY_PROLOGUE_06	28	NARRATION		P는 붉어진 눈을 들어 낡은 블라인드 틈새로 연습실을 내다보았다.	5-B					[디자인] 명조체 24pt 밝은 회색 / 5-B 화면으로 컷 인	NORMAL	STYLE_NARRATION	FX_CUT_IN				
 STORY_PROLOGUE_06	29	NARRATION		압류 딱지가 붙어 사용할 수 없는 앰프 대신, 바닥에 엎어진 스마트폰에서 조악한 비트가 흘러나오고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_06	30	NARRATION		그리고 그 찢어지는 듯한 소리 위로, 땀으로 흠뻑 젖은 다섯 소녀가 바닥을 부술 듯이 스텝을 밟고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면이 스텝에 맞춰 약하게 흔들림	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_BEAT				
 STORY_PROLOGUE_06	31	NARRATION		전신 거울의 정중앙. 흉물스럽게 붙어있는 시뻘건 [압류] 딱지가 시야를 난도질하고 있었지만, 아이들의 대형은 한 치의 흔들림도 없었다.						[디자인] 명조체 24pt 붉은색 강조 / 거울 정중앙의 압류 딱지 포커스 인	SLOW	STYLE_NARRATION_RED_EMPH	FX_FOCUS_SEIZURE_TAG				
@@ -294,13 +294,13 @@ STORY_PROLOGUE_06	44	DIALOGUE	CHAR_HANA	으응... 지우 네가 앞에서 딱 �
 STORY_PROLOGUE_06	45	DIALOGUE	CHAR_RIA	좋아! P가 언제 우리 무대 물어오실지 몰라.		CHAR_RIA	EXP_SMILE		리아	[디자인] 고딕체 24pt 순백색 / [연출] 하나 퇴장, 리아 표정 웃음으로 변경	NORMAL	STYLE_MEMBER				NONE	
 STORY_PROLOGUE_06	46	DIALOGUE	CHAR_RIA	캄캄한 새벽에 자다 깨서 음악 틀어도 본능적으로 튀어나올 수 있게, 처음부터 다시 간다! 쓰리, 포!		NONE			리아	[디자인] 고딕체 28pt 순백색 / [연출] 리아 살짝 팝업되며 퇴장 / BGM 다시 강하게 폭발	INSTANT	STYLE_MEMBER_28	FX_SCREEN_SHAKE_HARD				
 STORY_PROLOGUE_06	47	NARRATION		다시 음악이 터져 나오고, 아이들의 눈빛이 돌변하며 허공을 갈랐다.						[디자인] 명조체 24pt 밝은 회색 / 줌인 해제 / 현란한 화면 덜컹거림	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_WILD				
-STORY_PROLOGUE_06	48	NARRATION		블라인드 틈새로 그 맹렬한 춤사위를 지켜보던 P의 눈동자가 파도처럼 일렁였다.	BG_BASEMENT_OFFICE					[디자인] 명조체 24pt 밝은 회색 / 5-A로 컷 백 / BGM 댄스곡에서 진중한 드라마 테마로 디졸브 전환	NORMAL	STYLE_NARRATION	FX_CUT_BACK_OFFICE	BGM_BASEMENT_DRAMA			
+STORY_PROLOGUE_06	48	NARRATION		블라인드 틈새로 그 맹렬한 춤사위를 지켜보던 P의 눈동자가 파도처럼 일렁였다.	5-A					[디자인] 명조체 24pt 밝은 회색 / 5-A로 컷 백 / BGM 댄스곡에서 진중한 드라마 테마로 디졸브 전환	NORMAL	STYLE_NARRATION	FX_CUT_BACK_OFFICE	BGM_BASEMENT_DRAMA			
 STORY_PROLOGUE_06	49	NARRATION		전기도 끊길 위기에 처한 이 눅눅하고 숨 막히는 지하실.						[디자인] 명조체 24pt 밝은 회색 / BGM 고조 시작	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_06	50	NARRATION		컵라면으로 끼니를 때워 볼이 홀쭉해진 얼굴들.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_06	51	NARRATION		하지만 아이들의 눈동자에는 이상하리만치 단 한 줌의 의심이나 절망도 묻어있지 않았다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_06	52	NARRATION		저 끔찍한 붉은 낙인들 사이에서도, 아이들은 오직 자신들을 꺼내준 P가 세상 가장 눈부신 무대 위로 이끌어줄 것이라는 맹목적인 믿음 하나로 허공에 그림을 그리고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 줌인	SLOW	STYLE_NARRATION	FX_ZOOM_IN_SLIGHT				
 STORY_PROLOGUE_06	53	NARRATION		세상이 아무리 투명 인간 취급하며 짓밟아도, 저들의 꿈은 결코 꺾이지 않은 채 어둠 속에서 타오르고 있었다.						[디자인] 명조체 24pt 흰색 / BGM 감동적으로 절정	SLOW	STYLE_NARRATION_WHITE					
-STORY_PROLOGUE_06	54	NARRATION		P의 시선이 책상 한구석에 놓인 꼬깃꼬깃한 천 원짜리 세 장과 오백 원짜리 동전 하나에 가닿았다.						#5-C. 3,500원의 온기, 그리고 각성 / [디자인] 명조체 24pt 밝은 회색 / 책상 위의 돈 3,500원으로 컷 전환(클로즈업)	NORMAL	STYLE_NARRATION	FX_CLOSEUP_MONEY				
+STORY_PROLOGUE_06	54	NARRATION		P의 시선이 책상 한구석에 놓인 꼬깃꼬깃한 천 원짜리 세 장과 오백 원짜리 동전 하나에 가닿았다.	5-C					#5-C. 3,500원의 온기, 그리고 각성 / [디자인] 명조체 24pt 밝은 회색 / 책상 위의 돈 3,500원으로 컷 전환(클로즈업)	NORMAL	STYLE_NARRATION	FX_CLOSEUP_MONEY				
 STORY_PROLOGUE_06	55	NARRATION		어제저녁, 지우와 아이들이 라면을 사 먹고 남은 잔돈이라며 P의 책상 위에 살며시 쥐여주고 간 '3,500원'이었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_06	56	NARRATION		가난한 소녀들이 자신들의 몫을 기꺼이 덜어 내어준, 세상에서 가장 무겁고 아득한 온기.						[디자인] 명조체 24pt 흰색 / 화면에 따뜻한 노란빛 필터 은은하게 적용	SLOW	STYLE_NARRATION_WHITE	FX_WARM_LIGHT_BLEED				
 STORY_PROLOGUE_06	57	NARRATION		P는 천천히 손을 뻗어 그 3,500원을 쥐었다.						[디자인] 명조체 24pt 밝은 회색 / 줌아웃	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT				
@@ -315,7 +315,7 @@ STORY_PROLOGUE_06	65	NARRATION		비록 통장 잔고는 7,420원뿐이고 세상
 STORY_PROLOGUE_06	66	NARRATION		얇은 합판 너머로 들려오는 아이들의 뜨거운 숨소리가 그의 꺾인 척추를 다시 한번 꼿꼿하게 세워 올리고 있었다.						[디자인] 명조체 24pt 밝은 회색 / BGM 장엄하게 마무리 시작	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_06	67	NARRATION		그는 다시 한번 거대 자본의 굳게 닫힌 성벽에 제 머리를 박고 찢겨 나갈 각오로, 낡은 구두를 구겨 신고 집무실 문을 나섰다.						[디자인] 명조체 24pt 흰색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	NORMAL	STYLE_NARRATION_WHITE	FX_FADE_TO_BLACK	BGM_NONE	SFX_DOOR_CLOSE_HEAVY		
 STORY_PROLOGUE_07	1	NARRATION		끼기긱-쾅.						#6-A. 지하 1층 연습실(늦은 밤) / [디자인] 굵은 고딕 36pt 탁한 갈색 / 어두운 배경 노출 / BGM 대기	INSTANT	STYLE_IMPACT_BROWN_36	FX_SCREEN_SHAKE_HARD		SFX_IRON_DOOR_ROUGH		
-STORY_PROLOGUE_07	2	NARRATION		무거운 철문이 힘겹게 열리는 소리에, 바닥에 쓰러져 가쁜 숨을 몰아쉬던 다섯 소녀의 고개가 일제히 문 쪽을 향했다.	BG_BASEMENT_PRACTICE_NIGHT					[디자인] 명조체 24pt 밝은 회색 / BGM 지치고 무거운 절망의 테마	NORMAL	STYLE_NARRATION		BGM_PRACTICE_EXHAUSTED			
+STORY_PROLOGUE_07	2	NARRATION		무거운 철문이 힘겹게 열리는 소리에, 바닥에 쓰러져 가쁜 숨을 몰아쉬던 다섯 소녀의 고개가 일제히 문 쪽을 향했다.	6-A					[디자인] 명조체 24pt 밝은 회색 / BGM 지치고 무거운 절망의 테마	NORMAL	STYLE_NARRATION		BGM_PRACTICE_EXHAUSTED			
 STORY_PROLOGUE_07	3	NARRATION		그곳에 P가 서 있었다.						[디자인] 명조체 24pt 흰색 / 화면 미세하게 줌인	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_ZOOM_IN_SLIGHT				
 STORY_PROLOGUE_07	4	DIALOGUE	CHAR_RIA	P...? 세상에, 얼굴이 왜 그러세요?! 무슨 일 있었어요?!		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 26pt 순백색 / [연출] 리아 왼쪽 놀람, 강하게 팝업 등장 후 거칠게 흔들림	INSTANT	STYLE_MEMBER_26	FX_ZOOM_OUT				
 STORY_PROLOGUE_07	5	NARRATION		아이들이 경악하며 달려갔다. P의 몰골은 처참했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 컷 아웃 퇴장	NORMAL	STYLE_NARRATION			SFX_RUSH_FOOTSTEP		
@@ -355,7 +355,7 @@ STORY_PROLOGUE_07	38	DIALOGUE	CHAR_P	거기서 사람들에게 눈도장만 찍�
 STORY_PROLOGUE_07	39	DIALOGUE	CHAR_SEOYUN	P가 흙바닥 기면서 따낸 생방송... 우리가 카메라 렌즈 다 씹어 먹고 확실하게 꽂아 넣을게.		CHAR_SEOYUN	EXP_SMILE		서윤	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 왼쪽 웃음, 단호하게 팝업 등장	INSTANT	STYLE_MEMBER_26	FX_SCREEN_SHAKE_LIGHT				
 STORY_PROLOGUE_07	40	DIALOGUE	CHAR_MINA	S-Tier 임원진들. 생방송 보다가 오금 저려서 뻗게 만들어 줄 거니까.					미나	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 유지 + 미나 오른쪽 화남 팝업	INSTANT	STYLE_MEMBER_26				CHAR_MINA	EXP_ANGRY
 STORY_PROLOGUE_07	41	NARRATION		다섯 소녀들과 흙투성이가 된 P는 지하실 바닥에 서로를 끌어안고 기적의 온기를 나눴다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 서윤·미나 서서히 페이드 아웃 / BGM 뭉클한 엔딩	NORMAL	STYLE_NARRATION	FX_DISSOLVE_WARM			NONE	
-STORY_PROLOGUE_07	42	NARRATION		그날 이후, 지하실은 말 그대로 한계치를 넘나드는 처절한 전쟁터로 변했다.	BG_BASEMENT_PRACTICE_DAWN					#6-B. 지하 1층 연습실(새벽) / [디자인] 명조체 24pt 밝은 회색 / 6-B로 디졸브 전환 / 새 BGM: 빠르고 긴박한 하드트레이닝	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_PRACTICE_HARD_TRAINING			
+STORY_PROLOGUE_07	42	NARRATION		그날 이후, 지하실은 말 그대로 한계치를 넘나드는 처절한 전쟁터로 변했다.	6-B					#6-B. 지하 1층 연습실(새벽) / [디자인] 명조체 24pt 밝은 회색 / 6-B로 디졸브 전환 / 새 BGM: 빠르고 긴박한 하드트레이닝	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_PRACTICE_HARD_TRAINING			
 STORY_PROLOGUE_07	43	NARRATION		새벽 4시, 찢어지는 조악한 스피커 음질 위로 아이들의 거친 숨소리가 피 냄새와 섞여 진동했다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_HEAVY_BREATH		
 STORY_PROLOGUE_07	44	NARRATION		타닥, 쾅-!!						[디자인] 굵은 고딕 36pt 붉은색 / BGM Ducking	INSTANT	STYLE_IMPACT_RED_36	FX_SCREEN_SHAKE_HARD		SFX_FLOOR_STOMP		
 STORY_PROLOGUE_07	45	DIALOGUE	CHAR_MINA	야! 방금 교차할 때 무게 중심 떴잖아!		CHAR_MINA	EXP_ANGRY		미나	[디자인] 고딕체 28pt 순백색 / [연출] 미나 왼쪽 화남, 빠르게 팝업 등장 / BGM 볼륨 복구	INSTANT	STYLE_MEMBER_28					
@@ -372,7 +372,7 @@ STORY_PROLOGUE_07	55	NARRATION		단 한 번의 생방송, 편집될 수 없는 3
 STORY_PROLOGUE_07	56	NARRATION		이 찰나의 무대에 그들의 모든 목숨이 걸려 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_07	57	NARRATION		그들은 기꺼이 이 마지막 불꽃에 자신들의 뼈와 살, 그리고 영혼을 남김없이 태워 넣고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION	FX_FADE_TO_BLACK	BGM_NONE			
 STORY_PROLOGUE_08	1	NARRATION		쿵, 쿵, 쿵!						#7-A. M-Beat 생방송 백스테이지 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 / BGM 대기	WORD_BY_WORD	STYLE_IMPACT_RED_32	FX_BLACKOUT		SFX_BASS_AMP_HEARTBEAT		
-STORY_PROLOGUE_08	2	NARRATION		백스테이지의 철제 바닥을 울리는 심장 박동 같은 베이스 소리.	BG_MBEAT_BACKSTAGE					[디자인] 명조체 24pt 밝은 회색 / 7-A 컷 인 / BGM 웅웅거리고 긴장감 넘치는 음악	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_BACKSTAGE_TENSION			
+STORY_PROLOGUE_08	2	NARRATION		백스테이지의 철제 바닥을 울리는 심장 박동 같은 베이스 소리.	7-A					[디자인] 명조체 24pt 밝은 회색 / 7-A 컷 인 / BGM 웅웅거리고 긴장감 넘치는 음악	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_BACKSTAGE_TENSION			
 STORY_PROLOGUE_08	3	NARRATION		눈이 시릴 정도로 화려한 메인 무대 뒤편,						[디자인] 명조체 24pt 밝은 회색 / 화면 가장자리에 화려한 조명 빛이 언뜻 비침	NORMAL	STYLE_NARRATION	FX_EDGE_STAGE_LIGHT				
 STORY_PROLOGUE_08	4	NARRATION		어두운 대기 공간에 다섯 소녀와 P가 서 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_08	5	DIALOGUE		(무전기를 들고 다급하게 외친다) 자, 다음 순서 들어갑니다! V.E.L.O 스탠바이 하세요!					막내 작가	[디자인] 고딕체 24pt 탁한 노란색 / [연출] 막내 작가 오른쪽 기본, 페이드 인 후 즉시 컷 아웃 (단역이라 SpeakerId 없음, 초상 미지원)	INSTANT	STYLE_WRITER_YELLOW_24			SFX_WALKIE_TALKIE		
@@ -386,7 +386,7 @@ STORY_PROLOGUE_08	12	DIALOGUE	CHAR_SEOYUN	오케이! 저 방송국 메인 카메
 STORY_PROLOGUE_08	13	DIALOGUE	CHAR_P	연습한 대로만 해. 세상에 너희들이 누군지 똑똑히 각인시키고 와.		NONE			P	[디자인] 고딕체 24pt 순백색 / [연출] 미나·서윤 퇴장	NORMAL	STYLE_P_DIALOGUE				NONE	
 STORY_PROLOGUE_08	14	NARRATION		위이잉-						[디자인] 굵은 고딕 32pt 흰색 / 화면 빛 무리가 거세게 쏟아짐	INSTANT	STYLE_IMPACT_WHITE_32	FX_LIGHT_BURST		SFX_GATE_OPEN		
 STORY_PROLOGUE_08	15	NARRATION		마침내 무대로 통하는 게이트가 열리고, 아이들이 눈부신 조명 아래로 걸어 나갔다.						[디자인] 명조체 24pt 밝은 회색 / 강력한 화이트 아웃 / BGM 페이드 아웃	NORMAL	STYLE_NARRATION	FX_WHITE_OUT	BGM_NONE			
-STORY_PROLOGUE_08	16	NARRATION		수백 명의 관객들이 뿜어내는 열기와 수십 대의 카메라.	BG_MBEAT_MAIN_STAGE					#7-B. M-Beat 화려한 메인 무대 / [디자인] 명조체 24pt 밝은 회색 / 7-B로 컷 인 / SFX 관객들의 엄청난 함성	NORMAL	STYLE_NARRATION	FX_CUT_IN		SFX_CROWD_ROAR		
+STORY_PROLOGUE_08	16	NARRATION		수백 명의 관객들이 뿜어내는 열기와 수십 대의 카메라.	7-B					#7-B. M-Beat 화려한 메인 무대 / [디자인] 명조체 24pt 밝은 회색 / 7-B로 컷 인 / SFX 관객들의 엄청난 함성	NORMAL	STYLE_NARRATION	FX_CUT_IN		SFX_CROWD_ROAR		
 STORY_PROLOGUE_08	17	NARRATION		처음 밟아보는 최고급 무대 바닥의 감촉.						[디자인] 명조체 24pt 밝은 회색 / 화면 전체에 화려한 조명 이펙트 / 함성 소리 서서히 고조됨	SLOW	STYLE_NARRATION	FX_STAGE_LIGHTS				
 STORY_PROLOGUE_08	18	NARRATION		아이들이 대형을 잡는 순간, 심장을 터뜨릴 듯한 강렬한 인트로 비트가 방송국 스피커를 찢고 흘러나왔다.						[디자인] 명조체 24pt 밝은 회색 / 화면이 비트에 맞춰 덜컹거림 / 새 BGM: 압도적이고 폭발적인 댄스 무대 트랙	NORMAL	STYLE_NARRATION	FX_SHAKE_ON_BEAT	BGM_MBEAT_STAGE_TRACK			
 STORY_PROLOGUE_08	19	NARRATION		음악이 시작되고 소녀들의 눈빛이 돌변했다.						[디자인] 명조체 24pt 밝은 회색 / 현란한 조명 빔 이펙트	INSTANT	STYLE_NARRATION	FX_LIGHT_BEAM				
@@ -398,7 +398,7 @@ STORY_PROLOGUE_08	24	NARRATION		처음 보는 신인의 무대에 심드렁하�
 STORY_PROLOGUE_08	25	NARRATION		무대 측면에서 그 모습을 지켜보던 P의 핏발 선 눈에 뜨거운 열기가 차올랐다.						[디자인] 명조체 24pt 밝은 회색 / 화려한 무대를 잠시 줌아웃하며 바라보는 시점	SLOW	STYLE_NARRATION	FX_ZOOM_OUT_STAGE				
 STORY_PROLOGUE_08	26	NARRATION		이제 곡은 단숨에 터져 오르는 하이라이트를 향해 달려가고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 조명 이펙트 템포 빨라짐 / BGM 최고조로 치닫음	FAST	STYLE_NARRATION	FX_LIGHT_TEMPO_UP				
 STORY_PROLOGUE_08	27	NARRATION		리아가 호흡을 크게 들이마시고, 서윤이 무대 중앙으로 치고 나오려던 바로 그 찰나였다.						[디자인] 명조체 24pt 흰색 / 화면 스탑 모션 / BGM 롤링 피크 직전 멈칫	INSTANT	STYLE_NARRATION_WHITE	FX_STOP_MOTION				
-STORY_PROLOGUE_08	28	NARRATION		퍽 !!	BG_MBEAT_STAGE_BLACKOUT					#7-C. 암전된 무대 / [디자인] 굵은 고딕 40pt 붉은색 / 화면이 벼락치듯 일순간 완벽하게 암전 / BGM 강제 종료	INSTANT	STYLE_IMPACT_RED_40	FX_BLACKOUT_INSTANT	BGM_NONE	SFX_BREAKER_DOWN		
+STORY_PROLOGUE_08	28	NARRATION		퍽 !!	7-C					#7-C. 암전된 무대 / [디자인] 굵은 고딕 40pt 붉은색 / 화면이 벼락치듯 일순간 완벽하게 암전 / BGM 강제 종료	INSTANT	STYLE_IMPACT_RED_40	FX_BLACKOUT_INSTANT	BGM_NONE	SFX_BREAKER_DOWN		
 STORY_PROLOGUE_08	29	NARRATION		귀를 찢을 듯한 거친 마찰음과 함께, 무대 위의 모든 조명이 일제히 꺼졌다.						[디자인] 명조체 24pt 밝은 회색 / 7-C 노출 / 무거운 정적	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_08	30	NARRATION		동시에 고막을 터뜨릴 듯 울리던 반주마저 뚝, 소름 끼치도록 완벽하게 끊겨버렸다.						[디자인] 명조체 24pt 밝은 회색 / 암전 유지 / 적막	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_08	31	NARRATION		칠흑 같은 어둠, 그리고 갑작스러운 적막.						[디자인] 명조체 24pt 흰색 / 암전 유지 / 적막	WORD_BY_WORD	STYLE_NARRATION_WHITE					
@@ -420,7 +420,7 @@ STORY_PROLOGUE_08	46	NARRATION		어둠 속에서 동선을 이동하던 지우�
 STORY_PROLOGUE_08	47	NARRATION		발목이 기괴하게 꺾이며 찢어지는 비명이 터져 나왔다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 지우 유지	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_08	48	DIALOGUE	CHAR_HANA	지우야!!					하나	[디자인] 고딕체 32pt 순백색 / [연출] 지우 유지 + 하나 오른쪽 걱정 강하게 흔들리며 팝업	INSTANT	STYLE_MEMBER_32	FX_SCREEN_SHAKE_LIGHT			CHAR_HANA	EXP_SAD
 STORY_PROLOGUE_08	49	NARRATION		무대 측면에서 지켜보던 P의 이성이 끊어졌다.		NONE				#7-D. 아수라장이 된 콘솔과 무대 뒤편 / [디자인] 명조체 24pt 밝은 회색 / [연출] 지우·하나 컷 아웃 퇴장	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_HARD			NONE	
-STORY_PROLOGUE_08	50	NARRATION		그는 앞을 가로막는 진행 요원들을 밀치고 미친 듯이 콘솔 쪽으로 달려갔다.	BG_MBEAT_CONSOLE					[디자인] 명조체 24pt 밝은 회색 / 7-D로 거칠게 화면 패닝 전환	NORMAL	STYLE_NARRATION	FX_PAN_ROUGH		SFX_RUSH_FOOTSTEP		
+STORY_PROLOGUE_08	50	NARRATION		그는 앞을 가로막는 진행 요원들을 밀치고 미친 듯이 콘솔 쪽으로 달려갔다.	7-D					[디자인] 명조체 24pt 밝은 회색 / 7-D로 거칠게 화면 패닝 전환	NORMAL	STYLE_NARRATION	FX_PAN_ROUGH		SFX_RUSH_FOOTSTEP		
 STORY_PROLOGUE_08	51	DIALOGUE	CHAR_P	감독님!! 제발 조명 좀 켜주세요!! 애가 다쳤잖아요!!					P	[디자인] 고딕체 28pt 순백색 / 화면 계속 흔들림	INSTANT	STYLE_P_SHOUT_28					
 STORY_PROLOGUE_08	52	DIALOGUE	CHAR_P	춤 안 춰도 되니까, 음악 안 틀어주셔도 되니까 제발 불만이라도 켜주세요!!					P	[디자인] 고딕체 28pt 순백색 / 변동 없음	INSTANT	STYLE_P_SHOUT_28					
 STORY_PROLOGUE_08	53	NARRATION		단순한 방송 사고가 아니었다.						[디자인] 명조체 24pt 밝은 회색 / 콘솔 모니터들의 푸른 불빛 점멸	NORMAL	STYLE_NARRATION	FX_CONSOLE_BLINK				
@@ -453,7 +453,7 @@ STORY_PROLOGUE_08	79	NARRATION		아이들의 피와 땀, P의 찢겨진 자존�
 STORY_PROLOGUE_08	80	NARRATION		자본의 전화 한 통에 의해 그렇게 단 2분 만에 철저하게 쓰레기통에 처박히고 말았다.						[디자인] 명조체 24pt 붉은색 강조 / 화면 완전히 암전 / 찌그러진 BGM 유지	VERY_SLOW	STYLE_NARRATION_RED_EMPH	FX_BLACKOUT_FULL				
 STORY_PROLOGUE_08	81	NARRATION		거대 자본의 눈 밖에 난, 투명 인간들의 무대 따위는, 처음부터 이 세상에 존재하지 않았다.						[디자인] 명조체 24pt 흰색 / 암전 유지 / BGM 서서히 페이드 아웃 되며 씬 종료	VERY_SLOW	STYLE_NARRATION_WHITE		BGM_NONE			
 STORY_PROLOGUE_09	1	NARRATION		탁... 끌럭, 탁...						#8-A. M-Beat 방송국 복도 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 유지 / BGM 대기	SLOW	STYLE_IMPACT_RED_32	FX_BLACKOUT		SFX_LIMPING_FOOTSTEP		
-STORY_PROLOGUE_09	2	NARRATION		방송국의 차갑고 하얀 대리석 복도.	BG_MBEAT_CORRIDOR					[디자인] 명조체 24pt 밝은 회색 / 8-A로 서서히 디졸브 / BGM 처절하고 절망적인 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_CORRIDOR_DESPAIR			
+STORY_PROLOGUE_09	2	NARRATION		방송국의 차갑고 하얀 대리석 복도.	8-A					[디자인] 명조체 24pt 밝은 회색 / 8-A로 서서히 디졸브 / BGM 처절하고 절망적인 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_CORRIDOR_DESPAIR			
 STORY_PROLOGUE_09	3	NARRATION		조금 전까지 무대를 부술 듯이 날아다니던 다섯 소녀는, 이제 초라한 패잔병이 되어 걷고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐	SLOW	STYLE_NARRATION	FX_SCREEN_DARKEN				
 STORY_PROLOGUE_09	4	NARRATION		발목이 부어오른 지우를 리아와 하나가 양쪽에서 힘겹게 부축했고,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_09	5	NARRATION		무릎이 까져 피가 흐르는 서윤은 넋이 나간 듯 초점 없는 눈으로 허공만 보며 걸었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
@@ -505,7 +505,7 @@ STORY_PROLOGUE_09	50	NARRATION		주희는 우아하게 머리를 넘기며 미�
 STORY_PROLOGUE_09	51	NARRATION		그녀의 화려한 아이돌들이 비웃음을 남기며 그 뒤를 따랐다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_FOOTSTEPS_LAUGH		
 STORY_PROLOGUE_09	52	NARRATION		스포트라이트가 쏟아지는 찬란한 무대를 향해 걸어가는 거대한 포식자들의 뒷모습이 완전히 사라질 때까지,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_09	53	NARRATION		P와 아이들은 망령처럼 그 자리에 굳어 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 완전히 암전(정적) / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION	FX_BLACKOUT_FULL	BGM_NONE			
-STORY_PROLOGUE_09	54	NARRATION		방송국 구석, 이름표조차 붙어있지 않은 비좁은 공용 대기실.	BG_MBEAT_GREENROOM					#8-B. M-Beat 방송국 대기실 / [디자인] 명조체 24pt 밝은 회색 / 8-B 컷 인 / BGM 먹먹하고 공허한 음악	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_GREENROOM_HOLLOW			
+STORY_PROLOGUE_09	54	NARRATION		방송국 구석, 이름표조차 붙어있지 않은 비좁은 공용 대기실.	8-B					#8-B. M-Beat 방송국 대기실 / [디자인] 명조체 24pt 밝은 회색 / 8-B 컷 인 / BGM 먹먹하고 공허한 음악	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_GREENROOM_HOLLOW			
 STORY_PROLOGUE_09	55	NARRATION		P가 문을 열고 들어가자, 부축을 받으며 들어온 다섯 소녀가 어두운 대기실 소파에 힘없이 주저앉았다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_DOOR_SIT		
 STORY_PROLOGUE_09	56	NARRATION		누구도 입을 열지 않았다.						[디자인] 명조체 24pt 흰색 / 화면 멈춤(숨 막히는 정적)	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_FREEZE				
 STORY_PROLOGUE_09	57	NARRATION		위로조차 건넬 수 없을 만큼 무거운 절망이 방 안을 짓눌렀다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION					
@@ -520,7 +520,7 @@ STORY_PROLOGUE_09	65	NARRATION		그리고 그 낙원에서 철저히 추방당�
 STORY_PROLOGUE_09	66	NARRATION		TV에서 쏟아지는 눈부신 빛이 넋이 나간 아이들의 텅 빈 눈동자를 잔인하게 비추고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 잔인할 정도로 하얗고 눈부신 화이트 아웃	SLOW	STYLE_NARRATION	FX_WHITE_OUT				
 STORY_PROLOGUE_09	67	NARRATION		세상의 어떤 노력으로도 저 거대한 폭력을 이길 수 없음을, 그들 모두가 뼈저리게 깨달은 밤이었다.						[디자인] 명조체 24pt 흰색 / 화이트 아웃에서 천천히 검게 암전되며 씬 종료 / BGM 여운 남기며 페이드 아웃	VERY_SLOW	STYLE_NARRATION_WHITE	FX_WHITE_TO_BLACK	BGM_NONE			
 STORY_PROLOGUE_10	1	NARRATION		웅- 웅-						#9-A. 텅 빈 메인 무대 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 / BGM 정지	INSTANT	STYLE_IMPACT_RED_32	FX_BLACKOUT	BGM_NONE	SFX_MOTOR_SHUTDOWN		
-STORY_PROLOGUE_10	2	NARRATION		모든 생방송이 끝나고 스태프와 관객들이 썰물처럼 빠져나간 방송국 스튜디오.	BG_MBEAT_EMPTY_STAGE					[디자인] 명조체 24pt 밝은 회색 / 9-A로 서서히 디졸브 / BGM 텅 빈 느낌의 공허하고 무거운 음악	SLOW	STYLE_NARRATION	FX_DISSOLVE	BGM_EMPTY_STAGE_HOLLOW			
+STORY_PROLOGUE_10	2	NARRATION		모든 생방송이 끝나고 스태프와 관객들이 썰물처럼 빠져나간 방송국 스튜디오.	9-A					[디자인] 명조체 24pt 밝은 회색 / 9-A로 서서히 디졸브 / BGM 텅 빈 느낌의 공허하고 무거운 음악	SLOW	STYLE_NARRATION	FX_DISSOLVE	BGM_EMPTY_STAGE_HOLLOW			
 STORY_PROLOGUE_10	3	NARRATION		뜨겁게 달아올랐던 열기는 온데간데없이 식어버렸고, 메인 카메라의 [ON-AIR] 붉은 램프도 차갑게 죽어 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_10	4	NARRATION		화려했던 조명마저 모두 꺼진 텅 빈 세트장에는, 장비들이 열을 식히는 미세한 모터 소리만이 무겁게 맴돌았다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_FAN_HUM		
 STORY_PROLOGUE_10	5	NARRATION		그 칠흑 같은 적막 속.						[디자인] 명조체 24pt 흰색 / 화면 미세하게 어두워짐	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_SCREEN_DARKEN				
@@ -547,7 +547,7 @@ STORY_PROLOGUE_10	25	NARRATION		P는 차마 고개조차 들지 못한 채 바�
 STORY_PROLOGUE_10	26	NARRATION		이 세상의 어떤 희망적인 단어도, 지금 이 철저한 절망 앞에서는 기만에 불과했으므로.						[디자인] 명조체 24pt 밝은 회색 / BGM 서서히 잦아듦	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_10	27	NARRATION		그 알량한 인간의 이성이 완벽하게 부서져 내린 순간이었다.						[디자인] 명조체 24pt 밝은 회색 / 화면이 무겁게 암전됨 / BGM 정지(적막)	VERY_SLOW	STYLE_NARRATION	FX_BLACKOUT_HEAVY	BGM_NONE			
 STORY_PROLOGUE_10	28	NARRATION		스아아아...						#9-B. 심연의 별 무대 / [디자인] 굵은 명조 32pt 연보라색 / 암전 상태	INSTANT	STYLE_SERIF_BOLD_PURPLE_32	FX_BLACKOUT		SFX_SPACE_WARP		
-STORY_PROLOGUE_10	29	NARRATION		돌연, 텅 빈 세트장의 공기 흐름이 몽환적으로 뒤틀리기 시작했다.	BG_ABYSS_STAR_STAGE					[디자인] 명조체 24pt 밝은 회색 / 9-B 배경으로 서서히 디졸브 / 새 BGM: 몽환적이고 기괴한 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_ABYSS_DREAMLIKE			
+STORY_PROLOGUE_10	29	NARRATION		돌연, 텅 빈 세트장의 공기 흐름이 몽환적으로 뒤틀리기 시작했다.	9-B					[디자인] 명조체 24pt 밝은 회색 / 9-B 배경으로 서서히 디졸브 / 새 BGM: 몽환적이고 기괴한 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_ABYSS_DREAMLIKE			
 STORY_PROLOGUE_10	30	NARRATION		웅웅거리던 기계음이 거짓말처럼 진공 상태로 빨려 들어가듯 완벽하게 소거되었고,						[디자인] 명조체 24pt 밝은 회색 / BGM 볼륨 서서히 커짐	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_10	31	NARRATION		캄캄한 허공을 떠돌던 먼지 입자들이 중력을 잃은 듯 공중에서 서서히 멈춰 섰다.						[디자인] 명조체 24pt 밝은 회색 / 먼지가 떠다니는 시각 이펙트 후 정지	SLOW	STYLE_NARRATION	FX_DUST_FREEZE				
 STORY_PROLOGUE_10	32	NARRATION		시간이 얼어붙은 것 같은 기괴한 정적.						[디자인] 명조체 24pt 흰색 / 화면 멈춤(정지 연출)	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_FREEZE				
@@ -573,7 +573,7 @@ STORY_PROLOGUE_11	1	NARRATION		[컷 1]						#10. 컷씬: 심연에서 날아온 
 STORY_PROLOGUE_11	2	NARRATION		[컷 2]						[일러스트] 철창 밖으로 서늘한 새벽빛이 스며드는 낡고 비좁은 반지하 숙소. 삐걱거리는 2층 침대와 바닥 매트리스에 아이들이 웅크려 잠들어 있다. 눈물이 맺힌 채 식은땀을 흘리는 리아의 얼굴, 악몽을 꾸는 듯 바들바들 떠는 하나를 무의식중에도 꽉 껴안고 있는 지우의 모습 등, 절망과 피로에 짓눌린 애처로운 풍경. / [일러스트] 어둠이 깔린 방 안, 허공에서 기괴하고 몽환적인 보랏빛 안개와 성운 입자들이 조용히 흩날려 내려온다. 먼지 쌓인 낡은 이불 위로, 주변의 공기와 완벽하게 이질적인 고급스러운 '보랏빛 초대장' 다섯 장이 은은한 빛을 뿜어내며 각자의 몸 위에 사뿐히 놓여 있다.							
 STORY_PROLOGUE_11	3	NARRATION		[컷 3]						[일러스트] 시뻘건 [압류] 딱지가 덕지덕지 붙어 있는 엉망진창인 집무실 책상. P는 독촉장과 액정이 박살 난 핸드폰 사이에 고개를 파묻은 채 처참하게 엎드려있다. 그 붉고 폭력적인 현실 한가운데, P의 엎드린 팔등 바로 앞으로 영롱한 보랏빛 초대장 한 장이 소리 없이 놓여 있다.							
 STORY_PROLOGUE_11	4	NARRATION		“모든 빛이 꺼진 당신을, 심연의 세계로 초대합니다.”						[일러스트] 화면을 가득 채운 보랏빛 초대장 클로즈업. 우아한 금박 장식 같지만, 가장자리가 보랏빛 불꽃에 미세하게 그을린 듯 기괴하게 일렁이는 질감이다. 초대장 한가운데, 갓 흘린 붉은 피로 적어 내린 듯 선명하고 섬뜩한 필기체로 단 한 문장이 적혀 있다.							
-STORY_PROLOGUE_12	1	NARRATION		지하 연습실의 비좁은 창문 틈으로 가느다란 아침 햇살이 스며든다.	BG_BASEMENT_PRACTICE_SEIZED					#11-A. 압류된 지하 연습실 / [디자인] 명조체 24pt 밝은 회색 / 11-A 디졸브 전환 / BGM 무겁고 암울한 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_SEIZED_GLOOM			
+STORY_PROLOGUE_12	1	NARRATION		지하 연습실의 비좁은 창문 틈으로 가느다란 아침 햇살이 스며든다.	11-A					#11-A. 압류된 지하 연습실 / [디자인] 명조체 24pt 밝은 회색 / 11-A 디졸브 전환 / BGM 무겁고 암울한 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_SEIZED_GLOOM			
 STORY_PROLOGUE_12	2	NARRATION		하지만 방 안을 가득 채운 것은 희망찬 아침의 공기가 아니라,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_12	3	NARRATION		시뻘건 [압류] 딱지들이 뿜어내는 폭력적이고 숨 막히는 절망감이다.						[디자인] 명조체 24pt 붉은색 강조 / 화면 미세하게 어두워짐	SLOW	STYLE_NARRATION_RED_EMPH	FX_SCREEN_DARKEN				
 STORY_PROLOGUE_12	4	DIALOGUE	CHAR_MINA	이거 뭐야? 무슨 이런 장난을 쳐요. P? 진짜 유치해서 봐줄 수가 없네.		CHAR_MINA	EXP_ANGRY		미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 왼쪽 화남, 서서히 페이드 인 등장	NORMAL	STYLE_MEMBER	FX_BRIGHTNESS_RECOVER				
@@ -601,7 +601,7 @@ STORY_PROLOGUE_12	25	DIALOGUE	CHAR_RIA	P... 저 종이에서 빛이 나는 것 �
 STORY_PROLOGUE_12	26	DIALOGUE	CHAR_P	서윤아, 만지지 마! 위험해!		NONE			P	[디자인] 굵은 고딕 32pt 붉은색 / [연출] 서윤·리아 즉시 컷 아웃 / BGM 정지(다급한 텐션)	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_SHAKE_ONCE	BGM_NONE			
 STORY_PROLOGUE_12	27	NARRATION		하지만 서윤은 P의 만류에도 불구하고, 거울 앞에 서서 붉은 딱지들 사이에 붙어 있던 보랏빛 종이를 거침없이 떼어냈다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_PAPER_TEAR		
 STORY_PROLOGUE_12	28	NARRATION		쩌저적-!						#11-B. 거울 너머의 심연 / [디자인] 굵은 고딕 36pt 붉은색 / 화면 멈춤(긴장감)	INSTANT	STYLE_IMPACT_RED_36	FX_FREEZE		SFX_MIRROR_CRACK		
-STORY_PROLOGUE_12	29	NARRATION		종이가 거울에서 떨어지는 순간.	BG_MIRROR_ABYSS					[디자인] 명조체 24pt 흰색 / 11-B로 서서히 디졸브 / BGM 웅웅거리는 불길한 효과음성	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_DISSOLVE	BGM_ABYSS_OMINOUS			
+STORY_PROLOGUE_12	29	NARRATION		종이가 거울에서 떨어지는 순간.	11-B					[디자인] 명조체 24pt 흰색 / 11-B로 서서히 디졸브 / BGM 웅웅거리는 불길한 효과음성	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_DISSOLVE	BGM_ABYSS_OMINOUS			
 STORY_PROLOGUE_12	30	NARRATION		떼어낸 보랏빛 종이 표면에서, 검고 붉은 잉크들이 끓어오르듯 요동치기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / BGM 서서히 고조됨	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_12	31	NARRATION		이내 종이 밖으로 수천 개의 [활자]들이 살아있는 벌레 떼처럼 미친 듯이 뿜어져 나왔다.						[디자인] 명조체 24pt 밝은 회색 / 핏빛 활자들이 화면을 깨트리며 튀어나옴, 화면 강하게 지속 흔들림 / 거울 굉음 후 차원 폭풍 BGM	INSTANT	STYLE_NARRATION	FX_LETTER_SWARM_BURST	BGM_DIMENSION_STORM	SFX_MIRROR_SHATTER		
 STORY_PROLOGUE_12	32	DIALOGUE	CHAR_HANA	꺄아악! 지우야!!		CHAR_HANA	EXP_SURPRISED		하나	[디자인] 굵은 고딕 32pt 순백색 / [연출] 하나 왼쪽 놀람 팝업 등장 후 심하게 상하 흔들림	INSTANT	STYLE_MEMBER_SHOUT_32					
@@ -616,7 +616,7 @@ STORY_PROLOGUE_12	40	NARRATION		번쩍-!!						[디자인] 굵은 고딕 40pt �
 STORY_PROLOGUE_12	41	NARRATION		섬광과 함께, 비명을 지를 새도 없이 P와 다섯 소녀는 차원의 틈새로 빨려 들어갔다.						[디자인] 명조체 24pt 밝은 회색 / 화이트 아웃에서 어두운 배경으로 서서히 돌아옴 / 새 BGM: 잔잔하고 서늘한 잔향	SLOW	STYLE_NARRATION	FX_WHITE_TO_DARK	BGM_ABYSS_AFTERGLOW			
 STORY_PROLOGUE_12	42	NARRATION		폭풍이 휩쓸고 간 텅 빈 지하실에는, 산산 조각난 거울 파편들과 허공을 맴도는 기괴한 묵향만이 희미하게 남아 그들이 존재했음을 증명하고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION	FX_FADE_TO_BLACK	BGM_NONE			
 STORY_PROLOGUE_13	1	NARRATION		삐이이-						#12-A. 영요서고 중앙 홀 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 / BGM 정지	INSTANT	STYLE_IMPACT_RED_32	FX_BLACKOUT	BGM_NONE	SFX_TINNITUS		
-STORY_PROLOGUE_13	2	NARRATION		고막을 찢을 듯한 이명과 함께, 공간이 뒤틀리는 듯한 끔찍한 멀미가 밀려왔다.	BG_YEONGYO_LIBRARY_HALL					[디자인] 명조체 24pt 밝은 회색 / 12-A로 디졸브, 화면 어지럽게 일렁임 / BGM 웅장·신비(서서히 커짐)	SLOW	STYLE_NARRATION	FX_DISSOLVE_DIZZY	BGM_LIBRARY_MAJESTIC			
+STORY_PROLOGUE_13	2	NARRATION		고막을 찢을 듯한 이명과 함께, 공간이 뒤틀리는 듯한 끔찍한 멀미가 밀려왔다.	12-A					[디자인] 명조체 24pt 밝은 회색 / 12-A로 디졸브, 화면 어지럽게 일렁임 / BGM 웅장·신비(서서히 커짐)	SLOW	STYLE_NARRATION	FX_DISSOLVE_DIZZY	BGM_LIBRARY_MAJESTIC			
 STORY_PROLOGUE_13	3	NARRATION		가장 먼저 눈을 뜬 것은 P였다.						[디자인] 명조체 24pt 밝은 회색 / 일렁임 멈춤	NORMAL	STYLE_NARRATION	FX_WAVER_STOP				
 STORY_PROLOGUE_13	4	NARRATION		마치 거대한 파도에 휩쓸려 내동댕이쳐진 듯 온몸의 뼈마디가 비명을 질러댔다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_13	5	NARRATION		P가 신음하며 무거운 눈꺼풀을 들어 올렸을 때, 그의 망막을 가득 채운 것은 부서진 지하 연습실의 콘크리트 천장이 아니었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
@@ -682,12 +682,12 @@ STORY_PROLOGUE_13	64	NARRATION		P와 아이들은 여전히 공포에 질린 채
 STORY_PROLOGUE_13	65	NARRATION		그들이 걷는 복도 양옆으로는 허공을 유영하는 수백 권의 책들이 보랏빛 빛을 내며 스쳐 지나갔고,						[디자인] 명조체 24pt 연보라색 / 변동 없음	NORMAL	STYLE_NARRATION_PURPLE					
 STORY_PROLOGUE_13	66	NARRATION		웅장한 서가 사이사이로 영적 존재들이 그들을 흥미롭다는 듯 힐끗거렸다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_13	67	NARRATION		서윤은 신기하단 얼굴로 주변을 보았고, 미나는 주변의 기괴한 풍경에 질린 듯 눈을 반쯤 감은 채 P의 옷자락을 쥐고 걸었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
-STORY_PROLOGUE_13	68	NARRATION		이내 끝을 알 수 없는 웅장한 도서관의 중심부.	BG_YEONGYO_OFFICE_DOOR					#12-B. 웅장한 집무실 문 앞 / [디자인] 명조체 24pt 밝은 회색 / 12-B로 서서히 디졸브 / BGM 분위기 차분하게 전환	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_LIBRARY_CALM			
+STORY_PROLOGUE_13	68	NARRATION		이내 끝을 알 수 없는 웅장한 도서관의 중심부.	12-B					#12-B. 웅장한 집무실 문 앞 / [디자인] 명조체 24pt 밝은 회색 / 12-B로 서서히 디졸브 / BGM 분위기 차분하게 전환	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_LIBRARY_CALM			
 STORY_PROLOGUE_13	69	NARRATION		거대한 마호가니 원목으로 만들어진 양개형 문집 앞에 도착했다.						[디자인] 명조체 24pt 밝은 회색 / BGM Ducking	NORMAL	STYLE_NARRATION			SFX_STOP_FOOTSTEP		
 STORY_PROLOGUE_13	70	NARRATION		문에는 기하학적인 나비 문양이 금빛으로 새겨져 있었다.						[디자인] 명조체 24pt 금색 / 화면 중앙 문양으로 미세한 줌인	NORMAL	STYLE_NARRATION_GOLD	FX_ZOOM_IN_EMBLEM				
 STORY_PROLOGUE_13	71	DIALOGUE	CHAR_MONGGU	관장님. 기다리시던 손님들을 모셔 왔습니다.		CHAR_MONGGU			몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 왼쪽 기본 페이드 인	NORMAL	STYLE_MONGGU_24					
 STORY_PROLOGUE_13	72	NARRATION		끼이익-		NONE				[디자인] 굵은 고딕 32pt 탁한 갈색 / [연출] 몽구 페이드 아웃 / 화면 양옆으로 갈라지며 열리는 이펙트 / BGM 정지	SLOW	STYLE_IMPACT_BROWN_32	FX_DOOR_SPLIT_OPEN	BGM_NONE	SFX_HUGE_DOOR_OPEN		
-STORY_PROLOGUE_13	73	NARRATION		육중한 문이 스스로 열리며, 보랏빛 성운이 잔잔하게 일렁이는 넓은 집무실이 모습을 드러냈다.	BG_YEONGYO_DIRECTOR_OFFICE					#12-C. 관장 집무실 / [디자인] 명조체 24pt 밝은 회색 / 12-C로 컷 전환 / 새 BGM: 우주적이고 압도적인 테마	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_ABYSS_COSMIC			
+STORY_PROLOGUE_13	73	NARRATION		육중한 문이 스스로 열리며, 보랏빛 성운이 잔잔하게 일렁이는 넓은 집무실이 모습을 드러냈다.	12-C					#12-C. 관장 집무실 / [디자인] 명조체 24pt 밝은 회색 / 12-C로 컷 전환 / 새 BGM: 우주적이고 압도적인 테마	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_ABYSS_COSMIC			
 STORY_PROLOGUE_13	74	NARRATION		바닥에는 핏빛 융단이 깔려 있었고, 한쪽 벽면을 가득 채운 거대한 창문 너머로는 이승에서는 볼 수 없는 우주의 별무리들이 쏟아질 듯 반짝이고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_13	75	NARRATION		그리고 그 방의 한가운데.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감)	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28	FX_FREEZE				
 STORY_PROLOGUE_13	76	NARRATION		보랏빛 슈트에 새하얀 가면을 쓴 관장 '무명'이 우아한 자태로 서 있었다.		CHAR_MUMYEONG	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 무명 왼쪽 기본, 어둠 속에서 서서히 페이드 인	NORMAL	STYLE_NARRATION					

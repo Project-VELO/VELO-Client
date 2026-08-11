@@ -20,10 +20,14 @@ public static class MasterDataPaths
 
     private const string MASTER_DATA_FOLDER = "MasterData";
     private const string STORY_SCRIPTS_FOLDER = "StoryScripts";
+    private const string STORY_BACKGROUNDS_FOLDER = "StoryBackgroundImage";
+    private const string STORY_BACKGROUND_EXTENSION = ".png";
 
     public static string MasterDataRoot => Path.Combine(Application.streamingAssetsPath, MASTER_DATA_FOLDER);
 
     public static string StoryScriptsRoot => Path.Combine(MasterDataRoot, STORY_SCRIPTS_FOLDER);
+
+    public static string StoryBackgroundsRoot => Path.Combine(MasterDataRoot, STORY_BACKGROUNDS_FOLDER);
 
     public static string GetTablePath(string fileName)
     {
@@ -36,5 +40,16 @@ public static class MasterDataPaths
     public static string GetStoryScriptPath(string storyId)
     {
         return Path.Combine(StoryScriptsRoot, $"{storyId}.json");
+    }
+
+    /// <summary>
+    /// 감상 화면 배경 이미지의 경로입니다. 파일명이 곧 대본의 BackgroundId입니다("2-A.png").
+    ///
+    /// 배경을 스프라이트 에셋이 아니라 StreamingAssets에 두는 이유는 대본과 같습니다.
+    /// 프리팹이 30여 장을 전부 참조하면 감상 화면을 열 때마다 쓰지도 않을 회차의 배경까지 함께 올라옵니다.
+    /// </summary>
+    public static string GetStoryBackgroundPath(string backgroundId)
+    {
+        return Path.Combine(StoryBackgroundsRoot, $"{backgroundId}{STORY_BACKGROUND_EXTENSION}");
     }
 }

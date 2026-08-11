@@ -23,6 +23,8 @@ public static class MasterDataPaths
     private const string STORY_BACKGROUNDS_FOLDER = "StoryBackgroundImage";
     private const string STORY_BACKGROUND_EXTENSION = ".png";
 
+    private static readonly char[] INVALID_ID_CHARS = Path.GetInvalidFileNameChars();
+
     public static string MasterDataRoot => Path.Combine(Application.streamingAssetsPath, MASTER_DATA_FOLDER);
 
     public static string StoryScriptsRoot => Path.Combine(MasterDataRoot, STORY_SCRIPTS_FOLDER);
@@ -50,6 +52,14 @@ public static class MasterDataPaths
     /// </summary>
     public static string GetStoryBackgroundPath(string backgroundId)
     {
+        // 대본은 사람이 직접 쓰는 파일입니다. 경로 구분자나 드라이브 표기가 섞여 들어오면
+        // StreamingAssets 바깥을 가리키게 되므로, 파일명으로만 쓸 수 있는 값인지 먼저 확인합니다.
+        if (string.IsNullOrEmpty(backgroundId) || backgroundId.IndexOfAny(INVALID_ID_CHARS) != -1)
+        {
+            Debug.LogWarning($"[MasterDataPaths] 배경 ID로 쓸 수 없는 값입니다: '{backgroundId}'");
+            return string.Empty;
+        }
+
         return Path.Combine(StoryBackgroundsRoot, $"{backgroundId}{STORY_BACKGROUND_EXTENSION}");
     }
 }

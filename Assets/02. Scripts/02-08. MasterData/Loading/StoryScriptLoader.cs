@@ -106,6 +106,13 @@ public class StoryScriptLoader
         }
         else
         {
+            // 다른 인물로 교체되는 줄입니다. 앞사람의 표정을 지우지 않으면
+            // 표정을 적지 않은 새 인물이 앞사람의 표정을 그대로 물려받습니다.
+            if (lineCharacterId != carriedCharacterId)
+            {
+                carriedExpressionId = string.Empty;
+            }
+
             carriedCharacterId = lineCharacterId;
         }
 

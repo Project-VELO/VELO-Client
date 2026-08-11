@@ -39,6 +39,10 @@ public class StoryLinePlayer
         _ui.DialogBox.RefreshSpeaker(line);
         _ui.DialogBox.RefreshBodyStyle(line.TextStyleId);
 
+        // 앞 줄의 토큰이 아직 남아 있을 수 있습니다. 팝업 없이 다음 줄로 넘어간 경로가 그렇습니다.
+        // 여기서 걷지 않으면 줄마다 CancellationTokenSource가 하나씩 쌓입니다.
+        Skip();
+
         // 씬 언로드와 건너뛰기 두 취소원을 하나로 묶습니다.
         _typingCts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
         TypeAsync(line.Text, line.TextSpeed, _typingCts.Token).Forget();

@@ -27,12 +27,23 @@ public class UI_StoryDialogBox : MonoBehaviour
     public TMP_Text BodyText => _bodyText;
 
     /// <summary>
+    /// 스타일에 글꼴이 지정되지 않은 줄이 돌아올 자리입니다.
+    /// 프리팹에 물려 둔 글꼴을 한 번만 기억해 두고, 그 뒤로는 스타일이 이 값을 덮어씁니다.
+    /// </summary>
+    private TMP_FontAsset _defaultBodyFont;
+
+    private void Awake()
+    {
+        _defaultBodyFont = _bodyText.font;
+    }
+
+    /// <summary>
     /// 본문 글꼴을 이번 줄의 스타일로 갈아 끼웁니다(연출표의 [디자인] 열).
     /// 타이핑이 시작되기 전에 불러야 합니다. 글자를 찍는 도중에 크기가 바뀌면 이미 찍힌 글자까지 다시 배치됩니다.
     /// </summary>
     public void RefreshBodyStyle(string textStyleId)
     {
-        _textStyleBinder.Get(textStyleId).ApplyTo(_bodyText);
+        _textStyleBinder.Get(textStyleId).ApplyTo(_bodyText, _defaultBodyFont);
     }
 
     /// <summary>

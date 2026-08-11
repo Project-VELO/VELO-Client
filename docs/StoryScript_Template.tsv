@@ -31,7 +31,7 @@ STORY_PROLOGUE_02	3	NARRATION		온기라고는 단 1도 존재하지 않는 삭�
 STORY_PROLOGUE_02	4	NARRATION		거대한 흑요석 테이블을 중심으로 날카로운 직선 형태의 의자들이 도열해 있고,						[디자인] 명조체 24pt 밝은 회색 / 회의실 전경을 천천히 훑는 연출(Pan)	NORMAL	STYLE_NARRATION	FX_PAN_ROOM				
 STORY_PROLOGUE_02	5	NARRATION		잿빛 벽면을 타고 흐르는 서늘한 백색 조명은 마치 단두대의 칼날 같았다.						[디자인] 명조체 24pt 밝은 회색 / 조명 이펙트가 날카롭게 점멸	SLOW	STYLE_NARRATION	FX_LIGHT_FLICKER				
 STORY_PROLOGUE_02	6	NARRATION		그 숨 막히는 철옹성의 상석에, 오늘부로 P를 밀어내고 '수석 프로듀서' 배지를 꿰찬 강주희가 다리를 꼬고 앉아 있었다.		CHAR_JUHUI	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 왼쪽 기본, 오만한 자세로 서서히 페이드 인 등장	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_SLIGHT				
-STORY_PROLOGUE_02	7	NARRATION		그녀의 우측에는 담배를 피고있는 다혈질의 김 전무가, 좌측에는 찻잔을 든 최 상무가 나란히 앉아 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 + 김 전무·최 상무 실루엣 노출 (동시 표시는 현재 스키마로 불가, 주희만 유지)	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT				
+STORY_PROLOGUE_02	7	NARRATION		그녀의 우측에는 담배를 피우고 있는 다혈질의 김 전무가, 좌측에는 찻잔을 든 최 상무가 나란히 앉아 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 + 김 전무·최 상무 실루엣 노출 (동시 표시는 현재 스키마로 불가, 주희만 유지)	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT				
 STORY_PROLOGUE_02	8	NARRATION		넥타이가 풀어진 채 짐승처럼 헐떡이며 들어선 P를 향해, 주희가 테이블 위로 태블릿을 툭 던졌다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 / SFX 거친 숨소리와 태블릿이 미끄러지는 소리	NORMAL	STYLE_NARRATION			SFX_TABLET_SLIDE		
 STORY_PROLOGUE_02	9	DIALOGUE	CHAR_JUHUI	노크 좀 해. 천박하게.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 한심하다는 듯 표정 변경 (전용 표정 없어 EXP_NORMAL)	INSTANT	STYLE_JUHUI					
 STORY_PROLOGUE_02	10	DIALOGUE	CHAR_P	강주희. 데뷔 일주일 앞둔 애들을 오늘 아침에 엎어버린 것도 모자라서,		NONE			P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 컷 아웃 퇴장 / BGM Ducking	INSTANT	STYLE_P_DIALOGUE_26	FX_SCREEN_SHAKE_HARD		SFX_TABLE_SLAM		
@@ -78,7 +78,7 @@ STORY_PROLOGUE_02	50	DIALOGUE	CHAR_RIA	다들 그만해... 내가 리더니까. 
 STORY_PROLOGUE_02	51	DIALOGUE	CHAR_RIA	하라는 대로 다 할 테니까 딱 한 번만 살려달라고 빌게. 제발...					리아	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 리아 표정 일그러지며 슬픔 / BGM 서서히 비극적으로 고조	NORMAL	STYLE_MEMBER_TREMBLE	FX_SCREEN_SHAKE_LIGHT				
 STORY_PROLOGUE_02	52	NARRATION		고작 누군가의 '재활 장난감'으로 쓰이다 완벽하게 부서져 버린 아이들.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 퇴장	SLOW	STYLE_NARRATION	FX_VIGNETTE_FOCUS				
 STORY_PROLOGUE_02	53	NARRATION		소녀들은 조난자들처럼 바닥을 기다시피 다가가 P의 바짓단을 생명줄처럼 꽉 틀어쥐었다.						[디자인] 명조체 24pt 밝은 회색 / 카메라 시점 바닥(P의 다리)으로 이동(Tilt Down)	NORMAL	STYLE_NARRATION	FX_TILT_DOWN		SFX_CLOTH_GRIP		
-STORY_PROLOGUE_02	54	DIALOGUE	CHAR_SEOYUN	P... 우리 정말 아무것도안 했어.		CHAR_SEOYUN	EXP_SAD		서윤	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 서윤 왼쪽 슬픔, 아래에서 위로 슬라이드 인(올려다보는 구도)	NORMAL	STYLE_MEMBER_TREMBLE					
+STORY_PROLOGUE_02	54	DIALOGUE	CHAR_SEOYUN	P... 우리 정말 아무것도 안 했어.		CHAR_SEOYUN	EXP_SAD		서윤	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 서윤 왼쪽 슬픔, 아래에서 위로 슬라이드 인(올려다보는 구도)	NORMAL	STYLE_MEMBER_TREMBLE					
 STORY_PROLOGUE_02	55	DIALOGUE	CHAR_SEOYUN	룸에서 얌전히 안 굴었다고... 그 인형 같은 짓 안 하고 버틴 게, 왜 4억짜리 죽을죄가 되는 거야...?					서윤	[디자인] 고딕체 24pt 순백색 / [연출] 서윤 유지	SLOW	STYLE_MEMBER					
 STORY_PROLOGUE_02	56	DIALOGUE	CHAR_JIWOO	살려주세요, P... 저 이 빚더미 안고 우리 엄마 얼굴 어떻게 봐요...					지우	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 서윤 유지 + 지우 오른쪽 슬픔 슬라이드 인	NORMAL	STYLE_MEMBER_TREMBLE			SFX_WAIL	CHAR_JIWOO	EXP_SAD
 STORY_PROLOGUE_02	57	DIALOGUE	CHAR_RIA	저희 이대로 못 끝내요. P가 3년 동안 빚어준 우리 무대에, 딱 한 번만 서게 해주세요. 제발요...		CHAR_RIA	EXP_SAD		리아	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 서윤·지우 퇴장, 리아 왼쪽 슬픔 슬라이드 인 / BGM 최고조로 슬프게 변조	NORMAL	STYLE_MEMBER_TREMBLE	FX_SCREEN_SHAKE_LIGHT			NONE	
@@ -144,7 +144,7 @@ STORY_PROLOGUE_03	54	NARRATION		천천히 고개를 들자, 눈송이로 빚어�
 STORY_PROLOGUE_03	55	NARRATION		죽기 직전의 그 텅 빈 눈동자가 아니라, 처음 P의 곡을 받고 무대에 설 수 있다며 세상을 다 가진 듯 기뻐하던 그 맑은 눈동자였다.				CG_HWANYEONG_HANDS		[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 유지, 서서히 줌아웃하며 소녀의 얼굴까지 보여줌	SLOW	STYLE_NARRATION	FX_ZOOM_OUT_SLOW				
 STORY_PROLOGUE_03	56	DIALOGUE	CHAR_HWANYEONG	피디님. 어른의 이성이라는 변명 뒤에 숨는 건, 저 하나로 족하잖아요.				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 24pt 서늘한 푸른색 / [일러스트 3] 유지	SLOW	STYLE_HWANYEONG					
 STORY_PROLOGUE_03	57	DIALOGUE	CHAR_HWANYEONG	피디님이 저 거대한 성벽을 부술 수 없다고 믿었기 때문에 제가 죽은 게 아니에요.				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 24pt 서늘한 푸른색 / [일러스트 3] 유지	NORMAL	STYLE_HWANYEONG					
-STORY_PROLOGUE_03	58	DIALOGUE	CHAR_HWANYEONG	피디님이 질레 겁을 먹고 절 포기했기 때문에 죽은 거지.				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 24pt 서늘한 푸른색 / [일러스트 3] 유지 / BGM 애절하게 변조	SLOW	STYLE_HWANYEONG					
+STORY_PROLOGUE_03	58	DIALOGUE	CHAR_HWANYEONG	피디님이 지레 겁을 먹고 절 포기했기 때문에 죽은 거지.				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 24pt 서늘한 푸른색 / [일러스트 3] 유지 / BGM 애절하게 변조	SLOW	STYLE_HWANYEONG					
 STORY_PROLOGUE_03	59	NARRATION		소녀의 목소리는 겨울바람보다 서늘했지만, 그 안에는 묘한 온기가 섞여 있었다.				CG_HWANYEONG_HANDS		[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 유지	NORMAL	STYLE_NARRATION					
 STORY_PROLOGUE_03	60	NARRATION		포개어진 손등 위로 하얀 눈송이가 하나둘 녹아내렸다.				CG_HWANYEONG_HANDS		[디자인] 명조체 24pt 밝은 회색 / [일러스트 3] 유지, 눈송이 녹는 이펙트	NORMAL	STYLE_NARRATION	FX_SNOW_MELT				
 STORY_PROLOGUE_03	61	DIALOGUE	CHAR_HWANYEONG	저 지하에 있는 아이들마저 저처럼 영원히 추운 곳에 남겨둘 건가요?				CG_HWANYEONG_HANDS	환영	[디자인] 우아한 명조 26pt 서늘한 푸른색 / [일러스트 3] 유지 / 화면 포커스 아웃-인	SLOW	STYLE_HWANYEONG_26	FX_FOCUS_PULSE				

@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VInspector;
 
@@ -50,7 +52,15 @@ public class StoryVisualBinder : MonoBehaviour
     /// </summary>
     public Sprite GetBackground(string backgroundId)
     {
-        return _backgroundLoader.Load(backgroundId);
+        return _backgroundLoader.Get(backgroundId);
+    }
+
+    /// <summary>
+    /// 이 회차가 쓰는 배경을 미리 읽습니다. 첫 줄을 출력하기 전에 끝나야 합니다.
+    /// </summary>
+    public UniTask PreloadBackgroundsAsync(StoryScriptData script, CancellationToken cancellationToken)
+    {
+        return _backgroundLoader.PreloadAsync(script, cancellationToken);
     }
 
     public Color BackgroundPlaceholderColor => _backgroundPlaceholderColor;

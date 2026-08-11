@@ -1,51 +1,58 @@
 using System.Collections.Generic;
-using System.IO;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /// <summary>
 /// 감상 화면 배경 이미지를 StreamingAssets에서 읽어 스프라이트로 만듭니다.
 ///
 /// StreamingAssets는 유니티가 임포트하지 않는 폴더라 스프라이트 에셋이 존재하지 않습니다.
-/// 그래서 파일 바이트를 직접 읽어 텍스처를 만들고, 그 텍스처로 스프라이트를 한 장 씁니다.
+/// 그래서 파일을 직접 읽어 텍스처를 만들고, 그 텍스처로 스프라이트를 한 장 씁니다.
 ///
-/// 한 회차가 쓰는 배경은 많아야 서너 장이므로 처음 쓰일 때 읽고 캐시에 남깁니다.
-/// 줄이 바뀔 때마다 다시 읽으면 같은 파일을 수십 번 디코딩하게 됩니다.
+/// 읽기에 File API가 아니라 UnityWebRequest를 쓰는 이유는 안드로이드 때문입니다.
+/// 그곳의 StreamingAssets는 APK 안에 압축되어 있어 파일 경로로 열리지 않습니다.
+///
+/// 회차에 들어갈 때 한 번에 미리 읽습니다. 줄이 바뀌는 시점에 디코딩하면 그 프레임이 끊기고,
+/// 한 회차가 쓰는 배경은 많아야 서너 장이라 미리 읽어도 부담이 없습니다.
 /// </summary>
 public class StoryBackgroundLoader
 {
     private readonly Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
 
     /// <summary>
-    /// 없는 파일을 매 줄 경고하지 않도록, 한 번 실패한 ID는 기억해 둡니다.
+    /// 미리 읽어 둔 배경을 돌려줍니다. 없으면 null이며 호출부는 단색으로 대체합니다(기획서 3-L).
+    /// 여기서 새로 읽지 않는 것은, 줄을 넘기는 도중에 디스크를 만지지 않기 위해서입니다.
     /// </summary>
-    private readonly HashSet<string> _missingIds = new HashSet<string>();
+    public Sprite Get(string backgroundId)
+    {
+        if (string.IsNullOrEmpty(backgroundId))
+        {
+            return null;
+        }
+
+        return _sprites.TryGetValue(backgroundId, out Sprite sprite) ? sprite : null;
+    }
 
     /// <summary>
-    /// 배경 스프라이트를 돌려줍니다. 파일이 없거나 디코딩에 실패하면 null이며,
-    /// 호출부는 기획서 3-L에 따라 단색 배경으로 대체합니다.
+    /// 대본이 쓰는 배경을 모두 읽어 둡니다. 같은 ID가 여러 줄에 나와도 한 번만 읽습니다.
     /// </summary>
-    public Sprite Load(string backgroundId)
+    public async UniTask PreloadAsync(StoryScriptData script, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrEmpty(backgroundId) || _missingIds.Contains(backgroundId))
+        foreach (string backgroundId in CollectBackgroundIds(script))
         {
-            return null;
+            if (_sprites.ContainsKey(backgroundId))
+            {
+                continue;
+            }
+
+            Sprite sprite = await LoadSpriteAsync(backgroundId, cancellationToken);
+
+            if (sprite != null)
+            {
+                _sprites[backgroundId] = sprite;
+            }
         }
-
-        if (_sprites.TryGetValue(backgroundId, out Sprite cached))
-        {
-            return cached;
-        }
-
-        Sprite sprite = CreateSprite(backgroundId);
-
-        if (sprite == null)
-        {
-            _missingIds.Add(backgroundId);
-            return null;
-        }
-
-        _sprites[backgroundId] = sprite;
-        return sprite;
     }
 
     /// <summary>
@@ -64,30 +71,60 @@ public class StoryBackgroundLoader
         }
 
         _sprites.Clear();
-        _missingIds.Clear();
     }
 
-    private Sprite CreateSprite(string backgroundId)
+    private List<string> CollectBackgroundIds(StoryScriptData script)
     {
-        string path = MasterDataPaths.GetStoryBackgroundPath(backgroundId);
+        var ids = new List<string>();
 
-        if (!File.Exists(path))
+        foreach (StoryLineData line in script.Lines)
         {
-            Debug.LogWarning($"[StoryBackgroundLoader] 배경 이미지가 없습니다: {path}");
+            if (!string.IsNullOrEmpty(line.BackgroundId) && !ids.Contains(line.BackgroundId))
+            {
+                ids.Add(line.BackgroundId);
+            }
+        }
+
+        return ids;
+    }
+
+    private async UniTask<Sprite> LoadSpriteAsync(string backgroundId, CancellationToken cancellationToken)
+    {
+        string url = ToUrl(MasterDataPaths.GetStoryBackgroundPath(backgroundId));
+
+        if (string.IsNullOrEmpty(url))
+        {
             return null;
         }
 
-        // 크기는 LoadImage가 파일에서 읽어 다시 잡으므로 여기서는 아무 값이나 둡니다.
-        var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
-
-        if (!texture.LoadImage(File.ReadAllBytes(path)))
+        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(url))
         {
-            Debug.LogWarning($"[StoryBackgroundLoader] 배경 이미지를 읽지 못했습니다: {path}");
-            Object.Destroy(texture);
-            return null;
+            await request.SendWebRequest().WithCancellation(cancellationToken);
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogWarning($"[StoryBackgroundLoader] 배경 이미지를 읽지 못했습니다({request.error}): {url}");
+                return null;
+            }
+
+            Texture2D texture = DownloadHandlerTexture.GetContent(request);
+            var rect = new Rect(0f, 0f, texture.width, texture.height);
+
+            return Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f));
+        }
+    }
+
+    /// <summary>
+    /// 안드로이드의 StreamingAssets 경로는 이미 URL 형태(jar:file://...)입니다.
+    /// 그 외 플랫폼은 평범한 파일 경로라 UnityWebRequest가 알아볼 수 있게 스킴을 붙여 줍니다.
+    /// </summary>
+    private string ToUrl(string path)
+    {
+        if (string.IsNullOrEmpty(path) || path.Contains("://"))
+        {
+            return path;
         }
 
-        var rect = new Rect(0f, 0f, texture.width, texture.height);
-        return Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f));
+        return $"file://{path}";
     }
 }

@@ -14,7 +14,6 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 public class LiveResultDispatcher
 {
-    public const string FAIL_REASON_GHOST_NOTE = "GHOST_NOTE";
     public const string FAIL_REASON_LOW_ACCURACY = "LOW_ACCURACY";
 
     private const float RESULT_DELAY_SECONDS = 3f;
@@ -35,20 +34,19 @@ public class LiveResultDispatcher
     {
         LiveResultContext.Instance.SetResult(BuildResult(
             _judgementProcessor.ScoreTracker,
-            _judgementProcessor.TotalNoteCount,
-            _judgementProcessor.HasGhostFailed));
+            _judgementProcessor.TotalNoteCount));
 
         await UniTask.Delay(TimeSpan.FromSeconds(RESULT_DELAY_SECONDS), DelayType.UnscaledDeltaTime, cancellationToken: cancellationToken);
 
         LiveSceneNavigator.LoadScene(ESceneNames.LiveResultScene, cancellationToken, nameof(LiveResultDispatcher));
     }
 
-    private static LiveResultData BuildResult(LiveScoreTracker tracker, int totalNoteCount, bool hasGhostFailure)
+    private static LiveResultData BuildResult(LiveScoreTracker tracker, int totalNoteCount)
     {
         LiveEntryContext context = LiveEntryContext.Instance;
 
         float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, totalNoteCount);
-        ELiveRank rank = LiveRankEvaluator.Evaluate(accuracy, tracker.PerfectCount, totalNoteCount, hasGhostFailure);
+        ELiveRank rank = LiveRankEvaluator.Evaluate(accuracy, tracker.PerfectCount, totalNoteCount);
         bool isClear = LiveRankEvaluator.IsClear(rank);
 
         return new LiveResultData
@@ -60,7 +58,7 @@ public class LiveResultDispatcher
             Difficulty = context.SelectedDifficulty,
 
             IsClear = isClear,
-            FailReason = GetFailReason(isClear, hasGhostFailure),
+            FailReason = GetFailReason(isClear),
 
             Score = tracker.Score,
             Rank = rank,
@@ -77,13 +75,11 @@ public class LiveResultDispatcher
         };
     }
 
-    private static string GetFailReason(bool isClear, bool hasGhostFailure)
+    /// <summary>
+    /// 귀신 노트 실패가 즉시 종료 대신 감점으로 바뀐 뒤로 실패 경로는 정확도 미달 하나뿐입니다(3-I-6).
+    /// </summary>
+    private static string GetFailReason(bool isClear)
     {
-        if (isClear)
-        {
-            return null;
-        }
-
-        return hasGhostFailure ? FAIL_REASON_GHOST_NOTE : FAIL_REASON_LOW_ACCURACY;
+        return isClear ? null : FAIL_REASON_LOW_ACCURACY;
     }
 }

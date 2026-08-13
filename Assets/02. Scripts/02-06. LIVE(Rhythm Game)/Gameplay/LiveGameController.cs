@@ -45,7 +45,6 @@ public class LiveGameController : MonoBehaviour
 
         _playInput.OnLanePressed += PressLane;
         _playInput.OnLaneReleased += ReleaseLane;
-        _judgementProcessor.OnGhostFailed += FinishPlay;
         _conductor.AudioPlayer.OnClipLoaded += OnAudioClipLoaded;
     }
 
@@ -63,7 +62,6 @@ public class LiveGameController : MonoBehaviour
     {
         _playInput.OnLanePressed -= PressLane;
         _playInput.OnLaneReleased -= ReleaseLane;
-        _judgementProcessor.OnGhostFailed -= FinishPlay;
         _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
     }
 
@@ -84,7 +82,6 @@ public class LiveGameController : MonoBehaviour
 
         _judgementProcessor.RefreshExpiredNotes(_conductor.SongTimeMs);
 
-        // 귀신 실패로 상태가 이미 Finishing이면 FinishPlay가 스스로 걸러 내므로 여기서 다시 확인하지 않습니다.
         if (_conductor.IsSongFinished)
         {
             FinishPlay();
@@ -183,7 +180,8 @@ public class LiveGameController : MonoBehaviour
     }
 
     /// <summary>
-    /// 완주와 귀신 노트 실패가 모두 여기로 모입니다. 귀신 실패는 판정 도중에 통지되므로 상태를 먼저 확인합니다.
+    /// 한 판을 마무리합니다. 곡 완주가 유일한 진입 경로지만, 같은 프레임에 일시정지나 중도 종료가 겹칠 수 있으므로
+    /// 상태를 먼저 확인해 두 번 정리하지 않도록 합니다.
     /// </summary>
     private void FinishPlay()
     {
@@ -196,7 +194,7 @@ public class LiveGameController : MonoBehaviour
         _conductor.Stop();
         _playInput.SetAcceptingInput(false);
 
-        // 귀신 실패가 아니라면 곡이 끝난 시점에 남아 있던 노트까지 마저 BAD로 확정하고 결과를 냅니다.
+        // 곡이 끝난 시점에 남아 있던 노트까지 마저 BAD로 확정하고 결과를 냅니다.
         _judgementProcessor.FlushRemainingNotes();
 
         _resultDispatcher.Dispatch(this.GetCancellationTokenOnDestroy());

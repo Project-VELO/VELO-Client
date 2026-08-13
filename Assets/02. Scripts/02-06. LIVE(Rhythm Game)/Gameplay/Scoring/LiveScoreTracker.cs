@@ -1,6 +1,6 @@
 /// <summary>
 /// 플레이 도중의 점수·콤보·판정 개수를 누적합니다. 기획서 3-I-3(콤보)과 3-I-4(점수)를 따릅니다.
-/// 콤보 보너스와 카드 보너스는 아직 적용하지 않으므로, 최종 점수는 판정 점수의 합과 같습니다.
+/// 콤보 보너스와 카드 보너스는 아직 적용하지 않으므로, 최종 점수는 판정 점수의 합에서 귀신 노트 감점을 뺀 값입니다.
 /// </summary>
 public class LiveScoreTracker
 {
@@ -52,6 +52,14 @@ public class LiveScoreTracker
     {
         GhostMisinputCount++;
         Combo = 0;
+    }
+
+    /// <summary>
+    /// 귀신 노트를 놓쳤을 때의 감점입니다(3-I-6). 판정 개수와 콤보는 BAD로 이미 Apply에서 처리되므로 점수만 건드립니다.
+    /// </summary>
+    public void ApplyGhostMissPenalty()
+    {
+        Score = LiveJudgementRule.ApplyGhostMissPenalty(Score);
     }
 
     private void AddJudgementCount(EJudgement judgement)

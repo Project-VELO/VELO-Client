@@ -25,6 +25,12 @@ public static class LiveJudgementRule
     public const int BAD_SCORE = 0;
 
     /// <summary>
+    /// 귀신 노트를 놓쳤을 때 깎는 점수입니다(3-I-6). 즉시 실패를 대신하는 처벌이므로,
+    /// 무시할 수 없되 한 번으로 판을 뒤집지는 않도록 PERFECT 두 개 분량으로 잡았습니다.
+    /// </summary>
+    public const int GHOST_MISS_PENALTY_SCORE = PERFECT_SCORE * 2;
+
+    /// <summary>
     /// 정확도 계산의 분모가 되는, 노트 하나가 받을 수 있는 최대 점수입니다.
     /// </summary>
     public const int MAX_SCORE_PER_NOTE = PERFECT_SCORE;
@@ -67,6 +73,17 @@ public static class LiveJudgementRule
             default:
                 return BAD_SCORE;
         }
+    }
+
+    /// <summary>
+    /// 귀신 노트를 놓친 감점을 반영한 점수를 돌려줍니다. 남은 점수보다 감점이 크면 0에서 멈춥니다.
+    /// 정확도가 점수에서 파생되므로(LiveRankEvaluator.GetAccuracy) 음수를 허용하면 정확도까지 음수가 됩니다.
+    /// </summary>
+    public static int ApplyGhostMissPenalty(int score)
+    {
+        int penalizedScore = score - GHOST_MISS_PENALTY_SCORE;
+
+        return penalizedScore < 0 ? 0 : penalizedScore;
     }
 
     /// <summary>

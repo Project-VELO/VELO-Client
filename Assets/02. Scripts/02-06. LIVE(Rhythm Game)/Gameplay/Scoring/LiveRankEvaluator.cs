@@ -1,6 +1,6 @@
 /// <summary>
 /// 정확도를 계산하고 랭크를 부여합니다. 기획서 3-I-5(CLEAR 조건)와 3-I-7(랭크)을 따릅니다.
-/// 전체 노트 개수에는 일반 노트와 귀신 노트를 모두 포함하며, 귀신 노트 오입력은 포함하지 않습니다.
+/// 전체 노트 개수에는 일반 노트와 귀신 노트를 모두 포함합니다.
 /// </summary>
 public static class LiveRankEvaluator
 {
@@ -24,15 +24,12 @@ public static class LiveRankEvaluator
     }
 
     /// <summary>
-    /// 귀신 노트 실패는 정확도와 무관하게 곧바로 FAILED이며, 모든 노트가 PERFECT인 경우를 가장 먼저 검사합니다.
+    /// 모든 노트가 PERFECT인 경우를 가장 먼저 검사한 뒤 정확도 구간을 훑습니다.
+    /// 귀신 노트를 놓치면 점수가 깎이고(LiveJudgementRule.GHOST_MISS_PENALTY_SCORE) 그 손실이 정확도를 통해
+    /// 여기까지 전해지므로, 귀신 실패를 따로 받아 FAILED로 못 박지 않습니다.
     /// </summary>
-    public static ELiveRank Evaluate(float accuracy, int perfectCount, int totalNoteCount, bool hasGhostFailure)
+    public static ELiveRank Evaluate(float accuracy, int perfectCount, int totalNoteCount)
     {
-        if (hasGhostFailure)
-        {
-            return ELiveRank.FAILED;
-        }
-
         if (0 < totalNoteCount && perfectCount == totalNoteCount)
         {
             return ELiveRank.PERFECT_S;

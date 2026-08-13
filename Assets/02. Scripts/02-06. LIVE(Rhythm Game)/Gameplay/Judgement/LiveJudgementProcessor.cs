@@ -13,8 +13,6 @@ using System.Collections.Generic;
 /// </summary>
 public class LiveJudgementProcessor
 {
-    public Action OnGhostFailed;
-
     /// <summary>
     /// 판정 하나가 확정될 때마다 알립니다. note가 null이면 노트 없이 귀신 레인을 누른 오입력입니다(3-I-6).
     /// 표시(판정 문구)와 노트 숨김이 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
@@ -29,12 +27,8 @@ public class LiveJudgementProcessor
     private readonly List<NoteData> _expiredNotes = new List<NoteData>();
     private readonly List<LiveHoldTracker.LiveHoldResult> _holdResults = new List<LiveHoldTracker.LiveHoldResult>();
 
-    // 귀신 실패가 확정되면 남은 노트와 입력을 더 이상 집계하지 않습니다. 결과는 실패 시점까지만 저장합니다(3-I-6).
-    private bool _hasGhostFailed;
-
     public LiveScoreTracker ScoreTracker => _scoreTracker;
     public int TotalNoteCount => _noteQueue.TotalNoteCount;
-    public bool HasGhostFailed => _hasGhostFailed;
 
     /// <summary>
     /// 한 판의 집계를 처음 상태로 되돌립니다.
@@ -47,22 +41,16 @@ public class LiveJudgementProcessor
         _holdTracker.Clear();
         _expiredNotes.Clear();
         _holdResults.Clear();
-        _hasGhostFailed = false;
 
         OnSessionReset?.Invoke();
     }
 
     /// <summary>
     /// 해당 레인의 키가 눌린 순간을 판정합니다.
-    /// 판정 범위에 귀신 노트가 없는데 귀신 레인이 눌렸다면 오입력이므로 즉시 실패로 확정합니다(3-I-6).
+    /// 판정 범위에 귀신 노트가 없는데 귀신 레인이 눌렸다면 오입력이므로 콤보를 끊습니다(3-I-6).
     /// </summary>
     public void PressLane(int lane, int songTimeMs)
     {
-        if (_hasGhostFailed)
-        {
-            return;
-        }
-
         if (_noteQueue.TryTake(lane, songTimeMs, out NoteData note, out int errorMs))
         {
             EJudgement judgement = LiveJudgementRule.Judge(errorMs);
@@ -86,7 +74,6 @@ public class LiveJudgementProcessor
         _scoreTracker.AddGhostMisinput();
         OnScoreChanged?.Invoke();
         OnNoteJudged?.Invoke(null, EJudgement.BAD);
-        FailByGhostNote();
     }
 
     /// <summary>
@@ -94,11 +81,6 @@ public class LiveJudgementProcessor
     /// </summary>
     public void ReleaseLane(int lane, int songTimeMs)
     {
-        if (_hasGhostFailed)
-        {
-            return;
-        }
-
         if (_holdTracker.TryReleaseLane(lane, songTimeMs, out LiveHoldTracker.LiveHoldResult result))
         {
             ApplyJudgement(result.Note, result.Judgement);
@@ -110,20 +92,9 @@ public class LiveJudgementProcessor
     /// </summary>
     public void RefreshExpiredNotes(int songTimeMs)
     {
-        if (_hasGhostFailed)
-        {
-            return;
-        }
-
         _expiredNotes.Clear();
         _noteQueue.CollectExpired(songTimeMs, _expiredNotes);
         ApplyBadToCollectedNotes();
-
-        // 만료 처리 도중 귀신 노트가 실패했다면 그 시점에서 플레이가 끝나므로, 롱노트는 더 이상 확정하지 않습니다(3-I-6).
-        if (_hasGhostFailed)
-        {
-            return;
-        }
 
         _holdResults.Clear();
         _holdTracker.CollectCompleted(songTimeMs, _holdResults);
@@ -138,11 +109,6 @@ public class LiveJudgementProcessor
     /// </summary>
     public void FlushRemainingNotes()
     {
-        if (_hasGhostFailed)
-        {
-            return;
-        }
-
         _holdResults.Clear();
         _holdTracker.CollectRemaining(_holdResults);
         ApplyCollectedHoldResults();
@@ -165,12 +131,6 @@ public class LiveJudgementProcessor
         for (int i = 0; i < _expiredNotes.Count; i++)
         {
             ApplyJudgement(_expiredNotes[i], EJudgement.BAD);
-
-            // 귀신 노트가 하나라도 BAD면 그 시점에서 플레이가 끝나므로, 뒤의 노트는 집계하지 않습니다(3-I-6).
-            if (_hasGhostFailed)
-            {
-                return;
-            }
         }
     }
 
@@ -178,22 +138,13 @@ public class LiveJudgementProcessor
     {
         _scoreTracker.Apply(judgement);
 
-        OnScoreChanged?.Invoke();
-        OnNoteJudged?.Invoke(note, judgement);
-
+        // 감점을 통지보다 앞에 두어야 HUD가 이미 깎인 점수로 한 번만 갱신됩니다(3-I-6).
         if (note.NoteType == ENoteType.GHOST && judgement == EJudgement.BAD)
         {
-            FailByGhostNote();
+            _scoreTracker.ApplyGhostMissPenalty();
         }
-    }
 
-    private void FailByGhostNote()
-    {
-        _hasGhostFailed = true;
-
-        // 실패 시점 이후는 집계하지 않으므로, 눌러 둔 롱노트도 판정되지 않은 채로 놓아 줍니다.
-        _holdTracker.Clear();
-
-        OnGhostFailed?.Invoke();
+        OnScoreChanged?.Invoke();
+        OnNoteJudged?.Invoke(note, judgement);
     }
 }

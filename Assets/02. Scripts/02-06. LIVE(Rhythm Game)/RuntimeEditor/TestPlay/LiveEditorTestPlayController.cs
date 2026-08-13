@@ -60,8 +60,6 @@ public class LiveEditorTestPlayController : MonoBehaviour
         _playInput.OnLanePressed += PressLane;
         _playInput.OnLaneReleased += ReleaseLane;
 
-        // 귀신 노트가 실패하면 이후 입력이 더 이상 집계되지 않아 테스트를 이어갈 의미가 없으므로 곧바로 멈춥니다.
-        _judgementProcessor.OnGhostFailed += StopTestPlay;
         _judgementProcessor.OnNoteJudged += HideJudgedNote;
 
         if (_liveUI != null)
@@ -76,7 +74,6 @@ public class LiveEditorTestPlayController : MonoBehaviour
     {
         _playInput.OnLanePressed -= PressLane;
         _playInput.OnLaneReleased -= ReleaseLane;
-        _judgementProcessor.OnGhostFailed -= StopTestPlay;
         _judgementProcessor.OnNoteJudged -= HideJudgedNote;
     }
 

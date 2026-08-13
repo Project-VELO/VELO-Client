@@ -89,6 +89,11 @@ public class LiveNoteQueue
     /// <summary>
     /// 해당 레인에서 지금 입력이 닿는 노트를 꺼냅니다.
     /// 만료된 노트는 CollectExpired가 미리 걷어 가므로, 맨 앞 노트만 확인하면 충분합니다.
+    ///
+    /// 입력을 받아 주는 구간은 판정선을 기준으로 비대칭입니다. 늦은 쪽은 노트가 만료되는 JUDGEABLE_WINDOW_MS까지지만,
+    /// 이른 쪽은 그보다 넓은 EARLY_CONSUME_WINDOW_MS까지 노트를 소비합니다. 두 창을 같게 두면 GOOD 창보다 이른 입력이
+    /// 아무 대가 없이 무시되어, 이르게 눌러도 노트가 살아남는 만큼 연타가 이득이 됩니다.
+    /// 소비만 하고 판정은 Judge에 맡기므로, 이 구간의 이른 입력은 자연히 BAD가 됩니다.
     /// </summary>
     public bool TryTake(int lane, int songTimeMs, out NoteData note, out int errorMs)
     {
@@ -112,7 +117,7 @@ public class LiveNoteQueue
         NoteData candidate = notes[head];
         int candidateErrorMs = songTimeMs - candidate.TimeMs;
 
-        if (candidateErrorMs < -LiveJudgementRule.JUDGEABLE_WINDOW_MS || LiveJudgementRule.JUDGEABLE_WINDOW_MS < candidateErrorMs)
+        if (candidateErrorMs < -LiveJudgementRule.EARLY_CONSUME_WINDOW_MS || LiveJudgementRule.JUDGEABLE_WINDOW_MS < candidateErrorMs)
         {
             return false;
         }

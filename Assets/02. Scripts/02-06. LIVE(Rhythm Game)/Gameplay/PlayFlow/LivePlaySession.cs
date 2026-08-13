@@ -95,15 +95,10 @@ public class LivePlaySession
     }
 
     /// <summary>
-    /// 판정이 끝난 노트를 화면에서 지웁니다. note가 null이면 노트 없이 귀신 레인을 누른 오입력이라 지울 노트가 없습니다.
+    /// 판정이 끝난 노트를 화면에서 지웁니다.
     /// </summary>
     private void HideJudgedNote(NoteData note, EJudgement judgement)
     {
-        if (note == null)
-        {
-            return;
-        }
-
         _trackScroller.NoteRenderer.HideNote(note.NoteId);
     }
 

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 public class LiveJudgementProcessor
 {
     /// <summary>
-    /// 판정 하나가 확정될 때마다 알립니다. note가 null이면 노트 없이 귀신 레인을 누른 오입력입니다(3-I-6).
+    /// 판정 하나가 확정될 때마다 알립니다.
     /// 표시(판정 문구)와 노트 숨김이 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
     /// </summary>
     public event Action<NoteData, EJudgement> OnNoteJudged;
@@ -47,33 +47,26 @@ public class LiveJudgementProcessor
 
     /// <summary>
     /// 해당 레인의 키가 눌린 순간을 판정합니다.
-    /// 판정 범위에 귀신 노트가 없는데 귀신 레인이 눌렸다면 오입력이므로 콤보를 끊습니다(3-I-6).
+    /// 입력이 닿는 노트가 없으면 아무 일도 하지 않습니다. 귀신 레인도 예외가 아니어서, 노트가 없는 레인을 누르는 것은
+    /// 어느 레인이든 대가가 없습니다. 이르게 누른 입력에 대한 처벌은 LiveNoteQueue의 선입력 소비 구간이 맡습니다.
     /// </summary>
     public void PressLane(int lane, int songTimeMs)
     {
-        if (_noteQueue.TryTake(lane, songTimeMs, out NoteData note, out int errorMs))
-        {
-            EJudgement judgement = LiveJudgementRule.Judge(errorMs);
-
-            // 롱노트는 끝까지 유지해야 판정이 확정되므로, 시작 판정만 맡겨 두고 지금은 집계하지 않습니다.
-            if (LiveHoldTracker.IsHoldNote(note))
-            {
-                _holdTracker.BeginHold(note, judgement);
-                return;
-            }
-
-            ApplyJudgement(note, judgement);
-            return;
-        }
-
-        if (lane != LiveLane.GHOST)
+        if (!_noteQueue.TryTake(lane, songTimeMs, out NoteData note, out int errorMs))
         {
             return;
         }
 
-        _scoreTracker.AddGhostMisinput();
-        OnScoreChanged?.Invoke();
-        OnNoteJudged?.Invoke(null, EJudgement.BAD);
+        EJudgement judgement = LiveJudgementRule.Judge(errorMs);
+
+        // 롱노트는 끝까지 유지해야 판정이 확정되므로, 시작 판정만 맡겨 두고 지금은 집계하지 않습니다.
+        if (LiveHoldTracker.IsHoldNote(note))
+        {
+            _holdTracker.BeginHold(note, judgement);
+            return;
+        }
+
+        ApplyJudgement(note, judgement);
     }
 
     /// <summary>

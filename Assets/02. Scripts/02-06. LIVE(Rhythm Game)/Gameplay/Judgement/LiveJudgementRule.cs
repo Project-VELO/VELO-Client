@@ -9,9 +9,19 @@ public static class LiveJudgementRule
     public const int GOOD_WINDOW_MS = 125;
 
     /// <summary>
-    /// 노트가 입력을 받아 줄 수 있는 최대 오차입니다. 이 시간을 넘겨 지나간 노트는 BAD로 확정됩니다.
+    /// 노트가 입력을 받아 줄 수 있는 늦은 쪽 최대 오차입니다. 이 시간을 넘겨 지나간 노트는 BAD로 확정됩니다.
+    /// 이른 쪽은 EARLY_CONSUME_WINDOW_MS가 따로 잡으므로 입력 허용 구간은 판정선을 기준으로 비대칭입니다.
     /// </summary>
     public const int JUDGEABLE_WINDOW_MS = GOOD_WINDOW_MS;
+
+    /// <summary>
+    /// 판정선에 닿기 전 입력이 노트를 소비할 수 있는 가장 이른 시점입니다.
+    /// 이 구간이 없으면 GOOD 창보다 이른 입력은 아무 대가 없이 무시되고 노트가 살아남아 다시 칠 수 있습니다.
+    ///
+    /// "화면에 보이는 노트"를 기준으로 삼지 않는 이유는, 가시 범위가 4/HiSpeed 마디여서(LiveScrollMapper)
+    /// 소비 구간이 하이스피드와 BPM에 따라 수 초까지 벌어지고 판정이 표시 설정에 종속되기 때문입니다.
+    /// </summary>
+    public const int EARLY_CONSUME_WINDOW_MS = GOOD_WINDOW_MS * 2;
 
     /// <summary>
     /// 롱노트를 끝까지 유지한 것으로 인정하는 조기 해제 허용치입니다.

@@ -13,5 +13,6 @@
     },
     "search.exclude": {
         "**/*.meta": true
-    }
+    },
+    "dotnet.defaultSolution": "VELO-Client.slnx"
 }

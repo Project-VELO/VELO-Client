@@ -184,7 +184,7 @@ public class StoryPlaybackController : MonoBehaviour
             return;
         }
 
-        _ui.LogPopup.SetLines(_cursor.Lines);
+        _ui.LogPopup.SetLines(_cursor.Lines, _cursor.ReadCount);
         UIManager.Instance.OpenPopup(_ui.LogPopup);
     }
 

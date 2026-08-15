@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4f428c484a242458e48e8ebc2cc3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScaleAnimator
+  _target: {fileID: 8401780204069067169}
   _openDuration: 0.3
   _closeDuration: 0.2
   _openEase: 27

@@ -189,6 +189,7 @@ public class GameProgressService : POCOSingleton<GameProgressService>
         }
 
         Data.Money += reward.Money;
+        Data.Gem += reward.Gem;
         Data.Hype += reward.Hype;
         Data.Exp += reward.Exp;
     }

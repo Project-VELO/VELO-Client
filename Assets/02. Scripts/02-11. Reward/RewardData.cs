@@ -12,6 +12,17 @@ public class RewardData
 {
     public string RewardId;
     public int Money;
+
+    /// <summary>
+    /// 유료 재화입니다. PlayerData.Gem과 짝이며, 보상 팝업에는 GEM 열로 나옵니다.
+    /// </summary>
+    public int Gem;
+
     public int Hype;
+
+    /// <summary>
+    /// 지급은 하되 보상 팝업에는 표시하지 않습니다. 팝업이 세 칸 구성이라
+    /// 자리가 없으며, 획득량은 스케줄 화면(UI_ScheduleItemToday)에서 확인합니다.
+    /// </summary>
     public int Exp;
 }

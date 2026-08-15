@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-guid: c95837a9cda57d14a8b82c4b79fe9a8f
+guid: 272750c36777b38489e79349e4e5eeb7
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -4247690127970749914
-    second: Popup_Title_Deco_01 1_0
-  - first:
-      213: -8498074638759709428
-    second: Popup_Title_Deco_01 1_1
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -114,56 +108,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Popup_Title_Deco_01 1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 129
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 622be56755c2d05c0800000000000000
-      internalID: -4247690127970749914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Popup_Title_Deco_01 1_1
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 0
-        width: 129
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c05b8f90426c01a80800000000000000
-      internalID: -8498074638759709428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c392f9a7f94d980a0800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Popup_Title_Deco_01 1_0: -4247690127970749914
-      Popup_Title_Deco_01 1_1: -8498074638759709428
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

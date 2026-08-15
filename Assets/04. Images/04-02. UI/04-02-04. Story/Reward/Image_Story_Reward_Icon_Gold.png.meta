@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: c69065cc57de3854abfc21deafe17e4d
+guid: 30915fed653da5d479b831fa968e4c1b
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -5789767976980266538
-    second: Text_DIAMOND_0
-  - first:
-      213: 2175793523228456652
-    second: Text_DIAMOND_1
-  - first:
-      213: 3413228652032615654
-    second: Text_DIAMOND_2
-  - first:
-      213: 5039000217449886599
-    second: Text_DIAMOND_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -120,100 +108,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Text_DIAMOND_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 19
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d1c82053bc96afa0800000000000000
-      internalID: -5789767976980266538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text_DIAMOND_1
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 0
-        width: 50
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc6b0a87ea8f13e10800000000000000
-      internalID: 2175793523228456652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text_DIAMOND_2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 0
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e4e69dff593e5f20800000000000000
-      internalID: 3413228652032615654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Text_DIAMOND_3
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 0
-        width: 39
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 783773000002ee540800000000000000
-      internalID: 5039000217449886599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 066033e841e040be0800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Text_DIAMOND_0: -5789767976980266538
-      Text_DIAMOND_1: 2175793523228456652
-      Text_DIAMOND_2: 3413228652032615654
-      Text_DIAMOND_3: 5039000217449886599
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

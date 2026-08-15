@@ -16,9 +16,17 @@ public class StoryLineCursor
     public bool HasNext => _index + 1 < _lines.Count;
 
     /// <summary>
-    /// 로그 팝업이 "전체 대사"를 보여 줘야 해서(기획서 6.7) 커서가 원본 목록을 그대로 내줍니다.
+    /// 대본 원본입니다. 로그 팝업이 지나온 구간만 잘라 쓰므로 목록을 그대로 내줍니다.
     /// </summary>
     public IReadOnlyList<StoryLineData> Lines => _lines;
+
+    /// <summary>
+    /// 지금까지 지나온 대사의 개수입니다. 출력 중인 줄까지 셉니다.
+    ///
+    /// 팝업을 여는 시점에는 재생 컨트롤러가 이미 그 줄을 끝까지 채워 두므로(TryPauseForPopup),
+    /// 현재 줄을 포함해도 아직 읽지 않은 문장이 노출되지 않습니다.
+    /// </summary>
+    public int ReadCount => _index + 1;
 
     public StoryLineCursor(IReadOnlyList<StoryLineData> lines)
     {

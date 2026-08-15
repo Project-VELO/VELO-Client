@@ -34,7 +34,6 @@ RectTransform:
   - {fileID: 5449500060197633268}
   - {fileID: 1174140650846659657}
   - {fileID: 4240024543445134961}
-  - {fileID: 5774159619697572809}
   m_Father: {fileID: 9017732594885643627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -63,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 225db999fed1ba74eae488e88fc2728e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -95,7 +94,7 @@ MonoBehaviour:
   _speakerRoot: {fileID: 1480983231648138649}
   _speakerText: {fileID: 5709119921821082597}
   _bodyText: {fileID: 493121355118279946}
-  _boxBackground: {fileID: 4995997755574450868}
+  _boxBackground: {fileID: 2684928373466573665}
   _textStyleBinder: {fileID: 4471902855361028473}
 --- !u!1 &330338893064320011
 GameObject:
@@ -505,126 +504,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &2832787569348877418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5774159619697572809}
-  - component: {fileID: 8622078619420055936}
-  - component: {fileID: 5154326185045411665}
-  - component: {fileID: 970675602162420135}
-  m_Layer: 0
-  m_Name: Button_Next
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5774159619697572809
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832787569348877418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1743273781310877182}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -36, y: 15}
-  m_SizeDelta: {x: 80, y: 64}
-  m_Pivot: {x: 1, y: 0}
---- !u!222 &8622078619420055936
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832787569348877418}
-  m_CullTransparentMesh: 1
---- !u!114 &5154326185045411665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832787569348877418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.49056602, g: 0.47976738, b: 0.47976738, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &970675602162420135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832787569348877418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5154326185045411665}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3838749343358634847
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,8 +767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_Story
   _stage: {fileID: 3073515681631702927}
   _dialogBox: {fileID: 2772851634826528120}
-  _nextButton: {fileID: 970675602162420135}
-  _skipTypeWriterButton: {fileID: 7056041536732174936}
+  _nextButton: {fileID: 7056041536732174936}
   _logButton: {fileID: 5249052014395447107}
   _backButton: {fileID: 4631260207088666747}
   _logPopup: {fileID: 0}
@@ -909,6 +787,441 @@ MonoBehaviour:
   _ui: {fileID: 857170073666146198}
   _visualBinder: {fileID: 8710951518249214113}
   _secondsPerCharacter: 0.04
+--- !u!114 &4471902855361028473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838749343358634847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d52535b1a64654caead7a3e1f6a46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryTextStyleBinder
+  _styles:
+    _keys:
+    - STYLE_ALERT_RED_32
+    - STYLE_CHOI
+    - STYLE_CHOI_26
+    - STYLE_DIRECTOR_BLUE_24
+    - STYLE_DIRECTOR_BLUE_26
+    - STYLE_DOKKAEBI_BROWN_26
+    - STYLE_ECHO_GRAY
+    - STYLE_FD_GRAY_26
+    - STYLE_GHOST_DARKRED_26
+    - STYLE_GHOST_RED_24
+    - STYLE_GHOST_RED_26
+    - STYLE_GHOST_RED_32
+    - STYLE_HWANYEONG
+    - STYLE_HWANYEONG_26
+    - STYLE_HWANYEONG_26_WHITE
+    - STYLE_HWANYEONG_28_CENTER
+    - STYLE_IDOL_PINK_24
+    - STYLE_IMPACT_BROWN_32
+    - STYLE_IMPACT_BROWN_36
+    - STYLE_IMPACT_GRAY_28
+    - STYLE_IMPACT_RED_32
+    - STYLE_IMPACT_RED_36
+    - STYLE_IMPACT_RED_40
+    - STYLE_IMPACT_RED_EMPH_28
+    - STYLE_IMPACT_RED_EMPH_32
+    - STYLE_IMPACT_WHITE_28
+    - STYLE_IMPACT_WHITE_32
+    - STYLE_IMPACT_WHITE_40
+    - STYLE_IMPACT_WHITE_EMPH_26
+    - STYLE_IMPACT_WHITE_EMPH_28
+    - STYLE_IMPACT_WHITE_EMPH_32
+    - STYLE_IMPACT_YELLOW_EMPH_28
+    - STYLE_JUHUI
+    - STYLE_KIM
+    - STYLE_KIM_26
+    - STYLE_KIM_RED_26
+    - STYLE_MAIL_BLUE_24
+    - STYLE_MAIL_WHITE_24
+    - STYLE_MC_BLUE_26
+    - STYLE_MEMBER
+    - STYLE_MEMBER_26
+    - STYLE_MEMBER_28
+    - STYLE_MEMBER_32
+    - STYLE_MEMBER_SHOUT_28
+    - STYLE_MEMBER_SHOUT_32
+    - STYLE_MEMBER_SHOUT_32_RED
+    - STYLE_MEMBER_TREMBLE
+    - STYLE_MEMBER_TREMBLE_HARD
+    - STYLE_MONGGU_24
+    - STYLE_MONGGU_26
+    - STYLE_MONOLOGUE
+    - STYLE_MONOLOGUE_BOLD_26
+    - STYLE_MUMYEONG_24
+    - STYLE_MUMYEONG_26
+    - STYLE_MUMYEONG_28_PURPLE
+    - STYLE_NARRATION
+    - STYLE_NARRATION_26_WHITE
+    - STYLE_NARRATION_26_WHITE_EMPH
+    - STYLE_NARRATION_28_WHITE
+    - STYLE_NARRATION_BLUE
+    - STYLE_NARRATION_GOLD
+    - STYLE_NARRATION_PURPLE
+    - STYLE_NARRATION_RED_EMPH
+    - STYLE_NARRATION_WHITE
+    - STYLE_NARRATION_WHITE_EMPH
+    - STYLE_PD_GREEN_26
+    - STYLE_PD_GREEN_BOLD_28
+    - STYLE_P_DIALOGUE
+    - STYLE_P_DIALOGUE_26
+    - STYLE_P_SHOUT_28
+    - STYLE_P_SHOUT_PLAIN_32
+    - STYLE_P_SHOUT_RED_32
+    - STYLE_P_TREMBLE_26
+    - STYLE_P_TREMBLE_28
+    - STYLE_P_TREMBLE_32
+    - STYLE_SCREAM_BLUE
+    - STYLE_SERIF_BOLD_PURPLE_32
+    - STYLE_SERIF_BOLD_RED_36
+    - STYLE_SERIF_BOLD_WHITE_28
+    - STYLE_STAFF_GRAY_24
+    - STYLE_WRITER_YELLOW_24
+    - STYLE_YOKAI_GREEN_26
+    - STYLE_YOKAI_GREEN_32
+    _values:
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.603922, g: 0.603922, b: 0.603922, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.541176, g: 0.541176, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.431373, g: 0.12549, b: 0.12549, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.647059, g: 0.164706, b: 0.164706, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.619608, g: 0.619608, b: 0.619608, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.878431, g: 0.878431, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
+      _color: {r: 0.309804, g: 0.764706, b: 0.968627, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 36
+      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 28
+      _color: {r: 1, g: 1, b: 1, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 24
+      _color: {r: 0.784314, g: 0.662745, b: 0.294118, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 26
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
+      _fontStyle: 0
+  _defaultStyle:
+    _font: {fileID: 0}
+    _fontSize: 24
+    _color: {r: 1, g: 1, b: 1, a: 1}
+    _fontStyle: 0
 --- !u!1 &4772632101078373957
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,8 +1256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: -108, y: -80}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -160, y: -160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6242723355075242623
 CanvasRenderer:
@@ -1082,7 +1395,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4868370699090562554
 CanvasRenderer:
@@ -1105,15 +1418,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 225db999fed1ba74eae488e88fc2728e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1602,438 +1915,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4471902855361028473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838749343358634847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d52535b1a64654caead7a3e1f6a46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StoryTextStyleBinder
-  _styles:
-    _keys:
-    - STYLE_ALERT_RED_32
-    - STYLE_CHOI
-    - STYLE_CHOI_26
-    - STYLE_DIRECTOR_BLUE_24
-    - STYLE_DIRECTOR_BLUE_26
-    - STYLE_DOKKAEBI_BROWN_26
-    - STYLE_ECHO_GRAY
-    - STYLE_FD_GRAY_26
-    - STYLE_GHOST_DARKRED_26
-    - STYLE_GHOST_RED_24
-    - STYLE_GHOST_RED_26
-    - STYLE_GHOST_RED_32
-    - STYLE_HWANYEONG
-    - STYLE_HWANYEONG_26
-    - STYLE_HWANYEONG_26_WHITE
-    - STYLE_HWANYEONG_28_CENTER
-    - STYLE_IDOL_PINK_24
-    - STYLE_IMPACT_BROWN_32
-    - STYLE_IMPACT_BROWN_36
-    - STYLE_IMPACT_GRAY_28
-    - STYLE_IMPACT_RED_32
-    - STYLE_IMPACT_RED_36
-    - STYLE_IMPACT_RED_40
-    - STYLE_IMPACT_RED_EMPH_28
-    - STYLE_IMPACT_RED_EMPH_32
-    - STYLE_IMPACT_WHITE_28
-    - STYLE_IMPACT_WHITE_32
-    - STYLE_IMPACT_WHITE_40
-    - STYLE_IMPACT_WHITE_EMPH_26
-    - STYLE_IMPACT_WHITE_EMPH_28
-    - STYLE_IMPACT_WHITE_EMPH_32
-    - STYLE_IMPACT_YELLOW_EMPH_28
-    - STYLE_JUHUI
-    - STYLE_KIM
-    - STYLE_KIM_26
-    - STYLE_KIM_RED_26
-    - STYLE_MAIL_BLUE_24
-    - STYLE_MAIL_WHITE_24
-    - STYLE_MC_BLUE_26
-    - STYLE_MEMBER
-    - STYLE_MEMBER_26
-    - STYLE_MEMBER_28
-    - STYLE_MEMBER_32
-    - STYLE_MEMBER_SHOUT_28
-    - STYLE_MEMBER_SHOUT_32
-    - STYLE_MEMBER_SHOUT_32_RED
-    - STYLE_MEMBER_TREMBLE
-    - STYLE_MEMBER_TREMBLE_HARD
-    - STYLE_MONGGU_24
-    - STYLE_MONGGU_26
-    - STYLE_MONOLOGUE
-    - STYLE_MONOLOGUE_BOLD_26
-    - STYLE_MUMYEONG_24
-    - STYLE_MUMYEONG_26
-    - STYLE_MUMYEONG_28_PURPLE
-    - STYLE_NARRATION
-    - STYLE_NARRATION_26_WHITE
-    - STYLE_NARRATION_26_WHITE_EMPH
-    - STYLE_NARRATION_28_WHITE
-    - STYLE_NARRATION_BLUE
-    - STYLE_NARRATION_GOLD
-    - STYLE_NARRATION_PURPLE
-    - STYLE_NARRATION_RED_EMPH
-    - STYLE_NARRATION_WHITE
-    - STYLE_NARRATION_WHITE_EMPH
-    - STYLE_PD_GREEN_26
-    - STYLE_PD_GREEN_BOLD_28
-    - STYLE_P_DIALOGUE
-    - STYLE_P_DIALOGUE_26
-    - STYLE_P_SHOUT_28
-    - STYLE_P_SHOUT_PLAIN_32
-    - STYLE_P_SHOUT_RED_32
-    - STYLE_P_TREMBLE_26
-    - STYLE_P_TREMBLE_28
-    - STYLE_P_TREMBLE_32
-    - STYLE_SCREAM_BLUE
-    - STYLE_SERIF_BOLD_PURPLE_32
-    - STYLE_SERIF_BOLD_RED_36
-    - STYLE_SERIF_BOLD_WHITE_28
-    - STYLE_STAFF_GRAY_24
-    - STYLE_WRITER_YELLOW_24
-    - STYLE_YOKAI_GREEN_26
-    - STYLE_YOKAI_GREEN_32
-    _values:
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.603922, g: 0.603922, b: 0.603922, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.541176, g: 0.541176, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.431373, g: 0.12549, b: 0.12549, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.647059, g: 0.164706, b: 0.164706, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 36
-      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 0.619608, g: 0.619608, b: 0.619608, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 36
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 40
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 40
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 0.713725, b: 0.756863, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.372549, g: 0.478431, b: 0.541176, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.752941, g: 0.752941, b: 0.752941, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.878431, g: 0.878431, b: 0.878431, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.560784, g: 0.74902, b: 0.878431, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 40
-      _color: {r: 0.309804, g: 0.764706, b: 0.968627, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 0.866667, g: 0.627451, b: 0.866667, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 36
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 28
-      _color: {r: 1, g: 1, b: 1, a: 1}
-      _fontStyle: 1
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.431373, g: 0.431373, b: 0.431373, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 24
-      _color: {r: 0.784314, g: 0.662745, b: 0.294118, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 26
-      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
-      _fontStyle: 0
-    - _font: {fileID: 0}
-      _fontSize: 32
-      _color: {r: 0.352941, g: 0.478431, b: 0.352941, a: 1}
-      _fontStyle: 0
-  _defaultStyle:
-    _font: {fileID: 0}
-    _fontSize: 24
-    _color: {r: 1, g: 1, b: 1, a: 1}
-    _fontStyle: 0

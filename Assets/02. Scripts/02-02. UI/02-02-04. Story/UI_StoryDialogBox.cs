@@ -22,8 +22,10 @@ public class UI_StoryDialogBox : MonoBehaviour
     private TMP_Text _bodyText;
 
     /// <summary>
-    /// 대사 상자의 배경 그림입니다. 대사가 없는 줄에서 이것만 끕니다.
-    /// NEXT 버튼이 상자 안에 들어 있어 오브젝트를 통째로 끄면 진행이 막힙니다.
+    /// 대사 상자의 프레임 그림입니다. 대사가 없는 줄에서 감춥니다.
+    ///
+    /// 이 그림은 상자 전체를 덮는 진행 버튼이기도 해서, 컴포넌트를 끄거나 오브젝트를 비활성으로 두면
+    /// 클릭이 통하지 않아 다음 줄로 넘어갈 수 없습니다. 그래서 투명도만 낮춥니다.
     /// </summary>
     [SerializeField]
     private Image _boxBackground;
@@ -59,11 +61,13 @@ public class UI_StoryDialogBox : MonoBehaviour
     }
 
     /// <summary>
-    /// 대사가 없는 줄은 배경만 넘기는 컷입니다(05·11화). 상자 그림을 감춰 배경을 가리지 않게 합니다.
+    /// 대사가 없는 줄은 배경만 넘기는 컷입니다(05·11화). 상자 프레임을 감춰 배경을 가리지 않게 합니다.
     /// </summary>
     private void RefreshBox(StoryLineData line)
     {
-        _boxBackground.enabled = !string.IsNullOrEmpty(line.Text);
+        Color color = _boxBackground.color;
+        color.a = string.IsNullOrEmpty(line.Text) ? 0f : 1f;
+        _boxBackground.color = color;
     }
 
     /// <summary>

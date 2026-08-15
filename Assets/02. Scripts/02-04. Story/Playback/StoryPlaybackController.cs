@@ -37,7 +37,7 @@ public class StoryPlaybackController : MonoBehaviour
     private void Start()
     {
         InitUIBindings();
-        BeginAsync().Forget();
+        Begin();
     }
 
     /// <summary>
@@ -60,7 +60,6 @@ public class StoryPlaybackController : MonoBehaviour
         }
 
         _ui.OnNextRequested = null;
-        _ui.OnSkipTypeWriterRequested = null;
         _ui.OnLogRequested = null;
         _ui.OnBackRequested = null;
 
@@ -79,7 +78,6 @@ public class StoryPlaybackController : MonoBehaviour
     private void InitUIBindings()
     {
         _ui.OnNextRequested = OnNextClicked;
-        _ui.OnSkipTypeWriterRequested = OnSkipTypeWriterClicked;
         _ui.OnLogRequested = OpenLog;
         _ui.OnBackRequested = OpenExitConfirm;
 
@@ -91,11 +89,7 @@ public class StoryPlaybackController : MonoBehaviour
         _ui.ExitConfirmPopup.OnCancelled = ResumeFromPause;
     }
 
-    /// <summary>
-    /// 배경을 다 읽은 뒤에야 첫 줄을 냅니다. 읽기 전에 출력하면 첫 대사가 단색 배경 위에 떴다가
-    /// 뒤늦게 배경이 깔리는 것이 보입니다.
-    /// </summary>
-    private async UniTaskVoid BeginAsync()
+    private void Begin()
     {
         string storyId = StoryEntryContext.Instance.SelectedStoryId;
 
@@ -108,8 +102,6 @@ public class StoryPlaybackController : MonoBehaviour
 
         // NEW 배지는 감상 화면에 들어온 순간 내립니다(기획서 3-F-3).
         GameProgressService.Instance.ClearStoryNewFlag(storyId);
-
-        await _visualBinder.PreloadBackgroundsAsync(script, this.GetCancellationTokenOnDestroy());
 
         _cursor = new StoryLineCursor(script.Lines);
         _linePlayer = new StoryLinePlayer(_ui, GetSecondsPerCharacter, this.GetCancellationTokenOnDestroy());
@@ -141,11 +133,10 @@ public class StoryPlaybackController : MonoBehaviour
     }
 
     /// <summary>
-    /// 출력 중인 대사의 남은 글자를 즉시 채웁니다. NEXT 1단계와 같은 동작이라 한 곳에 둡니다(기획서 6.3).
+    /// 출력 중인 대사의 남은 글자를 즉시 채웁니다. NEXT의 1단계입니다(기획서 6.3).
     ///
-    /// TYPING이 아닌 상태의 클릭은 흘려보냅니다. 이 버튼은 대사 상자 전체를 덮고 있어서,
-    /// 출력이 끝난 뒤에도 반응하게 두면 읽는 도중의 아무 클릭이나 다음 대사로 이어집니다.
-    /// 진행은 NEXT만 담당한다는 경계를 여기서 지킵니다.
+    /// 대사 상자를 덮는 버튼 하나가 넘기기와 즉시 출력을 함께 맡으므로 바깥에서 부르지 않습니다.
+    /// TYPING이 아닌 상태에서 들어오면 아무것도 하지 않고 돌아가, 다음 대사로 넘어가는 판단은 NEXT가 갖습니다.
     /// </summary>
     private void OnSkipTypeWriterClicked()
     {

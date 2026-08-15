@@ -37,7 +37,7 @@ public class StoryPlaybackController : MonoBehaviour
     private void Start()
     {
         InitUIBindings();
-        BeginAsync().Forget();
+        Begin();
     }
 
     /// <summary>
@@ -91,11 +91,7 @@ public class StoryPlaybackController : MonoBehaviour
         _ui.ExitConfirmPopup.OnCancelled = ResumeFromPause;
     }
 
-    /// <summary>
-    /// 배경을 다 읽은 뒤에야 첫 줄을 냅니다. 읽기 전에 출력하면 첫 대사가 단색 배경 위에 떴다가
-    /// 뒤늦게 배경이 깔리는 것이 보입니다.
-    /// </summary>
-    private async UniTaskVoid BeginAsync()
+    private void Begin()
     {
         string storyId = StoryEntryContext.Instance.SelectedStoryId;
 
@@ -108,8 +104,6 @@ public class StoryPlaybackController : MonoBehaviour
 
         // NEW 배지는 감상 화면에 들어온 순간 내립니다(기획서 3-F-3).
         GameProgressService.Instance.ClearStoryNewFlag(storyId);
-
-        await _visualBinder.PreloadBackgroundsAsync(script, this.GetCancellationTokenOnDestroy());
 
         _cursor = new StoryLineCursor(script.Lines);
         _linePlayer = new StoryLinePlayer(_ui, GetSecondsPerCharacter, this.GetCancellationTokenOnDestroy());

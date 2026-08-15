@@ -1,5 +1,3 @@
-using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VInspector;
 
@@ -17,21 +15,10 @@ public class StoryVisualBinder : MonoBehaviour
     [Foldout("Project")]
     [Header("실제 아트가 들어오면 여기부터 채웁니다")]
     [SerializeField]
+    private SerializableDictionary<string, Sprite> _backgroundSprites = new SerializableDictionary<string, Sprite>();
+
+    [SerializeField]
     private SerializableDictionary<string, Sprite> _characterSprites = new SerializableDictionary<string, Sprite>();
-
-    /// <summary>
-    /// 배경만 표가 아니라 파일에서 읽습니다. StreamingAssets에 회차별 이미지가 들어 있어
-    /// 인스펙터에 30여 장을 물려 두면 쓰지 않는 회차의 배경까지 함께 로드됩니다.
-    /// </summary>
-    private readonly StoryBackgroundLoader _backgroundLoader = new StoryBackgroundLoader();
-
-    /// <summary>
-    /// 화면이 내려갈 때 읽어 둔 배경 텍스처를 해제합니다. 남겨 두면 감상할 때마다 메모리가 쌓입니다.
-    /// </summary>
-    private void OnDestroy()
-    {
-        _backgroundLoader.Release();
-    }
 
     [Foldout("Settings")]
     [Header("스프라이트가 없을 때 쓰는 임시 색")]
@@ -52,15 +39,7 @@ public class StoryVisualBinder : MonoBehaviour
     /// </summary>
     public Sprite GetBackground(string backgroundId)
     {
-        return _backgroundLoader.Get(backgroundId);
-    }
-
-    /// <summary>
-    /// 이 회차가 쓰는 배경을 미리 읽습니다. 첫 줄을 출력하기 전에 끝나야 합니다.
-    /// </summary>
-    public UniTask PreloadBackgroundsAsync(StoryScriptData script, CancellationToken cancellationToken)
-    {
-        return _backgroundLoader.PreloadAsync(script, cancellationToken);
+        return TryGet(_backgroundSprites, backgroundId);
     }
 
     public Color BackgroundPlaceholderColor => _backgroundPlaceholderColor;

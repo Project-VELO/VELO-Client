@@ -17,7 +17,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
-            "TextStyleId": "STYLE_IMPACT_RED_36",
+            "TextStyleId": "STYLE_ALERT_RED_32",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_RUSTY_DOOR_BURST"
@@ -277,7 +277,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
-            "TextStyleId": "STYLE_IMPACT_WHITE_28",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": "SFX_RAILING_STEP"
@@ -417,7 +417,7 @@
             "RightExpressionId": "",
             "IllustrationId": "CG_HWANYEONG_RAILING",
             "TextSpeedName": "NORMAL",
-            "TextStyleId": "STYLE_P_TREMBLE_28",
+            "TextStyleId": "STYLE_P_TREMBLE_PLAIN_32",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_REACH_CLOTH"
@@ -537,7 +537,7 @@
             "RightExpressionId": "",
             "IllustrationId": "CG_HWANYEONG_FALLING",
             "TextSpeedName": "INSTANT",
-            "TextStyleId": "STYLE_IMPACT_RED_36",
+            "TextStyleId": "STYLE_P_SHOUT_PLAIN_32",
             "EffectId": "FX_SHAKE_FORWARD",
             "BgmId": "",
             "SfxId": "SFX_SCREAM_P"
@@ -617,7 +617,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
-            "TextStyleId": "STYLE_NARRATION_28_WHITE",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_FREEZE",
             "BgmId": "BGM_NONE",
             "SfxId": "SFX_SHATTER_EERIE"
@@ -677,7 +677,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_HWANYEONG_28_CENTER",
+            "TextStyleId": "STYLE_HWANYEONG",
             "EffectId": "FX_TEXT_ON_WIND",
             "BgmId": "",
             "SfxId": "SFX_WHISPER_ASMR"
@@ -817,7 +817,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
-            "TextStyleId": "STYLE_IMPACT_RED_36",
+            "TextStyleId": "STYLE_P_SHOUT_PLAIN_32",
             "EffectId": "FX_SCREEN_COLLAPSE",
             "BgmId": "BGM_NONE",
             "SfxId": "SFX_GROUND_ROLL_SCREAM"
@@ -857,7 +857,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_KIM_26",
+            "TextStyleId": "STYLE_KIM",
             "EffectId": "FX_VIGNETTE_CRUSH",
             "BgmId": "",
             "SfxId": "SFX_HALLUCINATION_ECHO"
@@ -917,7 +917,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1017,7 +1017,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
-            "TextStyleId": "STYLE_NARRATION_28_WHITE",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_FREEZE",
             "BgmId": "BGM_NONE",
             "SfxId": ""
@@ -1217,7 +1217,7 @@
             "RightExpressionId": "",
             "IllustrationId": "CG_HWANYEONG_HANDS",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_HWANYEONG_26",
+            "TextStyleId": "STYLE_HWANYEONG",
             "EffectId": "FX_FOCUS_PULSE",
             "BgmId": "",
             "SfxId": ""
@@ -1237,7 +1237,7 @@
             "RightExpressionId": "",
             "IllustrationId": "CG_HWANYEONG_HANDS",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_HWANYEONG_26_WHITE",
+            "TextStyleId": "STYLE_HWANYEONG",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1297,7 +1297,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1397,7 +1397,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
-            "TextStyleId": "STYLE_P_DIALOGUE_26",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_SNOW_SPARKLE",
             "BgmId": "BGM_ROOFTOP_RESOLVE",
             "SfxId": ""
@@ -1477,7 +1477,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
-            "TextStyleId": "STYLE_IMPACT_WHITE_28",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_ZOOM_IN_SLIGHT",
             "BgmId": "",
             "SfxId": ""
@@ -1497,7 +1497,7 @@
             "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
-            "TextStyleId": "STYLE_P_SHOUT_28",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""

@@ -291,8 +291,8 @@ STORY_PROLOGUE_06	42	DIALOGUE	CHAR_JIWOO	아니야, 언니! 제가 발끝을 조
 STORY_PROLOGUE_06	43	DIALOGUE	CHAR_JIWOO	그리고 하나 언니, 방금 들어올 때 타이밍 완전 좋았어!					지우	[디자인] 고딕체 24pt 순백색 / [연출] 두 캐릭터 유지	NORMAL	STYLE_MEMBER					
 STORY_PROLOGUE_06	44	DIALOGUE	CHAR_HANA	으응... 지우 네가 앞에서 딱 가려주면서 비트 잡아주니까... 템포 안 놓치고... 계속할 수 있어.					하나	[디자인] 고딕체 24pt 순백색 / [연출] 지우 퇴장, 하나 오른쪽 걱정 서서히 페이드 인	NORMAL	STYLE_MEMBER				CHAR_HANA	EXP_SAD
 STORY_PROLOGUE_06	45	DIALOGUE	CHAR_RIA	좋아! P가 언제 우리 무대 물어오실지 몰라.		CHAR_RIA	EXP_SMILE		리아	[디자인] 고딕체 24pt 순백색 / [연출] 하나 퇴장, 리아 표정 웃음으로 변경	NORMAL	STYLE_MEMBER				NONE	
-STORY_PROLOGUE_06	46	DIALOGUE	CHAR_RIA	캄캄한 새벽에 자다 깨서 음악 틀어도 본능적으로 튀어나올 수 있게, 처음부터 다시 간다! 쓰리, 포!		NONE			리아	[디자인] 고딕체 28pt 순백색 / [연출] 리아 살짝 팝업되며 퇴장 / BGM 다시 강하게 폭발	INSTANT	STYLE_MEMBER_28	FX_SCREEN_SHAKE_HARD				
-STORY_PROLOGUE_06	47	NARRATION		다시 음악이 터져 나오고, 아이들의 눈빛이 돌변하며 허공을 갈랐다.						[디자인] 명조체 24pt 밝은 회색 / 줌인 해제 / 현란한 화면 덜컹거림	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_WILD				
+STORY_PROLOGUE_06	46	DIALOGUE	CHAR_RIA	캄캄한 새벽에 자다 깨서 음악 틀어도 본능적으로 튀어나올 수 있게, 처음부터 다시 간다! 쓰리, 포!		CHAR_RIA	EXP_SMILE		리아	[디자인] 고딕체 28pt 순백색 / [연출] 리아 살짝 팝업되며 퇴장 / BGM 다시 강하게 폭발	INSTANT	STYLE_MEMBER_28	FX_SCREEN_SHAKE_HARD				
+STORY_PROLOGUE_06	47	NARRATION		다시 음악이 터져 나오고, 아이들의 눈빛이 돌변하며 허공을 갈랐다.		NONE				[디자인] 명조체 24pt 밝은 회색 / 줌인 해제 / 현란한 화면 덜컹거림	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_WILD				
 STORY_PROLOGUE_06	48	NARRATION		블라인드 틈새로 그 맹렬한 춤사위를 지켜보던 P의 눈동자가 파도처럼 일렁였다.	5-A					[디자인] 명조체 24pt 밝은 회색 / 5-A로 컷 백 / BGM 댄스곡에서 진중한 드라마 테마로 디졸브 전환	NORMAL	STYLE_NARRATION	FX_CUT_BACK_OFFICE	BGM_BASEMENT_DRAMA			
 STORY_PROLOGUE_06	49	NARRATION		전기도 끊길 위기에 처한 이 눅눅하고 숨 막히는 지하실.						[디자인] 명조체 24pt 밝은 회색 / BGM 고조 시작	SLOW	STYLE_NARRATION					
 STORY_PROLOGUE_06	50	NARRATION		컵라면으로 끼니를 때워 볼이 홀쭉해진 얼굴들.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION					

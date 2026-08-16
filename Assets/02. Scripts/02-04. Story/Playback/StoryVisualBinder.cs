@@ -12,6 +12,12 @@ using VInspector;
 /// </summary>
 public class StoryVisualBinder : MonoBehaviour
 {
+    /// <summary>
+    /// 표정 키를 잇는 구분자입니다("CHAR_RIA/EXP_SAD").
+    /// ID에 쓰이지 않는 문자여야 인물 키와 표정 키가 섞이지 않습니다.
+    /// </summary>
+    private const string EXPRESSION_KEY_SEPARATOR = "/";
+
     [Foldout("Project")]
     [Header("실제 아트가 들어오면 여기부터 채웁니다")]
     [SerializeField]
@@ -45,12 +51,34 @@ public class StoryVisualBinder : MonoBehaviour
     public Color BackgroundPlaceholderColor => _backgroundPlaceholderColor;
 
     /// <summary>
-    /// 캐릭터 스프라이트를 돌려줍니다. 표정 ID는 아직 자산이 없어 무시하며,
-    /// 표정별 이미지가 생기면 여기서 키를 조합하도록 바꾸면 됩니다.
+    /// 캐릭터 스프라이트를 돌려줍니다.
+    ///
+    /// "CHAR_RIA/EXP_SAD"처럼 표정을 붙인 키를 먼저 찾고, 없으면 인물 키만으로 되짚습니다.
+    /// 인물마다 그려진 표정의 수가 달라, 없는 표정이 빈 화면으로 떨어지지 않게 하기 위한 순서입니다.
+    ///
+    /// 표를 인물용과 표정용으로 나누지 않은 것은, 표정 그림이 없는 인물까지 빈 표를 들고 다니게 되기 때문입니다.
     /// </summary>
     public Sprite GetCharacter(string characterId, string expressionId)
     {
+        if (!string.IsNullOrEmpty(expressionId))
+        {
+            Sprite withExpression = TryGet(_characterSprites, BuildExpressionKey(characterId, expressionId));
+
+            if (withExpression != null)
+            {
+                return withExpression;
+            }
+        }
+
         return TryGet(_characterSprites, characterId);
+    }
+
+    /// <summary>
+    /// 표에 넣는 표정 키를 만듭니다. 대사 한 줄이 넘어갈 때만 부르므로 문자열 결합이 문제가 되지 않습니다.
+    /// </summary>
+    private string BuildExpressionKey(string characterId, string expressionId)
+    {
+        return characterId + EXPRESSION_KEY_SEPARATOR + expressionId;
     }
 
     public Color GetCharacterPlaceholderColor(string characterId)

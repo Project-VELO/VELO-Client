@@ -629,7 +629,7 @@ STORY_PROLOGUE_13	11	NARRATION		조명 하나 없는 공간이었지만 결코 �
 STORY_PROLOGUE_13	12	NARRATION		허공에는 반딧불이처럼 빛나는 보랏빛 성운의 입자들이 은하수처럼 흐르고 있었고,						[디자인] 명조체 24pt 연보라색 / 화면에 은은한 빛 무리 효과	NORMAL	STYLE_NARRATION_PURPLE	FX_LIGHT_MOTES									
 STORY_PROLOGUE_13	13	NARRATION		펼쳐진 양피지와 책들이 마치 거대한 새 떼처럼 날갯짓하며 허공을 날아다니고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_PAPER_FLUTTER							
 STORY_PROLOGUE_13	14	NARRATION		현실의 물리 법칙이 완벽하게 붕괴된, 몽환적이고 압도적인 도서관의 풍경이었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION										
-STORY_PROLOGUE_13	15	DIALOGUE	CHAR_P	얘들아!! 정신 차려봐! 괜찮아?!					P	[디자인] 고딕체 28pt 순백색 / 화면 좌우로 짧고 강하게 흔들림 / BGM Ducking	INSTANT	STYLE_P_SHOUT_28	FX_SCREEN_SHAKE_SHORT		SFX_CLOTH_RUSH							
+STORY_PROLOGUE_13	15	DIALOGUE	CHAR_P	얘들아!! 정신 차려봐! 괜찮아?!					P	[디자인] 고딕체 28pt 순백색 / 화면 좌우로 짧고 강하게 흔들림 / BGM Ducking	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SCREEN_SHAKE_SHORT		SFX_CLOTH_RUSH							
 STORY_PROLOGUE_13	16	NARRATION		차가운 대리석 바닥에 쓰러져 있던 소녀들이 고통스러운 듯 하나둘씩 뒤척이기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 줌인 해제 / BGM 볼륨 복구	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT									
 STORY_PROLOGUE_13	17	DIALOGUE	CHAR_MINA	으윽... 토할 것 같아...		CHAR_MINA	EXP_SAD		미나	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 미나 왼쪽 걱정 페이드 인	NORMAL	STYLE_MEMBER_TREMBLE										
 STORY_PROLOGUE_13	18	DIALOGUE	CHAR_MINA	공간이 막 일그러지는 것 같더니... 여긴 대체 어디야...?					미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 유지	NORMAL	STYLE_MEMBER										
@@ -637,14 +637,14 @@ STORY_PROLOGUE_13	19	DIALOGUE	CHAR_RIA	P... 이게 대체 무슨 일이에요...
 STORY_PROLOGUE_13	20	DIALOGUE	CHAR_RIA	벽이 다 책으로 되어있어요...					리아	[디자인] 고딕체 24pt 순백색 / [연출] 두 사람 유지	NORMAL	STYLE_MEMBER										
 STORY_PROLOGUE_13	21	DIALOGUE	CHAR_SEOYUN	(허공을 날아다니는 책들을 멍하니 올려다본다)......		CHAR_SEOYUN	EXP_SURPRISED		서윤	[디자인] 고딕체 24pt 순백색 / [연출] 미나·리아 퇴장, 서윤 왼쪽 놀람 페이드 인	SLOW	STYLE_MEMBER				NONE						
 STORY_PROLOGUE_13	22	NARRATION		눈앞에 펼쳐진 인간의 이성을 초월한 이계(異界)의 풍경 앞에, 이들은 본능적인 공포에 압도될 수밖에 없었다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 서윤 퇴장	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_13	23	NARRATION		그때였다.						[디자인] 굵은 명조 28pt 흰색 / 템포 끊어주는 정적 / BGM 일시 정지	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28	FX_FREEZE	BGM_NONE								
+STORY_PROLOGUE_13	23	NARRATION		그때였다.						[디자인] 굵은 명조 28pt 흰색 / 템포 끊어주는 정적 / BGM 일시 정지	WORD_BY_WORD	STYLE_IMPACT_WHITE_32	FX_FREEZE	BGM_NONE								
 STORY_PROLOGUE_13	24	NARRATION		그들의 귓가로 시장통처럼 왁자지껄한 소음이 들려오기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / BGM 재개 + 시장통 소음 레이어	NORMAL	STYLE_NARRATION		BGM_LIBRARY_MAJESTIC	SFX_MARKET_NOISE							
-STORY_PROLOGUE_13	25	DIALOGUE	CHAR_GHOST_1	야! 3구역 '우물 귀신' 텍스트에 한(恨)이 부족하잖아!					귀신 1	[디자인] 붓글씨체 26pt 붉은색 / [연출] 귀신 1 왼쪽 화남 즉시 팝업 (단역이라 초상 미지원)	INSTANT	STYLE_GHOST_RED_26										
+STORY_PROLOGUE_13	25	DIALOGUE	CHAR_GHOST_1	야! 3구역 '우물 귀신' 텍스트에 한(恨)이 부족하잖아!		CHAR_GHOST_1	EXP_ANGRY		귀신 1	[디자인] 붓글씨체 26pt 붉은색 / [연출] 귀신 1 왼쪽 화남 즉시 팝업 (단역이라 초상 미지원)	INSTANT	STYLE_GHOST_RED_32										
 STORY_PROLOGUE_13	26	DIALOGUE	CHAR_GHOST_1	당장 원고지 가져와서 슬픔 감정선 더 채워 넣어!!					귀신 1	[디자인] 붓글씨체 32pt 붉은색 / [연출] 귀신 1 유지	INSTANT	STYLE_GHOST_RED_32										
-STORY_PROLOGUE_13	27	DIALOGUE	CHAR_YOKAI_1	아, 씨! 오늘 반납 기한인데 기승전결이 다 꼬였잖아!					요괴 1	[디자인] 붓글씨체 26pt 탁한 녹색 / [연출] 귀신 1 유지 + 요괴 1 오른쪽 화남 즉시 팝업	INSTANT	STYLE_YOKAI_GREEN_26										
+STORY_PROLOGUE_13	27	DIALOGUE	CHAR_YOKAI_1	아, 씨! 오늘 반납 기한인데 기승전결이 다 꼬였잖아!					요괴 1	[디자인] 붓글씨체 26pt 탁한 녹색 / [연출] 귀신 1 유지 + 요괴 1 오른쪽 화남 즉시 팝업	INSTANT	STYLE_YOKAI_GREEN_32				CHAR_YOKAI_1	EXP_ANGRY					
 STORY_PROLOGUE_13	28	DIALOGUE	CHAR_YOKAI_1	4구역 사서들 빨리 지원 와!!					요괴 1	[디자인] 붓글씨체 32pt 탁한 녹색 / [연출] 두 요괴 유지	INSTANT	STYLE_YOKAI_GREEN_32	FX_SCREEN_SHAKE_LIGHT									
-STORY_PROLOGUE_13	29	DIALOGUE	CHAR_DOKKAEBI_1	저기요, 길 좀 비켜요! 수레 지나갑니다!					도깨비 1	[디자인] 붓글씨체 26pt 갈색 / [연출] 귀신·요괴 컷 아웃, 도깨비 1 왼쪽 기본 빠르게 슬라이드 인	INSTANT	STYLE_DOKKAEBI_BROWN_26			SFX_CART_ROLL							
-STORY_PROLOGUE_13	30	NARRATION		P와 아이들이 소리가 나는 쪽으로 고개를 돌리자, 그 기괴한 웅장함 속에 숨겨져 있던 도서관의 진짜 모습이 드러났다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 도깨비 1 슬라이드 아웃 / BGM 커짐(소음 볼륨 다운)	NORMAL	STYLE_NARRATION										
+STORY_PROLOGUE_13	29	DIALOGUE	CHAR_DOKKAEBI_1	저기요, 길 좀 비켜요! 수레 지나갑니다!		CHAR_DOKKAEBI_1	EXP_NORMAL		도깨비 1	[디자인] 붓글씨체 26pt 갈색 / [연출] 귀신·요괴 컷 아웃, 도깨비 1 왼쪽 기본 빠르게 슬라이드 인	INSTANT	STYLE_DOKKAEBI_BROWN_32			SFX_CART_ROLL	NONE						
+STORY_PROLOGUE_13	30	NARRATION		P와 아이들이 소리가 나는 쪽으로 고개를 돌리자, 그 기괴한 웅장함 속에 숨겨져 있던 도서관의 진짜 모습이 드러났다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 도깨비 1 슬라이드 아웃 / BGM 커짐(소음 볼륨 다운)	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	31	NARRATION		산더미 같은 책을 수레에 싣고 뛰어가는 뿔 달린 도깨비들, 목이 기괴하게 꺾인 채 허공을 떠다니며 서가에 책을 꽂아 넣는 원귀들,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	32	NARRATION		수십 개의 팔을 뻗어 날아다니는 종이들을 낚아채는 거대한 요괴들까지.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	33	NARRATION		이 거대한 도서관은 온갖 영적 존재들이 각자의 업무를 처리하며 미친 듯이 돌아가는, 그야말로 '피크 타임'의 직장 그 자체였다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
@@ -652,31 +652,31 @@ STORY_PROLOGUE_13	34	NARRATION		그 혼돈의 와중, 지우의 무릎을 베고
 STORY_PROLOGUE_13	35	DIALOGUE	CHAR_HANA	으음... 지우야... 우리... 몰래 카메라 다 끝났어...?		CHAR_HANA	EXP_NORMAL		하나	[디자인] 고딕체 24pt 순백색 / [연출] 하나 왼쪽 기본 느리게 페이드 인	SLOW	STYLE_MEMBER										
 STORY_PROLOGUE_13	36	NARRATION		하나가 멍한 눈을 깜빡였다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 하나 유지	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	37	NARRATION		그런데, 그녀의 시야 한가운데 무언가 커다랗고 창백한 것이 둥둥 떠 있었다.						[디자인] 명조체 24pt 서늘한 푸른색 / BGM Ducking	SLOW	STYLE_NARRATION_BLUE			SFX_COLD_CHILL							
-STORY_PROLOGUE_13	38	NARRATION		서가를 정리하던, 머리에 피를 철철 흘리는 처녀 귀신이 고개를 갸웃거리며 하나의 얼굴 바로 앞까지 다가와 빤히 내려다보고 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 하나 유지 + 처녀 귀신 오른쪽 기본 위에서 아래로 스르륵 등장 (표정 목록 비어 있어 미지정)	NORMAL	STYLE_NARRATION	FX_BLUE_AURA			CHAR_GHOST_MAIDEN						
-STORY_PROLOGUE_13	39	DIALOGUE	CHAR_GHOST_MAIDEN	어라...? 숨통이 붙어있는 인간이네...? 어떻게 들어온 거지...?					처녀 귀신	[디자인] 붓글씨체 26pt 검붉은색 / [연출] 하나 놀람으로 변경 + 처녀 귀신 유지	SLOW	STYLE_GHOST_DARKRED_26										
+STORY_PROLOGUE_13	38	NARRATION		서가를 정리하던, 머리에 피를 철철 흘리는 처녀 귀신이 고개를 갸웃거리며 하나의 얼굴 바로 앞까지 다가와 빤히 내려다보고 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 하나 유지 + 처녀 귀신 오른쪽 기본 위에서 아래로 스르륵 등장 (표정 목록 비어 있어 미지정)	NORMAL	STYLE_NARRATION	FX_BLUE_AURA			CHAR_GHOST_MAIDEN	EXP_NORMAL					
+STORY_PROLOGUE_13	39	DIALOGUE	CHAR_GHOST_MAIDEN	어라...? 숨통이 붙어있는 인간이네...? 어떻게 들어온 거지...?		CHAR_HANA	EXP_SURPRISED		처녀 귀신	[디자인] 붓글씨체 26pt 검붉은색 / [연출] 하나 놀람으로 변경 + 처녀 귀신 유지	SLOW	STYLE_GHOST_DARKRED_32										
 STORY_PROLOGUE_13	40	NARRATION		귀신과 눈이 마주친 하나의 동공이 점처럼 작아졌다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 두 캐릭터 유지 / BGM Ducking	NORMAL	STYLE_NARRATION			SFX_HEARTBEAT							
 STORY_PROLOGUE_13	41	NARRATION		입을 뻐끔거리던 그녀는 비명조차 지르지 못하고 그대로 눈이 까집히며 다시 기절해버렸다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 하나·처녀 귀신 즉시 컷 아웃 / BGM 정지	INSTANT	STYLE_NARRATION	FX_SCREEN_SHAKE_HARD	BGM_NONE	SFX_COLLAPSE	NONE						
-STORY_PROLOGUE_13	42	DIALOGUE	CHAR_JIWOO	하 하나 언니!! 꺄아악!! 저리 가요!!		CHAR_JIWOO	EXP_SAD		지우	[디자인] 고딕체 28pt 순백색 / [연출] 지우 왼쪽 걱정 즉시 팝업 및 위아래 흔들림 / 새 BGM: 긴박하고 날카로운 음악	INSTANT	STYLE_MEMBER_28	FX_SCREEN_SHAKE_HARD	BGM_LIBRARY_TENSE								
+STORY_PROLOGUE_13	42	DIALOGUE	CHAR_JIWOO	하 하나 언니!! 꺄아악!! 저리 가요!!		CHAR_JIWOO	EXP_SAD		지우	[디자인] 고딕체 28pt 순백색 / [연출] 지우 왼쪽 걱정 즉시 팝업 및 위아래 흔들림 / 새 BGM: 긴박하고 날카로운 음악	INSTANT	STYLE_MEMBER	FX_SCREEN_SHAKE_HARD	BGM_LIBRARY_TENSE								
 STORY_PROLOGUE_13	43	DIALOGUE	CHAR_JIWOO	우리한테 오지 마요!!					지우	[디자인] 고딕체 32pt 순백색 / [연출] 지우 유지	INSTANT	STYLE_MEMBER_32										
 STORY_PROLOGUE_13	44	DIALOGUE	CHAR_P	물러서!! 가까이 오지 마!!		NONE			P	[디자인] 고딕체 32pt 순백색 / [연출] 지우 컷 아웃	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SCREEN_SHAKE_HARD		SFX_BLOCK_CLOTH							
 STORY_PROLOGUE_13	45	NARRATION		P가 눈에 핏발이 선채 방어 태세를 취했다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	46	NARRATION		당장이라도 저 수많은 요괴와 귀신들이 그들을 물어뜯기 위해 달려들 것만 같아 등줄기에 식은땀이 흘렀다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_13	47	NARRATION		바로 그 순간이었다.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감) / BGM 정지(적막)	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28	FX_FREEZE	BGM_NONE								
-STORY_PROLOGUE_13	48	DIALOGUE	CHAR_MONGGU	아이고! 비켜요, 비켜! 다들 바닥에 잉크 흘리지 말고 조심해요!!		CHAR_MONGGU			몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 왼쪽 기본 통통 튀듯이 슬라이드 인 (표정 목록 비어 있어 미지정) / 새 BGM: 통통 튀는 기묘한 음악	NORMAL	STYLE_MONGGU_26	FX_BRIGHTEN_RELIEF	BGM_LIBRARY_QUIRKY	SFX_HOP_STEP							
+STORY_PROLOGUE_13	47	NARRATION		바로 그 순간이었다.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감) / BGM 정지(적막)	WORD_BY_WORD	STYLE_IMPACT_WHITE_32	FX_FREEZE	BGM_NONE								
+STORY_PROLOGUE_13	48	DIALOGUE	CHAR_MONGGU	아이고! 비켜요, 비켜! 다들 바닥에 잉크 흘리지 말고 조심해요!!		CHAR_MONGGU	EXP_NORMAL		몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 왼쪽 기본 통통 튀듯이 슬라이드 인 (표정 목록 비어 있어 미지정) / 새 BGM: 통통 튀는 기묘한 음악	NORMAL	STYLE_MONGGU_24	FX_BRIGHTEN_RELIEF	BGM_LIBRARY_QUIRKY	SFX_HOP_STEP							
 STORY_PROLOGUE_13	49	NARRATION		귀신과 요괴들이 빽빽하게 몰려 있는 틈바구니 사이로, 무언가 작고 동그란 형체가 바쁘게 튀어나왔다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 유지	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	50	NARRATION		조끼를 단정하게 차려입고, 한쪽 눈에 금테 외눈안경을 쓴 털복숭이 요괴였다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 유지	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	51	NARRATION		부엉이와 너구리를 섞어 놓은 듯한 귀여운 외모의 그 요괴는 깃펜이 꽂힌 두꺼운 장부를 든 채 총총걸음으로 다가왔다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 유지	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_13	52	DIALOGUE	CHAR_MONGGU	이봐요, 2구역 사서! 일안하고 뭐 해요!					몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 화남으로 변경 + 처녀 귀신 오른쪽 기본 페이드 인	INSTANT	STYLE_MONGGU_26				CHAR_GHOST_MAIDEN						
-STORY_PROLOGUE_13	53	DIALOGUE	CHAR_MONGGU	지금 2구역 터지기 직전인데! 얼른 가서 양피지나 날라요!					몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 두 캐릭터 유지	INSTANT	STYLE_MONGGU_26										
-STORY_PROLOGUE_13	54	DIALOGUE	CHAR_GHOST_MAIDEN	쳇, 깐깐하게 굴기는.					처녀 귀신	[디자인] 붓글씨체 24pt 탁한 붉은색 / [연출] 몽구 유지 + 처녀 귀신 화남으로 변경 (표정 목록 비어 미지정)	NORMAL	STYLE_GHOST_RED_24										
+STORY_PROLOGUE_13	52	DIALOGUE	CHAR_MONGGU	이봐요, 2구역 사서! 일안하고 뭐 해요!		CHAR_MONGGU	EXP_ANGRY		몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 화남으로 변경 + 처녀 귀신 오른쪽 기본 페이드 인	INSTANT	STYLE_MONGGU_24				CHAR_GHOST_MAIDEN	EXP_NORMAL					
+STORY_PROLOGUE_13	53	DIALOGUE	CHAR_MONGGU	지금 2구역 터지기 직전인데! 얼른 가서 양피지나 날라요!					몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 두 캐릭터 유지	INSTANT	STYLE_MONGGU_24										
+STORY_PROLOGUE_13	54	DIALOGUE	CHAR_GHOST_MAIDEN	쳇, 깐깐하게 굴기는.					처녀 귀신	[디자인] 붓글씨체 24pt 탁한 붉은색 / [연출] 몽구 유지 + 처녀 귀신 화남으로 변경 (표정 목록 비어 미지정)	NORMAL	STYLE_GHOST_RED_24				CHAR_GHOST_MAIDEN	EXP_ANGRY					
 STORY_PROLOGUE_13	55	NARRATION		처녀 귀신이 스르륵 허공으로 사라진다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 처녀 귀신 서서히 투명해지며 페이드 아웃	NORMAL	STYLE_NARRATION			SFX_GHOST_VANISH	NONE						
-STORY_PROLOGUE_13	56	NARRATION		외눈안경 요괴가 작게 헛기침을 하더니, 잔뜩 경계하고 있는 P와 아이들을 향해 깍듯하게 허리를 굽혔다.		CHAR_MONGGU				[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 왼쪽 기본으로 변경	NORMAL	STYLE_NARRATION			SFX_COUGH							
+STORY_PROLOGUE_13	56	NARRATION		외눈안경 요괴가 작게 헛기침을 하더니, 잔뜩 경계하고 있는 P와 아이들을 향해 깍듯하게 허리를 굽혔다.		CHAR_MONGGU	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 왼쪽 기본으로 변경	NORMAL	STYLE_NARRATION			SFX_COUGH							
 STORY_PROLOGUE_13	57	DIALOGUE	CHAR_MONGGU	놀라게 해드려 죄송합니다. 지금이 한창 이야기 반납 기한이 몰리는 피크 타임이라서요.					몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 유지	NORMAL	STYLE_MONGGU_24										
-STORY_PROLOGUE_13	58	DIALOGUE	CHAR_MONGGU	눈코 뜰 새 없이 바쁘네요.					몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 웃음으로 변경 (표정 목록 비어 미지정)	NORMAL	STYLE_MONGGU_24										
+STORY_PROLOGUE_13	58	DIALOGUE	CHAR_MONGGU	눈코 뜰 새 없이 바쁘네요.		CHAR_MONGGU	EXP_SMILE		몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 웃음으로 변경 (표정 목록 비어 미지정)	NORMAL	STYLE_MONGGU_24										
 STORY_PROLOGUE_13	59	DIALOGUE	CHAR_P	너... 아니. 당신은 뭡니까...?					P	[디자인] 고딕체 24pt 순백색 / [연출] 몽구 유지	NORMAL	STYLE_P_DIALOGUE										
-STORY_PROLOGUE_13	60	DIALOGUE	CHAR_MONGGU	저는 영요서고의 수석 사서 보조, '몽구'라고 합니다.					몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 기본으로 변경	NORMAL	STYLE_MONGGU_26										
+STORY_PROLOGUE_13	60	DIALOGUE	CHAR_MONGGU	저는 영요서고의 수석 사서 보조, '몽구'라고 합니다.		CHAR_MONGGU	EXP_NORMAL		몽구	[디자인] 둥근 고딕 26pt 골드 / [연출] 몽구 기본으로 변경	NORMAL	STYLE_MONGGU_24										
 STORY_PROLOGUE_13	61	DIALOGUE	CHAR_MONGGU	험한 길 오시느라 고생 많으셨습니다.					몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 유지	NORMAL	STYLE_MONGGU_24										
-STORY_PROLOGUE_13	62	DIALOGUE	CHAR_MONGGU	관장님께서 귀빈들이 도착하기만을 애타게 기다리고 계십니다. 자. 저를 따라오시죠.					몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 웃음으로 변경	NORMAL	STYLE_MONGGU_24										
+STORY_PROLOGUE_13	62	DIALOGUE	CHAR_MONGGU	관장님께서 귀빈들이 도착하기만을 애타게 기다리고 계십니다. 자. 저를 따라오시죠.		CHAR_MONGGU	EXP_SMILE		몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 웃음으로 변경	NORMAL	STYLE_MONGGU_24										
 STORY_PROLOGUE_13	63	NARRATION		몽구가 종종걸음으로 앞장서기 시작했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 몽구 오른쪽으로 총총거리며 퇴장	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	64	NARRATION		P와 아이들은 여전히 공포에 질린 채 서로의 손을 꼭 쥐고, 그 작은 요괴의 뒤를 따라 걷기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 화면이 서서히 이동하는 연출(Pan)	NORMAL	STYLE_NARRATION	FX_PAN		SFX_CAREFUL_STEP							
 STORY_PROLOGUE_13	65	NARRATION		그들이 걷는 복도 양옆으로는 허공을 유영하는 수백 권의 책들이 보랏빛 빛을 내며 스쳐 지나갔고,						[디자인] 명조체 24pt 연보라색 / 변동 없음	NORMAL	STYLE_NARRATION_PURPLE										
@@ -685,16 +685,16 @@ STORY_PROLOGUE_13	67	NARRATION		서윤은 신기하단 얼굴로 주변을 보�
 STORY_PROLOGUE_13	68	NARRATION		이내 끝을 알 수 없는 웅장한 도서관의 중심부.	12-B					#12-B. 웅장한 집무실 문 앞 / [디자인] 명조체 24pt 밝은 회색 / 12-B로 서서히 디졸브 / BGM 분위기 차분하게 전환	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_LIBRARY_CALM								
 STORY_PROLOGUE_13	69	NARRATION		거대한 마호가니 원목으로 만들어진 양개형 문집 앞에 도착했다.						[디자인] 명조체 24pt 밝은 회색 / BGM Ducking	NORMAL	STYLE_NARRATION			SFX_STOP_FOOTSTEP							
 STORY_PROLOGUE_13	70	NARRATION		문에는 기하학적인 나비 문양이 금빛으로 새겨져 있었다.						[디자인] 명조체 24pt 금색 / 화면 중앙 문양으로 미세한 줌인	NORMAL	STYLE_NARRATION_GOLD	FX_ZOOM_IN_EMBLEM									
-STORY_PROLOGUE_13	71	DIALOGUE	CHAR_MONGGU	관장님. 기다리시던 손님들을 모셔 왔습니다.		CHAR_MONGGU			몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 왼쪽 기본 페이드 인	NORMAL	STYLE_MONGGU_24										
+STORY_PROLOGUE_13	71	DIALOGUE	CHAR_MONGGU	관장님. 기다리시던 손님들을 모셔 왔습니다.		CHAR_MONGGU	EXP_NORMAL		몽구	[디자인] 둥근 고딕 24pt 골드 / [연출] 몽구 왼쪽 기본 페이드 인	NORMAL	STYLE_MONGGU_24										
 STORY_PROLOGUE_13	72	NARRATION		끼이익-		NONE				[디자인] 굵은 고딕 32pt 탁한 갈색 / [연출] 몽구 페이드 아웃 / 화면 양옆으로 갈라지며 열리는 이펙트 / BGM 정지	SLOW	STYLE_IMPACT_BROWN_32	FX_DOOR_SPLIT_OPEN	BGM_NONE	SFX_HUGE_DOOR_OPEN							
 STORY_PROLOGUE_13	73	NARRATION		육중한 문이 스스로 열리며, 보랏빛 성운이 잔잔하게 일렁이는 넓은 집무실이 모습을 드러냈다.	12-C					#12-C. 관장 집무실 / [디자인] 명조체 24pt 밝은 회색 / 12-C로 컷 전환 / 새 BGM: 우주적이고 압도적인 테마	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_ABYSS_COSMIC								
 STORY_PROLOGUE_13	74	NARRATION		바닥에는 핏빛 융단이 깔려 있었고, 한쪽 벽면을 가득 채운 거대한 창문 너머로는 이승에서는 볼 수 없는 우주의 별무리들이 쏟아질 듯 반짝이고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_13	75	NARRATION		그리고 그 방의 한가운데.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감)	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28	FX_FREEZE									
+STORY_PROLOGUE_13	75	NARRATION		그리고 그 방의 한가운데.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감)	WORD_BY_WORD	STYLE_IMPACT_WHITE_32	FX_FREEZE									
 STORY_PROLOGUE_13	76	NARRATION		보랏빛 슈트에 새하얀 가면을 쓴 관장 '무명'이 우아한 자태로 서 있었다.		CHAR_MUMYEONG	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 무명 왼쪽 기본, 어둠 속에서 서서히 페이드 인	NORMAL	STYLE_NARRATION										
 STORY_PROLOGUE_13	77	NARRATION		무명이 쓰고 있던 중절모를 벗어 가슴에 얹으며, 낮고 몽환적인 목소리로 입을 열었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 무명 유지	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_13	78	DIALOGUE	CHAR_MUMYEONG	차원의 문턱을 넘느라 고생하셨습니다. P. 그리고 작은 새들.					무명	[디자인] 우아한 명조 26pt 연보라색 / [연출] 무명 유지	VERY_SLOW	STYLE_MUMYEONG_26										
+STORY_PROLOGUE_13	78	DIALOGUE	CHAR_MUMYEONG	차원의 문턱을 넘느라 고생하셨습니다. P. 그리고 작은 새들.					무명	[디자인] 우아한 명조 26pt 연보라색 / [연출] 무명 유지	VERY_SLOW	STYLE_MUMYEONG_24										
 STORY_PROLOGUE_13	79	DIALOGUE	CHAR_P	...?					P	[디자인] 고딕체 24pt 순백색 / [연출] 무명 유지	NORMAL	STYLE_P_DIALOGUE										
-STORY_PROLOGUE_13	80	DIALOGUE	CHAR_MUMYEONG	모든 빛이 꺼진 당신들의 진짜 무대, 영요서고(影謠書庫)에 오신 것을 진심으로 환영합니다.					무명	[디자인] 우아한 명조 28pt 연보라색 / [연출] 무명 웃음으로 변경 / 가면 너머 보랏빛 안광 + 줌인 / BGM 웅장하게 절정	NORMAL	STYLE_MUMYEONG_28_PURPLE	FX_MASK_GLOW_ZOOM									
-STORY_PROLOGUE_13	81	NARRATION		쾅 !		NONE				[디자인] 굵은 고딕 40pt 붉은색 / [연출] 무명 즉시 컷 아웃 / BGM 정지	INSTANT	STYLE_IMPACT_RED_40	FX_SCREEN_SHAKE_HARD	BGM_NONE	SFX_IRON_DOOR_SLAM							
+STORY_PROLOGUE_13	80	DIALOGUE	CHAR_MUMYEONG	모든 빛이 꺼진 당신들의 진짜 무대, 영요서고(影謠書庫)에 오신 것을 진심으로 환영합니다.		CHAR_MUMYEONG	EXP_SMILE		무명	[디자인] 우아한 명조 28pt 연보라색 / [연출] 무명 웃음으로 변경 / 가면 너머 보랏빛 안광 + 줌인 / BGM 웅장하게 절정	NORMAL	STYLE_MUMYEONG_24	FX_MASK_GLOW_ZOOM									
+STORY_PROLOGUE_13	81	NARRATION		쾅 !		NONE				[디자인] 굵은 고딕 40pt 붉은색 / [연출] 무명 즉시 컷 아웃 / BGM 정지	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_SHAKE_HARD	BGM_NONE	SFX_IRON_DOOR_SLAM							
 STORY_PROLOGUE_13	82	NARRATION		무명의 몽환적인 환영 인사와 함께 등 뒤의 육중한 문이 굳게 닫히며,						[디자인] 명조체 24pt 밝은 회색 / 줌아웃 / BGM 완전히 사라짐(잔향만)	SLOW	STYLE_NARRATION	FX_ZOOM_OUT									
-STORY_PROLOGUE_13	83	NARRATION		P와 아이들의 기괴한 괴담(怪談)의 첫 페이지가 비로소 펼쳐지고 있었다.						[디자인] 명조체 26pt 순백색 / 화면 서서히 검게 암전되며 프롤로그 종료 / 적막 유지	VERY_SLOW	STYLE_NARRATION_26_WHITE	FX_FADE_TO_BLACK									
+STORY_PROLOGUE_13	83	NARRATION		P와 아이들의 기괴한 괴담(怪談)의 첫 페이지가 비로소 펼쳐지고 있었다.						[디자인] 명조체 26pt 순백색 / 화면 서서히 검게 암전되며 프롤로그 종료 / 적막 유지	VERY_SLOW	STYLE_NARRATION	FX_FADE_TO_BLACK									

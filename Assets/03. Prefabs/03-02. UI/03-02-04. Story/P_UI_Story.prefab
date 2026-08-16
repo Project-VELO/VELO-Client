@@ -839,10 +839,12 @@ MonoBehaviour:
     - STYLE_DIRECTOR_BLUE_24
     - STYLE_DIRECTOR_BLUE_26
     - STYLE_DOKKAEBI_BROWN_26
+    - STYLE_DOKKAEBI_BROWN_32
     - STYLE_ECHO_GRAY
     - STYLE_FD_GRAY_26
     - STYLE_FD_GRAY_32
     - STYLE_GHOST_DARKRED_26
+    - STYLE_GHOST_DARKRED_32
     - STYLE_GHOST_RED_24
     - STYLE_GHOST_RED_26
     - STYLE_GHOST_RED_32
@@ -947,6 +949,10 @@ MonoBehaviour:
       _fontStyle: 0
     - _font: {fileID: 0}
       _fontSize: 32
+      _color: {r: 0.5450981, g: 0.3529412, b: 0.1686275, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
       _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
     - _font: {fileID: 0}
@@ -960,6 +966,10 @@ MonoBehaviour:
     - _font: {fileID: 0}
       _fontSize: 26
       _color: {r: 0.431373, g: 0.12549, b: 0.12549, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0.4313726, g: 0.1254902, b: 0.1254902, a: 1}
       _fontStyle: 0
     - _font: {fileID: 0}
       _fontSize: 32

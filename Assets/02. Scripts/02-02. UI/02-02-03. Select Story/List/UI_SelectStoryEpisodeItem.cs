@@ -17,7 +17,6 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
 
     private const string EPISODE_FORMAT = "{0}화";
     private const string LOCKED_LABEL = "LOCKED";
-    private const string COMPLETED_LABEL = "COMPLETED";
 
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -43,6 +42,12 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
     /// </summary>
     [SerializeField]
     private GameObject _lockIcon;
+
+    /// <summary>
+    /// 감상을 마친 회차 표시입니다. 완료는 문구 없이 이 아이콘으로만 알립니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _clearIcon;
 
     [SerializeField]
     private GameObject _newBadge;
@@ -90,6 +95,7 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
         bool isCompleted = !ReferenceEquals(progress, null) && progress.IsCompleted;
 
         _lockIcon.SetActive(isLocked);
+        _clearIcon.SetActive(!isLocked && isCompleted);
         _newBadge.SetActive(!ReferenceEquals(progress, null) && progress.IsNew);
 
         if (isLocked)
@@ -98,12 +104,7 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
             return;
         }
 
-        if (isCompleted)
-        {
-            SetStatusLabel(COMPLETED_LABEL);
-            return;
-        }
-
+        // 완료는 아이콘 하나로 충분해 문구를 띄우지 않습니다. 잠금만 문구로 알립니다.
         _statusRoot.SetActive(false);
     }
 
@@ -132,6 +133,7 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
         _storyId = null;
         _statusRoot.SetActive(false);
         _lockIcon.SetActive(false);
+        _clearIcon.SetActive(false);
         _newBadge.SetActive(false);
         SetSelected(false);
         SetHighlight(false);

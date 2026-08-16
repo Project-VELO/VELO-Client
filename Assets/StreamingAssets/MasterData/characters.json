@@ -160,6 +160,54 @@
             "MemberOrder": -1,
             "PortraitPath": "",
             "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_PD_BROADCAST",
+            "DisplayName": "방송국 PD",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_MC",
+            "DisplayName": "MC",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_AUDIENCE_SPIRITS",
+            "DisplayName": "관객(영령들)",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_GHOST_1",
+            "DisplayName": "귀신 1",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_YOKAI_1",
+            "DisplayName": "요괴 1",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_DOKKAEBI_1",
+            "DisplayName": "도깨비 1",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
         }
     ]
 }

@@ -509,7 +509,7 @@
         {
             "LineId": 25,
             "LineTypeName": "DIALOGUE",
-            "SpeakerId": "",
+            "SpeakerId": "CHAR_GHOST_1",
             "SpeakerName": "귀신 1",
             "Text": "야! 3구역 '우물 귀신' 텍스트에 한(恨)이 부족하잖아!",
             "BackgroundId": "",
@@ -530,7 +530,7 @@
         {
             "LineId": 26,
             "LineTypeName": "DIALOGUE",
-            "SpeakerId": "",
+            "SpeakerId": "CHAR_GHOST_1",
             "SpeakerName": "귀신 1",
             "Text": "당장 원고지 가져와서 슬픔 감정선 더 채워 넣어!!",
             "BackgroundId": "",
@@ -551,7 +551,7 @@
         {
             "LineId": 27,
             "LineTypeName": "DIALOGUE",
-            "SpeakerId": "",
+            "SpeakerId": "CHAR_YOKAI_1",
             "SpeakerName": "요괴 1",
             "Text": "아, 씨! 오늘 반납 기한인데 기승전결이 다 꼬였잖아!",
             "BackgroundId": "",
@@ -572,7 +572,7 @@
         {
             "LineId": 28,
             "LineTypeName": "DIALOGUE",
-            "SpeakerId": "",
+            "SpeakerId": "CHAR_YOKAI_1",
             "SpeakerName": "요괴 1",
             "Text": "4구역 사서들 빨리 지원 와!!",
             "BackgroundId": "",
@@ -593,7 +593,7 @@
         {
             "LineId": 29,
             "LineTypeName": "DIALOGUE",
-            "SpeakerId": "",
+            "SpeakerId": "CHAR_DOKKAEBI_1",
             "SpeakerName": "도깨비 1",
             "Text": "저기요, 길 좀 비켜요! 수레 지나갑니다!",
             "BackgroundId": "",

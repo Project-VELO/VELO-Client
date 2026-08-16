@@ -731,6 +731,12 @@ MonoBehaviour:
     - CHAR_STATION_HEAD
     - CHAR_IDOL_1
     - CHAR_IDOL_2
+    - CHAR_PD_BROADCAST
+    - CHAR_MC
+    - CHAR_AUDIENCE_SPIRITS
+    - CHAR_GHOST_1
+    - CHAR_YOKAI_1
+    - CHAR_DOKKAEBI_1
     _values:
     - {r: 0.35, g: 0.62, b: 0.92, a: 1}
     - {r: 0.98, g: 0.72, b: 0.35, a: 1}
@@ -752,6 +758,12 @@ MonoBehaviour:
     - {r: 0.2901961, g: 0.4, b: 0.3372549, a: 1}
     - {r: 0.8313726, g: 0.627451, b: 0.7686275, a: 1}
     - {r: 0.7686275, g: 0.627451, b: 0.8313726, a: 1}
+    - {r: 0.3372549, g: 0.4980392, b: 0.5490196, a: 1}
+    - {r: 0.7882353, g: 0.5450981, b: 0.1803922, a: 1}
+    - {r: 0.4941176, g: 0.4941176, b: 0.8, a: 1}
+    - {r: 0.7882353, g: 0.7215686, b: 0.8784314, a: 1}
+    - {r: 0.4352941, g: 0.6588235, b: 0.2901961, a: 1}
+    - {r: 0.6509804, g: 0.3215686, b: 0.1803922, a: 1}
   _unknownCharacterColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
   _backgroundPlaceholderColor: {r: 0.12, g: 0.11, b: 0.16, a: 1}
 --- !u!114 &3073515681631702927

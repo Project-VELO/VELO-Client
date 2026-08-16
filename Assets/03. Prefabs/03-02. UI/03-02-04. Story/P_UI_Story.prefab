@@ -724,6 +724,10 @@ MonoBehaviour:
     - CHAR_HWANYEONG
     - CHAR_MONGGU
     - CHAR_GHOST_MAIDEN
+    - CHAR_WRITER_ROOKIE
+    - CHAR_PD_MAIN
+    - CHAR_FD
+    - CHAR_STAFF
     _values:
     - {r: 0.35, g: 0.62, b: 0.92, a: 1}
     - {r: 0.98, g: 0.72, b: 0.35, a: 1}
@@ -738,6 +742,10 @@ MonoBehaviour:
     - {r: 0.3, g: 0.7, b: 0.8, a: 1}
     - {r: 0.72, g: 0.6, b: 0.42, a: 1}
     - {r: 0.6, g: 0.78, b: 0.92, a: 1}
+    - {r: 0.7176471, g: 0.7686275, b: 0.4196078, a: 1}
+    - {r: 0.3098039, g: 0.3568628, b: 0.4, a: 1}
+    - {r: 0.5568628, g: 0.4313726, b: 0.5568628, a: 1}
+    - {r: 0.4196078, g: 0.3098039, b: 0.227451, a: 1}
   _unknownCharacterColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
   _backgroundPlaceholderColor: {r: 0.12, g: 0.11, b: 0.16, a: 1}
 --- !u!114 &3073515681631702927

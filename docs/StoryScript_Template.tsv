@@ -375,8 +375,8 @@ STORY_PROLOGUE_08	1	NARRATION		쿵, 쿵, 쿵!						#7-A. M-Beat 생방송 백스
 STORY_PROLOGUE_08	2	NARRATION		백스테이지의 철제 바닥을 울리는 심장 박동 같은 베이스 소리.	7-A					[디자인] 명조체 24pt 밝은 회색 / 7-A 컷 인 / BGM 웅웅거리고 긴장감 넘치는 음악	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_BACKSTAGE_TENSION						
 STORY_PROLOGUE_08	3	NARRATION		눈이 시릴 정도로 화려한 메인 무대 뒤편,						[디자인] 명조체 24pt 밝은 회색 / 화면 가장자리에 화려한 조명 빛이 언뜻 비침	NORMAL	STYLE_NARRATION	FX_EDGE_STAGE_LIGHT							
 STORY_PROLOGUE_08	4	NARRATION		어두운 대기 공간에 다섯 소녀와 P가 서 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_08	5	DIALOGUE		(무전기를 들고 다급하게 외친다) 자, 다음 순서 들어갑니다! V.E.L.O 스탠바이 하세요!					막내 작가	[디자인] 고딕체 24pt 탁한 노란색 / [연출] 막내 작가 오른쪽 기본, 페이드 인 후 즉시 컷 아웃 (단역이라 SpeakerId 없음, 초상 미지원)	INSTANT	STYLE_WRITER_YELLOW_24			SFX_WALKIE_TALKIE					
-STORY_PROLOGUE_08	6	NARRATION		생방송의 열기로 달아오른 공기.						[디자인] 명조체 24pt 밝은 회색 / BGM 볼륨 복구	NORMAL	STYLE_NARRATION								
+STORY_PROLOGUE_08	5	DIALOGUE	CHAR_WRITER_ROOKIE	(무전기를 들고 다급하게 외친다) 자, 다음 순서 들어갑니다! V.E.L.O 스탠바이 하세요!					막내 작가	[디자인] 고딕체 24pt 탁한 노란색 / [연출] 막내 작가 오른쪽 기본, 페이드 인 후 즉시 컷 아웃 (단역이라 SpeakerId 없음, 초상 미지원)	INSTANT	STYLE_WRITER_YELLOW_24			SFX_WALKIE_TALKIE	CHAR_WRITER_ROOKIE	EXP_NORMAL			
+STORY_PROLOGUE_08	6	NARRATION		생방송의 열기로 달아오른 공기.						[디자인] 명조체 24pt 밝은 회색 / BGM 볼륨 복구	NORMAL	STYLE_NARRATION				NONE				
 STORY_PROLOGUE_08	7	NARRATION		그 숨 막히는 긴장감 속에서 리아의 손끝이 미세하게 떨리고 있었다.		CHAR_RIA	EXP_SAD			[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 왼쪽 걱정, 서서히 페이드 인 및 미세하게 떨림	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_08	8	DIALOGUE	CHAR_JIWOO	언니, 떨지 마요. 우리 그 캄캄한 지하실에서도 눈 감고 다 맞췄잖아요.					지우	[디자인] 고딕체 24pt 순백색 / [연출] 리아 유지 + 지우 오른쪽 웃음 페이드 인	NORMAL	STYLE_MEMBER				CHAR_JIWOO	EXP_SMILE			
 STORY_PROLOGUE_08	9	DIALOGUE	CHAR_HANA	후... 후...		CHAR_HANA	EXP_SAD		하나	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 리아·지우 퇴장, 하나 왼쪽 걱정 페이드 인 및 크게 상하 흔들림	NORMAL	STYLE_MEMBER_TREMBLE				NONE				
@@ -425,21 +425,21 @@ STORY_PROLOGUE_08	51	DIALOGUE	CHAR_P	감독님!! 제발 조명 좀 켜주세요!
 STORY_PROLOGUE_08	52	DIALOGUE	CHAR_P	춤 안 춰도 되니까, 음악 안 틀어주셔도 되니까 제발 불만이라도 켜주세요!!					P	[디자인] 고딕체 28pt 순백색 / 변동 없음	INSTANT	STYLE_P_SHOUT_PLAIN_32								
 STORY_PROLOGUE_08	53	NARRATION		단순한 방송 사고가 아니었다.						[디자인] 명조체 24pt 밝은 회색 / 콘솔 모니터들의 푸른 불빛 점멸	NORMAL	STYLE_NARRATION	FX_CONSOLE_BLINK							
 STORY_PROLOGUE_08	54	NARRATION		P의 시선이 다급하게 음향 콘솔 쪽을 향했다.						[디자인] 명조체 24pt 밝은 회색 / 카메라 이동 연출	NORMAL	STYLE_NARRATION	FX_CAMERA_MOVE							
-STORY_PROLOGUE_08	55	NARRATION		헤드셋을 집어 던진 메인 PD의 험악하게 일그러진 얼굴이 보였다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 메인 PD 오른쪽 화남 페이드 인 (단역이라 초상 미지원)	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_08	56	DIALOGUE		아, 씨발! S-Tier에서 저 새끼들 방송 내보내면 당장 지네 애들 차 돌리겠다고 난리 쳤다잖아!					메인 PD	[디자인] 고딕체 26pt 탁한 녹색 / [연출] 메인 PD 유지	INSTANT	STYLE_PD_GREEN_32								
-STORY_PROLOGUE_08	57	DIALOGUE		위에서 당장 끊으래! 야. 스크린 내리고 저 쓰레기들 당장 무대에서 치워!!					메인 PD	[디자인] 굵은 고딕 28pt 탁한 녹색 / [연출] 메인 PD 유지	INSTANT	STYLE_PD_GREEN_32	FX_SCREEN_SHAKE_HARD							
-STORY_PROLOGUE_08	58	NARRATION		자본의 폭력이 생방송의 룰마저 강제로 멈춰 세운 순간이었다.						[디자인] 명조체 24pt 붉은색 강조 / [연출] 메인 PD 컷 아웃 퇴장	SLOW	STYLE_NARRATION_RED_EMPH	FX_CONSOLE_FLICKER							
-STORY_PROLOGUE_08	59	DIALOGUE		아, 씨발! 빨리 안 치우고 뭐해! 저것들 당장 끌어내려!!					FD	[디자인] 고딕체 26pt 탁한 회색 / [연출] FD 오른쪽 화남 거칠게 슬라이드 인 (단역이라 초상 미지원)	INSTANT	STYLE_FD_GRAY_32	FX_SCREEN_SHAKE_HARD							
+STORY_PROLOGUE_08	55	NARRATION		헤드셋을 집어 던진 메인 PD의 험악하게 일그러진 얼굴이 보였다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 메인 PD 오른쪽 화남 페이드 인 (단역이라 초상 미지원)	NORMAL	STYLE_NARRATION				CHAR_PD_MAIN	EXP_ANGRY			
+STORY_PROLOGUE_08	56	DIALOGUE	CHAR_PD_MAIN	아, 씨발! S-Tier에서 저 새끼들 방송 내보내면 당장 지네 애들 차 돌리겠다고 난리 쳤다잖아!					메인 PD	[디자인] 고딕체 26pt 탁한 녹색 / [연출] 메인 PD 유지	INSTANT	STYLE_PD_GREEN_32								
+STORY_PROLOGUE_08	57	DIALOGUE	CHAR_PD_MAIN	위에서 당장 끊으래! 야. 스크린 내리고 저 쓰레기들 당장 무대에서 치워!!					메인 PD	[디자인] 굵은 고딕 28pt 탁한 녹색 / [연출] 메인 PD 유지	INSTANT	STYLE_PD_GREEN_32	FX_SCREEN_SHAKE_HARD							
+STORY_PROLOGUE_08	58	NARRATION		자본의 폭력이 생방송의 룰마저 강제로 멈춰 세운 순간이었다.						[디자인] 명조체 24pt 붉은색 강조 / [연출] 메인 PD 컷 아웃 퇴장	SLOW	STYLE_NARRATION_RED_EMPH	FX_CONSOLE_FLICKER			NONE				
+STORY_PROLOGUE_08	59	DIALOGUE	CHAR_FD	아, 씨발! 빨리 안 치우고 뭐해! 저것들 당장 끌어내려!!					FD	[디자인] 고딕체 26pt 탁한 회색 / [연출] FD 오른쪽 화남 거칠게 슬라이드 인 (단역이라 초상 미지원)	INSTANT	STYLE_FD_GRAY_32	FX_SCREEN_SHAKE_HARD			CHAR_FD	EXP_ANGRY			
 STORY_PROLOGUE_08	60	NARRATION		그들의 눈에 P와 소녀들의 간절함 따위는 보이지 않았다.						[디자인] 명조체 24pt 밝은 회색 / [연출] FD 유지	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_08	61	NARRATION		그저 생방송 큐시트를 망치고, 거대 기획사의 심기를 거스르게 만든 성가신 '장애물'일 뿐이었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] FD 퇴장	NORMAL	STYLE_NARRATION								
+STORY_PROLOGUE_08	61	NARRATION		그저 생방송 큐시트를 망치고, 거대 기획사의 심기를 거스르게 만든 성가신 '장애물'일 뿐이었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] FD 퇴장	NORMAL	STYLE_NARRATION				NONE				
 STORY_PROLOGUE_08	62	NARRATION		검은 옷을 입은 건장한 무대 스태프들이 캄캄한 무대 위로 우르르 몰려 올라갔다.						[디자인] 명조체 24pt 밝은 회색 / 전선들을 짓밟고 뛰어오는 군홧발 소리	NORMAL	STYLE_NARRATION			SFX_BOOTS_RUSH					
 STORY_PROLOGUE_08	63	NARRATION		그들은 쓰러져 신음하는 지우의 상태를 묻지 않았다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_08	64	NARRATION		마치 치워야 할 무대 소품이나 짐짝을 다루듯, 지우의 양팔을 우악스럽게 붙잡고 질질 끌어당기기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 옷깃 당기고 케이스에 긁히며 끌려가는 마찰음	NORMAL	STYLE_NARRATION			SFX_DRAG_FRICTION					
 STORY_PROLOGUE_08	65	DIALOGUE	CHAR_MINA	이거 놔요!! 애 다쳤잖아!!		CHAR_MINA	EXP_ANGRY		미나	[디자인] 고딕체 28pt 순백색 / [연출] 미나 왼쪽 화남 팝업 등장 후 흔들림	INSTANT	STYLE_MEMBER	FX_SCREEN_SHAKE_HARD							
 STORY_PROLOGUE_08	66	DIALOGUE	CHAR_MINA	우리가 걸어 나갈 테니까 그 더러운 손 떼라고!!					미나	[디자인] 고딕체 28pt 순백색 / [연출] 미나 유지	INSTANT	STYLE_MEMBER								
 STORY_PROLOGUE_08	67	DIALOGUE	CHAR_SEOYUN	놓으라고요!! 우리 무대 아직 안 끝났어!! 놔!!					서윤	[디자인] 고딕체 28pt 순백색 / [연출] 미나 유지 + 서윤 오른쪽 화남 팝업	INSTANT	STYLE_MEMBER				CHAR_SEOYUN	EXP_ANGRY			
-STORY_PROLOGUE_08	68	DIALOGUE		아. 진짜 짜증 나게 하네. 야! 얘네 꽉 잡고 빨리 치워! 다음 무대 스탠바이 해야 돼!		NONE			스태프	[디자인] 고딕체 24pt 어두운 회색 / [연출] 미나·서윤 퇴장, 스태프 오른쪽 화남 거칠게 페이드 인 (단역이라 초상 미지원)	INSTANT	STYLE_STAFF_GRAY_24				NONE				
-STORY_PROLOGUE_08	69	NARRATION		성인 남성들의 완력을 가녀린 소녀들이 당해낼 리 없었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 스태프 퇴장	NORMAL	STYLE_NARRATION								
+STORY_PROLOGUE_08	68	DIALOGUE	CHAR_STAFF	아. 진짜 짜증 나게 하네. 야! 얘네 꽉 잡고 빨리 치워! 다음 무대 스탠바이 해야 돼!		NONE			스태프	[디자인] 고딕체 24pt 어두운 회색 / [연출] 미나·서윤 퇴장, 스태프 오른쪽 화남 거칠게 페이드 인 (단역이라 초상 미지원)	INSTANT	STYLE_STAFF_GRAY_24				CHAR_STAFF	EXP_ANGRY			
+STORY_PROLOGUE_08	69	NARRATION		성인 남성들의 완력을 가녀린 소녀들이 당해낼 리 없었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 스태프 퇴장	NORMAL	STYLE_NARRATION				NONE				
 STORY_PROLOGUE_08	70	NARRATION		버둥거리는 미나와 서윤, 겁에 질려 우는 하나와 공허한 눈으로 무대를 바라보는 리아.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_08	71	NARRATION		그리고 발목을 잡고 고통스러워하는 지우까지.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_08	72	NARRATION		다섯 소녀는 먼지 묻은 쓰레기처럼 무대 바닥에 질질 끌려 내려오기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / BGM 극도로 처절해짐	SLOW	STYLE_NARRATION								
@@ -447,7 +447,7 @@ STORY_PROLOGUE_08	73	DIALOGUE	CHAR_P	이 개새끼들아!! 애들 몸에 손대�
 STORY_PROLOGUE_08	74	NARRATION		퍼억-!!						[디자인] 굵은 고딕 40pt 붉은색 / 화면이 붉게 점멸하며 강하게 덜컹거림 / BGM Ducking	INSTANT	STYLE_NARRATION_RED_EMPH	FX_RED_FLASH_SHAKE		SFX_KICK_SHIN					
 STORY_PROLOGUE_08	75	NARRATION		누군가의 거친 구둣발이 P의 정강이를 걷어찼고, P는 볼품없이 바닥을 나뒹굴었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 쓰러지듯 비스듬하게 회전(Camera Roll)	NORMAL	STYLE_NARRATION	FX_CAMERA_ROLL							
 STORY_PROLOGUE_08	76	NARRATION		엎어진 P의 시야 너머로, 방금 전까지 그토록 찬란하게 춤을 추던 아이들이 짐짝처럼 백스테이지 밖으로 무참히 내동댕이쳐지는 모습이 들어왔다.						[디자인] 명조체 24pt 밝은 회색 / 비스듬한 화면 멈춤	SLOW	STYLE_NARRATION	FX_ROLL_HOLD							
-STORY_PROLOGUE_08	77	DIALOGUE		자. 조명 다시 켜고! 10초 뒤에 다음 팀 바로 들어갑니다!					메인 PD	[디자인] 고딕체 26pt 탁한 녹색 / 화면 회전 복구 / 화려한 조명(화이트 아웃)으로 컴백 / BGM 급변	NORMAL	STYLE_PD_GREEN_32	FX_ROLL_RECOVER_WHITEOUT	BGM_MBEAT_NEXT_TEAM						
+STORY_PROLOGUE_08	77	DIALOGUE	CHAR_PD_MAIN	자. 조명 다시 켜고! 10초 뒤에 다음 팀 바로 들어갑니다!					메인 PD	[디자인] 고딕체 26pt 탁한 녹색 / 화면 회전 복구 / 화려한 조명(화이트 아웃)으로 컴백 / BGM 급변	NORMAL	STYLE_PD_GREEN_32	FX_ROLL_RECOVER_WHITEOUT	BGM_MBEAT_NEXT_TEAM						
 STORY_PROLOGUE_08	78	NARRATION		언제 무슨 일이 있었냐는 듯, 다시 화려한 조명이 켜지고 경쾌한 다음 팀의 음악이 울려 퍼졌다.						[디자인] 명조체 24pt 밝은 회색 / 눈부신 조명 이펙트 유지 / 신나는 댄스곡(이질적이고 잔인한 느낌)	NORMAL	STYLE_NARRATION	FX_STAGE_LIGHTS							
 STORY_PROLOGUE_08	79	NARRATION		아이들의 피와 땀, P의 찢겨진 자존심이 모조리 갈려 들어간 3분 30초의 기적은,						[디자인] 명조체 24pt 밝은 회색 / 눈부신 화면 서서히 어두워짐 / 경쾌한 BGM이 찌그러지며 먹먹해짐	SLOW	STYLE_NARRATION	FX_BRIGHT_TO_DARK							
 STORY_PROLOGUE_08	80	NARRATION		자본의 전화 한 통에 의해 그렇게 단 2분 만에 철저하게 쓰레기통에 처박히고 말았다.						[디자인] 명조체 24pt 붉은색 강조 / 화면 완전히 암전 / 찌그러진 BGM 유지	VERY_SLOW	STYLE_NARRATION	FX_BLACKOUT_FULL							

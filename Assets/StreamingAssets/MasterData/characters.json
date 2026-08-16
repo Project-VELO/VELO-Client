@@ -104,6 +104,38 @@
             "MemberOrder": -1,
             "PortraitPath": "",
             "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_WRITER_ROOKIE",
+            "DisplayName": "막내 작가",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_PD_MAIN",
+            "DisplayName": "메인 PD",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_FD",
+            "DisplayName": "FD",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_STAFF",
+            "DisplayName": "스태프",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
         }
     ]
 }

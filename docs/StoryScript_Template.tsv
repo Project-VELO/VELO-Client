@@ -51,7 +51,7 @@ STORY_PROLOGUE_02	23	NARRATION		가장 점잖고 우아한 말투였으나, 그 
 STORY_PROLOGUE_02	24	NARRATION		아이들이 고작 자신의 치유용 장난감으로 쓰이고 버려졌다는 사실에 P의 머릿속이 하얗게 탈색되었다.						[디자인] 명조체 24pt 흰색 강조 / 화면이 일순간 하얗게 번쩍임(이명 효과)	NORMAL	STYLE_NARRATION_WHITE_EMPH	FX_WHITE_FLASH		SFX_TINNITUS		
 STORY_PROLOGUE_02	25	DIALOGUE	CHAR_DIRECTOR_KIM	야. P. 네 재능 하나는 회장님도 인정하시니까 우리가 이만큼 참아준 거야.		CHAR_DIRECTOR_KIM	EXP_ANGRY		김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 왼쪽 화남, 거칠게 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_KIM	FX_RECOVER		SFX_CIGARETTE_STUB		
 STORY_PROLOGUE_02	26	DIALOGUE	CHAR_DIRECTOR_KIM	그러니까 저번처럼 그냥 입 닥치고 못 본 척해. 어차피 며칠 전 투자자 룸에서 고분고분 술 한잔 안 따르고 분위기 씹창 낸 년들이잖아.					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_SCREEN_SHAKE_LIGHT				
-STORY_PROLOGUE_02	27	DIALOGUE	CHAR_P	이 끔찍한 악마 새끼들...					P	[디자인] 글자 심하게 떨림 26pt 순백색 / [연출] 김 전무 유지	INSTANT	STYLE_P_TREMBLE_32	FX_SCREEN_RUMBLE_FINE				
+STORY_PROLOGUE_02	27	DIALOGUE	CHAR_P	이 끔찍한 악마 새끼들...					P	[디자인] 글자 심하게 떨림 26pt 순백색 / [연출] 김 전무 유지	INSTANT	STYLE_P_TREMBLE_PLAIN_32	FX_SCREEN_RUMBLE_FINE				
 STORY_PROLOGUE_02	28	DIALOGUE	CHAR_DIRECTOR_KIM	왜? 이번에도 저년들 빚더미 못 이기고 옥상에서 뛰어내릴까 봐 쫄려?					김 전무	[디자인] 고딕체 26pt 붉은색 강조 / [연출] 김 전무 몸을 숙이며 조롱하는 표정으로 줌인 / BGM 기괴하게 변조	SLOW	STYLE_KIM	FX_ZOOM_IN_SLOW	BGM_STIER_POWER_TWISTED			
 STORY_PROLOGUE_02	29	DIALOGUE	CHAR_DIRECTOR_KIM	야, 저번처럼 바닥에 피떡 돼서 널브러지면 그거 치우고 기사 막는 것도 다 돈이야. 목줄 꽉 쥐고 있어.					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_ZOOM_STOP				
 STORY_PROLOGUE_02	30	NARRATION		쿵-.		NONE				[디자인] 굵은 고딕 36pt 붉은색 / [연출] 김 전무 즉시 컷 아웃 퇴장 / BGM 정지	INSTANT	STYLE_NARRATION	FX_SHAKE_BLACKOUT	BGM_NONE	SFX_HEART_DROP		

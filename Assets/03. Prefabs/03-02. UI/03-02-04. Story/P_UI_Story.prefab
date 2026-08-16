@@ -876,6 +876,7 @@ MonoBehaviour:
     - STYLE_P_TREMBLE_26
     - STYLE_P_TREMBLE_28
     - STYLE_P_TREMBLE_32
+    - STYLE_P_TREMBLE_PLAIN_32
     - STYLE_SCREAM_BLUE
     - STYLE_SERIF_BOLD_PURPLE_32
     - STYLE_SERIF_BOLD_RED_36
@@ -1185,6 +1186,10 @@ MonoBehaviour:
       _fontSize: 32
       _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 32
+      _color: {r: 0, g: 0, b: 0, a: 1}
+      _fontStyle: 0
     - _font: {fileID: 0}
       _fontSize: 40
       _color: {r: 0.309804, g: 0.764706, b: 0.968627, a: 1}

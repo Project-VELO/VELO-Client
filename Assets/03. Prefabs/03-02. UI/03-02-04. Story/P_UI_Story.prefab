@@ -642,11 +642,11 @@ MonoBehaviour:
     - 3-A
     - 3-B
     - 4-A
-    - 4-B
     - 4-C
     - 4-D
     - 4-E
     - 4-F
+    - 4-G
     - 5-A
     - 5-B
     - 5-C
@@ -871,6 +871,7 @@ MonoBehaviour:
     - STYLE_NARRATION_WHITE
     - STYLE_NARRATION_WHITE_EMPH
     - STYLE_PD_GREEN_26
+    - STYLE_PD_GREEN_32
     - STYLE_PD_GREEN_BOLD_28
     - STYLE_P_DIALOGUE
     - STYLE_P_DIALOGUE_26
@@ -1152,6 +1153,10 @@ MonoBehaviour:
       _fontStyle: 0
     - _font: {fileID: 0}
       _fontSize: 26
+      _color: {r: 0, g: 0, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
       _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
     - _font: {fileID: 0}

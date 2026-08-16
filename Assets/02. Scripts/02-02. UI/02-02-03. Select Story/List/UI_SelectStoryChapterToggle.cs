@@ -40,11 +40,13 @@ public class UI_SelectStoryChapterToggle : MonoBehaviour
     private bool _isExpandedByDefault = true;
 
     private bool _isExpanded;
+    private RectTransform _selfRect;
 
     public bool IsExpanded => _isExpanded;
 
     private void Awake()
     {
+        _selfRect = (RectTransform)transform;
         _toggleButton.onClick.AddListener(Toggle);
     }
 
@@ -74,6 +76,27 @@ public class UI_SelectStoryChapterToggle : MonoBehaviour
 
         _episodeRoot.SetActive(isExpanded);
         RefreshArrow();
+        RefreshLayout();
+    }
+
+    /// <summary>
+    /// 접거나 편 높이를 위쪽 목록에 반영합니다.
+    ///
+    /// 목록의 세로 레이아웃이 자식 높이를 직접 제어하지 않고 RectTransform 높이를 그대로 읽습니다.
+    /// 레이아웃 재계산은 얕은 깊이부터 도므로, 목록이 먼저 계산된 뒤에야 이 섹션의
+    /// ContentSizeFitter가 자기 높이를 바꿉니다. 그대로 두면 접거나 편 결과가 그 프레임의
+    /// 목록 배치에 빠져, 아래 챕터가 제자리에 남습니다.
+    ///
+    /// 그래서 이 섹션의 크기를 먼저 확정한 뒤 목록을 다시 계산하도록 알립니다.
+    /// </summary>
+    private void RefreshLayout()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(_selfRect);
+
+        if (_selfRect.parent is RectTransform parent)
+        {
+            LayoutRebuilder.MarkLayoutForRebuild(parent);
+        }
     }
 
     private void Toggle()

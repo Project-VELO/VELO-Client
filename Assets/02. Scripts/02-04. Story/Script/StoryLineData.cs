@@ -67,6 +67,14 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string RightExpressionId;
 
     /// <summary>
+    /// 화면 위쪽에 띄울 캐릭터입니다. 바닥에 서지 않고 공중에 걸리는 인물만 여기에 옵니다.
+    /// 나머지 세 자리와 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
+    /// </summary>
+    public string UpperCharacterId;
+
+    public string UpperExpressionId;
+
+    /// <summary>
     /// 컷씬 일러스트 ID입니다. 원고의 [일러스트] 지시에 대응하며, 없으면 비어 있습니다.
     /// </summary>
     public string IllustrationId;

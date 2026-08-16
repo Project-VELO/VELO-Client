@@ -66,6 +66,8 @@ public class StoryScriptLoader
         string centerExpressionId = string.Empty;
         string rightCharacterId = string.Empty;
         string rightExpressionId = string.Empty;
+        string upperCharacterId = string.Empty;
+        string upperExpressionId = string.Empty;
 
         foreach (StoryLineData line in script.Lines)
         {
@@ -78,10 +80,11 @@ public class StoryScriptLoader
                 backgroundId = line.BackgroundId;
             }
 
-            // 세 슬롯은 서로의 상태를 모릅니다. 왼쪽이 바뀌어도 나머지는 그대로 서 있어야 합니다.
+            // 네 슬롯은 서로의 상태를 모릅니다. 왼쪽이 바뀌어도 나머지는 그대로 서 있어야 합니다.
             ApplySlotState(ref line.CharacterId, ref line.ExpressionId, ref leftCharacterId, ref leftExpressionId);
             ApplySlotState(ref line.CenterCharacterId, ref line.CenterExpressionId, ref centerCharacterId, ref centerExpressionId);
             ApplySlotState(ref line.RightCharacterId, ref line.RightExpressionId, ref rightCharacterId, ref rightExpressionId);
+            ApplySlotState(ref line.UpperCharacterId, ref line.UpperExpressionId, ref upperCharacterId, ref upperExpressionId);
         }
     }
 

@@ -23,6 +23,9 @@ public class UI_StoryStage : MonoBehaviour
     [SerializeField]
     private Image _rightCharacter;
 
+    [SerializeField]
+    private Image _upperCharacter;
+
     [Foldout("Project")]
     [SerializeField]
     private StoryVisualBinder _visualBinder;
@@ -38,10 +41,10 @@ public class UI_StoryStage : MonoBehaviour
     }
 
     /// <summary>
-    /// 이번 줄에 세울 인물들을 좌·중·우 슬롯에 배치합니다.
+    /// 이번 줄에 세울 인물들을 좌·중·우·상단 슬롯에 배치합니다.
     /// 비어 있는 쪽은 아무도 세우지 않습니다(지문이거나 1인 장면).
     ///
-    /// 세 슬롯을 한 번에 받는 이유는, 한쪽만 갱신하는 경로를 두면 다인 장면에서
+    /// 네 슬롯을 한 번에 받는 이유는, 한쪽만 갱신하는 경로를 두면 다인 장면에서
     /// 한 자리만 바뀌고 나머지가 앞 줄 상태로 남는 실수가 생기기 때문입니다.
     /// </summary>
     public void SetSpeakers(StoryLineData line)
@@ -49,6 +52,7 @@ public class UI_StoryStage : MonoBehaviour
         SetCharacter(EStoryCharacterSlot.LEFT, line.CharacterId, line.ExpressionId);
         SetCharacter(EStoryCharacterSlot.CENTER, line.CenterCharacterId, line.CenterExpressionId);
         SetCharacter(EStoryCharacterSlot.RIGHT, line.RightCharacterId, line.RightExpressionId);
+        SetCharacter(EStoryCharacterSlot.UPPER, line.UpperCharacterId, line.UpperExpressionId);
     }
 
     private Image ResolveSlot(EStoryCharacterSlot slot)
@@ -57,6 +61,7 @@ public class UI_StoryStage : MonoBehaviour
         {
             case EStoryCharacterSlot.LEFT: return _leftCharacter;
             case EStoryCharacterSlot.CENTER: return _centerCharacter;
+            case EStoryCharacterSlot.UPPER: return _upperCharacter;
             default: return _rightCharacter;
         }
     }

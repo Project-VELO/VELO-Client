@@ -7,6 +7,11 @@ using System.IO;
 /// </summary>
 public class StoryScriptValidator
 {
+    /// <summary>
+    /// 오류 문구에 쓰는 자리 이름입니다. 순서가 ValidateSlotDuplication의 배열과 일치해야 합니다.
+    /// </summary>
+    private static readonly string[] SLOT_NAMES = { "왼쪽", "가운데", "오른쪽", "상단" };
+
     private readonly StoryScriptLoader _loader = new StoryScriptLoader();
 
     public void Validate(MasterDataValidationReport report)
@@ -57,6 +62,7 @@ public class StoryScriptValidator
             ValidateExpression(provider, line.CharacterId, line.ExpressionId, location, report);
             ValidateExpression(provider, line.CenterCharacterId, line.CenterExpressionId, $"{location}(가운데)", report);
             ValidateExpression(provider, line.RightCharacterId, line.RightExpressionId, $"{location}(오른쪽)", report);
+            ValidateExpression(provider, line.UpperCharacterId, line.UpperExpressionId, $"{location}(상단)", report);
 
             ValidateSlotDuplication(line, location, report);
         }
@@ -65,19 +71,28 @@ public class StoryScriptValidator
     /// <summary>
     /// 같은 인물이 두 자리 이상에 동시에 서 있는지 봅니다.
     /// 한 명이 좌우로 복제돼 보이는 사고를 데이터 단계에서 잡습니다.
+    ///
+    /// 자리가 넷으로 늘어 짝이 여섯이 되었으므로 쌍마다 호출을 늘어놓지 않고 돌립니다.
+    /// 에디터 검사 도구라 배열 할당은 문제가 되지 않습니다.
     /// </summary>
     private void ValidateSlotDuplication(StoryLineData line, string location, MasterDataValidationReport report)
     {
-        CheckPair(line.CharacterId, line.CenterCharacterId, "왼쪽과 가운데", location, report);
-        CheckPair(line.CharacterId, line.RightCharacterId, "왼쪽과 오른쪽", location, report);
-        CheckPair(line.CenterCharacterId, line.RightCharacterId, "가운데와 오른쪽", location, report);
-    }
+        string[] slots = { line.CharacterId, line.CenterCharacterId, line.RightCharacterId, line.UpperCharacterId };
 
-    private void CheckPair(string first, string second, string slots, string location, MasterDataValidationReport report)
-    {
-        if (!string.IsNullOrEmpty(first) && first == second)
+        for (int i = 0; i < slots.Length; i++)
         {
-            report.AddError($"[대본] {location}의 {slots} 슬롯에 같은 인물({first})이 배치되어 있습니다.");
+            if (string.IsNullOrEmpty(slots[i]))
+            {
+                continue;
+            }
+
+            for (int j = i + 1; j < slots.Length; j++)
+            {
+                if (slots[i] == slots[j])
+                {
+                    report.AddError($"[대본] {location}의 {SLOT_NAMES[i]}과 {SLOT_NAMES[j]} 슬롯에 같은 인물({slots[i]})이 배치되어 있습니다.");
+                }
+            }
         }
     }
 

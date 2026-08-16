@@ -18,7 +18,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_GRAY_28",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_REVEAL_OFFICE",
             "BgmId": "",
             "SfxId": "SFX_BROKEN_FAN"
@@ -81,7 +81,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_SERIF_BOLD_RED_36",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": "SFX_STAMP_HEAVY"
@@ -396,7 +396,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_28",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SCREEN_RUMBLE_FINE",
             "BgmId": "",
             "SfxId": "SFX_PHONE_VIBRATE"
@@ -522,7 +522,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_28_WHITE",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_FREEZE",
             "BgmId": "BGM_NONE",
             "SfxId": ""
@@ -648,7 +648,7 @@
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_FOCUS_SEIZURE_TAG",
             "BgmId": "",
             "SfxId": ""
@@ -748,8 +748,8 @@
             "ExpressionId": "",
             "CenterCharacterId": "",
             "CenterExpressionId": "",
-            "RightCharacterId": "",
-            "RightExpressionId": "",
+            "RightCharacterId": "CHAR_SEOYUN",
+            "RightExpressionId": "EXP_SMILE",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
@@ -769,12 +769,12 @@
             "ExpressionId": "",
             "CenterCharacterId": "",
             "CenterExpressionId": "",
-            "RightCharacterId": "CHAR_SEOYUN",
-            "RightExpressionId": "EXP_SMILE",
+            "RightCharacterId": "",
+            "RightExpressionId": "",
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -963,7 +963,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -1299,7 +1299,7 @@
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_DIALOGUE_26",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_ZOOM_IN_SLOW",
             "BgmId": "",
             "SfxId": ""
@@ -1320,7 +1320,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_EMPH_28",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""

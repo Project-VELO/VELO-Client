@@ -30,11 +30,25 @@ public class UI_StoryDialogBox : MonoBehaviour
     [SerializeField]
     private Image _boxBackground;
 
+    /// <summary>
+    /// 대화창 없이 화면 한가운데에 띄우는 문장입니다(연출표의 "화면 중앙 텍스트").
+    /// 본문과 별도 오브젝트인 이유는 자리와 정렬이 다르기 때문입니다. 같은 TMP를 옮겨 쓰면
+    /// 줄마다 앵커와 정렬을 되돌려야 하고, 되돌리기를 빠뜨리면 다음 줄이 가운데에 남습니다.
+    /// </summary>
+    [SerializeField]
+    private TMP_Text _centerText;
+
     [Foldout("Project")]
     [SerializeField]
     private StoryTextStyleBinder _textStyleBinder;
 
-    public TMP_Text BodyText => _bodyText;
+    /// <summary>
+    /// 이번 줄의 글자가 찍힐 자리입니다. Refresh가 정한 위치를 따릅니다.
+    /// 타이핑은 이 TMP 하나의 maxVisibleCharacters로 이루어지므로, 위치가 바뀌면 대상도 함께 바뀌어야 합니다.
+    /// </summary>
+    public TMP_Text BodyText => _isCenterPlacement ? _centerText : _bodyText;
+
+    private bool _isCenterPlacement;
 
     /// <summary>
     /// 스타일에 글꼴이 지정되지 않은 줄이 돌아올 자리입니다.
@@ -55,9 +69,27 @@ public class UI_StoryDialogBox : MonoBehaviour
     /// </summary>
     public void Refresh(StoryLineData line)
     {
+        RefreshPlacement(line);
         RefreshBox(line);
         RefreshSpeaker(line);
         RefreshBodyStyle(line.TextStyleId);
+    }
+
+    /// <summary>
+    /// 이번 줄을 하단 대화창에 낼지 화면 가운데에 낼지 정합니다.
+    ///
+    /// 쓰지 않는 쪽의 글자를 반드시 비웁니다. 남겨 두면 가운데 문장이 뜬 채로 다음 줄이
+    /// 대화창에 찍혀 두 문장이 동시에 보입니다.
+    /// </summary>
+    private void RefreshPlacement(StoryLineData line)
+    {
+        _isCenterPlacement = line.TextPlacement == EStoryTextPlacement.SCREEN_CENTER;
+
+        _centerText.gameObject.SetActive(_isCenterPlacement);
+        _bodyText.gameObject.SetActive(!_isCenterPlacement);
+
+        _bodyText.text = string.Empty;
+        _centerText.text = string.Empty;
     }
 
     /// <summary>
@@ -65,8 +97,12 @@ public class UI_StoryDialogBox : MonoBehaviour
     /// </summary>
     private void RefreshBox(StoryLineData line)
     {
+        // 화면 중앙 줄은 대화창을 보여 주지 않습니다. 다만 이 그림이 진행 버튼을 겸하므로
+        // 오브젝트를 끄지 않고 투명도만 낮춥니다. 끄면 다음 줄로 넘어갈 수 없습니다.
+        bool hideBox = _isCenterPlacement || string.IsNullOrEmpty(line.Text);
+
         Color color = _boxBackground.color;
-        color.a = string.IsNullOrEmpty(line.Text) ? 0f : 1f;
+        color.a = hideBox ? 0f : 1f;
         _boxBackground.color = color;
     }
 
@@ -76,7 +112,7 @@ public class UI_StoryDialogBox : MonoBehaviour
     /// </summary>
     private void RefreshBodyStyle(string textStyleId)
     {
-        _textStyleBinder.Get(textStyleId).ApplyTo(_bodyText, _defaultBodyFont);
+        _textStyleBinder.Get(textStyleId).ApplyTo(BodyText, _defaultBodyFont);
     }
 
     /// <summary>
@@ -88,7 +124,8 @@ public class UI_StoryDialogBox : MonoBehaviour
     {
         string speakerName = StoryLineSpeaker.GetDisplayName(line);
 
-        if (line.LineType == ELineType.NARRATION || string.IsNullOrEmpty(speakerName))
+        // 화면 중앙 줄은 대화창 자체를 감추므로 화자명도 함께 감춥니다.
+        if (_isCenterPlacement || line.LineType == ELineType.NARRATION || string.IsNullOrEmpty(speakerName))
         {
             _speakerRoot.SetActive(false);
             return;

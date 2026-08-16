@@ -34,33 +34,33 @@ STORY_PROLOGUE_02	6	NARRATION		그 숨 막히는 철옹성의 상석에, 오늘�
 STORY_PROLOGUE_02	7	NARRATION		그녀의 우측에는 담배를 피우고 있는 다혈질의 김 전무가, 좌측에는 찻잔을 든 최 상무가 나란히 앉아 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 + 김 전무·최 상무 실루엣 노출 (동시 표시는 현재 스키마로 불가, 주희만 유지)	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT				
 STORY_PROLOGUE_02	8	NARRATION		넥타이가 풀어진 채 짐승처럼 헐떡이며 들어선 P를 향해, 주희가 테이블 위로 태블릿을 툭 던졌다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 / SFX 거친 숨소리와 태블릿이 미끄러지는 소리	NORMAL	STYLE_NARRATION			SFX_TABLET_SLIDE		
 STORY_PROLOGUE_02	9	DIALOGUE	CHAR_JUHUI	노크 좀 해. 천박하게.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 한심하다는 듯 표정 변경 (전용 표정 없어 EXP_NORMAL)	INSTANT	STYLE_JUHUI					
-STORY_PROLOGUE_02	10	DIALOGUE	CHAR_P	강주희. 데뷔 일주일 앞둔 애들을 오늘 아침에 엎어버린 것도 모자라서,		NONE			P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 컷 아웃 퇴장 / BGM Ducking	INSTANT	STYLE_P_DIALOGUE_26	FX_SCREEN_SHAKE_HARD		SFX_TABLE_SLAM		
-STORY_PROLOGUE_02	11	DIALOGUE	CHAR_P	위약금이 4억 8천? 심지어 스폰서 루머 찌라시까지 네가 돌렸지?					P	[디자인] 고딕체 26pt 순백색 / [연출] 미노출 / BGM 고조됨	INSTANT	STYLE_P_DIALOGUE_26	FX_SCREEN_SHAKE_LIGHT				
+STORY_PROLOGUE_02	10	DIALOGUE	CHAR_P	강주희. 데뷔 일주일 앞둔 애들을 오늘 아침에 엎어버린 것도 모자라서,		NONE			P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 컷 아웃 퇴장 / BGM Ducking	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_HARD		SFX_TABLE_SLAM		
+STORY_PROLOGUE_02	11	DIALOGUE	CHAR_P	위약금이 4억 8천? 심지어 스폰서 루머 찌라시까지 네가 돌렸지?					P	[디자인] 고딕체 26pt 순백색 / [연출] 미노출 / BGM 고조됨	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_LIGHT				
 STORY_PROLOGUE_02	12	DIALOGUE	CHAR_JUHUI	목소리 낮춰. 우린 계량된 인형을 조립해 파는 공장이야.		CHAR_JUHUI	EXP_NORMAL		주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 왼쪽 차가움, 다시 팝업 등장 (전용 표정 없어 EXP_NORMAL)	NORMAL	STYLE_JUHUI	FX_SHAKE_STOP				
 STORY_PROLOGUE_02	13	DIALOGUE	CHAR_JUHUI	내 첫 수석 런칭작에 네 냄새가 잔뜩 밴 불량품들을 올릴 순 없잖아?					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지	NORMAL	STYLE_JUHUI					
-STORY_PROLOGUE_02	14	DIALOGUE	CHAR_JUHUI	라인에서 빼서 갈아 끼우는 건 당연한 수순이야.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 비웃음 (전용 표정 없어 EXP_NORMAL 유지)	NORMAL	STYLE_JUHUI					
-STORY_PROLOGUE_02	15	DIALOGUE	CHAR_P	불량품?! 과거에 갇혀서 숨도 못 쉬던 나한테 억지로 그 아이들 떠맡긴건 당신들이잖아!		NONE			P	[디자인] 굵은 고딕 28pt 순백색 / [연출] 주희 퇴장	INSTANT	STYLE_P_SHOUT_28	FX_SCREEN_SHAKE_HARD				
-STORY_PROLOGUE_02	16	DIALOGUE	CHAR_P	3년 동안 애들 발톱이 빠지도록 빚어놨더니, 이제 와서 폐기해?!					P	[디자인] 굵은 고딕 28pt 순백색 / [연출] 미노출 / 흔들림 지속	INSTANT	STYLE_P_SHOUT_28					
-STORY_PROLOGUE_02	17	NARRATION		그때, 찻잔을 내려놓은 최 상무가 인자하고 부드러운 목소리로 입을 열었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 최 상무 오른쪽 웃음, 여유롭게 슬라이드 인 등장 (표정 목록 비어 있어 미지정)	NORMAL	STYLE_NARRATION	FX_SHAKE_STOP		SFX_TEACUP_SET	CHAR_DIRECTOR_CHOI	
+STORY_PROLOGUE_02	14	DIALOGUE	CHAR_JUHUI	라인에서 빼서 갈아 끼우는 건 당연한 수순이야.			EXP_SMILE		주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 비웃음 (전용 표정 없어 EXP_NORMAL 유지)	NORMAL	STYLE_JUHUI					
+STORY_PROLOGUE_02	15	DIALOGUE	CHAR_P	불량품?! 과거에 갇혀서 숨도 못 쉬던 나한테 억지로 그 아이들 떠맡긴건 당신들이잖아!		NONE			P	[디자인] 굵은 고딕 28pt 순백색 / [연출] 주희 퇴장	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SCREEN_SHAKE_HARD				
+STORY_PROLOGUE_02	16	DIALOGUE	CHAR_P	3년 동안 애들 발톱이 빠지도록 빚어놨더니, 이제 와서 폐기해?!					P	[디자인] 굵은 고딕 28pt 순백색 / [연출] 미노출 / 흔들림 지속	INSTANT	STYLE_P_SHOUT_PLAIN_32					
+STORY_PROLOGUE_02	17	NARRATION		그때, 찻잔을 내려놓은 최 상무가 인자하고 부드러운 목소리로 입을 열었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 최 상무 오른쪽 웃음, 여유롭게 슬라이드 인 등장 (표정 목록 비어 있어 미지정)	NORMAL	STYLE_NARRATION	FX_SHAKE_STOP		SFX_TEACUP_SET	CHAR_DIRECTOR_CHOI	EXP_SMILE
 STORY_PROLOGUE_02	18	DIALOGUE	CHAR_DIRECTOR_CHOI	P. 무언가 단단히 오해를 하고 있네.					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지 / BGM 서서히 무겁게 가라앉음	SLOW	STYLE_CHOI	FX_SCREEN_DARKEN				
-STORY_PROLOGUE_02	19	DIALOGUE	CHAR_DIRECTOR_CHOI	우리가 3년 전, 그 안타까운 옥상 투신사고 이후로 망가져 있던 자네에게 그 아이들을 맡긴 건... 일종의 '재활 장난감'이었어.					최 상무	[디자인] 고딕체 26pt 탁한 푸른색 / [연출] 최 상무 유지 / BGM 일시 정지(적막)	SLOW	STYLE_CHOI_26	FX_FLASH_SHORT	BGM_NONE			
+STORY_PROLOGUE_02	19	DIALOGUE	CHAR_DIRECTOR_CHOI	우리가 3년 전, 그 안타까운 옥상 투신사고 이후로 망가져 있던 자네에게 그 아이들을 맡긴 건... 일종의 '재활 장난감'이었어.					최 상무	[디자인] 고딕체 26pt 탁한 푸른색 / [연출] 최 상무 유지 / BGM 일시 정지(적막)	SLOW	STYLE_CHOI	FX_FLASH_SHORT	BGM_NONE			
 STORY_PROLOGUE_02	20	DIALOGUE	CHAR_P	...뭐?					P	[디자인] 고딕체 24pt 순백색 / [연출] 최 상무 유지 / 적막 유지	INSTANT	STYLE_P_DIALOGUE	FX_FREEZE				
 STORY_PROLOGUE_02	21	DIALOGUE	CHAR_DIRECTOR_CHOI	우리 S-Tier에겐 자네 같은 천재 프로듀서가 필요하니까. 상처가 곪기 전에 소꿉장난이라도 하면서 치유하라는 배려였지.					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지 / 새로운 BGM 시작	NORMAL	STYLE_CHOI		BGM_STIER_POWER_OPPRESSIVE			
-STORY_PROLOGUE_02	22	DIALOGUE	CHAR_DIRECTOR_CHOI	이제 훌륭하게 극복했으니, 쓸모를 다한 장난감은 치우는게 맞지 않나?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지, 잔인한 미소	NORMAL	STYLE_CHOI					
+STORY_PROLOGUE_02	22	DIALOGUE	CHAR_DIRECTOR_CHOI	이제 훌륭하게 극복했으니, 쓸모를 다한 장난감은 치우는게 맞지 않나?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지, 잔인한 미소	NORMAL	STYLE_CHOI					EXP_SMILE
 STORY_PROLOGUE_02	23	NARRATION		가장 점잖고 우아한 말투였으나, 그 내용은 누구보다 악마 같았다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 최 상무 서서히 퇴장	SLOW	STYLE_NARRATION	FX_VIGNETTE_MAX			NONE	
 STORY_PROLOGUE_02	24	NARRATION		아이들이 고작 자신의 치유용 장난감으로 쓰이고 버려졌다는 사실에 P의 머릿속이 하얗게 탈색되었다.						[디자인] 명조체 24pt 흰색 강조 / 화면이 일순간 하얗게 번쩍임(이명 효과)	NORMAL	STYLE_NARRATION_WHITE_EMPH	FX_WHITE_FLASH		SFX_TINNITUS		
-STORY_PROLOGUE_02	25	DIALOGUE	CHAR_DIRECTOR_KIM	야. P. 네 재능 하나는 회장님도 인정하시니까 우리가 이만큼 참아준 거야.		CHAR_DIRECTOR_KIM			김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 왼쪽 화남, 거칠게 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_KIM_26	FX_RECOVER		SFX_CIGARETTE_STUB		
+STORY_PROLOGUE_02	25	DIALOGUE	CHAR_DIRECTOR_KIM	야. P. 네 재능 하나는 회장님도 인정하시니까 우리가 이만큼 참아준 거야.		CHAR_DIRECTOR_KIM	EXP_ANGRY		김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 왼쪽 화남, 거칠게 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_KIM	FX_RECOVER		SFX_CIGARETTE_STUB		
 STORY_PROLOGUE_02	26	DIALOGUE	CHAR_DIRECTOR_KIM	그러니까 저번처럼 그냥 입 닥치고 못 본 척해. 어차피 며칠 전 투자자 룸에서 고분고분 술 한잔 안 따르고 분위기 씹창 낸 년들이잖아.					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_SCREEN_SHAKE_LIGHT				
-STORY_PROLOGUE_02	27	DIALOGUE	CHAR_P	이 끔찍한 악마 새끼들...					P	[디자인] 글자 심하게 떨림 26pt 순백색 / [연출] 김 전무 유지	INSTANT	STYLE_P_TREMBLE_26	FX_SCREEN_RUMBLE_FINE				
-STORY_PROLOGUE_02	28	DIALOGUE	CHAR_DIRECTOR_KIM	왜? 이번에도 저년들 빚더미 못 이기고 옥상에서 뛰어내릴까 봐 쫄려?					김 전무	[디자인] 고딕체 26pt 붉은색 강조 / [연출] 김 전무 몸을 숙이며 조롱하는 표정으로 줌인 / BGM 기괴하게 변조	SLOW	STYLE_KIM_RED_26	FX_ZOOM_IN_SLOW	BGM_STIER_POWER_TWISTED			
+STORY_PROLOGUE_02	27	DIALOGUE	CHAR_P	이 끔찍한 악마 새끼들...					P	[디자인] 글자 심하게 떨림 26pt 순백색 / [연출] 김 전무 유지	INSTANT	STYLE_P_TREMBLE_32	FX_SCREEN_RUMBLE_FINE				
+STORY_PROLOGUE_02	28	DIALOGUE	CHAR_DIRECTOR_KIM	왜? 이번에도 저년들 빚더미 못 이기고 옥상에서 뛰어내릴까 봐 쫄려?					김 전무	[디자인] 고딕체 26pt 붉은색 강조 / [연출] 김 전무 몸을 숙이며 조롱하는 표정으로 줌인 / BGM 기괴하게 변조	SLOW	STYLE_KIM	FX_ZOOM_IN_SLOW	BGM_STIER_POWER_TWISTED			
 STORY_PROLOGUE_02	29	DIALOGUE	CHAR_DIRECTOR_KIM	야, 저번처럼 바닥에 피떡 돼서 널브러지면 그거 치우고 기사 막는 것도 다 돈이야. 목줄 꽉 쥐고 있어.					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_ZOOM_STOP				
-STORY_PROLOGUE_02	30	NARRATION		쿵-.		NONE				[디자인] 굵은 고딕 36pt 붉은색 / [연출] 김 전무 즉시 컷 아웃 퇴장 / BGM 정지	INSTANT	STYLE_IMPACT_RED_36	FX_SHAKE_BLACKOUT	BGM_NONE	SFX_HEART_DROP		
+STORY_PROLOGUE_02	30	NARRATION		쿵-.		NONE				[디자인] 굵은 고딕 36pt 붉은색 / [연출] 김 전무 즉시 컷 아웃 퇴장 / BGM 정지	INSTANT	STYLE_NARRATION	FX_SHAKE_BLACKOUT	BGM_NONE	SFX_HEART_DROP		
 STORY_PROLOGUE_02	31	NARRATION		수년 전, 옥상에서 허공으로 몸을 던지던 P의 첫 번째 아이돌의 창백한 얼굴이 시야를 덮치며 숨이 턱 막혀왔다.						[디자인] 명조체 24pt 밝은 회색 / 암전 속에서 소녀가 추락하는 짧은 잔상(글리치)	SLOW	STYLE_NARRATION	FX_GLITCH_FALLING_GIRL		SFX_WIND_CHOKE		
 STORY_PROLOGUE_02	32	NARRATION		손톱이 손바닥을 파고들어 피가 맺혔지만, 흑요석처럼 단단하게 뭉친 자본의 폭력 앞에서는 그 어떤 비명도 무력했다.	1-A					[디자인] 명조체 24pt 밝은 회색 / 흑백의 회의실 배경 복구되며 서서히 어두워짐	SLOW	STYLE_NARRATION	FX_RECOVER_DARKEN	BGM_STIER_DESPAIR			
 STORY_PROLOGUE_02	33	NARRATION		위이잉-						#1-B. S-Tier 지하 1층 제1연습실(과거/흑백) / [디자인] 굵은 고딕 32pt 흰색 / 흑백의 암전 상태 / BGM 대기	INSTANT	STYLE_IMPACT_WHITE_32	FX_BLACKOUT_MONO	BGM_NONE	SFX_AIR_PURIFIER		
 STORY_PROLOGUE_02	34	NARRATION		지옥에서 도망치듯 내려온 지하 1층. 먼지 한 톨 허락하지 않는 공기청정기의 모터 소리만이 무겁게 맴도는 새하얀 공간.	1-B					[디자인] 명조체 24pt 밝은 회색 / 1-B 컷 인(흑백 필터 유지)	NORMAL	STYLE_NARRATION	FX_CUT_IN	BGM_PRACTICE_AMBIENT_COLD			
 STORY_PROLOGUE_02	35	NARRATION		차갑고 시린 백색 LED 조명이 정육점의 쇼케이스처럼 무자비하게 쏟아져 내리는 완벽한 원목 바닥에는,						[디자인] 명조체 24pt 밝은 회색 / 백색 조명 특유의 차가운 질감 강조	NORMAL	STYLE_NARRATION	FX_LIGHT_COLD				
-STORY_PROLOGUE_02	36	NARRATION		[계약 해지 및 손해배상 청구서]가 흉물스럽게 뒹굴고 있었다.						[디자인] 명조체 24pt 붉은색 강조 / 바닥에 떨어진 청구서 쪽으로 시점 이동(Tilt Down)	SLOW	STYLE_NARRATION_RED_EMPH	FX_TILT_DOWN				
+STORY_PROLOGUE_02	36	NARRATION		[계약 해지 및 손해배상 청구서]가 흉물스럽게 뒹굴고 있었다.						[디자인] 명조체 24pt 붉은색 강조 / 바닥에 떨어진 청구서 쪽으로 시점 이동(Tilt Down)	SLOW	STYLE_NARRATION	FX_TILT_DOWN				
 STORY_PROLOGUE_02	37	NARRATION		거울 벽에 주저앉아 있던 지우가 덜덜 떨리는 손으로 청구서를 쥔 채, 넋이 나간 P를 올려다보았다.		CHAR_JIWOO	EXP_SAD			[디자인] 명조체 24pt 밝은 회색 / [연출] 지우 왼쪽 걱정, 서서히 페이드 인 등장	NORMAL	STYLE_NARRATION	FX_FOCUS_RECOVER		SFX_PAPER_RUSTLE		
 STORY_PROLOGUE_02	38	DIALOGUE	CHAR_JIWOO	P... 이거 진짜예요? 4억 8천...					지우	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 지우 미세하게 떨리는 애니메이션	NORMAL	STYLE_MEMBER_TREMBLE					
 STORY_PROLOGUE_02	39	DIALOGUE	CHAR_JIWOO	우리 엄마 떡볶이집 보증금이 3천인데... 우린 그냥 춤추고 노래한 것밖에 없는데, 왜 이렇게 된 거예요...?					지우	[디자인] 고딕체 24pt 순백색 / [연출] 지우 유지	SLOW	STYLE_MEMBER	FX_SCREEN_DARKEN				
@@ -68,10 +68,10 @@ STORY_PROLOGUE_02	40	DIALOGUE	CHAR_HANA	찌라시 다 돌았대요... 뒤에서 
 STORY_PROLOGUE_02	41	DIALOGUE	CHAR_HANA	이 지하에서 3년 동안 죽어라 연습한 것밖에 없는데... 왜 다들 우릴 쓰레기래... 흐윽...					하나	[디자인] 고딕체 24pt 순백색 / [연출] 하나 유지	SLOW	STYLE_MEMBER	FX_SCREEN_SHAKE_LIGHT		SFX_SOB		
 STORY_PROLOGUE_02	42	NARRATION		결벽증에 가깝던 콧대 높은 미나는, 바닥의 먼지가 옷에 묻는 것도 잊은 채 초점 잃은 눈으로 허공만 응시했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 하나 퇴장, 미나 오른쪽 넋 나감 페이드 인 (오른쪽 슬롯은 현재 미지원)	NORMAL	STYLE_NARRATION		BGM_PRACTICE_AMBIENT_GLOOM		CHAR_MINA	EXP_SAD
 STORY_PROLOGUE_02	43	DIALOGUE	CHAR_MINA	끝났어. S-Tier가 작정하고 묻어버린 폐기물을 누가 주워가?					미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 유지	NORMAL	STYLE_MEMBER					
-STORY_PROLOGUE_02	44	DIALOGUE	CHAR_MINA	겨우 겨우 버틴 3년이, 그냥 쓰레기통에 처박힌 거야.					미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 허탈하게 웃는 표정	SLOW	STYLE_MEMBER					
-STORY_PROLOGUE_02	45	DIALOGUE	CHAR_SEOYUN	미나야, 그러지 마. P가 위층 다녀왔잖아. 어떻게든...		CHAR_SEOYUN	EXP_CRY		서윤	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 미나 유지 + 서윤 왼쪽 울음 참음 페이드 인 (2인 동시 표시는 현재 스키마로 불가, 서윤만 표시)	NORMAL	STYLE_MEMBER_TREMBLE					
-STORY_PROLOGUE_02	46	DIALOGUE	CHAR_MINA	뭘 어떻게 해결해!!					미나	[디자인] 굵은 고딕 32pt 붉은색 / [연출] 미나 오른쪽 분노, 크게 흔들리며 악을 씀	INSTANT	STYLE_MEMBER_SHOUT_32_RED	FX_SCREEN_SHAKE_HARD			CHAR_MINA	EXP_ANGRY
-STORY_PROLOGUE_02	47	DIALOGUE	CHAR_MINA	임원들이 작정하고 짠 판인데, 일개 프로듀서가 무슨 수로 빚을 막고 우릴 살려!!					미나	[디자인] 굵은 고딕 28pt 순백색 / [연출] 미나·서윤 유지	INSTANT	STYLE_MEMBER_SHOUT_28					
+STORY_PROLOGUE_02	44	DIALOGUE	CHAR_MINA	겨우 겨우 버틴 3년이, 그냥 쓰레기통에 처박힌 거야.					미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 허탈하게 웃는 표정	SLOW	STYLE_MEMBER					EXP_SMILE
+STORY_PROLOGUE_02	45	DIALOGUE	CHAR_SEOYUN	미나야, 그러지 마. P가 위층 다녀왔잖아. 어떻게든...		CHAR_SEOYUN	EXP_SAD		서윤	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 미나 유지 + 서윤 왼쪽 울음 참음 페이드 인 (2인 동시 표시는 현재 스키마로 불가, 서윤만 표시)	NORMAL	STYLE_MEMBER_TREMBLE					
+STORY_PROLOGUE_02	46	DIALOGUE	CHAR_MINA	뭘 어떻게 해결해!!					미나	[디자인] 굵은 고딕 32pt 붉은색 / [연출] 미나 오른쪽 분노, 크게 흔들리며 악을 씀	INSTANT	STYLE_MEMBER_SHOUT_32	FX_SCREEN_SHAKE_HARD			CHAR_MINA	EXP_ANGRY
+STORY_PROLOGUE_02	47	DIALOGUE	CHAR_MINA	임원들이 작정하고 짠 판인데, 일개 프로듀서가 무슨 수로 빚을 막고 우릴 살려!!					미나	[디자인] 굵은 고딕 28pt 순백색 / [연출] 미나·서윤 유지	INSTANT	STYLE_MEMBER_SHOUT_32					
 STORY_PROLOGUE_02	48	NARRATION		미나의 비명이 텅 빈 연습실을 찢었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 흔들림 멈춤(적막) / BGM 잦아듦	NORMAL	STYLE_NARRATION	FX_SHAKE_STOP				
 STORY_PROLOGUE_02	49	NARRATION		리아가 창백해진 얼굴로 허벅지를 피가 나도록 꼬집으며 아이들을 끌어안았다.		CHAR_RIA	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 미나·서윤 퇴장, 리아 왼쪽 굳은 결의 페이드 인 (전용 표정 없어 EXP_NORMAL)	NORMAL	STYLE_NARRATION				NONE	
 STORY_PROLOGUE_02	50	DIALOGUE	CHAR_RIA	다들 그만해... 내가 리더니까. 주희 프로듀서님 찾아가서 머리라도 박을게.					리아	[디자인] 고딕체 24pt 순백색 / [연출] 리아 유지	NORMAL	STYLE_MEMBER					

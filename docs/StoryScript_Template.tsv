@@ -166,7 +166,7 @@ STORY_PROLOGUE_03	76	NARRATION		자본이 만들어낸 가짜 이성의 끈이 �
 STORY_PROLOGUE_03	77	NARRATION		P는 흙투성이가 된 재킷을 거칠게 털어냈다.						[디자인] 명조체 24pt 밝은 회색 / 옷깃 털어내는 소리	NORMAL	STYLE_NARRATION			SFX_JACKET_DUST					
 STORY_PROLOGUE_03	78	NARRATION		그의 걸음에는 더 이상 과거에 갇힌 방관자의 망설임이나 두려움 따위는 한 점도 묻어있지 않았다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 줌아웃하며 문을 향해 이동	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT_TO_DOOR							
 STORY_PROLOGUE_03	79	NARRATION		그는 오직 자신이 지켜야 할 다섯 명의 아이들을 위해, 그리고 스스로 선택한 '올바른 길'을 걷기 위해 거대 자본의 심장부인 최상층 임원실을 향해 뚜벅뚜벅 걸음을 옮기기 시작했다.						[디자인] 명조체 24pt 흰색 / 굳건한 발걸음과 함께 서서히 검게 암전(3씬으로 연결) / BGM 페이드 아웃	SLOW	STYLE_NARRATION_WHITE	FX_FADE_TO_BLACK	BGM_NONE	SFX_HEAVY_FOOTSTEP					
-STORY_PROLOGUE_04	1	NARRATION		달칵, 끼이익-						#3-A. S-Tier 최상층 최고 임원 회의실(과거/흑백) / [디자인] 굵은 고딕 32pt 붉은색 / 흑백 필터 적용된 암전 / BGM 대기	SLOW	STYLE_IMPACT_RED_32	FX_BLACKOUT_MONO		SFX_IRON_DOOR_SLOW					
+STORY_PROLOGUE_04	1	NARRATION		달칵, 끼이익-						#3-A. S-Tier 최상층 최고 임원 회의실(과거/흑백) / [디자인] 굵은 고딕 32pt 붉은색 / 흑백 필터 적용된 암전 / BGM 대기	SLOW	STYLE_NARRATION	FX_BLACKOUT_MONO		SFX_IRON_DOOR_SLOW					
 STORY_PROLOGUE_04	2	NARRATION		P가 짐승처럼 부수고 들어왔던 육중한 철제 문이, 이번에는 기괴할 정도로 차분하고 느릿하게 열렸다.	3-A					[디자인] 명조체 24pt 밝은 회색 / 3-A 배경 서서히 노출 / BGM 차갑고 서늘한 긴장감의 테마	NORMAL	STYLE_NARRATION	FX_REVEAL_SLOW	BGM_STIER_TENSION_COLD						
 STORY_PROLOGUE_04	3	NARRATION		무채색의 삭막한 회의실. 코냑 잔을 부딪치며 거치적거리는 불량품 폐기의 성공을 자축하던 임원들의 시선이 일제히 문가로 향했다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐(위압감)	NORMAL	STYLE_NARRATION	FX_SCREEN_DARKEN		SFX_GLASS_CLINK_STOP					
 STORY_PROLOGUE_04	4	NARRATION		그곳에 P가 서 있었다.						[디자인] 명조체 24pt 흰색 / 변동 없음	WORD_BY_WORD	STYLE_NARRATION_WHITE								
@@ -180,35 +180,35 @@ STORY_PROLOGUE_04	11	NARRATION		툭, 투둑-						[디자인] 굵은 고딕 32pt
 STORY_PROLOGUE_04	12	NARRATION		봉투가 터지며 쏟아진 서류들이 차가운 테이블 위를 수놓았다.						[디자인] 명조체 24pt 밝은 회색 / 쏟아진 서류 쪽으로 시점 이동(Pan) / BGM 복구	NORMAL	STYLE_NARRATION	FX_PAN_TO_DOCS							
 STORY_PROLOGUE_04	13	NARRATION		P의 아파트 전세금 반환 영수증, 주식 매도 내역서, 인감도장.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_04	14	NARRATION		그리고... S-Tier 소속으로 발매했던 그의 수많은 히트곡들에 대한 '저작권료 전액 양도 증서'였다.						[디자인] 명조체 24pt 흰색 강조 / 변동 없음	SLOW	STYLE_NARRATION_WHITE_EMPH								
-STORY_PROLOGUE_04	15	DIALOGUE	CHAR_P	4억 8천만 원. 1원 한푼 안틀리고 딱 맞게 채웠어.					P	[디자인] 고딕체 26pt 순백색 / [속도] 건조하게(전용 값이 없어 NORMAL) / 서류에서 정면으로 시점 복귀	NORMAL	STYLE_P_DIALOGUE_26	FX_VIEW_FRONT							
-STORY_PROLOGUE_04	16	DIALOGUE	CHAR_P	위약금 전액 다 털었으니까, 오늘부로 내 애들 계약 해지해.					P	[디자인] 고딕체 28pt 순백색 / 화면 미세하게 흔들림	INSTANT	STYLE_P_SHOUT_28	FX_SCREEN_SHAKE_LIGHT							
-STORY_PROLOGUE_04	17	DIALOGUE	CHAR_JUHUI	너... 지금 돌았어? 네 인생 전부를 시궁창에 처박겠다고?					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 오른쪽 놀람, 거칠게 슬라이드 인 등장 (전용 표정 없어 EXP_NORMAL)	INSTANT	STYLE_JUHUI	FX_SCREEN_SHAKE_LIGHT			CHAR_JUHUI	EXP_NORMAL			
-STORY_PROLOGUE_04	18	DIALOGUE	CHAR_P	어. 내 새끼들 장난감 취급한 대가 치곤 꽤 헐값이잖아.					P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 유지, 표정 화남으로 변경	NORMAL	STYLE_P_DIALOGUE_26								
-STORY_PROLOGUE_04	19	DIALOGUE	CHAR_DIRECTOR_CHOI	거기서 P! 애들 계약 해지는 그렇다 치고, 자네는 어쩔 건가?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 주희 컷 아웃, 최 상무 오른쪽 화남 거칠게 페이드 인 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_CHOI	FX_SCREEN_SHAKE_HARD		SFX_TABLE_SLAM	CHAR_DIRECTOR_CHOI				
+STORY_PROLOGUE_04	15	DIALOGUE	CHAR_P	4억 8천만 원. 1원 한푼 안틀리고 딱 맞게 채웠어.					P	[디자인] 고딕체 26pt 순백색 / [속도] 건조하게(전용 값이 없어 NORMAL) / 서류에서 정면으로 시점 복귀	NORMAL	STYLE_P_DIALOGUE	FX_VIEW_FRONT							
+STORY_PROLOGUE_04	16	DIALOGUE	CHAR_P	위약금 전액 다 털었으니까, 오늘부로 내 애들 계약 해지해.					P	[디자인] 고딕체 28pt 순백색 / 화면 미세하게 흔들림	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_LIGHT							
+STORY_PROLOGUE_04	17	DIALOGUE	CHAR_JUHUI	너... 지금 돌았어? 네 인생 전부를 시궁창에 처박겠다고?					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 오른쪽 놀람, 거칠게 슬라이드 인 등장 (전용 표정 없어 EXP_NORMAL)	INSTANT	STYLE_JUHUI	FX_SCREEN_SHAKE_LIGHT			CHAR_JUHUI	EXP_SURPRISED			
+STORY_PROLOGUE_04	18	DIALOGUE	CHAR_P	어. 내 새끼들 장난감 취급한 대가 치곤 꽤 헐값이잖아.					P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 유지, 표정 화남으로 변경	NORMAL	STYLE_P_DIALOGUE					EXP_ANGRY			
+STORY_PROLOGUE_04	19	DIALOGUE	CHAR_DIRECTOR_CHOI	거기서 P! 애들 계약 해지는 그렇다 치고, 자네는 어쩔 건가?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 주희 컷 아웃, 최 상무 오른쪽 화남 거칠게 페이드 인 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_CHOI	FX_SCREEN_SHAKE_HARD		SFX_TABLE_SLAM	CHAR_DIRECTOR_CHOI	EXP_ANGRY			
 STORY_PROLOGUE_04	20	DIALOGUE	CHAR_DIRECTOR_CHOI	자네 프로듀서 전속 계약, 아직 2년이나 남았어.					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지	NORMAL	STYLE_CHOI								
 STORY_PROLOGUE_04	21	DIALOGUE	CHAR_DIRECTOR_CHOI	S-Tier의 간판인 자네가 갑자기 나가면 우리 주가와 라인업에 차질이 생기는 건 계산 안 해봤나?!					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 유지	INSTANT	STYLE_CHOI	FX_SCREEN_SHAKE_LIGHT							
 STORY_PROLOGUE_04	22	NARRATION		아이들을 쓰레기 취급하며 버릴 때는 언제고, 황금알을 낳는 거위인 P만큼은 절대 놓아줄 수 없다는 거대 자본의 역겨운 탐욕이었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 최 상무 퇴장 / BGM 위압적으로 고조	NORMAL	STYLE_NARRATION	FX_VIGNETTE_DEEPEN			NONE				
-STORY_PROLOGUE_04	23	DIALOGUE	CHAR_DIRECTOR_KIM	이 미친 새끼가 헛바람이 단단히 들었네!					김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 오른쪽 화남, 빠르게 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_KIM_26	FX_SCREEN_SHAKE_HARD			CHAR_DIRECTOR_KIM				
+STORY_PROLOGUE_04	23	DIALOGUE	CHAR_DIRECTOR_KIM	이 미친 새끼가 헛바람이 단단히 들었네!					김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 오른쪽 화남, 빠르게 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_KIM	FX_SCREEN_SHAKE_HARD			CHAR_DIRECTOR_KIM	EXP_ANGRY			
 STORY_PROLOGUE_04	24	DIALOGUE	CHAR_DIRECTOR_KIM	야, 네가 쓴 곡들 다 우리 회사 자본이랑 인프라로 뜬 거야! 너 혼자 덜렁 나가서 저 꼬리표 달린 쓰레기 년들 데리고 뭘 할 수 있는데?					김 전무	[디자인] 고딕체 24pt 어두운 회색 / [연출] 김 전무 유지 / 화면 흔들림 지속	INSTANT	STYLE_KIM								
-STORY_PROLOGUE_04	25	DIALOGUE	CHAR_DIRECTOR_KIM	계약 위반으로 너까지 소송 걸어서 평생 빚더미에 썩게 만들어줄까?!					김 전무	[디자인] 고딕체 26pt 붉은색 강조 / [연출] 김 전무 유지	INSTANT	STYLE_KIM_RED_26	FX_SCREEN_SHAKE_HARD							
+STORY_PROLOGUE_04	25	DIALOGUE	CHAR_DIRECTOR_KIM	계약 위반으로 너까지 소송 걸어서 평생 빚더미에 썩게 만들어줄까?!					김 전무	[디자인] 고딕체 26pt 붉은색 강조 / [연출] 김 전무 유지	INSTANT	STYLE_KIM	FX_SCREEN_SHAKE_HARD							
 STORY_PROLOGUE_04	26	DIALOGUE	CHAR_JUHUI	현실을 직시해, P. 넌 천재야. 저런 흠집 난 불량품들한테 발목 잡히기엔 네 재능이 너무 아깝잖아.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 김 전무 퇴장, 주희 오른쪽 기본 페이드 인 / BGM 텐션 약간 늦춰짐	NORMAL	STYLE_JUHUI	FX_SHAKE_STOP			CHAR_JUHUI	EXP_NORMAL			
-STORY_PROLOGUE_04	27	DIALOGUE	CHAR_JUHUI	내가 수석 달고 런칭하는 첫 프로젝트, 네가 메인 디렉터 맡아.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 미소 (전용 표정 없어 EXP_NORMAL 유지)	NORMAL	STYLE_JUHUI								
+STORY_PROLOGUE_04	27	DIALOGUE	CHAR_JUHUI	내가 수석 달고 런칭하는 첫 프로젝트, 네가 메인 디렉터 맡아.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지, 미소 (전용 표정 없어 EXP_NORMAL 유지)	NORMAL	STYLE_JUHUI					EXP_SMILE			
 STORY_PROLOGUE_04	28	DIALOGUE	CHAR_JUHUI	그럼 이번 하극상은 내 선에서 눈감아 줄게. 저 위약금 봉투도 못 본 걸로 덮어줄 테니까, 짐 싸지 말고 제자리에 앉아.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지	NORMAL	STYLE_JUHUI								
 STORY_PROLOGUE_04	29	NARRATION		회유와 협박, 그리고 달콤한 타협안.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 퇴장 / 화면 멈춤(정적) / BGM 서서히 정지	SLOW	STYLE_NARRATION	FX_FREEZE	BGM_NONE		NONE				
 STORY_PROLOGUE_04	30	NARRATION		보통의 인간이라면 그 거대한 권력과 자본의 무게에 짓눌려 다시 한번 무릎을 꿇었을 것이다.						[디자인] 명조체 24pt 밝은 회색 / 적막 유지	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_04	31	NARRATION		하지만 P는 천천히 상체를 숙여 흑요석 테이블에 양손을 짚었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 줌인	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_SLIGHT		SFX_HANDS_ON_TABLE					
 STORY_PROLOGUE_04	32	NARRATION		그리고 김 전무와 주희의 얼굴을 번갈아 쳐다보며, 피가 맺힌 입술을 비틀어 기괴한 미소를 지었다.						[디자인] 명조체 24pt 밝은 회색 / 줌인 계속됨 / 새로운 BGM 시작(광기 어리고 소름 끼치는 피아노 테마)	SLOW	STYLE_NARRATION	FX_ZOOM_IN_SLOW	BGM_STIER_MADNESS_PIANO						
 STORY_PROLOGUE_04	33	DIALOGUE	CHAR_P	봉투 안에 서류, 끝까지 안 읽었나 보네.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	SLOW	STYLE_P_DIALOGUE								
-STORY_PROLOGUE_04	34	DIALOGUE	CHAR_P	내 프로듀서 전속 계약 해지 위약금까지 전부 그 안에 털어 넣었어.					P	[디자인] 고딕체 26pt 순백색 / BGM 고조	INSTANT	STYLE_P_DIALOGUE_26	FX_SCREEN_SHAKE_LIGHT							
-STORY_PROLOGUE_04	35	DIALOGUE	CHAR_P	내 숨통 쥐고 흔들던 당신들의 그 빌어먹을 목줄, 내가 내 전 재산 털어서 스스로 찢어버렸다고.					P	[디자인] 굵은 고딕 28pt 흰색 강조 / 화면 강하게 흔들림	INSTANT	STYLE_IMPACT_WHITE_EMPH_28	FX_SCREEN_SHAKE_HARD							
-STORY_PROLOGUE_04	36	DIALOGUE	CHAR_DIRECTOR_CHOI	뭐... 뭐...?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 오른쪽 놀람 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_CHOI	FX_SHAKE_STOP			CHAR_DIRECTOR_CHOI				
-STORY_PROLOGUE_04	37	DIALOGUE	CHAR_P	이제 나도, 저 아이들도 S-Tier랑은 1원 한 푼 엮일 일 없는 남이야.					P	[디자인] 고딕체 26pt 순백색 / [연출] 최 상무 컷 아웃 퇴장	NORMAL	STYLE_P_DIALOGUE_26				NONE				
-STORY_PROLOGUE_04	38	DIALOGUE	CHAR_P	당신들이 만들어놓은 이 구역질 나는 룰 안에서 내 아이들을 잃느니. 차라리 내가 저 바닥의 진흙탕을 기면서 직접 무대를 만들 거야.					P	[디자인] 고딕체 26pt 순백색 / 화면 미세하게 밝아짐(흑백 톤 내에서)	NORMAL	STYLE_P_DIALOGUE_26	FX_SCREEN_BRIGHTEN							
-STORY_PROLOGUE_04	39	DIALOGUE	CHAR_P	그러니까 두 번 다시 내 새끼들한테 그 더러운 손 대지 마.					P	[디자인] 굵은 고딕 28pt 붉은색 강조 / 화면 거칠게 한 번 진동 / BGM 광기 절정	WORD_BY_WORD	STYLE_IMPACT_RED_EMPH_28	FX_SCREEN_RUMBLE_ONCE							
+STORY_PROLOGUE_04	34	DIALOGUE	CHAR_P	내 프로듀서 전속 계약 해지 위약금까지 전부 그 안에 털어 넣었어.					P	[디자인] 고딕체 26pt 순백색 / BGM 고조	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_LIGHT							
+STORY_PROLOGUE_04	35	DIALOGUE	CHAR_P	내 숨통 쥐고 흔들던 당신들의 그 빌어먹을 목줄, 내가 내 전 재산 털어서 스스로 찢어버렸다고.					P	[디자인] 굵은 고딕 28pt 흰색 강조 / 화면 강하게 흔들림	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_HARD							
+STORY_PROLOGUE_04	36	DIALOGUE	CHAR_DIRECTOR_CHOI	뭐... 뭐...?					최 상무	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 최 상무 오른쪽 놀람 팝업 등장 (표정 목록 비어 있어 미지정)	INSTANT	STYLE_CHOI	FX_SHAKE_STOP			CHAR_DIRECTOR_CHOI	EXP_SURPRISED			
+STORY_PROLOGUE_04	37	DIALOGUE	CHAR_P	이제 나도, 저 아이들도 S-Tier랑은 1원 한 푼 엮일 일 없는 남이야.					P	[디자인] 고딕체 26pt 순백색 / [연출] 최 상무 컷 아웃 퇴장	NORMAL	STYLE_P_DIALOGUE				NONE				
+STORY_PROLOGUE_04	38	DIALOGUE	CHAR_P	당신들이 만들어놓은 이 구역질 나는 룰 안에서 내 아이들을 잃느니. 차라리 내가 저 바닥의 진흙탕을 기면서 직접 무대를 만들 거야.					P	[디자인] 고딕체 26pt 순백색 / 화면 미세하게 밝아짐(흑백 톤 내에서)	NORMAL	STYLE_P_DIALOGUE	FX_SCREEN_BRIGHTEN							
+STORY_PROLOGUE_04	39	DIALOGUE	CHAR_P	그러니까 두 번 다시 내 새끼들한테 그 더러운 손 대지 마.					P	[디자인] 굵은 고딕 28pt 붉은색 강조 / 화면 거칠게 한 번 진동 / BGM 광기 절정	WORD_BY_WORD	STYLE_P_DIALOGUE	FX_SCREEN_RUMBLE_ONCE							
 STORY_PROLOGUE_04	40	NARRATION		한 치의 흔들림도 없는, 광기에 가까운 맹목적인 신념.						[디자인] 명조체 24pt 밝은 회색 / 줌인 해제	SLOW	STYLE_NARRATION	FX_ZOOM_OUT							
 STORY_PROLOGUE_04	41	NARRATION		자본과 권력으로 모든 것을 통제할 수 있다고 믿었던 임원들은, 억만금을 내어주고 기꺼이 사지로 걸어 나가는 이 통제 불능의 '괴물' 앞에서 처음으로 서늘한 오한을 느꼈다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_04	42	DIALOGUE	CHAR_DIRECTOR_KIM	그래, 나가! 나가서 업계 바닥에서 어떻게 짓밟히고 생매장당하는지 똑똑히 보여줄 테니까!!					김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 오른쪽 화남, 거칠게 흔들리며 팝업 등장	INSTANT	STYLE_KIM_26	FX_SCREEN_SHAKE_HARD			CHAR_DIRECTOR_KIM				
-STORY_PROLOGUE_04	43	DIALOGUE	CHAR_P	밖에서 굶어 죽든, 지옥에 떨어져서 악마한테 영혼을 팔든 내가 알아서 해.					P	[디자인] 고딕체 28pt 순백색 / [연출] 김 전무 퇴장 / BGM Ducking	INSTANT	STYLE_P_SHOUT_28			SFX_DOOR_HANDLE_ROUGH	NONE				
+STORY_PROLOGUE_04	42	DIALOGUE	CHAR_DIRECTOR_KIM	그래, 나가! 나가서 업계 바닥에서 어떻게 짓밟히고 생매장당하는지 똑똑히 보여줄 테니까!!					김 전무	[디자인] 고딕체 26pt 어두운 회색 / [연출] 김 전무 오른쪽 화남, 거칠게 흔들리며 팝업 등장	INSTANT	STYLE_KIM	FX_SCREEN_SHAKE_HARD			CHAR_DIRECTOR_KIM	EXP_ANGRY			
+STORY_PROLOGUE_04	43	DIALOGUE	CHAR_P	밖에서 굶어 죽든, 지옥에 떨어져서 악마한테 영혼을 팔든 내가 알아서 해.					P	[디자인] 고딕체 28pt 순백색 / [연출] 김 전무 퇴장 / BGM Ducking	INSTANT	STYLE_P_DIALOGUE			SFX_DOOR_HANDLE_ROUGH	NONE				
 STORY_PROLOGUE_04	44	NARRATION		그 살벌한 한마디를 끝으로, P는 미련 없이 철제 문을 나섰다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 멀어짐(줌아웃)	NORMAL	STYLE_NARRATION	FX_ZOOM_OUT_SLOW		SFX_LEAVING_FOOTSTEP					
 STORY_PROLOGUE_04	45	NARRATION		세상 모두가 소녀들을 불량품이라 부르며 쓰레기통에 처박을 때.						[디자인] 명조체 24pt 밝은 회색 / BGM 잔잔하게 여운을 남김	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_04	46	NARRATION		어른의 합리와 이성이라는 역겨운 타협을 던져버리고, 오직 자신을 맹신하는 아이들을 위해 기꺼이 피투성이 방패가 되어 지옥으로 걸어 들어간 사람.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
@@ -220,18 +220,18 @@ STORY_PROLOGUE_04	51	NARRATION		아이들은 P가 돌아올 때까지 꼼짝도 
 STORY_PROLOGUE_04	52	NARRATION		차가운 문이 열리고 흙투성이가 된 P가 들어서자, 다섯 소녀의 절망적인 시선이 일제히 그를 향했다.						[디자인] 명조체 24pt 밝은 회색 / 문 쪽으로 시점 이동	NORMAL	STYLE_NARRATION	FX_PAN_TO_DOOR		SFX_HEAVY_FOOTSTEP					
 STORY_PROLOGUE_04	53	DIALOGUE	CHAR_RIA	P... 주희 수석님이... 뭐래요...? 저희 진짜 이대로 끝나는 거예요...?		CHAR_RIA	EXP_SAD		리아	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 리아 왼쪽 걱정, 페이드 인 및 미세하게 떨림	NORMAL	STYLE_MEMBER_TREMBLE								
 STORY_PROLOGUE_04	54	NARRATION		P는 굳어있는 아이들에게 뚜벅뚜벅 다가갔다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 유지 / 화면 서서히 줌인	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_SLOW		SFX_FOOTSTEP_CONT					
-STORY_PROLOGUE_04	55	NARRATION		그리고 무릎을 굽혀 바닥에 주저앉더니, 피가 나도록 자신의 허벅지를 꼬집고 있는 리아의 손을 다정하게 떼어내고, 지우의 눈물 젖은 뺨을 거친 손으로 닦아냈다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 표정 놀람으로 변경	SLOW	STYLE_NARRATION								
+STORY_PROLOGUE_04	55	NARRATION		그리고 무릎을 굽혀 바닥에 주저앉더니, 피가 나도록 자신의 허벅지를 꼬집고 있는 리아의 손을 다정하게 떼어내고, 지우의 눈물 젖은 뺨을 거친 손으로 닦아냈다.			EXP_SURPRISED			[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 표정 놀람으로 변경	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_04	56	DIALOGUE	CHAR_P	그만 울어.		NONE			P	[디자인] 고딕체 24pt 순백색 / [연출] 리아 퇴장 / 줌인 해제 / 새로운 BGM 시작(따뜻하고 감동적인 구원의 피아노 테마)	VERY_SLOW	STYLE_P_DIALOGUE	FX_ZOOM_OUT	BGM_PRACTICE_SALVATION_PIANO						
 STORY_PROLOGUE_04	57	DIALOGUE	CHAR_JIWOO	P...					지우	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 지우 오른쪽 걱정, 서서히 페이드 인	NORMAL	STYLE_MEMBER_TREMBLE			SFX_HICCUP	CHAR_JIWOO	EXP_SAD			
 STORY_PROLOGUE_04	58	DIALOGUE	CHAR_P	다들 일어나서 짐싸. 당장.					P	[디자인] 고딕체 24pt 순백색 / [연출] 지우 유지	NORMAL	STYLE_P_DIALOGUE	FX_SCREEN_SHAKE_LIGHT							
 STORY_PROLOGUE_04	59	DIALOGUE	CHAR_MINA	짐을... 싸요? 위약금은 어떡하고... 쫓겨나기라도 하라는...		CHAR_MINA	EXP_SAD		미나	[디자인] 고딕체 24pt 순백색 / [연출] 지우 퇴장, 미나 왼쪽 걱정 페이드 인	SLOW	STYLE_MEMBER				NONE				
 STORY_PROLOGUE_04	60	NARRATION		모두가 숨을 죽인 채 P의 입술만 바라보는 순간.						[디자인] 명조체 24pt 밝은 회색 / [연출] 미나 유지 / 화면 멈춤(정적) / BGM 살짝 줄어듦	WORD_BY_WORD	STYLE_NARRATION	FX_FREEZE							
 STORY_PROLOGUE_04	61	NARRATION		P가 아이들을 향해 따뜻하고도 단단한 미소를 지어 보였다.						[디자인] 명조체 24pt 밝은 회색 / 흑백 화면에서 따뜻한 노란빛이 살짝 번지는 연출	NORMAL	STYLE_NARRATION	FX_WARM_LIGHT_BLEED							
-STORY_PROLOGUE_04	62	DIALOGUE	CHAR_P	아니. 이딴 썩어빠진 공장, 우리가 먼저 부수고 나가는 거야.					P	[디자인] 고딕체 26pt 순백색 / 화면 미세하게 밝아짐	NORMAL	STYLE_P_DIALOGUE_26	FX_SCREEN_BRIGHTEN							
-STORY_PROLOGUE_04	63	DIALOGUE	CHAR_P	위약금은 내가 다 털었으니까, 너희는 이제부터 S-Tier의 부속품이 아니라 오롯이 내 가수야.					P	[디자인] 굵은 고딕 28pt 흰색 강조 / [연출] 미나 표정 놀람으로 변경	INSTANT	STYLE_IMPACT_WHITE_EMPH_28								
+STORY_PROLOGUE_04	62	DIALOGUE	CHAR_P	아니. 이딴 썩어빠진 공장, 우리가 먼저 부수고 나가는 거야.					P	[디자인] 고딕체 26pt 순백색 / 화면 미세하게 밝아짐	NORMAL	STYLE_P_DIALOGUE	FX_SCREEN_BRIGHTEN							
+STORY_PROLOGUE_04	63	DIALOGUE	CHAR_P	위약금은 내가 다 털었으니까, 너희는 이제부터 S-Tier의 부속품이 아니라 오롯이 내 가수야.			EXP_SURPRISED		P	[디자인] 굵은 고딕 28pt 흰색 강조 / [연출] 미나 표정 놀람으로 변경	INSTANT	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_04	64	DIALOGUE	CHAR_SEOYUN	어...? P. 그 엄청난 빚을... 대체 어떻게...		NONE			서윤	[디자인] 고딕체 24pt 순백색 / [연출] 미나 퇴장, 서윤 오른쪽 놀람 페이드 인	SLOW	STYLE_MEMBER				CHAR_SEOYUN	EXP_SURPRISED			
 STORY_PROLOGUE_04	65	DIALOGUE	CHAR_P	그런 건 몰라도 돼. 너희들은 그냥 춤추고 노래할 준비만 해,					P	[디자인] 고딕체 24pt 순백색 / [연출] 서윤 유지	NORMAL	STYLE_P_DIALOGUE								
-STORY_PROLOGUE_04	66	DIALOGUE	CHAR_P	조금 돌아가더라도... 내가 기필코 너희들 세상에서 제일 빛나는 무대 위에 세워줄 테니까.					P	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 유지 / BGM 감동적으로 절정	SLOW	STYLE_P_DIALOGUE_26								
+STORY_PROLOGUE_04	66	DIALOGUE	CHAR_P	조금 돌아가더라도... 내가 기필코 너희들 세상에서 제일 빛나는 무대 위에 세워줄 테니까.					P	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 유지 / BGM 감동적으로 절정	SLOW	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_04	67	NARRATION		그 선언은 칠흑 같은 절망 속에 갇혀 있던 소녀들에게 내려온 동아줄이자, 완벽한 구원이었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 서윤 퇴장 / 화면 가득 쏟아지는 빛 무리(블룸)	SLOW	STYLE_NARRATION	FX_BLOOM_LIGHT_BURST			NONE				
 STORY_PROLOGUE_04	68	NARRATION		억눌려 있던 아이들의 울음이 한꺼번에 터져 나왔다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 흔들림	INSTANT	STYLE_NARRATION	FX_SCREEN_SHAKE_LIGHT		SFX_GROUP_WAIL					
 STORY_PROLOGUE_04	69	NARRATION		다섯 명의 소녀들은 P의 품으로 무너지듯 안겨들어 엉엉 소리 내어 오열하기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 오열하는 소리 지속	NORMAL	STYLE_NARRATION								

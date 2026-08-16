@@ -78,6 +78,12 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string TextSpeedName;
 
     /// <summary>
+    /// JSON에 적는 텍스트 위치 이름입니다("DIALOG_BOX" / "SCREEN_CENTER").
+    /// 비어 있으면 DIALOG_BOX입니다.
+    /// </summary>
+    public string TextPlacementName;
+
+    /// <summary>
     /// 대사 문구의 글꼴·크기·색 묶음 ID입니다(연출표의 [디자인] 열).
     ///
     /// 세 값을 따로 두지 않고 ID 하나로 묶는 이유는, 같은 조합이 여러 줄에 반복되기 때문입니다.
@@ -115,15 +121,23 @@ public class StoryLineData : ISerializationCallbackReceiver
     [NonSerialized]
     public ETextSpeed TextSpeed;
 
+    /// <summary>
+    /// TextPlacementName을 변환한 값입니다. 역직렬화 직후 채워집니다.
+    /// </summary>
+    [NonSerialized]
+    public EStoryTextPlacement TextPlacement;
+
     public void OnBeforeSerialize()
     {
         LineTypeName = MasterDataEnum.ToName(LineType);
         TextSpeedName = MasterDataEnum.ToName(TextSpeed);
+        TextPlacementName = MasterDataEnum.ToName(TextPlacement);
     }
 
     public void OnAfterDeserialize()
     {
         LineType = MasterDataEnum.Parse(LineTypeName, ELineType.NARRATION, $"{nameof(StoryLineData)}(line {LineId}).{nameof(LineTypeName)}");
         TextSpeed = MasterDataEnum.Parse(TextSpeedName, ETextSpeed.NORMAL, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextSpeedName)}");
+        TextPlacement = MasterDataEnum.Parse(TextPlacementName, EStoryTextPlacement.DIALOG_BOX, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextPlacementName)}");
     }
 }

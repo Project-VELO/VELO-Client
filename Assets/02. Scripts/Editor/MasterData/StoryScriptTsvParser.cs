@@ -40,6 +40,7 @@ public class StoryScriptTsvParser
     /// 기존 시트에는 없던 컬럼이라 비어 있어도 오류로 보지 않습니다(속도는 NORMAL로 떨어집니다).
     /// </summary>
     public const string COLUMN_TEXT_SPEED = "textSpeed";
+    public const string COLUMN_TEXT_PLACEMENT = "textPlacement";
     public const string COLUMN_TEXT_STYLE_ID = "textStyleId";
     public const string COLUMN_EFFECT_ID = "effectId";
     public const string COLUMN_BGM_ID = "bgmId";
@@ -162,6 +163,7 @@ public class StoryScriptTsvParser
 
         string rawLineType = GetCell(cells, columns, COLUMN_LINE_TYPE);
         string rawTextSpeed = GetCell(cells, columns, COLUMN_TEXT_SPEED);
+        string rawTextPlacement = GetCell(cells, columns, COLUMN_TEXT_PLACEMENT);
 
         return new StoryLineData
         {
@@ -179,6 +181,7 @@ public class StoryScriptTsvParser
             RightExpressionId = GetCell(cells, columns, COLUMN_RIGHT_EXPRESSION_ID),
             IllustrationId = GetCell(cells, columns, COLUMN_ILLUSTRATION_ID),
             TextSpeed = MasterDataEnum.Parse(rawTextSpeed, ETextSpeed.NORMAL, $"{storyId} {rowNumber}행"),
+            TextPlacement = MasterDataEnum.Parse(rawTextPlacement, EStoryTextPlacement.DIALOG_BOX, $"{storyId} {rowNumber}행"),
             TextStyleId = GetCell(cells, columns, COLUMN_TEXT_STYLE_ID),
             EffectId = GetCell(cells, columns, COLUMN_EFFECT_ID),
             BgmId = GetCell(cells, columns, COLUMN_BGM_ID),

@@ -314,29 +314,29 @@ STORY_PROLOGUE_06	64	NARRATION		P는 자리에서 벌떡 일어나 의자에 걸
 STORY_PROLOGUE_06	65	NARRATION		비록 통장 잔고는 7,420원뿐이고 세상의 모든 룰이 그들의 목을 거칠게 조르고 있었지만,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_06	66	NARRATION		얇은 합판 너머로 들려오는 아이들의 뜨거운 숨소리가 그의 꺾인 척추를 다시 한번 꼿꼿하게 세워 올리고 있었다.						[디자인] 명조체 24pt 밝은 회색 / BGM 장엄하게 마무리 시작	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_06	67	NARRATION		그는 다시 한번 거대 자본의 굳게 닫힌 성벽에 제 머리를 박고 찢겨 나갈 각오로, 낡은 구두를 구겨 신고 집무실 문을 나섰다.						[디자인] 명조체 24pt 흰색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	NORMAL	STYLE_NARRATION_WHITE	FX_FADE_TO_BLACK	BGM_NONE	SFX_DOOR_CLOSE_HEAVY					
-STORY_PROLOGUE_07	1	NARRATION		끼기긱-쾅.						#6-A. 지하 1층 연습실(늦은 밤) / [디자인] 굵은 고딕 36pt 탁한 갈색 / 어두운 배경 노출 / BGM 대기	INSTANT	STYLE_IMPACT_BROWN_36	FX_SCREEN_SHAKE_HARD		SFX_IRON_DOOR_ROUGH					
-STORY_PROLOGUE_07	2	NARRATION		무거운 철문이 힘겹게 열리는 소리에, 바닥에 쓰러져 가쁜 숨을 몰아쉬던 다섯 소녀의 고개가 일제히 문 쪽을 향했다.	6-A					[디자인] 명조체 24pt 밝은 회색 / BGM 지치고 무거운 절망의 테마	NORMAL	STYLE_NARRATION		BGM_PRACTICE_EXHAUSTED						
+STORY_PROLOGUE_07	1	NARRATION		끼기긱-쾅.	6-A					#6-A. 지하 1층 연습실(늦은 밤) / [디자인] 굵은 고딕 36pt 탁한 갈색 / 어두운 배경 노출 / BGM 대기	INSTANT	STYLE_NARRATION_RED_EMPH	FX_SCREEN_SHAKE_HARD		SFX_IRON_DOOR_ROUGH					
+STORY_PROLOGUE_07	2	NARRATION		무거운 철문이 힘겹게 열리는 소리에, 바닥에 쓰러져 가쁜 숨을 몰아쉬던 다섯 소녀의 고개가 일제히 문 쪽을 향했다.						[디자인] 명조체 24pt 밝은 회색 / BGM 지치고 무거운 절망의 테마	NORMAL	STYLE_NARRATION		BGM_PRACTICE_EXHAUSTED						
 STORY_PROLOGUE_07	3	NARRATION		그곳에 P가 서 있었다.						[디자인] 명조체 24pt 흰색 / 화면 미세하게 줌인	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_ZOOM_IN_SLIGHT							
-STORY_PROLOGUE_07	4	DIALOGUE	CHAR_RIA	P...? 세상에, 얼굴이 왜 그러세요?! 무슨 일 있었어요?!		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 26pt 순백색 / [연출] 리아 왼쪽 놀람, 강하게 팝업 등장 후 거칠게 흔들림	INSTANT	STYLE_MEMBER_26	FX_ZOOM_OUT							
+STORY_PROLOGUE_07	4	DIALOGUE	CHAR_RIA	P...? 세상에, 얼굴이 왜 그러세요?! 무슨 일 있었어요?!		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 26pt 순백색 / [연출] 리아 왼쪽 놀람, 강하게 팝업 등장 후 거칠게 흔들림	INSTANT	STYLE_MEMBER	FX_ZOOM_OUT							
 STORY_PROLOGUE_07	5	NARRATION		아이들이 경악하며 달려갔다. P의 몰골은 처참했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 컷 아웃 퇴장	NORMAL	STYLE_NARRATION			SFX_RUSH_FOOTSTEP					
 STORY_PROLOGUE_07	6	NARRATION		단정했던 재킷은 먼지와 진흙으로 엉망진창이 되어 있었고,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_07	7	NARRATION		무릎 부근의 바짓단은 심하게 찢겨 나간 채 핏자국이 말라붙어 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_07	8	NARRATION		무엇보다 그의 낡은 구두는 밑창이 아예 덜렁거릴 정도로 다 닳아빠져 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 아래(구두 쪽)로 시점 이동(Pan)	SLOW	STYLE_NARRATION	FX_PAN_DOWN_SHOES							
 STORY_PROLOGUE_07	9	DIALOGUE	CHAR_JIWOO	피 나잖아요... 대체 밖에서 무슨 짓을 당하고 오신거예요.		CHAR_JIWOO	EXP_SAD		지우	[디자인] 글자 떨림 / 고딕체 24pt 순백색 / [연출] 지우 왼쪽 걱정, 페이드 인 후 좌우 미세 떨림	NORMAL	STYLE_MEMBER_TREMBLE	FX_VIEW_CENTER							
-STORY_PROLOGUE_07	10	DIALOGUE	CHAR_MINA	S-Tier 짓이죠? 그 사람들이 P한테 손이라도 댄 거예요?! 당장 경찰에...					미나	[디자인] 고딕체 26pt 순백색 / [연출] 지우 유지 + 미나 오른쪽 화남 빠르게 슬라이드 인	INSTANT	STYLE_MEMBER_26	FX_SCREEN_SHAKE_LIGHT			CHAR_MINA	EXP_ANGRY			
-STORY_PROLOGUE_07	11	DIALOGUE	CHAR_P	아니. 이겼어.		NONE			P	[디자인] 굵은 고딕 28pt 흰색 강조 / [연출] 지우·미나 즉시 컷 아웃 퇴장 / BGM 정지(적막)	INSTANT	STYLE_IMPACT_WHITE_EMPH_28	FX_FREEZE	BGM_NONE		NONE				
+STORY_PROLOGUE_07	10	DIALOGUE	CHAR_MINA	S-Tier 짓이죠? 그 사람들이 P한테 손이라도 댄 거예요?! 당장 경찰에...					미나	[디자인] 고딕체 26pt 순백색 / [연출] 지우 유지 + 미나 오른쪽 화남 빠르게 슬라이드 인	INSTANT	STYLE_MEMBER	FX_SCREEN_SHAKE_LIGHT			CHAR_MINA	EXP_ANGRY			
+STORY_PROLOGUE_07	11	DIALOGUE	CHAR_P	아니. 이겼어.		NONE			P	[디자인] 굵은 고딕 28pt 흰색 강조 / [연출] 지우·미나 즉시 컷 아웃 퇴장 / BGM 정지(적막)	INSTANT	STYLE_P_DIALOGUE	FX_FREEZE	BGM_NONE		NONE				
 STORY_PROLOGUE_07	12	NARRATION		아이들의 움직임이 뚝 멎었다.						[디자인] 명조체 24pt 밝은 회색 / 적막 유지	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_07	13	NARRATION		P는 후들거리는 다리로 벽을 짚고 서서, 안주머니에서 꼬깃꼬깃하게 접힌 종이 뭉치 하나를 꺼냈다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_PAPER_RUSTLE					
 STORY_PROLOGUE_07	14	NARRATION		흙먼지가 묻고 군데군데 핏자국까지 번져 있는 그 낡은 종이를,						[디자인] 명조체 24pt 밝은 회색 / 종이 소리 유지	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_07	15	NARRATION		P는 세상에서 가장 귀한 보석을 다루듯 조심스럽게 펴서 아이들 앞에 내밀었다.						[디자인] 명조체 24pt 밝은 회색 / 종이 소리 유지	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_07	16	NARRATION		[ M-Beat Live 생방송 큐시트 ] [ 무대 - 신인 걸그룹(V.E.L.O) ]						[디자인] 굵은 고딕 28pt 노란색 강조 / 텍스트 출력 시 화면 약하게 점멸 / 새 BGM: 아련하고 희망적인 피아노 선율	INSTANT	STYLE_IMPACT_YELLOW_EMPH_28	FX_SCREEN_BLINK	BGM_PRACTICE_HOPE_PIANO						
-STORY_PROLOGUE_07	17	DIALOGUE	CHAR_P	다음 주 목요일. 엠비트 라이브. 3분 30초.					P	[디자인] 고딕체 26pt 순백색 / 줌인 서서히 들어감	WORD_BY_WORD	STYLE_P_DIALOGUE_26	FX_ZOOM_IN_SLOW							
+STORY_PROLOGUE_07	16	NARRATION		[ M-Beat Live 생방송 큐시트 ] [ 무대 - 신인 걸그룹(V.E.L.O) ]						[디자인] 굵은 고딕 28pt 노란색 강조 / 텍스트 출력 시 화면 약하게 점멸 / 새 BGM: 아련하고 희망적인 피아노 선율	INSTANT	STYLE_NARRATION	FX_SCREEN_BLINK	BGM_PRACTICE_HOPE_PIANO						
+STORY_PROLOGUE_07	17	DIALOGUE	CHAR_P	다음 주 목요일. 엠비트 라이브. 3분 30초.					P	[디자인] 고딕체 26pt 순백색 / 줌인 서서히 들어감	WORD_BY_WORD	STYLE_P_DIALOGUE	FX_ZOOM_IN_SLOW							
 STORY_PROLOGUE_07	18	DIALOGUE	CHAR_SEOYUN	엠비트... 라이브? 그거 황금시간대 생방송...		CHAR_SEOYUN	EXP_SURPRISED		서윤	[디자인] 고딕체 24pt 순백색 / [연출] 서윤 왼쪽 놀람 페이드 인	SLOW	STYLE_MEMBER								
 STORY_PROLOGUE_07	19	DIALOGUE	CHAR_P	방송국 국장부터 막내 PD까지. 바짓가랑이 붙잡고 3일을 매달렸어.		NONE			P	[디자인] 고딕체 24pt 순백색 / [연출] 서윤 페이드 아웃 퇴장	NORMAL	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	20	DIALOGUE	CHAR_P	무릎이 다 갈려 나가도록 빌고 또 빌었더니... 펑크 난 땜빵 자리 하나 던져주더라.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	NORMAL	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	21	DIALOGUE	CHAR_P	그 길로 세트장 노가다까지 다 뛰어서 얻어낸 자리야.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	NORMAL	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	22	NARRATION		P의 목소리가 젖어 들고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐 / BGM 감정 고조됨	SLOW	STYLE_NARRATION	FX_SCREEN_DARKEN							
-STORY_PROLOGUE_07	23	DIALOGUE	CHAR_P	너희들, 데뷔한다.					P	[디자인] 굵은 고딕 32pt 흰색 강조 / 화면 은은하고 따뜻하게 밝아짐 / BGM 절정	INSTANT	STYLE_IMPACT_WHITE_EMPH_32	FX_SCREEN_WARM_BRIGHTEN							
+STORY_PROLOGUE_07	23	DIALOGUE	CHAR_P	너희들, 데뷔한다.					P	[디자인] 굵은 고딕 32pt 흰색 강조 / 화면 은은하고 따뜻하게 밝아짐 / BGM 절정	INSTANT	STYLE_P_DIALOGUE	FX_SCREEN_WARM_BRIGHTEN							
 STORY_PROLOGUE_07	24	NARRATION		그 한마디에, 팽팽하게 당겨져 있던 아이들의 긴장감이 거짓말처럼 툭 끊어졌다.						[디자인] 명조체 24pt 밝은 회색 / 밝아진 화면 유지	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_07	25	DIALOGUE	CHAR_HANA	아아아악...!		CHAR_HANA	EXP_SAD		하나	[디자인] 고딕체 32pt 순백색 / [연출] 하나 왼쪽 걱정, 강하게 위아래로 흔들리며 팝업	INSTANT	STYLE_MEMBER_32	FX_SCREEN_SHAKE_LIGHT		SFX_COLLAPSE_SIT					
 STORY_PROLOGUE_07	26	NARRATION		가장 먼저 무너져 내린 것은 하나였다. 늘 지우의 등 뒤에 숨어 눈치만 보던 하나가 오열하며 바닥에 주저앉았다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 하나 퇴장	NORMAL	STYLE_NARRATION			SFX_CRY_LAYER					
@@ -347,28 +347,28 @@ STORY_PROLOGUE_07	30	DIALOGUE	CHAR_P	잘 들어, 이 지하실, 다음 달이면
 STORY_PROLOGUE_07	31	DIALOGUE	CHAR_MINA	마지막... 이라뇨...?		CHAR_MINA	EXP_SURPRISED		미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 왼쪽 놀람 페이드 인	NORMAL	STYLE_MEMBER								
 STORY_PROLOGUE_07	32	DIALOGUE	CHAR_P	전국구 생방송이야. 순간 시청률 10퍼센트, 수백만 명이 실시간으로 보는 무대라고.		NONE			P	[디자인] 고딕체 24pt 순백색 / [연출] 미나 퇴장 / BGM 다시 힘을 얻으며 고조됨	NORMAL	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	33	DIALOGUE	CHAR_P	S-Tier가 아무리 우리 목줄을 쥐고 흔들어도, 이미 생방송 카메라에 빨간 불이 들어온 순간엔 지들도 어쩌지 못해.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	NORMAL	STYLE_P_DIALOGUE								
-STORY_PROLOGUE_07	34	DIALOGUE	CHAR_P	편집도. 통제도 불가능한 단 한 번의 3분 30초야.					P	[디자인] 굵은 고딕 26pt 흰색 강조 / 변동 없음	SLOW	STYLE_IMPACT_WHITE_EMPH_26								
+STORY_PROLOGUE_07	34	DIALOGUE	CHAR_P	편집도. 통제도 불가능한 단 한 번의 3분 30초야.					P	[디자인] 굵은 고딕 26pt 흰색 강조 / 변동 없음	SLOW	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	35	NARRATION		왜 P가 그토록 피투성이가 되면서까지 이 단 한 번의 생방송 무대에 목을 맸는지.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_07	36	NARRATION		아이들의 눈빛에 단순한 감격을 넘어선 맹렬한 투기가 차오르기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / 줌인 계속됨 / BGM 웅장하게 변환	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_SLOW							
 STORY_PROLOGUE_07	37	DIALOGUE	CHAR_P	그 3분 30초 안에 대중들 숨통을 끊어놓을 만큼 완벽한 무대를 보여줘.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	NORMAL	STYLE_P_DIALOGUE								
 STORY_PROLOGUE_07	38	DIALOGUE	CHAR_P	거기서 사람들에게 눈도장만 찍어내면... 그땐 S-Tier 할아버지가 와도 우릴 못 지워.					P	[디자인] 고딕체 24pt 순백색 / 변동 없음	NORMAL	STYLE_P_DIALOGUE								
-STORY_PROLOGUE_07	39	DIALOGUE	CHAR_SEOYUN	P가 흙바닥 기면서 따낸 생방송... 우리가 카메라 렌즈 다 씹어 먹고 확실하게 꽂아 넣을게.		CHAR_SEOYUN	EXP_SMILE		서윤	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 왼쪽 웃음, 단호하게 팝업 등장	INSTANT	STYLE_MEMBER_26	FX_SCREEN_SHAKE_LIGHT							
-STORY_PROLOGUE_07	40	DIALOGUE	CHAR_MINA	S-Tier 임원진들. 생방송 보다가 오금 저려서 뻗게 만들어 줄 거니까.					미나	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 유지 + 미나 오른쪽 화남 팝업	INSTANT	STYLE_MEMBER_26				CHAR_MINA	EXP_ANGRY			
+STORY_PROLOGUE_07	39	DIALOGUE	CHAR_SEOYUN	P가 흙바닥 기면서 따낸 생방송... 우리가 카메라 렌즈 다 씹어 먹고 확실하게 꽂아 넣을게.		CHAR_SEOYUN	EXP_SMILE		서윤	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 왼쪽 웃음, 단호하게 팝업 등장	INSTANT	STYLE_MEMBER	FX_SCREEN_SHAKE_LIGHT							
+STORY_PROLOGUE_07	40	DIALOGUE	CHAR_MINA	S-Tier 임원진들. 생방송 보다가 오금 저려서 뻗게 만들어 줄 거니까.					미나	[디자인] 고딕체 26pt 순백색 / [연출] 서윤 유지 + 미나 오른쪽 화남 팝업	INSTANT	STYLE_MEMBER				CHAR_MINA	EXP_ANGRY			
 STORY_PROLOGUE_07	41	NARRATION		다섯 소녀들과 흙투성이가 된 P는 지하실 바닥에 서로를 끌어안고 기적의 온기를 나눴다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 서윤·미나 서서히 페이드 아웃 / BGM 뭉클한 엔딩	NORMAL	STYLE_NARRATION	FX_DISSOLVE_WARM			NONE				
 STORY_PROLOGUE_07	42	NARRATION		그날 이후, 지하실은 말 그대로 한계치를 넘나드는 처절한 전쟁터로 변했다.	6-B					#6-B. 지하 1층 연습실(새벽) / [디자인] 명조체 24pt 밝은 회색 / 6-B로 디졸브 전환 / 새 BGM: 빠르고 긴박한 하드트레이닝	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_PRACTICE_HARD_TRAINING						
 STORY_PROLOGUE_07	43	NARRATION		새벽 4시, 찢어지는 조악한 스피커 음질 위로 아이들의 거친 숨소리가 피 냄새와 섞여 진동했다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_HEAVY_BREATH					
-STORY_PROLOGUE_07	44	NARRATION		타닥, 쾅-!!						[디자인] 굵은 고딕 36pt 붉은색 / BGM Ducking	INSTANT	STYLE_IMPACT_RED_36	FX_SCREEN_SHAKE_HARD		SFX_FLOOR_STOMP					
-STORY_PROLOGUE_07	45	DIALOGUE	CHAR_MINA	야! 방금 교차할 때 무게 중심 떴잖아!		CHAR_MINA	EXP_ANGRY		미나	[디자인] 고딕체 28pt 순백색 / [연출] 미나 왼쪽 화남, 빠르게 팝업 등장 / BGM 볼륨 복구	INSTANT	STYLE_MEMBER_28								
-STORY_PROLOGUE_07	46	DIALOGUE	CHAR_SEOYUN	알았어! 아예 바닥에 착 붙어서 날아다닐 테니까 잘 봐!					서윤	[디자인] 고딕체 26pt 순백색 / [연출] 미나 유지 + 서윤 오른쪽 기본 빠르게 슬라이드 인	INSTANT	STYLE_MEMBER_26				CHAR_SEOYUN	EXP_NORMAL			
-STORY_PROLOGUE_07	47	DIALOGUE	CHAR_SEOYUN	리아야, 거기서 보컬 뚫고 나올 때 TV 깨부술 기세로 질러줘!					서윤	[디자인] 고딕체 26pt 순백색 / [연출] 두 사람 유지	INSTANT	STYLE_MEMBER_26								
-STORY_PROLOGUE_07	48	DIALOGUE	CHAR_RIA	알아! (콜록콜록) 나 목에서 피가 나도 음정 안 흔들릴 테니까 걱정 마!		CHAR_RIA	EXP_ANGRY		리아	[디자인] 고딕체 28pt 순백색 / [연출] 미나·서윤 퇴장, 리아 왼쪽 화남 거칠게 위아래로 흔들리며 등장	INSTANT	STYLE_MEMBER_28	FX_SCREEN_SHAKE_LIGHT			NONE				
+STORY_PROLOGUE_07	44	NARRATION		타닥, 쾅-!!						[디자인] 굵은 고딕 36pt 붉은색 / BGM Ducking	INSTANT	STYLE_NARRATION_RED_EMPH	FX_SCREEN_SHAKE_HARD		SFX_FLOOR_STOMP					
+STORY_PROLOGUE_07	45	DIALOGUE	CHAR_MINA	야! 방금 교차할 때 무게 중심 떴잖아!		CHAR_MINA	EXP_ANGRY		미나	[디자인] 고딕체 28pt 순백색 / [연출] 미나 왼쪽 화남, 빠르게 팝업 등장 / BGM 볼륨 복구	INSTANT	STYLE_MEMBER								
+STORY_PROLOGUE_07	46	DIALOGUE	CHAR_SEOYUN	알았어! 아예 바닥에 착 붙어서 날아다닐 테니까 잘 봐!					서윤	[디자인] 고딕체 26pt 순백색 / [연출] 미나 유지 + 서윤 오른쪽 기본 빠르게 슬라이드 인	INSTANT	STYLE_MEMBER				CHAR_SEOYUN	EXP_NORMAL			
+STORY_PROLOGUE_07	47	DIALOGUE	CHAR_SEOYUN	리아야, 거기서 보컬 뚫고 나올 때 TV 깨부술 기세로 질러줘!					서윤	[디자인] 고딕체 26pt 순백색 / [연출] 두 사람 유지	INSTANT	STYLE_MEMBER								
+STORY_PROLOGUE_07	48	DIALOGUE	CHAR_RIA	알아! (콜록콜록) 나 목에서 피가 나도 음정 안 흔들릴 테니까 걱정 마!		CHAR_RIA	EXP_ANGRY		리아	[디자인] 고딕체 28pt 순백색 / [연출] 미나·서윤 퇴장, 리아 왼쪽 화남 거칠게 위아래로 흔들리며 등장	INSTANT	STYLE_MEMBER	FX_SCREEN_SHAKE_LIGHT			NONE				
 STORY_PROLOGUE_07	49	NARRATION		아이들은 잠을 자는 법을 잊었다. 하루에 컵라면 하나로 버티는 앙상한 몸이었지만,		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 퇴장 / 화면 모노톤으로 미세하게 변함	NORMAL	STYLE_NARRATION	FX_FILTER_MONOCHROME_SOFT							
 STORY_PROLOGUE_07	50	NARRATION		며칠 뒤 수백만 명의 뇌리에 영원히 각인될 그들의 안무는 뼈가 부러질 듯 격렬하고 완벽했다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_STEP_FRICTION					
 STORY_PROLOGUE_07	51	NARRATION		바닥에 쏠린 서윤의 무릎에서는 피가 배어 나와 하얀 연습복을 붉게 적셨고,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_07	52	NARRATION		완벽한 턴을 고집하던 미나의 엄지발톱은 새까맣게 죽어 결국 빠져버렸다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_07	53	NARRATION		하지만 미나는 비명한번 지르지 않고 덜덜 떨리는 손으로 상처 난 맨발에 청테이프를 거칠게 칭칭 감아버린 뒤 다시 거울 앞에 섰다.						[디자인] 명조체 24pt 밝은 회색 / 테이프 거칠게 뜯는 소리	SLOW	STYLE_NARRATION			SFX_TAPE_TEAR					
 STORY_PROLOGUE_07	54	NARRATION		언제나 뒤로 숨던 하나마저, 피가 나는 입술을 짓씹으며 거울 속 가상의 메인 카메라를 노려보고 독기 어린 랩을 뱉어냈다.						[디자인] 명조체 24pt 밝은 회색 / 흑백 화면에서 붉은빛만 서서히 강조됨	NORMAL	STYLE_NARRATION	FX_MONO_RED_ACCENT							
-STORY_PROLOGUE_07	55	NARRATION		단 한 번의 생방송, 편집될 수 없는 3분 30초.						[디자인] 굵은 명조 28pt 흰색 / BGM 절정	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28								
+STORY_PROLOGUE_07	55	NARRATION		단 한 번의 생방송, 편집될 수 없는 3분 30초.						[디자인] 굵은 명조 28pt 흰색 / BGM 절정	WORD_BY_WORD	STYLE_NARRATION								
 STORY_PROLOGUE_07	56	NARRATION		이 찰나의 무대에 그들의 모든 목숨이 걸려 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_07	57	NARRATION		그들은 기꺼이 이 마지막 불꽃에 자신들의 뼈와 살, 그리고 영혼을 남김없이 태워 넣고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION	FX_FADE_TO_BLACK	BGM_NONE						
 STORY_PROLOGUE_08	1	NARRATION		쿵, 쿵, 쿵!						#7-A. M-Beat 생방송 백스테이지 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 / BGM 대기	WORD_BY_WORD	STYLE_IMPACT_RED_32	FX_BLACKOUT		SFX_BASS_AMP_HEARTBEAT					

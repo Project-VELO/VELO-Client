@@ -8,7 +8,7 @@
             "SpeakerId": "",
             "SpeakerName": "",
             "Text": "끼기긱-쾅.",
-            "BackgroundId": "",
+            "BackgroundId": "6-A",
             "CharacterId": "",
             "ExpressionId": "",
             "CenterCharacterId": "",
@@ -18,7 +18,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_BROWN_36",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_IRON_DOOR_ROUGH"
@@ -29,7 +29,7 @@
             "SpeakerId": "",
             "SpeakerName": "",
             "Text": "무거운 철문이 힘겹게 열리는 소리에, 바닥에 쓰러져 가쁜 숨을 몰아쉬던 다섯 소녀의 고개가 일제히 문 쪽을 향했다.",
-            "BackgroundId": "6-A",
+            "BackgroundId": "",
             "CharacterId": "",
             "ExpressionId": "",
             "CenterCharacterId": "",
@@ -81,7 +81,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_ZOOM_OUT",
             "BgmId": "",
             "SfxId": ""
@@ -207,7 +207,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""
@@ -228,7 +228,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_EMPH_28",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_FREEZE",
             "BgmId": "BGM_NONE",
             "SfxId": ""
@@ -333,7 +333,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_YELLOW_EMPH_28",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SCREEN_BLINK",
             "BgmId": "BGM_PRACTICE_HOPE_PIANO",
             "SfxId": ""
@@ -354,7 +354,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_DIALOGUE_26",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_ZOOM_IN_SLOW",
             "BgmId": "",
             "SfxId": ""
@@ -480,7 +480,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_EMPH_32",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_SCREEN_WARM_BRIGHTEN",
             "BgmId": "",
             "SfxId": ""
@@ -711,7 +711,7 @@
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_EMPH_26",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -816,7 +816,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""
@@ -837,7 +837,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -921,7 +921,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_RED_36",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_FLOOR_STOMP"
@@ -942,7 +942,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -963,7 +963,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -984,7 +984,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1005,7 +1005,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""
@@ -1152,7 +1152,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_SERIF_BOLD_WHITE_28",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""

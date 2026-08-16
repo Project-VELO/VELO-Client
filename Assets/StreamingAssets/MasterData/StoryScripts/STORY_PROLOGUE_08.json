@@ -18,7 +18,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_RED_32",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_BLACKOUT",
             "BgmId": "",
             "SfxId": "SFX_BASS_AMP_HEARTBEAT"
@@ -228,7 +228,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -249,7 +249,7 @@
             "IllustrationId": "",
             "TextSpeedName": "NORMAL",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_26",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_ZOOM_OUT",
             "BgmId": "",
             "SfxId": ""
@@ -291,7 +291,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_32",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_LIGHT_BURST",
             "BgmId": "",
             "SfxId": "SFX_GATE_OPEN"
@@ -417,7 +417,7 @@
             "IllustrationId": "",
             "TextSpeedName": "NORMAL",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -575,7 +575,7 @@
             "SpeakerId": "",
             "SpeakerName": "",
             "Text": "퍽 !!",
-            "BackgroundId": "7-C",
+            "BackgroundId": "",
             "CharacterId": "",
             "ExpressionId": "",
             "CenterCharacterId": "",
@@ -585,7 +585,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_RED_40",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_BLACKOUT_INSTANT",
             "BgmId": "BGM_NONE",
             "SfxId": "SFX_BREAKER_DOWN"
@@ -596,7 +596,7 @@
             "SpeakerId": "",
             "SpeakerName": "",
             "Text": "귀를 찢을 듯한 거친 마찰음과 함께, 무대 위의 모든 조명이 일제히 꺼졌다.",
-            "BackgroundId": "",
+            "BackgroundId": "7-C",
             "CharacterId": "",
             "ExpressionId": "",
             "CenterCharacterId": "",
@@ -690,7 +690,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_DIALOGUE_26",
+            "TextStyleId": "STYLE_P_DIALOGUE",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": ""
@@ -753,7 +753,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_32",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_SHAKE_VERTICAL",
             "BgmId": "",
             "SfxId": "SFX_DARK_STAGE_STEP"
@@ -921,7 +921,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_RED_32",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_TRIP_EQUIPMENT"
@@ -1068,7 +1068,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_SHOUT_28",
+            "TextStyleId": "STYLE_P_SHOUT_PLAIN_32",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1089,7 +1089,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_SHOUT_28",
+            "TextStyleId": "STYLE_P_SHOUT_PLAIN_32",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1173,7 +1173,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_PD_GREEN_26",
+            "TextStyleId": "STYLE_PD_GREEN_32",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1194,7 +1194,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_PD_GREEN_BOLD_28",
+            "TextStyleId": "STYLE_PD_GREEN_32",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -1236,7 +1236,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_FD_GRAY_26",
+            "TextStyleId": "STYLE_FD_GRAY_32",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -1362,7 +1362,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -1383,7 +1383,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1404,7 +1404,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_MEMBER_28",
+            "TextStyleId": "STYLE_MEMBER",
             "EffectId": "",
             "BgmId": "",
             "SfxId": ""
@@ -1530,7 +1530,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_P_SHOUT_RED_32",
+            "TextStyleId": "STYLE_P_SHOUT_PLAIN_32",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": ""
@@ -1551,7 +1551,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_RED_40",
+            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
             "EffectId": "FX_RED_FLASH_SHAKE",
             "BgmId": "",
             "SfxId": "SFX_KICK_SHIN"
@@ -1614,7 +1614,7 @@
             "IllustrationId": "",
             "TextSpeedName": "NORMAL",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_PD_GREEN_26",
+            "TextStyleId": "STYLE_PD_GREEN_32",
             "EffectId": "FX_ROLL_RECOVER_WHITEOUT",
             "BgmId": "BGM_MBEAT_NEXT_TEAM",
             "SfxId": ""
@@ -1677,7 +1677,7 @@
             "IllustrationId": "",
             "TextSpeedName": "VERY_SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_BLACKOUT_FULL",
             "BgmId": "",
             "SfxId": ""

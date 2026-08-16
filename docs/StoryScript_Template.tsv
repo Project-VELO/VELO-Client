@@ -596,23 +596,23 @@ STORY_PROLOGUE_12	20	DIALOGUE	CHAR_SEOYUN	어? 야, 저기 거울 봐봐.		CHAR_
 STORY_PROLOGUE_12	21	NARRATION		춤을 맞추던 거대한 거울 위에도 시뻘건 압류 딱지들이 흉측하게 도배되어 있었다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 서윤 퇴장 / 거울 쪽으로 서서히 줌인 / 새 BGM: 신비롭고 이질적인 음악	NORMAL	STYLE_NARRATION	FX_ZOOM_IN_MIRROR	BGM_SEIZED_MYSTIC								
 STORY_PROLOGUE_12	22	NARRATION		하지만, 그 수십 장의 붉은 딱지들 한가운데.						[디자인] 명조체 24pt 밝은 회색 / 줌인 계속됨	SLOW	STYLE_NARRATION	FX_ZOOM_IN_SLOW									
 STORY_PROLOGUE_12	23	NARRATION		정중앙에, 오직 단 한 장의 종이가 이질적인 보랏빛 기운을 뿜어내며 붙어 있었다.						[디자인] 명조체 24pt 연보라색 / 줌인 멈춤	SLOW	STYLE_NARRATION_PURPLE	FX_ZOOM_STOP									
-STORY_PROLOGUE_12	24	DIALOGUE	CHAR_MINA	뭐야... 저거 아까 들어올 때까지만 해도 없었잖아.		CHAR_MINA	EXP_SURPRISED		미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 왼쪽 놀람 + 서윤 오른쪽 기본 페이드 인	NORMAL	STYLE_MEMBER										
+STORY_PROLOGUE_12	24	DIALOGUE	CHAR_MINA	뭐야... 저거 아까 들어올 때까지만 해도 없었잖아.		CHAR_MINA	EXP_SURPRISED		미나	[디자인] 고딕체 24pt 순백색 / [연출] 미나 왼쪽 놀람 + 서윤 오른쪽 기본 페이드 인	NORMAL	STYLE_MEMBER				CHAR_SEOYUN	EXP_NORMAL					
 STORY_PROLOGUE_12	25	DIALOGUE	CHAR_RIA	P... 저 종이에서 빛이 나는 것 같은데요...?		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 24pt 순백색 / [연출] 미나 퇴장, 리아 왼쪽 놀람 페이드 인 / 줌인 한 번 더 미세하게	NORMAL	STYLE_MEMBER	FX_ZOOM_IN_SLIGHT									
-STORY_PROLOGUE_12	26	DIALOGUE	CHAR_P	서윤아, 만지지 마! 위험해!		NONE			P	[디자인] 굵은 고딕 32pt 붉은색 / [연출] 서윤·리아 즉시 컷 아웃 / BGM 정지(다급한 텐션)	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_SHAKE_ONCE	BGM_NONE								
+STORY_PROLOGUE_12	26	DIALOGUE	CHAR_P	서윤아, 만지지 마! 위험해!		NONE			P	[디자인] 굵은 고딕 32pt 붉은색 / [연출] 서윤·리아 즉시 컷 아웃 / BGM 정지(다급한 텐션)	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_SHAKE_ONCE	BGM_NONE		NONE						
 STORY_PROLOGUE_12	27	NARRATION		하지만 서윤은 P의 만류에도 불구하고, 거울 앞에 서서 붉은 딱지들 사이에 붙어 있던 보랏빛 종이를 거침없이 떼어냈다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION			SFX_PAPER_TEAR							
-STORY_PROLOGUE_12	28	NARRATION		쩌저적-!						#11-B. 거울 너머의 심연 / [디자인] 굵은 고딕 36pt 붉은색 / 화면 멈춤(긴장감)	INSTANT	STYLE_IMPACT_RED_36	FX_FREEZE		SFX_MIRROR_CRACK							
+STORY_PROLOGUE_12	28	NARRATION		쩌저적-!						#11-B. 거울 너머의 심연 / [디자인] 굵은 고딕 36pt 붉은색 / 화면 멈춤(긴장감)	INSTANT	STYLE_IMPACT_RED_32	FX_FREEZE		SFX_MIRROR_CRACK							
 STORY_PROLOGUE_12	29	NARRATION		종이가 거울에서 떨어지는 순간.	11-B					[디자인] 명조체 24pt 흰색 / 11-B로 서서히 디졸브 / BGM 웅웅거리는 불길한 효과음성	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_DISSOLVE	BGM_ABYSS_OMINOUS								
 STORY_PROLOGUE_12	30	NARRATION		떼어낸 보랏빛 종이 표면에서, 검고 붉은 잉크들이 끓어오르듯 요동치기 시작했다.						[디자인] 명조체 24pt 밝은 회색 / BGM 서서히 고조됨	SLOW	STYLE_NARRATION										
 STORY_PROLOGUE_12	31	NARRATION		이내 종이 밖으로 수천 개의 [활자]들이 살아있는 벌레 떼처럼 미친 듯이 뿜어져 나왔다.						[디자인] 명조체 24pt 밝은 회색 / 핏빛 활자들이 화면을 깨트리며 튀어나옴, 화면 강하게 지속 흔들림 / 거울 굉음 후 차원 폭풍 BGM	INSTANT	STYLE_NARRATION	FX_LETTER_SWARM_BURST	BGM_DIMENSION_STORM	SFX_MIRROR_SHATTER							
 STORY_PROLOGUE_12	32	DIALOGUE	CHAR_HANA	꺄아악! 지우야!!		CHAR_HANA	EXP_SURPRISED		하나	[디자인] 굵은 고딕 32pt 순백색 / [연출] 하나 왼쪽 놀람 팝업 등장 후 심하게 상하 흔들림	INSTANT	STYLE_MEMBER_SHOUT_32										
-STORY_PROLOGUE_12	33	DIALOGUE	CHAR_JIWOO	하나 언니!! 꽉 잡아!!					지우	[디자인] 굵은 고딕 28pt 순백색 / [연출] 하나 유지 + 지우 오른쪽 놀람 팝업	INSTANT	STYLE_MEMBER_SHOUT_28				CHAR_JIWOO	EXP_SURPRISED					
-STORY_PROLOGUE_12	34	DIALOGUE	CHAR_MINA	이게 대체 뭐야!! 글자들이... 글자들이 살아있잖아!!		CHAR_MINA	EXP_SURPRISED		미나	[디자인] 굵은 고딕 28pt 순백색 / [연출] 하나·지우 퇴장, 미나 왼쪽 놀람 팝업	INSTANT	STYLE_MEMBER_SHOUT_28				NONE						
+STORY_PROLOGUE_12	33	DIALOGUE	CHAR_JIWOO	하나 언니!! 꽉 잡아!!					지우	[디자인] 굵은 고딕 28pt 순백색 / [연출] 하나 유지 + 지우 오른쪽 놀람 팝업	INSTANT	STYLE_MEMBER_SHOUT_32				CHAR_JIWOO	EXP_SURPRISED					
+STORY_PROLOGUE_12	34	DIALOGUE	CHAR_MINA	이게 대체 뭐야!! 글자들이... 글자들이 살아있잖아!!		CHAR_MINA	EXP_SURPRISED		미나	[디자인] 굵은 고딕 28pt 순백색 / [연출] 하나·지우 퇴장, 미나 왼쪽 놀람 팝업	INSTANT	STYLE_MEMBER_SHOUT_32				NONE						
 STORY_PROLOGUE_12	35	NARRATION		활자들의 소용돌이가 방 안을 가득 채우던 붉은 압류 딱지들을 갈기갈기 찢어발겼다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 미나 퇴장 / 화면 전체 일렁임 지속	NORMAL	STYLE_NARRATION	FX_SCREEN_WAVE		SFX_PAPER_SHRED							
 STORY_PROLOGUE_12	36	NARRATION		그 직후, 서윤의 손에 들린 종이에서 눈을 뜰 수 없을 만큼 강렬하고 몽환적인 보랏빛 빛기둥이 천장을 향해 솟구쳐 올랐다.						[디자인] 명조체 24pt 연보라색 / 화면 전체가 보랏빛으로 강하게 번쩍임	NORMAL	STYLE_NARRATION_PURPLE	FX_PURPLE_FLASH		SFX_MAGIC_BURST							
 STORY_PROLOGUE_12	37	DIALOGUE	CHAR_P	얘들아!! 손잡아!! 절대 흩어지면 안 돼!!					P	[디자인] 굵은 고딕 32pt 글자 심하게 떨림 / 화면 거칠게 흔들림 지속	INSTANT	STYLE_P_TREMBLE_32	FX_SCREEN_SHAKE_HARD		SFX_STORM_WIND							
-STORY_PROLOGUE_12	38	DIALOGUE	CHAR_RIA	P!! 바닥이... 바닥이 없어져요!!		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 28pt 순백색 / [연출] 리아 왼쪽 놀람 팝업 등장 후 좌우로 심하게 흔들림	INSTANT	STYLE_MEMBER_28										
+STORY_PROLOGUE_12	38	DIALOGUE	CHAR_RIA	P!! 바닥이... 바닥이 없어져요!!		CHAR_RIA	EXP_SURPRISED		리아	[디자인] 고딕체 28pt 순백색 / [연출] 리아 왼쪽 놀람 팝업 등장 후 좌우로 심하게 흔들림	INSTANT	STYLE_MEMBER										
 STORY_PROLOGUE_12	39	NARRATION		거대한 보랏빛 안개와 춤추는 핏빛 활자들이 그들을 완전히 집어삼켰고, 거울 너머의 심연이 거대한 아가리를 벌렸다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 컷 아웃 퇴장 / BGM 절정	NORMAL	STYLE_NARRATION										
-STORY_PROLOGUE_12	40	NARRATION		번쩍-!!						[디자인] 굵은 고딕 40pt 흰색 / 강력한 섬광(화이트 아웃) 후 잠시 정지	INSTANT	STYLE_IMPACT_WHITE_40	FX_WHITE_OUT_FREEZE	BGM_NONE	SFX_VACUUM_SUCK							
+STORY_PROLOGUE_12	40	NARRATION		번쩍-!!						[디자인] 굵은 고딕 40pt 흰색 / 강력한 섬광(화이트 아웃) 후 잠시 정지	INSTANT	STYLE_IMPACT_WHITE_32	FX_WHITE_OUT_FREEZE	BGM_NONE	SFX_VACUUM_SUCK							
 STORY_PROLOGUE_12	41	NARRATION		섬광과 함께, 비명을 지를 새도 없이 P와 다섯 소녀는 차원의 틈새로 빨려 들어갔다.						[디자인] 명조체 24pt 밝은 회색 / 화이트 아웃에서 어두운 배경으로 서서히 돌아옴 / 새 BGM: 잔잔하고 서늘한 잔향	SLOW	STYLE_NARRATION	FX_WHITE_TO_DARK	BGM_ABYSS_AFTERGLOW								
 STORY_PROLOGUE_12	42	NARRATION		폭풍이 휩쓸고 간 텅 빈 지하실에는, 산산 조각난 거울 파편들과 허공을 맴도는 기괴한 묵향만이 희미하게 남아 그들이 존재했음을 증명하고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 서서히 검게 암전되며 씬 종료 / BGM 페이드 아웃	VERY_SLOW	STYLE_NARRATION	FX_FADE_TO_BLACK	BGM_NONE								
 STORY_PROLOGUE_13	1	NARRATION		삐이이-						#12-A. 영요서고 중앙 홀 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 / BGM 정지	INSTANT	STYLE_IMPACT_RED_32	FX_BLACKOUT	BGM_NONE	SFX_TINNITUS							

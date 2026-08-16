@@ -857,6 +857,7 @@ MonoBehaviour:
     - STYLE_IDOL_PINK_24
     - STYLE_IMPACT_BROWN_32
     - STYLE_IMPACT_BROWN_36
+    - STYLE_IMPACT_BROWN_40
     - STYLE_IMPACT_GRAY_28
     - STYLE_IMPACT_RED_32
     - STYLE_IMPACT_RED_36
@@ -1011,6 +1012,10 @@ MonoBehaviour:
       _fontStyle: 1
     - _font: {fileID: 0}
       _fontSize: 36
+      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _fontStyle: 1
+    - _font: {fileID: 0}
+      _fontSize: 40
       _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
       _fontStyle: 1
     - _font: {fileID: 0}

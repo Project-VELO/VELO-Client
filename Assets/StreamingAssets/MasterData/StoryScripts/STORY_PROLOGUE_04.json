@@ -20,7 +20,7 @@
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_BLACKOUT_MONO",
             "BgmId": "",
             "SfxId": "SFX_IRON_DOOR_SLOW"
@@ -250,7 +250,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_32",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": "SFX_ENVELOPE_DROP"
@@ -1124,7 +1124,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_32",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_BLACKOUT_MONO",
             "BgmId": "",
             "SfxId": "SFX_DOORLOCK_BEEP"

@@ -20,7 +20,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_ALERT_RED_32",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_RUSTY_DOOR_BURST"
@@ -319,7 +319,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_SCREEN_SHAKE_LIGHT",
             "BgmId": "",
             "SfxId": "SFX_RAILING_STEP"
@@ -572,7 +572,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_IMPACT_WHITE_32",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_SNOW_STORM",
             "BgmId": "",
             "SfxId": "SFX_SHARP_WIND"
@@ -710,7 +710,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_FREEZE",
             "BgmId": "BGM_NONE",
             "SfxId": "SFX_SHATTER_EERIE"

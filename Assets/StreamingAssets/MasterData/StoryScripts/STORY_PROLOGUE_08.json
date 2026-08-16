@@ -20,7 +20,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_BLACKOUT",
             "BgmId": "",
             "SfxId": "SFX_BASS_AMP_HEARTBEAT"
@@ -319,7 +319,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_LIGHT_BURST",
             "BgmId": "",
             "SfxId": "SFX_GATE_OPEN"
@@ -641,7 +641,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_BLACKOUT_INSTANT",
             "BgmId": "BGM_NONE",
             "SfxId": "SFX_BREAKER_DOWN"
@@ -825,7 +825,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION",
+            "TextStyleId": "STYLE_IMPACT_WHITE_40",
             "EffectId": "FX_SHAKE_VERTICAL",
             "BgmId": "",
             "SfxId": "SFX_DARK_STAGE_STEP"
@@ -1009,7 +1009,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_SCREEN_SHAKE_HARD",
             "BgmId": "",
             "SfxId": "SFX_TRIP_EQUIPMENT"
@@ -1699,7 +1699,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_RED_FLASH_SHAKE",
             "BgmId": "",
             "SfxId": "SFX_KICK_SHIN"

@@ -20,7 +20,7 @@
             "IllustrationId": "",
             "TextSpeedName": "SLOW",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_BLACKOUT",
             "BgmId": "",
             "SfxId": "SFX_LIMPING_FOOTSTEP"
@@ -411,7 +411,7 @@
             "IllustrationId": "",
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "FX_SCREEN_DARKEN",
             "BgmId": "",
             "SfxId": "SFX_CALL_END"
@@ -572,7 +572,7 @@
             "IllustrationId": "",
             "TextSpeedName": "WORD_BY_WORD",
             "TextPlacementName": "DIALOG_BOX",
-            "TextStyleId": "STYLE_NARRATION_RED_EMPH",
+            "TextStyleId": "STYLE_IMPACT_RED_40",
             "EffectId": "",
             "BgmId": "",
             "SfxId": "SFX_HIGH_HEELS"

@@ -136,6 +136,30 @@
             "MemberOrder": -1,
             "PortraitPath": "",
             "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_STATION_HEAD",
+            "DisplayName": "국장",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_IDOL_1",
+            "DisplayName": "아이돌 1",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
+        },
+        {
+            "CharacterId": "CHAR_IDOL_2",
+            "DisplayName": "아이돌 2",
+            "IsMember": false,
+            "MemberOrder": -1,
+            "PortraitPath": "",
+            "ExpressionIds": []
         }
     ]
 }

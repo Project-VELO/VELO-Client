@@ -452,7 +452,7 @@ STORY_PROLOGUE_08	78	NARRATION		언제 무슨 일이 있었냐는 듯, 다시 �
 STORY_PROLOGUE_08	79	NARRATION		아이들의 피와 땀, P의 찢겨진 자존심이 모조리 갈려 들어간 3분 30초의 기적은,						[디자인] 명조체 24pt 밝은 회색 / 눈부신 화면 서서히 어두워짐 / 경쾌한 BGM이 찌그러지며 먹먹해짐	SLOW	STYLE_NARRATION	FX_BRIGHT_TO_DARK							
 STORY_PROLOGUE_08	80	NARRATION		자본의 전화 한 통에 의해 그렇게 단 2분 만에 철저하게 쓰레기통에 처박히고 말았다.						[디자인] 명조체 24pt 붉은색 강조 / 화면 완전히 암전 / 찌그러진 BGM 유지	VERY_SLOW	STYLE_NARRATION	FX_BLACKOUT_FULL							
 STORY_PROLOGUE_08	81	NARRATION		거대 자본의 눈 밖에 난, 투명 인간들의 무대 따위는, 처음부터 이 세상에 존재하지 않았다.						[디자인] 명조체 24pt 흰색 / 암전 유지 / BGM 서서히 페이드 아웃 되며 씬 종료	VERY_SLOW	STYLE_NARRATION_WHITE		BGM_NONE						
-STORY_PROLOGUE_09	1	NARRATION		탁... 끌럭, 탁...						#8-A. M-Beat 방송국 복도 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 유지 / BGM 대기	SLOW	STYLE_IMPACT_RED_32	FX_BLACKOUT		SFX_LIMPING_FOOTSTEP					
+STORY_PROLOGUE_09	1	NARRATION		탁... 끌럭, 탁...						#8-A. M-Beat 방송국 복도 / [디자인] 굵은 고딕 32pt 붉은색 / 암전 상태 유지 / BGM 대기	SLOW	STYLE_NARRATION_RED_EMPH	FX_BLACKOUT		SFX_LIMPING_FOOTSTEP					
 STORY_PROLOGUE_09	2	NARRATION		방송국의 차갑고 하얀 대리석 복도.	8-A					[디자인] 명조체 24pt 밝은 회색 / 8-A로 서서히 디졸브 / BGM 처절하고 절망적인 음악	NORMAL	STYLE_NARRATION	FX_DISSOLVE	BGM_CORRIDOR_DESPAIR						
 STORY_PROLOGUE_09	3	NARRATION		조금 전까지 무대를 부술 듯이 날아다니던 다섯 소녀는, 이제 초라한 패잔병이 되어 걷고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 어두워짐	SLOW	STYLE_NARRATION	FX_SCREEN_DARKEN							
 STORY_PROLOGUE_09	4	NARRATION		발목이 부어오른 지우를 리아와 하나가 양쪽에서 힘겹게 부축했고,						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
@@ -460,39 +460,39 @@ STORY_PROLOGUE_09	5	NARRATION		무릎이 까져 피가 흐르는 서윤은 넋�
 STORY_PROLOGUE_09	6	NARRATION		테이프를 감았던 미나의 발목에도 붉은 피가 배어 나와 대리석 바닥에 점점이 얼룩을 남겼다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_09	7	NARRATION		복도 너머로는 그들을 쫓아내고 올라간 다음 팀의 경쾌한 음악 소리와 관객들의 환호성이 환청처럼 웅웅거렸다.						[디자인] 명조체 24pt 밝은 회색 / 벽 너머로 들리는 먹먹한 환호성과 댄스 음악	NORMAL	STYLE_NARRATION			SFX_MUFFLED_CHEER					
 STORY_PROLOGUE_09	8	NARRATION		그 무거운 절망의 행렬 맨 앞에서, P는 피가 나도록 입술을 짓씹으며 전화기에 대고 악을 쓰고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_09	9	DIALOGUE	CHAR_P	보상? 국장님, 지금 장난하십니까?! 애들이 다쳤어요!					P	[디자인] 고딕체 28pt 순백색 / 화면 크게 상하로 흔들림	INSTANT	STYLE_P_SHOUT_28	FX_SHAKE_VERTICAL		SFX_CLOTH_RUSTLE					
-STORY_PROLOGUE_09	10	DIALOGUE	CHAR_P	음악이 끊겼는데도 생목으로 노래 부르던 애들을 스태프들이 짐짝처럼 던졌다고요!!					P	[디자인] 굵은 고딕 32pt 붉은색 강조 / 화면 거칠게 흔들림	INSTANT	STYLE_IMPACT_RED_EMPH_32	FX_SCREEN_SHAKE_HARD							
-STORY_PROLOGUE_09	11	DIALOGUE		(전화기 너머) 아휴, P. 거참 말귀 못 알아듣네.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 오른쪽 화남, 전화 통화 효과와 함께 페이드 인 (단역이라 초상 미지원)	NORMAL	STYLE_DIRECTOR_BLUE_24	FX_SHAKE_STOP		SFX_PHONE_STATIC					
-STORY_PROLOGUE_09	12	DIALOGUE		(전화기 너머) 그러니까 우리가 위약금 두 배로 쳐서 입금해 주겠다잖아.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 통화음 유지	NORMAL	STYLE_DIRECTOR_BLUE_24								
-STORY_PROLOGUE_09	13	DIALOGUE		(전화기 너머) S-Tier에서 라인업 다 뺀다는데 나보고 어쩌라고? 방송국 문 닫아?					국장	[디자인] 고딕체 26pt 탁한 푸른색 / [연출] 국장 유지 / 통화음 유지	INSTANT	STYLE_DIRECTOR_BLUE_26								
-STORY_PROLOGUE_09	14	DIALOGUE	CHAR_P	돈이 문제가 아니잖아!! 그 3분 30초 준비하려고 저 애들이 얼마나...					P	[디자인] 고딕체 28pt 순백색 / BGM 볼륨 복구	INSTANT	STYLE_P_SHOUT_28	FX_SCREEN_SHAKE_LIGHT							
-STORY_PROLOGUE_09	15	DIALOGUE		(전화기 너머) P. 낭만 찾지 말고 현실을 봐. 누가 그딴 쓰레기 기획사 애들 춤 추는 거 궁금해한대?					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 표정 기본으로 변경 / 화면 멈춤(정적) / BGM 일시 정지	NORMAL	STYLE_DIRECTOR_BLUE_24	FX_FREEZE	BGM_NONE						
-STORY_PROLOGUE_09	16	DIALOGUE		(전화기 너머) 어차피 시청률 갉아먹는 땜빵이었어. 불쌍해서 거둬줬더니... 불똥이 크게 튀었구만.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 적막 유지	NORMAL	STYLE_DIRECTOR_BLUE_24								
-STORY_PROLOGUE_09	17	DIALOGUE		(전화기 너머) 돈 챙겨줄 때 조용히 떨어져.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 적막 유지	SLOW	STYLE_DIRECTOR_BLUE_24								
-STORY_PROLOGUE_09	18	NARRATION		뚜뚜뚜-						[디자인] 굵은 고딕 32pt 붉은색 / [연출] 국장 즉시 컷 아웃 퇴장	INSTANT	STYLE_IMPACT_RED_32	FX_SCREEN_DARKEN		SFX_CALL_END					
+STORY_PROLOGUE_09	9	DIALOGUE	CHAR_P	보상? 국장님, 지금 장난하십니까?! 애들이 다쳤어요!					P	[디자인] 고딕체 28pt 순백색 / 화면 크게 상하로 흔들림	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SHAKE_VERTICAL		SFX_CLOTH_RUSTLE					
+STORY_PROLOGUE_09	10	DIALOGUE	CHAR_P	음악이 끊겼는데도 생목으로 노래 부르던 애들을 스태프들이 짐짝처럼 던졌다고요!!					P	[디자인] 굵은 고딕 32pt 붉은색 강조 / 화면 거칠게 흔들림	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SCREEN_SHAKE_HARD							
+STORY_PROLOGUE_09	11	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) 아휴, P. 거참 말귀 못 알아듣네.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 오른쪽 화남, 전화 통화 효과와 함께 페이드 인 (단역이라 초상 미지원)	NORMAL	STYLE_DIRECTOR_BLUE_24	FX_SHAKE_STOP		SFX_PHONE_STATIC	CHAR_STATION_HEAD	EXP_ANGRY			
+STORY_PROLOGUE_09	12	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) 그러니까 우리가 위약금 두 배로 쳐서 입금해 주겠다잖아.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 통화음 유지	NORMAL	STYLE_DIRECTOR_BLUE_24								
+STORY_PROLOGUE_09	13	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) S-Tier에서 라인업 다 뺀다는데 나보고 어쩌라고? 방송국 문 닫아?					국장	[디자인] 고딕체 26pt 탁한 푸른색 / [연출] 국장 유지 / 통화음 유지	INSTANT	STYLE_DIRECTOR_BLUE_24								
+STORY_PROLOGUE_09	14	DIALOGUE	CHAR_P	돈이 문제가 아니잖아!! 그 3분 30초 준비하려고 저 애들이 얼마나...					P	[디자인] 고딕체 28pt 순백색 / BGM 볼륨 복구	INSTANT	STYLE_P_SHOUT_PLAIN_32	FX_SCREEN_SHAKE_LIGHT							
+STORY_PROLOGUE_09	15	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) P. 낭만 찾지 말고 현실을 봐. 누가 그딴 쓰레기 기획사 애들 춤 추는 거 궁금해한대?					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 표정 기본으로 변경 / 화면 멈춤(정적) / BGM 일시 정지	NORMAL	STYLE_DIRECTOR_BLUE_24	FX_FREEZE	BGM_NONE		CHAR_STATION_HEAD	EXP_NORMAL			
+STORY_PROLOGUE_09	16	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) 어차피 시청률 갉아먹는 땜빵이었어. 불쌍해서 거둬줬더니... 불똥이 크게 튀었구만.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 적막 유지	NORMAL	STYLE_DIRECTOR_BLUE_24								
+STORY_PROLOGUE_09	17	DIALOGUE	CHAR_STATION_HEAD	(전화기 너머) 돈 챙겨줄 때 조용히 떨어져.					국장	[디자인] 고딕체 24pt 탁한 푸른색 / [연출] 국장 유지 / 적막 유지	SLOW	STYLE_DIRECTOR_BLUE_24								
+STORY_PROLOGUE_09	18	NARRATION		뚜뚜뚜-						[디자인] 굵은 고딕 32pt 붉은색 / [연출] 국장 즉시 컷 아웃 퇴장	INSTANT	STYLE_NARRATION_RED_EMPH	FX_SCREEN_DARKEN		SFX_CALL_END	NONE				
 STORY_PROLOGUE_09	19	NARRATION		일방적으로 끊긴 전화.						[디자인] 명조체 24pt 밝은 회색 / BGM 다시 시작(더 깊고 무거운 절망의 테마)	NORMAL	STYLE_NARRATION		BGM_CORRIDOR_DESPAIR_DEEP						
 STORY_PROLOGUE_09	20	NARRATION		P는 액정이 박살 난 스마트폰을 쥔 채, 그대로 차가운 복도 벽에 이마를 처박았다.						[디자인] 명조체 24pt 밝은 회색 / 화면 미세하게 덜컹거림	SLOW	STYLE_NARRATION	FX_SCREEN_RUMBLE_FINE		SFX_HEAD_ON_WALL					
 STORY_PROLOGUE_09	21	NARRATION		쓰레기 기획사, 시청률 갉아먹는 땜빵.						[디자인] 명조체 24pt 흰색 강조 / 변동 없음	WORD_BY_WORD	STYLE_NARRATION_WHITE_EMPH								
 STORY_PROLOGUE_09	22	NARRATION		뼈를 깎아 만든 그들의 기적이, 저 견고한 자본의 성벽 안에서는 그저 언제든 돈 몇 푼 쥐여주고 치워버릴 수 있는 오물 취급을 받고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
-STORY_PROLOGUE_09	23	NARRATION		그때였다.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감) / BGM 정지	WORD_BY_WORD	STYLE_SERIF_BOLD_WHITE_28	FX_FREEZE	BGM_NONE						
+STORY_PROLOGUE_09	23	NARRATION		그때였다.						[디자인] 굵은 명조 28pt 흰색 / 화면 멈춤(긴장감) / BGM 정지	WORD_BY_WORD	STYLE_NARRATION	FX_FREEZE	BGM_NONE						
 STORY_PROLOGUE_09	24	NARRATION		처참한 정적을 깨고, 복도 저편에서 경쾌하고도 거만한 구두 발소리가 들려왔다.						[디자인] 명조체 24pt 밝은 회색 / 밝기 서서히 복구 / BGM 정지 유지	NORMAL	STYLE_NARRATION	FX_BRIGHTNESS_RECOVER							
-STORY_PROLOGUE_09	25	NARRATION		또각, 또각, 또각.						[디자인] 굵은 고딕 32pt 붉은색 / 날카롭고 거만한 하이힐 소리	WORD_BY_WORD	STYLE_IMPACT_RED_32			SFX_HIGH_HEELS					
+STORY_PROLOGUE_09	25	NARRATION		또각, 또각, 또각.						[디자인] 굵은 고딕 32pt 붉은색 / 날카롭고 거만한 하이힐 소리	WORD_BY_WORD	STYLE_NARRATION_RED_EMPH			SFX_HIGH_HEELS					
 STORY_PROLOGUE_09	26	NARRATION		최고급 샵에서 세팅을 마친 완벽한 헤어스타일, 눈이 부실 정도로 반짝이는 무대의상과 다이아몬드 액세서리.						[디자인] 명조체 24pt 밝은 회색 / 화면 전체에 화려한 조명(블룸) 은은하게 / 새 BGM: 화려하지만 위압적인 음악	NORMAL	STYLE_NARRATION	FX_BLOOM_SOFT	BGM_CORRIDOR_LUXURY						
 STORY_PROLOGUE_09	27	NARRATION		수많은 스태프와 매니저들의 철통같은 호위를 받으며 복도를 걸어오는 이들은, 현재 대한민국에서 가장 잘 나가는 S-Tier의 간판 걸그룹이었다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
-STORY_PROLOGUE_09	28	NARRATION		그리고 그 화려한 행렬의 맨 앞에, 여유로운 미소를 띤 주희가 걷고 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 오른쪽 웃음, 여유롭게 슬라이드 인 (주희 표정 목록에 웃음이 없어 EXP_NORMAL)	NORMAL	STYLE_NARRATION				CHAR_JUHUI	EXP_NORMAL			
+STORY_PROLOGUE_09	28	NARRATION		그리고 그 화려한 행렬의 맨 앞에, 여유로운 미소를 띤 주희가 걷고 있었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 오른쪽 웃음, 여유롭게 슬라이드 인 (주희 표정 목록에 웃음이 없어 EXP_NORMAL)	NORMAL	STYLE_NARRATION				CHAR_JUHUI	EXP_SMILE			
 STORY_PROLOGUE_09	29	NARRATION		주희의 등장에, 넋을 놓고 있던 아이들의 몸이 뻣뻣하게 굳었다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 유지 / BGM Ducking	NORMAL	STYLE_NARRATION			SFX_TINNITUS_SOFT					
 STORY_PROLOGUE_09	30	NARRATION		최고급 향수 냄새가 땀과 피, 지하실의 곰팡내가 섞인 아이들의 공기를 폭력적으로 덮어눌렀다.						[디자인] 명조체 24pt 밝은 회색 / 화면의 블룸 효과가 더욱 강해짐 / BGM 볼륨 복구	SLOW	STYLE_NARRATION	FX_BLOOM_STRONG							
-STORY_PROLOGUE_09	31	NARRATION		S-Tier의 아이돌들은 흙먼지를 뒤집어쓴 지우와 미나를 보며 불결한 것을 보았다는 듯 코를 막고 킥킥거렸다.		CHAR_JUHUI	EXP_NORMAL			[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 왼쪽으로 이동 + 아이돌 1 오른쪽 웃음 페이드 인 (단역이라 초상 미지원, 주희 유지)	NORMAL	STYLE_NARRATION				NONE				
-STORY_PROLOGUE_09	32	DIALOGUE		야, 쟤네 뭐야? 피 냄새 나. 방송국에 거지도 들어와?					아이돌 1	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희·아이돌 1 유지	NORMAL	STYLE_IDOL_PINK_24								
-STORY_PROLOGUE_09	33	DIALOGUE		아. 저번에 버렸다는 그 불량품들인가 봐.					아이돌 2	[디자인] 고딕체 24pt 연분홍색 / [연출] 아이돌 1 컷 아웃, 아이돌 2 오른쪽 웃음 컷 인	NORMAL	STYLE_IDOL_PINK_24								
-STORY_PROLOGUE_09	34	DIALOGUE		본 것 같기도 하고. 진짜 질척거리게 왜 여기까지 기어 들어왔대?					아이돌 2	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희·아이돌 2 유지	NORMAL	STYLE_IDOL_PINK_24								
-STORY_PROLOGUE_09	35	NARRATION		소녀들은 그 어떤 대꾸도 하지 못했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 모두 페이드 아웃 퇴장 / 화면 효과 꺼지며 차갑고 어두워짐	NORMAL	STYLE_NARRATION	FX_EFFECT_OFF_DARKEN							
-STORY_PROLOGUE_09	36	NARRATION		미나는 그저 고개를 푹 숙인 채 피가 나도록 입술을 짓씹었고, 서윤의 텅 빈 두 눈에서는 소리 없는 눈물만 뚝뚝 떨어져 내렸다.		CHAR_MINA	EXP_ANGRY			[디자인] 명조체 24pt 밝은 회색 / [연출] 미나 왼쪽 화남 + 서윤 오른쪽 기본 페이드 인	SLOW	STYLE_NARRATION								
-STORY_PROLOGUE_09	37	NARRATION		지우는 아픈 발목을 쥔 채 입을 틀어막았고, 하나는 숨소리조차 내지 못한 채 덜덜 떨기만 했다.		CHAR_JIWOO	EXP_SAD			[디자인] 명조체 24pt 밝은 회색 / [연출] 미나·서윤 퇴장, 지우 왼쪽 걱정 + 하나 오른쪽 걱정 미세하게 흔들리며 페이드 인	SLOW	STYLE_NARRATION								
-STORY_PROLOGUE_09	38	NARRATION		그때 노골적인 조롱에 리아의 눈에 살기가 돌았다.		CHAR_RIA	EXP_ANGRY			[디자인] 명조체 24pt 밝은 회색 / [연출] 지우·하나 퇴장, 리아 왼쪽 화남 빠르게 팝업 등장	NORMAL	STYLE_NARRATION								
+STORY_PROLOGUE_09	31	NARRATION		S-Tier의 아이돌들은 흙먼지를 뒤집어쓴 지우와 미나를 보며 불결한 것을 보았다는 듯 코를 막고 킥킥거렸다.		CHAR_JUHUI	EXP_SMILE			[디자인] 명조체 24pt 밝은 회색 / [연출] 주희 왼쪽으로 이동 + 아이돌 1 오른쪽 웃음 페이드 인 (단역이라 초상 미지원, 주희 유지)	NORMAL	STYLE_NARRATION				CHAR_IDOL_1	EXP_SMILE			
+STORY_PROLOGUE_09	32	DIALOGUE	CHAR_IDOL_1	야, 쟤네 뭐야? 피 냄새 나. 방송국에 거지도 들어와?					아이돌 1	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희·아이돌 1 유지	NORMAL	STYLE_IDOL_PINK_24								
+STORY_PROLOGUE_09	33	DIALOGUE	CHAR_IDOL_2	아. 저번에 버렸다는 그 불량품들인가 봐.					아이돌 2	[디자인] 고딕체 24pt 연분홍색 / [연출] 아이돌 1 컷 아웃, 아이돌 2 오른쪽 웃음 컷 인	NORMAL	STYLE_IDOL_PINK_24				CHAR_IDOL_2	EXP_SMILE			
+STORY_PROLOGUE_09	34	DIALOGUE	CHAR_IDOL_2	본 것 같기도 하고. 진짜 질척거리게 왜 여기까지 기어 들어왔대?					아이돌 2	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희·아이돌 2 유지	NORMAL	STYLE_IDOL_PINK_24								
+STORY_PROLOGUE_09	35	NARRATION		소녀들은 그 어떤 대꾸도 하지 못했다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 모두 페이드 아웃 퇴장 / 화면 효과 꺼지며 차갑고 어두워짐	NORMAL	STYLE_NARRATION	FX_EFFECT_OFF_DARKEN			NONE				
+STORY_PROLOGUE_09	36	NARRATION		미나는 그저 고개를 푹 숙인 채 피가 나도록 입술을 짓씹었고, 서윤의 텅 빈 두 눈에서는 소리 없는 눈물만 뚝뚝 떨어져 내렸다.		CHAR_MINA	EXP_ANGRY			[디자인] 명조체 24pt 밝은 회색 / [연출] 미나 왼쪽 화남 + 서윤 오른쪽 기본 페이드 인	SLOW	STYLE_NARRATION				CHAR_SEOYUN	EXP_NORMAL			
+STORY_PROLOGUE_09	37	NARRATION		지우는 아픈 발목을 쥔 채 입을 틀어막았고, 하나는 숨소리조차 내지 못한 채 덜덜 떨기만 했다.		CHAR_JIWOO	EXP_SAD			[디자인] 명조체 24pt 밝은 회색 / [연출] 미나·서윤 퇴장, 지우 왼쪽 걱정 + 하나 오른쪽 걱정 미세하게 흔들리며 페이드 인	SLOW	STYLE_NARRATION				CHAR_HANA	EXP_SAD			
+STORY_PROLOGUE_09	38	NARRATION		그때 노골적인 조롱에 리아의 눈에 살기가 돌았다.		CHAR_RIA	EXP_ANGRY			[디자인] 명조체 24pt 밝은 회색 / [연출] 지우·하나 퇴장, 리아 왼쪽 화남 빠르게 팝업 등장	NORMAL	STYLE_NARRATION				NONE				
 STORY_PROLOGUE_09	39	NARRATION		리아가 당장이라도 달려들 듯 주먹을 쥐었지만. P가 황급히 팔을 뻗어 리아를 막아세웠다.						[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 유지	NORMAL	STYLE_NARRATION	FX_SCREEN_SHAKE_LIGHT		SFX_GRAB_CLOTH					
 STORY_PROLOGUE_09	40	NARRATION		여기서 저들과 마찰을 빚어봤자 상처받는 것은 힘없는 아이들뿐이었다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 페이드 아웃 퇴장	SLOW	STYLE_NARRATION								
-STORY_PROLOGUE_09	41	DIALOGUE	CHAR_P	비켜, 강주희.					P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 오른쪽 웃음 다시 페이드 인 (표정 목록에 웃음 없어 EXP_NORMAL)	INSTANT	STYLE_P_DIALOGUE_26				CHAR_JUHUI	EXP_NORMAL			
+STORY_PROLOGUE_09	41	DIALOGUE	CHAR_P	비켜, 강주희.					P	[디자인] 고딕체 26pt 순백색 / [연출] 주희 오른쪽 웃음 다시 페이드 인 (표정 목록에 웃음 없어 EXP_NORMAL)	INSTANT	STYLE_P_DIALOGUE				CHAR_JUHUI	EXP_SMILE			
 STORY_PROLOGUE_09	42	DIALOGUE	CHAR_JUHUI	거봐, P. 내가 내 옆에 얌전히 있으라고 했잖아.					주희	[디자인] 고딕체 24pt 연분홍색 / 화면 줌인(주희 강조)	NORMAL	STYLE_JUHUI	FX_ZOOM_IN_JUHUI							
 STORY_PROLOGUE_09	43	DIALOGUE	CHAR_JUHUI	주제 파악 못 하고 내동댕이쳐진 대가가 겨우 이거야?					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지	NORMAL	STYLE_JUHUI								
 STORY_PROLOGUE_09	44	DIALOGUE	CHAR_JUHUI	너희들도 참 불쌍하다. P의 그 알량한 영웅놀이에 놀아나서, 그 냄새나는 지하실에서 썩어가고 있는 꼴이라니.					주희	[디자인] 고딕체 24pt 연분홍색 / [연출] 주희 유지	NORMAL	STYLE_JUHUI								
@@ -510,12 +510,12 @@ STORY_PROLOGUE_09	55	NARRATION		P가 문을 열고 들어가자, 부축을 받�
 STORY_PROLOGUE_09	56	NARRATION		누구도 입을 열지 않았다.						[디자인] 명조체 24pt 흰색 / 화면 멈춤(숨 막히는 정적)	WORD_BY_WORD	STYLE_NARRATION_WHITE	FX_FREEZE							
 STORY_PROLOGUE_09	57	NARRATION		위로조차 건넬 수 없을 만큼 무거운 절망이 방 안을 짓눌렀다.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_09	58	NARRATION		침묵만이 감도는 대기실 안, 유일하게 켜져 있는 것은 벽걸이 TV뿐이었다.						[디자인] 명조체 24pt 밝은 회색 / 화면 중앙에 희미한 푸른 불빛(TV) 점멸	NORMAL	STYLE_NARRATION	FX_TV_GLOW							
-STORY_PROLOGUE_09	59	DIALOGUE		(TV 음성) 자. 다음 무대는 여러분이 가장 기다리셨을 주인공들입니다! S-Tier의...!!					MC	[디자인] 고딕체 26pt 탁한 푸른색 / 푸른 불빛이 환하게 점멸 (단역이라 초상 미지원)	INSTANT	STYLE_MC_BLUE_26	FX_TV_FLASH		SFX_TV_FANFARE					
+STORY_PROLOGUE_09	59	DIALOGUE		(TV 음성) 자. 다음 무대는 여러분이 가장 기다리셨을 주인공들입니다! S-Tier의...!!					MC	[디자인] 고딕체 26pt 탁한 푸른색 / 푸른 불빛이 환하게 점멸 (단역이라 초상 미지원)	INSTANT	STYLE_MC_BLUE_32	FX_TV_FLASH		SFX_TV_FANFARE					
 STORY_PROLOGUE_09	60	NARRATION		TV 화면 속 생방송 화면.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	NORMAL	STYLE_NARRATION								
 STORY_PROLOGUE_09	61	NARRATION		조금 전, 아이들이 짐짝처럼 끌려 내려왔던 바로 그 메인 무대.						[디자인] 명조체 24pt 밝은 회색 / 변동 없음	SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_09	62	NARRATION		그 위에서 방금 복도를 지나갔던 S-Tier의 아이돌들이 화려한 특수효과와 눈부신 조명을 받으며 춤을 추고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 번쩍이는 TV 불빛 지속	NORMAL	STYLE_NARRATION	FX_TV_FLICKER							
 STORY_PROLOGUE_09	63	NARRATION		관객석은 그들의 이름을 연호하며 열광의 도가니에 빠져 있었다.						[디자인] 명조체 24pt 밝은 회색 / 함성 소리 극대화	NORMAL	STYLE_NARRATION			SFX_CROWD_ROAR_PEAK					
-STORY_PROLOGUE_09	64	NARRATION		자본이 만들어낸 가장 완벽하고 찬란한 낙원.						[디자인] 명조체 26pt 흰색 강조 / 화면 어두워지며 오직 TV 불빛만 깜빡임	SLOW	STYLE_NARRATION_26_WHITE_EMPH	FX_ONLY_TV_LIGHT							
+STORY_PROLOGUE_09	64	NARRATION		자본이 만들어낸 가장 완벽하고 찬란한 낙원.						[디자인] 명조체 26pt 흰색 강조 / 화면 어두워지며 오직 TV 불빛만 깜빡임	SLOW	STYLE_NARRATION	FX_ONLY_TV_LIGHT							
 STORY_PROLOGUE_09	65	NARRATION		그리고 그 낙원에서 철저히 추방당한 채, 어두운 대기실 소파에 앉아 피 묻은 무릎을 끌어안고 화면만 멍하니 올려다보는 다섯 명의 투명 인간들.						[디자인] 명조체 24pt 밝은 회색 / 함성 소리 서서히 멀어지며 먹먹해짐	VERY_SLOW	STYLE_NARRATION								
 STORY_PROLOGUE_09	66	NARRATION		TV에서 쏟아지는 눈부신 빛이 넋이 나간 아이들의 텅 빈 눈동자를 잔인하게 비추고 있었다.						[디자인] 명조체 24pt 밝은 회색 / 잔인할 정도로 하얗고 눈부신 화이트 아웃	SLOW	STYLE_NARRATION	FX_WHITE_OUT							
 STORY_PROLOGUE_09	67	NARRATION		세상의 어떤 노력으로도 저 거대한 폭력을 이길 수 없음을, 그들 모두가 뼈저리게 깨달은 밤이었다.						[디자인] 명조체 24pt 흰색 / 화이트 아웃에서 천천히 검게 암전되며 씬 종료 / BGM 여운 남기며 페이드 아웃	VERY_SLOW	STYLE_NARRATION_WHITE	FX_WHITE_TO_BLACK	BGM_NONE						

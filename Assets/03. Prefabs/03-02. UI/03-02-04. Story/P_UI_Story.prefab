@@ -728,6 +728,9 @@ MonoBehaviour:
     - CHAR_PD_MAIN
     - CHAR_FD
     - CHAR_STAFF
+    - CHAR_STATION_HEAD
+    - CHAR_IDOL_1
+    - CHAR_IDOL_2
     _values:
     - {r: 0.35, g: 0.62, b: 0.92, a: 1}
     - {r: 0.98, g: 0.72, b: 0.35, a: 1}
@@ -746,6 +749,9 @@ MonoBehaviour:
     - {r: 0.3098039, g: 0.3568628, b: 0.4, a: 1}
     - {r: 0.5568628, g: 0.4313726, b: 0.5568628, a: 1}
     - {r: 0.4196078, g: 0.3098039, b: 0.227451, a: 1}
+    - {r: 0.2901961, g: 0.4, b: 0.3372549, a: 1}
+    - {r: 0.8313726, g: 0.627451, b: 0.7686275, a: 1}
+    - {r: 0.7686275, g: 0.627451, b: 0.8313726, a: 1}
   _unknownCharacterColor: {r: 0.45, g: 0.45, b: 0.48, a: 1}
   _backgroundPlaceholderColor: {r: 0.12, g: 0.11, b: 0.16, a: 1}
 --- !u!114 &3073515681631702927
@@ -853,6 +859,7 @@ MonoBehaviour:
     - STYLE_MAIL_BLUE_24
     - STYLE_MAIL_WHITE_24
     - STYLE_MC_BLUE_26
+    - STYLE_MC_BLUE_32
     - STYLE_MEMBER
     - STYLE_MEMBER_26
     - STYLE_MEMBER_28
@@ -1058,6 +1065,10 @@ MonoBehaviour:
       _fontStyle: 0
     - _font: {fileID: 0}
       _fontSize: 26
+      _color: {r: 0, g: 0, b: 0, a: 1}
+      _fontStyle: 0
+    - _font: {fileID: 0}
+      _fontSize: 32
       _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
     - _font: {fileID: 0}

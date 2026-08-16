@@ -29,6 +29,8 @@ public class StoryScriptTsvParser
     /// <summary>
     /// 오른쪽 슬롯입니다. 2인 대화에서만 채우므로 대부분의 행에서 비어 있습니다.
     /// </summary>
+    public const string COLUMN_CENTER_CHARACTER_ID = "centerCharacterId";
+    public const string COLUMN_CENTER_EXPRESSION_ID = "centerExpressionId";
     public const string COLUMN_RIGHT_CHARACTER_ID = "rightCharacterId";
     public const string COLUMN_RIGHT_EXPRESSION_ID = "rightExpressionId";
     public const string COLUMN_ILLUSTRATION_ID = "illustrationId";
@@ -171,6 +173,8 @@ public class StoryScriptTsvParser
             BackgroundId = GetCell(cells, columns, COLUMN_BACKGROUND_ID),
             CharacterId = GetCell(cells, columns, COLUMN_CHARACTER_ID),
             ExpressionId = GetCell(cells, columns, COLUMN_EXPRESSION_ID),
+            CenterCharacterId = GetCell(cells, columns, COLUMN_CENTER_CHARACTER_ID),
+            CenterExpressionId = GetCell(cells, columns, COLUMN_CENTER_EXPRESSION_ID),
             RightCharacterId = GetCell(cells, columns, COLUMN_RIGHT_CHARACTER_ID),
             RightExpressionId = GetCell(cells, columns, COLUMN_RIGHT_EXPRESSION_ID),
             IllustrationId = GetCell(cells, columns, COLUMN_ILLUSTRATION_ID),

@@ -62,6 +62,8 @@ public class StoryScriptLoader
         string backgroundId = string.Empty;
         string leftCharacterId = string.Empty;
         string leftExpressionId = string.Empty;
+        string centerCharacterId = string.Empty;
+        string centerExpressionId = string.Empty;
         string rightCharacterId = string.Empty;
         string rightExpressionId = string.Empty;
 
@@ -76,8 +78,9 @@ public class StoryScriptLoader
                 backgroundId = line.BackgroundId;
             }
 
-            // 두 슬롯은 서로의 상태를 모릅니다. 왼쪽이 바뀌어도 오른쪽은 그대로 서 있어야 합니다.
+            // 세 슬롯은 서로의 상태를 모릅니다. 왼쪽이 바뀌어도 나머지는 그대로 서 있어야 합니다.
             ApplySlotState(ref line.CharacterId, ref line.ExpressionId, ref leftCharacterId, ref leftExpressionId);
+            ApplySlotState(ref line.CenterCharacterId, ref line.CenterExpressionId, ref centerCharacterId, ref centerExpressionId);
             ApplySlotState(ref line.RightCharacterId, ref line.RightExpressionId, ref rightCharacterId, ref rightExpressionId);
         }
     }

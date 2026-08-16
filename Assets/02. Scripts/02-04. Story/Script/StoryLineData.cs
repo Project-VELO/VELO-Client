@@ -51,6 +51,14 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string ExpressionId;
 
     /// <summary>
+    /// 가운데에 세울 캐릭터입니다. 세 인물이 한 화면에 서는 장면에서만 채웁니다.
+    /// 왼쪽과 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
+    /// </summary>
+    public string CenterCharacterId;
+
+    public string CenterExpressionId;
+
+    /// <summary>
     /// 오른쪽에 세울 캐릭터입니다. 2인 대화에서만 채웁니다.
     /// 왼쪽과 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
     /// </summary>

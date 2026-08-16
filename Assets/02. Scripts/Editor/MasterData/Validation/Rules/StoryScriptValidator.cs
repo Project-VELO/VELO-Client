@@ -55,12 +55,29 @@ public class StoryScriptValidator
 
             ValidateSpeaker(provider, line, location, report);
             ValidateExpression(provider, line.CharacterId, line.ExpressionId, location, report);
+            ValidateExpression(provider, line.CenterCharacterId, line.CenterExpressionId, $"{location}(가운데)", report);
             ValidateExpression(provider, line.RightCharacterId, line.RightExpressionId, $"{location}(오른쪽)", report);
 
-            if (!string.IsNullOrEmpty(line.CharacterId) && line.CharacterId == line.RightCharacterId)
-            {
-                report.AddError($"[대본] {location}의 좌우 슬롯에 같은 인물({line.CharacterId})이 배치되어 있습니다.");
-            }
+            ValidateSlotDuplication(line, location, report);
+        }
+    }
+
+    /// <summary>
+    /// 같은 인물이 두 자리 이상에 동시에 서 있는지 봅니다.
+    /// 한 명이 좌우로 복제돼 보이는 사고를 데이터 단계에서 잡습니다.
+    /// </summary>
+    private void ValidateSlotDuplication(StoryLineData line, string location, MasterDataValidationReport report)
+    {
+        CheckPair(line.CharacterId, line.CenterCharacterId, "왼쪽과 가운데", location, report);
+        CheckPair(line.CharacterId, line.RightCharacterId, "왼쪽과 오른쪽", location, report);
+        CheckPair(line.CenterCharacterId, line.RightCharacterId, "가운데와 오른쪽", location, report);
+    }
+
+    private void CheckPair(string first, string second, string slots, string location, MasterDataValidationReport report)
+    {
+        if (!string.IsNullOrEmpty(first) && first == second)
+        {
+            report.AddError($"[대본] {location}의 {slots} 슬롯에 같은 인물({first})이 배치되어 있습니다.");
         }
     }
 

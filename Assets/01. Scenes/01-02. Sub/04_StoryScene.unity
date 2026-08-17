@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_Story
       objectReference: {fileID: 0}
+    - target: {fileID: 5156666183170391564, guid: 0f21ed2d97c751e4ab31170d334ff668, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9017732594885643627, guid: 0f21ed2d97c751e4ab31170d334ff668, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

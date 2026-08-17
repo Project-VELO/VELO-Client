@@ -21,8 +21,8 @@ public class RewardData
     public int Hype;
 
     /// <summary>
-    /// 지급은 하되 보상 팝업에는 표시하지 않습니다. 팝업이 세 칸 구성이라
-    /// 자리가 없으며, 획득량은 스케줄 화면(UI_ScheduleItemToday)에서 확인합니다.
+    /// 지급은 하되 보상 팝업에는 표시하지 않습니다. 팝업이 세 칸 구성이라 자리가 없습니다.
+    /// 스케줄 목록에도 예정 보상을 적지 않으므로, 지금은 화면에 드러나지 않는 값입니다.
     /// </summary>
     public int Exp;
 }

@@ -55,7 +55,7 @@ public class UI_OfficeWeeklyPanel : MonoBehaviour
                 continue;
             }
 
-            _dayCells[i].SetDay(dayIds[i], i + 1);
+            _dayCells[i].SetDay(dayIds[i], i + 1, GameProgressService.Instance.GetSchedulesByDay(weekId, dayIds[i]));
             _dayCells[i].RefreshState(GameProgressService.Instance.GetDayViewState(weekId, dayIds[i]));
         }
 

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &411959272524083279
 RectTransform:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1166127735668563269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -520,7 +520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7252781588888130657
 RectTransform:
   m_ObjectHideFlags: 0
@@ -652,6 +652,7 @@ GameObject:
   - component: {fileID: 2245061605650002925}
   - component: {fileID: 6672127033670653235}
   - component: {fileID: 3760817567753813788}
+  - component: {fileID: 1926399363125958155}
   m_Layer: 5
   m_Name: Button_ScheduleEnter
   m_TagString: Untagged
@@ -742,7 +743,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -761,6 +762,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1926399363125958155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336748592253742300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b567c1caa4696f4ebab7517936aa937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleShortcutButton
+  _button: {fileID: 3760817567753813788}
+  _label: {fileID: 5255484786351323646}
+  _background: {fileID: 6672127033670653235}
+  _defaultSprite: {fileID: 0}
+  _completedSprite: {fileID: 0}
 --- !u!1 &4394187077426007840
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6752562895764893389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1038,13 +1056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
-  _shortcutButton: {fileID: 3760817567753813788}
+  _shortcutButton: {fileID: 1926399363125958155}
   _titleText: {fileID: 1413945038515942463}
-  _enNameText: {fileID: 735028220741345877}
-  _rewardMoneyText: {fileID: 8447883100005372499}
-  _rewardExpText: {fileID: 5627054612284404273}
-  _shortcutLabel: {fileID: 5255484786351323646}
-  _stateIcon: {fileID: 8890874284416880171}
+  _icon: {fileID: 8890874284416880171}
 --- !u!1 &8839265002106092315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7503302288186740510
 RectTransform:
   m_ObjectHideFlags: 0

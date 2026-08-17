@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 700837961147394631, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 518
+      objectReference: {fileID: 0}
     - target: {fileID: 1353057608397658634, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -347,6 +351,10 @@ PrefabInstance:
       propertyPath: _weekCompletePopup
       value: 
       objectReference: {fileID: 2069897533}
+    - target: {fileID: 3970200378005803841, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
+      propertyPath: m_Name
+      value: P_UI_Panel_TodaySchedule
+      objectReference: {fileID: 0}
     - target: {fileID: 4244361367182855831, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -410,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 4644975384357544390, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392073670798055827, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
+      propertyPath: m_Name
+      value: P_UI_Panel_WeeklySchedule
       objectReference: {fileID: 0}
     - target: {fileID: 5473498035692366447, guid: 04536025b6cc37e4faadf0ac5d356bdf, type: 3}
       propertyPath: m_AnchorMax.y

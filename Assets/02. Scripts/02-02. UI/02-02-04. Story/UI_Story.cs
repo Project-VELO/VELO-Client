@@ -28,6 +28,9 @@ public class UI_Story : MonoBehaviour
     [SerializeField]
     private UI_StoryDialogBox _dialogBox;
 
+    [SerializeField]
+    private UI_StoryEffectLayer _effectLayer;
+
     [Foldout("Hierarchy")]
     [Header("Buttons")]
     /// <summary>
@@ -53,6 +56,7 @@ public class UI_Story : MonoBehaviour
 
     public UI_StoryStage Stage => _stage;
     public UI_StoryDialogBox DialogBox => _dialogBox;
+    public UI_StoryEffectLayer EffectLayer => _effectLayer;
     public UI_StoryLogPopup LogPopup => _logPopup;
     public UI_StoryExitConfirmPopup ExitConfirmPopup => _exitConfirmPopup;
 

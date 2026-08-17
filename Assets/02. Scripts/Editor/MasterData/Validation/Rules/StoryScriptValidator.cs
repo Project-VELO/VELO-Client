@@ -65,6 +65,7 @@ public class StoryScriptValidator
             ValidateExpression(provider, line.UpperCharacterId, line.UpperExpressionId, $"{location}(상단)", report);
 
             ValidateSlotDuplication(line, location, report);
+            ValidateEffect(provider, line.EffectId, location, report);
         }
     }
 
@@ -93,6 +94,25 @@ public class StoryScriptValidator
                     report.AddError($"[대본] {location}의 {SLOT_NAMES[i]}과 {SLOT_NAMES[j]} 슬롯에 같은 인물({slots[i]})이 배치되어 있습니다.");
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// 대본이 가리키는 화면 연출이 effects.json에 있는지 봅니다.
+    ///
+    /// 표에 없으면 그 줄의 연출은 조용히 아무 일도 하지 않습니다. 화면이 멀쩡해 보여서
+    /// 눈으로는 빠진 것을 알아채기 어려우므로 여기서 걸러 냅니다.
+    /// </summary>
+    private void ValidateEffect(MasterDataProvider provider, string effectId, string location, MasterDataValidationReport report)
+    {
+        if (string.IsNullOrEmpty(effectId))
+        {
+            return;
+        }
+
+        if (!provider.TryGetEffect(effectId, out _))
+        {
+            report.AddError($"[대본] {location}의 화면 연출 '{effectId}'을 effects.json에서 찾을 수 없습니다.");
         }
     }
 

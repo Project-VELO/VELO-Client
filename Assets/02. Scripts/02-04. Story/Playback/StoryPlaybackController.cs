@@ -51,7 +51,7 @@ public class StoryPlaybackController : MonoBehaviour
     {
         if (_linePlayer != null)
         {
-            _linePlayer.Skip();
+            _linePlayer.Dispose();
         }
 
         if (_ui == null)

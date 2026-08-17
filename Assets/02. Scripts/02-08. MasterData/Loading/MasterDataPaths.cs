@@ -16,6 +16,7 @@ public static class MasterDataPaths
     public const string REWARDS_FILE_NAME = "rewards.json";
     public const string STORIES_FILE_NAME = "stories.json";
     public const string SCHEDULES_FILE_NAME = "schedules.json";
+    public const string EFFECTS_FILE_NAME = "effects.json";
     public const string NEW_GAME_CONFIG_FILE_NAME = "newgame_config.json";
 
     private const string MASTER_DATA_FOLDER = "MasterData";

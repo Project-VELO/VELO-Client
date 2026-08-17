@@ -24,10 +24,10 @@ public class UI_StoryRewardPopup : UI_Popup
     private TMP_Text _moneyText;
 
     [SerializeField]
-    private TMP_Text _hypeText;
+    private TMP_Text _gemText;
 
     [SerializeField]
-    private TMP_Text _expText;
+    private TMP_Text _hypeText;
 
     /// <summary>
     /// 표시할 보상을 채웁니다. 팝업을 열기 직전에 호출합니다.
@@ -47,8 +47,8 @@ public class UI_StoryRewardPopup : UI_Popup
         }
 
         SetAmount(_moneyText, reward.Money);
+        SetAmount(_gemText, reward.Gem);
         SetAmount(_hypeText, reward.Hype);
-        SetAmount(_expText, reward.Exp);
 
         return true;
     }

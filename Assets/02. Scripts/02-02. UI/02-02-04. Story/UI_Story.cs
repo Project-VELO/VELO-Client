@@ -17,7 +17,6 @@ public class UI_Story : MonoBehaviour
     /// 자기 부품의 배선은 화면이 맡고 밖으로는 의도만 알립니다.
     /// </summary>
     public Action OnNextRequested;
-    public Action OnSkipTypeWriterRequested;
     public Action OnLogRequested;
     public Action OnBackRequested;
 
@@ -29,13 +28,20 @@ public class UI_Story : MonoBehaviour
     [SerializeField]
     private UI_StoryDialogBox _dialogBox;
 
-    [Foldout("Hierarchy")]
-    [Header("Buttons")]
     [SerializeField]
-    private Button _nextButton;
+    private UI_StoryEffectLayer _effectLayer;
 
     [SerializeField]
-    private Button _skipTypeWriterButton;
+    private StoryAudioBinder _audioBinder;
+
+    [Foldout("Hierarchy")]
+    [Header("Buttons")]
+    /// <summary>
+    /// 대사 상자 전체를 덮는 버튼입니다. 출력 중이면 즉시 완성, 끝났으면 다음 대사로 넘깁니다(기획서 6.3).
+    /// 넘기기 전용 버튼을 따로 두지 않는 것은, 상자 어디를 눌러도 진행되는 편이 읽는 흐름을 끊지 않기 때문입니다.
+    /// </summary>
+    [SerializeField]
+    private Button _nextButton;
 
     [SerializeField]
     private Button _logButton;
@@ -53,13 +59,14 @@ public class UI_Story : MonoBehaviour
 
     public UI_StoryStage Stage => _stage;
     public UI_StoryDialogBox DialogBox => _dialogBox;
+    public UI_StoryEffectLayer EffectLayer => _effectLayer;
+    public StoryAudioBinder AudioBinder => _audioBinder;
     public UI_StoryLogPopup LogPopup => _logPopup;
     public UI_StoryExitConfirmPopup ExitConfirmPopup => _exitConfirmPopup;
 
     private void Awake()
     {
         _nextButton.onClick.AddListener(RequestNext);
-        _skipTypeWriterButton.onClick.AddListener(RequestSkipTypeWriter);
         _logButton.onClick.AddListener(RequestLog);
         _backButton.onClick.AddListener(RequestBack);
     }
@@ -67,11 +74,6 @@ public class UI_Story : MonoBehaviour
     private void RequestNext()
     {
         OnNextRequested?.Invoke();
-    }
-
-    private void RequestSkipTypeWriter()
-    {
-        OnSkipTypeWriterRequested?.Invoke();
     }
 
     private void RequestLog()

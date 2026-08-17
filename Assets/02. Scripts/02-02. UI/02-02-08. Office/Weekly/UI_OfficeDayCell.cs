@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +27,17 @@ public class UI_OfficeDayCell : MonoBehaviour
     [SerializeField]
     private Button _button;
 
+    /// <summary>
+    /// 칸 상단의 요일 표기입니다. 마스터 데이터에 달력 날짜가 없어 일차 순번에서 요일만 얻습니다.
+    /// </summary>
     [SerializeField]
     private TMP_Text _dayText;
+
+    /// <summary>
+    /// 그 날의 스케줄 목록입니다. 표시 규칙이 칸의 상태 토글과 성격이 달라 별도 컴포넌트가 맡습니다.
+    /// </summary>
+    [SerializeField]
+    private UI_OfficeDayScheduleList _scheduleList;
 
     /// <summary>
     /// 아직 진행할 수 없는 날짜를 덮는 반투명 오버레이입니다(기획서 3-E-3-1의 4).
@@ -52,11 +62,13 @@ public class UI_OfficeDayCell : MonoBehaviour
         _button.onClick.AddListener(NotifyClicked);
     }
 
-    public void SetDay(string dayId, int dayNumber)
+    public void SetDay(string dayId, int dayOrder, List<ScheduleData> schedules)
     {
         DayId = dayId;
         gameObject.SetActive(true);
-        _dayText.text = $"{dayNumber}일차";
+        _dayText.text = ScheduleDayLabel.FormatWeekday(dayOrder);
+
+        _scheduleList.SetSchedules(schedules);
     }
 
     /// <summary>

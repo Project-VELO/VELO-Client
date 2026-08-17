@@ -4,18 +4,21 @@
         {
             "RewardId": "REWARD_STORY_DEFAULT",
             "Money": 1000,
+            "Gem": 0,
             "Hype": 50,
             "Exp": 500
         },
         {
             "RewardId": "REWARD_LIVE_BASE",
             "Money": 1000,
+            "Gem": 0,
             "Hype": 10,
             "Exp": 500
         },
         {
             "RewardId": "REWARD_LIVE_PRACTICE",
             "Money": 50,
+            "Gem": 0,
             "Hype": 0,
             "Exp": 25
         }

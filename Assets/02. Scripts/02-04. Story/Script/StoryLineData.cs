@@ -51,12 +51,28 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string ExpressionId;
 
     /// <summary>
+    /// 가운데에 세울 캐릭터입니다. 세 인물이 한 화면에 서는 장면에서만 채웁니다.
+    /// 왼쪽과 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
+    /// </summary>
+    public string CenterCharacterId;
+
+    public string CenterExpressionId;
+
+    /// <summary>
     /// 오른쪽에 세울 캐릭터입니다. 2인 대화에서만 채웁니다.
     /// 왼쪽과 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
     /// </summary>
     public string RightCharacterId;
 
     public string RightExpressionId;
+
+    /// <summary>
+    /// 화면 위쪽에 띄울 캐릭터입니다. 바닥에 서지 않고 공중에 걸리는 인물만 여기에 옵니다.
+    /// 나머지 세 자리와 마찬가지로 빈 칸은 직전 유지, NONE은 내리라는 지시입니다.
+    /// </summary>
+    public string UpperCharacterId;
+
+    public string UpperExpressionId;
 
     /// <summary>
     /// 컷씬 일러스트 ID입니다. 원고의 [일러스트] 지시에 대응하며, 없으면 비어 있습니다.
@@ -68,6 +84,12 @@ public class StoryLineData : ISerializationCallbackReceiver
     /// 비어 있으면 NORMAL입니다.
     /// </summary>
     public string TextSpeedName;
+
+    /// <summary>
+    /// JSON에 적는 텍스트 위치 이름입니다("DIALOG_BOX" / "SCREEN_CENTER").
+    /// 비어 있으면 DIALOG_BOX입니다.
+    /// </summary>
+    public string TextPlacementName;
 
     /// <summary>
     /// 대사 문구의 글꼴·크기·색 묶음 ID입니다(연출표의 [디자인] 열).
@@ -107,15 +129,23 @@ public class StoryLineData : ISerializationCallbackReceiver
     [NonSerialized]
     public ETextSpeed TextSpeed;
 
+    /// <summary>
+    /// TextPlacementName을 변환한 값입니다. 역직렬화 직후 채워집니다.
+    /// </summary>
+    [NonSerialized]
+    public EStoryTextPlacement TextPlacement;
+
     public void OnBeforeSerialize()
     {
         LineTypeName = MasterDataEnum.ToName(LineType);
         TextSpeedName = MasterDataEnum.ToName(TextSpeed);
+        TextPlacementName = MasterDataEnum.ToName(TextPlacement);
     }
 
     public void OnAfterDeserialize()
     {
         LineType = MasterDataEnum.Parse(LineTypeName, ELineType.NARRATION, $"{nameof(StoryLineData)}(line {LineId}).{nameof(LineTypeName)}");
         TextSpeed = MasterDataEnum.Parse(TextSpeedName, ETextSpeed.NORMAL, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextSpeedName)}");
+        TextPlacement = MasterDataEnum.Parse(TextPlacementName, EStoryTextPlacement.DIALOG_BOX, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextPlacementName)}");
     }
 }

@@ -612,7 +612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6845031633893112205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -745,6 +745,7 @@ GameObject:
   - component: {fileID: 264729024255195071}
   - component: {fileID: 7345293962554870833}
   - component: {fileID: 2747099747459028089}
+  - component: {fileID: 1861247791955139108}
   m_Layer: 5
   m_Name: Panel_Schedule
   m_TagString: Untagged
@@ -810,6 +811,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1861247791955139108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3343600636472940506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d225a25e71303443a0999e9bea7e6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayScheduleList
+  _items:
+  - {fileID: 922138023873813505}
+  - {fileID: 7754567292905001325}
+  - {fileID: 1228503529114893884}
 --- !u!1 &8726589352432996808
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayCell
   _button: {fileID: 7620182721023565538}
-  _dayText: {fileID: 0}
+  _dayText: {fileID: 6574027307184531016}
+  _scheduleList: {fileID: 1861247791955139108}
   _lockOverlay: {fileID: 9053646746197299975}
   _completedRoot: {fileID: 2060289009678893248}
   _finishGuideRoot: {fileID: 922760773427026877}
@@ -1125,6 +1143,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
+--- !u!114 &922138023873813505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199435051811954728, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
+  m_PrefabInstance: {fileID: 1011232641701280809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b18fc22632c92743b89ced18abff426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayScheduleItem
 --- !u!224 &7837217427160180259 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7119061816130427402, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
@@ -1227,6 +1256,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
+--- !u!114 &1228503529114893884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199435051811954728, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
+  m_PrefabInstance: {fileID: 1425402940347620884}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b18fc22632c92743b89ced18abff426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayScheduleItem
 --- !u!224 &8143618000826123294 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7119061816130427402, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
@@ -1334,3 +1374,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7119061816130427402, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
   m_PrefabInstance: {fileID: 7591178642478362949}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7754567292905001325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 199435051811954728, guid: 1c7d70f8d0708df4790a0b3ec392675f, type: 3}
+  m_PrefabInstance: {fileID: 7591178642478362949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b18fc22632c92743b89ced18abff426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayScheduleItem

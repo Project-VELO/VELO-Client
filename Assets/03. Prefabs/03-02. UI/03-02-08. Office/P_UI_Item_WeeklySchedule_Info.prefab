@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 7119061816130427402}
   - component: {fileID: 5235990455090013798}
   - component: {fileID: 8063451883868087608}
+  - component: {fileID: 199435051811954728}
   m_Layer: 5
   m_Name: P_UI_Item_WeeklySchedule_Info
   m_TagString: Untagged
@@ -214,6 +215,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &199435051811954728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950592504750353580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b18fc22632c92743b89ced18abff426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayScheduleItem
+  _titleText: {fileID: 1305686065540588822}
+  _stateImage: {fileID: 4288572703742669413}
+  _completedSprite: {fileID: -3037216021045965143, guid: 6af528669d36dba4bb1018844ef3b932, type: 3}
+  _notCompletedSprite: {fileID: -5686345020878217750, guid: b152d45d7edf6bb419f25fa2323feb48, type: 3}
 --- !u!1 &9120670879501455612
 GameObject:
   m_ObjectHideFlags: 0

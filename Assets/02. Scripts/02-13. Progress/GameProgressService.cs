@@ -40,6 +40,14 @@ public class GameProgressService : POCOSingleton<GameProgressService>
     }
 
     /// <summary>
+    /// 특정 날짜의 스케줄입니다. 오늘이 아닌 날짜도 조회할 수 있어 주간 스케줄 표가 씁니다.
+    /// </summary>
+    public List<ScheduleData> GetSchedulesByDay(string weekId, string dayId)
+    {
+        return MasterDataQuery.GetSchedulesByDay(weekId, dayId);
+    }
+
+    /// <summary>
     /// 내일 예정된 스케줄입니다. 주차의 마지막 날짜라면 빈 목록입니다.
     /// </summary>
     public List<ScheduleData> GetTomorrowSchedules()

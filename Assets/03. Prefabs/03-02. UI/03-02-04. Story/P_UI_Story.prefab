@@ -2727,11 +2727,25 @@ MonoBehaviour:
   _bgmSource: {fileID: 7850000000000000001}
   _sfxSource: {fileID: 7850000000000000002}
   _bgmClips:
-    _keys: []
-    _values: []
+    _keys:
+    - BGM_STORY_OCCULT_OVERTURE
+    _values:
+    - {fileID: 8300000, guid: 5942ba8417fd1414bbdded47d81040b2, type: 3}
   _sfxClips:
-    _keys: []
-    _values: []
+    _keys:
+    - SFX_BASS_AMP_HEARTBEAT
+    - SFX_CANDLE_IGNITE_BURST
+    - SFX_SPIRIT_CROWD_SCREAM
+    - SFX_MAGIC_ABSORB_ASMR
+    - SFX_MIC_HOWLING
+    - SFX_SILENCE_CUT
+    _values:
+    - {fileID: 8300000, guid: 4040762affaf2ad428e04b58285ee49b, type: 3}
+    - {fileID: 8300000, guid: 714618b0ab6305b4c9ea292ec713f45c, type: 3}
+    - {fileID: 8300000, guid: 6d177cdc4c36fb54fbd195d4fd5bc403, type: 3}
+    - {fileID: 8300000, guid: 99735e13f7ca5384c8071713b2c9178f, type: 3}
+    - {fileID: 8300000, guid: d16a6d1b971bee5418a837d14ab55063, type: 3}
+    - {fileID: 8300000, guid: 6b36f830a98503f489f71d65c0671803, type: 3}
   _bgmVolume: 0.7
   _sfxVolume: 1
   _bgmFadeSeconds: 0.8

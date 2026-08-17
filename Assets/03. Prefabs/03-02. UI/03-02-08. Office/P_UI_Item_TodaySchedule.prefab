@@ -228,13 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
-  _shortcutButton: {fileID: 2641058792895803663}
+  _shortcutButton: {fileID: 0}
   _titleText: {fileID: 6024684804418247502}
-  _enNameText: {fileID: 0}
-  _rewardMoneyText: {fileID: 0}
-  _rewardExpText: {fileID: 0}
-  _shortcutLabel: {fileID: 1142010814428754857}
-  _stateIcon: {fileID: 5682850979663586156}
+  _icon: {fileID: 0}
 --- !u!1 &6519696036463840007
 GameObject:
   m_ObjectHideFlags: 0

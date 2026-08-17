@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
@@ -19,6 +19,7 @@ public class StoryLinePlayer
     private readonly UI_Story _ui;
     private readonly StoryTypewriter _typewriter;
     private readonly StoryEffectPlayer _effectPlayer;
+    private readonly StoryAudioPlayer _audioPlayer;
     private readonly CancellationToken _sceneToken;
 
     private CancellationTokenSource _typingCts;
@@ -36,6 +37,7 @@ public class StoryLinePlayer
         _sceneToken = sceneToken;
         _typewriter = new StoryTypewriter(ui.DialogBox.BodyText, getSecondsPerCharacter);
         _effectPlayer = new StoryEffectPlayer(ui.EffectLayer, sceneToken);
+        _audioPlayer = new StoryAudioPlayer(ui.AudioBinder, sceneToken);
     }
 
     /// <summary>
@@ -58,6 +60,9 @@ public class StoryLinePlayer
         // 화면 연출은 배경과 인물을 갈아 끼운 뒤에 겁니다.
         // 흔들림과 줌이 무대 컨테이너를 만지므로, 안에 든 그림이 먼저 제자리를 잡아야 합니다.
         _effectPlayer.Play(line.EffectId);
+
+        // 소리는 화면 연출과 별도로 흐릅니다. BGM은 다음 지시까지 이어지므로 줄이 넘어가도 끊지 않습니다.
+        _audioPlayer.Play(line.BgmId, line.SfxId);
 
         // 앞 줄의 토큰이 아직 남아 있을 수 있습니다. 팝업 없이 다음 줄로 넘어간 경로가 그렇습니다.
         // 여기서 걷지 않으면 줄마다 CancellationTokenSource가 하나씩 쌓입니다.
@@ -94,6 +99,7 @@ public class StoryLinePlayer
     {
         Skip();
         _effectPlayer.Dispose();
+        _audioPlayer.Dispose();
     }
 
     private async UniTaskVoid TypeAsync(string text, ETextSpeed speed, CancellationToken cancellationToken)

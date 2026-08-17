@@ -18,6 +18,7 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
     private readonly Dictionary<string, RewardData> _rewards = new Dictionary<string, RewardData>();
     private readonly Dictionary<string, StoryData> _stories = new Dictionary<string, StoryData>();
     private readonly Dictionary<string, ScheduleData> _schedules = new Dictionary<string, ScheduleData>();
+    private readonly Dictionary<string, StoryEffectData> _effects = new Dictionary<string, StoryEffectData>();
 
     public IReadOnlyDictionary<string, CharacterData> Characters => _characters;
     public IReadOnlyDictionary<string, CardData> Cards => _cards;
@@ -25,6 +26,7 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
     public IReadOnlyDictionary<string, RewardData> Rewards => _rewards;
     public IReadOnlyDictionary<string, StoryData> Stories => _stories;
     public IReadOnlyDictionary<string, ScheduleData> Schedules => _schedules;
+    public IReadOnlyDictionary<string, StoryEffectData> Effects => _effects;
 
     public NewGameConfigData NewGameConfig { get; private set; }
 
@@ -54,6 +56,7 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
         SetIndex(_rewards, _loader.LoadTable<RewardData>(MasterDataPaths.REWARDS_FILE_NAME), item => item.RewardId, "RewardId");
         SetIndex(_stories, _loader.LoadTable<StoryData>(MasterDataPaths.STORIES_FILE_NAME), item => item.StoryId, "StoryId");
         SetIndex(_schedules, _loader.LoadTable<ScheduleData>(MasterDataPaths.SCHEDULES_FILE_NAME), item => item.ScheduleId, "ScheduleId");
+        SetIndex(_effects, _loader.LoadTable<StoryEffectData>(MasterDataPaths.EFFECTS_FILE_NAME), item => item.EffectId, "EffectId");
 
         NewGameConfig = _loader.LoadNewGameConfig();
 
@@ -88,6 +91,11 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
     public bool TryGetSchedule(string scheduleId, out ScheduleData schedule)
     {
         return TryGet(_schedules, scheduleId, out schedule);
+    }
+
+    public bool TryGetEffect(string effectId, out StoryEffectData effect)
+    {
+        return TryGet(_effects, effectId, out effect);
     }
 
     /// <summary>

@@ -28,6 +28,17 @@ public class UI_StoryEffectLayer : MonoBehaviour
     [SerializeField]
     private Image _vignette;
 
+    [Foldout("Settings")]
+    /// <summary>
+    /// 무대를 평소에 얼마나 확대해 둘지입니다.
+    ///
+    /// 1배로 두면 화면을 흔들거나 밀 때 배경 바깥의 빈 자리가 드러납니다.
+    /// 미리 조금 다가가 있으면 그 확대분이 여유분이 되어, 움직여도 화면이 배경으로 계속 채워집니다.
+    /// 값을 올리면 빈 화면 걱정은 줄지만 배경이 그만큼 잘려 나갑니다.
+    /// </summary>
+    [SerializeField]
+    private float _baseScale = 1.3f;
+
     /// <summary>
     /// 무대의 원래 자리입니다. 연출이 끝나면 여기로 돌립니다.
     /// 프리팹 값을 그대로 쓰는 것은, 무대가 화면 중앙에 있다는 가정을 코드에 박아 넣지 않기 위해서입니다.
@@ -43,20 +54,28 @@ public class UI_StoryEffectLayer : MonoBehaviour
     }
 
     /// <summary>
-    /// 무대를 원래 자리와 크기로 돌립니다. 덮개는 건드리지 않습니다.
+    /// 무대를 원래 자리와 평소 배율로 돌립니다. 덮개는 건드리지 않습니다.
     /// 암전이나 비네팅은 "걷으라"는 별도 지시가 있어야 걷히는 상태이기 때문입니다.
     /// </summary>
     public void ResetStage()
     {
-        _stage.anchoredPosition = _homePosition;
-        _stage.localScale = Vector3.one;
+        SetStageScale(1f);
+        SetStageOffset(Vector2.zero);
     }
 
     /// <summary>
     /// 무대를 원래 자리에서 얼마나 밀지 정합니다. 흔들림과 시점 이동이 함께 씁니다.
+    ///
+    /// 확대로 생긴 여유분을 넘지 못하게 잘라 냅니다. 데이터에 큰 값이 들어와도
+    /// 화면 가장자리가 비는 일은 없어야 하므로, 판단을 데이터에 맡기지 않고 여기서 막습니다.
     /// </summary>
     public void SetStageOffset(Vector2 offset)
     {
+        Vector2 slack = GetSlack();
+
+        offset.x = Mathf.Clamp(offset.x, -slack.x, slack.x);
+        offset.y = Mathf.Clamp(offset.y, -slack.y, slack.y);
+
         _stage.anchoredPosition = _homePosition + offset;
     }
 
@@ -65,14 +84,23 @@ public class UI_StoryEffectLayer : MonoBehaviour
         return _stage.anchoredPosition - _homePosition;
     }
 
-    public void SetStageScale(float scale)
+    /// <summary>
+    /// 평소 배율에 곱할 배수를 받습니다. 1이면 평소 구도입니다.
+    /// 화면보다 작아지지 않도록 아래를 막습니다. 작아지면 어차피 빈 자리가 드러납니다.
+    /// </summary>
+    public void SetStageScale(float multiplier)
     {
+        float scale = Mathf.Max(1f, _baseScale * multiplier);
+
         _stage.localScale = new Vector3(scale, scale, 1f);
+
+        // 배율이 줄면 여유분도 줄어듭니다. 이미 밀려 있던 무대가 여유분을 넘고 있으면 다시 잘라 줍니다.
+        SetStageOffset(GetStageOffset());
     }
 
     public float GetStageScale()
     {
-        return _stage.localScale.x;
+        return _stage.localScale.x / _baseScale;
     }
 
     public Color GetOverlayColor(EStoryEffectTarget target)
@@ -88,6 +116,20 @@ public class UI_StoryEffectLayer : MonoBehaviour
         // 완전히 투명한 덮개가 켜져 있으면 화면 전체를 덮는 레이캐스트 대상이 하나 남습니다.
         // 대사 상자보다 아래에 있어 클릭을 막지는 않지만, 켜 둘 이유도 없습니다.
         image.enabled = 0f < color.a;
+    }
+
+    /// <summary>
+    /// 지금 배율에서 무대를 좌우·상하로 밀 수 있는 최대 거리입니다.
+    /// 확대로 화면 밖에 나가 있는 절반이 그대로 여유분이 됩니다.
+    /// </summary>
+    private Vector2 GetSlack()
+    {
+        Rect rect = _stage.rect;
+        float scale = _stage.localScale.x;
+
+        return new Vector2(
+            Mathf.Max(0f, rect.width * (scale - 1f) * 0.5f),
+            Mathf.Max(0f, rect.height * (scale - 1f) * 0.5f));
     }
 
     private Image Resolve(EStoryEffectTarget target)

@@ -23,6 +23,13 @@ public class StoryLinePlayer
 
     private CancellationTokenSource _typingCts;
 
+    /// <summary>
+    /// 앞 줄의 배경입니다. 장면이 바뀌는 순간을 알아내려고 들고 있습니다.
+    /// 대본은 배경을 "바뀌는 줄에만" 적지만 읽는 시점에 모든 줄로 펼쳐지므로,
+    /// 값이 있는지가 아니라 앞 줄과 다른지를 봐야 전환을 집어낼 수 있습니다.
+    /// </summary>
+    private string _previousBackgroundId;
+
     public StoryLinePlayer(UI_Story ui, Func<float> getSecondsPerCharacter, CancellationToken sceneToken)
     {
         _ui = ui;
@@ -39,6 +46,14 @@ public class StoryLinePlayer
         _ui.Stage.SetBackground(line.BackgroundId);
         _ui.Stage.SetSpeakers(line);
         _ui.DialogBox.Refresh(line);
+
+        // 장면이 바뀌면 앞 장면의 암전·필터·줌을 걷습니다.
+        // 이 줄이 자기 연출을 갖고 있으면 걷어 낸 뒤에 새로 걸리므로, 암전으로 시작하는 장면도 그대로 동작합니다.
+        if (line.BackgroundId != _previousBackgroundId)
+        {
+            _previousBackgroundId = line.BackgroundId;
+            _effectPlayer.ResetForNewScene();
+        }
 
         // 화면 연출은 배경과 인물을 갈아 끼운 뒤에 겁니다.
         // 흔들림과 줌이 무대 컨테이너를 만지므로, 안에 든 그림이 먼저 제자리를 잡아야 합니다.

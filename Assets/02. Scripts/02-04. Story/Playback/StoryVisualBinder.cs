@@ -26,6 +26,15 @@ public class StoryVisualBinder : MonoBehaviour
     [SerializeField]
     private SerializableDictionary<string, Sprite> _characterSprites = new SerializableDictionary<string, Sprite>();
 
+    /// <summary>
+    /// 얼굴만 담은 정사각 초상입니다. 대화 로그처럼 작은 원형 칸에 넣는 자리에서 씁니다.
+    ///
+    /// 전신 표와 나눈 이유는 그림의 구도가 다르기 때문입니다.
+    /// 전신을 작은 칸에 넣으면 인물이 아주 작게 들어가거나 몸통만 잘려 누구인지 알 수 없습니다.
+    /// </summary>
+    [SerializeField]
+    private SerializableDictionary<string, Sprite> _characterFaceSprites = new SerializableDictionary<string, Sprite>();
+
     [Foldout("Settings")]
     [Header("스프라이트가 없을 때 쓰는 임시 색")]
     [SerializeField]
@@ -79,6 +88,17 @@ public class StoryVisualBinder : MonoBehaviour
     private string BuildExpressionKey(string characterId, string expressionId)
     {
         return characterId + EXPRESSION_KEY_SEPARATOR + expressionId;
+    }
+
+    /// <summary>
+    /// 얼굴 초상을 돌려줍니다. 없으면 null이며, 호출부는 임시 색으로 대체합니다.
+    ///
+    /// 전신으로 되짚지 않는 것은 의도한 것입니다. 작은 원형 칸에 전신이 들어가면
+    /// 인물의 다리나 배경만 보여, 없는 것보다 알아보기 어렵습니다.
+    /// </summary>
+    public Sprite GetCharacterFace(string characterId)
+    {
+        return TryGet(_characterFaceSprites, characterId);
     }
 
     public Color GetCharacterPlaceholderColor(string characterId)

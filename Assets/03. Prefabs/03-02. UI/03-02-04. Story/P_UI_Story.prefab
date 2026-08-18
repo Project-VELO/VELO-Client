@@ -2755,10 +2755,8 @@ MonoBehaviour:
   _bgmSource: {fileID: 7850000000000000001}
   _sfxSource: {fileID: 7850000000000000002}
   _bgmClips:
-    _keys:
-    - BGM_STORY_OCCULT_OVERTURE
-    _values:
-    - {fileID: 8300000, guid: 5942ba8417fd1414bbdded47d81040b2, type: 3}
+    _keys: []
+    _values: []
   _sfxClips:
     _keys:
     - SFX_BASS_AMP_HEARTBEAT

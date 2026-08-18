@@ -10,8 +10,19 @@ using VInspector;
 public class UI_StoryLogItem : MonoBehaviour
 {
     [Foldout("Hierarchy")]
+    /// <summary>
+    /// 원형 프레임과 초상을 함께 묶은 오브젝트입니다. 화자가 없는 줄에서 통째로 끕니다.
+    /// 초상만 끄면 테두리 프레임이 빈 동그라미로 남습니다.
+    /// </summary>
     [SerializeField]
-    private Image _iconImage;
+    private GameObject _iconRoot;
+
+    /// <summary>
+    /// 프레임 안에서 원형으로 잘려 나오는 얼굴 초상입니다.
+    /// 자르는 일은 부모의 Mask가 하므로 여기서는 그림과 색만 정합니다.
+    /// </summary>
+    [SerializeField]
+    private Image _portraitImage;
 
     [SerializeField]
     private TMP_Text _speakerText;
@@ -27,7 +38,7 @@ public class UI_StoryLogItem : MonoBehaviour
         bool hasSpeaker = !string.IsNullOrEmpty(speakerName);
 
         _speakerText.gameObject.SetActive(hasSpeaker);
-        _iconImage.gameObject.SetActive(hasSpeaker);
+        _iconRoot.SetActive(hasSpeaker);
 
         if (!hasSpeaker)
         {
@@ -36,11 +47,12 @@ public class UI_StoryLogItem : MonoBehaviour
 
         _speakerText.text = speakerName;
 
-        // 감상 화면과 같은 색을 써야 목록에서도 누구 대사인지 알아볼 수 있습니다.
-        // 단역은 SpeakerId가 없어 색 표에도 없으므로 중립 회색으로 떨어집니다.
-        Sprite portrait = visualBinder.GetCharacter(line.SpeakerId, line.ExpressionId);
-        _iconImage.sprite = portrait;
-        _iconImage.color = portrait == null ? visualBinder.GetCharacterPlaceholderColor(line.SpeakerId) : Color.white;
+        // 감상 화면의 전신이 아니라 얼굴 초상을 씁니다. 작은 원형 칸에 전신을 넣으면
+        // 인물이 아주 작게 들어가거나 몸통만 잘려 누구인지 알아볼 수 없습니다.
+        // 초상이 없는 화자는 감상 화면과 같은 색으로 떨어뜨려, 목록에서도 누구 대사인지 구분되게 합니다.
+        Sprite face = visualBinder.GetCharacterFace(line.SpeakerId);
+        _portraitImage.sprite = face;
+        _portraitImage.color = face == null ? visualBinder.GetCharacterPlaceholderColor(line.SpeakerId) : Color.white;
     }
 
     /// <summary>
@@ -54,8 +66,8 @@ public class UI_StoryLogItem : MonoBehaviour
         _speakerText.text = string.Empty;
         _speakerText.gameObject.SetActive(false);
 
-        _iconImage.sprite = null;
-        _iconImage.color = Color.white;
-        _iconImage.gameObject.SetActive(false);
+        _portraitImage.sprite = null;
+        _portraitImage.color = Color.white;
+        _iconRoot.SetActive(false);
     }
 }

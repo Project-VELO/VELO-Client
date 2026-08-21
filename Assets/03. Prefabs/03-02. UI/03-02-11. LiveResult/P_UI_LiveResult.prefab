@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 5425439749201364851}
   - component: {fileID: 793329198375892862}
   - component: {fileID: 8124015469972031869}
+  - component: {fileID: 1748392015663204411}
   m_Layer: 5
   m_Name: Image_Rank
   m_TagString: Untagged
@@ -1127,7 +1128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 487e8c4745ae8f54f83fe0ddc1f45656, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a99b74f60ad7264a93f7086696ae53a, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1137,6 +1138,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1748392015663204411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3578783360596973546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513698261c3c876994a291abc46858ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_RankIcon
+  _iconImage: {fileID: 8124015469972031869}
+  _fallbackText: {fileID: 4263171640324006140}
+  _perfectSIcon: {fileID: 21300000, guid: 09162c7c4009c7940bdb9f65156fb0df, type: 3}
+  _sIcon: {fileID: 21300000, guid: 6a99b74f60ad7264a93f7086696ae53a, type: 3}
+  _aIcon: {fileID: 21300000, guid: f31656355d9c74743802c94d64fcf61f, type: 3}
+  _bIcon: {fileID: 21300000, guid: e4406aa28a174d04aa2704291daa06c1, type: 3}
+  _cIcon: {fileID: 21300000, guid: 081e5f06a70714648aaa055deda57d8f, type: 3}
 --- !u!1 &3580077985302295622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,9 +2556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_LiveResult
   _clearStatusText: {fileID: 5633001019592698535}
-  _rankText: {fileID: 4263171640324006140}
   _scoreText: {fileID: 7227058769861139226}
   _songTitleText: {fileID: 2836843761520435640}
+  _rankIcon: {fileID: 1748392015663204411}
   _judgementPanel: {fileID: 6104754056028610866}
   _rewardPanel: {fileID: 2256280863727216448}
   _tags: {fileID: 8278796507249033526}

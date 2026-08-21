@@ -19,9 +19,6 @@ public class UI_LiveResult : MonoBehaviour
     private TMP_Text _clearStatusText;
 
     [SerializeField]
-    private TMP_Text _rankText;
-
-    [SerializeField]
     private TMP_Text _scoreText;
 
     [SerializeField]
@@ -29,6 +26,9 @@ public class UI_LiveResult : MonoBehaviour
 
     [Foldout("Hierarchy")]
     [Header("Sub UI Panels")]
+    [SerializeField]
+    private UI_RankIcon _rankIcon;
+
     [SerializeField]
     private UI_LiveResultJudgementPanel _judgementPanel;
 
@@ -76,9 +76,13 @@ public class UI_LiveResult : MonoBehaviour
     private void RefreshResult(LiveResultData result)
     {
         SetText(_clearStatusText, result.IsClear ? CLEAR_LABEL : FAILED_LABEL);
-        SetText(_rankText, result.Rank.ToString());
         SetText(_scoreText, result.Score.ToString("N0"));
         SetText(_songTitleText, GetSongTitle(result.SongId));
+
+        if (_rankIcon != null)
+        {
+            _rankIcon.RefreshRank(result.Rank);
+        }
 
         if (_judgementPanel != null)
         {

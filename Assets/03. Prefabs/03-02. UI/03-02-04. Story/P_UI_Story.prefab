@@ -2766,8 +2766,34 @@ MonoBehaviour:
   _bgmSource: {fileID: 7850000000000000001}
   _sfxSource: {fileID: 7850000000000000002}
   _bgmClips:
-    _keys: []
-    _values: []
+    _keys:
+    - BGM_ABYSS_INVITATION
+    - BGM_BACKSTAGE_TENSION
+    - BGM_BASEMENT_DEBT_PIANO
+    - BGM_BASEMENT_DESPAIR
+    - BGM_CORRIDOR_DESPAIR
+    - BGM_EMPTY_STAGE_HOLLOW
+    - BGM_LIBRARY_MAJESTIC
+    - BGM_PRACTICE_EXHAUSTED
+    - BGM_ROOFTOP_WIND_AMBIENT
+    - BGM_SEIZED_GLOOM
+    - BGM_STIER_POWER_COLD
+    - BGM_STIER_TENSION_COLD
+    - BGM_STORY_OCCULT_OVERTURE
+    _values:
+    - {fileID: 8300000, guid: 6532b325055166249a589cc949b1ef1f, type: 3}
+    - {fileID: 8300000, guid: 4d88692c151db084fbd95d5fd0220bfb, type: 3}
+    - {fileID: 8300000, guid: 70ed530b95e66fb4cb0dc741edb48df3, type: 3}
+    - {fileID: 8300000, guid: 9f2c3aad22439f34ba96eaf8a7562f14, type: 3}
+    - {fileID: 8300000, guid: d6525887c2ab87e4d9f353205acc0975, type: 3}
+    - {fileID: 8300000, guid: 426ae0db78680574280a39ff77766dc1, type: 3}
+    - {fileID: 8300000, guid: e50abe3722918b84480ef135fbfd2651, type: 3}
+    - {fileID: 8300000, guid: 0f254d1afcd797746b51e22e89db6472, type: 3}
+    - {fileID: 8300000, guid: 97e1be02cced2d543bd03f8a0e84c9b9, type: 3}
+    - {fileID: 8300000, guid: e3d9160743ad48f4e93a4e300f528fda, type: 3}
+    - {fileID: 8300000, guid: 6eb41cf9572fdef4ea552b8a0c0dbda4, type: 3}
+    - {fileID: 8300000, guid: a85878588dda27047aea3c98210174e3, type: 3}
+    - {fileID: 8300000, guid: 55a26fec6f4d3394cb046d9f900b49b0, type: 3}
   _sfxClips:
     _keys:
     - SFX_BASS_AMP_HEARTBEAT

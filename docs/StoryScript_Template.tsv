@@ -569,7 +569,7 @@ STORY_PROLOGUE_10	47	MONOLOGUE	CHAR_RIA	누구라도 좋으니까... 제발 우�
 STORY_PROLOGUE_10	48	MONOLOGUE	CHAR_RIA	신이든, 악마든 상관없어. 내 영혼을 통째로 뜯어가도 좋으니까... 제발...					리아	[디자인] 글자 떨림 / 고딕체 24pt 은회색 / [연출] 리아 유지	NORMAL	STYLE_MEMBER_TREMBLE										
 STORY_PROLOGUE_10	49	NARRATION		별 위에 앉은 무명의 가면에 가려진 입술 끝이, 몽환적인 보랏빛 안개 속에서 기괴하고도 아름다운 호선을 그리며 말려 올라갔다.		NONE				[디자인] 명조체 24pt 밝은 회색 / [연출] 리아 퇴장, 무명 가운데 상단 웃음 다시 페이드 인	NORMAL	STYLE_NARRATION	FX_BRIGHTNESS_RECOVER								CHAR_MUMYEONG	EXP_SMILE
 STORY_PROLOGUE_10	50	NARRATION		아무도 모르게 찾아온 심연의 초대장이 인간들의 발밑으로 서서히 스며들고 있었다.						[디자인] 우아한 명조 24pt 연보라색 / 화면 아래부터 보랏빛 안개가 차오르며 서서히 암전 / BGM 여운을 남기며 페이드 아웃	VERY_SLOW	STYLE_MUMYEONG_24	FX_PURPLE_MIST_RISE	BGM_NONE							NONE	
-STORY_PROLOGUE_11	1	NARRATION			10-A					#10-A. / 대사 없이 배경만 넘기는 컷 (기획 확인: 11화는 이미지 전용 회차)	INSTANT											
+STORY_PROLOGUE_11	1	NARRATION			10-A					#10-A. / 대사 없이 배경만 넘기는 컷 (기획 확인: 11화는 이미지 전용 회차)	INSTANT			BGM_ABYSS_INVITATION								
 STORY_PROLOGUE_11	2	NARRATION			10-B					#10-B. / 대사 없이 배경만 넘기는 컷 (기획 확인: 11화는 이미지 전용 회차)	INSTANT											
 STORY_PROLOGUE_11	3	NARRATION			10-C					#10-C. / 대사 없이 배경만 넘기는 컷 (기획 확인: 11화는 이미지 전용 회차)	INSTANT											
 STORY_PROLOGUE_11	4	NARRATION		“모든 빛이 꺼진 당신을, 심연의 세계로 초대합니다.”	10-D					#10-D. / [디자인] 우아한 명조 26pt 연보라색 / 심연의 초대장 문구	SLOW	STYLE_MUMYEONG_24										

@@ -82,15 +82,31 @@ public static class FontAssetReplacer
         foreach (string guid in AssetDatabase.FindAssets("t:Prefab", PREFAB_FOLDERS))
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            GameObject root = PrefabUtility.LoadPrefabContents(path);
+            GameObject root = null;
 
-            if (Replace(root.GetComponentsInChildren<TMP_Text>(true), sources, target))
+            // 프리팹 하나가 열리지 않아도 나머지는 계속 바꿉니다. 여기서 멈추면 뒤쪽 프리팹과
+            // 씬이 통째로 남아, 화면마다 폰트가 다른 어중간한 상태가 됩니다.
+            try
             {
-                PrefabUtility.SaveAsPrefabAsset(root, path);
-                changed++;
-            }
+                root = PrefabUtility.LoadPrefabContents(path);
 
-            PrefabUtility.UnloadPrefabContents(root);
+                if (Replace(root.GetComponentsInChildren<TMP_Text>(true), sources, target))
+                {
+                    PrefabUtility.SaveAsPrefabAsset(root, path);
+                    changed++;
+                }
+            }
+            catch (System.Exception exception)
+            {
+                Debug.LogError($"[FontAssetReplacer] 건너뜁니다: {path}\n{exception.Message}");
+            }
+            finally
+            {
+                if (root != null)
+                {
+                    PrefabUtility.UnloadPrefabContents(root);
+                }
+            }
         }
 
         return changed;
@@ -104,18 +120,26 @@ public static class FontAssetReplacer
         foreach (string guid in AssetDatabase.FindAssets("t:Scene", SCENE_FOLDERS))
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            Scene scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
-            bool dirty = false;
 
-            foreach (GameObject root in scene.GetRootGameObjects())
+            try
             {
-                dirty |= Replace(root.GetComponentsInChildren<TMP_Text>(true), sources, target);
+                Scene scene = EditorSceneManager.OpenScene(path, OpenSceneMode.Single);
+                bool dirty = false;
+
+                foreach (GameObject root in scene.GetRootGameObjects())
+                {
+                    dirty |= Replace(root.GetComponentsInChildren<TMP_Text>(true), sources, target);
+                }
+
+                if (dirty)
+                {
+                    EditorSceneManager.SaveScene(scene);
+                    changed++;
+                }
             }
-
-            if (dirty)
+            catch (System.Exception exception)
             {
-                EditorSceneManager.SaveScene(scene);
-                changed++;
+                Debug.LogError($"[FontAssetReplacer] 건너뜁니다: {path}\n{exception.Message}");
             }
         }
 

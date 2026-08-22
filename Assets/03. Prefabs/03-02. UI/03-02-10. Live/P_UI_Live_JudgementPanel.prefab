@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PERFECT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
-  m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+  m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -186,4 +186,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1ba3d22e5e42942bc0d62b74d7d6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VELO.UI.UI_LiveHitPanel
+  _displaySeconds: 0.4
   _judgmentText: {fileID: 6207207640319847033}

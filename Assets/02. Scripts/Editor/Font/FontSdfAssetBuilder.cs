@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEditor;
@@ -70,6 +71,7 @@ public static class FontSdfAssetBuilder
         AssetDatabase.CreateAsset(fontAsset, assetPath);
         AttachSubAssets(fontAsset, assetPath);
         ClearDynamicDataOnBuild(fontAsset);
+        ClearFallbacks(fontAsset);
 
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
@@ -98,6 +100,19 @@ public static class FontSdfAssetBuilder
             fontAsset.material.name = $"{assetName} Material";
             AssetDatabase.AddObjectToAsset(fontAsset.material, fontAsset);
         }
+    }
+
+    /// <summary>
+    /// 폴백을 비워 둡니다.
+    ///
+    /// 고운바탕이 NotoSerifKR을 폴백으로 물고 있는 것은 한자 글리프가 없어서입니다(書·怪·談 등 16자).
+    /// NotoSansKR은 프로젝트가 쓰는 글자를 전부 담고 있어 혼자로 충분하고, 동적 모드라 원본 TTF에
+    /// 있는 글자는 필요할 때 스스로 구워 냅니다. 폴백을 걸면 서체가 섞여 나올 위험만 생깁니다.
+    /// </summary>
+    private static void ClearFallbacks(TMP_FontAsset fontAsset)
+    {
+        fontAsset.fallbackFontAssetTable = new List<TMP_FontAsset>();
+        EditorUtility.SetDirty(fontAsset);
     }
 
     /// <summary>

@@ -147,6 +147,14 @@ PrefabInstance:
       propertyPath: m_text
       value: DORM
       objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -159,6 +167,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "2. \uC219\uC18C"
       objectReference: {fileID: 0}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 6733574724630970687, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_Name
       value: "P_UI_Space_Button_\uC219\uC18C(2)"
@@ -265,6 +281,14 @@ PrefabInstance:
       propertyPath: m_text
       value: OFFICE
       objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -277,6 +301,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "1. \uC0AC\uBB34\uC2E4"
       objectReference: {fileID: 0}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 6733574724630970687, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_Name
       value: "P_UI_Space_Button_\uC0AC\uBB34\uC2E4(1)"
@@ -870,6 +902,14 @@ PrefabInstance:
       propertyPath: m_text
       value: STUDIO
       objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -882,6 +922,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "3. \uC2A4\uD29C\uB514\uC624"
       objectReference: {fileID: 0}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 6733574724630970687, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_Name
       value: "P_UI_Space_Button_\uC2A4\uD29C\uB514\uC624(3)"
@@ -1142,9 +1190,17 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_fontSizeBase
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 164352774033654017, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 3531364781341332520, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -1157,6 +1213,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "4. \uC5F0\uC2B5\uC2E4"
       objectReference: {fileID: 0}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+    - target: {fileID: 3562805748374440564, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
     - target: {fileID: 6733574724630970687, guid: 37911795ccc83704aae67a8a1023800b, type: 3}
       propertyPath: m_Name
       value: "P_UI_Space_Button_\uC5F0\uC2B5\uC2E4(4)"

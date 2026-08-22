@@ -47,26 +47,26 @@ public class StoryTypewriter
         try
         {
             float elapsed = 0f;
-            float secondsPerCharacter = Mathf.Max(0.001f, StoryTypingSpeed.GetSecondsPerCharacter(speed, _getSecondsPerCharacter()));
+            float nextRevealAt = 0f;
+            float stepSeconds = Mathf.Max(0.001f, StoryTypingSpeed.GetStepSeconds(speed, _getSecondsPerCharacter()));
             bool isWordByWord = StoryTypingSpeed.IsWordByWord(speed);
 
             while (_visibleCount < totalCharacters)
             {
                 elapsed += Time.unscaledDeltaTime;
 
-                int target = Mathf.Min(totalCharacters, (int)(elapsed / secondsPerCharacter));
-
-                if (isWordByWord)
+                // 프레임이 길어지면 한 프레임에 여러 번 드러납니다. 프레임당 한 번으로 묶으면
+                // 프레임률이 낮은 기기에서 대사가 느려집니다.
+                int previous = _visibleCount;
+                while (_visibleCount < totalCharacters && nextRevealAt <= elapsed)
                 {
-                    target = ExtendToWordEnd(target, totalCharacters);
+                    nextRevealAt += stepSeconds + RevealNext(isWordByWord, totalCharacters);
                 }
 
                 // 실제로 늘어난 프레임에만 대입합니다. 매 프레임 넣으면 TMP가 메시를 다시 만듭니다.
-                // 단어 단위에서는 목표가 앞질러 가 있는 동안 글자 수 계산이 뒤처지므로, 되돌아가지 않도록 부등호로 막습니다.
-                if (_visibleCount < target)
+                if (previous < _visibleCount)
                 {
-                    _visibleCount = target;
-                    _target.maxVisibleCharacters = target;
+                    _target.maxVisibleCharacters = _visibleCount;
                 }
 
                 await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
@@ -94,6 +94,27 @@ public class StoryTypewriter
 
         _visibleCount = 0;
         return _target.textInfo.characterCount;
+    }
+
+    /// <summary>
+    /// 다음 글자(단어 단위면 다음 단어 끝)까지 드러내고, 문장 부호에서 멈출 시간을 돌려줍니다.
+    ///
+    /// 부호 묶음의 마지막 글자에서만 멈추므로 다음 글자까지 함께 봅니다. 끝에 닿았으면 뒤가 없다는
+    /// 뜻이라 '\0'을 넘겨 묶음의 끝으로 취급합니다.
+    /// </summary>
+    private float RevealNext(bool isWordByWord, int totalCharacters)
+    {
+        int next = isWordByWord
+            ? ExtendToWordEnd(_visibleCount + 1, totalCharacters)
+            : _visibleCount + 1;
+
+        _visibleCount = next;
+
+        TMP_CharacterInfo[] characters = _target.textInfo.characterInfo;
+        char current = characters[next - 1].character;
+        char following = next < totalCharacters ? characters[next].character : '\0';
+
+        return StoryTypingSpeed.IsPauseBoundary(current, following) ? StoryTypingSpeed.PAUSE_SECONDS : 0f;
     }
 
     /// <summary>

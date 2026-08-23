@@ -25,6 +25,12 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     [SerializeField]
     private Button _button;
 
+    /// <summary>
+    /// 버튼 위에 얹는 글자입니다. 비워 둘 수 있습니다.
+    ///
+    /// 사무실은 배경 그림에 "바로가기"·"완료"가 이미 그려져 있어 여기를 비웁니다. 물려 두면
+    /// 같은 글자가 그림 위에 한 번 더 찍혀 겹칩니다. 홈은 글자 없는 배경을 써서 여기로 찍습니다.
+    /// </summary>
     [SerializeField]
     private TMP_Text _label;
 
@@ -58,9 +64,19 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     public void SetCompleted(bool isCompleted)
     {
         _button.interactable = !isCompleted;
-        _label.text = isCompleted ? COMPLETED_LABEL : SHORTCUT_LABEL;
 
+        RefreshLabel(isCompleted);
         RefreshBackground(isCompleted);
+    }
+
+    private void RefreshLabel(bool isCompleted)
+    {
+        if (_label == null)
+        {
+            return;
+        }
+
+        _label.text = isCompleted ? COMPLETED_LABEL : SHORTCUT_LABEL;
     }
 
     private void RefreshBackground(bool isCompleted)

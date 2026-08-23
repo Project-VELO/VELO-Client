@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4409614889046247987}
   - component: {fileID: 6178702111913732365}
   - component: {fileID: 307964713190698863}
+  - component: {fileID: 7301884562119440007}
   m_Layer: 5
   m_Name: P_UI_Panel_Studio
   m_TagString: Untagged
@@ -61,14 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7bf79c3cf60160b45b7ac6ab195d8d63, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -196,15 +197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.b
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.g
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.r
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6782494770783006667, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Pivot.x
@@ -289,6 +290,18 @@ PrefabInstance:
     - target: {fileID: 8840646562457632225, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Name
       value: P_UI_Button_PhotocardSetting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4fca60ffa23c9714e89e651beff3ee4f, type: 3}
+    - target: {fileID: 6124766294750379408, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497692086542043183, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -814,15 +827,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.b
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.g
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.r
-      value: 0.6745098
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6782494770783006667, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Pivot.x
@@ -908,6 +921,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_Button_ItemSetting
       objectReference: {fileID: 0}
+    - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6eaf2a3e38853e74fbfe474e9b698317, type: 3}
+    - target: {fileID: 6124766294750379408, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497692086542043183, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -918,3 +943,79 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6782494770783006667, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
   m_PrefabInstance: {fileID: 5895976630041076697}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7301884562119440001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3044039246268868860, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+  m_PrefabInstance: {fileID: 60222052640865860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &7301884562119440002 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+  m_PrefabInstance: {fileID: 60222052640865860}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &7301884562119440003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3044039246268868860, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+  m_PrefabInstance: {fileID: 5895976630041076697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &7301884562119440004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
+  m_PrefabInstance: {fileID: 5895976630041076697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &7301884562119440005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1748608727567764747, guid: a846d63e1e7ff594e922ad96b16b7a35, type: 3}
+  m_PrefabInstance: {fileID: 861166647749359764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7301884562119440006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5488397120351759554, guid: 1f3908638f0ec1549a574bb750a481dd, type: 3}
+  m_PrefabInstance: {fileID: 1058657728371809984}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7301884562119440007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938769140762976997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e14effa30e144b846c3ce68d9e19d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_StudioTabs
+  _photocardTabButton: {fileID: 7301884562119440001}
+  _photocardTabImage: {fileID: 7301884562119440002}
+  _photocardPanel: {fileID: 7301884562119440005}
+  _itemTabButton: {fileID: 7301884562119440003}
+  _itemTabImage: {fileID: 7301884562119440004}
+  _itemPanel: {fileID: 7301884562119440006}
+  _photocardSelectedSprite: {fileID: 21300000, guid: 4fca60ffa23c9714e89e651beff3ee4f, type: 3}
+  _photocardNormalSprite: {fileID: 21300000, guid: b125439bba3e1b64ca2be7944e55435d, type: 3}
+  _itemSelectedSprite: {fileID: 21300000, guid: 246cefb1825880b4e9a0f9d46fffe66b, type: 3}
+  _itemNormalSprite: {fileID: 21300000, guid: 6eaf2a3e38853e74fbfe474e9b698317, type: 3}

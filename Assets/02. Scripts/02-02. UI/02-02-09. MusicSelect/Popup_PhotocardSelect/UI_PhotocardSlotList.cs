@@ -13,6 +13,12 @@ public class UI_PhotocardSlotList : MonoBehaviour
     private List<UI_PhotocardSlotItem> _slotItems = new List<UI_PhotocardSlotItem>();
 
     /// <summary>
+    /// 카드 일러스트 표입니다. 슬롯이 각자 들고 있으면 카드가 바뀔 때마다 다섯 벌을 고쳐야 합니다.
+    /// </summary>
+    [SerializeField]
+    private UI_CardArtBinder _artBinder;
+
+    /// <summary>
     /// 현재 임시 편성(LiveLoadoutContext)을 슬롯 순서대로 그립니다. 컨텍스트 초기화 후에 불러야 합니다.
     /// </summary>
     public void RefreshSlots()
@@ -30,12 +36,20 @@ public class UI_PhotocardSlotList : MonoBehaviour
 
             if (MasterDataProvider.Instance.TryGetCard(cardIds[i], out CardData card))
             {
-                _slotItems[i].SetCard(card);
+                _slotItems[i].SetCard(card, GetIllustration(cardIds[i]));
             }
             else
             {
                 _slotItems[i].SetUnknownCard(cardIds[i]);
             }
         }
+    }
+
+    /// <summary>
+    /// 바인더를 물리지 않은 화면에서도 이름·등급 표시는 그대로 돌아가야 하므로 null을 허용합니다.
+    /// </summary>
+    private Sprite GetIllustration(string cardId)
+    {
+        return _artBinder != null ? _artBinder.GetSprite(cardId) : null;
     }
 }

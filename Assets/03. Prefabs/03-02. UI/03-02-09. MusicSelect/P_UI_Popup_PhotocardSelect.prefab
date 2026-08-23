@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PhotocardSlotItem
   _nameText: {fileID: 6329407290928050967}
   _gradeText: {fileID: 2263739542179405767}
+  _illustration: {fileID: 5908786375767052647}
 --- !u!1 &58830579344148012
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PhotocardSlotItem
   _nameText: {fileID: 6272786081072037539}
   _gradeText: {fileID: 2283765705176470131}
+  _illustration: {fileID: 5970579271039311059}
 --- !u!1 &89355556901844062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1956,7 @@ GameObject:
   - component: {fileID: 2109721916293245366}
   - component: {fileID: 2108610021753835771}
   - component: {fileID: 4936021104427102786}
+  - component: {fileID: 4820117336905117441}
   m_Layer: 5
   m_Name: P_UI_Popup_PhotocardSelect
   m_TagString: Untagged
@@ -2292,6 +2295,7 @@ MonoBehaviour:
   - {fileID: 7998738411017520322}
   - {fileID: 8549690938367497559}
   - {fileID: 6841839616762054953}
+  _artBinder: {fileID: 4820117336905117441}
 --- !u!1 &1298060695098039093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,6 +2390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PhotocardSlotItem
   _nameText: {fileID: 5034963902775567290}
   _gradeText: {fileID: 964669194984050538}
+  _illustration: {fileID: 4614328678150685130}
 --- !u!1 &1367715672542524348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,14 +3977,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b28246cce6986504fa3301695f5c96ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6468b76d12817b4293f703525868bef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4125,7 +4130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &323573273661079850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5785,7 +5790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &763305309339578884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6378,14 +6383,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8509804, g: 0.8509804, b: 0.8509804, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7bf79c3cf60160b45b7ac6ab195d8d63, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7143,7 +7148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1948709467629214447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7982,6 +7987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PhotocardSlotItem
   _nameText: {fileID: 8060084994107026726}
   _gradeText: {fileID: 2839473259943543286}
+  _illustration: {fileID: 7641912694882127702}
 --- !u!1 &4075773101211835848
 GameObject:
   m_ObjectHideFlags: 0
@@ -8699,6 +8705,7 @@ MonoBehaviour:
   _button: {fileID: 2986926838966248292}
   _nameText: {fileID: 9010220131787576634}
   _equippedRoot: {fileID: 4169244499750080692}
+  _illustration: {fileID: 3981660020714134478}
 --- !u!1 &4589900754498038472
 GameObject:
   m_ObjectHideFlags: 0
@@ -9826,6 +9833,7 @@ MonoBehaviour:
   _button: {fileID: 3747290173246625457}
   _nameText: {fileID: 3265394876129725175}
   _equippedRoot: {fileID: 5645033876544668797}
+  _illustration: {fileID: 4668723321258200839}
 --- !u!1 &5241612109336330531
 GameObject:
   m_ObjectHideFlags: 0
@@ -14694,6 +14702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_PhotocardSlotItem
   _nameText: {fileID: 4157556942322059370}
   _gradeText: {fileID: 8146560347357291706}
+  _illustration: {fileID: 4351664165045873178}
 --- !u!1 &8092660454247985022
 GameObject:
   m_ObjectHideFlags: 0
@@ -15009,6 +15018,7 @@ MonoBehaviour:
   - {fileID: 5841022125951460315}
   _leftButton: {fileID: 6206826470629631309}
   _rightButton: {fileID: 4519138174157816257}
+  _artBinder: {fileID: 4820117336905117441}
 --- !u!1 &8212034217334421484
 GameObject:
   m_ObjectHideFlags: 0
@@ -15835,6 +15845,7 @@ MonoBehaviour:
   _button: {fileID: 8221608356822331807}
   _nameText: {fileID: 7898156327952485737}
   _equippedRoot: {fileID: 9205903850569954260}
+  _illustration: {fileID: 8168513500223633582}
 --- !u!1 &8794370332954418397
 GameObject:
   m_ObjectHideFlags: 0
@@ -16751,6 +16762,7 @@ MonoBehaviour:
   _button: {fileID: 3456457386065422145}
   _nameText: {fileID: 306220588800357614}
   _equippedRoot: {fileID: 8865530327168008111}
+  _illustration: {fileID: 8472717467324363989}
 --- !u!1 &9097740670532545905
 GameObject:
   m_ObjectHideFlags: 0
@@ -16890,6 +16902,7 @@ MonoBehaviour:
   _button: {fileID: 7974809153086565752}
   _nameText: {fileID: 3027871123842256600}
   _equippedRoot: {fileID: 8659305977717073833}
+  _illustration: {fileID: 8552788216060488915}
 --- !u!1 &9116236253935402306
 GameObject:
   m_ObjectHideFlags: 0
@@ -17533,3 +17546,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
   _button: {fileID: 9221838416105515089}
+--- !u!114 &4820117336905117441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224531345225679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db3b557306fee1952a9dec6fe7dda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_CardArtBinder
+  _cardSprites:
+    _keys:
+    - CARD_SEOYUN_FIRST_STAGE
+    - CARD_MINA_FIRST_STAGE
+    - CARD_JIWOO_FIRST_STAGE
+    - CARD_HANA_FIRST_STAGE
+    - CARD_RIA_FIRST_STAGE
+    _values:
+    - {fileID: 21300000, guid: e0e3d93266426cd439b08658c607d853, type: 3}
+    - {fileID: 21300000, guid: d948e6d517700434aa49b359a865314a, type: 3}
+    - {fileID: 21300000, guid: 00690293ba324aa4e8fc6b415876a25e, type: 3}
+    - {fileID: 21300000, guid: 51cdbcc9ac030e24383463918e8dd1a7, type: 3}
+    - {fileID: 21300000, guid: 06b02a83d13955948969f80cf1b5f3c6, type: 3}

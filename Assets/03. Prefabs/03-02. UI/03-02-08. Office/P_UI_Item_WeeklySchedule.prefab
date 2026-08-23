@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_OfficeDayCell
   _button: {fileID: 7620182721023565538}
+  _dateText: {fileID: 8724207632067685745}
   _dayText: {fileID: 6574027307184531016}
   _scheduleList: {fileID: 1861247791955139108}
   _lockOverlay: {fileID: 9053646746197299975}

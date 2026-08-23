@@ -28,7 +28,13 @@ public class UI_OfficeDayCell : MonoBehaviour
     private Button _button;
 
     /// <summary>
-    /// 칸 상단의 요일 표기입니다. 마스터 데이터에 달력 날짜가 없어 일차 순번에서 요일만 얻습니다.
+    /// 칸 맨 위의 달력 날짜입니다("3/14"). 극중 첫날에서 지난 일수를 더해 구합니다.
+    /// </summary>
+    [SerializeField]
+    private TMP_Text _dateText;
+
+    /// <summary>
+    /// 날짜 아래의 요일 표기입니다. 1일차가 주의 시작이라 일차 순번만으로 정해집니다.
     /// </summary>
     [SerializeField]
     private TMP_Text _dayText;
@@ -62,10 +68,11 @@ public class UI_OfficeDayCell : MonoBehaviour
         _button.onClick.AddListener(NotifyClicked);
     }
 
-    public void SetDay(string dayId, int dayOrder, List<ScheduleData> schedules)
+    public void SetDay(string dayId, int weekOrder, int dayOrder, List<ScheduleData> schedules)
     {
         DayId = dayId;
         gameObject.SetActive(true);
+        _dateText.text = ScheduleDayLabel.FormatDate(weekOrder, dayOrder);
         _dayText.text = ScheduleDayLabel.FormatWeekday(dayOrder);
 
         _scheduleList.SetSchedules(schedules);

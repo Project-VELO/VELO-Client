@@ -60,6 +60,7 @@ public class LiveSongPublisher
 
         CopyAudio(song, songFolder);
         CopyCharts(songId, songFolder, difficulties);
+        CopyCover(song, songFolder);
 
         // 곡 정보를 복사하기 전에 확정해야 수록본에도 함께 반영됩니다.
         EnsureDuration(song);
@@ -147,6 +148,23 @@ public class LiveSongPublisher
     {
         string sourceAudioPath = LiveSongPaths.GetWorkingAudioPath(song.SongId, song.AudioFilePath);
         File.Copy(sourceAudioPath, LiveSongPaths.GetPublishedAudioPath(songFolder, song.AudioFilePath), true);
+    }
+
+    /// <summary>
+    /// 커버가 없는 곡도 정상이므로, 원본이 없으면 수록을 막지 않고 건너뜁니다(SongCoverLoader와 같은 판단).
+    /// 그래서 ValidateSources가 아니라 여기서 확인합니다.
+    /// </summary>
+    private void CopyCover(SongData song, string songFolder)
+    {
+        string fileName = string.IsNullOrEmpty(song.CoverImagePath) ? LiveSongPaths.COVER_FILE_NAME : song.CoverImagePath;
+        string sourcePath = Path.Combine(LiveSongPaths.GetWorkingSongFolder(song.SongId), fileName);
+
+        if (!File.Exists(sourcePath))
+        {
+            return;
+        }
+
+        File.Copy(sourcePath, Path.Combine(songFolder, fileName), true);
     }
 
     private void CopyCharts(string songId, string songFolder, List<EDifficulty> difficulties)

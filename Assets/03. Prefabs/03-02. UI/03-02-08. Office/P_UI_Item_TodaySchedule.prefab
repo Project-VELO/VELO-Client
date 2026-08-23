@@ -228,9 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b28c66956fe3148bce4290e55bb69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleItemToday
-  _shortcutButton: {fileID: 0}
+  _shortcutButton: {fileID: 6722811247066450818}
   _titleText: {fileID: 6024684804418247502}
-  _icon: {fileID: 0}
+  _icon: {fileID: 5238113795700974843}
 --- !u!1 &6519696036463840007
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 365745582894350444}
   - component: {fileID: 5927099344563523768}
   - component: {fileID: 6769930986704487768}
-  - component: {fileID: 5682850979663586156}
+  - component: {fileID: 5238113795700974843}
   m_Layer: 5
   m_Name: Image_Icon_ScheduleType
   m_TagString: Untagged
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5682850979663586156
+--- !u!114 &5238113795700974843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,13 +316,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6519696036463840007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84229986f7ffd84409680f5a2e441f62, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c6f3c93a213e354198163b0d7800508, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleStateIcon
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleTypeIcon
   _icon: {fileID: 6769930986704487768}
-  _lockedSprite: {fileID: 0}
-  _availableSprite: {fileID: 0}
-  _completedSprite: {fileID: 0}
+  _liveSprite: {fileID: 21300000, guid: 023cf75d16f5a8547833626a5aaa74ec, type: 3}
+  _storySprite: {fileID: 21300000, guid: ce443c8dd2ff1834db30db4473bf1b4c, type: 3}
 --- !u!1 &7766285744921788815
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +471,7 @@ GameObject:
   - component: {fileID: 6349522402274998714}
   - component: {fileID: 1994583871867772772}
   - component: {fileID: 2641058792895803663}
+  - component: {fileID: 6722811247066450818}
   m_Layer: 5
   m_Name: Button_ScheduleEnter
   m_TagString: Untagged
@@ -581,3 +581,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6722811247066450818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870189692338513547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b567c1caa4696f4ebab7517936aa937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleShortcutButton
+  _button: {fileID: 2641058792895803663}
+  _label: {fileID: 1142010814428754857}
+  _background: {fileID: 1994583871867772772}
+  _defaultSprite: {fileID: 21300000, guid: fa170cad96deaf642b75e1e153111aa3, type: 3}
+  _completedSprite: {fileID: 21300000, guid: c57673a7ac72060479bc5494e273b62d, type: 3}

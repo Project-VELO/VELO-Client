@@ -11,15 +11,12 @@ public class UI_MusicSelectChapterTab : MonoBehaviour
 {
     public Action<int> OnTabClicked;
 
+    /// <summary>
+    /// 잠긴 챕터는 전용 아트가 없어, 미선택 그림을 어둡게 눌러 구분합니다.
+    /// </summary>
     [Header("Tab Colors")]
     [SerializeField]
-    private Color _normalColor = new Color(0.16f, 0.15f, 0.24f, 1f);
-
-    [SerializeField]
-    private Color _selectedColor = new Color(0.55f, 0.38f, 0.94f, 1f);
-
-    [SerializeField]
-    private Color _lockedColor = new Color(0.25f, 0.25f, 0.28f, 1f);
+    private Color _lockedColor = new Color(0.45f, 0.45f, 0.5f, 1f);
 
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -30,6 +27,13 @@ public class UI_MusicSelectChapterTab : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _label;
+
+    [Foldout("Project")]
+    [SerializeField]
+    private Sprite _normalSprite;
+
+    [SerializeField]
+    private Sprite _selectedSprite;
 
     private int _tabIndex;
     private bool _isUnlocked = true;
@@ -51,15 +55,21 @@ public class UI_MusicSelectChapterTab : MonoBehaviour
         SetSelected(false);
     }
 
+    /// <summary>
+    /// 선택 여부를 색이 아니라 그림으로 구분합니다. 두 상태의 테두리와 광원이 서로 달라
+    /// 한 장을 틴트하는 것으로는 시안이 나오지 않습니다.
+    /// </summary>
     public void SetSelected(bool isSelected)
     {
         if (!_isUnlocked)
         {
+            _background.sprite = _normalSprite;
             _background.color = _lockedColor;
             return;
         }
 
-        _background.color = isSelected ? _selectedColor : _normalColor;
+        _background.sprite = isSelected ? _selectedSprite : _normalSprite;
+        _background.color = Color.white;
     }
 
     public void SetVisible(bool isVisible)

@@ -633,7 +633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -699,12 +699,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e834c76fee808344b19f4cf3eedb945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectChapterTab
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 0.72, g: 0.55, b: 1, a: 1}
   _lockedColor: {r: 0.45, g: 0.45, b: 0.5, a: 1}
   _button: {fileID: 1251318564495606345}
   _background: {fileID: 825427286911956729}
   _label: {fileID: 4704143703920771948}
+  _normalSprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
 --- !u!114 &4637254436507615983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,7 +2876,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2942,12 +2942,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e834c76fee808344b19f4cf3eedb945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectChapterTab
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 0.72, g: 0.55, b: 1, a: 1}
   _lockedColor: {r: 0.45, g: 0.45, b: 0.5, a: 1}
   _button: {fileID: 3700939668418128888}
   _background: {fileID: 8327537495666562802}
   _label: {fileID: 8637062640525043027}
+  _normalSprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
 --- !u!114 &7265009493818910453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3927,7 +3927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3993,12 +3993,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e834c76fee808344b19f4cf3eedb945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectChapterTab
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 0.72, g: 0.55, b: 1, a: 1}
   _lockedColor: {r: 0.45, g: 0.45, b: 0.5, a: 1}
   _button: {fileID: 4402238069557489538}
   _background: {fileID: 9184575533970295005}
   _label: {fileID: 2227520151467977148}
+  _normalSprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
 --- !u!114 &5010534109154854137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4163,7 +4163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4229,12 +4229,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e834c76fee808344b19f4cf3eedb945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectChapterTab
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 0.72, g: 0.55, b: 1, a: 1}
   _lockedColor: {r: 0.45, g: 0.45, b: 0.5, a: 1}
   _button: {fileID: 2077498859047094122}
   _background: {fileID: 8810797611940448459}
   _label: {fileID: 7960305044259682652}
+  _normalSprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
 --- !u!114 &4338183302584863913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5115,12 +5115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e834c76fee808344b19f4cf3eedb945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectChapterTab
-  _normalColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 0.72, g: 0.55, b: 1, a: 1}
   _lockedColor: {r: 0.45, g: 0.45, b: 0.5, a: 1}
   _button: {fileID: 9028045161213081201}
   _background: {fileID: 8367489272339686686}
   _label: {fileID: 6820888327589677452}
+  _normalSprite: {fileID: 21300000, guid: 01f56090c32c82548b276bb46c2aaf0c, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 8e237882a149dc043a25ba10595cdc97, type: 3}
 --- !u!114 &4566450205960618458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6152,7 +6152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 072f8ce01cfcec646a875012bd236963, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f27b214fd1c4294c9f39b4b539a9ab7, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

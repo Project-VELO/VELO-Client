@@ -12,15 +12,6 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
 {
     public Action<int> OnItemClicked;
 
-    private const string UNPLAYED_RANK_TEXT = "-";
-
-    [Header("Selection Colors")]
-    [SerializeField]
-    private Color _normalColor = new Color(1f, 1f, 1f, 1f);
-
-    [SerializeField]
-    private Color _selectedColor = new Color(0.55f, 0.38f, 0.94f, 1f);
-
     [Foldout("Hierarchy")]
     [SerializeField]
     private Button _button;
@@ -35,9 +26,15 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     private TMP_Text _songNameText;
 
     [SerializeField]
-    private TMP_Text _rankText;
+    private UI_RankIcon _rankIcon;
 
     [Foldout("Project")]
+    [SerializeField]
+    private Sprite _normalSprite;
+
+    [SerializeField]
+    private Sprite _selectedSprite;
+
     [SerializeField]
     private Sprite _placeholderCover;
 
@@ -52,8 +49,9 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     {
         _itemIndex = itemIndex;
         _songNameText.text = songTitle;
-        _rankText.text = ReferenceEquals(bestRecord, null) ? UNPLAYED_RANK_TEXT : bestRecord.BestRank.ToString();
         _button.interactable = isInteractable;
+
+        SetRank(bestRecord);
 
         // 커버는 나중에 비동기로 도착하므로, 풀에서 재사용된 행이 이전 곡의 커버를 달고 나오지 않도록 먼저 지웁니다.
         _coverImage.sprite = _placeholderCover;
@@ -74,9 +72,27 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _coverImage.sprite = cover;
     }
 
+    /// <summary>
+    /// 한 번도 클리어하지 않은 곡은 등급 자리를 비웁니다(시안에 미기록 표시가 따로 없습니다).
+    /// </summary>
+    private void SetRank(SongRecord bestRecord)
+    {
+        if (ReferenceEquals(bestRecord, null))
+        {
+            _rankIcon.Clear();
+            return;
+        }
+
+        _rankIcon.RefreshRank(bestRecord.BestRank);
+    }
+
+    /// <summary>
+    /// 선택 여부를 색이 아니라 그림으로 구분합니다. 선택된 행은 테두리와 광원이 따로 그려져 있어
+    /// 한 장을 틴트하는 것으로는 시안이 나오지 않습니다.
+    /// </summary>
     public void SetSelected(bool isSelected)
     {
-        _background.color = isSelected ? _selectedColor : _normalColor;
+        _background.sprite = isSelected ? _selectedSprite : _normalSprite;
     }
 
     /// <summary>
@@ -87,7 +103,7 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         OnItemClicked = null;
         _itemIndex = 0;
         _button.interactable = true;
-        _rankText.text = UNPLAYED_RANK_TEXT;
+        _rankIcon.Clear();
         _coverImage.sprite = _placeholderCover;
         SetSelected(false);
     }

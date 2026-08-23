@@ -41,6 +41,18 @@ public class StoryAudioBinder : MonoBehaviour
     private float _sfxVolume = 1f;
 
     /// <summary>
+    /// 효과음 채널을 켤지 여부입니다. 음원이 다 들어오기 전까지 꺼 둡니다.
+    ///
+    /// 대본은 이미 효과음을 지시하고 있는데 음원은 여섯 개뿐입니다. 그대로 켜 두면 있는 소리만
+    /// 드문드문 울려 오히려 어색하고, 없는 ID마다 경고가 쌓여 진짜 문제를 덮습니다.
+    ///
+    /// 볼륨을 0으로 두지 않고 스위치를 따로 두는 이유는, 0이면 "소리를 줄여 둔 것"인지
+    /// "아직 넣지 않은 것"인지 구분되지 않아서입니다. 다 들어오면 이 값만 켜면 됩니다.
+    /// </summary>
+    [SerializeField]
+    private bool _isSfxEnabled;
+
+    /// <summary>
     /// BGM이 바뀔 때 이전 곡을 줄이고 새 곡을 올리는 데 쓰는 시간입니다.
     /// 연출표가 BGM 전환을 대개 "서서히"·"디졸브"로 적어 두므로 즉시 교체하지 않습니다.
     /// </summary>
@@ -50,6 +62,7 @@ public class StoryAudioBinder : MonoBehaviour
     public float BgmVolume => _bgmVolume;
     public float SfxVolume => _sfxVolume;
     public float BgmFadeSeconds => _bgmFadeSeconds;
+    public bool IsSfxEnabled => _isSfxEnabled;
 
     public AudioSource BgmSource => _bgmSource;
 
@@ -63,6 +76,10 @@ public class StoryAudioBinder : MonoBehaviour
         _sfxSource.loop = false;
         _sfxSource.playOnAwake = false;
         _sfxSource.volume = _sfxVolume;
+
+        // 재생을 막는 것과 별개로 소스도 함께 음소거합니다. 인스펙터만 보고도
+        // 이 채널이 꺼져 있다는 것을 알 수 있어야 합니다.
+        _sfxSource.mute = !_isSfxEnabled;
     }
 
     public AudioClip GetBgm(string bgmId)
@@ -81,6 +98,11 @@ public class StoryAudioBinder : MonoBehaviour
     /// </summary>
     public void PlaySfx(AudioClip clip)
     {
+        if (!_isSfxEnabled)
+        {
+            return;
+        }
+
         _sfxSource.PlayOneShot(clip, _sfxVolume);
     }
 

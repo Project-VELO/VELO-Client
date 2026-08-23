@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -11,18 +10,15 @@ using UnityEngine;
 /// BGM은 빈 칸이 "직전 곡 유지"라서, 곡을 바꾸라는 줄에서만 바꾸고 BGM_NONE에서 멈춥니다.
 /// 매 줄 같은 값을 채우면 같은 곡을 계속 다시 트는 지시가 되므로, 지금 무슨 곡인지 기억해 둡니다.
 ///
-/// 아직 음원이 없어 대부분의 조회가 빈손으로 돌아옵니다. ID마다 한 번만 알리는 것은
-/// 128줄을 넘기며 같은 경고가 반복되면 정작 봐야 할 로그가 밀려나기 때문입니다.
+/// 효과음 채널은 음원이 다 들어오기 전까지 꺼 둡니다(StoryAudioBinder.IsSfxEnabled).
+/// 아직 음원이 없는 ID를 알리는 일은 StoryAudioMissingReporter가 맡습니다.
 /// </summary>
 public class StoryAudioPlayer : IDisposable
 {
     private readonly StoryAudioBinder _binder;
     private readonly CancellationToken _sceneToken;
 
-    /// <summary>
-    /// 이미 "음원이 없다"고 알린 ID입니다. 경고를 한 번으로 줄이려고 들고 있습니다.
-    /// </summary>
-    private readonly HashSet<string> _reportedMissingIds = new HashSet<string>();
+    private readonly StoryAudioMissingReporter _missingReporter = new StoryAudioMissingReporter();
 
     /// <summary>
     /// 지금 흐르고 있는 BGM입니다. 같은 곡을 다시 트는 것을 막는 기준입니다.
@@ -64,6 +60,13 @@ public class StoryAudioPlayer : IDisposable
 
     private void PlaySfx(string sfxId)
     {
+        // 채널이 꺼져 있으면 표를 뒤지기 전에 빠져나갑니다. 여기서 막지 않고 재생만 막으면
+        // 아직 음원이 없는 ID마다 "없습니다" 경고가 쌓여 진짜 문제를 덮습니다.
+        if (!_binder.IsSfxEnabled)
+        {
+            return;
+        }
+
         if (string.IsNullOrEmpty(sfxId))
         {
             return;
@@ -186,11 +189,6 @@ public class StoryAudioPlayer : IDisposable
 
     private void ReportMissing(string id, string kind)
     {
-        if (!_reportedMissingIds.Add(id))
-        {
-            return;
-        }
-
-        Debug.LogWarning($"[StoryAudioPlayer] {kind} '{id}'의 음원이 아직 등록되지 않았습니다.");
+        _missingReporter.Report(id, kind);
     }
 }

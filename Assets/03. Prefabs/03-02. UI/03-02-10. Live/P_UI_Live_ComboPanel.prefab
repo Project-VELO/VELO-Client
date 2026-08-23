@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4961f200764f65a4db7e36a6967de4eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VELO.UI.UI_LiveComboPanel
-  _comboTitleText: {fileID: 8600004891413690606}
   _comboCountText: {fileID: 8600004891413690606}
 --- !u!1 &8618822337494064462
 GameObject:
@@ -118,8 +117,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Combo
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a17d33e46f98f5f4d8e91defea8107a4, type: 2}
-  m_sharedMaterial: {fileID: 8017440099671199218, guid: a17d33e46f98f5f4d8e91defea8107a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
+  m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

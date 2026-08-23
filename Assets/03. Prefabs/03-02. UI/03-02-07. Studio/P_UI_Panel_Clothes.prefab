@@ -654,6 +654,7 @@ GameObject:
   - component: {fileID: 1075812336367170460}
   - component: {fileID: 6522237964807518253}
   - component: {fileID: 7626677455940665849}
+  - component: {fileID: 4682372072914289820}
   m_Layer: 5
   m_Name: Button_Right
   m_TagString: Untagged
@@ -775,6 +776,7 @@ GameObject:
   - component: {fileID: 2343359224475018555}
   - component: {fileID: 4643083117842708174}
   - component: {fileID: 2929990063484476562}
+  - component: {fileID: 3965631758498013826}
   m_Layer: 5
   m_Name: Button_Left
   m_TagString: Untagged
@@ -1398,3 +1400,29 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 659398810196530496, guid: b6a315c4c3d273441b16ab174a2eb473, type: 3}
   m_PrefabInstance: {fileID: 8646759352172753925}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4682372072914289820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543119265215059178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 7626677455940665849}
+--- !u!114 &3965631758498013826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940826176068264994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 2929990063484476562}

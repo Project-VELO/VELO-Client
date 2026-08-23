@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5225839692923201823}
   - component: {fileID: 6250146342214219112}
   - component: {fileID: 3372233115892456177}
+  - component: {fileID: 7119931469709574131}
   m_Layer: 5
   m_Name: P_UI_Button_ReceiveAll
   m_TagString: Untagged
@@ -258,3 +259,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7119931469709574131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696057055062272863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 3372233115892456177}

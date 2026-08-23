@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -13,9 +12,6 @@ using VInspector;
 /// </summary>
 public class UI_MusicSelect : MonoBehaviour
 {
-    private const string PRACTICE_TITLE = "연습실 라이브";
-    private const string DEFAULT_TITLE = "라이브 선택";
-
     [Foldout("Hierarchy")]
     [Header("Sub Panels")]
     [SerializeField]
@@ -28,11 +24,6 @@ public class UI_MusicSelect : MonoBehaviour
 
     [SerializeField]
     private Button _liveReadyButton;
-
-    [Foldout("Hierarchy")]
-    [Header("Texts")]
-    [SerializeField]
-    private TMP_Text _subTitleText;
 
     [Foldout("Hierarchy")]
     [Header("Live Entry")]
@@ -73,9 +64,6 @@ public class UI_MusicSelect : MonoBehaviour
     {
         LiveSongCatalog catalog = LiveSongCatalog.Instance;
         catalog.Rebuild();
-
-        // 연습실 LIVE만 화면 이름을 달리 표기합니다.
-        _subTitleText.text = LiveEntryContext.Instance.EntryType == EEntryType.PRACTICE_LIVE ? PRACTICE_TITLE : DEFAULT_TITLE;
 
         if (catalog.Chapters.Count == 0)
         {

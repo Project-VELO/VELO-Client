@@ -420,6 +420,7 @@ GameObject:
   - component: {fileID: 1146350181209376017}
   - component: {fileID: 254553466553195690}
   - component: {fileID: 4334282467561272424}
+  - component: {fileID: 252243537505711662}
   m_Layer: 0
   m_Name: Button_Purchase
   m_TagString: Untagged
@@ -2157,3 +2158,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2022870569752798205, guid: e92a7c306b23054428f888f0484bee7d, type: 3}
   m_PrefabInstance: {fileID: 9179178260381420661}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &252243537505711662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250148782148396905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 4334282467561272424}

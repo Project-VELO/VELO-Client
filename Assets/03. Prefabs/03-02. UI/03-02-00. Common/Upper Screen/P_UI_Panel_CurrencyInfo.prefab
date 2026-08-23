@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 1968471485545608636}
   - component: {fileID: 5178604037681215703}
   - component: {fileID: 4789026814988670180}
+  - component: {fileID: 8976088179915619655}
   m_Layer: 0
   m_Name: Button_AddCurrency
   m_TagString: Untagged
@@ -508,3 +509,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8976088179915619655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6190364173896861410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 4789026814988670180}

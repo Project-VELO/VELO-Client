@@ -25,6 +25,14 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private Button _liveReadyButton;
 
+    /// <summary>
+    /// 상단 재화 표시입니다. 스스로 갱신하지 않고 화면이 불러 주기를 기다립니다(다른 화면과 같은 방식).
+    /// </summary>
+    [Foldout("Hierarchy")]
+    [Header("Currency")]
+    [SerializeField]
+    private UI_CurrencyHud _currencyHud;
+
     [Foldout("Hierarchy")]
     [Header("Live Entry")]
     // 편성 검사와 팝업·씬 진입은 같은 오브젝트의 진입 게이트가 맡습니다(200줄 규칙에 따른 분할).
@@ -47,6 +55,7 @@ public class UI_MusicSelect : MonoBehaviour
         // 결과 확인·준비 팝업 닫기가 이미 폐기하지만, 일시정지 그만두기처럼 LIVE를 우회 이탈한 경로의 잔존을 여기서 마저 정리합니다.
         LiveLoadoutContext.Instance.Clear();
 
+        _currencyHud.Refresh();
         InitCatalog();
     }
 

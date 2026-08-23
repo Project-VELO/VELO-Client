@@ -117,7 +117,8 @@ public class UI_MusicSelectSelection : MonoBehaviour
         LiveChartSummary summary = _chartSummaryReader.GetSummary(_selectedSong, difficulty);
 
         _songDetail.RefreshSong(_selectedSong, summary);
-        _recordPanel.RefreshRecord(PlayerDataProvider.Instance.GetSongRecord(_selectedSong.SongId, difficulty));
+        SongRecord record = PlayerDataProvider.Instance.GetSongRecord(_selectedSong.SongId, difficulty);
+        _recordPanel.RefreshRecord(record, summary);
 
         if (OnSelectionChanged != null)
         {

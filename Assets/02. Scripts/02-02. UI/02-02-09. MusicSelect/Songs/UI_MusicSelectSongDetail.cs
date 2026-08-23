@@ -59,7 +59,7 @@ public class UI_MusicSelectSongDetail : MonoBehaviour
         _lengthText.text = FormatLength(song.Duration);
         _noteCountText.text = summary.HasChart ? $"노트 수 {summary.NoteCount}" : $"노트 수 {EMPTY_VALUE_TEXT}";
 
-        _coverImage.sprite = _placeholderCover;
+        SetCover(_placeholderCover);
         LoadCoverAsync(song, _refreshGeneration, this.GetCancellationTokenOnDestroy()).Forget();
     }
 
@@ -72,7 +72,7 @@ public class UI_MusicSelectSongDetail : MonoBehaviour
         _bpmText.text = $"BPM {EMPTY_VALUE_TEXT}";
         _lengthText.text = UNKNOWN_LENGTH_TEXT;
         _noteCountText.text = $"노트 수 {EMPTY_VALUE_TEXT}";
-        _coverImage.sprite = _placeholderCover;
+        SetCover(_placeholderCover);
     }
 
     /// <summary>
@@ -98,6 +98,15 @@ public class UI_MusicSelectSongDetail : MonoBehaviour
             return;
         }
 
+        SetCover(cover);
+    }
+
+    /// <summary>
+    /// 커버가 없는 곡도 정상이므로 컴포넌트를 꺼 빈 사각형을 남기지 않습니다.
+    /// </summary>
+    private void SetCover(Sprite cover)
+    {
         _coverImage.sprite = cover;
+        _coverImage.enabled = cover != null;
     }
 }

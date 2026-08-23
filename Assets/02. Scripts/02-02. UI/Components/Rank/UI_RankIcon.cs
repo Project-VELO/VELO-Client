@@ -47,6 +47,16 @@ public class UI_RankIcon : MonoBehaviour
     }
 
     /// <summary>
+    /// 아직 등급이 없는 대상(한 번도 클리어하지 않은 곡 등)의 자리를 비웁니다.
+    /// FAILED와 달리 알릴 등급 자체가 없으므로 대체 글자도 띄우지 않습니다.
+    /// </summary>
+    public void Clear()
+    {
+        SetIcon(null);
+        SetFallbackText(string.Empty);
+    }
+
+    /// <summary>
     /// 빈 스프라이트를 남기면 흰 사각형이 그대로 노출되므로 컴포넌트를 함께 끕니다.
     /// </summary>
     private void SetIcon(Sprite icon)

@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -13,9 +12,6 @@ using VInspector;
 /// </summary>
 public class UI_MusicSelect : MonoBehaviour
 {
-    private const string PRACTICE_TITLE = "연습실 라이브";
-    private const string DEFAULT_TITLE = "라이브 선택";
-
     [Foldout("Hierarchy")]
     [Header("Sub Panels")]
     [SerializeField]
@@ -29,10 +25,13 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private Button _liveReadyButton;
 
+    /// <summary>
+    /// 상단 재화 표시입니다. 스스로 갱신하지 않고 화면이 불러 주기를 기다립니다(다른 화면과 같은 방식).
+    /// </summary>
     [Foldout("Hierarchy")]
-    [Header("Texts")]
+    [Header("Currency")]
     [SerializeField]
-    private TMP_Text _subTitleText;
+    private UI_CurrencyHud _currencyHud;
 
     [Foldout("Hierarchy")]
     [Header("Live Entry")]
@@ -56,6 +55,7 @@ public class UI_MusicSelect : MonoBehaviour
         // 결과 확인·준비 팝업 닫기가 이미 폐기하지만, 일시정지 그만두기처럼 LIVE를 우회 이탈한 경로의 잔존을 여기서 마저 정리합니다.
         LiveLoadoutContext.Instance.Clear();
 
+        _currencyHud.Refresh();
         InitCatalog();
     }
 
@@ -73,9 +73,6 @@ public class UI_MusicSelect : MonoBehaviour
     {
         LiveSongCatalog catalog = LiveSongCatalog.Instance;
         catalog.Rebuild();
-
-        // 연습실 LIVE만 화면 이름을 달리 표기합니다.
-        _subTitleText.text = LiveEntryContext.Instance.EntryType == EEntryType.PRACTICE_LIVE ? PRACTICE_TITLE : DEFAULT_TITLE;
 
         if (catalog.Chapters.Count == 0)
         {

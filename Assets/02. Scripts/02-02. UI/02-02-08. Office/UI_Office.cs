@@ -38,8 +38,11 @@ public class UI_Office : MonoBehaviour
         // 순서가 뒤바뀌면 이미 본 스토리의 스케줄이 미완료로 한 번 보였다가 다음 진입에야 완료로 바뀝니다.
         GameProgressService.Instance.SyncStorySchedules();
 
-        RefreshScreen();
+        // 배선을 갱신보다 먼저 합니다. 표시할 데이터나 참조 하나가 잘못돼 갱신이 중간에 끊겨도
+        // 뒤로가기만은 살아 있어야 화면을 빠져나갈 수 있습니다. 사무실은 홈으로 돌아가는 경로가
+        // 이 버튼뿐이라, 여기서 막히면 게임을 다시 켜는 수밖에 없습니다.
         InitButtons();
+        RefreshScreen();
     }
 
     private void RefreshScreen()

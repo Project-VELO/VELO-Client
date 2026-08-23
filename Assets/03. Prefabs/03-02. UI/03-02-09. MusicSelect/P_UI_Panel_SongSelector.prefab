@@ -213,6 +213,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1902884671755043318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819633621548424841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513698261c3c876994a291abc46858ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_RankIcon
+  _iconImage: {fileID: 3348716908155523071}
+  _fallbackText: {fileID: 0}
+  _perfectSIcon: {fileID: 21300000, guid: 09162c7c4009c7940bdb9f65156fb0df, type: 3}
+  _sIcon: {fileID: 21300000, guid: 6a99b74f60ad7264a93f7086696ae53a, type: 3}
+  _aIcon: {fileID: 21300000, guid: f31656355d9c74743802c94d64fcf61f, type: 3}
+  _bIcon: {fileID: 21300000, guid: e4406aa28a174d04aa2704291daa06c1, type: 3}
+  _cIcon: {fileID: 21300000, guid: 081e5f06a70714648aaa055deda57d8f, type: 3}
 --- !u!1 &5150999231299375902
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b61e4840d6bbe84484cc7f77e400b67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c42b01429d5aa64ca1feeec2e1e9b8c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -354,10 +373,10 @@ MonoBehaviour:
   _background: {fileID: 3047170473942908112}
   _coverImage: {fileID: 2741644550808220858}
   _songNameText: {fileID: 5718475980416332687}
-  _placeholderCover: {fileID: 0}
   _rankIcon: {fileID: 1902884671755043318}
-  _normalSprite: {fileID: 21300000, guid: 2b61e4840d6bbe84484cc7f77e400b67, type: 3}
-  _selectedSprite: {fileID: 21300000, guid: 42deadd74a7151246be98a47f8102a05, type: 3}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
+  _selectedColor: {r: 0.55, g: 0.38, b: 0.94, a: 1}
+  _placeholderCover: {fileID: 0}
 --- !u!1 &5911044280341686679
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,22 +527,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1902884671755043318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3819633621548424841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513698261c3c876994a291abc46858ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_RankIcon
-  _iconImage: {fileID: 3348716908155523071}
-  _fallbackText: {fileID: 0}
-  _perfectSIcon: {fileID: 21300000, guid: 09162c7c4009c7940bdb9f65156fb0df, type: 3}
-  _sIcon: {fileID: 21300000, guid: 6a99b74f60ad7264a93f7086696ae53a, type: 3}
-  _aIcon: {fileID: 21300000, guid: f31656355d9c74743802c94d64fcf61f, type: 3}
-  _bIcon: {fileID: 21300000, guid: e4406aa28a174d04aa2704291daa06c1, type: 3}
-  _cIcon: {fileID: 21300000, guid: 081e5f06a70714648aaa055deda57d8f, type: 3}

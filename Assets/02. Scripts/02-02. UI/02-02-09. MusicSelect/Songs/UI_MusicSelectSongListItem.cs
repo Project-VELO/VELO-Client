@@ -28,13 +28,18 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     [SerializeField]
     private UI_RankIcon _rankIcon;
 
+    /// <summary>
+    /// 선택 강조입니다. 시안의 선택 상태 아트는 곡명·등급까지 그려 넣은 통짜라 배경으로 쓸 수 없어,
+    /// 깨끗한 슬롯 한 장을 색으로 눌러 구분합니다. 상태별 배경만 따로 나오면 그림 교체로 바꿉니다.
+    /// </summary>
+    [Header("Selection Colors")]
+    [SerializeField]
+    private Color _normalColor = new Color(1f, 1f, 1f, 1f);
+
+    [SerializeField]
+    private Color _selectedColor = new Color(0.55f, 0.38f, 0.94f, 1f);
+
     [Foldout("Project")]
-    [SerializeField]
-    private Sprite _normalSprite;
-
-    [SerializeField]
-    private Sprite _selectedSprite;
-
     [SerializeField]
     private Sprite _placeholderCover;
 
@@ -86,13 +91,9 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _rankIcon.RefreshRank(bestRecord.BestRank);
     }
 
-    /// <summary>
-    /// 선택 여부를 색이 아니라 그림으로 구분합니다. 선택된 행은 테두리와 광원이 따로 그려져 있어
-    /// 한 장을 틴트하는 것으로는 시안이 나오지 않습니다.
-    /// </summary>
     public void SetSelected(bool isSelected)
     {
-        _background.sprite = isSelected ? _selectedSprite : _normalSprite;
+        _background.color = isSelected ? _selectedColor : _normalColor;
     }
 
     /// <summary>

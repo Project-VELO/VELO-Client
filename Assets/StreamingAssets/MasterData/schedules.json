@@ -9,18 +9,18 @@
             "DayId": "DAY_001",
             "DayOrder": 1,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 1일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 1화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_02"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D1_02",
@@ -31,15 +31,15 @@
             "DayOrder": 1,
             "ScheduleOrder": 2,
             "ScheduleTypeName": "STORY",
-            "Title": "[임시] 1일차 스토리 감상",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "Ch0 2화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
                 "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": "STORY_PROLOGUE_01"
+                "TargetStoryId": "STORY_PROLOGUE_03"
             },
             "RewardId": "REWARD_STORY_DEFAULT"
         },
@@ -52,13 +52,13 @@
             "DayOrder": 1,
             "ScheduleOrder": 3,
             "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 1일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "till the end 1회 클리어",
+            "Description": "지정곡을 클리어하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "Till The End 136",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
                 "TargetStoryId": ""
             },
@@ -72,18 +72,18 @@
             "DayId": "DAY_002",
             "DayOrder": 2,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 2일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 3화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_04"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D2_02",
@@ -94,38 +94,17 @@
             "DayOrder": 2,
             "ScheduleOrder": 2,
             "ScheduleTypeName": "STORY",
-            "Title": "[임시] 2일차 스토리 감상",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "Ch0 4화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
                 "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": "STORY_PROLOGUE_02"
+                "TargetStoryId": "STORY_PROLOGUE_05"
             },
             "RewardId": "REWARD_STORY_DEFAULT"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D2_03",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_002",
-            "DayOrder": 2,
-            "ScheduleOrder": 3,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 2일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D3_01",
@@ -135,18 +114,18 @@
             "DayId": "DAY_003",
             "DayOrder": 3,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 3일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 5화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_06"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D3_02",
@@ -157,38 +136,17 @@
             "DayOrder": 3,
             "ScheduleOrder": 2,
             "ScheduleTypeName": "STORY",
-            "Title": "[임시] 3일차 스토리 감상",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "Ch0 6화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
                 "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": "STORY_PROLOGUE_03"
+                "TargetStoryId": "STORY_PROLOGUE_07"
             },
             "RewardId": "REWARD_STORY_DEFAULT"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D3_03",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_003",
-            "DayOrder": 3,
-            "ScheduleOrder": 3,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 3일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D4_01",
@@ -198,18 +156,18 @@
             "DayId": "DAY_004",
             "DayOrder": 4,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 4일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 7화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_08"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D4_02",
@@ -219,18 +177,18 @@
             "DayId": "DAY_004",
             "DayOrder": 4,
             "ScheduleOrder": 2,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 4일차 LIVE 2",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 8화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_09"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D4_03",
@@ -241,13 +199,13 @@
             "DayOrder": 4,
             "ScheduleOrder": 3,
             "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 4일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "11:59 1회 클리어",
+            "Description": "지정곡을 클리어하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "11_59",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
                 "TargetStoryId": ""
             },
@@ -261,18 +219,18 @@
             "DayId": "DAY_005",
             "DayOrder": 5,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 5일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 9화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_10"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D5_02",
@@ -282,39 +240,18 @@
             "DayId": "DAY_005",
             "DayOrder": 5,
             "ScheduleOrder": 2,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 5일차 LIVE 2",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 10화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_11"
             },
-            "RewardId": "REWARD_LIVE_BASE"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D5_03",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_005",
-            "DayOrder": 5,
-            "ScheduleOrder": 3,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 5일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D6_01",
@@ -324,60 +261,18 @@
             "DayId": "DAY_006",
             "DayOrder": 6,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 6일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 11화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_12"
             },
-            "RewardId": "REWARD_LIVE_BASE"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D6_02",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_006",
-            "DayOrder": 6,
-            "ScheduleOrder": 2,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 6일차 LIVE 2",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D6_03",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_006",
-            "DayOrder": 6,
-            "ScheduleOrder": 3,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 6일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D7_01",
@@ -387,18 +282,18 @@
             "DayId": "DAY_007",
             "DayOrder": 7,
             "ScheduleOrder": 1,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 7일차 LIVE 1",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "ScheduleTypeName": "STORY",
+            "Title": "Ch0 12화 감상",
+            "Description": "지정된 회차를 끝까지 감상하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
-                "TargetStoryId": ""
+                "TargetStoryId": "STORY_PROLOGUE_13"
             },
-            "RewardId": "REWARD_LIVE_BASE"
+            "RewardId": "REWARD_STORY_DEFAULT"
         },
         {
             "ScheduleId": "SCHEDULE_W1_D7_02",
@@ -409,34 +304,13 @@
             "DayOrder": 7,
             "ScheduleOrder": 2,
             "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 7일차 LIVE 2",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
+            "Title": "till the end → 11:59 연속 클리어",
+            "Description": "till the end에 이어 11:59까지 연달아 클리어하는 스케줄입니다. 지금은 완료 조건에 곡을 하나만 적을 수 있어 11:59 클리어로만 판정합니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
+                "TargetSongId": "11_59",
                 "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
-                "MinimumScore": 0,
-                "TargetStoryId": ""
-            },
-            "RewardId": "REWARD_LIVE_BASE"
-        },
-        {
-            "ScheduleId": "SCHEDULE_W1_D7_03",
-            "ChapterId": "PROLOGUE",
-            "WeekId": "WEEK_001",
-            "WeekOrder": 1,
-            "DayId": "DAY_007",
-            "DayOrder": 7,
-            "ScheduleOrder": 3,
-            "ScheduleTypeName": "LIVE",
-            "Title": "[임시] 7일차 LIVE 3",
-            "Description": "기획서 3-M 확정 전까지 사용하는 검증용 임시 스케줄입니다.",
-            "IsRequired": true,
-            "ClearCondition": {
-                "TargetSongId": "EmoCosine_InitiatingLeague",
-                "RequiredDifficultyName": "NORMAL",
-                "MinimumRankName": "B",
+                "MinimumRankName": "C",
                 "MinimumScore": 0,
                 "TargetStoryId": ""
             },

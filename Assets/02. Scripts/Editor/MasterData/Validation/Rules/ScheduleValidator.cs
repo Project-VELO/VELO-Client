@@ -70,8 +70,10 @@ public class ScheduleValidator
     }
 
     /// <summary>
-    /// 하루에 필수 스케줄이 몇 개인지 검사합니다. 기획서 3-C-2에서 하루 3개로 확정되어 있고,
-    /// 개수가 어긋나면 홈·사무실 화면의 "일일 스케줄 3개" 표시가 성립하지 않습니다.
+    /// 하루에 필수 스케줄이 몇 개인지 검사합니다.
+    ///
+    /// 요일마다 개수가 달라도 됩니다. 다만 화면의 스케줄 줄이 세 개 고정이라 그보다 많으면
+    /// 그릴 자리가 없고, 하나도 없으면 마무리할 것이 없어 날짜가 넘어가지 않습니다.
     /// </summary>
     private void ValidateDailyScheduleCounts(MasterDataProvider provider, MasterDataValidationReport report)
     {
@@ -93,9 +95,11 @@ public class ScheduleValidator
 
         foreach (KeyValuePair<string, int> pair in requiredCounts)
         {
-            if (pair.Value != MasterDataValidationRule.REQUIRED_SCHEDULES_PER_DAY)
+            if (pair.Value < MasterDataValidationRule.MIN_REQUIRED_SCHEDULES_PER_DAY
+                || MasterDataValidationRule.MAX_REQUIRED_SCHEDULES_PER_DAY < pair.Value)
             {
-                report.AddWarning($"[스케줄] {pair.Key}의 필수 스케줄이 {MasterDataValidationRule.REQUIRED_SCHEDULES_PER_DAY}개가 아니라 {pair.Value}개입니다.");
+                report.AddWarning($"[스케줄] {pair.Key}의 필수 스케줄이 {pair.Value}개입니다. "
+                    + $"{MasterDataValidationRule.MIN_REQUIRED_SCHEDULES_PER_DAY}~{MasterDataValidationRule.MAX_REQUIRED_SCHEDULES_PER_DAY}개여야 합니다.");
             }
         }
     }

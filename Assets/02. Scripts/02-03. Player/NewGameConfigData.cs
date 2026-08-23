@@ -22,6 +22,16 @@ public class NewGameConfigData
     public string StartWeekId = "WEEK_001";
     public string StartDayId = "DAY_001";
 
+    /// <summary>
+    /// 극중 달력의 첫날입니다(yyyy-MM-dd). 주간 표의 날짜 표기는 여기서부터 하루씩 더해 만듭니다.
+    ///
+    /// 반드시 월요일이어야 합니다. 1일차가 주의 시작이고 요일 표기(MON~SUN)는 일차 순번으로만
+    /// 정해지므로, 월요일이 아니면 날짜와 요일이 어긋납니다.
+    ///
+    /// 연도는 화면에 나오지 않지만, 월이 넘어갈 때 며칠까지 있는지 알아야 해서 온전한 날짜로 둡니다.
+    /// </summary>
+    public string CalendarStartDate = "2022-03-14";
+
     public string StartCostumeId;
     public string StartAccessoryId;
 

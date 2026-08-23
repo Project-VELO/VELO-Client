@@ -46,6 +46,7 @@ public class UI_OfficeWeeklyPanel : MonoBehaviour
     {
         List<string> dayIds = GameProgressService.Instance.GetCurrentWeekDayIds();
         string weekId = PlayerDataProvider.Instance.Data.CurrentWeekId;
+        int weekOrder = GameProgressService.Instance.GetCurrentWeekOrder();
 
         for (int i = 0; i < _dayCells.Count; i++)
         {
@@ -55,7 +56,7 @@ public class UI_OfficeWeeklyPanel : MonoBehaviour
                 continue;
             }
 
-            _dayCells[i].SetDay(dayIds[i], i + 1, GameProgressService.Instance.GetSchedulesByDay(weekId, dayIds[i]));
+            _dayCells[i].SetDay(dayIds[i], weekOrder, i + 1, GameProgressService.Instance.GetSchedulesByDay(weekId, dayIds[i]));
             _dayCells[i].RefreshState(GameProgressService.Instance.GetDayViewState(weekId, dayIds[i]));
         }
 

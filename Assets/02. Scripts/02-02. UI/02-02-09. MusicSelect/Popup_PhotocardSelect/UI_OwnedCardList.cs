@@ -24,6 +24,12 @@ public class UI_OwnedCardList : MonoBehaviour
     [SerializeField]
     private Button _rightButton;
 
+    /// <summary>
+    /// 카드 일러스트 표입니다. 편성 슬롯(UI_PhotocardSlotList)과 같은 것을 물려 씁니다.
+    /// </summary>
+    [SerializeField]
+    private UI_CardArtBinder _artBinder;
+
     private readonly List<CardData> _ownedCards = new List<CardData>();
     private int _pageIndex;
 
@@ -80,7 +86,8 @@ public class UI_OwnedCardList : MonoBehaviour
             if (cardIndex < _ownedCards.Count)
             {
                 CardData card = _ownedCards[cardIndex];
-                _cardItems[i].SetCard(card, loadout.IsCardEquipped(card.CardId));
+                Sprite illustration = _artBinder != null ? _artBinder.GetSprite(card.CardId) : null;
+                _cardItems[i].SetCard(card, loadout.IsCardEquipped(card.CardId), illustration);
             }
             else
             {

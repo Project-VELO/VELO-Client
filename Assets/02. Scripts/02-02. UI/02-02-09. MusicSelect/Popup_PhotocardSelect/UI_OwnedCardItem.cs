@@ -26,6 +26,12 @@ public class UI_OwnedCardItem : MonoBehaviour
     [SerializeField]
     private GameObject _equippedRoot;
 
+    /// <summary>
+    /// 카드 일러스트입니다. 그림이 없는 카드는 컴포넌트를 꺼 빈 사각형을 남기지 않습니다.
+    /// </summary>
+    [SerializeField]
+    private Image _illustration;
+
     private string _cardId;
 
     private void Awake()
@@ -33,7 +39,7 @@ public class UI_OwnedCardItem : MonoBehaviour
         _button.onClick.AddListener(NotifyClicked);
     }
 
-    public void SetCard(CardData card, bool isEquipped)
+    public void SetCard(CardData card, bool isEquipped, Sprite illustration)
     {
         gameObject.SetActive(true);
 
@@ -41,6 +47,12 @@ public class UI_OwnedCardItem : MonoBehaviour
         _nameText.text = card.CardName;
         _equippedRoot.SetActive(isEquipped);
         _button.interactable = !isEquipped;
+
+        if (_illustration != null)
+        {
+            _illustration.sprite = illustration;
+            _illustration.enabled = illustration != null;
+        }
     }
 
     /// <summary>

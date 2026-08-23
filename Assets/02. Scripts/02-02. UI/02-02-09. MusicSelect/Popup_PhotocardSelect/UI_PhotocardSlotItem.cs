@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
@@ -22,10 +23,18 @@ public class UI_PhotocardSlotItem : MonoBehaviour
     [SerializeField]
     private TMP_Text _gradeText;
 
-    public void SetCard(CardData card)
+    /// <summary>
+    /// 카드 일러스트입니다. 그림이 없는 카드는 컴포넌트를 꺼 빈 사각형을 남기지 않습니다.
+    /// </summary>
+    [SerializeField]
+    private Image _illustration;
+
+    public void SetCard(CardData card, Sprite illustration)
     {
         _nameText.text = card.CardName;
         _gradeText.text = string.Format(GRADE_FORMAT, card.Grade);
+
+        SetIllustration(illustration);
     }
 
     /// <summary>
@@ -35,5 +44,18 @@ public class UI_PhotocardSlotItem : MonoBehaviour
     {
         _nameText.text = cardId;
         _gradeText.text = string.Empty;
+
+        SetIllustration(null);
+    }
+
+    private void SetIllustration(Sprite sprite)
+    {
+        if (_illustration == null)
+        {
+            return;
+        }
+
+        _illustration.sprite = sprite;
+        _illustration.enabled = sprite != null;
     }
 }

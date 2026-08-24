@@ -8958,6 +8958,14 @@ MonoBehaviour:
     MinNoteHeight: 0
     ThicknessFalloff: 0.5
     HorizontalPaddingRatio: 0.04
+  _noteSpriteTable:
+    LaneSprites:
+    - {fileID: 21300000, guid: 4f10340f82d156c44832e7dcbe69fc60, type: 3}
+    - {fileID: 21300000, guid: 40b5d5bf028a50d4b984455987322c05, type: 3}
+    - {fileID: 21300000, guid: 6e662977e88a5284db87f59706d9fe67, type: 3}
+    - {fileID: 21300000, guid: eb751009d2cddc94588a31f80171e54d, type: 3}
+    - {fileID: 21300000, guid: 60acfdeac4072b349a0aedadc73d177d, type: 3}
+    - {fileID: 21300000, guid: ddf4ddee8ce10044883735b2b90b804c, type: 3}
   _lanes: {fileID: 971251312}
   _noteLayer: {fileID: 1142410481}
   _snapDivision: 1
@@ -10278,10 +10286,10 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_fontSharedMaterials:
-  - {fileID: 1897277921}
+  - {fileID: 0}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials:
-  - {fileID: 1897277921}
+  - {fileID: 0}
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
@@ -12111,10 +12119,10 @@ MonoBehaviour:
   m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_fontSharedMaterials:
-  - {fileID: 1897277921}
+  - {fileID: 0}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials:
-  - {fileID: 1897277921}
+  - {fileID: 0}
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080

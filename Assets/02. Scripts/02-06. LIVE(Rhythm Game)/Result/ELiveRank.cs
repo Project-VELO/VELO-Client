@@ -20,7 +20,7 @@ public enum ELiveRank
     C,
 
     /// <summary>
-    /// 최저 경계에 미달했거나, 귀신 노트 실수(BAD/오입력)가 발생한 경우입니다.
+    /// 정확도가 최저 경계(LiveRankEvaluator.CLEAR_ACCURACY)에 미달한 경우입니다.
     /// </summary>
     FAILED
 }

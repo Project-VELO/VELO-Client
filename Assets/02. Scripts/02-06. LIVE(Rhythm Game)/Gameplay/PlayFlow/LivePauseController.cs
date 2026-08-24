@@ -18,9 +18,13 @@ public class LivePauseController : MonoBehaviour
     [SerializeField]
     private UI_LivePausePopup _pausePopup;
 
+    [SerializeField]
+    private LivePlayInput _playInput;
+
     private void Awake()
     {
         _liveUI.ScorePanel.PauseButton.onClick.AddListener(OpenPausePopup);
+        _playInput.OnPauseRequested += OpenPausePopup;
 
         _pausePopup.OnResumeRequested += _gameController.ResumePlay;
         _pausePopup.OnRestartRequested += _gameController.RestartPlay;
@@ -32,6 +36,11 @@ public class LivePauseController : MonoBehaviour
         if (_liveUI != null && _liveUI.ScorePanel != null && _liveUI.ScorePanel.PauseButton != null)
         {
             _liveUI.ScorePanel.PauseButton.onClick.RemoveListener(OpenPausePopup);
+        }
+
+        if (_playInput != null)
+        {
+            _playInput.OnPauseRequested -= OpenPausePopup;
         }
 
         if (_pausePopup == null || _gameController == null)

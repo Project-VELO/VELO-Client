@@ -10,7 +10,7 @@ public static class LiveLane
     public const int LAST = COUNT;
 
     /// <summary>
-    /// 귀신 노트 전용 레인입니다. 이 레인의 BAD 또는 오입력은 즉시 FAILED로 이어집니다.
+    /// 귀신 노트 전용 레인입니다. 이 레인의 노트를 놓치면 점수가 깎이고(LiveJudgementRule.GHOST_MISS_PENALTY_SCORE), 그 손실이 정확도를 통해 랭크에 반영됩니다.
     /// </summary>
     public const int GHOST = COUNT;
 

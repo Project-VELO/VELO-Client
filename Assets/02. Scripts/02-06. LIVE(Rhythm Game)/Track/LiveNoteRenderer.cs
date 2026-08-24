@@ -44,10 +44,10 @@ public class LiveNoteRenderer
     private LiveScrollMapper _scrollMapper;
     private ChartData _chart;
 
-    public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer)
+    public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer, LiveNoteSpriteTable spriteTable)
     {
         _settings = settings;
-        _visualPool = new LiveNoteVisualPool(noteLayer);
+        _visualPool = new LiveNoteVisualPool(noteLayer, spriteTable);
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)

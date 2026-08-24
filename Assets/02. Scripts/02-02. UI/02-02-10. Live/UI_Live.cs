@@ -20,7 +20,7 @@ public class UI_Live : MonoBehaviour
     [SerializeField]
     private UI_LiveCountdownPanel _countdownPanel;
 
-    [Tooltip("하단 리듬 버튼의 눌림 연출입니다. 판정에는 관여하지 않으므로 비워 두어도 플레이에 영향이 없습니다.")]
+    [Tooltip("레인 하단 판정 링의 연출입니다. 판정에는 관여하지 않지만 링은 상시 표시되는 아트이므로, 비워 두면 트랙 아래가 비어 보입니다.")]
     [SerializeField]
     private UI_LiveLaneFeedback _laneFeedback;
 
@@ -88,13 +88,15 @@ public class UI_Live : MonoBehaviour
     private void RefreshScoreHud()
     {
         LiveScoreTracker tracker = _judgementProcessor.ScoreTracker;
+        int totalNoteCount = _judgementProcessor.TotalNoteCount;
 
         _scorePanel.SetScore(tracker.Score);
         _comboPanel.SetCombo(tracker.Combo);
 
-        // 진행도 막대는 현재까지의 정확도를 나타내므로, 전체 노트가 아니라 이미 판정된 노트를 분모로 씁니다.
-        float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, tracker.JudgedNoteCount);
-        _scorePanel.SetRankProgress(accuracy * 0.01f);
+        // 결과 화면과 같은 분모(전체 노트 수)를 씁니다. 이미 판정된 노트만 분모로 삼으면 첫 PERFECT에 막대가 가득 차서,
+        // 플레이 중에 보이는 등급이 최종 등급과 어긋납니다.
+        float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, totalNoteCount);
+        _scorePanel.RefreshRankProgress(accuracy, LiveRankEvaluator.Evaluate(accuracy, tracker.PerfectCount, totalNoteCount));
     }
 
     private void ResetHud()

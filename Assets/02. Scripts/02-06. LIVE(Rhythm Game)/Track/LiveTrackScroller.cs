@@ -20,6 +20,10 @@ public class LiveTrackScroller : MonoBehaviour
     [SerializeField]
     private LiveNoteRenderSettings _noteRenderSettings = new LiveNoteRenderSettings();
 
+    [Header("Note Sprites")]
+    [SerializeField]
+    private LiveNoteSpriteTable _noteSpriteTable = new LiveNoteSpriteTable();
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UI_LiveTrackLanes _lanes;
@@ -45,7 +49,7 @@ public class LiveTrackScroller : MonoBehaviour
     {
         RefreshScrollShape();
 
-        _noteRenderer = new LiveNoteRenderer(_noteRenderSettings, _noteLayer);
+        _noteRenderer = new LiveNoteRenderer(_noteRenderSettings, _noteLayer, _noteSpriteTable);
         _noteRenderer.Init(_lanes, _barLayout, _scrollMapper);
     }
 

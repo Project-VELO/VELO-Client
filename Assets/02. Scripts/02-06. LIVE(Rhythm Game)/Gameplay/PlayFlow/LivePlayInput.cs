@@ -20,8 +20,14 @@ public class LivePlayInput : MonoBehaviour
     /// </summary>
     public Action<int> OnLaneReleased;
 
+    /// <summary>
+    /// 일시정지 키가 눌린 것을 알립니다. 실제로 멈추는 것은 구독자(LivePauseController)가 판단합니다.
+    /// </summary>
+    public Action OnPauseRequested;
+
     private const string LIVE_ACTION_MAP_NAME = "Live";
     private const string LANE_ACTION_NAME_PREFIX = "Lane";
+    private const string PAUSE_ACTION_NAME = "Pause";
 
     [Foldout("Project")]
     [SerializeField]
@@ -32,11 +38,14 @@ public class LivePlayInput : MonoBehaviour
     private readonly Action<InputAction.CallbackContext>[] _releaseCallbacks = new Action<InputAction.CallbackContext>[LiveLane.COUNT];
 
     private InputActionMap _liveActionMap;
+    private InputAction _pauseAction;
+    private Action<InputAction.CallbackContext> _pauseCallback;
     private bool _isAcceptingInput;
 
     private void Awake()
     {
         InitLaneActions();
+        InitPauseAction();
     }
 
     private void OnEnable()
@@ -53,6 +62,11 @@ public class LivePlayInput : MonoBehaviour
                 _laneActions[i].performed += _pressCallbacks[i];
                 _laneActions[i].canceled += _releaseCallbacks[i];
             }
+        }
+
+        if (_pauseAction != null)
+        {
+            _pauseAction.performed += _pauseCallback;
         }
 
         _liveActionMap.Enable();
@@ -72,6 +86,11 @@ public class LivePlayInput : MonoBehaviour
                 _laneActions[i].performed -= _pressCallbacks[i];
                 _laneActions[i].canceled -= _releaseCallbacks[i];
             }
+        }
+
+        if (_pauseAction != null)
+        {
+            _pauseAction.performed -= _pauseCallback;
         }
 
         // 액션 에셋은 프로젝트 전역에서 공유되므로, 이 씬이 내려갈 때 맵을 반드시 다시 꺼 둡니다.
@@ -115,6 +134,38 @@ public class LivePlayInput : MonoBehaviour
             _pressCallbacks[i] = _ => PressLane(lane);
             _releaseCallbacks[i] = _ => ReleaseLane(lane);
         }
+    }
+
+    private void InitPauseAction()
+    {
+        if (_liveActionMap == null)
+        {
+            return;
+        }
+
+        _pauseAction = _liveActionMap.FindAction(PAUSE_ACTION_NAME, throwIfNotFound: false);
+
+        if (_pauseAction == null)
+        {
+            Debug.LogError($"[LivePlayInput] 액션 에셋에 '{PAUSE_ACTION_NAME}' 액션이 없어 키보드로 일시정지할 수 없습니다.");
+            return;
+        }
+
+        _pauseCallback = _ => RequestPause();
+    }
+
+    /// <summary>
+    /// 일시정지는 카운트다운 중에도 받아야 하므로 레인 입력 게이트(SetAcceptingInput)를 따르지 않습니다.
+    /// 팝업이 이미 열려 있으면 InputHandler가 입력을 막아 두므로 두 번 열리지 않습니다.
+    /// </summary>
+    private void RequestPause()
+    {
+        if (InputHandler.Instance.IsInputBlocked)
+        {
+            return;
+        }
+
+        OnPauseRequested?.Invoke();
     }
 
     private void PressLane(int lane)

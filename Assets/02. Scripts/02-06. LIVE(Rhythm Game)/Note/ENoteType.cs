@@ -9,7 +9,7 @@ public enum ENoteType
     NORMAL,
 
     /// <summary>
-    /// 6번 레인에서 처리하며, 입력 실패(BAD) 시 즉시 FAILED가 유발되는 귀신 노트입니다.
+    /// 6번 레인에서 처리하며, 놓쳤을 때 점수가 깎이는 귀신 노트입니다. 감점분은 정확도를 거쳐 랭크로 이어집니다.
     /// </summary>
     GHOST,
 

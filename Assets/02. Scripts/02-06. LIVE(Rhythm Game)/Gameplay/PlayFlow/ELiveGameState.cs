@@ -18,7 +18,7 @@ public enum ELiveGameState
     Paused,
 
     /// <summary>
-    /// 완주 또는 귀신 노트 실패로 판정이 끝나고 결과 화면으로 넘어가기를 기다리는 중입니다.
+    /// 곡을 완주해 판정이 끝나고 결과 화면으로 넘어가기를 기다리는 중입니다.
     /// </summary>
     Finishing,
 }

@@ -12,23 +12,12 @@ public class UI_LiveNoteVisual : MonoBehaviour
     [SerializeField]
     private Image _noteImage;
 
-    private Sprite _defaultSprite;
-
-    private void Awake()
-    {
-        _defaultSprite = _noteImage.sprite;
-    }
-
     /// <summary>
-    /// 스프라이트를 넣지 않은 레인은 프리팹의 기본 표시를 그대로 둡니다.
+    /// 스프라이트를 넣지 않은 레인은 빈 사각형으로 그려집니다.
+    /// 표를 덜 채운 것을 눈에 띄게 두는 편이, 조용히 이전 레인의 색을 물려받는 것보다 낫습니다.
     /// </summary>
     public void SetLaneSprite(Sprite sprite)
     {
-        if (sprite == null)
-        {
-            return;
-        }
-
         _noteImage.sprite = sprite;
     }
 
@@ -38,6 +27,6 @@ public class UI_LiveNoteVisual : MonoBehaviour
     /// </summary>
     public void ClearLaneSprite()
     {
-        _noteImage.sprite = _defaultSprite;
+        SetLaneSprite(null);
     }
 }

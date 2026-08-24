@@ -11,30 +11,10 @@ public class UI_LiveScorePanel : MonoBehaviour
     private Button _pauseButton;
 
     [SerializeField]
-    private TMP_Text _scoreTitleText;
-
-    [SerializeField]
     private TMP_Text _scoreValueText;
 
     [SerializeField]
-    private Image _progressBarFill;
-
-    [Foldout("Hierarchy")]
-    [Header("Rank Labels")]
-    [SerializeField]
-    private TMP_Text _rankCText;
-
-    [SerializeField]
-    private TMP_Text _rankBText;
-
-    [SerializeField]
-    private TMP_Text _rankAText;
-
-    [SerializeField]
-    private TMP_Text _rankSText;
-
-    [SerializeField]
-    private TMP_Text _rankPerfectText;
+    private UI_LiveRankProgressBar _rankProgressBar;
 
     public Button PauseButton => _pauseButton;
 
@@ -43,8 +23,8 @@ public class UI_LiveScorePanel : MonoBehaviour
         _scoreValueText.text = score.ToString("N0");
     }
 
-    public void SetRankProgress(float progress01)
+    public void RefreshRankProgress(float accuracy, ELiveRank rank)
     {
-        _progressBarFill.fillAmount = Mathf.Clamp01(progress01);
+        _rankProgressBar.RefreshProgress(accuracy, rank);
     }
 }

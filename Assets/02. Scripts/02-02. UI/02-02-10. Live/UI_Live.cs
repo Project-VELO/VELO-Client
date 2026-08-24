@@ -88,13 +88,15 @@ public class UI_Live : MonoBehaviour
     private void RefreshScoreHud()
     {
         LiveScoreTracker tracker = _judgementProcessor.ScoreTracker;
+        int totalNoteCount = _judgementProcessor.TotalNoteCount;
 
         _scorePanel.SetScore(tracker.Score);
         _comboPanel.SetCombo(tracker.Combo);
 
-        // 진행도 막대는 현재까지의 정확도를 나타내므로, 전체 노트가 아니라 이미 판정된 노트를 분모로 씁니다.
-        float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, tracker.JudgedNoteCount);
-        _scorePanel.SetRankProgress(accuracy * 0.01f);
+        // 결과 화면과 같은 분모(전체 노트 수)를 씁니다. 이미 판정된 노트만 분모로 삼으면 첫 PERFECT에 막대가 가득 차서,
+        // 플레이 중에 보이는 등급이 최종 등급과 어긋납니다.
+        float accuracy = LiveRankEvaluator.GetAccuracy(tracker.Score, totalNoteCount);
+        _scorePanel.RefreshRankProgress(accuracy, LiveRankEvaluator.Evaluate(accuracy, tracker.PerfectCount, totalNoteCount));
     }
 
     private void ResetHud()

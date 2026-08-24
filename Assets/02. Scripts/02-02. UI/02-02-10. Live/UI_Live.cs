@@ -20,7 +20,7 @@ public class UI_Live : MonoBehaviour
     [SerializeField]
     private UI_LiveCountdownPanel _countdownPanel;
 
-    [Tooltip("하단 리듬 버튼의 눌림 연출입니다. 판정에는 관여하지 않으므로 비워 두어도 플레이에 영향이 없습니다.")]
+    [Tooltip("레인 하단 판정 링의 연출입니다. 판정에는 관여하지 않지만 링은 상시 표시되는 아트이므로, 비워 두면 트랙 아래가 비어 보입니다.")]
     [SerializeField]
     private UI_LiveLaneFeedback _laneFeedback;
 

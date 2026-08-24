@@ -155,7 +155,9 @@ public class LivePlayInput : MonoBehaviour
     }
 
     /// <summary>
-    /// 일시정지는 카운트다운 중에도 받아야 하므로 레인 입력 게이트(SetAcceptingInput)를 따르지 않습니다.
+    /// 레인 입력 게이트(SetAcceptingInput)와 따로 두어 화면의 Pause 버튼과 같은 조건으로 동작합니다.
+    /// 실제로 멈출 수 있는지는 LiveGameController.TryPause가 정하며 플레이 중에만 통과하므로,
+    /// 카운트다운 동안 누른 ESC는 팝업을 열지 않고 그대로 흘려보냅니다.
     /// 팝업이 이미 열려 있으면 InputHandler가 입력을 막아 두므로 두 번 열리지 않습니다.
     /// </summary>
     private void RequestPause()

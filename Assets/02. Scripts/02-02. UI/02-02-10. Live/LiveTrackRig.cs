@@ -48,6 +48,8 @@ public class LiveTrackRig : MonoBehaviour
     [SerializeField]
     private UI_LiveTrackLanes _lanes;
 
+    private readonly LiveTrackCameraBinder _cameraBinder = new LiveTrackCameraBinder();
+
     public float Pitch { get; private set; }
     public float CameraHeight { get; private set; }
     public float NearDepth { get; private set; }
@@ -67,6 +69,17 @@ public class LiveTrackRig : MonoBehaviour
         RefreshRig();
     }
 
+    // 카메라는 상주 씬의 것을 빌려 쓰므로 씬을 떠날 때 원래 자세로 돌려놓습니다. 편집 중에는 자세가 튀어 확인이 어려우므로 제외합니다.
+    private void OnDestroy()
+    {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
+        _cameraBinder.Restore();
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -79,11 +92,7 @@ public class LiveTrackRig : MonoBehaviour
     /// </summary>
     public void RefreshRig()
     {
-        // 프리팹은 씬 밖의 카메라를 참조로 담아 둘 수 없으므로, 지정하지 않았으면 그 씬의 메인 카메라를 씁니다.
-        if (_camera == null)
-        {
-            _camera = Camera.main;
-        }
+        _camera = _cameraBinder.Resolve(gameObject, _camera);
 
         if (_camera == null || _trackRoot == null)
         {

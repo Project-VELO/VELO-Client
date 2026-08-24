@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9ca30e7811b3eea48970dcb4269fd0b0
+guid: db0385485d64fab438ec4273ce835750
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1386166991803333751
-    second: Image_MusicSelect_BpmBadge_0
+      213: 8855610332283819635
+    second: Image_MusicSelect_MusicInfo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image_MusicSelect_BpmBadge_0
+      name: Image_MusicSelect_MusicInfo_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 270
-        height: 80
+        width: 128
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77c3fc9e887ac3310800000000000000
-      internalID: 1386166991803333751
+      spriteID: 3765e0d9da275ea70800000000000000
+      internalID: 8855610332283819635
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Image_MusicSelect_BpmBadge_0: 1386166991803333751
+      Image_MusicSelect_MusicInfo_0: 8855610332283819635
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

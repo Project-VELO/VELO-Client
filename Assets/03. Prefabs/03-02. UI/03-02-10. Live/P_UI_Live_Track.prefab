@@ -201,17 +201,17 @@ MonoBehaviour:
       m_Calls: []
   _hitLineRatio: 0.023058621
   _laneColors:
-  - {r: 1, g: 0.67, b: 0.65, a: 0.85}
-  - {r: 0.89, g: 0.89, b: 0.89, a: 0.85}
-  - {r: 0.85, g: 1, b: 1, a: 0.85}
-  - {r: 0.64, g: 0.62, b: 0.62, a: 0.85}
-  - {r: 0.56, g: 0.53, b: 0.53, a: 0.85}
-  - {r: 1, g: 0.67, b: 0.65, a: 0.85}
-  _dividerColor: {r: 1, g: 1, b: 1, a: 0.9}
+  - {r: 1, g: 0.67, b: 0.65, a: 0}
+  - {r: 0.89, g: 0.89, b: 0.89, a: 0}
+  - {r: 0.85, g: 1, b: 1, a: 0}
+  - {r: 0.64, g: 0.62, b: 0.62, a: 0}
+  - {r: 0.56, g: 0.53, b: 0.53, a: 0}
+  - {r: 1, g: 0.67, b: 0.65, a: 0}
+  _dividerColor: {r: 1, g: 1, b: 1, a: 0}
   _dividerWidth: 2
-  _hitLineColor: {r: 0.09, g: 0.32, b: 0.85, a: 1}
+  _hitLineColor: {r: 0.09, g: 0.32, b: 0.85, a: 0}
   _hitLineThickness: 10
-  _sideBorderColor: {r: 0.77, g: 0.37, b: 1, a: 0.95}
+  _sideBorderColor: {r: 0.77, g: 0.37, b: 1, a: 0}
   _sideBorderWidth: 6
   _nearViewDepth: 1341.4934
   _farViewDepth: 7505.9717

@@ -45,7 +45,6 @@ public class UI_MusicSelectSelection : MonoBehaviour
     private void Awake()
     {
         _songList.Init(_coverLoader);
-        _songDetail.Init(_coverLoader);
 
         _chapterTabs.OnChapterSelected = chapterIndex => SetChapter(chapterIndex, 0);
         _songList.OnSongSelected = SetSong;

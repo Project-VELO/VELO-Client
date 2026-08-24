@@ -13,10 +13,12 @@ public class LiveNoteVisualPool
     private readonly List<string> _staleNoteIds = new List<string>();
 
     private readonly RectTransform _noteLayer;
+    private readonly LiveNoteSpriteTable _spriteTable;
 
-    public LiveNoteVisualPool(RectTransform noteLayer)
+    public LiveNoteVisualPool(RectTransform noteLayer, LiveNoteSpriteTable spriteTable)
     {
         _noteLayer = noteLayer;
+        _spriteTable = spriteTable;
     }
 
     public bool TryGetHandle(string noteId, out LiveNoteVisualHandle handle)
@@ -50,7 +52,7 @@ public class LiveNoteVisualPool
     {
         foreach (LiveNoteVisualHandle handle in _noteVisuals.Values)
         {
-            PoolManager.Instance.Push(handle.PoolType, handle.RectTransform.gameObject);
+            ReleaseVisual(handle);
         }
 
         _noteVisuals.Clear();
@@ -68,7 +70,16 @@ public class LiveNoteVisualPool
 
         RectTransform rectTransform = go.GetComponent<RectTransform>();
         rectTransform.SetParent(_noteLayer, false);
-        _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType);
+
+        // 노트 하나가 태어날 때 한 번만 실행되는 지점입니다. 매 프레임 도는 위치 갱신에는 절대 넣지 않습니다.
+        UI_LiveNoteVisual noteVisual = go.GetComponent<UI_LiveNoteVisual>();
+
+        if (noteVisual != null)
+        {
+            noteVisual.SetLaneSprite(_spriteTable.GetSprite(note.Lane));
+        }
+
+        _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType, noteVisual);
     }
 
     private void ReleaseStaleVisuals()
@@ -85,10 +96,23 @@ public class LiveNoteVisualPool
 
         foreach (string noteId in _staleNoteIds)
         {
-            LiveNoteVisualHandle handle = _noteVisuals[noteId];
-            PoolManager.Instance.Push(handle.PoolType, handle.RectTransform.gameObject);
+            ReleaseVisual(_noteVisuals[noteId]);
             _noteVisuals.Remove(noteId);
         }
+    }
+
+    /// <summary>
+    /// 반환 직전에 레인 색을 지웁니다. 노트는 화면 밖으로 나갈 때마다 SetActive로 껐다 켜지므로
+    /// OnEnable에서 지우면 화면에 되돌아온 노트까지 함께 지워집니다.
+    /// </summary>
+    private static void ReleaseVisual(LiveNoteVisualHandle handle)
+    {
+        if (handle.NoteVisual != null)
+        {
+            handle.NoteVisual.ClearLaneSprite();
+        }
+
+        PoolManager.Instance.Push(handle.PoolType, handle.RectTransform.gameObject);
     }
 
     private static EPoolable GetPoolTypeForNoteType(ENoteType noteType)

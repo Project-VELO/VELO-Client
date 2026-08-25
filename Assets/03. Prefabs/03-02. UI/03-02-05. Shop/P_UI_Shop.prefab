@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7774177555969372118}
   - component: {fileID: 6265091036695633277}
+  - component: {fileID: 5915772790789371563}
   m_Layer: 5
   m_Name: P_UI_Shop
   m_TagString: Untagged
@@ -130,6 +131,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c631c62499831104e85ba8b889fbe859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Shop
+--- !u!114 &5915772790789371563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770197957117711319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6d8a83c75a584bb4961b769ddd064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
+  _bgm: 1
 --- !u!1 &3193823707637154507
 GameObject:
   m_ObjectHideFlags: 0

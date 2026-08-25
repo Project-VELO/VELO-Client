@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8310210128822521523}
   - component: {fileID: 2031452494831410218}
   - component: {fileID: 4731809475051714713}
+  - component: {fileID: 1746136092301819288}
   m_Layer: 0
   m_Name: P_UI_Live
   m_TagString: Untagged
@@ -298,6 +299,19 @@ MonoBehaviour:
   - {fileID: 515880842017650871}
   - {fileID: 8102018129428032340}
   - {fileID: 995565070749061372}
+--- !u!114 &1746136092301819288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903619696653183194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6d8a83c75a584bb4961b769ddd064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
+  _bgm: 0
 --- !u!1 &1237170344781390562
 GameObject:
   m_ObjectHideFlags: 0

@@ -288,6 +288,39 @@
       "Note": "서늘한 푸른빛 흑백 (채도 제거는 불가, 한기 도는 색 덮개로 근사)"
     },
     {
+      "EffectId": "FX_CUT_CROSS_DISSOLVE_IN",
+      "KindName": "TINT",
+      "TargetName": "OVERLAY",
+      "Strength": 0.22,
+      "StrengthY": 0.0,
+      "DurationSeconds": 0.9,
+      "IsLooping": false,
+      "ColorHex": "#4A6E9E",
+      "Note": "앞 컷에서 겹쳐지며 등장 (푸른빛 톤 유지)"
+    },
+    {
+      "EffectId": "FX_CUT_CROSS_DISSOLVE_OUT",
+      "KindName": "TINT",
+      "TargetName": "OVERLAY",
+      "Strength": 0.75,
+      "StrengthY": 0.0,
+      "DurationSeconds": 0.9,
+      "IsLooping": false,
+      "ColorHex": "#8FA8C8",
+      "Note": "다음 컷이 겹쳐지듯 녹아듦 (블러 불가, 옅은 장막으로 근사)"
+    },
+    {
+      "EffectId": "FX_CUT_DAWN_FADE_IN",
+      "KindName": "TINT",
+      "TargetName": "OVERLAY",
+      "Strength": 0.22,
+      "StrengthY": 0.0,
+      "DurationSeconds": 1.2,
+      "IsLooping": false,
+      "ColorHex": "#4A6E9E",
+      "Note": "어둠에서 푸른 새벽빛이 스며듦"
+    },
+    {
       "EffectId": "FX_CUT_DISSOLVE_IN",
       "KindName": "TINT",
       "TargetName": "OVERLAY",
@@ -354,6 +387,28 @@
       "Note": "잉크가 번지듯 암전"
     },
     {
+      "EffectId": "FX_CUT_FOG_CLEAR_IN",
+      "KindName": "TINT",
+      "TargetName": "OVERLAY",
+      "Strength": 0.0,
+      "StrengthY": 0.0,
+      "DurationSeconds": 1.2,
+      "IsLooping": false,
+      "ColorHex": "#6B3FA0",
+      "Note": "시야를 가렸던 보랏빛 안개가 걷힘"
+    },
+    {
+      "EffectId": "FX_CUT_FOG_WIPE_OUT",
+      "KindName": "TINT",
+      "TargetName": "OVERLAY",
+      "Strength": 1.0,
+      "StrengthY": 0.0,
+      "DurationSeconds": 1.0,
+      "IsLooping": false,
+      "ColorHex": "#6B3FA0",
+      "Note": "보랏빛 안개가 피어올라 화면을 가림"
+    },
+    {
       "EffectId": "FX_CUT_GLITCH_OUT",
       "KindName": "FLASH",
       "TargetName": "OVERLAY",
@@ -387,6 +442,17 @@
       "Note": "칼로 자르듯 끊김 (덮개 없음)"
     },
     {
+      "EffectId": "FX_CUT_IMPACT_IN",
+      "KindName": "SHAKE",
+      "TargetName": "OVERLAY",
+      "Strength": 30.0,
+      "StrengthY": 0.0,
+      "DurationSeconds": 0.3,
+      "IsLooping": false,
+      "ColorHex": "",
+      "Note": "빨려 들어온 시선이 쾅 부딪히며 멈춤"
+    },
+    {
       "EffectId": "FX_CUT_IN",
       "KindName": "FLASH",
       "TargetName": "OVERLAY",
@@ -396,6 +462,28 @@
       "IsLooping": false,
       "ColorHex": "#000000",
       "Note": "장면 전환감을 주는 짧은 덮개"
+    },
+    {
+      "EffectId": "FX_CUT_MATCH_ZOOM_OUT",
+      "KindName": "ZOOM",
+      "TargetName": "OVERLAY",
+      "Strength": 1.9,
+      "StrengthY": 0.0,
+      "DurationSeconds": 0.6,
+      "IsLooping": false,
+      "ColorHex": "",
+      "Note": "초대장 속으로 빨려 들어감"
+    },
+    {
+      "EffectId": "FX_CUT_PAN_DOWN_SLOW",
+      "KindName": "PAN",
+      "TargetName": "OVERLAY",
+      "Strength": 0.0,
+      "StrengthY": -70.0,
+      "DurationSeconds": 3.4,
+      "IsLooping": false,
+      "ColorHex": "",
+      "Note": "위에서 아래로 미세하게 훑고 내려감"
     },
     {
       "EffectId": "FX_CUT_POPUP_IN",
@@ -451,6 +539,17 @@
       "IsLooping": false,
       "ColorHex": "",
       "Note": "쓸려 내려온 시선이 부딪히듯 등장"
+    },
+    {
+      "EffectId": "FX_CUT_TILT_DOWN",
+      "KindName": "PAN",
+      "TargetName": "OVERLAY",
+      "Strength": 0.0,
+      "StrengthY": -190.0,
+      "DurationSeconds": 3.4,
+      "IsLooping": false,
+      "ColorHex": "",
+      "Note": "2층에서 1층으로 수직으로 내려옴"
     },
     {
       "EffectId": "FX_CUT_TO_BALCONY",

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7814077630426423957}
   - component: {fileID: 8018443688121966370}
+  - component: {fileID: 1979275175455019652}
   m_Layer: 5
   m_Name: P_UI_Space
   m_TagString: Untagged
@@ -60,6 +61,19 @@ MonoBehaviour:
   _officeButton: {fileID: 560216806842085199}
   _liveButton: {fileID: 5447638756800013491}
   _currencyHud: {fileID: 2015637180858840568}
+--- !u!114 &1979275175455019652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014673980983025858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6d8a83c75a584bb4961b769ddd064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
+  _bgm: 1
 --- !u!1 &8637009297318497592
 GameObject:
   m_ObjectHideFlags: 0

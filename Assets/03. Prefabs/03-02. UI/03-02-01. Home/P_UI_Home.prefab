@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6097512611330433234}
   - component: {fileID: 6622791692472692402}
   - component: {fileID: 7812588219510111170}
+  - component: {fileID: 2053213107157038842}
   m_Layer: 5
   m_Name: P_UI_Home
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MonoBehaviour:
   _enterStoryButton: {fileID: 7867518640444765431}
   _currencyHud: {fileID: 9162124047387074208}
   _schedulePanel: {fileID: 1224153805952629892}
+--- !u!114 &2053213107157038842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605646279930141063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6d8a83c75a584bb4961b769ddd064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
+  _bgm: 1
 --- !u!1 &3079025372597192438
 GameObject:
   m_ObjectHideFlags: 0

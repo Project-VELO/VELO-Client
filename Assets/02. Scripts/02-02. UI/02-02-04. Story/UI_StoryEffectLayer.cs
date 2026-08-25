@@ -28,16 +28,27 @@ public class UI_StoryEffectLayer : MonoBehaviour
     [SerializeField]
     private Image _vignette;
 
+    /// <summary>
+    /// 컷씬의 위아래 검은 여백입니다. 컷씬으로 흐르는 줄에서만 켭니다.
+    ///
+    /// 덮개가 아니라 별도 오브젝트인 이유는 연출이 아니라 화면의 틀이기 때문입니다.
+    /// 컷 하나하나가 켜고 끄는 것이 아니라 컷씬이 흐르는 동안 고정입니다.
+    /// </summary>
+    [Header("컷씬 위아래 여백")]
+    [SerializeField]
+    private GameObject _letterbox;
+
     [Foldout("Settings")]
     /// <summary>
-    /// 무대를 평소에 얼마나 확대해 둘지입니다.
+    /// 무대를 평소에 얼마나 확대해 둘지입니다. 1이면 그림 전체가 그대로 보입니다.
     ///
-    /// 1배로 두면 화면을 흔들거나 밀 때 배경 바깥의 빈 자리가 드러납니다.
-    /// 미리 조금 다가가 있으면 그 확대분이 여유분이 되어, 움직여도 화면이 배경으로 계속 채워집니다.
-    /// 값을 올리면 빈 화면 걱정은 줄지만 배경이 그만큼 잘려 나갑니다.
+    /// 예전에는 1.3이었습니다. 화면을 흔들거나 밀 때 배경 바깥의 빈 자리가 드러나지 않도록
+    /// 미리 다가가 두는 여유분이었는데, 움직이지 않는 줄에서도 화면의 30%를 상시로 버렸습니다.
+    /// 지금은 여유분을 미리 두지 않고 움직이는 연출이 필요한 만큼만 그때그때 확대합니다
+    /// (StoryStagePose가 GetRequiredScale로 물어봅니다).
     /// </summary>
     [SerializeField]
-    private float _baseScale = 1.3f;
+    private float _baseScale = 1f;
 
     /// <summary>
     /// 무대의 원래 자리입니다. 연출이 끝나면 여기로 돌립니다.
@@ -51,6 +62,19 @@ public class UI_StoryEffectLayer : MonoBehaviour
         ResetStage();
         SetOverlayColor(EStoryEffectTarget.OVERLAY, GetTransparent(_overlay.color));
         SetOverlayColor(EStoryEffectTarget.VIGNETTE, GetTransparent(_vignette.color));
+    }
+
+    /// <summary>
+    /// 컷씬의 위아래 여백을 켜고 끕니다. 여백이 붙어 있지 않은 화면에서도 부를 수 있게 null을 허용합니다.
+    /// </summary>
+    public void SetLetterbox(bool isOn)
+    {
+        if (_letterbox == null)
+        {
+            return;
+        }
+
+        _letterbox.SetActive(isOn);
     }
 
     /// <summary>
@@ -116,6 +140,22 @@ public class UI_StoryEffectLayer : MonoBehaviour
         // 완전히 투명한 덮개가 켜져 있으면 화면 전체를 덮는 레이캐스트 대상이 하나 남습니다.
         // 대사 상자보다 아래에 있어 클릭을 막지는 않지만, 켜 둘 이유도 없습니다.
         image.enabled = 0f < color.a;
+    }
+
+    /// <summary>
+    /// 무대를 이만큼 밀려면 얼마나 확대해야 하는지 돌려줍니다(SetStageScale에 넣는 배수).
+    ///
+    /// 미는 거리의 두 배만큼 화면 밖에 여유가 있어야 가장자리가 비지 않습니다.
+    /// 확대는 그림을 잘라 내는 대가를 치르므로, 필요한 순간에 필요한 만큼만 구합니다.
+    /// </summary>
+    public float GetRequiredScale(Vector2 offset)
+    {
+        Rect rect = _stage.rect;
+
+        float byWidth = 0f < rect.width ? 1f + Mathf.Abs(offset.x) * 2f / rect.width : 1f;
+        float byHeight = 0f < rect.height ? 1f + Mathf.Abs(offset.y) * 2f / rect.height : 1f;
+
+        return Mathf.Max(byWidth, byHeight) / _baseScale;
     }
 
     /// <summary>

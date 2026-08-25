@@ -21,7 +21,14 @@ public class StoryEffectPlayer : IDisposable
     private readonly StoryStagePose _pose;
     private readonly CancellationToken _sceneToken;
 
-    private CancellationTokenSource _effectCts;
+    /// <summary>
+    /// 무대를 만지는 연출(SHAKE·ZOOM·PAN)과 덮개를 만지는 연출(TINT·FLASH)의 취소원을 나눠 둡니다.
+    /// 한 컷에서 "페이드인하며 천천히 줌인"처럼 둘이 함께 걸려야 하는데, 취소원이 하나면
+    /// 나중에 건 쪽이 앞의 것을 끊습니다. 서로 만지는 대상이 다르므로 수명도 따로 둡니다.
+    /// </summary>
+    private CancellationTokenSource _poseCts;
+
+    private CancellationTokenSource _overlayCts;
 
     public StoryEffectPlayer(UI_StoryEffectLayer layer, CancellationToken sceneToken)
     {
@@ -47,16 +54,28 @@ public class StoryEffectPlayer : IDisposable
             return;
         }
 
-        Stop();
-
         if (effect.Kind == EStoryEffectKind.STOP)
         {
+            Stop();
             _pose.Reset();
             return;
         }
 
-        _effectCts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
-        RunAsync(effect, _effectCts.Token).Forget();
+        // 같은 채널의 앞 연출만 끊습니다. 덮개 연출이 무대 연출을 끊으면 컷의 등장과 카메라가 함께 갈 수 없습니다.
+        bool isPose = IsPoseKind(effect.Kind);
+        CancelChannel(isPose);
+
+        CancellationTokenSource cts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
+        if (isPose)
+        {
+            _poseCts = cts;
+        }
+        else
+        {
+            _overlayCts = cts;
+        }
+
+        RunAsync(effect, cts.Token).Forget();
     }
 
     /// <summary>
@@ -82,14 +101,35 @@ public class StoryEffectPlayer : IDisposable
     /// </summary>
     public void Stop()
     {
-        if (_effectCts == null)
+        CancelChannel(true);
+        CancelChannel(false);
+    }
+
+    private static bool IsPoseKind(EStoryEffectKind kind)
+    {
+        return kind == EStoryEffectKind.SHAKE || kind == EStoryEffectKind.ZOOM || kind == EStoryEffectKind.PAN;
+    }
+
+    private void CancelChannel(bool isPose)
+    {
+        CancellationTokenSource cts = isPose ? _poseCts : _overlayCts;
+
+        if (cts == null)
         {
             return;
         }
 
-        _effectCts.Cancel();
-        _effectCts.Dispose();
-        _effectCts = null;
+        cts.Cancel();
+        cts.Dispose();
+
+        if (isPose)
+        {
+            _poseCts = null;
+        }
+        else
+        {
+            _overlayCts = null;
+        }
     }
 
     public void Dispose()

@@ -101,8 +101,36 @@ public class StoryLineData : ISerializationCallbackReceiver
 
     /// <summary>
     /// 화면 이펙트 ID입니다(연출표의 [화면 이펙트] 열). 진동·줌·글리치 같은 연출 하나를 가리킵니다.
+    /// 컷씬에서는 카메라가 하는 일(줌·팬·흔들림)을 맡고, 등장과 전환은 아래 둘이 따로 맡습니다.
     /// </summary>
     public string EffectId;
+
+    /// <summary>
+    /// 컷이 나타날 때 거는 연출입니다(페이드인·디졸브인·하드컷).
+    ///
+    /// EffectId와 나눈 이유는 한 컷이 등장·카메라·전환 셋을 동시에 갖기 때문입니다.
+    /// 하나로 합치면 "페이드인하며 천천히 줌인"을 적을 자리가 없습니다.
+    /// </summary>
+    public string EntryEffectId;
+
+    /// <summary>
+    /// 컷이 끝나 다음으로 넘어갈 때 거는 연출입니다(페이드아웃·암전·글리치).
+    /// </summary>
+    public string ExitEffectId;
+
+    /// <summary>
+    /// 컷이 화면에 머무는 시간(초)입니다. 0이면 NEXT를 기다리는 보통 줄입니다.
+    ///
+    /// 컷씬은 읽는 속도가 아니라 연출이 진행을 정합니다. 값이 있는 줄만 스스로 넘어가므로,
+    /// 이미 있는 회차 13편은 이 값이 비어 있어 지금까지와 똑같이 동작합니다.
+    /// </summary>
+    public float CutSeconds;
+
+    /// <summary>
+    /// 컷이 시작되고 대사가 뜨기까지 기다리는 시간(초)입니다.
+    /// 그림이 먼저 자리를 잡고 글이 얹히는 연출이라, 0이면 지금처럼 곧바로 출력합니다.
+    /// </summary>
+    public float TextDelaySeconds;
 
     /// <summary>
     /// 이 줄에서 새로 시작할 BGM ID입니다. 비어 있으면 직전 BGM을 그대로 둡니다.

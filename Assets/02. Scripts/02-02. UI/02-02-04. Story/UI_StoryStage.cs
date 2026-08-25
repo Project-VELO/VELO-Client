@@ -38,6 +38,46 @@ public class UI_StoryStage : MonoBehaviour
 
         // 스프라이트가 없으면 단색으로 떨어집니다. 흰색으로 두면 화면이 하얗게 날아갑니다.
         _background.color = sprite == null ? _visualBinder.BackgroundPlaceholderColor : Color.white;
+
+        ApplyBackgroundCover(sprite);
+    }
+
+    /// <summary>
+    /// 배경을 원본 비율 그대로 화면에 채웁니다.
+    ///
+    /// 배경이 전부 16:9는 아닙니다. 세로로 긴 것도 있고 4:3도 있는데, 화면 틀에 그대로 늘리면
+    /// 인물이 옆으로 퍼집니다. 그렇다고 틀 안에 넣으면 좌우에 검은 자리가 크게 남습니다.
+    ///
+    /// 그래서 짧은 쪽을 화면에 맞추고 긴 쪽이 넘치게 둡니다. 넘치는 부분은 시점 이동이 훑고
+    /// 지나갈 여지가 되기도 합니다. 세로로 긴 그림을 위에서 아래로 내려다보는 컷이 그렇습니다.
+    /// </summary>
+    private void ApplyBackgroundCover(Sprite sprite)
+    {
+        RectTransform rect = _background.rectTransform;
+
+        if (sprite == null || !(rect.parent is RectTransform frame))
+        {
+            return;
+        }
+
+        Vector2 frameSize = frame.rect.size;
+
+        if (frameSize.x <= 0f || frameSize.y <= 0f || sprite.rect.height <= 0f)
+        {
+            return;
+        }
+
+        float spriteAspect = sprite.rect.width / sprite.rect.height;
+        float frameAspect = frameSize.x / frameSize.y;
+
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = Vector2.zero;
+
+        rect.sizeDelta = spriteAspect < frameAspect
+            ? new Vector2(frameSize.x, frameSize.x / spriteAspect)
+            : new Vector2(frameSize.y * spriteAspect, frameSize.y);
     }
 
     /// <summary>

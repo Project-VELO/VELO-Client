@@ -51,14 +51,27 @@ public class StoryLinePlayer
 
         // 장면이 바뀌면 앞 장면의 암전·필터·줌을 걷습니다.
         // 이 줄이 자기 연출을 갖고 있으면 걷어 낸 뒤에 새로 걸리므로, 암전으로 시작하는 장면도 그대로 동작합니다.
-        if (line.BackgroundId != _previousBackgroundId)
+        //
+        // 컷씬은 예외입니다. 앞 컷이 암전으로 끝나고 다음 컷이 그 어둠에서 떠오르는 식으로 이어지는데,
+        // 여기서 덮개를 걷으면 그 사이에 그림이 한 프레임 드러나 전환이 끊겨 보입니다.
+        // 컷은 등장 연출이 시작 상태를 스스로 정하므로 걷을 필요도 없습니다.
+        bool isCut = StoryCutRunner.IsCut(line);
+        bool isSceneChanged = line.BackgroundId != _previousBackgroundId;
+        _previousBackgroundId = line.BackgroundId;
+
+        if (isSceneChanged && !isCut)
         {
-            _previousBackgroundId = line.BackgroundId;
             _effectPlayer.ResetForNewScene();
         }
 
+        _ui.EffectLayer.SetLetterbox(isCut);
+
         // 화면 연출은 배경과 인물을 갈아 끼운 뒤에 겁니다.
         // 흔들림과 줌이 무대 컨테이너를 만지므로, 안에 든 그림이 먼저 제자리를 잡아야 합니다.
+        //
+        // 등장과 카메라를 나란히 겁니다. 덮개와 무대는 서로 다른 채널이라 함께 흐릅니다
+        // ("페이드인하며 천천히 줌인"). 등장이 먼저인 것은 컷이 나타나는 순간부터 카메라가 움직이기 때문입니다.
+        _effectPlayer.Play(line.EntryEffectId);
         _effectPlayer.Play(line.EffectId);
 
         // 소리는 화면 연출과 별도로 흐릅니다. BGM은 다음 지시까지 이어지므로 줄이 넘어가도 끊지 않습니다.
@@ -70,7 +83,7 @@ public class StoryLinePlayer
 
         // 씬 언로드와 건너뛰기 두 취소원을 하나로 묶습니다.
         _typingCts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
-        TypeAsync(line.Text, line.TextSpeed, _typingCts.Token).Forget();
+        TypeAsync(line, _typingCts.Token).Forget();
     }
 
     /// <summary>
@@ -102,10 +115,45 @@ public class StoryLinePlayer
         _audioPlayer.Dispose();
     }
 
-    private async UniTaskVoid TypeAsync(string text, ETextSpeed speed, CancellationToken cancellationToken)
+    private async UniTaskVoid TypeAsync(StoryLineData line, CancellationToken cancellationToken)
     {
-        await _typewriter.TypeAsync(text, speed, cancellationToken);
+        // 컷씬은 그림이 먼저 자리를 잡고 글이 얹힙니다. 지연을 두지 않는 보통 줄은 곧바로 출력합니다.
+        if (0f < line.TextDelaySeconds && !await DelayTextAsync(line.TextDelaySeconds, cancellationToken))
+        {
+            return;
+        }
+
+        await _typewriter.TypeAsync(line.Text, line.TextSpeed, cancellationToken);
 
         OnLineCompleted?.Invoke();
+    }
+
+    /// <summary>
+    /// 대사가 뜨기 전의 빈 시간입니다. 건너뛰기로 끊기면 false를 돌려 타이핑을 시작하지 않습니다.
+    ///
+    /// 끊긴 뒤에도 글자는 채워져야 하므로 여기서 직접 채웁니다. 타이핑에 들어간 뒤라면
+    /// StoryTypewriter의 finally가 맡지만, 아직 시작하지 않은 상태에서는 아무도 채우지 않습니다.
+    /// </summary>
+    private async UniTask<bool> DelayTextAsync(float seconds, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(seconds), DelayType.UnscaledDeltaTime,
+                cancellationToken: cancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// 컷이 끝나며 다음으로 넘어갈 때의 연출을 겁니다. 컨트롤러가 커서를 옮기기 직전에 부릅니다.
+    /// </summary>
+    public void PlayExitEffect(StoryLineData line)
+    {
+        _effectPlayer.Play(line.ExitEffectId);
     }
 }

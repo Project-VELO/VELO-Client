@@ -28,6 +28,16 @@ public class UI_StoryEffectLayer : MonoBehaviour
     [SerializeField]
     private Image _vignette;
 
+    /// <summary>
+    /// 컷씬의 위아래 검은 여백입니다. 컷씬으로 흐르는 줄에서만 켭니다.
+    ///
+    /// 덮개가 아니라 별도 오브젝트인 이유는 연출이 아니라 화면의 틀이기 때문입니다.
+    /// 컷 하나하나가 켜고 끄는 것이 아니라 컷씬이 흐르는 동안 고정입니다.
+    /// </summary>
+    [Header("컷씬 위아래 여백")]
+    [SerializeField]
+    private GameObject _letterbox;
+
     [Foldout("Settings")]
     /// <summary>
     /// 무대를 평소에 얼마나 확대해 둘지입니다.
@@ -51,6 +61,19 @@ public class UI_StoryEffectLayer : MonoBehaviour
         ResetStage();
         SetOverlayColor(EStoryEffectTarget.OVERLAY, GetTransparent(_overlay.color));
         SetOverlayColor(EStoryEffectTarget.VIGNETTE, GetTransparent(_vignette.color));
+    }
+
+    /// <summary>
+    /// 컷씬의 위아래 여백을 켜고 끕니다. 여백이 붙어 있지 않은 화면에서도 부를 수 있게 null을 허용합니다.
+    /// </summary>
+    public void SetLetterbox(bool isOn)
+    {
+        if (_letterbox == null)
+        {
+            return;
+        }
+
+        _letterbox.SetActive(isOn);
     }
 
     /// <summary>

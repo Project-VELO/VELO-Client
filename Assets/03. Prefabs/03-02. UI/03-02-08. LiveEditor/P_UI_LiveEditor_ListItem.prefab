@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2838238200062814405}
   - component: {fileID: 2763219455373689692}
   - component: {fileID: 7328514772770879272}
+  - component: {fileID: 7050215478084382460}
   m_Layer: 0
   m_Name: P_UI_LiveEditor_ListItem
   m_TagString: Untagged
@@ -139,6 +140,18 @@ MonoBehaviour:
   _button: {fileID: 2763219455373689692}
   _background: {fileID: 2838238200062814405}
   _label: {fileID: 9148830732172700151}
+--- !u!114 &7050215478084382460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978850592986456496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &8315786036271760324
 GameObject:
   m_ObjectHideFlags: 0

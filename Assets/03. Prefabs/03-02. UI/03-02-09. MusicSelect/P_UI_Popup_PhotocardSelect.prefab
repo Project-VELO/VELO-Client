@@ -1576,6 +1576,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7299775281130982411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047976552106752591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 9027713726183777475}
 --- !u!1 &1062716426788596224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1957,6 +1970,7 @@ GameObject:
   - component: {fileID: 2108610021753835771}
   - component: {fileID: 4936021104427102786}
   - component: {fileID: 4820117336905117441}
+  - component: {fileID: 5244240267460110049}
   m_Layer: 5
   m_Name: P_UI_Popup_PhotocardSelect
   m_TagString: Untagged
@@ -2093,6 +2107,43 @@ MonoBehaviour:
   _closeEase: 26
   _startScale: {x: 0.5, y: 0.5, z: 0.5}
   _targetScale: {x: 1, y: 1, z: 1}
+--- !u!114 &4820117336905117441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224531345225679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59db3b557306fee1952a9dec6fe7dda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_CardArtBinder
+  _cardSprites:
+    _keys:
+    - CARD_SEOYUN_FIRST_STAGE
+    - CARD_MINA_FIRST_STAGE
+    - CARD_JIWOO_FIRST_STAGE
+    - CARD_HANA_FIRST_STAGE
+    - CARD_RIA_FIRST_STAGE
+    _values:
+    - {fileID: 21300000, guid: e0e3d93266426cd439b08658c607d853, type: 3}
+    - {fileID: 21300000, guid: d948e6d517700434aa49b359a865314a, type: 3}
+    - {fileID: 21300000, guid: 00690293ba324aa4e8fc6b415876a25e, type: 3}
+    - {fileID: 21300000, guid: 51cdbcc9ac030e24383463918e8dd1a7, type: 3}
+    - {fileID: 21300000, guid: 06b02a83d13955948969f80cf1b5f3c6, type: 3}
+--- !u!114 &5244240267460110049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224531345225679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &1227969323117846432
 GameObject:
   m_ObjectHideFlags: 0
@@ -14185,6 +14236,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6797527581353133979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552766687069785126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 6206003749764135797}
 --- !u!1 &7639742143264358392
 GameObject:
   m_ObjectHideFlags: 0
@@ -15630,6 +15694,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1191868774299391524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655514716857945482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 4504868341260580154}
 --- !u!1 &8659305977717073833
 GameObject:
   m_ObjectHideFlags: 0
@@ -17025,6 +17102,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &751851219754774026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116236253935402306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 9221838416105515089}
 --- !u!1 &9151642708333169877
 GameObject:
   m_ObjectHideFlags: 0
@@ -17494,80 +17584,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4638136409989115477, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
   m_PrefabInstance: {fileID: 7890722036878965507}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7299775281130982411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047976552106752591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 9027713726183777475}
---- !u!114 &6797527581353133979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7552766687069785126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 6206003749764135797}
---- !u!114 &1191868774299391524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8655514716857945482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 4504868341260580154}
---- !u!114 &751851219754774026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9116236253935402306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 9221838416105515089}
---- !u!114 &4820117336905117441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224531345225679044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59db3b557306fee1952a9dec6fe7dda8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_CardArtBinder
-  _cardSprites:
-    _keys:
-    - CARD_SEOYUN_FIRST_STAGE
-    - CARD_MINA_FIRST_STAGE
-    - CARD_JIWOO_FIRST_STAGE
-    - CARD_HANA_FIRST_STAGE
-    - CARD_RIA_FIRST_STAGE
-    _values:
-    - {fileID: 21300000, guid: e0e3d93266426cd439b08658c607d853, type: 3}
-    - {fileID: 21300000, guid: d948e6d517700434aa49b359a865314a, type: 3}
-    - {fileID: 21300000, guid: 00690293ba324aa4e8fc6b415876a25e, type: 3}
-    - {fileID: 21300000, guid: 51cdbcc9ac030e24383463918e8dd1a7, type: 3}
-    - {fileID: 21300000, guid: 06b02a83d13955948969f80cf1b5f3c6, type: 3}

@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 7774177555969372118}
   - component: {fileID: 1071268053556731050}
   - component: {fileID: 1984640032959537434}
+  - component: {fileID: 7592128399726263070}
   m_Layer: 5
   m_Name: P_UI_Collection
   m_TagString: Untagged
@@ -144,6 +145,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
   _bgm: 1
+--- !u!114 &7592128399726263070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770197957117711319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &3193823707637154507
 GameObject:
   m_ObjectHideFlags: 0

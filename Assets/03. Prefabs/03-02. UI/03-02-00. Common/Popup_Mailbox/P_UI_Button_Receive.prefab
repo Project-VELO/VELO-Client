@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 3874690996230851455}
   - component: {fileID: 6063814729832476061}
   - component: {fileID: 8195329751520997152}
+  - component: {fileID: 3224068338661188978}
   m_Layer: 5
   m_Name: P_UI_Button_Receive
   m_TagString: Untagged
@@ -272,3 +273,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
   _button: {fileID: 6063814729832476061}
+--- !u!114 &3224068338661188978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5186283853873491485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx

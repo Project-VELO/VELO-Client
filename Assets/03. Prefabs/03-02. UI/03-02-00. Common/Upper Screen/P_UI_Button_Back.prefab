@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3082454866407278277}
   - component: {fileID: 8400137394441505916}
   - component: {fileID: 5106738119539418675}
+  - component: {fileID: 6615937992634136752}
   m_Layer: 5
   m_Name: P_UI_Button_Back
   m_TagString: Untagged
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6615937992634136752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648108762143407900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722970ddeb0009f41b52d0b5e6efc5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonSfx
+  _hover: 1
+  _click: 3
 --- !u!1 &3938914288805950888
 GameObject:
   m_ObjectHideFlags: 0

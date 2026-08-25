@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 8446613501393309447}
   - component: {fileID: 777552482068538332}
   - component: {fileID: 6189809005998840769}
+  - component: {fileID: 3914371368597768829}
   m_Layer: 0
   m_Name: P_UI_ShopItemSlot
   m_TagString: Untagged
@@ -337,6 +338,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6189809005998840769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563118906198665563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
+  _button: {fileID: 777552482068538332}
+--- !u!114 &3914371368597768829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563118906198665563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &6710037207792114393
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,16 +575,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6189809005998840769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3563118906198665563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 777552482068538332}

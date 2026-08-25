@@ -758,6 +758,7 @@ GameObject:
   - component: {fileID: 8692725774386506357}
   - component: {fileID: 4787405938645316349}
   - component: {fileID: 6065685316235149501}
+  - component: {fileID: 7176256982651778069}
   m_Layer: 5
   m_Name: P_UI_Panel_Story
   m_TagString: Untagged
@@ -916,6 +917,18 @@ MonoBehaviour:
   _newBadge: {fileID: 1041891689454119587}
   _selectionOutline: {fileID: 9214258712502696428}
   _highlight: {fileID: 7853308875814865994}
+--- !u!114 &7176256982651778069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667903437856500063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &5683745492516651202
 GameObject:
   m_ObjectHideFlags: 0

@@ -646,6 +646,7 @@ GameObject:
   - component: {fileID: 7850000000000000002}
   - component: {fileID: 7850000000000000003}
   - component: {fileID: 268587407523708665}
+  - component: {fileID: 467898499383145901}
   m_Layer: 5
   m_Name: P_UI_Story
   m_TagString: Untagged
@@ -1859,6 +1860,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenBgm
   _bgm: 0
+--- !u!114 &467898499383145901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838749343358634847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &4772632101078373957
 GameObject:
   m_ObjectHideFlags: 0

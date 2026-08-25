@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 1610806259290029915}
   - component: {fileID: 4579158883119935841}
   - component: {fileID: 3741825325137807157}
+  - component: {fileID: 4164364326604623850}
   m_Layer: 5
   m_Name: P_UI_Popup_ProfileSetting
   m_TagString: Untagged
@@ -1186,6 +1187,18 @@ MonoBehaviour:
   _closeEase: 26
   _startScale: {x: 0.5, y: 0.5, z: 0.5}
   _targetScale: {x: 1, y: 1, z: 1}
+--- !u!114 &4164364326604623850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665510960767055877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1001 &396090357963554026
 PrefabInstance:
   m_ObjectHideFlags: 0

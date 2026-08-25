@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 3047170473942908112}
   - component: {fileID: 5781294149254481947}
   - component: {fileID: 1311093388654965040}
+  - component: {fileID: 1341966478141342331}
   m_Layer: 5
   m_Name: P_UI_Panel_SongSelector
   m_TagString: Untagged
@@ -377,6 +378,18 @@ MonoBehaviour:
   _normalColor: {r: 1, g: 1, b: 1, a: 1}
   _selectedColor: {r: 0.55, g: 0.38, b: 0.94, a: 1}
   _placeholderCover: {fileID: 0}
+--- !u!114 &1341966478141342331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150999231299375902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &5911044280341686679
 GameObject:
   m_ObjectHideFlags: 0

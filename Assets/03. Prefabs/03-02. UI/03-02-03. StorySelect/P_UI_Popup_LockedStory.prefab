@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2665175044553885505}
   - component: {fileID: 8269312551533591450}
   - component: {fileID: 4651270898249640398}
+  - component: {fileID: 8531621306992906209}
   m_Layer: 5
   m_Name: P_UI_Popup_LockedStory
   m_TagString: Untagged
@@ -214,6 +215,18 @@ MonoBehaviour:
   _closeEase: 26
   _startScale: {x: 0.5, y: 0.5, z: 0.5}
   _targetScale: {x: 1, y: 1, z: 1}
+--- !u!114 &8531621306992906209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489636781742897580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24b1af7b61527448b9f179723f59f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ScreenButtonSfx
 --- !u!1 &3767303152154781350
 GameObject:
   m_ObjectHideFlags: 0

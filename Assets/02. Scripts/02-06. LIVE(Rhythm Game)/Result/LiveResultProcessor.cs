@@ -57,16 +57,18 @@ public static class LiveResultProcessor
         }
 
         float rate = LiveRewardRule.GetRewardRate(result.EntryType, isFirstClear);
-        LiveRewardRule.GetReward(rate, out int money, out int hype, out int exp);
+        LiveRewardRule.GetReward(rate, out int money, out int hype, out int exp, out int gem);
 
         PlayerData data = PlayerDataProvider.Instance.Data;
         data.Money += money;
         data.Hype += hype;
         data.Exp += exp;
+        data.Gem += gem;
 
         result.EarnedMoney = money;
         result.EarnedHype = hype;
         result.EarnedExp = exp;
+        result.EarnedGem = gem;
     }
 
     /// <summary>

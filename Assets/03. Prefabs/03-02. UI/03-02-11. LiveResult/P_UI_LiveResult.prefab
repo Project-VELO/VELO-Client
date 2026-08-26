@@ -548,10 +548,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2325989293160002168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &507335962724547533
 CanvasRenderer:
@@ -583,7 +583,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: a07106fb63190884a8d326a5364599e5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2078,7 +2078,7 @@ MonoBehaviour:
   _root: {fileID: 4408498329398216276}
   _moneyText: {fileID: 8500200999494854543}
   _hypeText: {fileID: 2603257629263677255}
-  _gemText: {fileID: 3401882274195586118}
+  _gemText: {fileID: 9215463839648916921}
 --- !u!1 &4515773037302743030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,15 +2599,11 @@ MonoBehaviour:
   - {fileID: 5788756038368830425}
   _failedBanner: {fileID: 1424401412114406201}
   _difficultySprites:
-    _keys:
-    - 0
-    - 1
-    - 2
+    _keys: 000000000100000002000000
     _values:
     - {fileID: 21300000, guid: ebd08aa177786ad4aaf289a7f654ceb8, type: 3}
     - {fileID: 21300000, guid: ee8246b5b61ab9047a1c24e32c28f91f, type: 3}
     - {fileID: 21300000, guid: ac5a699e5edc5eb4aad5b34a09c1da5a, type: 3}
-
 --- !u!1 &4990236281095275193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4211,7 +4207,7 @@ MonoBehaviour:
   m_text: PERFORMANCE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
-  m_sharedMaterial: {fileID: -4516803714574628671, guid: dbd8374f1dbde00429f26ef4414bd103, type: 2}
+  m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5282,6 +5278,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7447871932064603211, guid: da9b85cf250143c4fab81dd308a882c5, type: 3}
   m_PrefabInstance: {fileID: 2152119554036251434}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9215463839648916921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7079160387924106899, guid: da9b85cf250143c4fab81dd308a882c5, type: 3}
+  m_PrefabInstance: {fileID: 2152119554036251434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &2231247559388977866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5681,14 +5688,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &3401882274195586118 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7079160387924106899, guid: da9b85cf250143c4fab81dd308a882c5, type: 3}
-  m_PrefabInstance: {fileID: 2152119554036251434}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI

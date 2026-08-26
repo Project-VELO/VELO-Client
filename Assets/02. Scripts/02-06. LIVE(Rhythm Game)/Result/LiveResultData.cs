@@ -79,6 +79,9 @@ public class LiveResultData
     [SerializeField]
     private int _earnedExp = 0;
 
+    [SerializeField]
+    private int _earnedGem = 0;
+
     public string PlayResultId { get => _playResultId; set => _playResultId = value; }
     public EEntryType EntryType { get => _entryType; set => _entryType = value; }
     public string ScheduleId { get => _scheduleId; set => _scheduleId = value; }
@@ -116,6 +119,7 @@ public class LiveResultData
     public int EarnedMoney { get => _earnedMoney; set => _earnedMoney = value; }
     public int EarnedHype { get => _earnedHype; set => _earnedHype = value; }
     public int EarnedExp { get => _earnedExp; set => _earnedExp = value; }
+    public int EarnedGem { get => _earnedGem; set => _earnedGem = value; }
 
     /// <summary>
     /// 이번 결과 처리로 일일 스케줄이 하나라도 완료되었는지 여부입니다.

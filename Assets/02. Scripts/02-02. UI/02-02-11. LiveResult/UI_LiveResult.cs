@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using VInspector;
 
 /// <summary>
@@ -10,24 +9,13 @@ using VInspector;
 /// </summary>
 public class UI_LiveResult : MonoBehaviour
 {
-    private const string CLEAR_LABEL = "CLEAR";
-    private const string FAILED_LABEL = "FAILED";
-
-    [Foldout("Hierarchy")]
-    [Header("Summary")]
-    [SerializeField]
-    private TMP_Text _clearStatusText;
-
-    [SerializeField]
-    private TMP_Text _scoreText;
-
-    [SerializeField]
-    private TMP_Text _songTitleText;
-
     [Foldout("Hierarchy")]
     [Header("Sub UI Panels")]
     [SerializeField]
-    private UI_RankIcon _rankIcon;
+    private UI_LiveResultSummaryPanel _summaryPanel;
+
+    [SerializeField]
+    private UI_LiveResultPerformancePanel _performancePanel;
 
     [SerializeField]
     private UI_LiveResultJudgementPanel _judgementPanel;
@@ -75,13 +63,14 @@ public class UI_LiveResult : MonoBehaviour
 
     private void RefreshResult(LiveResultData result)
     {
-        SetText(_clearStatusText, result.IsClear ? CLEAR_LABEL : FAILED_LABEL);
-        SetText(_scoreText, result.Score.ToString("N0"));
-        SetText(_songTitleText, GetSongTitle(result.SongId));
-
-        if (_rankIcon != null)
+        if (_summaryPanel != null)
         {
-            _rankIcon.RefreshRank(result.Rank);
+            _summaryPanel.RefreshResult(result);
+        }
+
+        if (_performancePanel != null)
+        {
+            _performancePanel.RefreshResult(result);
         }
 
         if (_judgementPanel != null)
@@ -126,23 +115,8 @@ public class UI_LiveResult : MonoBehaviour
         LoadScene(LiveResultReturnTarget.GetReturnScene(hasCompletedSchedule));
     }
 
-    private static string GetSongTitle(string songId)
-    {
-        return LiveSongCatalog.Instance.TryGetSong(songId, out SongData song) ? song.Title : songId;
-    }
-
     private void LoadScene(ESceneNames sceneName)
     {
         LiveSceneNavigator.LoadScene(sceneName, this.GetCancellationTokenOnDestroy(), nameof(UI_LiveResult));
-    }
-
-    private static void SetText(TMP_Text text, string value)
-    {
-        if (text == null)
-        {
-            return;
-        }
-
-        text.text = value;
     }
 }

@@ -9,8 +9,12 @@ using VInspector;
 /// 화면이 늘어도 스크립트를 고칠 일이 없습니다.
 ///
 /// 스토리와 라이브는 EBgm.NONE을 골라 상주 곡을 멈춥니다. 두 화면은 자기 재생기를 갖습니다.
+///
+/// 화면 프리팹의 뿌리에 붙지만 UI_ 접두사를 달지 않습니다. 접두사는 UI 로직을 수행하는
+/// 클래스의 것인데, 이 클래스는 Button도 Canvas도 건드리지 않고 쓸 곡만 알립니다.
+/// 붙는 자리가 UI일 뿐 하는 일은 소리라서 BgmManager 옆에 둡니다.
 /// </summary>
-public class UI_ScreenBgm : MonoBehaviour
+public class ScreenBgm : MonoBehaviour
 {
     [Foldout("Settings")]
     [SerializeField]
@@ -22,7 +26,7 @@ public class UI_ScreenBgm : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        if (BgmManager.HasInstance || BgmManager.Instance != null)
+        if (BgmManager.Instance != null)
         {
             BgmManager.Instance.Play(_bgm);
         }

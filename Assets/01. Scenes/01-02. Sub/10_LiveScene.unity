@@ -2241,12 +2241,12 @@ MonoBehaviour:
     HorizontalPaddingRatio: 0
   _noteSpriteTable:
     LaneSprites:
-    - {fileID: 4670011858955077466, guid: 4f10340f82d156c44832e7dcbe69fc60, type: 3}
-    - {fileID: 4465247718053996594, guid: 40b5d5bf028a50d4b984455987322c05, type: 3}
-    - {fileID: -6471627285811736427, guid: 6e662977e88a5284db87f59706d9fe67, type: 3}
-    - {fileID: -7242057586532032923, guid: eb751009d2cddc94588a31f80171e54d, type: 3}
-    - {fileID: 6752747469622830158, guid: 60acfdeac4072b349a0aedadc73d177d, type: 3}
-    - {fileID: 3342350234077181170, guid: ddf4ddee8ce10044883735b2b90b804c, type: 3}
+    - {fileID: 21300000, guid: 4f10340f82d156c44832e7dcbe69fc60, type: 3}
+    - {fileID: 21300000, guid: 40b5d5bf028a50d4b984455987322c05, type: 3}
+    - {fileID: 21300000, guid: 6e662977e88a5284db87f59706d9fe67, type: 3}
+    - {fileID: 21300000, guid: eb751009d2cddc94588a31f80171e54d, type: 3}
+    - {fileID: 21300000, guid: 60acfdeac4072b349a0aedadc73d177d, type: 3}
+    - {fileID: 21300000, guid: ddf4ddee8ce10044883735b2b90b804c, type: 3}
   _lanes: {fileID: 539045736}
   _noteLayer: {fileID: 539045735}
 --- !u!4 &1764689897

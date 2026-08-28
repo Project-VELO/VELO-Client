@@ -17372,6 +17372,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_Live_Track
       objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _dividerColor.a
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _sideBorderColor.a
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[0].a
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[1].a
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[2].a
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[3].a
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[4].a
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _laneColors.Array.data[5].a
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 8124435889424642752, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: m_Camera
       value: 

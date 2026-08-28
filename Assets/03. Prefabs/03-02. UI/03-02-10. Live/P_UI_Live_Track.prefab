@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Live3DTrackRig
   _designScreenHeight: 1080
-  _hitLineScreenY: 125.99
-  _hitLineWidth: 1274.91
+  _hitLineScreenY: 81.5
+  _hitLineWidth: 1322.61
   _topScreenWidth: 252
   _fieldOfView: 40
   _camera: {fileID: 0}
@@ -79,7 +79,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2851571483572869736}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 4440.4087}
+  m_LocalPosition: {x: 0, y: 0, z: 4606.5444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89,7 +89,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1274.91, y: 6954.8955}
+  m_SizeDelta: {x: 1322.61, y: 7215.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8124435889424642752
 Canvas:
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  _hitLineRatio: 0.023058621
+  _hitLineRatio: 0.014378143
   _laneColors:
   - {r: 1, g: 0.67, b: 0.65, a: 0}
   - {r: 0.89, g: 0.89, b: 0.89, a: 0}
@@ -213,8 +213,8 @@ MonoBehaviour:
   _hitLineThickness: 10
   _sideBorderColor: {r: 0.77, g: 0.37, b: 1, a: 0}
   _sideBorderWidth: 6
-  _nearViewDepth: 1341.4934
-  _farViewDepth: 7505.9717
+  _nearViewDepth: 1391.688
+  _farViewDepth: 7786.8022
 --- !u!1 &4964190589775900814
 GameObject:
   m_ObjectHideFlags: 0

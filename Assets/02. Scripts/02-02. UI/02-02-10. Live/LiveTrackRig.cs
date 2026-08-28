@@ -22,11 +22,11 @@ public class LiveTrackRig : MonoBehaviour
 
     [Tooltip("화면 아래에서 판정선까지의 높이입니다.")]
     [SerializeField]
-    private float _hitLineScreenY = 125.99f;
+    private float _hitLineScreenY = 81.5f;
 
     [Tooltip("판정선 높이에서의 트랙 폭입니다.")]
     [SerializeField]
-    private float _hitLineWidth = 1274.91f;
+    private float _hitLineWidth = 1322.61f;
 
     [Tooltip("화면 최상단에서의 트랙 폭입니다.")]
     [SerializeField]

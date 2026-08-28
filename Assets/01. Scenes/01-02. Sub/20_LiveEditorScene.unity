@@ -8958,6 +8958,7 @@ MonoBehaviour:
     MinNoteHeight: 0
     ThicknessFalloff: 0.5
     HorizontalPaddingRatio: 0.04
+    BodyTileLength: 64
   _noteSpriteTable:
     LaneSprites:
     - {fileID: 21300000, guid: 4f10340f82d156c44832e7dcbe69fc60, type: 3}
@@ -8966,6 +8967,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: eb751009d2cddc94588a31f80171e54d, type: 3}
     - {fileID: 21300000, guid: 60acfdeac4072b349a0aedadc73d177d, type: 3}
     - {fileID: 21300000, guid: ddf4ddee8ce10044883735b2b90b804c, type: 3}
+    HoldBodySprites: []
+    HoldTailSprites: []
   _lanes: {fileID: 971251312}
   _noteLayer: {fileID: 1142410481}
   _snapDivision: 1

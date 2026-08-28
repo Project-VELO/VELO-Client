@@ -79,7 +79,14 @@ public class LiveNoteVisualPool
             noteVisual.SetLaneSprite(_spriteTable.GetSprite(note.Lane));
         }
 
-        _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType, noteVisual);
+        UI_LiveHoldNoteVisual holdVisual = go.GetComponent<UI_LiveHoldNoteVisual>();
+
+        if (holdVisual != null)
+        {
+            holdVisual.SetHoldSprites(_spriteTable.GetHoldBodySprite(note.Lane), _spriteTable.GetHoldTailSprite(note.Lane));
+        }
+
+        _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType, noteVisual, holdVisual);
     }
 
     private void ReleaseStaleVisuals()
@@ -102,7 +109,7 @@ public class LiveNoteVisualPool
     }
 
     /// <summary>
-    /// 반환 직전에 레인 색을 지웁니다. 노트는 화면 밖으로 나갈 때마다 SetActive로 껐다 켜지므로
+    /// 반환 직전에 레인 색과 롱노트 길이를 지웁니다. 노트는 화면 밖으로 나갈 때마다 SetActive로 껐다 켜지므로
     /// OnEnable에서 지우면 화면에 되돌아온 노트까지 함께 지워집니다.
     /// </summary>
     private static void ReleaseVisual(LiveNoteVisualHandle handle)
@@ -110,6 +117,11 @@ public class LiveNoteVisualPool
         if (handle.NoteVisual != null)
         {
             handle.NoteVisual.ClearLaneSprite();
+        }
+
+        if (handle.HoldVisual != null)
+        {
+            handle.HoldVisual.ResetHold();
         }
 
         PoolManager.Instance.Push(handle.PoolType, handle.RectTransform.gameObject);

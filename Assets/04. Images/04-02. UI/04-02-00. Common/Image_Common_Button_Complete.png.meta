@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c57673a7ac72060479bc5494e273b62d
+guid: 82d278000a68869409756b969b06ff32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4591993316353979083
-    second: Image_Office_Item_TodaySchedule_Complete_0
+      213: 7138623481978468175
+    second: "\uC644\uB8CC \uD504\uB808\uC784_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image_Office_Item_TodaySchedule_Complete_0
+      name: "\uC644\uB8CC \uD504\uB808\uC784_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1774
-        height: 887
+        width: 112
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53dc0cf7866f540c0800000000000000
-      internalID: -4591993316353979083
+      spriteID: f47b69c1c3c711360800000000000000
+      internalID: 7138623481978468175
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: f47b69c1c3c711360800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Image_Office_Item_TodaySchedule_Complete_0: -4591993316353979083
+      "\uC644\uB8CC \uD504\uB808\uC784_0": 7138623481978468175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

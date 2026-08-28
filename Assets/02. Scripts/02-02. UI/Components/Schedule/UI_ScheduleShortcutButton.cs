@@ -1,5 +1,4 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -18,21 +17,16 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
 {
     public Action OnClicked;
 
-    private const string SHORTCUT_LABEL = "바로가기";
-    private const string COMPLETED_LABEL = "완료";
-
     [Foldout("Hierarchy")]
     [SerializeField]
     private Button _button;
 
     /// <summary>
     /// 버튼 위에 얹는 글자입니다. 비워 둘 수 있습니다.
-    ///
-    /// 사무실은 배경 그림에 "바로가기"·"완료"가 이미 그려져 있어 여기를 비웁니다. 물려 두면
-    /// 같은 글자가 그림 위에 한 번 더 찍혀 겹칩니다. 홈은 글자 없는 배경을 써서 여기로 찍습니다.
+    /// 글자가 배경 그림에 이미 그려져 있는 화면에서 물려 두면 같은 글자가 한 번 더 찍혀 겹칩니다.
     /// </summary>
     [SerializeField]
-    private TMP_Text _label;
+    private Image _label;
 
     [SerializeField]
     private Image _background;
@@ -47,6 +41,13 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     /// </summary>
     [SerializeField]
     private Sprite _completedSprite;
+
+    [Foldout("Project")]
+    [SerializeField]
+    private Sprite _shortcutLabelSprite;
+
+    [SerializeField]
+    private Sprite _completedLabelSprite;
 
     private void Awake()
     {
@@ -69,6 +70,10 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
         RefreshBackground(isCompleted);
     }
 
+    /// <summary>
+    /// 두 글자 그림은 폭이 서로 다르므로("바로가기" 57, "완료" 28) 바꿔 끼울 때마다 원본 크기로 되돌립니다.
+    /// 한 크기로 고정해 두면 짧은 쪽이 늘어나 글자가 뭉개집니다.
+    /// </summary>
     private void RefreshLabel(bool isCompleted)
     {
         if (_label == null)
@@ -76,7 +81,17 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
             return;
         }
 
-        _label.text = isCompleted ? COMPLETED_LABEL : SHORTCUT_LABEL;
+        Sprite sprite = isCompleted ? _completedLabelSprite : _shortcutLabelSprite;
+
+        _label.enabled = sprite != null;
+
+        if (sprite == null)
+        {
+            return;
+        }
+
+        _label.sprite = sprite;
+        _label.SetNativeSize();
     }
 
     private void RefreshBackground(bool isCompleted)

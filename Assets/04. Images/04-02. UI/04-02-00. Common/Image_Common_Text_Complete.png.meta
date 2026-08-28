@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: fa170cad96deaf642b75e1e153111aa3
+guid: 6e1a251dd7d6ba44789d1b152c69bc30
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2312782611829641644
-    second: Image_Office_Item_TodaySchedule_Enter_0
+      213: 8806633832909887455
+    second: "\uC644\uB8CC_0"
+  - first:
+      213: 325994185254419501
+    second: "\uC644\uB8CC_1"
+  - first:
+      213: 3217133504347633673
+    second: "\uC644\uB8CC_2"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +102,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image_Office_Item_TodaySchedule_Enter_0
+      name: "\uC644\uB8CC_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 112
-        height: 61
+        y: 2
+        width: 15
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45ea13bd77857efd0800000000000000
-      internalID: -2312782611829641644
+      spriteID: fd7d78dbfc2773a70800000000000000
+      internalID: 8806633832909887455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC644\uB8CC_1"
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2cbeeafbf9268400800000000000000
+      internalID: 325994185254419501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC644\uB8CC_2"
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 908f5a980ed85ac20800000000000000
+      internalID: 3217133504347633673
       vertices: []
       indices: 
       edges: []
@@ -125,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: fd7d78dbfc2773a70800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Image_Office_Item_TodaySchedule_Enter_0: -2312782611829641644
+      "\uC644\uB8CC_0": 8806633832909887455
+      "\uC644\uB8CC_1": 325994185254419501
+      "\uC644\uB8CC_2": 3217133504347633673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

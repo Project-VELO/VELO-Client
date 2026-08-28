@@ -41,6 +41,20 @@ SCAN_ROOTS = ("Assets", "ProjectSettings")
 # 유니티 내장 리소스는 .meta 가 없고 guid 가 0으로 시작한다.
 BUILTIN_PREFIX = "0000000000000000"
 
+# 무해한 것으로 확인해 검사에서 빼는 참조. 왜 무해한지 함께 적어 둔다.
+#
+# 아래는 모두 Assets/Settings/Renderer2D.asset 에 URP 가 자동으로 채워 넣는 디버그 전용
+# 필드다. URP 버전이 오르며 셰이더의 guid 가 바뀐 흔적이고, 렌더링 결과에는 영향이 없다.
+# 손으로 지우면 URP 가 다시 채워 넣으므로 여기서 빼는 편이 낫다.
+IGNORED_GUIDS = {
+    "e5c6678ed2aaa91408dd3df699057aae": "URP Renderer2D probeVolumeDebugShader",
+    "03cfc4915c15d504a9ed85ecc404e607": "URP Renderer2D probeVolumeFragmentationDebugShader",
+    "53a11f4ebaebf4049b3638ef78dc9664": "URP Renderer2D probeVolumeOffsetDebugShader",
+    "8f96cd657dc40064aa21efcc7e50a2e7": "URP Renderer2D probeVolumeSamplingDebugShader",
+    "57d7c4c16e2765b47a4d2069b311bffe": "URP Renderer2D probeSamplingDebugMesh",
+    "24ec0e140fb444a44ab96ee80844e18e": "URP Renderer2D probeSamplingDebugTexture",
+}
+
 # 외부에서 받아 온 에셋은 데모 리소스가 빠진 채 들어오는 일이 흔해 기본적으로 뺀다.
 EXTERNAL_MARK = os.path.join("20. External Assets", "")
 
@@ -109,6 +123,8 @@ def main():
     parser = argparse.ArgumentParser(description="깨진 에셋 참조를 찾습니다.")
     parser.add_argument("--all", action="store_true",
                         help="20. External Assets 까지 함께 검사합니다.")
+    parser.add_argument("--no-ignore", action="store_true",
+                        help="무해한 것으로 등록해 둔 참조까지 함께 봅니다.")
     args = parser.parse_args()
 
     known = collect_known_guids()
@@ -116,11 +132,23 @@ def main():
 
     print("알려진 guid %d개 / 참조된 guid %d개" % (len(known), len(references)))
 
-    broken = {guid: sorted(paths) for guid, paths in references.items()
-              if guid not in known and not guid.startswith(BUILTIN_PREFIX)}
+    missing = {guid: sorted(paths) for guid, paths in references.items()
+               if guid not in known and not guid.startswith(BUILTIN_PREFIX)}
+
+    # 뺀 것을 조용히 감추지 않는다. 목록이 낡았을 때 알아채려면 몇 건인지는 보여야 한다.
+    ignored = {guid: IGNORED_GUIDS[guid] for guid in missing if guid in IGNORED_GUIDS}
+
+    if ignored and not args.no_ignore:
+        print("\n무해한 것으로 등록되어 건너뛴 참조 %d건 (--no-ignore 로 볼 수 있습니다)" % len(ignored))
+
+        for guid, reason in sorted(ignored.items(), key=lambda item: item[1]):
+            print("   %s  %s" % (guid, reason))
+
+    broken = missing if args.no_ignore else {
+        guid: paths for guid, paths in missing.items() if guid not in IGNORED_GUIDS}
 
     if not broken:
-        print("깨진 참조 없음")
+        print("\n깨진 참조 없음")
         return 0
 
     print("\n깨진 참조 %d개" % len(broken))

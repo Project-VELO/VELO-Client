@@ -704,5 +704,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_ScheduleStateIcon
   _icon: {fileID: 3733378556029505759}
   _lockedSprite: {fileID: 21300000, guid: cff35308e6f27414ca1294a65f98afd3, type: 3}
-  _availableSprite: {fileID: 0}
+  _availableSprite: {fileID: 21300000, guid: e32e32a8943d22c4c9c9afd8e24c86fd, type: 3}
   _completedSprite: {fileID: 21300000, guid: ebfde6187605c7d4fac5c841ab44a233, type: 3}

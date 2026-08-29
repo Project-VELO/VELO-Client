@@ -10,6 +10,9 @@ using VInspector;
 ///
 /// 주차의 마지막 날짜에는 내일이 없으므로 예고 구역을 통째로 숨깁니다. 비워 둔 채로 두면
 /// 제목만 있고 내용이 없는 구역이 남습니다.
+///
+/// 날짜는 달력 날짜("3/14")로 적습니다. 사무실 주간 표가 칸마다 쓰는 표기와 같아,
+/// 두 화면을 오갈 때 같은 날을 가리키는 것이 한눈에 보입니다.
 /// </summary>
 public class UI_HomeSchedulePanel : MonoBehaviour
 {
@@ -44,7 +47,7 @@ public class UI_HomeSchedulePanel : MonoBehaviour
     {
         int weekOrder = GameProgressService.Instance.GetCurrentWeekOrder();
 
-        _todayDateText.text = ScheduleDayLabel.Format(weekOrder, GameProgressService.Instance.GetCurrentDayNumber());
+        _todayDateText.text = ScheduleDayLabel.FormatDate(weekOrder, GameProgressService.Instance.GetCurrentDayNumber());
         _todayList.RefreshSchedules();
 
         RefreshTomorrow(weekOrder);
@@ -62,7 +65,7 @@ public class UI_HomeSchedulePanel : MonoBehaviour
             return;
         }
 
-        _tomorrowDateText.text = ScheduleDayLabel.Format(weekOrder, tomorrowDayNumber);
+        _tomorrowDateText.text = ScheduleDayLabel.FormatDate(weekOrder, tomorrowDayNumber);
         _tomorrowList.RefreshSchedules();
     }
 }

@@ -34,18 +34,22 @@ public class UI_LiveResultRewardPanel : MonoBehaviour
             _root.SetActive(true);
         }
 
-        SetText(_moneyText, result.EarnedMoney.ToString("N0"));
-        SetText(_hypeText, result.EarnedHype.ToString("N0"));
-        SetText(_gemText, result.EarnedGem.ToString("N0"));
+        SetAmount(_moneyText, result.EarnedMoney);
+        SetAmount(_hypeText, result.EarnedHype);
+        SetAmount(_gemText, result.EarnedGem);
     }
 
-    private static void SetText(TMP_Text text, string value)
+    /// <summary>
+    /// 획득량이므로 부호를 붙여 보여 줍니다(시안 "+ 1,000").
+    /// 여기 오는 값은 이번 판으로 늘어난 양뿐이라 음수가 될 일이 없습니다.
+    /// </summary>
+    private static void SetAmount(TMP_Text text, int amount)
     {
         if (text == null)
         {
             return;
         }
 
-        text.text = value;
+        text.text = $"+ {amount:N0}";
     }
 }

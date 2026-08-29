@@ -26,6 +26,35 @@ public class UI_TopRightMenu : MonoBehaviour
         {
             _settingButton.onClick.AddListener(OpenQuitConfirm);
         }
+
+        MovePopupToRootCanvas();
+    }
+
+    /// <summary>
+    /// 팝업을 화면의 최상위 캔버스로 옮겨 답니다.
+    ///
+    /// 팝업은 화면 전체를 덮어야 하는데 이 메뉴는 화면 구석의 작은 칸입니다. 자식으로 두면
+    /// "부모를 가득 채우기"가 그 작은 칸을 채우는 뜻이 되어, 팝업이 버튼 옆에 조그맣게 뜹니다.
+    ///
+    /// 프리팹 소유는 메뉴가 그대로 가집니다. 팝업을 화면마다 따로 두지 않으려면 메뉴가 들고
+    /// 다녀야 하고, 자리 문제는 이렇게 옮겨 다는 것으로 해결됩니다.
+    /// </summary>
+    private void MovePopupToRootCanvas()
+    {
+        if (_quitConfirmPopup == null)
+        {
+            return;
+        }
+
+        Canvas canvas = GetComponentInParent<Canvas>();
+
+        if (canvas == null)
+        {
+            return;
+        }
+
+        // worldPositionStays를 끄면 앵커와 여백이 그대로 남아, 옮긴 뒤 화면 전체를 채웁니다.
+        _quitConfirmPopup.transform.SetParent(canvas.rootCanvas.transform, false);
     }
 
     /// <summary>

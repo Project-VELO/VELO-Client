@@ -39,27 +39,43 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     [SerializeField]
     private Color _selectedColor = new Color(0.55f, 0.38f, 0.94f, 1f);
 
+    /// <summary>
+    /// 잠긴 곡의 배경입니다. 잠금 전용 아트가 없어 어둡게 눌러 구분합니다
+    /// (잠긴 챕터 탭 UI_MusicSelectChapterTab과 같은 방식).
+    /// </summary>
+    [SerializeField]
+    private Color _lockedColor = new Color(0.45f, 0.45f, 0.5f, 1f);
+
+    /// <summary>
+    /// 잠긴 곡은 커버까지 함께 눌러 줍니다. 배경만 어둡게 하면 커버가 혼자 밝아 눈에 먼저 들어옵니다.
+    /// </summary>
+    [SerializeField]
+    private Color _lockedCoverColor = new Color(0.5f, 0.5f, 0.55f, 1f);
+
     [Foldout("Project")]
     [SerializeField]
     private Sprite _placeholderCover;
 
     private int _itemIndex;
+    private bool _isLocked;
 
     private void Awake()
     {
         _button.onClick.AddListener(NotifyClicked);
     }
 
-    public void SetItem(int itemIndex, string songTitle, SongRecord bestRecord, bool isInteractable)
+    public void SetItem(int itemIndex, string songTitle, SongRecord bestRecord, bool isInteractable, bool isLocked)
     {
         _itemIndex = itemIndex;
+        _isLocked = isLocked;
         _songNameText.text = songTitle;
-        _button.interactable = isInteractable;
+        _button.interactable = isInteractable && !isLocked;
 
         SetRank(bestRecord);
 
         // 커버는 나중에 비동기로 도착하므로, 풀에서 재사용된 행이 이전 곡의 커버를 달고 나오지 않도록 먼저 지웁니다.
         _coverImage.sprite = _placeholderCover;
+        _coverImage.color = isLocked ? _lockedCoverColor : Color.white;
 
         SetSelected(false);
     }
@@ -91,8 +107,17 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _rankIcon.RefreshRank(bestRecord.BestRank);
     }
 
+    /// <summary>
+    /// 잠긴 곡은 고를 수 없으므로 선택 강조가 들어올 일이 없고, 눌린 색을 계속 유지합니다.
+    /// </summary>
     public void SetSelected(bool isSelected)
     {
+        if (_isLocked)
+        {
+            _background.color = _lockedColor;
+            return;
+        }
+
         _background.color = isSelected ? _selectedColor : _normalColor;
     }
 
@@ -103,9 +128,11 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     {
         OnItemClicked = null;
         _itemIndex = 0;
+        _isLocked = false;
         _button.interactable = true;
         _rankIcon.Clear();
         _coverImage.sprite = _placeholderCover;
+        _coverImage.color = Color.white;
         SetSelected(false);
     }
 

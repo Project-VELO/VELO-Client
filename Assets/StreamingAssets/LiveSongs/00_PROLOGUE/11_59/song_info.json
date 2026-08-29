@@ -4,8 +4,8 @@
     "_bpm": 126.0,
     "_audioFilePath": "audio.mp3",
     "_composer": "PROJECT: VELO",
-    "_duration": 198.07200622558595,
-    "_coverImagePath": "cover.jpg",
+    "_duration": 198.07200622558594,
+    "_coverImagePath": "cover.png",
     "_chartEntries": [
         {
             "Difficulty": 1,
@@ -15,5 +15,7 @@
                 "_totalNoteCount": 340
             }
         }
-    ]
+    ],
+    "_order": 2,
+    "_isLocked": false
 }

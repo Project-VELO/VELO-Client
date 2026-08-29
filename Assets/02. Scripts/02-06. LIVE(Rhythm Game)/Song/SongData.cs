@@ -36,6 +36,21 @@ public class SongData : ISerializationCallbackReceiver
     [SerializeField]
     private string _coverImagePath;
 
+    /// <summary>
+    /// 곡 목록에 놓이는 순서입니다. 작을수록 앞에 옵니다.
+    /// 폴더명 사전순으로는 기획이 정한 곡 순서를 표현할 수 없어 파일이 직접 정합니다.
+    /// 값이 없는 곡은 0이 되어 뒤로 밀립니다(LiveSongCatalogLoader.CompareSongOrder).
+    /// </summary>
+    [SerializeField]
+    private int _order;
+
+    /// <summary>
+    /// 아직 플레이할 수 없는 곡입니다. 목록에는 자리를 지키되 고를 수 없게 표시합니다.
+    /// 채보가 없어 진입이 막히는 것과 달리, 이쪽은 "준비 중"임을 의도적으로 보여 주는 표시입니다.
+    /// </summary>
+    [SerializeField]
+    private bool _isLocked;
+
     // Dictionary는 JsonUtility로 직렬화되지 않으므로, List<ChartEntry>로 감싸 직렬화하고
     // ISerializationCallbackReceiver를 통해 런타임에는 Dictionary로 접근할 수 있도록 동기화합니다.
     [SerializeField]
@@ -50,6 +65,8 @@ public class SongData : ISerializationCallbackReceiver
     public string Composer { get => _composer; set => _composer = value; }
     public float Duration { get => _duration; set => _duration = value; }
     public string CoverImagePath { get => _coverImagePath; set => _coverImagePath = value; }
+    public int Order { get => _order; set => _order = value; }
+    public bool IsLocked { get => _isLocked; set => _isLocked = value; }
 
     public Dictionary<EDifficulty, ChartMetadata> Charts => _charts;
 

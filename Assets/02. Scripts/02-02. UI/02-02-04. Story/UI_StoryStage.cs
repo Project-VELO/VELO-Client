@@ -30,6 +30,12 @@ public class UI_StoryStage : MonoBehaviour
     [SerializeField]
     private StoryVisualBinder _visualBinder;
 
+    /// <summary>
+    /// 인물을 어느 크기로 어디에 세울지 정합니다. 인물마다 그림이 달라 자리를 프리팹에 굳혀 둘 수 없습니다.
+    /// </summary>
+    [SerializeField]
+    private StoryCharacterLayoutTable _layoutTable;
+
     public void SetBackground(string backgroundId)
     {
         Sprite sprite = _visualBinder.GetBackground(backgroundId);
@@ -123,5 +129,10 @@ public class UI_StoryStage : MonoBehaviour
 
         // 아직 초상 자산이 없어 대부분 여기로 옵니다. 캐릭터마다 색을 달리해 화자 교체가 눈에 보이게 합니다.
         target.color = sprite == null ? _visualBinder.GetCharacterPlaceholderColor(characterId) : Color.white;
+
+        if (_layoutTable != null)
+        {
+            _layoutTable.Apply(target, slot, characterId);
+        }
     }
 }

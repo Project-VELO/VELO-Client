@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6171877070997805357}
   - component: {fileID: 4124725157474360092}
   - component: {fileID: 3558395344319144729}
+  - component: {fileID: 1100000094}
   m_Layer: 5
   m_Name: P_UI_TopRightMenu
   m_TagString: Untagged
@@ -516,3 +517,56 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1405397304537656472, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
   m_PrefabInstance: {fileID: 9096050915339552566}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1100000000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6171877070997805357}
+    m_Modifications:
+    - target: {fileID: 3833809817422761713, guid: b7c41f0a5d2e48a4b9163c8d7e05af12, type: 3}
+      propertyPath: m_Name
+      value: P_UI_Popup_QuitConfirm
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7c41f0a5d2e48a4b9163c8d7e05af12, type: 3}
+--- !u!114 &1100000047 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5327317540582963469, guid: b7c41f0a5d2e48a4b9163c8d7e05af12, type: 3}
+  m_PrefabInstance: {fileID: 1100000000}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f7222fb68596140927b70b2f9ffa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_QuitConfirmPopup
+--- !u!114 &1100000141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3609515675933730613, guid: 36f9a6d37c72bf043a7f5ae95aa8548d, type: 3}
+  m_PrefabInstance: {fileID: 2515138844367648233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1100000094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184529115955213959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6659406ab92e414eb14facc6db365a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_TopRightMenu
+  _settingButton: {fileID: 1100000141}
+  _quitConfirmPopup: {fileID: 1100000047}

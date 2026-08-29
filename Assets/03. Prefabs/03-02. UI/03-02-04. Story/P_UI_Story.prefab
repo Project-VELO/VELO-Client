@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 1630879031204858981}
   - component: {fileID: 8752171590229957441}
   - component: {fileID: 7056041536732174936}
+  - component: {fileID: 6100000000}
   m_Layer: 0
   m_Name: Button_SkipTypeWriter
   m_TagString: Untagged
@@ -3092,3 +3093,17 @@ MonoBehaviour:
   _defaultLayout:
     Width: 0
     EdgeOffset: 0
+--- !u!114 &6100000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996037181859950209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722970ddeb0009f41b52d0b5e6efc5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonSfx
+  _hover: 0
+  _click: 0

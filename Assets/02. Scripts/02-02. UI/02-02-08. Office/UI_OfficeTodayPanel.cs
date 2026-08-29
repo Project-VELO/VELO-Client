@@ -72,6 +72,12 @@ public class UI_OfficeTodayPanel : MonoBehaviour
     /// </summary>
     private void RefreshHeader()
     {
+        // 날짜는 주간 표가 칸마다 보여 주므로 이 패널에서는 비워 둘 수 있습니다.
+        if (_dateText == null || !_dateText.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         int weekOrder = GameProgressService.Instance.GetCurrentWeekOrder();
         int dayNumber = GameProgressService.Instance.GetCurrentDayNumber();
 

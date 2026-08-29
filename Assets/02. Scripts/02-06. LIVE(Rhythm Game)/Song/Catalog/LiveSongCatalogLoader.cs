@@ -81,15 +81,37 @@ public class LiveSongCatalogLoader
     private void LoadSongs(LiveChapterData chapter)
     {
         List<string> songFolders = LiveSongPaths.GetPublishedSongFolders(chapter.FolderPath);
+        var songs = new List<SongData>();
 
         foreach (string songFolder in songFolders)
         {
             SongData song = LoadSong(songFolder, chapter.ChapterId);
             if (!ReferenceEquals(song, null))
             {
-                chapter.AddSong(song);
+                songs.Add(song);
             }
         }
+
+        songs.Sort(CompareSongOrder);
+
+        foreach (SongData song in songs)
+        {
+            chapter.AddSong(song);
+        }
+    }
+
+    /// <summary>
+    /// 곡 목록 순서는 song_info.json의 _order가 정합니다.
+    /// _order를 적지 않은 곡은 0이 되는데, 이를 그대로 쓰면 순서를 정해 둔 곡보다 앞으로 올라옵니다.
+    /// 순서를 밝히지 않은 곡은 뒤에 붙이는 것이 기획이 정한 앞머리를 지키는 방향이라 0을 맨 뒤로 보냅니다.
+    /// </summary>
+    private int CompareSongOrder(SongData left, SongData right)
+    {
+        int leftOrder = left.Order <= 0 ? int.MaxValue : left.Order;
+        int rightOrder = right.Order <= 0 ? int.MaxValue : right.Order;
+
+        int orderComparison = leftOrder.CompareTo(rightOrder);
+        return orderComparison != 0 ? orderComparison : string.CompareOrdinal(left.SongId, right.SongId);
     }
 
     private SongData LoadSong(string songFolder, string chapterId)

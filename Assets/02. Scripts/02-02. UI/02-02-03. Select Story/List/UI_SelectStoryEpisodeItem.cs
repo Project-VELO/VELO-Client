@@ -16,7 +16,6 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
     public Action<string> OnItemClicked;
 
     private const string EPISODE_FORMAT = "{0}화";
-    private const string LOCKED_LABEL = "LOCKED";
 
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -29,13 +28,11 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
     private TMP_Text _titleText;
 
     /// <summary>
-    /// 상태 문구를 담은 루트입니다. UNLOCKED에는 표시할 문구가 없어 통째로 끕니다(기획서 5.5).
+    /// 상태 문구를 담은 루트입니다. 지금은 어느 상태에서도 띄우는 문구가 없어 늘 꺼 둡니다.
+    /// 잠금은 자물쇠가, 완료는 완료 아이콘이 알립니다.
     /// </summary>
     [SerializeField]
     private GameObject _statusRoot;
-
-    [SerializeField]
-    private TMP_Text _statusText;
 
     /// <summary>
     /// 자물쇠 표시입니다. 기획서 5.5가 LOCKED에만 요구합니다.
@@ -98,20 +95,8 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
         _clearIcon.SetActive(!isLocked && isCompleted);
         _newBadge.SetActive(!ReferenceEquals(progress, null) && progress.IsNew);
 
-        if (isLocked)
-        {
-            SetStatusLabel(LOCKED_LABEL);
-            return;
-        }
-
-        // 완료는 아이콘 하나로 충분해 문구를 띄우지 않습니다. 잠금만 문구로 알립니다.
+        // 잠금은 자물쇠가, 완료는 완료 아이콘이 알립니다. 같은 사실을 문구로 한 번 더 적지 않습니다.
         _statusRoot.SetActive(false);
-    }
-
-    private void SetStatusLabel(string label)
-    {
-        _statusRoot.SetActive(true);
-        _statusText.text = label;
     }
 
     public void SetSelected(bool isSelected)

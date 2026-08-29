@@ -71,7 +71,7 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
         _songNameText.text = songTitle;
         _button.interactable = isInteractable && !isLocked;
 
-        SetRank(bestRecord);
+        SetRank(bestRecord, isLocked);
 
         // 커버는 나중에 비동기로 도착하므로, 풀에서 재사용된 행이 이전 곡의 커버를 달고 나오지 않도록 먼저 지웁니다.
         _coverImage.sprite = _placeholderCover;
@@ -95,9 +95,16 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
 
     /// <summary>
     /// 한 번도 클리어하지 않은 곡은 등급 자리를 비웁니다(시안에 미기록 표시가 따로 없습니다).
+    /// 잠긴 곡은 비우는 대신 자물쇠를 얹습니다. 비워 두면 아직 안 친 곡과 구분되지 않습니다.
     /// </summary>
-    private void SetRank(SongRecord bestRecord)
+    private void SetRank(SongRecord bestRecord, bool isLocked)
     {
+        if (isLocked)
+        {
+            _rankIcon.ShowLocked();
+            return;
+        }
+
         if (ReferenceEquals(bestRecord, null))
         {
             _rankIcon.Clear();

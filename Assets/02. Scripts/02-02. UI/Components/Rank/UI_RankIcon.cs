@@ -38,12 +38,28 @@ public class UI_RankIcon : MonoBehaviour
     [SerializeField]
     private Sprite _cIcon;
 
+    /// <summary>
+    /// 아직 열리지 않은 대상에 등급 대신 얹는 자물쇠입니다.
+    /// 등급 자리를 비워 두면 기록이 없는 것인지 잠긴 것인지 구분되지 않습니다.
+    /// </summary>
+    [SerializeField]
+    private Sprite _lockedIcon;
+
     public void RefreshRank(ELiveRank rank)
     {
         Sprite icon = GetIcon(rank);
 
         SetIcon(icon);
         SetFallbackText(icon == null ? rank.ToString() : string.Empty);
+    }
+
+    /// <summary>
+    /// 잠겨서 아직 기록을 남길 수 없는 대상입니다. 등급 자리에 자물쇠를 얹습니다.
+    /// </summary>
+    public void ShowLocked()
+    {
+        SetIcon(_lockedIcon);
+        SetFallbackText(string.Empty);
     }
 
     /// <summary>

@@ -15,13 +15,14 @@ GameObject:
   - component: {fileID: 5327317540582963469}
   - component: {fileID: 1027622700949917063}
   - component: {fileID: 798259913807602586}
+  - component: {fileID: 1200000000}
   m_Layer: 5
   m_Name: P_UI_Popup_QuitConfirm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3655442782514348272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -942,3 +943,23 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1045750151659884607, guid: 8ab7ba73c06fa3a4c85d31a7cb029d02, type: 3}
   m_PrefabInstance: {fileID: 5310135307783609931}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831765289795637120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1

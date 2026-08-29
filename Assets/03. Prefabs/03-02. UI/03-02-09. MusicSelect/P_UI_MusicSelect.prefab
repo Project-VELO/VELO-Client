@@ -3299,6 +3299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectSelection
   _chapterTabs: {fileID: 8294595233501653246}
   _songList: {fileID: 5392559435484169249}
+  _songCover: {fileID: 5000000000}
   _songDetail: {fileID: 456165535789355231}
   _difficultyTabs: {fileID: 3777630355940235883}
   _recordPanel: {fileID: 7060025327362497961}
@@ -5215,6 +5216,7 @@ GameObject:
   - component: {fileID: 8812158680599150417}
   - component: {fileID: 6374915176672940085}
   - component: {fileID: 8116198827378358439}
+  - component: {fileID: 5000000000}
   m_Layer: 5
   m_Name: Image_SongCover
   m_TagString: Untagged
@@ -5271,7 +5273,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7447,3 +7449,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5129607748715480822, guid: 1810c7e77b476c3459e4df1d91cbff6d, type: 3}
   m_PrefabInstance: {fileID: 8721837235248084079}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932083273980123257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99e0a4044ffe464692d607c88a594b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectSongCover
+  _coverImage: {fileID: 8116198827378358439}
+  _placeholderCover: {fileID: 0}

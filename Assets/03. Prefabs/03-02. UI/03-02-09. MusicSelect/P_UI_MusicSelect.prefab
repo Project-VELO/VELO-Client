@@ -3156,6 +3156,7 @@ GameObject:
   - component: {fileID: 2863680427923248261}
   - component: {fileID: 6654597178890049138}
   - component: {fileID: 1181023745568164713}
+  - component: {fileID: 7000000000}
   m_Layer: 5
   m_Name: P_UI_MusicSelect
   m_TagString: Untagged
@@ -3272,6 +3273,7 @@ MonoBehaviour:
   _liveReadyButton: {fileID: 54888272384959369}
   _currencyHud: {fileID: 2694057742288588043}
   _liveEntry: {fileID: 5422550155179544193}
+  _previewBgm: {fileID: 7000000000}
 --- !u!114 &5422550155179544193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7463,3 +7465,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectSongCover
   _coverImage: {fileID: 8116198827378358439}
   _placeholderCover: {fileID: 0}
+--- !u!114 &7000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6342336592605960873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617ebb8b1dd0e6041a970caeb922706c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_MusicSelectPreviewBgm

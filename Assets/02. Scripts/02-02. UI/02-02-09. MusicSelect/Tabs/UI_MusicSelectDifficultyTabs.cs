@@ -16,20 +16,10 @@ public class UI_MusicSelectDifficultyTabs : MonoBehaviour
 
     private const string EMPTY_LEVEL_TEXT = "Lv.-";
 
-    [Header("Tab Colors")]
-    [SerializeField]
-    private Color _normalColor = new Color(0.16f, 0.15f, 0.24f, 1f);
-
-    [SerializeField]
-    private Color _selectedColor = new Color(0.55f, 0.38f, 0.94f, 1f);
-
     [Foldout("Hierarchy")]
     [Header("Easy")]
     [SerializeField]
     private Button _easyButton;
-
-    [SerializeField]
-    private Image _easyBackground;
 
     [SerializeField]
     private TMP_Text _easyLevelText;
@@ -40,18 +30,12 @@ public class UI_MusicSelectDifficultyTabs : MonoBehaviour
     private Button _normalButton;
 
     [SerializeField]
-    private Image _normalBackground;
-
-    [SerializeField]
     private TMP_Text _normalLevelText;
 
     [Foldout("Hierarchy")]
     [Header("Hard")]
     [SerializeField]
     private Button _hardButton;
-
-    [SerializeField]
-    private Image _hardBackground;
 
     [SerializeField]
     private TMP_Text _hardLevelText;
@@ -77,13 +61,6 @@ public class UI_MusicSelectDifficultyTabs : MonoBehaviour
         RefreshTab(EDifficulty.EASY, _easyButton, _easyLevelText, song, summaryReader);
         RefreshTab(EDifficulty.NORMAL, _normalButton, _normalLevelText, song, summaryReader);
         RefreshTab(EDifficulty.HARD, _hardButton, _hardLevelText, song, summaryReader);
-    }
-
-    public void SetSelectedDifficulty(EDifficulty difficulty)
-    {
-        _easyBackground.color = difficulty == EDifficulty.EASY ? _selectedColor : _normalColor;
-        _normalBackground.color = difficulty == EDifficulty.NORMAL ? _selectedColor : _normalColor;
-        _hardBackground.color = difficulty == EDifficulty.HARD ? _selectedColor : _normalColor;
     }
 
     /// <summary>

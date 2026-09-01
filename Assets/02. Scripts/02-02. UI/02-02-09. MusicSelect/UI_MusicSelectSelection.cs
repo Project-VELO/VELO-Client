@@ -117,8 +117,6 @@ public class UI_MusicSelectSelection : MonoBehaviour
 
     private void SetDifficulty(EDifficulty difficulty)
     {
-        _difficultyTabs.SetSelectedDifficulty(difficulty);
-
         LiveChartSummary summary = _chartSummaryReader.GetSummary(_selectedSong, difficulty);
 
         _songDetail.RefreshSong(_selectedSong, summary);

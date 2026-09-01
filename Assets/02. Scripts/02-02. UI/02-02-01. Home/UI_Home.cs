@@ -27,6 +27,9 @@ public class UI_Home : MonoBehaviour
     [SerializeField]
     private UI_HomeSchedulePanel _schedulePanel;
 
+    [SerializeField]
+    private UI_HomeStoryBox _storyBox;
+
     private void Start()
     {
         // 스케줄 목록을 그리기 전에 자동 완료를 먼저 반영합니다.
@@ -48,6 +51,11 @@ public class UI_Home : MonoBehaviour
         {
             _schedulePanel.Init();
             _schedulePanel.Refresh();
+        }
+
+        if (_storyBox != null)
+        {
+            _storyBox.Refresh();
         }
     }
 

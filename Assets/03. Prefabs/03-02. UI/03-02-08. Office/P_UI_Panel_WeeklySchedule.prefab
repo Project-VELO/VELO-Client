@@ -192,6 +192,7 @@ MonoBehaviour:
   _slideDuration: 0.5
   _pulseDuration: 0.5
   _pulseMinAlpha: 0.35
+  _sizePadding: {x: 20, y: 0}
 --- !u!1 &6299058261016772196
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,6 +49,17 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     [SerializeField]
     private Sprite _completedLabelSprite;
 
+    /// <summary>
+    /// 바로가기 상태에서 라벨을 끌어올리는 양입니다.
+    ///
+    /// 바로가기 배경 그림은 아래쪽에 그림자가 깔려 있어 실제 몸통이 위로 치우쳐 있습니다
+    /// (112x61 중 세로 0~52, 몸통 중심 26 vs rect 중심 30). 라벨을 rect 한가운데 두면
+    /// 글자가 몸통보다 4만큼 내려가 보입니다. 완료 배경은 몸통이 정중앙이라 보정하지 않습니다.
+    /// </summary>
+    [Foldout("Settings")]
+    [SerializeField]
+    private float _shortcutLabelOffsetY = 4f;
+
     private void Awake()
     {
         _button.onClick.AddListener(NotifyClicked);
@@ -92,6 +103,10 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
 
         _label.sprite = sprite;
         _label.SetNativeSize();
+
+        Vector2 position = _label.rectTransform.anchoredPosition;
+        position.y = isCompleted ? 0f : _shortcutLabelOffsetY;
+        _label.rectTransform.anchoredPosition = position;
     }
 
     private void RefreshBackground(bool isCompleted)

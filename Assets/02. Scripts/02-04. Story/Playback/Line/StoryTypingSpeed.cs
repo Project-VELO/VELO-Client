@@ -5,13 +5,14 @@
 /// |------------------|------------------|--------------|-----------------------------------------------------|
 /// | 즉시 INSTANT     | 0.00초           | 딜레이 없음  | 시스템 메시지, 당황해서 말을 쏟아내는 대사          |
 /// | 보통 NORMAL      | 0.03 ~ 0.05초    | 약 20~30자   | 일상 대화, 평범한 상황 설명 (기본값)                |
+/// | 빠르게 FAST      | 0.015 ~ 0.025초  | 약 40~60자   | 다급하게 몰아치는 장면, 정신없이 되풀이되는 상황     |
 /// | 느리게 SLOW      | 0.08 ~ 0.10초    | 약 10~12자   | 무거운 독백, 슬프거나 심각한 결정                   |
 /// | 단어 WORD_BY_WORD| 0.20 ~ 0.30초    | 약 3~5단어   | 또박또박 화를 낼 때, 초월적 존재의 경고             |
 ///
 /// 모든 속도에 공통으로, 마침표·물음표·느낌표·쉼표가 출력되면 0.5초 멈춥니다.
 ///
 /// 표에서 조절할 수 있는 값은 보통 속도 하나뿐입니다. 화면 인스펙터(_secondsPerCharacter)에 있고,
-/// 느리게는 그 값에 대한 비율로 두어 기준을 바꿔도 표의 관계가 유지됩니다. 단어 단위와 정적은
+/// 느리게와 빠르게는 그 값에 대한 비율로 두어 기준을 바꿔도 표의 관계가 유지됩니다. 단어 단위와 정적은
 /// 글자 수와 무관한 연출이라 절대값으로 둡니다.
 /// </summary>
 public static class StoryTypingSpeed
@@ -20,6 +21,12 @@ public static class StoryTypingSpeed
     /// 느리게는 보통의 2.25배입니다. 기본값 0.04초 기준으로 0.09초가 되어 표의 0.08~0.10초 구간 가운데에 옵니다.
     /// </summary>
     private const float SLOW_MULTIPLIER = 2.25f;
+
+    /// <summary>
+    /// 빠르게는 보통의 0.5배입니다. 기본값 0.04초 기준으로 0.02초가 되어 표의 0.015~0.025초 구간 가운데에 옵니다.
+    /// 즉시와 구분되도록 타이핑이 보이는 선에서 가장 빠른 값으로 잡았습니다.
+    /// </summary>
+    private const float FAST_MULTIPLIER = 0.5f;
 
     /// <summary>
     /// 단어 하나가 통째로 찍히는 간격입니다. 글자 수와 무관하므로 배수가 아닌 절대값입니다.
@@ -61,6 +68,9 @@ public static class StoryTypingSpeed
         {
             case ETextSpeed.SLOW:
                 return baseSeconds * SLOW_MULTIPLIER;
+
+            case ETextSpeed.FAST:
+                return baseSeconds * FAST_MULTIPLIER;
 
             case ETextSpeed.WORD_BY_WORD:
                 return WORD_SECONDS;

@@ -84,16 +84,12 @@ public class LiveTrackRig : MonoBehaviour
         _cameraBinder.Restore();
     }
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        RefreshRig();
-    }
-#endif
-
     /// <summary>
     /// 디자인 수치에서 카메라 자세와 트랙 길이를 역산해 씬에 반영합니다.
+    /// 값을 고친 뒤 이 버튼으로 직접 적용합니다. OnValidate에서 부르면 트랙 RectTransform 크기 변경이
+    /// 검증 단계의 SendMessage 제한에 걸려 자식 수만큼 에러가 납니다.
     /// </summary>
+    [Button("리그 다시 적용")]
     public void RefreshRig()
     {
         // 한 번 빌린 카메라를 계속 씁니다. 바인더는 처음 빌린 것만 되돌리므로 도중에 대상이 바뀌면 원래 자세를 잃습니다.

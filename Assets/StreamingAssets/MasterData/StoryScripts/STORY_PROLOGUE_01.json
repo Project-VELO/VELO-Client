@@ -99,7 +99,7 @@
             "LineTypeName": "MONOLOGUE",
             "SpeakerId": "CHAR_P",
             "SpeakerName": "P(독백)",
-            "Text": "아이돌의 어원은 우상, 혹은 신에게 바치는 제물이다.",
+            "Text": "아이돌의 어원은 우상.",
             "BackgroundId": "",
             "CharacterId": "",
             "ExpressionId": "",
@@ -122,6 +122,29 @@
             "LineTypeName": "MONOLOGUE",
             "SpeakerId": "CHAR_P",
             "SpeakerName": "P(독백)",
+            "Text": "그리고 우리는 그 거짓된 우상을 위해 피 흘린 제물이었다.",
+            "BackgroundId": "",
+            "CharacterId": "",
+            "ExpressionId": "",
+            "CenterCharacterId": "",
+            "CenterExpressionId": "",
+            "RightCharacterId": "",
+            "RightExpressionId": "",
+            "UpperCharacterId": "",
+            "UpperExpressionId": "",
+            "IllustrationId": "CG_VELO_STAGE_DEBUT",
+            "TextSpeedName": "SLOW",
+            "TextPlacementName": "DIALOG_BOX",
+            "TextStyleId": "STYLE_MONOLOGUE",
+            "EffectId": "",
+            "BgmId": "",
+            "SfxId": ""
+        },
+        {
+            "LineId": 7,
+            "LineTypeName": "MONOLOGUE",
+            "SpeakerId": "CHAR_P",
+            "SpeakerName": "P(독백)",
             "Text": "인간 세상은 한 때 이 아이들을 쓰레기통에 처박았지만...",
             "BackgroundId": "",
             "CharacterId": "",
@@ -141,7 +164,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 7,
+            "LineId": 8,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -164,7 +187,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 8,
+            "LineId": 9,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -187,7 +210,7 @@
             "SfxId": "SFX_RIA_HIGHLIGHT_VOCAL"
         },
         {
-            "LineId": 9,
+            "LineId": 10,
             "LineTypeName": "DIALOGUE",
             "SpeakerId": "CHAR_AUDIENCE_SPIRITS",
             "SpeakerName": "관객(영령들)",
@@ -210,7 +233,7 @@
             "SfxId": "SFX_SPIRIT_CROWD_SCREAM"
         },
         {
-            "LineId": 10,
+            "LineId": 11,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -233,7 +256,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 11,
+            "LineId": 12,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -256,7 +279,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 12,
+            "LineId": 13,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -279,7 +302,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 13,
+            "LineId": 14,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -302,7 +325,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 14,
+            "LineId": 15,
             "LineTypeName": "DIALOGUE",
             "SpeakerId": "CHAR_MUMYEONG",
             "SpeakerName": "무명",
@@ -325,7 +348,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 15,
+            "LineId": 16,
             "LineTypeName": "DIALOGUE",
             "SpeakerId": "CHAR_MUMYEONG",
             "SpeakerName": "무명",
@@ -348,7 +371,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 16,
+            "LineId": 17,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -371,7 +394,7 @@
             "SfxId": "SFX_MAGIC_ABSORB_ASMR"
         },
         {
-            "LineId": 17,
+            "LineId": 18,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -394,7 +417,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 18,
+            "LineId": 19,
             "LineTypeName": "DIALOGUE",
             "SpeakerId": "CHAR_MUMYEONG",
             "SpeakerName": "무명",
@@ -417,7 +440,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 19,
+            "LineId": 20,
             "LineTypeName": "DIALOGUE",
             "SpeakerId": "CHAR_P",
             "SpeakerName": "P",
@@ -440,7 +463,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 20,
+            "LineId": 21,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -463,7 +486,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 21,
+            "LineId": 22,
             "LineTypeName": "MONOLOGUE",
             "SpeakerId": "CHAR_P",
             "SpeakerName": "P(독백)",
@@ -486,7 +509,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 22,
+            "LineId": 23,
             "LineTypeName": "MONOLOGUE",
             "SpeakerId": "CHAR_P",
             "SpeakerName": "P(독백)",
@@ -509,7 +532,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 23,
+            "LineId": 24,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -532,7 +555,7 @@
             "SfxId": ""
         },
         {
-            "LineId": 24,
+            "LineId": 25,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -555,7 +578,7 @@
             "SfxId": "SFX_MIC_HOWLING"
         },
         {
-            "LineId": 25,
+            "LineId": 26,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",
@@ -578,7 +601,7 @@
             "SfxId": "SFX_ELECTRIC_NOISE"
         },
         {
-            "LineId": 26,
+            "LineId": 27,
             "LineTypeName": "NARRATION",
             "SpeakerId": "",
             "SpeakerName": "",

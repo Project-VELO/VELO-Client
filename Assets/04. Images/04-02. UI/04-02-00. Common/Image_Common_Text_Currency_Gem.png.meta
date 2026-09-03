@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 8a3936ced668e834d904e97c19f5cbfe
+guid: 616d38cc1f39ef54d9b359d351e28e10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6965531665380173899
-    second: DIAMOND_0
+      213: -3086477745413893598
+    second: GEM_0
   - first:
-      213: 4941223204079080917
-    second: DIAMOND_1
-  - first:
-      213: -1767520923815752133
-    second: DIAMOND_2
-  - first:
-      213: -7068090902659928332
-    second: DIAMOND_3
+      213: -3525054734398438348
+    second: GEM_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -135,10 +129,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DIAMOND_0: -6965531665380173899
-      DIAMOND_1: 4941223204079080917
-      DIAMOND_2: -1767520923815752133
-      DIAMOND_3: -7068090902659928332
+      GEM_0: -3086477745413893598
+      GEM_1: -3525054734398438348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

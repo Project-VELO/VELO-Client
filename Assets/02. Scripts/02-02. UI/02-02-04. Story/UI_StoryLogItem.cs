@@ -9,6 +9,12 @@ using VInspector;
 /// </summary>
 public class UI_StoryLogItem : MonoBehaviour
 {
+    /// <summary>
+    /// 초상을 두지 않는 화자입니다. P는 플레이어 본인이라 얼굴을 만들지 않기로 했고,
+    /// 임시 색을 깔면 다른 인물처럼 보이므로 빈 흰 동그라미로 남깁니다.
+    /// </summary>
+    private const string FACELESS_SPEAKER_ID = "CHAR_P";
+
     [Foldout("Hierarchy")]
     /// <summary>
     /// 원형 프레임과 초상을 함께 묶은 오브젝트입니다. 화자가 없는 줄에서 통째로 끕니다.
@@ -47,6 +53,15 @@ public class UI_StoryLogItem : MonoBehaviour
 
         _speakerText.text = speakerName;
 
+        // 초상만 끄고 원형 프레임 그림은 남깁니다. 프레임이 곧 빈 흰 동그라미라 따로 채울 것이 없고,
+        // 흰색으로 칠한 사각형을 넣으면 마스크가 귀퉁이만 깎아 모서리만 둥근 사각형으로 보입니다.
+        _portraitImage.enabled = line.SpeakerId != FACELESS_SPEAKER_ID;
+
+        if (!_portraitImage.enabled)
+        {
+            return;
+        }
+
         // 감상 화면의 전신이 아니라 얼굴 초상을 씁니다. 작은 원형 칸에 전신을 넣으면
         // 인물이 아주 작게 들어가거나 몸통만 잘려 누구인지 알아볼 수 없습니다.
         // 초상이 없는 화자는 감상 화면과 같은 색으로 떨어뜨려, 목록에서도 누구 대사인지 구분되게 합니다.
@@ -68,6 +83,7 @@ public class UI_StoryLogItem : MonoBehaviour
 
         _portraitImage.sprite = null;
         _portraitImage.color = Color.white;
+        _portraitImage.enabled = true;
         _iconRoot.SetActive(false);
     }
 }

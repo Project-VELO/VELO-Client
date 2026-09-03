@@ -14,10 +14,16 @@ using System.Collections.Generic;
 public class LiveJudgementProcessor
 {
     /// <summary>
-    /// 판정 하나가 확정될 때마다 알립니다.
-    /// 표시(판정 문구)와 노트 숨김이 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
+    /// 판정 하나가 확정될 때마다 알립니다. 만료로 BAD가 된 노트도 포함합니다.
+    /// 여러 화면 요소가 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
     /// </summary>
     public event Action<NoteData, EJudgement> OnNoteJudged;
+
+    /// <summary>
+    /// 트랙에서 즉시 걷어 낼 노트를 알립니다. 놓친 단타는 판정선을 지나 화면 밖까지 흘러가야 하므로 제외되며,
+    /// 표시를 지우는 쪽은 OnNoteJudged가 아니라 이 통지를 구독합니다.
+    /// </summary>
+    public event Action<NoteData> OnNoteStruck;
     public event Action OnScoreChanged;
     public event Action OnSessionReset;
 
@@ -66,7 +72,7 @@ public class LiveJudgementProcessor
             return;
         }
 
-        ApplyJudgement(note, judgement);
+        ApplyStruckJudgement(note, judgement);
     }
 
     /// <summary>
@@ -76,7 +82,7 @@ public class LiveJudgementProcessor
     {
         if (_holdTracker.TryReleaseLane(lane, songTimeMs, out LiveHoldTracker.LiveHoldResult result))
         {
-            ApplyJudgement(result.Note, result.Judgement);
+            ApplyStruckJudgement(result.Note, result.Judgement);
         }
     }
 
@@ -111,11 +117,12 @@ public class LiveJudgementProcessor
         ApplyBadToCollectedNotes();
     }
 
+    // 롱노트는 어느 경로로 확정되든 플레이어가 이미 붙잡았던 노트이므로, 단타를 친 것과 똑같이 즉시 걷어 냅니다.
     private void ApplyCollectedHoldResults()
     {
         for (int i = 0; i < _holdResults.Count; i++)
         {
-            ApplyJudgement(_holdResults[i].Note, _holdResults[i].Judgement);
+            ApplyStruckJudgement(_holdResults[i].Note, _holdResults[i].Judgement);
         }
     }
 
@@ -123,8 +130,27 @@ public class LiveJudgementProcessor
     {
         for (int i = 0; i < _expiredNotes.Count; i++)
         {
-            ApplyJudgement(_expiredNotes[i], EJudgement.BAD);
+            NoteData note = _expiredNotes[i];
+
+            // 놓친 단타는 판정선을 지나 화면 밖까지 흘려보내지만, 롱노트는 머리가 판정선에 고정되어 그려지므로
+            // 그대로 두면 붙잡고 있는 것처럼 보인 채 몸통 길이만큼 남습니다. 롱노트만 즉시 걷어 냅니다.
+            if (LiveHoldTracker.IsHoldNote(note))
+            {
+                ApplyStruckJudgement(note, EJudgement.BAD);
+                continue;
+            }
+
+            ApplyJudgement(note, EJudgement.BAD);
         }
+    }
+
+    /// <summary>
+    /// 판정과 함께 트랙에서 걷어 낼 것까지 알립니다. 플레이어가 건드린 노트와 놓친 롱노트가 여기로 옵니다.
+    /// </summary>
+    private void ApplyStruckJudgement(NoteData note, EJudgement judgement)
+    {
+        ApplyJudgement(note, judgement);
+        OnNoteStruck?.Invoke(note);
     }
 
     private void ApplyJudgement(NoteData note, EJudgement judgement)

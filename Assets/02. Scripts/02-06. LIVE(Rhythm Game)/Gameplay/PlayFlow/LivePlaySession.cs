@@ -25,9 +25,9 @@ public class LivePlaySession
         _judgementProcessor = judgementProcessor;
         _liveUI = liveUI;
 
-        // 판정기는 화면을 모르므로, 트랙을 쥔 이 클래스가 판정 통지를 받아 노트를 지웁니다.
+        // 판정기는 화면을 모르므로, 트랙을 쥔 이 클래스가 통지를 받아 노트를 지웁니다.
         // 판정기와 세션은 같은 컨트롤러가 만들어 수명이 같으므로 따로 해제하지 않습니다.
-        _judgementProcessor.OnNoteJudged += HideJudgedNote;
+        _judgementProcessor.OnNoteStruck += HideStruckNote;
     }
 
     /// <summary>
@@ -95,9 +95,9 @@ public class LivePlaySession
     }
 
     /// <summary>
-    /// 판정이 끝난 노트를 화면에서 지웁니다.
+    /// 입력으로 처리된 노트를 화면에서 지웁니다. 놓친 노트는 여기로 오지 않으므로 판정선을 지나 화면 밖까지 흘러갑니다.
     /// </summary>
-    private void HideJudgedNote(NoteData note, EJudgement judgement)
+    private void HideStruckNote(NoteData note)
     {
         _trackScroller.NoteRenderer.HideNote(note.NoteId);
     }

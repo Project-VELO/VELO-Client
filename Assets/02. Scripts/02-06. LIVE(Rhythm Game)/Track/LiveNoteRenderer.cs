@@ -115,6 +115,7 @@ public class LiveNoteRenderer
         }
 
         float hitLineRatio = _lanes.GetHitLineVerticalRatio();
+        float trackHeight = GetTrackHeight();
 
         foreach (NoteData note in _chart.Notes)
         {
@@ -130,7 +131,10 @@ public class LiveNoteRenderer
                 ? GetVerticalRatio(note.TimeMs + note.HoldDurationMs, currentBarPosition, hitLineRatio)
                 : headRatio;
 
-            bool isVisible = _scrollMapper.IsSpanVisible(headRatio, tailRatio) && !_hiddenNoteIds.Contains(note.NoteId);
+            // 가시 판정은 노트의 한 점만 보므로, 반높이만큼 아래로 넓혀 두어야 트랙 끝에서 노트가 잘린 채 사라지지 않습니다.
+            float halfHeightRatio = GetHalfHeightRatio(headRatio, trackHeight);
+            bool isVisible = _scrollMapper.IsSpanVisible(headRatio, tailRatio + halfHeightRatio)
+                && !_hiddenNoteIds.Contains(note.NoteId);
             handle.RectTransform.gameObject.SetActive(isVisible);
 
             if (!isVisible)
@@ -153,6 +157,27 @@ public class LiveNoteRenderer
     private float GetVerticalRatio(int timeMs, double currentBarPosition, float hitLineRatio)
     {
         return _scrollMapper.ToVerticalRatio(_barLayout.GetBarPosition(timeMs), currentBarPosition, hitLineRatio);
+    }
+
+    /// <summary>
+    /// 노트 두께의 절반을 트랙 세로 비율로 환산합니다. 세로 비율은 트랙 길이에 정비례하므로 나눗셈 한 번이면 됩니다.
+    /// </summary>
+    private float GetHalfHeightRatio(float verticalRatio, float trackHeight)
+    {
+        if (trackHeight <= 0f)
+        {
+            return 0f;
+        }
+
+        return _settings.GetNoteHeightAtRatio(_lanes, verticalRatio) * 0.5f / trackHeight;
+    }
+
+    private float GetTrackHeight()
+    {
+        _lanes.GetTrackEdgesAtRatio(0f, out _, out _, out float nearY);
+        _lanes.GetTrackEdgesAtRatio(1f, out _, out _, out float farY);
+
+        return farY - nearY;
     }
 
     /// <summary>

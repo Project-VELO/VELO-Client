@@ -176,12 +176,16 @@ public class UI_LiveTrackLanes : MaskableGraphic
         return Mathf.Lerp(_nearViewDepth, _farViewDepth, verticalRatio) / hitLineViewDepth;
     }
 
+    /// <summary>
+    /// 트랙 밖(비율 0 미만)도 그대로 외삽합니다. 클램프하면 지나간 노트가 트랙 끝에 멈춰 선 채 사라지므로,
+    /// 화면 밖까지 계속 미끄러져 나가도록 두어야 합니다.
+    /// </summary>
     public Vector2 GetLaneCenterPosition(int laneIndex, float verticalRatio)
     {
         GetLaneBoundsAtRatio(laneIndex, verticalRatio, out float leftX, out float rightX);
 
         Rect rect = GetPixelAdjustedRect();
-        float y = Mathf.Lerp(-rect.height * 0.5f, rect.height * 0.5f, verticalRatio);
+        float y = Mathf.LerpUnclamped(-rect.height * 0.5f, rect.height * 0.5f, verticalRatio);
 
         return new Vector2((leftX + rightX) * 0.5f, y);
     }

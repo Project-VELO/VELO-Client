@@ -8954,10 +8954,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LiveEditorTimeline
   _noteSpawnRatio: 1
   _noteRenderSettings:
-    NoteHeight: 22.52358
+    NoteHeight: 71.22
     MinNoteHeight: 0
     ThicknessFalloff: 0.5
-    HorizontalPaddingRatio: 0.04
+    HorizontalPaddingRatio: 0
     BodyTileLength: 64
   _noteSpriteTable:
     LaneSprites:
@@ -12257,8 +12257,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 240.74028
-  far clip plane: 11876.785
+  near clip plane: 249.74794
+  far clip plane: 12321.145
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -12285,8 +12285,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418591877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23837893, y: 0, z: 0, w: 0.9711722}
-  m_LocalPosition: {x: 0, y: 1053.9032, z: 0}
+  m_LocalRotation: {x: 0.2383791, y: 0, z: 0, w: 0.97117215}
+  m_LocalPosition: {x: 0, y: 1093.3374, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

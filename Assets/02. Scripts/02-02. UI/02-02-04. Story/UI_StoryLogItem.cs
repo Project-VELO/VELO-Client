@@ -53,10 +53,12 @@ public class UI_StoryLogItem : MonoBehaviour
 
         _speakerText.text = speakerName;
 
-        if (line.SpeakerId == FACELESS_SPEAKER_ID)
+        // 초상만 끄고 원형 프레임 그림은 남깁니다. 프레임이 곧 빈 흰 동그라미라 따로 채울 것이 없고,
+        // 흰색으로 칠한 사각형을 넣으면 마스크가 귀퉁이만 깎아 모서리만 둥근 사각형으로 보입니다.
+        _portraitImage.enabled = line.SpeakerId != FACELESS_SPEAKER_ID;
+
+        if (!_portraitImage.enabled)
         {
-            _portraitImage.sprite = null;
-            _portraitImage.color = Color.white;
             return;
         }
 
@@ -81,6 +83,7 @@ public class UI_StoryLogItem : MonoBehaviour
 
         _portraitImage.sprite = null;
         _portraitImage.color = Color.white;
+        _portraitImage.enabled = true;
         _iconRoot.SetActive(false);
     }
 }

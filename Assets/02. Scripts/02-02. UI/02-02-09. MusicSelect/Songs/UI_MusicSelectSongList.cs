@@ -51,7 +51,7 @@ public class UI_MusicSelectSongList : MonoBehaviour
             SongData song = songs[i];
             SongRecord bestRecord = PlayerDataProvider.Instance.GetBestSongRecord(song.SongId);
 
-            item.SetItem(i, GetDisplayTitle(song), bestRecord, isSelectable);
+            item.SetItem(i, GetDisplayTitle(song), bestRecord, isSelectable, song.IsLocked);
             item.OnItemClicked = NotifySongSelected;
         }
 

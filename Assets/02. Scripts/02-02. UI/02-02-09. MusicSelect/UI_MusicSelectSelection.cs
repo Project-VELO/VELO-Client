@@ -28,6 +28,9 @@ public class UI_MusicSelectSelection : MonoBehaviour
     private UI_MusicSelectSongList _songList;
 
     [SerializeField]
+    private UI_MusicSelectSongCover _songCover;
+
+    [SerializeField]
     private UI_MusicSelectSongDetail _songDetail;
 
     [SerializeField]
@@ -45,6 +48,7 @@ public class UI_MusicSelectSelection : MonoBehaviour
     private void Awake()
     {
         _songList.Init(_coverLoader);
+        _songCover.Init(_coverLoader);
 
         _chapterTabs.OnChapterSelected = chapterIndex => SetChapter(chapterIndex, 0);
         _songList.OnSongSelected = SetSong;
@@ -84,6 +88,7 @@ public class UI_MusicSelectSelection : MonoBehaviour
         _selectedSong = null;
 
         _songList.RefreshSongs(null, false);
+        _songCover.Clear();
         _difficultyTabs.RefreshDifficulties(null, _chartSummaryReader);
         _songDetail.Clear();
         _recordPanel.Clear();
@@ -99,6 +104,7 @@ public class UI_MusicSelectSelection : MonoBehaviour
         _songList.SetSelectedIndex(songIndex);
         _selectedSong = LiveSongCatalog.Instance.Chapters[_chapterIndex].Songs[songIndex];
 
+        _songCover.RefreshSong(_selectedSong);
         _difficultyTabs.RefreshDifficulties(_selectedSong, _chartSummaryReader);
 
         if (!_difficultyTabs.TryGetDefaultDifficulty(out EDifficulty difficulty))
@@ -111,8 +117,6 @@ public class UI_MusicSelectSelection : MonoBehaviour
 
     private void SetDifficulty(EDifficulty difficulty)
     {
-        _difficultyTabs.SetSelectedDifficulty(difficulty);
-
         LiveChartSummary summary = _chartSummaryReader.GetSummary(_selectedSong, difficulty);
 
         _songDetail.RefreshSong(_selectedSong, summary);

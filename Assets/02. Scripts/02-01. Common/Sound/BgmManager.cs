@@ -34,6 +34,14 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
     /// </summary>
     private EBgm _current = EBgm.NONE;
 
+    /// <summary>
+    /// 표에 없는 음원이 대신 흐르고 있는지입니다(곡 선택 화면의 미리듣기).
+    ///
+    /// 이 값이 없으면 미리듣기 뒤에 원래 곡을 되돌릴 수 없습니다. _current는 미리듣기 중에도
+    /// 원래 곡을 가리키고 있어, 같은 곡을 다시 틀라는 지시로 보여 무시되기 때문입니다.
+    /// </summary>
+    private bool _isPreviewPlaying;
+
     protected override void Awake()
     {
         base.Awake();
@@ -49,12 +57,13 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
     /// </summary>
     public void Play(EBgm bgm)
     {
-        if (bgm == _current)
+        if (bgm == _current && !_isPreviewPlaying)
         {
             return;
         }
 
         _current = bgm;
+        _isPreviewPlaying = false;
 
         if (bgm == EBgm.NONE || !_clips.TryGetValue(bgm, out AudioClip clip) || clip == null)
         {
@@ -71,6 +80,45 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
     public void Stop()
     {
         Play(EBgm.NONE);
+    }
+
+    /// <summary>
+    /// 표에 없는 음원을 대신 틉니다. 곡 선택 화면에서 고른 곡을 들려줄 때 씁니다.
+    ///
+    /// 원래 곡이 무엇이었는지는 _current가 그대로 들고 있으므로, RestoreScreenBgm으로 되돌립니다.
+    /// </summary>
+    public void PlayPreview(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            return;
+        }
+
+        _isPreviewPlaying = true;
+
+        _source.clip = clip;
+        _source.volume = _volume;
+        _source.Play();
+    }
+
+    /// <summary>
+    /// 미리듣기를 멈추고 이 화면이 원래 쓰던 곡으로 되돌립니다.
+    /// 미리듣기 중이 아니면 아무것도 하지 않아, 흐르던 곡이 처음으로 돌아가지 않습니다.
+    /// </summary>
+    public void RestoreScreenBgm()
+    {
+        if (!_isPreviewPlaying)
+        {
+            return;
+        }
+
+        EBgm screenBgm = _current;
+
+        // 같은 값이라 무시되지 않도록 비워 두고 다시 지시합니다.
+        _current = EBgm.NONE;
+        _isPreviewPlaying = false;
+
+        Play(screenBgm);
     }
 
     /// <summary>

@@ -34,6 +34,13 @@ public class UI_OfficeDayHighlight : MonoBehaviour
     [Range(0.1f, 1f)]
     private float _pulseMinAlpha = 0.35f;
 
+    /// <summary>
+    /// 칸 크기에 더할 여백입니다. 테두리를 칸과 똑같은 크기로 그리면 획이 칸 안쪽으로 파고들어
+    /// 스케줄 이름을 덮습니다. 주간 표의 칸 간격이 23이므로 좌우 각 10까지가 옆 칸을 침범하지 않는 한계입니다.
+    /// </summary>
+    [SerializeField]
+    private Vector2 _sizePadding = new Vector2(20f, 0f);
+
     private RectTransform _rect;
     private Tween _pulseTween;
     private float _baseAlpha;
@@ -125,7 +132,7 @@ public class UI_OfficeDayHighlight : MonoBehaviour
     /// </summary>
     private void ApplySize(RectTransform cell)
     {
-        _rect.sizeDelta = cell.rect.size;
+        _rect.sizeDelta = cell.rect.size + _sizePadding;
     }
 
     private static Vector3 GetWorldCenter(RectTransform cell)

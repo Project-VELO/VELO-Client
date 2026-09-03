@@ -1664,6 +1664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2256906606527971444}
     m_Modifications:
+    - target: {fileID: 1422524763821976895, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8a3936ced668e834d904e97c19f5cbfe, type: 3}
     - target: {fileID: 2340456767417778429, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1758,19 +1762,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4749904588451766950, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 4749904588451766950, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 4749904588451766950, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44
-      objectReference: {fileID: 0}
-    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
-      propertyPath: m_text
-      value: GEM
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name
@@ -1778,11 +1778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7720000000000000002, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -46
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 7720000000000000012, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 46
+      value: 79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1921,10 +1921,6 @@ PrefabInstance:
       propertyPath: m_text
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
-      propertyPath: m_text
-      value: MONEY
-      objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name
       value: P_UI_Panel_Reward_MONEY
@@ -1962,6 +1958,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2256906606527971444}
     m_Modifications:
+    - target: {fileID: 1422524763821976895, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 33715b41451d52a44b9c043b57087a5c, type: 3}
     - target: {fileID: 1422524763821976895, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2081,10 +2081,6 @@ PrefabInstance:
     - target: {fileID: 4749904588451766950, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 44.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5861968369310522075, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
-      propertyPath: m_text
-      value: HYPE
       objectReference: {fileID: 0}
     - target: {fileID: 6163315191825252777, guid: 8050c52fb883d8841bc497b767aed684, type: 3}
       propertyPath: m_Name

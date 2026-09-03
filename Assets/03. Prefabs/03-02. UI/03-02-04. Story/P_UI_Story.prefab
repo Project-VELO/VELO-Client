@@ -237,8 +237,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 368, y: 0}
-  m_SizeDelta: {x: 522, y: 924}
+  m_AnchoredPosition: {x: 57.5, y: 0}
+  m_SizeDelta: {x: 1143, y: 924}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3644005491311210025
 CanvasRenderer:
@@ -270,7 +270,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 1630879031204858981}
   - component: {fileID: 8752171590229957441}
   - component: {fileID: 7056041536732174936}
+  - component: {fileID: 6100000000}
   m_Layer: 0
   m_Name: Button_SkipTypeWriter
   m_TagString: Untagged
@@ -647,6 +648,7 @@ GameObject:
   - component: {fileID: 7850000000000000003}
   - component: {fileID: 268587407523708665}
   - component: {fileID: 467898499383145901}
+  - component: {fileID: 6000000000}
   m_Layer: 5
   m_Name: P_UI_Story
   m_TagString: Untagged
@@ -1022,6 +1024,7 @@ MonoBehaviour:
   _rightCharacter: {fileID: 419247936797285865}
   _upperCharacter: {fileID: 7800000000000000004}
   _visualBinder: {fileID: 8710951518249214113}
+  _layoutTable: {fileID: 6000000000}
 --- !u!114 &857170073666146198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,7 +2169,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 522, y: 924}
+  m_SizeDelta: {x: 1143, y: 924}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7780000000000000003
 CanvasRenderer:
@@ -2198,7 +2201,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2378,7 +2381,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 522, y: 924}
+  m_SizeDelta: {x: 1143, y: 924}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7800000000000000003
 CanvasRenderer:
@@ -2410,7 +2413,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2642,8 +2645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -368, y: 0}
-  m_SizeDelta: {x: 522, y: 924}
+  m_AnchoredPosition: {x: -57.5, y: 0}
+  m_SizeDelta: {x: 1143, y: 924}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8822599931694616763
 CanvasRenderer:
@@ -2675,7 +2678,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3036,3 +3039,71 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838749343358634847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d88e18f6b293a54d992ad5add5c18b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoryCharacterLayoutTable
+  _layouts:
+    _keys:
+    - CHAR_JIWOO
+    - CHAR_HANA
+    - CHAR_RIA
+    - CHAR_MINA
+    - CHAR_SEOYUN
+    - CHAR_JUHUI
+    - CHAR_MUMYEONG
+    - CHAR_HWANYEONG
+    - CHAR_DIRECTOR_KIM
+    - CHAR_DIRECTOR_CHOI
+    - CHAR_GHOST_MAIDEN
+    - CHAR_MONGGU
+    _values:
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 1200
+      EdgeOffset: 0
+    - Width: 0
+      EdgeOffset: 225
+    - Width: 0
+      EdgeOffset: 225
+    - Width: 0
+      EdgeOffset: 225
+    - Width: 0
+      EdgeOffset: 150
+  _defaultLayout:
+    Width: 0
+    EdgeOffset: 0
+--- !u!114 &6100000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996037181859950209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722970ddeb0009f41b52d0b5e6efc5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ButtonSfx
+  _hover: 0
+  _click: 0

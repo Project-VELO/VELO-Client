@@ -39,6 +39,14 @@ public class UI_MusicSelect : MonoBehaviour
     [SerializeField]
     private UI_MusicSelectLiveEntry _liveEntry;
 
+    /// <summary>
+    /// 고른 곡을 들려주는 미리듣기입니다. 화면의 기본 배경음을 잠시 밀어냅니다.
+    /// </summary>
+    [Foldout("Hierarchy")]
+    [Header("Preview")]
+    [SerializeField]
+    private UI_MusicSelectPreviewBgm _previewBgm;
+
     private SongData _selectedSong;
     private EDifficulty _difficulty = EDifficulty.NORMAL;
 
@@ -63,7 +71,21 @@ public class UI_MusicSelect : MonoBehaviour
     {
         // 뒤로가기 위치는 진입 경로에 따라 달라지므로 UI_SceneTransitionButton(고정 대상)을 쓸 수 없습니다.
         _backButton.onClick.AddListener(() => LoadScene(LiveEntryBackTarget.GetBackScene(LiveEntryContext.Instance.EntryType)));
-        _liveReadyButton.onClick.AddListener(() => _liveEntry.OpenPreparePopup(_selectedSong, _difficulty));
+        _liveReadyButton.onClick.AddListener(OpenPreparePopup);
+    }
+
+    /// <summary>
+    /// 준비 팝업으로 넘어갈 때는 미리듣기를 멈추고 화면의 기본 배경음으로 되돌립니다.
+    /// 편성을 고르는 동안에도 곡이 계속 흐르면, 무엇을 듣고 있는 화면인지 어긋납니다.
+    /// </summary>
+    private void OpenPreparePopup()
+    {
+        if (_previewBgm != null)
+        {
+            _previewBgm.Restore();
+        }
+
+        _liveEntry.OpenPreparePopup(_selectedSong, _difficulty);
     }
 
     /// <summary>
@@ -117,6 +139,11 @@ public class UI_MusicSelect : MonoBehaviour
         _difficulty = difficulty;
 
         _liveReadyButton.interactable = hasChart;
+
+        if (_previewBgm != null)
+        {
+            _previewBgm.PlaySong(song);
+        }
     }
 
     // 전환 매니저는 PersistentScene에 있으므로, 이 씬만 단독으로 열어 확인할 때는 존재하지 않을 수 있습니다.

@@ -132,7 +132,8 @@ public class LiveNoteRenderer
                 : headRatio;
 
             // 가시 판정은 노트의 한 점만 보므로, 반높이만큼 아래로 넓혀 두어야 트랙 끝에서 노트가 잘린 채 사라지지 않습니다.
-            float halfHeightRatio = GetHalfHeightRatio(headRatio, trackHeight);
+            // 트랙 끝에 마지막까지 걸리는 것은 꼬리이고 두께는 위로 갈수록 두꺼워지므로, 여유도 꼬리 높이에서 잽니다.
+            float halfHeightRatio = GetHalfHeightRatio(tailRatio, trackHeight);
             bool isVisible = _scrollMapper.IsSpanVisible(headRatio, tailRatio + halfHeightRatio)
                 && !_hiddenNoteIds.Contains(note.NoteId);
             handle.RectTransform.gameObject.SetActive(isVisible);

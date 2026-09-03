@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,9 +57,22 @@ public class UI_StoryDialogBox : MonoBehaviour
     /// </summary>
     private TMP_FontAsset _defaultBodyFont;
 
+    /// <summary>
+    /// 글자 떨림을 돌리는 쪽입니다. 줄마다 다시 시작하므로 상자가 하나만 들고 돌려 씁니다.
+    /// </summary>
+    private readonly StoryTextTrembler _trembler = new StoryTextTrembler();
+
     private void Awake()
     {
         _defaultBodyFont = _bodyText.font;
+    }
+
+    /// <summary>
+    /// 화면을 떠날 때 떨림을 멈춥니다. 취소 토큰으로도 멈추지만, 흔들린 자리를 되돌리는 것은 Stop뿐입니다.
+    /// </summary>
+    private void OnDestroy()
+    {
+        _trembler.Stop();
     }
 
     /// <summary>
@@ -112,7 +126,12 @@ public class UI_StoryDialogBox : MonoBehaviour
     /// </summary>
     private void RefreshBodyStyle(string textStyleId)
     {
-        _textStyleBinder.Get(textStyleId).ApplyTo(BodyText, _defaultBodyFont);
+        StoryTextStyle style = _textStyleBinder.Get(textStyleId);
+        style.ApplyTo(BodyText, _defaultBodyFont);
+
+        // 떨지 않는 줄에서도 부릅니다. Play가 앞 줄의 떨림을 멈추고 자리를 되돌려 주기 때문입니다.
+        _trembler.Play(BodyText.rectTransform, style.TrembleAmplitude, style.TrembleFrequency,
+            this.GetCancellationTokenOnDestroy());
     }
 
     /// <summary>

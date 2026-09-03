@@ -32,6 +32,33 @@ public class StoryTextStyle
     private FontStyles _fontStyle = FontStyles.Normal;
 
     /// <summary>
+    /// 글자가 제자리에서 떠는 폭입니다(연출표의 [글자 떨림]). 화면 좌표 기준이며 0이면 떨지 않습니다.
+    ///
+    /// 기본값이 0인 것은 의도한 것입니다. 표에 이미 채워진 스타일 수십 개가 이 값을 갖고 있지 않아,
+    /// 0이 아닌 기본값을 두면 떨림과 무관한 줄까지 전부 흔들립니다.
+    /// </summary>
+    [SerializeField]
+    [Min(0f)]
+    private float _trembleAmplitude = 0f;
+
+    /// <summary>
+    /// 떨림이 방향을 바꾸는 빠르기입니다. 값이 클수록 잘게 떱니다.
+    /// 폭이 0이면 쓰이지 않으므로, 떨지 않는 스타일에서는 이 값을 신경 쓰지 않아도 됩니다.
+    /// </summary>
+    [SerializeField]
+    [Min(0f)]
+    private float _trembleFrequency = 12f;
+
+    public float TrembleAmplitude => _trembleAmplitude;
+
+    public float TrembleFrequency => _trembleFrequency;
+
+    /// <summary>
+    /// 이 스타일이 떨리는 줄인지 여부입니다.
+    /// </summary>
+    public bool HasTremble => 0f < _trembleAmplitude;
+
+    /// <summary>
     /// 줄이 바뀔 때마다 호출됩니다. 네 값을 모두 덮어쓰는 이유는, 앞 줄의 스타일이 남지 않게 하기 위해서입니다.
     /// 일부만 대입하면 붉은 40pt 다음의 기본 줄이 붉은색을 물려받습니다.
     /// </summary>

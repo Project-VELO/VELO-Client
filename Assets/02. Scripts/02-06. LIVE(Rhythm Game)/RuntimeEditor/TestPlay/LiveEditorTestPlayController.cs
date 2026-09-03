@@ -60,7 +60,7 @@ public class LiveEditorTestPlayController : MonoBehaviour
         _playInput.OnLanePressed += PressLane;
         _playInput.OnLaneReleased += ReleaseLane;
 
-        _judgementProcessor.OnNoteJudged += HideJudgedNote;
+        _judgementProcessor.OnNoteStruck += HideStruckNote;
 
         if (_liveUI != null)
         {
@@ -74,7 +74,7 @@ public class LiveEditorTestPlayController : MonoBehaviour
     {
         _playInput.OnLanePressed -= PressLane;
         _playInput.OnLaneReleased -= ReleaseLane;
-        _judgementProcessor.OnNoteJudged -= HideJudgedNote;
+        _judgementProcessor.OnNoteStruck -= HideStruckNote;
     }
 
     private void Update()
@@ -220,10 +220,11 @@ public class LiveEditorTestPlayController : MonoBehaviour
     }
 
     /// <summary>
-    /// 판정이 끝난 노트를 화면에서 지웁니다. 판정기는 화면을 모르므로, 타임라인을 쥔 이 클래스가 통지를 받아 처리합니다.
+    /// 입력으로 처리된 노트를 화면에서 지웁니다. 판정기는 화면을 모르므로, 타임라인을 쥔 이 클래스가 통지를 받아 처리합니다.
+    /// 놓친 노트는 여기로 오지 않으므로 판정선을 지나 화면 밖까지 흘러갑니다.
     /// note가 null이면 노트 없이 귀신 레인을 누른 오입력이라 지울 노트가 없습니다.
     /// </summary>
-    private void HideJudgedNote(NoteData note, EJudgement judgement)
+    private void HideStruckNote(NoteData note)
     {
         if (note == null)
         {

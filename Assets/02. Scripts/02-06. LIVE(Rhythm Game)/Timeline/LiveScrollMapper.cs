@@ -73,6 +73,14 @@ public class LiveScrollMapper
     }
 
     /// <summary>
+    /// 길이가 있는 대상이 트랙에 걸치는지 봅니다. 롱노트는 머리가 지나가도 몸통이 남아 있어 한 점으로 판단할 수 없습니다.
+    /// </summary>
+    public bool IsSpanVisible(float startRatio, float endRatio)
+    {
+        return 0f <= endRatio && startRatio <= _spawnRatio;
+    }
+
+    /// <summary>
     /// 현재 재생 위치를 기준으로 화면에 걸치는 마디 인덱스 범위를 구합니다.
     /// 히트라인 아래(이미 지나간) 영역까지 포함하기 위해 시작 마디를 한 칸 앞당깁니다.
     /// </summary>

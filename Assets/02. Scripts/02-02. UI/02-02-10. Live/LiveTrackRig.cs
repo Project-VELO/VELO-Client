@@ -39,6 +39,7 @@ public class LiveTrackRig : MonoBehaviour
     private float _fieldOfView = 40f;
 
     [Foldout("Hierarchy")]
+    [Tooltip("비워 두면 그 씬의 메인 카메라를 빌려 씁니다. 상주 씬의 카메라는 여기에 넣을 수 없습니다(씬을 넘는 참조).")]
     [SerializeField]
     private Camera _camera;
 
@@ -49,6 +50,9 @@ public class LiveTrackRig : MonoBehaviour
     private UI_LiveTrackLanes _lanes;
 
     private readonly LiveTrackCameraBinder _cameraBinder = new LiveTrackCameraBinder();
+
+    // 빌려 온 카메라는 대개 상주 씬에 있어, 직렬화 필드에 담으면 씬을 넘는 참조가 되어 경고가 나고 씬이 더럽혀집니다.
+    private Camera _resolvedCamera;
 
     public float Pitch { get; private set; }
     public float CameraHeight { get; private set; }
@@ -80,21 +84,18 @@ public class LiveTrackRig : MonoBehaviour
         _cameraBinder.Restore();
     }
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        RefreshRig();
-    }
-#endif
-
     /// <summary>
     /// 디자인 수치에서 카메라 자세와 트랙 길이를 역산해 씬에 반영합니다.
+    /// 값을 고친 뒤 이 버튼으로 직접 적용합니다. OnValidate에서 부르면 트랙 RectTransform 크기 변경이
+    /// 검증 단계의 SendMessage 제한에 걸려 자식 수만큼 에러가 납니다.
     /// </summary>
+    [Button("리그 다시 적용")]
     public void RefreshRig()
     {
-        _camera = _cameraBinder.Resolve(gameObject, _camera);
+        // 한 번 빌린 카메라를 계속 씁니다. 바인더는 처음 빌린 것만 되돌리므로 도중에 대상이 바뀌면 원래 자세를 잃습니다.
+        _resolvedCamera = _cameraBinder.Resolve(gameObject, _camera != null ? _camera : _resolvedCamera);
 
-        if (_camera == null || _trackRoot == null)
+        if (_resolvedCamera == null || _trackRoot == null)
         {
             return;
         }
@@ -147,14 +148,14 @@ public class LiveTrackRig : MonoBehaviour
     /// </summary>
     private void ApplyToScene()
     {
-        _camera.orthographic = false;
-        _camera.fieldOfView = _fieldOfView;
-        _camera.transform.localPosition = new Vector3(0f, CameraHeight, 0f);
-        _camera.transform.localRotation = Quaternion.Euler(Pitch, 0f, 0f);
+        _resolvedCamera.orthographic = false;
+        _resolvedCamera.fieldOfView = _fieldOfView;
+        _resolvedCamera.transform.localPosition = new Vector3(0f, CameraHeight, 0f);
+        _resolvedCamera.transform.localRotation = Quaternion.Euler(Pitch, 0f, 0f);
 
         // 소실선 너머까지 그릴 필요가 없으므로 원경은 트랙 끝에 여유만 두고 잘라 깊이 정밀도를 확보합니다.
-        _camera.nearClipPlane = Mathf.Max(0.01f, NearDepth * 0.25f);
-        _camera.farClipPlane = FarDepth * 1.5f;
+        _resolvedCamera.nearClipPlane = Mathf.Max(0.01f, NearDepth * 0.25f);
+        _resolvedCamera.farClipPlane = FarDepth * 1.5f;
 
         float length = FarDepth - NearDepth;
         _trackRoot.localRotation = Quaternion.Euler(90f, 0f, 0f);

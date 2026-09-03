@@ -76,7 +76,7 @@ public class LivePlaySession
 
         if (_liveUI.LaneFeedback != null)
         {
-            _liveUI.LaneFeedback.ClearHighlights();
+            _liveUI.LaneFeedback.ClearLaneVfxs();
         }
     }
 

@@ -139,11 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5e24b59799c1a41a867ce2a0a62325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_LiveLaneFeedback
-  _litSeconds: 0.08
-  _idleAlpha: 0.45
-  _litAlpha: 1
-  _litScale: 1.12
-  _laneRings: []
+  _laneVfxs: []
 --- !u!114 &1746136092301819288
 MonoBehaviour:
   m_ObjectHideFlags: 0

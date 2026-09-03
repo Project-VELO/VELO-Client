@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 5c05c405888eadf4d827662d5aa2dea4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6587990143555980770
+    second: Image_BG_Lane6_Ghost_0
+  - first:
+      213: 5389998071261511469
+    second: Image_BG_Lane6_Ghost_1
+  - first:
+      213: -1828517005943259697
+    second: Image_BG_Lane6_Ghost_2
+  - first:
+      213: 6022363265059217842
+    second: Image_BG_Lane6_Ghost_3
+  - first:
+      213: 8723850259297356802
+    second: Image_BG_Lane6_Ghost_4
+  - first:
+      213: 8570660949609324959
+    second: Image_BG_Lane6_Ghost_5
+  - first:
+      213: 5755628063185580703
+    second: Image_BG_Lane6_Ghost_6
+  - first:
+      213: -8124130676110136936
+    second: Image_BG_Lane6_Ghost_7
+  - first:
+      213: -6971842534503320430
+    second: Image_BG_Lane6_Ghost_8
+  - first:
+      213: 9174543497299904676
+    second: Image_BG_Lane6_Ghost_9
+  - first:
+      213: -2990587626218166908
+    second: Image_BG_Lane6_Ghost_10
+  - first:
+      213: 7639503548960938529
+    second: Image_BG_Lane6_Ghost_11
+  - first:
+      213: 2696269973353352848
+    second: Image_BG_Lane6_Ghost_12
+  - first:
+      213: 1607610535365373395
+    second: Image_BG_Lane6_Ghost_13
+  - first:
+      213: -2261970767590322932
+    second: Image_BG_Lane6_Ghost_14
+  - first:
+      213: -794476525673912749
+    second: Image_BG_Lane6_Ghost_15
+  - first:
+      213: -7030374682753226999
+    second: Image_BG_Lane6_Ghost_16
+  - first:
+      213: 126300977358742166
+    second: Image_BG_Lane6_Ghost_17
+  - first:
+      213: -4931745531037740513
+    second: Image_BG_Lane6_Ghost_18
+  - first:
+      213: 5685047537064990318
+    second: Image_BG_Lane6_Ghost_19
+  - first:
+      213: 2120978821176796898
+    second: Image_BG_Lane6_Ghost_20
+  - first:
+      213: 5640252860310210764
+    second: Image_BG_Lane6_Ghost_21
+  - first:
+      213: -7157534296083749197
+    second: Image_BG_Lane6_Ghost_22
+  - first:
+      213: 6716255996613325249
+    second: Image_BG_Lane6_Ghost_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 811
+        width: 69
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e12329d7ed1c294a0800000000000000
+      internalID: -6587990143555980770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 763
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2f359930be1dca40800000000000000
+      internalID: 5389998071261511469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 695
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcdbdf2987dcf96e0800000000000000
+      internalID: -1828517005943259697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_3
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 641
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b167325b7bb39350800000000000000
+      internalID: 6022363265059217842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 592
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c4e130797511970800000000000000
+      internalID: 8723850259297356802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_5
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 616
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f91a6cf69ba11f670800000000000000
+      internalID: 8570660949609324959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 593
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9232759a3910ef40800000000000000
+      internalID: 5755628063185580703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 549
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 899e99d813a414f80800000000000000
+      internalID: -8124130676110136936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_8
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 540
+        width: 51
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29478fc372a0f3f90800000000000000
+      internalID: -6971842534503320430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_9
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 460
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a84ee4b3b6825f70800000000000000
+      internalID: 9174543497299904676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_10
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 469
+        width: 78
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4856695166c4f76d0800000000000000
+      internalID: -2990587626218166908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_11
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 381
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12a17208008f40a60800000000000000
+      internalID: 7639503548960938529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_12
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 423
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09e474c51431b6520800000000000000
+      internalID: 2696269973353352848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_13
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 388
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dde0a1b3416f4610800000000000000
+      internalID: 1607610535365373395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_14
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 306
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0d0671429ddb90e0800000000000000
+      internalID: -2261970767590322932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_15
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 301
+        width: 66
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 356e1d82fc379f4f0800000000000000
+      internalID: -794476525673912749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_16
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 252
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 907289c79771f6e90800000000000000
+      internalID: -7030374682753226999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_17
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 180
+        width: 90
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 692a04ad116b0c100800000000000000
+      internalID: 126300977358742166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_18
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 168
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1210eba19bee8bb0800000000000000
+      internalID: -4931745531037740513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_19
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 74
+        width: 74
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e66d7f14d9855ee40800000000000000
+      internalID: 5685047537064990318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 119
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6ae5c100b3f6d10800000000000000
+      internalID: 2120978821176796898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_21
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 79
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc8cb26d714364e40800000000000000
+      internalID: 5640252860310210764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_22
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 5
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b6a04eda745bac90800000000000000
+      internalID: -7157534296083749197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Image_BG_Lane6_Ghost_23
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 0
+        width: 71
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c179b2ae3fe43d50800000000000000
+      internalID: 6716255996613325249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Image_BG_Lane6_Ghost_0: -6587990143555980770
+      Image_BG_Lane6_Ghost_1: 5389998071261511469
+      Image_BG_Lane6_Ghost_10: -2990587626218166908
+      Image_BG_Lane6_Ghost_11: 7639503548960938529
+      Image_BG_Lane6_Ghost_12: 2696269973353352848
+      Image_BG_Lane6_Ghost_13: 1607610535365373395
+      Image_BG_Lane6_Ghost_14: -2261970767590322932
+      Image_BG_Lane6_Ghost_15: -794476525673912749
+      Image_BG_Lane6_Ghost_16: -7030374682753226999
+      Image_BG_Lane6_Ghost_17: 126300977358742166
+      Image_BG_Lane6_Ghost_18: -4931745531037740513
+      Image_BG_Lane6_Ghost_19: 5685047537064990318
+      Image_BG_Lane6_Ghost_2: -1828517005943259697
+      Image_BG_Lane6_Ghost_20: 2120978821176796898
+      Image_BG_Lane6_Ghost_21: 5640252860310210764
+      Image_BG_Lane6_Ghost_22: -7157534296083749197
+      Image_BG_Lane6_Ghost_23: 6716255996613325249
+      Image_BG_Lane6_Ghost_3: 6022363265059217842
+      Image_BG_Lane6_Ghost_4: 8723850259297356802
+      Image_BG_Lane6_Ghost_5: 8570660949609324959
+      Image_BG_Lane6_Ghost_6: 5755628063185580703
+      Image_BG_Lane6_Ghost_7: -8124130676110136936
+      Image_BG_Lane6_Ghost_8: -6971842534503320430
+      Image_BG_Lane6_Ghost_9: 9174543497299904676
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

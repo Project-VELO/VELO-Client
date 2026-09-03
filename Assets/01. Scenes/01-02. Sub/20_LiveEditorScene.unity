@@ -12257,8 +12257,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 249.74794
-  far clip plane: 12321.145
+  near clip plane: 247.11597
+  far clip plane: 12191.329
   field of view: 40
   orthographic: 0
   orthographic size: 5
@@ -12285,8 +12285,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418591877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2383791, y: 0, z: 0, w: 0.97117215}
-  m_LocalPosition: {x: 0, y: 1093.3374, z: 0}
+  m_LocalRotation: {x: 0.23837893, y: 0, z: 0, w: 0.9711722}
+  m_LocalPosition: {x: 0, y: 1081.8145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17373,6 +17373,18 @@ PrefabInstance:
       value: P_UI_Live_Track
       objectReference: {fileID: 0}
     - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _farViewDepth
+      value: 8301.307
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _hitLineRatio
+      value: 0.013487007
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: _nearViewDepth
+      value: 1390.4308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: _dividerColor.a
       value: 0.9
       objectReference: {fileID: 0}
@@ -17403,6 +17415,18 @@ PrefabInstance:
     - target: {fileID: 6393908859395120871, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: _laneColors.Array.data[5].a
       value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1410
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7759.0913
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4887.9
       objectReference: {fileID: 0}
     - target: {fileID: 8124435889424642752, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: m_Camera

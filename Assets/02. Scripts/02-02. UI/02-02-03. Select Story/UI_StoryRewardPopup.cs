@@ -13,7 +13,11 @@ using VInspector;
 /// </summary>
 public class UI_StoryRewardPopup : UI_Popup
 {
-    private const string AMOUNT_FORMAT = "N0";
+    /// <summary>
+    /// 획득량이므로 부호를 붙여 보여 줍니다. 결과 화면의 재화 칸과 같은 양식입니다.
+    /// 여기 오는 값은 보상으로 늘어난 양뿐이라 음수가 될 일이 없어 부호를 고정으로 씁니다.
+    /// </summary>
+    private const string AMOUNT_FORMAT = "+ #,##0";
     private const string MESSAGE = "스토리 감상 보상을 획득했습니다.";
 
     [Foldout("Hierarchy")]

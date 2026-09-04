@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4843496751091330300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5201320005146360629, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_text
-      value: "1. \uD3EC\uD1A0\uCE74\uB4DC \uC138\uD305"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.b
@@ -787,6 +787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_Panel_ItemSetting
       objectReference: {fileID: 0}
+    - target: {fileID: 5488397120351759554, guid: 1f3908638f0ec1549a574bb750a481dd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8663523117843688396, guid: 1f3908638f0ec1549a574bb750a481dd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -823,7 +827,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5201320005146360629, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_text
-      value: "2. \uC758\uC0C1 & \uC545\uC138\uC11C\uB9AC\n"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6410787411821003871, guid: a84850d6fb737434d8134dfc3c6c76dd, type: 3}
       propertyPath: m_Color.b

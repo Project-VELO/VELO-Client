@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 스페이스 화면입니다(기획서 SCREEN-005). 장소 허브지만 갈 수 있는 곳은 사무실뿐입니다.
+/// 스페이스 화면입니다(기획서 SCREEN-005). 장소 허브지만 갈 수 있는 곳은 사무실과 스튜디오뿐입니다.
 ///
 /// 연습실은 기획 갱신으로 LIVE 진입 경로에서 빠졌습니다. EEntryType.PRACTICE_LIVE와 그 처리 규칙이
 /// 코드에 남아 있지만 이제 어디서도 설정하지 않습니다. 여기에 연습실 배선을 되살리면
@@ -16,6 +16,9 @@ public class UI_Space : MonoBehaviour
     [Header("활성 버튼")]
     [SerializeField]
     private Button _officeButton;
+
+    [SerializeField]
+    private Button _studioButton;
 
     /// <summary>
     /// 우하단 LIVE 버튼입니다. 홈의 일반 LIVE와 같은 진입으로 다룹니다.
@@ -44,15 +47,21 @@ public class UI_Space : MonoBehaviour
     private void InitButtons()
     {
         _officeButton.onClick.AddListener(MoveToOffice);
+        _studioButton.onClick.AddListener(MoveToStudio);
         _liveButton.onClick.AddListener(StartLive);
 
-        // 스튜디오·숙소·연습실은 홈 화면과 마찬가지로 클릭 동작을 등록하지 않는 것으로 막습니다.
+        // 숙소·연습실은 홈 화면과 마찬가지로 클릭 동작을 등록하지 않는 것으로 막습니다.
         // 되살릴 때는 UI_DisabledButton을 붙이면 됩니다.
     }
 
     private void MoveToOffice()
     {
         LoadScene(ESceneNames.OfficeScene);
+    }
+
+    private void MoveToStudio()
+    {
+        LoadScene(ESceneNames.StudioScene);
     }
 
     /// <summary>

@@ -1011,6 +1011,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_OwnedPhotocard (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 00690293ba324aa4e8fc6b415876a25e, type: 3}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1112,6 +1132,26 @@ PrefabInstance:
     - target: {fileID: 4642292690827513715, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
       propertyPath: m_Name
       value: P_UI_OwnedPhotocard (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d948e6d517700434aa49b359a865314a, type: 3}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1215,6 +1255,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_OwnedPhotocard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51cdbcc9ac030e24383463918e8dd1a7, type: 3}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1317,6 +1377,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_UI_OwnedPhotocard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 06b02a83d13955948969f80cf1b5f3c6, type: 3}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1418,6 +1498,26 @@ PrefabInstance:
     - target: {fileID: 4642292690827513715, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
       propertyPath: m_Name
       value: P_UI_OwnedPhotocard
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e0e3d93266426cd439b08658c607d853, type: 3}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232212973068701393, guid: d7ac100ab11622e4d849ac3c7ddcfcd5, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

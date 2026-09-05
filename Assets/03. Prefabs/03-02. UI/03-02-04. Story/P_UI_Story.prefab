@@ -3078,32 +3078,32 @@ MonoBehaviour:
     - CHAR_GHOST_MAIDEN
     - CHAR_MONGGU
     _values:
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 1200
+    - Height: 1080
       EdgeOffset: 0
-    - Width: 0
+    - Height: 949
       EdgeOffset: 225
-    - Width: 0
+    - Height: 814
       EdgeOffset: 225
-    - Width: 0
+    - Height: 892
       EdgeOffset: 225
-    - Width: 0
+    - Height: 881
       EdgeOffset: 150
   _defaultLayout:
-    Width: 0
+    Height: 0
     EdgeOffset: 0
 --- !u!114 &6100000000
 MonoBehaviour:

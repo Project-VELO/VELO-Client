@@ -134,10 +134,10 @@ public class UI_StoryStage : MonoBehaviour
     /// </summary>
     public void SetSpeakers(StoryLineData line)
     {
-        SetCharacter(EStoryCharacterSlot.LEFT, line.CharacterId, line.ExpressionId);
-        SetCharacter(EStoryCharacterSlot.CENTER, line.CenterCharacterId, line.CenterExpressionId);
-        SetCharacter(EStoryCharacterSlot.RIGHT, line.RightCharacterId, line.RightExpressionId);
-        SetCharacter(EStoryCharacterSlot.UPPER, line.UpperCharacterId, line.UpperExpressionId);
+        SetCharacter(EStoryCharacterSlot.LEFT, line.CharacterId, line.ExpressionId, line.Transition);
+        SetCharacter(EStoryCharacterSlot.CENTER, line.CenterCharacterId, line.CenterExpressionId, line.CenterTransition);
+        SetCharacter(EStoryCharacterSlot.RIGHT, line.RightCharacterId, line.RightExpressionId, line.RightTransition);
+        SetCharacter(EStoryCharacterSlot.UPPER, line.UpperCharacterId, line.UpperExpressionId, line.UpperTransition);
     }
 
     private Image ResolveSlot(EStoryCharacterSlot slot)
@@ -151,7 +151,8 @@ public class UI_StoryStage : MonoBehaviour
         }
     }
 
-    private void SetCharacter(EStoryCharacterSlot slot, string characterId, string expressionId)
+    private void SetCharacter(EStoryCharacterSlot slot, string characterId, string expressionId,
+        EStoryCharacterTransition transition)
     {
         Image target = ResolveSlot(slot);
         StoryStandingSlot standing = _standingSlots[slot];
@@ -159,24 +160,12 @@ public class UI_StoryStage : MonoBehaviour
 
         if (string.IsNullOrEmpty(characterId))
         {
-            standing.Exit(_characterFadeSeconds, cancellationToken);
+            standing.Exit(transition, _characterFadeSeconds, cancellationToken);
             return;
         }
 
-        // 같은 인물이 이어서 서 있는 줄입니다. 다시 페이드하면 줄을 넘길 때마다 깜빡입니다.
-        // 표정은 바뀔 수 있으므로 그림은 아래에서 다시 대입합니다.
-        if (!standing.Holds(characterId))
-        {
-            if (target.gameObject.activeSelf)
-            {
-                standing.Replace(characterId);
-            }
-            else
-            {
-                standing.Enter(characterId, _characterFadeSeconds, cancellationToken);
-            }
-        }
-
+        // 그림과 자리를 먼저 잡습니다. 등장 연출이 제자리를 기준으로 움직이므로,
+        // 자리가 정해지기 전에 시작하면 앞 인물의 자리에서 들어옵니다.
         Sprite sprite = _visualBinder.GetCharacter(characterId, expressionId);
         target.sprite = sprite;
 
@@ -190,5 +179,19 @@ public class UI_StoryStage : MonoBehaviour
         {
             _layoutTable.Apply(target, slot, characterId);
         }
+
+        // 같은 인물이 이어서 서 있는 줄입니다. 다시 등장 연출을 걸면 줄을 넘길 때마다 깜빡입니다.
+        if (standing.Holds(characterId))
+        {
+            return;
+        }
+
+        if (target.gameObject.activeSelf)
+        {
+            standing.Replace(characterId);
+            return;
+        }
+
+        standing.Enter(characterId, transition, _characterFadeSeconds, cancellationToken);
     }
 }

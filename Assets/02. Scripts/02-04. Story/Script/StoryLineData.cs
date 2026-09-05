@@ -75,6 +75,15 @@ public class StoryLineData : ISerializationCallbackReceiver
     public string UpperExpressionId;
 
     /// <summary>
+    /// 인물이 자리에 드나드는 방식입니다(연출표의 [캐릭터 연출]).
+    /// 비어 있으면 FADE이고, 자리마다 따로 적어 한 줄에서 서로 다른 방식을 쓸 수 있습니다.
+    /// </summary>
+    public string TransitionName;
+    public string CenterTransitionName;
+    public string RightTransitionName;
+    public string UpperTransitionName;
+
+    /// <summary>
     /// 컷씬 일러스트 ID입니다. 원고의 [일러스트] 지시에 대응하며, 없으면 비어 있습니다.
     /// </summary>
     public string IllustrationId;
@@ -163,17 +172,28 @@ public class StoryLineData : ISerializationCallbackReceiver
     [NonSerialized]
     public EStoryTextPlacement TextPlacement;
 
+    /// <summary>
+    /// TransitionName들을 변환한 값입니다. 자리 순서는 왼쪽·가운데·오른쪽·위입니다.
+    /// </summary>
+    [NonSerialized]
+    public EStoryCharacterTransition Transition;
+
+    [NonSerialized]
+    public EStoryCharacterTransition CenterTransition;
+
+    [NonSerialized]
+    public EStoryCharacterTransition RightTransition;
+
+    [NonSerialized]
+    public EStoryCharacterTransition UpperTransition;
+
     public void OnBeforeSerialize()
     {
-        LineTypeName = MasterDataEnum.ToName(LineType);
-        TextSpeedName = MasterDataEnum.ToName(TextSpeed);
-        TextPlacementName = MasterDataEnum.ToName(TextPlacement);
+        StoryLineEnums.ToNames(this);
     }
 
     public void OnAfterDeserialize()
     {
-        LineType = MasterDataEnum.Parse(LineTypeName, ELineType.NARRATION, $"{nameof(StoryLineData)}(line {LineId}).{nameof(LineTypeName)}");
-        TextSpeed = MasterDataEnum.Parse(TextSpeedName, ETextSpeed.NORMAL, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextSpeedName)}");
-        TextPlacement = MasterDataEnum.Parse(TextPlacementName, EStoryTextPlacement.DIALOG_BOX, $"{nameof(StoryLineData)}(line {LineId}).{nameof(TextPlacementName)}");
+        StoryLineEnums.Apply(this);
     }
 }

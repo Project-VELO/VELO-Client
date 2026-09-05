@@ -1221,7 +1221,7 @@ MonoBehaviour:
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 0.5450981, g: 0.3529412, b: 0.1686275, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12
@@ -1251,13 +1251,13 @@ MonoBehaviour:
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 0.4313726, g: 0.1254902, b: 0.1254902, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 0.647059, g: 0.164706, b: 0.164706, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12
@@ -1269,7 +1269,7 @@ MonoBehaviour:
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 1, g: 0.270588, b: 0, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12
@@ -1317,7 +1317,7 @@ MonoBehaviour:
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 40
-      _color: {r: 0.545098, g: 0.352941, b: 0.168627, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 1
       _trembleAmplitude: 0
       _trembleFrequency: 12
@@ -1503,7 +1503,7 @@ MonoBehaviour:
       _trembleFrequency: 16
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12
@@ -1575,7 +1575,7 @@ MonoBehaviour:
       _trembleFrequency: 12
     - _font: {fileID: 0}
       _fontSize: 32
-      _color: {r: 1, g: 0.843137, b: 0, a: 1}
+      _color: {r: 0, g: 0, b: 0, a: 1}
       _fontStyle: 0
       _trembleAmplitude: 0
       _trembleFrequency: 12

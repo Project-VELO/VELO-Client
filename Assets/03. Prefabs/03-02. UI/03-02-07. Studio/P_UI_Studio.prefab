@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2109721916293245366}
   - component: {fileID: 6200193888158643094}
   - component: {fileID: 132975821477307884}
+  - component: {fileID: 132975821477307885}
   m_Layer: 5
   m_Name: P_UI_Studio
   m_TagString: Untagged
@@ -191,14 +192,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 82cf01ace1e1e45429fa03ab8fff04b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -225,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &396878957424134599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1114,3 +1115,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4638136409989115477, guid: 311f8878111c6b745b55058805ac55a7, type: 3}
   m_PrefabInstance: {fileID: 7890722036878965507}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &132975821477307885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224531345225679044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7800a5b02a7435c90e1a16c33696462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Studio
+  _backButton: {fileID: 6530638265248131380}
+--- !u!114 &6530638265248131380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4921459871553379710, guid: e93ef3f26120e244ca80704b31b0b8f9, type: 3}
+  m_PrefabInstance: {fileID: 1165460228941158698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

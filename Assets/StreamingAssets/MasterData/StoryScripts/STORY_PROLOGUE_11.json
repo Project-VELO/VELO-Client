@@ -26,7 +26,7 @@
       "SfxId": "",
       "EntryEffectId": "FX_CUT_DAWN_FADE_IN",
       "ExitEffectId": "FX_CUT_CROSS_DISSOLVE_OUT",
-      "CutSeconds": 4.0,
+      "CutSeconds": 6.0,
       "TextDelaySeconds": 1.0
     },
     {
@@ -169,7 +169,7 @@
       "LineTypeName": "MONOLOGUE",
       "SpeakerId": "",
       "SpeakerName": "",
-      "Text": "모든 빛이 꺼진 당신을, 심연의 세계로 초대합니다.",
+      "Text": "모든 빛이 꺼진 당신을,\n심연의 세계로 초대합니다.",
       "BackgroundId": "10-G",
       "CharacterId": "",
       "ExpressionId": "",

@@ -56,9 +56,12 @@ public class StoryProgressFlow : IDisposable
             return;
         }
 
-        // 컷씬에서는 글자를 채우는 1단계를 두지 않습니다. 컷은 그림과 소리가 함께 흐르는 한 덩어리라
-        // 글자만 채워 봐야 남은 연출을 그대로 기다리게 됩니다. 누르면 다음 컷으로 넘어갑니다.
-        if (StoryCutRunner.IsCut(_cursor.Current))
+        // 글자가 없는 컷은 채울 것이 없어 누르는 즉시 넘어갑니다. 컷은 그림과 소리가 함께 흐르는
+        // 한 덩어리라, 읽을 문장이 없으면 1단계를 두어 봐야 헛누름이 됩니다.
+        //
+        // 글자가 있는 컷은 보통 줄과 같이 두 번에 나눕니다. 한 번에 넘기면 읽던 문장이 잘려 나가고,
+        // 컷 길이는 읽는 속도를 모르는 값이라 사람이 다 읽었는지를 대신 판단할 수 없습니다.
+        if (StoryCutRunner.IsCut(_cursor.Current) && string.IsNullOrEmpty(_cursor.Current.Text))
         {
             MoveToNextLine();
             return;

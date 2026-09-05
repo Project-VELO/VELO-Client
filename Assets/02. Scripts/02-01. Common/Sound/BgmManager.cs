@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VInspector;
 
@@ -30,6 +31,14 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
     private float _volume = 0.5f;
 
     /// <summary>
+    /// 미리듣기가 시작에서 차오르고 끝에서 잦아드는 데 걸리는 시간입니다.
+    /// 짧은 음원을 반복해 트는 자리라 매 바퀴 이 봉투가 다시 그려집니다.
+    /// </summary>
+    [SerializeField]
+    [Min(0f)]
+    private float _previewFadeSeconds = 1.5f;
+
+    /// <summary>
     /// 지금 흐르고 있는 곡입니다. 같은 곡을 다시 트는 것을 막는 기준입니다.
     /// </summary>
     private EBgm _current = EBgm.NONE;
@@ -41,6 +50,8 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
     /// 원래 곡을 가리키고 있어, 같은 곡을 다시 틀라는 지시로 보여 무시되기 때문입니다.
     /// </summary>
     private bool _isPreviewPlaying;
+
+    private BgmPreviewFade _previewFade;
 
     protected override void Awake()
     {
@@ -97,9 +108,11 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
         _isPreviewPlaying = true;
 
         _source.clip = clip;
-        _source.volume = _volume;
         _source.Play();
+
+        GetPreviewFade().Begin(_volume, this.GetCancellationTokenOnDestroy());
     }
+
 
     /// <summary>
     /// 미리듣기를 멈추고 이 화면이 원래 쓰던 곡으로 되돌립니다.
@@ -112,6 +125,8 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
             return;
         }
 
+        GetPreviewFade().Stop();
+
         EBgm screenBgm = _current;
 
         // 같은 값이라 무시되지 않도록 비워 두고 다시 지시합니다.
@@ -119,6 +134,14 @@ public class BgmManager : MonoBehaviourSingleton<BgmManager>
         _isPreviewPlaying = false;
 
         Play(screenBgm);
+    }
+
+    /// <summary>
+    /// 음량 곡선을 그리는 쪽입니다. 인스펙터 값이 바뀔 수 있어 처음 쓸 때 만듭니다.
+    /// </summary>
+    private BgmPreviewFade GetPreviewFade()
+    {
+        return _previewFade ??= new BgmPreviewFade(_source, _previewFadeSeconds);
     }
 
     /// <summary>

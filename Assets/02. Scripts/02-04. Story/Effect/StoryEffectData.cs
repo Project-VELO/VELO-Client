@@ -42,6 +42,17 @@ public class StoryEffectData : ISerializationCallbackReceiver
     public float StrengthY;
 
     /// <summary>
+    /// PAN을 반대쪽 끝에서 시작할지입니다.
+    ///
+    /// 시점은 늘 가운데에서 시작하므로, 한 줄에 거는 이동 하나로는 절반까지밖에 못 갑니다.
+    /// 10화 3번째 컷처럼 세로로 긴 그림을 아래 끝에서 위 끝까지 훑어야 하는 자리가 있어,
+    /// 목표의 반대편에서 출발하도록 켤 수 있게 두었습니다.
+    ///
+    /// 켜면 -StrengthY에서 시작해 +StrengthY로 갑니다. 두 끝의 거리가 같아 확대량도 같습니다.
+    /// </summary>
+    public bool IsSweep;
+
+    /// <summary>
     /// 목표 상태까지 가는 데 걸리는 시간입니다. 0이면 즉시 적용합니다.
     /// </summary>
     public float DurationSeconds;

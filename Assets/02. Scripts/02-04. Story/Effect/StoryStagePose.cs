@@ -65,17 +65,28 @@ public class StoryStagePose
     /// <summary>
     /// 시점을 옮깁니다. 미는 동안 필요한 만큼 함께 확대해, 가장자리가 비지 않으면서도
     /// 움직이지 않는 줄에서는 그림이 잘리지 않게 합니다.
+    ///
+    /// 훑기로 지정된 이동은 반대편 끝에서 시작합니다. 시점이 늘 가운데에 있어,
+    /// 그러지 않으면 한 줄로는 그림의 절반까지밖에 못 갑니다(StoryEffectData.IsSweep).
     /// </summary>
     public async UniTask PanAsync(StoryEffectData effect, CancellationToken cancellationToken)
     {
-        Vector2 from = _layer.GetStageOffset();
-        float fromScale = _layer.GetStageScale();
-
         var to = new Vector2(effect.Strength, effect.StrengthY);
+        Vector2 from = effect.IsSweep ? -to : _layer.GetStageOffset();
+
+        float fromScale = _layer.GetStageScale();
         _settledOffset = to;
 
         // 이미 더 확대되어 있으면 그대로 둡니다. 줌인 중에 시점을 옮기는 줄에서 화면이 뒤로 물러나면 안 됩니다.
         float toScale = Mathf.Max(fromScale, _layer.GetRequiredScale(to));
+
+        // 훑기는 시작점도 화면 끝이라, 출발 전에 그만큼 확대해 두지 않으면 첫 프레임이 빕니다.
+        if (effect.IsSweep)
+        {
+            fromScale = toScale;
+            _layer.SetStageScale(toScale);
+            _layer.SetStageOffset(from);
+        }
 
         await StoryEffectTween.LerpAsync(effect.DurationSeconds, progress =>
         {

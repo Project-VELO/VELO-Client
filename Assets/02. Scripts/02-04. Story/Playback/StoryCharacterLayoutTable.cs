@@ -19,7 +19,7 @@ public class StoryCharacterLayoutTable : MonoBehaviour
         new SerializableDictionary<string, StoryCharacterLayout>();
 
     /// <summary>
-    /// 표에 없는 인물이 떨어지는 값입니다. 원본 크기 그대로 화면 끝에 붙습니다.
+    /// 표에 없는 인물이 떨어지는 값입니다. 화면 높이에 맞춰 화면 끝에 붙습니다.
     /// </summary>
     [SerializeField]
     private StoryCharacterLayout _defaultLayout = new StoryCharacterLayout();
@@ -45,13 +45,34 @@ public class StoryCharacterLayoutTable : MonoBehaviour
             return;
         }
 
-        float width = 0 < layout.Width ? layout.Width : spriteRect.width;
-        float height = width * spriteRect.height / spriteRect.width;
-
         RectTransform rect = target.rectTransform;
+        float height = ResolveHeight(layout, rect, spriteRect);
+        float width = height * spriteRect.width / spriteRect.height;
+
         rect.sizeDelta = new Vector2(width, height);
 
         ApplyAnchor(rect, slot, layout.EdgeOffset);
+    }
+
+    /// <summary>
+    /// 세울 높이를 정합니다. 표에 값이 없으면 감상 화면의 높이를 그대로 씁니다.
+    ///
+    /// 화면 높이를 기본값으로 두면 새 그림이 어떤 크기로 들어와도 일단 화면 안에 담깁니다.
+    /// 원본 크기를 기본값으로 두면 2000x3000 같은 그림이 그대로 들어가 다리만 보입니다.
+    /// </summary>
+    private static float ResolveHeight(StoryCharacterLayout layout, RectTransform rect, Rect spriteRect)
+    {
+        if (0 < layout.Height)
+        {
+            return layout.Height;
+        }
+
+        if (rect.parent is RectTransform frame && 0f < frame.rect.height)
+        {
+            return frame.rect.height;
+        }
+
+        return spriteRect.height;
     }
 
     private StoryCharacterLayout GetLayout(string characterId)

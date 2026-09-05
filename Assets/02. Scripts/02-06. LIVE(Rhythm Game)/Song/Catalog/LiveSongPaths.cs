@@ -13,6 +13,12 @@ public static class LiveSongPaths
     public const string CHAPTER_INFO_FILE_NAME = "chapter_info.json";
     public const string COVER_FILE_NAME = "cover.png";
 
+    /// <summary>
+    /// 곡 선택 화면에서 들려주는 짧은 음원입니다. 곡 폴더에 이 이름으로 두면 그것을 씁니다.
+    /// 커버와 같이 이름이 고정이라 song_info.json에 적지 않습니다.
+    /// </summary>
+    public const string PREVIEW_FILE_NAME = "preview.wav";
+
     private const string WORKING_SONGS_FOLDER = "Songs";
     private const string WORKING_CHARTS_FOLDER = "Charts";
     private const string PUBLISHED_FOLDER = "LiveSongs";
@@ -76,6 +82,14 @@ public static class LiveSongPaths
     public static string GetPublishedAudioPath(string songFolder, string audioFileName)
     {
         return Path.Combine(songFolder, audioFileName);
+    }
+
+    /// <summary>
+    /// 미리듣기 음원의 자리입니다. 파일이 없는 곡도 있으므로 호출부가 존재를 확인해야 합니다.
+    /// </summary>
+    public static string GetPublishedPreviewPath(string songFolder)
+    {
+        return Path.Combine(songFolder, PREVIEW_FILE_NAME);
     }
 
     public static string GetPublishedCoverPath(string songFolder)

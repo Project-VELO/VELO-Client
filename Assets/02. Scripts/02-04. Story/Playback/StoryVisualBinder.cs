@@ -36,6 +36,16 @@ public class StoryVisualBinder : MonoBehaviour
     private SerializableDictionary<string, Sprite> _characterFaceSprites = new SerializableDictionary<string, Sprite>();
 
     [Foldout("Settings")]
+    /// <summary>
+    /// 표정을 무시하고 인물의 기본 그림만 씁니다.
+    ///
+    /// 표정별 원본의 구도가 서로 다릅니다. 기본과 EXP_NORMAL은 허리 위까지지만 나머지 넷은
+    /// 전신이라, 같은 인물인데도 줄이 넘어갈 때마다 인물 크기와 구도가 튑니다.
+    /// 표정 그림이 같은 구도로 다시 들어오면 이 값을 꺼 주세요.
+    /// </summary>
+    [SerializeField]
+    private bool _useDefaultExpressionOnly = true;
+
     [Header("스프라이트가 없을 때 쓰는 임시 색")]
     [SerializeField]
     private SerializableDictionary<string, Color> _characterPlaceholderColors = new SerializableDictionary<string, Color>();
@@ -69,7 +79,7 @@ public class StoryVisualBinder : MonoBehaviour
     /// </summary>
     public Sprite GetCharacter(string characterId, string expressionId)
     {
-        if (!string.IsNullOrEmpty(expressionId))
+        if (!_useDefaultExpressionOnly && !string.IsNullOrEmpty(expressionId))
         {
             Sprite withExpression = TryGet(_characterSprites, BuildExpressionKey(characterId, expressionId));
 

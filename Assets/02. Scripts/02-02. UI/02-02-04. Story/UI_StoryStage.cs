@@ -80,21 +80,23 @@ public class UI_StoryStage : MonoBehaviour
         // 스프라이트가 없으면 단색으로 떨어집니다. 흰색으로 두면 화면이 하얗게 날아갑니다.
         _background.color = sprite == null ? _visualBinder.BackgroundPlaceholderColor : Color.white;
 
-        ApplyBackgroundFit(sprite);
+        ApplyBackgroundCover(sprite);
     }
 
     /// <summary>
-    /// 배경을 원본 비율 그대로 화면 안에 담습니다.
+    /// 배경을 원본 비율 그대로 화면에 채웁니다. 짧은 쪽을 화면에 맞추고 긴 쪽은 넘겨 잘라 냅니다.
     ///
     /// 배경이 전부 16:9는 아닙니다. 4화의 4-A는 4:3이고 10화의 10-C는 세로로 긴 그림입니다.
     /// 화면 틀에 그대로 늘리면 인물이 옆으로 퍼지므로 비율은 반드시 지켜야 합니다.
     ///
-    /// 예전에는 짧은 쪽을 화면에 맞추고 긴 쪽이 넘치게 두었습니다. 그러면 4:3은 위아래가
-    /// 33% 잘리고 세로로 긴 그림은 절반이 넘게 잘려 나가, 그려 둔 장면이 보이지 않습니다.
-    /// 그래서 긴 쪽을 화면에 맞춰 그림 전체를 담습니다. 16:9인 배경 36장은 어느 쪽이든
-    /// 결과가 같고, 비율이 다른 넉 장만 좌우에 자리가 남습니다.
+    /// 그림 전체가 보이도록 틀 안에 담아 본 적이 있는데, 그러면 비율이 다른 배경에서
+    /// 테두리 바깥의 빈 자리가 드러났습니다. 특히 시점 이동과 흔들림이 그 자리를 화면 안으로
+    /// 끌고 들어옵니다. 잘리더라도 빈 자리를 보이지 않는 쪽을 택했습니다.
+    ///
+    /// 잘리는 것이 아까우면 배경을 16:9로 다시 뽑는 것이 답입니다. 40장 중 36장은 이미 16:9라
+    /// 이 계산에 걸리지 않습니다.
     /// </summary>
-    private void ApplyBackgroundFit(Sprite sprite)
+    private void ApplyBackgroundCover(Sprite sprite)
     {
         RectTransform rect = _background.rectTransform;
 
@@ -119,8 +121,8 @@ public class UI_StoryStage : MonoBehaviour
         rect.anchoredPosition = Vector2.zero;
 
         rect.sizeDelta = spriteAspect < frameAspect
-            ? new Vector2(frameSize.y * spriteAspect, frameSize.y)
-            : new Vector2(frameSize.x, frameSize.x / spriteAspect);
+            ? new Vector2(frameSize.x, frameSize.x / spriteAspect)
+            : new Vector2(frameSize.y * spriteAspect, frameSize.y);
     }
 
     /// <summary>

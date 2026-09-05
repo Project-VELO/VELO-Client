@@ -27,7 +27,7 @@
       "EntryEffectId": "FX_CUT_DAWN_FADE_IN",
       "ExitEffectId": "FX_CUT_CROSS_DISSOLVE_OUT",
       "CutSeconds": 6.0,
-      "TextDelaySeconds": 1.0
+      "TextDelaySeconds": 0.0
     },
     {
       "LineId": 2,
@@ -81,7 +81,7 @@
       "EntryEffectId": "FX_CUT_CROSS_DISSOLVE_IN",
       "ExitEffectId": "FX_CUT_CROSS_DISSOLVE_OUT",
       "CutSeconds": 4.0,
-      "TextDelaySeconds": 1.0
+      "TextDelaySeconds": 0.0
     },
     {
       "LineId": 4,
@@ -162,7 +162,7 @@
       "EntryEffectId": "FX_CUT_FADE_IN_SLOW",
       "ExitEffectId": "FX_CUT_MATCH_ZOOM_OUT",
       "CutSeconds": 5.0,
-      "TextDelaySeconds": 1.0
+      "TextDelaySeconds": 0.0
     },
     {
       "LineId": 7,
@@ -189,7 +189,7 @@
       "EntryEffectId": "FX_CUT_IMPACT_IN",
       "ExitEffectId": "FX_CUT_FADE_OUT_BLACK",
       "CutSeconds": 6.0,
-      "TextDelaySeconds": 1.5
+      "TextDelaySeconds": 0.0
     }
   ]
 }

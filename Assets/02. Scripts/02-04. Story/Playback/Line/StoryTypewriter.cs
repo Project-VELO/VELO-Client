@@ -83,6 +83,17 @@ public class StoryTypewriter
     }
 
     /// <summary>
+    /// 타이핑을 시작하지도 못하고 끊긴 줄을 즉시 다 채웁니다.
+    ///
+    /// 대사가 뜨기 전의 빈 시간에 NEXT를 누른 경우입니다. TypeAsync에 들어가지 않았으므로
+    /// 그 안의 finally가 채워 주지 못해, 아무도 채우지 않으면 글자가 끝내 나오지 않습니다.
+    /// </summary>
+    public void Fill(string text)
+    {
+        Complete(BeginLine(text));
+    }
+
+    /// <summary>
     /// 이번 줄에서 유일하게 문자열을 대입하는 지점입니다.
     /// ForceMeshUpdate는 characterCount를 확정시키기 위해 필요하며 줄마다 한 번만 부릅니다.
     /// </summary>

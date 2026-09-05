@@ -118,8 +118,13 @@ public class StoryLinePlayer
     private async UniTaskVoid TypeAsync(StoryLineData line, CancellationToken cancellationToken)
     {
         // 컷씬은 그림이 먼저 자리를 잡고 글이 얹힙니다. 지연을 두지 않는 보통 줄은 곧바로 출력합니다.
+        // 지연 중에 끊겼습니다. 타이핑에 들어가지 않아 StoryTypewriter의 finally가 돌지 않으므로
+        // 여기서 직접 채우고 줄이 끝났다고 알립니다. 그러지 않으면 대사가 끝내 나오지 않은 채
+        // 다음 누름에 넘어가, 누른 사람에게는 한 번에 넘어간 것처럼 보입니다.
         if (0f < line.TextDelaySeconds && !await DelayTextAsync(line.TextDelaySeconds, cancellationToken))
         {
+            _typewriter.Fill(line.Text);
+            OnLineCompleted?.Invoke();
             return;
         }
 

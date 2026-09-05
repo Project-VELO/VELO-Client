@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEngine;
 
 /// <summary>
 /// 대본을 첫 줄부터 마지막 줄까지 밀고 나가는 상태 기계입니다.
@@ -37,6 +38,19 @@ public class StoryProgressFlow : IDisposable
         _cutRunner.OnCutElapsed = MoveToNextLine;
     }
 
+    /// <summary>
+    /// 대사가 다 나온 뒤 다음으로 넘길 수 있게 되기까지의 시간입니다.
+    ///
+    /// 마지막 글자가 찍히는 순간에 이미 눌러 둔 손가락이 그대로 다음 줄로 넘겨 버리면,
+    /// 방금 나온 문장을 읽지 못한 채 화면이 바뀝니다. 읽을 틈을 두려고 잠깐 잠급니다.
+    /// </summary>
+    private const float NEXT_LOCK_SECONDS = 0.5f;
+
+    /// <summary>
+    /// 이 줄의 마지막 글자가 찍힌 시각입니다. 화면이 멈춰도 흘러야 하므로 스케일 없는 시간을 씁니다.
+    /// </summary>
+    private float _completedAt = float.NegativeInfinity;
+
     public StoryLineCursor Cursor => _cursor;
 
     public void Begin()
@@ -56,9 +70,26 @@ public class StoryProgressFlow : IDisposable
             return;
         }
 
-        // 컷씬에서는 글자를 채우는 1단계를 두지 않습니다. 컷은 그림과 소리가 함께 흐르는 한 덩어리라
-        // 글자만 채워 봐야 남은 연출을 그대로 기다리게 됩니다. 누르면 다음 컷으로 넘어갑니다.
-        if (StoryCutRunner.IsCut(_cursor.Current))
+        // 대사가 아직 뜨지 않았습니다. 컷씬은 그림이 자리를 잡을 동안 글자를 늦춰 내는데,
+        // 이때 누른 건너뛰기는 채울 글자가 없어 빈 화면만 남깁니다.
+        if (_state == EStoryPlaybackState.TYPING && !_linePlayer.HasTextStarted)
+        {
+            return;
+        }
+
+        // 다 나온 지 얼마 되지 않았습니다. 마지막 글자와 같이 눌린 손가락이 그대로 넘기지 않게 잠급니다.
+        if (_state == EStoryPlaybackState.WAITING_NEXT
+            && Time.unscaledTime - _completedAt < NEXT_LOCK_SECONDS)
+        {
+            return;
+        }
+
+        // 글자가 없는 컷은 채울 것이 없어 누르는 즉시 넘어갑니다. 컷은 그림과 소리가 함께 흐르는
+        // 한 덩어리라, 읽을 문장이 없으면 1단계를 두어 봐야 헛누름이 됩니다.
+        //
+        // 글자가 있는 컷은 보통 줄과 같이 두 번에 나눕니다. 한 번에 넘기면 읽던 문장이 잘려 나가고,
+        // 컷 길이는 읽는 속도를 모르는 값이라 사람이 다 읽었는지를 대신 판단할 수 없습니다.
+        if (StoryCutRunner.IsCut(_cursor.Current) && string.IsNullOrEmpty(_cursor.Current.Text))
         {
             MoveToNextLine();
             return;
@@ -168,6 +199,9 @@ public class StoryProgressFlow : IDisposable
     /// </summary>
     private void OnLineCompleted()
     {
+        // 건너뛰기로 채운 경우에는 이미 WAITING_NEXT입니다. 잠금 시작 시각은 두 경우 모두 지금입니다.
+        _completedAt = Time.unscaledTime;
+
         if (_state == EStoryPlaybackState.TYPING)
         {
             _state = EStoryPlaybackState.WAITING_NEXT;

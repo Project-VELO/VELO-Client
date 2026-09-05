@@ -21,6 +21,12 @@ public class StoryStandingSlot
 
     private CancellationTokenSource _fade;
 
+    /// <summary>
+    /// 이 자리의 제자리입니다. 움직여 들어오고 나가는 방식이 여기를 기준으로 오갑니다.
+    /// 자리는 인물마다 다르므로(StoryCharacterLayoutTable) 등장할 때마다 다시 잽니다.
+    /// </summary>
+    private Vector2 _home;
+
     public StoryStandingSlot(Image image)
     {
         _image = image;
@@ -37,22 +43,35 @@ public class StoryStandingSlot
     /// <summary>
     /// 아무도 없던 자리에 인물을 세웁니다. 투명한 상태에서 시작해 서서히 드러납니다.
     /// </summary>
-    public void Enter(string characterId, float seconds, CancellationToken cancellationToken)
+    public void Enter(string characterId, EStoryCharacterTransition transition, float seconds,
+        CancellationToken cancellationToken)
     {
         StopFade();
 
         _characterId = characterId;
         _image.gameObject.SetActive(true);
 
-        SetAlpha(0f);
-        FadeAsync(0f, 1f, seconds, false, cancellationToken).Forget();
+        RectTransform rect = _image.rectTransform;
+        _home = rect.anchoredPosition;
+
+        if (StoryStandingMotion.IsInstant(transition))
+        {
+            SetAlpha(1f);
+            return;
+        }
+
+        // 움직여 들어오는 방식은 처음부터 다 보입니다. 자리까지 흐릿하면 무엇이 움직이는지 읽히지 않습니다.
+        SetAlpha(transition == EStoryCharacterTransition.FADE ? 0f : 1f);
+
+        _fade = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        EnterAsync(transition, seconds, _fade.Token).Forget();
     }
 
     /// <summary>
     /// 서 있던 인물을 내립니다. 다 사라진 뒤에 오브젝트를 끕니다.
     /// 먼저 끄면 페이드가 보이지 않고 그냥 사라집니다.
     /// </summary>
-    public void Exit(float seconds, CancellationToken cancellationToken)
+    public void Exit(EStoryCharacterTransition transition, float seconds, CancellationToken cancellationToken)
     {
         StopFade();
 
@@ -63,7 +82,14 @@ public class StoryStandingSlot
             return;
         }
 
-        FadeAsync(_image.color.a, 0f, seconds, true, cancellationToken).Forget();
+        if (StoryStandingMotion.IsInstant(transition))
+        {
+            Hide();
+            return;
+        }
+
+        _fade = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        ExitAsync(transition, seconds, _fade.Token).Forget();
     }
 
     /// <summary>
@@ -77,6 +103,8 @@ public class StoryStandingSlot
         _characterId = characterId;
         _image.gameObject.SetActive(true);
         SetAlpha(1f);
+
+        _image.rectTransform.localScale = Vector3.one;
     }
 
     /// <summary>
@@ -87,25 +115,58 @@ public class StoryStandingSlot
         StopFade();
     }
 
-    private async UniTaskVoid FadeAsync(float from, float to, float seconds, bool hideWhenDone,
+    private async UniTaskVoid EnterAsync(EStoryCharacterTransition transition, float seconds,
         CancellationToken cancellationToken)
     {
-        _fade = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-
         try
         {
-            await StoryEffectTween.LerpAsync(seconds,
-                progress => SetAlpha(Mathf.Lerp(from, to, progress)), _fade.Token);
+            RectTransform rect = _image.rectTransform;
 
-            if (hideWhenDone)
+            if (transition == EStoryCharacterTransition.FADE)
             {
-                _image.gameObject.SetActive(false);
+                await StoryEffectTween.LerpAsync(seconds, progress => SetAlpha(progress), cancellationToken);
+                return;
             }
+
+            await StoryStandingMotion.EnterAsync(rect, transition, _home, seconds, cancellationToken);
         }
         catch (System.OperationCanceledException)
         {
             // 다음 줄이 이 자리를 다시 지정했거나 화면을 떠난 것뿐입니다. 새 지시가 곧 자기 값을 씁니다.
         }
+    }
+
+    private async UniTaskVoid ExitAsync(EStoryCharacterTransition transition, float seconds,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            if (transition == EStoryCharacterTransition.FADE)
+            {
+                float from = _image.color.a;
+                await StoryEffectTween.LerpAsync(seconds,
+                    progress => SetAlpha(Mathf.Lerp(from, 0f, progress)), cancellationToken);
+            }
+            else
+            {
+                await StoryStandingMotion.ExitAsync(_image.rectTransform, transition, _home, seconds, cancellationToken);
+            }
+
+            Hide();
+        }
+        catch (System.OperationCanceledException)
+        {
+        }
+    }
+
+    /// <summary>
+    /// 자리를 비웁니다. 다음에 들어올 인물이 앞 인물의 배율과 자리를 물려받지 않도록 함께 되돌립니다.
+    /// </summary>
+    private void Hide()
+    {
+        _image.gameObject.SetActive(false);
+        _image.rectTransform.localScale = Vector3.one;
+        _image.rectTransform.anchoredPosition = _home;
     }
 
     private void StopFade()

@@ -16,6 +16,14 @@ public class StoryLinePlayer
     /// </summary>
     public Action OnLineCompleted;
 
+    /// <summary>
+    /// 이 줄의 글자가 나오기 시작했는지입니다.
+    ///
+    /// 컷씬은 그림이 자리를 잡을 동안 대사를 늦춰 내는데, 그 빈 시간에 누른 건너뛰기는
+    /// 채울 글자가 없어 빈 화면만 남깁니다. 시작한 뒤에만 건너뛸 수 있게 하려고 둡니다.
+    /// </summary>
+    public bool HasTextStarted { get; private set; }
+
     private readonly UI_Story _ui;
     private readonly StoryTypewriter _typewriter;
     private readonly StoryEffectPlayer _effectPlayer;
@@ -23,6 +31,15 @@ public class StoryLinePlayer
     private readonly CancellationToken _sceneToken;
 
     private CancellationTokenSource _typingCts;
+
+    /// <summary>
+    /// 지금 끊는 것이 "글자를 채우라"는 지시인지입니다.
+    ///
+    /// 끊는 이유가 둘이라 구분이 필요합니다. NEXT와 팝업은 남은 글자를 채워야 하지만,
+    /// 다음 줄을 시작하며 앞 줄을 끊는 것은 채우면 안 됩니다. 채우면 새 줄의 상자에
+    /// 앞 줄의 글자가 찍힙니다.
+    /// </summary>
+    private bool _isFillRequested;
 
     /// <summary>
     /// 앞 줄의 배경입니다. 장면이 바뀌는 순간을 알아내려고 들고 있습니다.
@@ -35,7 +52,7 @@ public class StoryLinePlayer
     {
         _ui = ui;
         _sceneToken = sceneToken;
-        _typewriter = new StoryTypewriter(ui.DialogBox.BodyText, getSecondsPerCharacter);
+        _typewriter = new StoryTypewriter(() => ui.DialogBox.BodyText, getSecondsPerCharacter);
         _effectPlayer = new StoryEffectPlayer(ui.EffectLayer, sceneToken);
         _audioPlayer = new StoryAudioPlayer(ui.AudioBinder, sceneToken);
     }
@@ -79,7 +96,9 @@ public class StoryLinePlayer
 
         // 앞 줄의 토큰이 아직 남아 있을 수 있습니다. 팝업 없이 다음 줄로 넘어간 경로가 그렇습니다.
         // 여기서 걷지 않으면 줄마다 CancellationTokenSource가 하나씩 쌓입니다.
-        Skip();
+        _isFillRequested = false;
+        HasTextStarted = false;
+        CancelTyping();
 
         // 씬 언로드와 건너뛰기 두 취소원을 하나로 묶습니다.
         _typingCts = CancellationTokenSource.CreateLinkedTokenSource(_sceneToken);
@@ -91,6 +110,12 @@ public class StoryLinePlayer
     /// 채우는 것은 StoryTypewriter의 finally가 하므로 여기서는 끊기만 합니다.
     /// </summary>
     public void Skip()
+    {
+        _isFillRequested = true;
+        CancelTyping();
+    }
+
+    private void CancelTyping()
     {
         if (_typingCts == null)
         {
@@ -118,10 +143,22 @@ public class StoryLinePlayer
     private async UniTaskVoid TypeAsync(StoryLineData line, CancellationToken cancellationToken)
     {
         // 컷씬은 그림이 먼저 자리를 잡고 글이 얹힙니다. 지연을 두지 않는 보통 줄은 곧바로 출력합니다.
+        // 지연 중에 끊겼습니다. 타이핑에 들어가지 않아 StoryTypewriter의 finally가 돌지 않으므로
+        // 여기서 직접 채우고 줄이 끝났다고 알립니다. 그러지 않으면 대사가 끝내 나오지 않은 채
+        // 다음 누름에 넘어가, 누른 사람에게는 한 번에 넘어간 것처럼 보입니다.
         if (0f < line.TextDelaySeconds && !await DelayTextAsync(line.TextDelaySeconds, cancellationToken))
         {
+            // 다음 줄이 시작하며 끊은 것이라면 채우지 않습니다. 새 줄의 상자에 이 줄의 글자가 찍힙니다.
+            if (_isFillRequested)
+            {
+                _typewriter.Fill(line.Text);
+                OnLineCompleted?.Invoke();
+            }
+
             return;
         }
+
+        HasTextStarted = true;
 
         await _typewriter.TypeAsync(line.Text, line.TextSpeed, cancellationToken);
 

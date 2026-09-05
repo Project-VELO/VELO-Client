@@ -20,6 +20,17 @@ public class UI_StoryEffectLayer : MonoBehaviour
     [SerializeField]
     private RectTransform _stage;
 
+    /// <summary>
+    /// 화면을 실제로 채우고 있는 그림입니다. 여유분을 이 크기로 잽니다.
+    ///
+    /// 무대 틀이 아니라 그림을 기준으로 재는 이유는, 배경이 전부 16:9가 아니기 때문입니다.
+    /// 10화의 10-C는 세로로 긴 그림이라 채우고 나면 이미 화면보다 두 배 넘게 깁니다.
+    /// 틀을 기준으로 재면 이미 남아도는 세로 여유를 못 보고 다시 확대해, 볼 필요 없는
+    /// 확대가 걸립니다.
+    /// </summary>
+    [SerializeField]
+    private RectTransform _content;
+
     [Header("전체화면 덮개")]
     [SerializeField]
     private Image _overlay;
@@ -145,17 +156,34 @@ public class UI_StoryEffectLayer : MonoBehaviour
     /// <summary>
     /// 무대를 이만큼 밀려면 얼마나 확대해야 하는지 돌려줍니다(SetStageScale에 넣는 배수).
     ///
-    /// 미는 거리의 두 배만큼 화면 밖에 여유가 있어야 가장자리가 비지 않습니다.
-    /// 확대는 그림을 잘라 내는 대가를 치르므로, 필요한 순간에 필요한 만큼만 구합니다.
+    /// 그림이 화면을 덮고, 미는 거리의 두 배만큼 더 남아 있어야 가장자리가 비지 않습니다.
+    /// 확대는 그림을 잘라 내는 대가를 치르므로, 이미 남아 있는 만큼은 확대로 치지 않습니다.
+    /// 세로로 긴 배경은 채우고 나면 세로가 남아돌아 위아래로 미는 데 확대가 필요 없습니다.
     /// </summary>
     public float GetRequiredScale(Vector2 offset)
     {
-        Rect rect = _stage.rect;
+        Rect frame = _stage.rect;
+        Vector2 content = GetContentSize();
 
-        float byWidth = 0f < rect.width ? 1f + Mathf.Abs(offset.x) * 2f / rect.width : 1f;
-        float byHeight = 0f < rect.height ? 1f + Mathf.Abs(offset.y) * 2f / rect.height : 1f;
+        float byWidth = 0f < content.x
+            ? (frame.width + Mathf.Abs(offset.x) * 2f) / content.x
+            : 1f;
 
-        return Mathf.Max(byWidth, byHeight) / _baseScale;
+        float byHeight = 0f < content.y
+            ? (frame.height + Mathf.Abs(offset.y) * 2f) / content.y
+            : 1f;
+
+        return Mathf.Max(1f, Mathf.Max(byWidth, byHeight)) / _baseScale;
+    }
+
+    /// <summary>
+    /// 여유분을 재는 기준 크기입니다. 그림이 없으면 무대 틀을 씁니다.
+    /// </summary>
+    private Vector2 GetContentSize()
+    {
+        Rect rect = _content != null ? _content.rect : _stage.rect;
+
+        return new Vector2(rect.width, rect.height);
     }
 
     /// <summary>
@@ -164,12 +192,13 @@ public class UI_StoryEffectLayer : MonoBehaviour
     /// </summary>
     private Vector2 GetSlack()
     {
-        Rect rect = _stage.rect;
+        Rect frame = _stage.rect;
+        Vector2 content = GetContentSize();
         float scale = _stage.localScale.x;
 
         return new Vector2(
-            Mathf.Max(0f, rect.width * (scale - 1f) * 0.5f),
-            Mathf.Max(0f, rect.height * (scale - 1f) * 0.5f));
+            Mathf.Max(0f, (content.x * scale - frame.width) * 0.5f),
+            Mathf.Max(0f, (content.y * scale - frame.height) * 0.5f));
     }
 
     private Image Resolve(EStoryEffectTarget target)

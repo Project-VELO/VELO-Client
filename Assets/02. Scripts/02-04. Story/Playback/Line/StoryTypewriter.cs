@@ -15,14 +15,24 @@ using UnityEngine;
 /// </summary>
 public class StoryTypewriter
 {
-    private readonly TMP_Text _target;
+    /// <summary>
+    /// 글자를 찍을 자리를 줄마다 물어봅니다.
+    ///
+    /// 한 번 받아 두지 않는 이유는 자리가 줄마다 바뀌기 때문입니다. 대사는 하단 상자에,
+    /// 화면 중앙 줄은 가운데 글자에 찍힙니다(UI_StoryDialogBox.BodyText). 시작할 때 한 번만
+    /// 받아 두면 중앙 줄이 꺼져 있는 하단 상자에 찍혀 화면에는 아무것도 나오지 않습니다.
+    /// </summary>
+    private readonly Func<TMP_Text> _getTarget;
+
     private readonly Func<float> _getSecondsPerCharacter;
+
+    private TMP_Text _target;
 
     private int _visibleCount;
 
-    public StoryTypewriter(TMP_Text target, Func<float> getSecondsPerCharacter)
+    public StoryTypewriter(Func<TMP_Text> getTarget, Func<float> getSecondsPerCharacter)
     {
-        _target = target;
+        _getTarget = getTarget;
         _getSecondsPerCharacter = getSecondsPerCharacter;
     }
 
@@ -99,6 +109,13 @@ public class StoryTypewriter
     /// </summary>
     private int BeginLine(string text)
     {
+        _target = _getTarget();
+
+        if (_target == null)
+        {
+            return 0;
+        }
+
         _target.text = text;
         _target.maxVisibleCharacters = 0;
         _target.ForceMeshUpdate();

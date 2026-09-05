@@ -39,6 +39,11 @@ public static class StoryTypingSpeed
     public const float PAUSE_SECONDS = 0.5f;
 
     /// <summary>
+    /// 문장 전체가 배어 나오는 데 걸리는 시간입니다. 글자 수와 무관한 연출이라 절대값입니다.
+    /// </summary>
+    public const float FADE_SECONDS = 1.2f;
+
+    /// <summary>
     /// 정적을 넣을 문장 부호입니다. "..."이나 "?!"처럼 이어진 부호는 한 번만 멈춥니다(IsPauseBoundary).
     /// </summary>
     private const string PAUSE_CHARACTERS = ".?!,";
@@ -49,6 +54,14 @@ public static class StoryTypingSpeed
     public static bool IsInstant(ETextSpeed speed)
     {
         return speed == ETextSpeed.INSTANT;
+    }
+
+    /// <summary>
+    /// 글자를 찍지 않고 문장 전체를 서서히 드러내는 줄인지 여부입니다.
+    /// </summary>
+    public static bool IsFadeIn(ETextSpeed speed)
+    {
+        return speed == ETextSpeed.FADE_IN;
     }
 
     /// <summary>

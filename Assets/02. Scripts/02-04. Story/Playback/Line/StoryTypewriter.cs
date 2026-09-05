@@ -54,6 +54,12 @@ public class StoryTypewriter
             return;
         }
 
+        if (StoryTypingSpeed.IsFadeIn(speed))
+        {
+            await FadeInAsync(totalCharacters, cancellationToken);
+            return;
+        }
+
         try
         {
             float elapsed = 0f;
@@ -93,6 +99,42 @@ public class StoryTypewriter
     }
 
     /// <summary>
+    /// 글자를 찍지 않고 문장 전체를 서서히 드러냅니다.
+    ///
+    /// 글자는 처음부터 모두 제자리에 있고 투명도만 올립니다. 한 글자씩 드러내면 결국 타이핑이라
+    /// "배어 나온다"가 아니라 "누가 쓰고 있다"로 읽힙니다.
+    /// </summary>
+    private async UniTask FadeInAsync(int totalCharacters, CancellationToken cancellationToken)
+    {
+        Complete(totalCharacters);
+
+        try
+        {
+            float elapsed = 0f;
+            _target.alpha = 0f;
+
+            while (elapsed < StoryTypingSpeed.FADE_SECONDS)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                _target.alpha = Mathf.Clamp01(elapsed / StoryTypingSpeed.FADE_SECONDS);
+
+                await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // 건너뛰었거나 화면을 떠났습니다. finally가 다 드러낸 상태로 맞춥니다.
+        }
+        finally
+        {
+            if (_target != null)
+            {
+                _target.alpha = 1f;
+            }
+        }
+    }
+
+    /// <summary>
     /// 타이핑을 시작하지도 못하고 끊긴 줄을 즉시 다 채웁니다.
     ///
     /// 대사가 뜨기 전의 빈 시간에 NEXT를 누른 경우입니다. TypeAsync에 들어가지 않았으므로
@@ -115,6 +157,9 @@ public class StoryTypewriter
         {
             return 0;
         }
+
+        // 앞 줄이 배어 나오는 중에 끊겼을 수 있습니다. 투명한 채로 남으면 이 줄이 통째로 안 보입니다.
+        _target.alpha = 1f;
 
         _target.text = text;
         _target.maxVisibleCharacters = 0;

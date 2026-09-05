@@ -1688,9 +1688,9 @@ MonoBehaviour:
       _trembleAmplitude: 0
       _trembleFrequency: 12
     - _font: {fileID: 11400000, guid: 09d72e04dab4c2944b04bdec8bd40c3f, type: 2}
-      _fontSize: 36
+      _fontSize: 64
       _color: {r: 0.4313726, g: 0, b: 0.03137255, a: 1}
-      _fontStyle: 1
+      _fontStyle: 3
       _trembleAmplitude: 0
       _trembleFrequency: 12
     - _font: {fileID: 0}

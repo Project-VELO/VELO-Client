@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEngine;
 
 /// <summary>
 /// 대본을 첫 줄부터 마지막 줄까지 밀고 나가는 상태 기계입니다.
@@ -37,6 +38,19 @@ public class StoryProgressFlow : IDisposable
         _cutRunner.OnCutElapsed = MoveToNextLine;
     }
 
+    /// <summary>
+    /// 대사가 다 나온 뒤 다음으로 넘길 수 있게 되기까지의 시간입니다.
+    ///
+    /// 마지막 글자가 찍히는 순간에 이미 눌러 둔 손가락이 그대로 다음 줄로 넘겨 버리면,
+    /// 방금 나온 문장을 읽지 못한 채 화면이 바뀝니다. 읽을 틈을 두려고 잠깐 잠급니다.
+    /// </summary>
+    private const float NEXT_LOCK_SECONDS = 0.5f;
+
+    /// <summary>
+    /// 이 줄의 마지막 글자가 찍힌 시각입니다. 화면이 멈춰도 흘러야 하므로 스케일 없는 시간을 씁니다.
+    /// </summary>
+    private float _completedAt = float.NegativeInfinity;
+
     public StoryLineCursor Cursor => _cursor;
 
     public void Begin()
@@ -52,6 +66,20 @@ public class StoryProgressFlow : IDisposable
     public void Next()
     {
         if (_state != EStoryPlaybackState.TYPING && _state != EStoryPlaybackState.WAITING_NEXT)
+        {
+            return;
+        }
+
+        // 대사가 아직 뜨지 않았습니다. 컷씬은 그림이 자리를 잡을 동안 글자를 늦춰 내는데,
+        // 이때 누른 건너뛰기는 채울 글자가 없어 빈 화면만 남깁니다.
+        if (_state == EStoryPlaybackState.TYPING && !_linePlayer.HasTextStarted)
+        {
+            return;
+        }
+
+        // 다 나온 지 얼마 되지 않았습니다. 마지막 글자와 같이 눌린 손가락이 그대로 넘기지 않게 잠급니다.
+        if (_state == EStoryPlaybackState.WAITING_NEXT
+            && Time.unscaledTime - _completedAt < NEXT_LOCK_SECONDS)
         {
             return;
         }
@@ -171,6 +199,9 @@ public class StoryProgressFlow : IDisposable
     /// </summary>
     private void OnLineCompleted()
     {
+        // 건너뛰기로 채운 경우에는 이미 WAITING_NEXT입니다. 잠금 시작 시각은 두 경우 모두 지금입니다.
+        _completedAt = Time.unscaledTime;
+
         if (_state == EStoryPlaybackState.TYPING)
         {
             _state = EStoryPlaybackState.WAITING_NEXT;

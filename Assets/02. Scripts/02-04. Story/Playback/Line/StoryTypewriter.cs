@@ -121,6 +121,11 @@ public class StoryTypewriter
         _target.ForceMeshUpdate();
 
         _visibleCount = 0;
+
+        // TODO 임시 진단 로그입니다. 중앙 문구가 안 뜨는 원인을 찾으면 지웁니다.
+        Debug.Log($"[진단] 찍는 자리={_target.name} 글자수={_target.textInfo.characterCount}" +
+            $" 켜짐={_target.gameObject.activeInHierarchy} 내용=\"{text}\"");
+
         return _target.textInfo.characterCount;
     }
 

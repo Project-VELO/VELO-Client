@@ -16,6 +16,14 @@ public class StoryLinePlayer
     /// </summary>
     public Action OnLineCompleted;
 
+    /// <summary>
+    /// 이 줄의 글자가 나오기 시작했는지입니다.
+    ///
+    /// 컷씬은 그림이 자리를 잡을 동안 대사를 늦춰 내는데, 그 빈 시간에 누른 건너뛰기는
+    /// 채울 글자가 없어 빈 화면만 남깁니다. 시작한 뒤에만 건너뛸 수 있게 하려고 둡니다.
+    /// </summary>
+    public bool HasTextStarted { get; private set; }
+
     private readonly UI_Story _ui;
     private readonly StoryTypewriter _typewriter;
     private readonly StoryEffectPlayer _effectPlayer;
@@ -89,6 +97,7 @@ public class StoryLinePlayer
         // 앞 줄의 토큰이 아직 남아 있을 수 있습니다. 팝업 없이 다음 줄로 넘어간 경로가 그렇습니다.
         // 여기서 걷지 않으면 줄마다 CancellationTokenSource가 하나씩 쌓입니다.
         _isFillRequested = false;
+        HasTextStarted = false;
         CancelTyping();
 
         // 씬 언로드와 건너뛰기 두 취소원을 하나로 묶습니다.
@@ -148,6 +157,8 @@ public class StoryLinePlayer
 
             return;
         }
+
+        HasTextStarted = true;
 
         await _typewriter.TypeAsync(line.Text, line.TextSpeed, cancellationToken);
 

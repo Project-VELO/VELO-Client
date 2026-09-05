@@ -184,9 +184,9 @@
       "TextPlacementName": "SCREEN_CENTER",
       "TextStyleId": "STYLE_SERIF_BOLD_RED_36",
       "EffectId": "FX_FREEZE",
-      "BgmId": "",
+      "BgmId": "BGM_NONE",
       "SfxId": "",
-      "EntryEffectId": "FX_CUT_IMPACT_IN",
+      "EntryEffectId": "FX_CUT_ZOOM_IN_FAST",
       "ExitEffectId": "FX_CUT_FADE_OUT_BLACK",
       "CutSeconds": 6.0,
       "TextDelaySeconds": 1.5

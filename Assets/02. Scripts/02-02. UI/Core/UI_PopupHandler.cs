@@ -20,10 +20,27 @@ public class UI_PopupHandler
         }
     }
 
+    private const int INVALID_FRAME = -1;
+
     private Stack<PopupEntry> _popups = new Stack<PopupEntry>();
     private bool _isClosing = false;
 
+    /// <summary>
+    /// 팝업을 가장 최근에 연 프레임입니다. 한 번의 키 입력이 열기와 닫기를 잇달아 수행하는 것을 막는 데 씁니다.
+    /// </summary>
+    private int _lastPopupOpenedFrame = INVALID_FRAME;
+
     public bool HasPopups => 0 < _popups.Count;
+
+    /// <summary>
+    /// 맨 위 팝업이 이번 프레임에 열렸는지 여부입니다. 팝업을 연 키 입력이 같은 프레임에 닫기까지
+    /// 수행하지 않도록, 키로 닫는 쪽에서 이 값을 확인합니다.
+    ///
+    /// ESC는 리듬게임의 Pause 액션과 UIManager의 전역 닫기가 함께 듣는 키인데, 액션 콜백은 입력 시스템이
+    /// EarlyUpdate에서 돌리고 전역 닫기는 UIManager.Update에서 도는 탓에 순서가 항상 "열기 → 닫기"가 됩니다.
+    /// 그대로 두면 한 번 누른 ESC가 일시정지 팝업을 열자마자 도로 닫아, 게임은 멈춘 채 팝업만 사라집니다.
+    /// </summary>
+    public bool IsPopupOpenedThisFrame => Time.frameCount == _lastPopupOpenedFrame;
 
     public void ClearAllPopups()
     {
@@ -38,6 +55,7 @@ public class UI_PopupHandler
             }
         }
         _isClosing = false;
+        _lastPopupOpenedFrame = INVALID_FRAME;
         InputHandler.Instance.ChangeToPlayerInput();
     }
 
@@ -61,6 +79,7 @@ public class UI_PopupHandler
         popup.OnCloseRequested = ClosePopup;
 
         _popups.Push(entry);
+        _lastPopupOpenedFrame = Time.frameCount;
         popup.OpenAsync().Forget();
 
         InputHandler.Instance.ChangeToUIInput();
@@ -77,7 +96,11 @@ public class UI_PopupHandler
 
     public void CloseLatestPopup()
     {
-        if (_isClosing) return;
+        if (_isClosing)
+        {
+            return;
+        }
+
         CloseLatestPopupAsync().Forget();
     }
 

@@ -9,7 +9,9 @@ using UnityEngine;
 [Serializable]
 public class LiveNoteRenderSettings
 {
-    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.")]
+    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.\n" +
+             "트랙은 눕혀 놓은 띠라 이 값이 화면에서는 원근으로 짧아집니다. 노트 스프라이트가 원본 비율(가로 239 : 세로 56)로 보이려면 " +
+             "판정선에서의 화면상 높이가 56px이어야 하므로, 카메라 리그를 바꿨다면 이 값도 다시 맞춰야 합니다.")]
     public float NoteHeight = 16f;
 
     [Tooltip("멀리 있는 노트가 보이지 않을 만큼 얇아지지 않도록 보장하는 최소 두께입니다.")]
@@ -51,6 +53,9 @@ public class LiveNoteRenderer
     private readonly LiveNoteRenderSettings _settings;
     private readonly LiveNoteVisualPool _visualPool;
     private readonly LiveHoldNoteRenderer _holdRenderer;
+    private readonly LiveNoteLaneFit _laneFit = new LiveNoteLaneFit();
+    private readonly RectTransform _noteLayer;
+    private readonly LiveNoteSpriteTable _spriteTable;
 
     // 리듬게임에서 판정이 끝난 노트를 가리는 목록입니다. 채보 데이터에서 노트를 지우면 결과 집계와
     // 다시하기가 망가지므로, 표시 여부만 따로 관리합니다. 채보 에디터는 이 목록을 채우지 않습니다.
@@ -61,9 +66,15 @@ public class LiveNoteRenderer
     private LiveScrollMapper _scrollMapper;
     private ChartData _chart;
 
+    // 레인별 노트 폭을 다시 구해야 하는지 판단하는 기준입니다. 트랙 크기와 해상도가 그대로면 결과도 같습니다.
+    private float _fittedTrackWidth;
+    private int _fittedScreenHeight;
+
     public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer, LiveNoteSpriteTable spriteTable)
     {
         _settings = settings;
+        _noteLayer = noteLayer;
+        _spriteTable = spriteTable;
         _visualPool = new LiveNoteVisualPool(noteLayer, spriteTable);
         _holdRenderer = new LiveHoldNoteRenderer(settings);
     }
@@ -114,6 +125,8 @@ public class LiveNoteRenderer
             return;
         }
 
+        RefreshLaneFit();
+
         float hitLineRatio = _lanes.GetHitLineVerticalRatio();
         float trackHeight = GetTrackHeight();
 
@@ -161,6 +174,28 @@ public class LiveNoteRenderer
     }
 
     /// <summary>
+    /// 트랙 크기나 해상도가 바뀐 프레임에만 레인별 노트 폭을 다시 구합니다.
+    /// 리그가 트랙을 배치하는 시점이 이 렌더러가 만들어지는 시점보다 늦을 수 있어, 생성 때 한 번 구해 두면 어긋납니다.
+    /// 카메라는 트랙 캔버스를 비추는 그 카메라이며, 리그도 같은 카메라를 빌려 씁니다.
+    /// </summary>
+    private void RefreshLaneFit()
+    {
+        _lanes.GetTrackEdgesAtRatio(0f, out float leftX, out float rightX, out _);
+        float trackWidth = rightX - leftX;
+
+        if (Mathf.Approximately(trackWidth, _fittedTrackWidth) && Screen.height == _fittedScreenHeight)
+        {
+            return;
+        }
+
+        _fittedTrackWidth = trackWidth;
+        _fittedScreenHeight = Screen.height;
+
+        float noteHeight = _settings.GetNoteHeightAtRatio(_lanes, _lanes.GetHitLineVerticalRatio());
+        _laneFit.RefreshFit(_lanes, _noteLayer, _spriteTable, Camera.main, noteHeight);
+    }
+
+    /// <summary>
     /// 노트 두께의 절반을 트랙 세로 비율로 환산합니다. 세로 비율은 트랙 길이에 정비례하므로 나눗셈 한 번이면 됩니다.
     /// </summary>
     private float GetHalfHeightRatio(float verticalRatio, float trackHeight)
@@ -184,15 +219,25 @@ public class LiveNoteRenderer
     /// <summary>
     /// 노트 머리를 그 높이의 레인 폭에 맞춰 놓습니다.
     /// 레인 폭을 꽉 채우면 인접한 레인의 같은 박자 노트와 맞닿아 한 덩어리로 보이므로 양옆을 조금 덜어냅니다.
+    ///
+    /// 세로로는 중심이 아니라 아랫변을 판정선에 맞춥니다. 판정선은 위아래 두 줄로 그려져 있고
+    /// 노트 두께가 그 두 줄의 간격과 같게 잡혀 있어, 중심을 맞추면 노트가 아래쪽 줄을 반쯤 넘어가
+    /// 두 줄 사이를 채우지 못합니다(3차 빌드 피드백).
     /// </summary>
     private void RefreshMarker(LiveNoteVisualHandle handle, int lane, float verticalRatio)
     {
-        handle.RectTransform.anchoredPosition = _lanes.GetLaneCenterPosition(lane, verticalRatio);
+        float noteHeight = _settings.GetNoteHeightAtRatio(_lanes, verticalRatio);
+
+        Vector2 laneCenter = _lanes.GetLaneCenterPosition(lane, verticalRatio);
+        handle.RectTransform.anchoredPosition = new Vector2(laneCenter.x, laneCenter.y + noteHeight * 0.5f);
 
         float leftX, rightX;
         _lanes.GetLaneBoundsAtRatio(lane, verticalRatio, out leftX, out rightX);
-        float noteWidth = (rightX - leftX) * (1f - _settings.HorizontalPaddingRatio * 2f);
 
-        handle.RectTransform.sizeDelta = new Vector2(noteWidth, _settings.GetNoteHeightAtRatio(_lanes, verticalRatio));
+        // 레인 폭을 그대로 쓰면 원근을 거치며 화면에서는 시안보다 좁아집니다(LiveNoteLaneFit 참고).
+        float fittedWidth = _laneFit.GetNoteWidth(lane, rightX - leftX);
+        float noteWidth = fittedWidth * (1f - _settings.HorizontalPaddingRatio * 2f);
+
+        handle.RectTransform.sizeDelta = new Vector2(noteWidth, noteHeight);
     }
 }

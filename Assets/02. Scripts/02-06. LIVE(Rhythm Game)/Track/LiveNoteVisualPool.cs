@@ -114,6 +114,9 @@ public class LiveNoteVisualPool
     /// </summary>
     private static void ReleaseVisual(LiveNoteVisualHandle handle)
     {
+        // 마커는 카메라를 향해 세워 그리므로 회전이 남습니다. 다음에 빌려 가는 쪽이 눕힌 채로 쓸 수 있어 되돌립니다.
+        handle.RectTransform.localRotation = Quaternion.identity;
+
         if (handle.NoteVisual != null)
         {
             handle.NoteVisual.ClearLaneSprite();

@@ -66,10 +66,6 @@ public class LiveNoteRenderer
     private LiveScrollMapper _scrollMapper;
     private ChartData _chart;
 
-    // 레인별 노트 폭을 다시 구해야 하는지 판단하는 기준입니다. 트랙 크기와 해상도가 그대로면 결과도 같습니다.
-    private float _fittedTrackWidth;
-    private int _fittedScreenHeight;
-
     public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer, LiveNoteSpriteTable spriteTable)
     {
         _settings = settings;
@@ -125,7 +121,7 @@ public class LiveNoteRenderer
             return;
         }
 
-        RefreshLaneFit();
+        _laneFit.RefreshIfChanged(_lanes, _noteLayer, _spriteTable);
 
         float hitLineRatio = _lanes.GetHitLineVerticalRatio();
         float trackHeight = GetTrackHeight();
@@ -158,7 +154,7 @@ public class LiveNoteRenderer
 
             // 롱노트는 머리를 판정선에 세워 두고 몸통이 먹혀 들어가게 합니다. 판정선을 넘긴 만큼이 곧 지나간 길이입니다.
             float drawRatio = isHold ? Mathf.Max(headRatio, hitLineRatio) : headRatio;
-            RefreshMarker(handle, note.Lane, drawRatio);
+            RefreshMarker(handle, note.Lane, drawRatio, isHold);
 
             // 길이가 0이어도 넘깁니다. 편집 중 길이가 줄어든 롱노트의 몸통이 그대로 남지 않게 하려면 매번 다시 재야 합니다.
             if (handle.HoldVisual != null)
@@ -171,28 +167,6 @@ public class LiveNoteRenderer
     private float GetVerticalRatio(int timeMs, double currentBarPosition, float hitLineRatio)
     {
         return _scrollMapper.ToVerticalRatio(_barLayout.GetBarPosition(timeMs), currentBarPosition, hitLineRatio);
-    }
-
-    /// <summary>
-    /// 트랙 크기나 해상도가 바뀐 프레임에만 레인별 노트 폭을 다시 구합니다.
-    /// 리그가 트랙을 배치하는 시점이 이 렌더러가 만들어지는 시점보다 늦을 수 있어, 생성 때 한 번 구해 두면 어긋납니다.
-    /// 카메라는 트랙 캔버스를 비추는 그 카메라이며, 리그도 같은 카메라를 빌려 씁니다.
-    /// </summary>
-    private void RefreshLaneFit()
-    {
-        _lanes.GetTrackEdgesAtRatio(0f, out float leftX, out float rightX, out _);
-        float trackWidth = rightX - leftX;
-
-        if (Mathf.Approximately(trackWidth, _fittedTrackWidth) && Screen.height == _fittedScreenHeight)
-        {
-            return;
-        }
-
-        _fittedTrackWidth = trackWidth;
-        _fittedScreenHeight = Screen.height;
-
-        float noteHeight = _settings.GetNoteHeightAtRatio(_lanes, _lanes.GetHitLineVerticalRatio());
-        _laneFit.RefreshFit(_lanes, _noteLayer, _spriteTable, Camera.main, noteHeight);
     }
 
     /// <summary>
@@ -217,27 +191,42 @@ public class LiveNoteRenderer
     }
 
     /// <summary>
-    /// 노트 머리를 그 높이의 레인 폭에 맞춰 놓습니다.
-    /// 레인 폭을 꽉 채우면 인접한 레인의 같은 박자 노트와 맞닿아 한 덩어리로 보이므로 양옆을 조금 덜어냅니다.
+    /// 노트 머리를 제 레인의 그 높이에 놓습니다.
     ///
-    /// 세로로는 중심이 아니라 아랫변을 판정선에 맞춥니다. 판정선은 위아래 두 줄로 그려져 있고
-    /// 노트 두께가 그 두 줄의 간격과 같게 잡혀 있어, 중심을 맞추면 노트가 아래쪽 줄을 반쯤 넘어가
-    /// 두 줄 사이를 채우지 못합니다(3차 빌드 피드백).
+    /// 마커는 트랙에 눕히지 않고 카메라를 향해 세웁니다. 아트에 이미 원근 기울기가 그려져 있어
+    /// 눕히면 카메라가 한 번 더 기울이고 세로로 눌러, 시안과 모양이 달라지고 레인 구분선에서
+    /// 떨어집니다(LiveNoteLaneFit 참고). 세운 면은 거리에 따라 크기만 줄어듭니다.
+    ///
+    /// 세로 기준은 아랫변입니다. 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로,
+    /// 중심을 맞추면 노트가 아래쪽 줄을 반쯤 넘어갑니다(3차 빌드 피드백).
     /// </summary>
-    private void RefreshMarker(LiveNoteVisualHandle handle, int lane, float verticalRatio)
+    private void RefreshMarker(LiveNoteVisualHandle handle, int lane, float verticalRatio, bool isHold)
     {
-        float noteHeight = _settings.GetNoteHeightAtRatio(_lanes, verticalRatio);
-
         Vector2 laneCenter = _lanes.GetLaneCenterPosition(lane, verticalRatio);
-        handle.RectTransform.anchoredPosition = new Vector2(laneCenter.x, laneCenter.y + noteHeight * 0.5f);
 
-        float leftX, rightX;
-        _lanes.GetLaneBoundsAtRatio(lane, verticalRatio, out leftX, out rightX);
+        _lanes.GetLaneBoundsAtRatio(lane, verticalRatio, out float leftX, out float rightX);
+        float laneWidth = (rightX - leftX) * (1f - _settings.HorizontalPaddingRatio * 2f);
+        float laneHeight = _settings.GetNoteHeightAtRatio(_lanes, verticalRatio);
 
-        // 레인 폭을 그대로 쓰면 원근을 거치며 화면에서는 시안보다 좁아집니다(LiveNoteLaneFit 참고).
-        float fittedWidth = _laneFit.GetNoteWidth(lane, rightX - leftX);
-        float noteWidth = fittedWidth * (1f - _settings.HorizontalPaddingRatio * 2f);
+        // 롱노트는 몸통이 이 사각형에 붙어 트랙을 따라 자라므로 눕힌 채로 둡니다.
+        if (isHold || !_laneFit.IsSolved || _laneFit.Camera == null)
+        {
+            handle.RectTransform.localRotation = Quaternion.identity;
+            handle.RectTransform.anchoredPosition = new Vector2(laneCenter.x, laneCenter.y + laneHeight * 0.5f);
+            handle.RectTransform.sizeDelta = new Vector2(laneWidth, laneHeight);
+            return;
+        }
 
-        handle.RectTransform.sizeDelta = new Vector2(noteWidth, noteHeight);
+        Vector2 noteSize = _laneFit.GetNoteSize(lane, new Vector2(laneWidth, laneHeight));
+        handle.RectTransform.sizeDelta = noteSize;
+        handle.RectTransform.rotation = _laneFit.Camera.transform.rotation;
+
+        _lanes.GetTrackEdgesAtRatio(verticalRatio, out float trackLeftX, out float trackRightX, out _);
+        float centerX = _laneFit.GetNoteCenterX(lane, trackRightX - trackLeftX, laneCenter.x);
+
+        // 세운 면이라 아랫변을 트랙 위 제 시각 자리에 두려면 카메라 기준 위쪽으로 반높이만큼 올립니다.
+        Vector3 trackPoint = _noteLayer.TransformPoint(new Vector3(centerX, laneCenter.y, 0f));
+        handle.RectTransform.position = trackPoint
+            + _laneFit.Camera.transform.up * (noteSize.y * 0.5f * _noteLayer.lossyScale.y);
     }
 }

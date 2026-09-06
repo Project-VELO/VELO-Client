@@ -141,7 +141,7 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
 
         // 3D 트랙에서 라벨은 바닥에 누워 있어 세로만 거리의 제곱으로 찌그러집니다.
         // 가로는 이미 거리에 반비례해 줄어드므로, 세로도 같은 비율이 되도록 되돌려 글자 비율을 지킵니다.
-        float verticalScale = _lanes.GetPerspectiveThicknessScaleAtRatio(verticalRatio);
+        float verticalScale = _lanes.GetApparentScaleAtRatio(verticalRatio);
         label.rectTransform.localScale = new Vector3(1f, verticalScale, 1f);
     }
 

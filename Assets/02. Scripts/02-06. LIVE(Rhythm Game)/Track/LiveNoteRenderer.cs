@@ -9,34 +9,12 @@ using UnityEngine;
 [Serializable]
 public class LiveNoteRenderSettings
 {
-    [Tooltip("판정선 높이에서의 노트 두께입니다. 더 위쪽은 원근에 따라 같은 비율로 얇아집니다.")]
-    public float NoteHeight = 16f;
-
-    [Tooltip("멀리 있는 노트가 보이지 않을 만큼 얇아지지 않도록 보장하는 최소 두께입니다.")]
-    public float MinNoteHeight = 4f;
-
-    [Tooltip("멀어질수록 노트가 얇아지는 정도입니다. 1이면 원근에 완전히 비례해 얇아지고, 0이면 어디서나 두께가 같습니다. 값이 클수록 두께 변화가 눈에 띕니다.")]
-    [Range(0f, 1f)]
-    public float ThicknessFalloff = 0.5f;
-
-    [Tooltip("노트 양옆에 남기는 여백을 레인 폭에 대한 비율로 지정합니다. 인접한 레인에 같은 박자로 놓인 노트가 한 덩어리로 보이지 않게 합니다. 픽셀이 아닌 비율이므로 원근에 따라 여백도 함께 좁아집니다.")]
+    [Tooltip("노트 양옆에 남기는 여백을 노트 폭에 대한 비율로 지정합니다. 인접한 레인에 같은 박자로 놓인 노트가 한 덩어리로 보이지 않게 합니다. 픽셀이 아닌 비율이므로 멀어질수록 여백도 함께 좁아집니다.")]
     [Range(0f, 0.25f)]
-    public float HorizontalPaddingRatio = 0.04f;
+    public float HorizontalPaddingRatio = 0f;
 
     [Tooltip("롱노트 몸통 텍스처 한 장이 차지하는 트랙 위 세로 길이입니다. 트랙 기준이라 하이스피드를 바꿔도 밀도가 일정합니다.")]
     public float BodyTileLength = 64f;
-
-    /// <summary>
-    /// 노트 두께를 그 높이의 원근 배율만큼 조정합니다. 폭만 커지고 두께가 고정이면 다가오는 대신 옆으로 늘어나 보이므로
-    /// 두 값을 같은 비율로 묶되, 그대로 두면 두께가 다섯 배 넘게 변해 눈에 거슬리므로 감소량을 조절할 수 있게 했습니다.
-    /// </summary>
-    public float GetNoteHeightAtRatio(UI_LiveTrackLanes lanes, float verticalRatio)
-    {
-        float constantScale = lanes.GetFlatThicknessCompensationAtRatio(verticalRatio);
-        float perspectiveScale = lanes.GetPerspectiveThicknessScaleAtRatio(verticalRatio);
-
-        return Mathf.Max(MinNoteHeight, NoteHeight * Mathf.Lerp(constantScale, perspectiveScale, ThicknessFalloff));
-    }
 }
 
 /// <summary>
@@ -51,6 +29,7 @@ public class LiveNoteRenderer
     private readonly LiveNoteRenderSettings _settings;
     private readonly LiveNoteVisualPool _visualPool;
     private readonly LiveHoldNoteRenderer _holdRenderer;
+    private readonly LiveNoteDesignLayout _designLayout = new LiveNoteDesignLayout();
 
     // 리듬게임에서 판정이 끝난 노트를 가리는 목록입니다. 채보 데이터에서 노트를 지우면 결과 집계와
     // 다시하기가 망가지므로, 표시 여부만 따로 관리합니다. 채보 에디터는 이 목록을 채우지 않습니다.
@@ -65,7 +44,7 @@ public class LiveNoteRenderer
     {
         _settings = settings;
         _visualPool = new LiveNoteVisualPool(noteLayer, spriteTable);
-        _holdRenderer = new LiveHoldNoteRenderer(settings);
+        _holdRenderer = new LiveHoldNoteRenderer(settings, _designLayout);
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
@@ -170,7 +149,7 @@ public class LiveNoteRenderer
             return 0f;
         }
 
-        return _settings.GetNoteHeightAtRatio(_lanes, verticalRatio) * 0.5f / trackHeight;
+        return _designLayout.GetNoteHeight(_lanes, verticalRatio) * 0.5f / trackHeight;
     }
 
     private float GetTrackHeight()
@@ -182,17 +161,20 @@ public class LiveNoteRenderer
     }
 
     /// <summary>
-    /// 노트 머리를 그 높이의 레인 폭에 맞춰 놓습니다.
-    /// 레인 폭을 꽉 채우면 인접한 레인의 같은 박자 노트와 맞닿아 한 덩어리로 보이므로 양옆을 조금 덜어냅니다.
+    /// 노트 머리를 시안이 정한 자리에 놓습니다.
+    ///
+    /// 레인 중심에서 계산하지 않는 이유는 노트가 기울어진 평행사변형이라 그림이 레인을 채우는 자리와
+    /// 사각형의 자리가 다르기 때문입니다(LiveNoteDesignLayout 참고).
+    ///
+    /// 세로 기준은 아랫변입니다. 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로,
+    /// 중심을 맞추면 노트가 아래쪽 줄을 반쯤 넘어갑니다(3차 빌드 피드백).
     /// </summary>
     private void RefreshMarker(LiveNoteVisualHandle handle, int lane, float verticalRatio)
     {
-        handle.RectTransform.anchoredPosition = _lanes.GetLaneCenterPosition(lane, verticalRatio);
+        _designLayout.GetNoteRect(_lanes, lane, verticalRatio, out Vector2 center, out Vector2 size);
 
-        float leftX, rightX;
-        _lanes.GetLaneBoundsAtRatio(lane, verticalRatio, out leftX, out rightX);
-        float noteWidth = (rightX - leftX) * (1f - _settings.HorizontalPaddingRatio * 2f);
-
-        handle.RectTransform.sizeDelta = new Vector2(noteWidth, _settings.GetNoteHeightAtRatio(_lanes, verticalRatio));
+        handle.RectTransform.anchoredPosition = center;
+        handle.RectTransform.sizeDelta =
+            new Vector2(size.x * (1f - _settings.HorizontalPaddingRatio * 2f), size.y);
     }
 }

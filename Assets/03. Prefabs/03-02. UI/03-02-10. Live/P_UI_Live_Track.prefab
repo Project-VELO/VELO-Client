@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8276608687361271256}
-  - component: {fileID: 9119190306699531723}
   m_Layer: 0
   m_Name: P_UI_Live_Track
   m_TagString: Untagged
@@ -33,26 +32,6 @@ Transform:
   - {fileID: 7032666501967851929}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9119190306699531723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941252933974467100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e229eee5d587c74db034a925fd04ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Live3DTrackRig
-  _designScreenHeight: 1080
-  _hitLineScreenY: 94.5
-  _hitLineWidth: 1308.675
-  _topScreenWidth: 252
-  _fieldOfView: 40
-  _camera: {fileID: 0}
-  _trackRoot: {fileID: 7032666501967851929}
-  _lanes: {fileID: 6393908859395120871}
 --- !u!1 &2851571483572869736
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +43,7 @@ GameObject:
   - component: {fileID: 7032666501967851929}
   - component: {fileID: 8124435889424642752}
   - component: {fileID: 6647505407435687194}
+  - component: {fileID: 7518826056018492647}
   m_Layer: 0
   m_Name: Canvas_Track
   m_TagString: Untagged
@@ -78,19 +58,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2851571483572869736}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 4606.5444}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3420615504348278477}
   m_Father: {fileID: 8276608687361271256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1322.61, y: 7215.105}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!223 &8124435889424642752
 Canvas:
   m_ObjectHideFlags: 0
@@ -100,7 +80,7 @@ Canvas:
   m_GameObject: {fileID: 2851571483572869736}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 2
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -112,7 +92,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &6647505407435687194
 MonoBehaviour:
@@ -131,6 +111,29 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7518826056018492647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851571483572869736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &4241075880154521763
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,10 +169,10 @@ RectTransform:
   - {fileID: 3388423974923785338}
   m_Father: {fileID: 7032666501967851929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1410, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8161652789262575115
 CanvasRenderer:
@@ -199,7 +202,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  _hitLineRatio: 0.014378143
+  _shape:
+    _designScreenHeight: 1080
+    _hitLineScreenY: 94.5
+    _hitLineWidth: 1308.675
+    _topScreenWidth: 252
   _laneColors:
   - {r: 1, g: 0.67, b: 0.65, a: 0}
   - {r: 0.89, g: 0.89, b: 0.89, a: 0}
@@ -207,14 +214,13 @@ MonoBehaviour:
   - {r: 0.64, g: 0.62, b: 0.62, a: 0}
   - {r: 0.56, g: 0.53, b: 0.53, a: 0}
   - {r: 1, g: 0.67, b: 0.65, a: 0}
-  _dividerColor: {r: 1, g: 1, b: 1, a: 0}
-  _dividerWidth: 2
-  _hitLineColor: {r: 0.09, g: 0.32, b: 0.85, a: 0}
-  _hitLineThickness: 10
-  _sideBorderColor: {r: 0.77, g: 0.37, b: 1, a: 0}
-  _sideBorderWidth: 6
-  _nearViewDepth: 1391.688
-  _farViewDepth: 7786.8022
+  _lineSettings:
+    DividerColor: {r: 1, g: 1, b: 1, a: 0}
+    DividerWidth: 2
+    HitLineColor: {r: 0.09, g: 0.32, b: 0.85, a: 0}
+    HitLineThickness: 10
+    SideBorderColor: {r: 0.77, g: 0.37, b: 1, a: 0}
+    SideBorderWidth: 6
 --- !u!1 &4964190589775900814
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,7 +89,8 @@ public class UIManager : MonoBehaviourSingleton<UIManager>
 
     private void HandleEscapeInput()
     {
-        if (HasPopups)
+        // 이번 ESC가 방금 연 팝업은 같은 입력으로 닫지 않습니다(UI_PopupHandler.IsPopupOpenedThisFrame 참고).
+        if (HasPopups && !_popupHandler.IsPopupOpenedThisFrame)
         {
             CloseLatestPopup();
         }

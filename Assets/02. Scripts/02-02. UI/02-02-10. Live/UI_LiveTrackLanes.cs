@@ -4,18 +4,25 @@ using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 노트가 흐르는 6레인 트랙입니다. 월드 공간에 눕혀 놓는 평평한 띠이며, LiveTrackRig가 배치와 크기를 정해 줍니다.
+/// 노트가 흐르는 6레인 트랙입니다. 화면에 보이는 사다리꼴 모양을 좌표로 그대로 들고 있습니다.
 ///
-/// 화면에 보이는 사다리꼴 모양은 이 메시가 아니라 원근 카메라가 만들어 냅니다.
-/// 그 덕분에 레인 경계가 실제로 평행해지고, 노트는 크기를 바꾸지 않은 채 등속으로 다가오기만 하면 됩니다.
+/// 예전에는 평평한 직사각형을 원근 카메라로 비스듬히 봐서 사다리꼴을 만들었지만, 실제로 보이는 트랙은
+/// 시안에서 받은 2D 그림이고 이 메시는 좌표 계산에만 쓰였습니다. 카메라를 눕히는 것은 그 좌표를 그림에
+/// 맞추기 위한 우회였으므로, 형태는 LiveTrackShape가 화면 좌표로 직접 정의하고 카메라는 건드리지 않습니다.
 ///
-/// 세로 비율은 트랙 앞쪽 끝이 0, 뒤쪽 끝이 1이며 깊이에 정비례합니다.
+/// 그 덕분에 레인 경계가 실제로 모이고, 어느 높이에서든 그 높이의 레인 폭을 그대로 물어볼 수 있습니다.
 /// 노트/격자/마디번호 렌더러와 트랙 포인터는 모두 이 클래스의 좌표 조회 기능만 사용합니다.
+///
+/// 세로 비율은 트랙 앞쪽 끝이 0, 뒤쪽 끝이 1이며 깊이에 정비례합니다(화면 높이에는 정비례하지 않습니다).
 /// </summary>
 [ExecuteAlways]
 [RequireComponent(typeof(CanvasRenderer))]
 public class UI_LiveTrackLanes : MaskableGraphic
 {
+    /// <summary>
+    /// 레인 경계를 트랙 맨 아래 폭에 대한 비율로 적어 둔 것입니다. 분모 1410은 화면 맨 아래에서의 트랙 폭이며
+    /// LiveTrackShape가 시안 수치에서 구하는 값과 같습니다. 레인 폭이 서로 다르므로 균등 분할이 아닙니다.
+    /// </summary>
     private static readonly List<float> CUMULATIVE_LANE_RATIOS = new List<float>
     {
         0f,
@@ -27,11 +34,9 @@ public class UI_LiveTrackLanes : MaskableGraphic
         1f
     };
 
-    [Header("Hit Line")]
-    [Tooltip("트랙 길이 중 판정선이 놓이는 비율입니다. LiveTrackRig가 카메라 지오메트리에서 계산해 넣어 줍니다.")]
-    [Range(0f, 1f)]
+    [Header("Shape (시안 수치)")]
     [SerializeField]
-    private float _hitLineRatio = 0.023f;
+    private LiveTrackShape _shape = new LiveTrackShape();
 
     [Header("Lane Colors (6 Lanes)")]
     [SerializeField]
@@ -45,54 +50,13 @@ public class UI_LiveTrackLanes : MaskableGraphic
         new Color(1.0f, 0.67f, 0.65f, 0.85f)
     };
 
-    [Header("Dividers")]
+    [Header("Lines")]
     [SerializeField]
-    private Color _dividerColor = new Color(1f, 1f, 1f, 0.9f);
+    private LiveTrackLaneMeshSettings _lineSettings = new LiveTrackLaneMeshSettings();
 
-    [SerializeField]
-    private float _dividerWidth = 2f;
+    private readonly LiveTrackLaneMesh _mesh = new LiveTrackLaneMesh();
 
-    [Header("Hit Line Rendering")]
-    [SerializeField]
-    private Color _hitLineColor = new Color(0.09f, 0.32f, 0.85f, 1f);
-
-    [SerializeField]
-    private float _hitLineThickness = 10f;
-
-    [Header("Side Borders")]
-    [SerializeField]
-    private Color _sideBorderColor = new Color(0.77f, 0.37f, 1.0f, 0.95f);
-
-    [SerializeField]
-    private float _sideBorderWidth = 6f;
-
-    [Header("Perspective (LiveTrackRig가 채워 줍니다)")]
-    [Tooltip("트랙 앞쪽 끝의 광축 방향 거리입니다. 노트 두께의 원근 단축을 되돌리는 데 사용합니다.")]
-    [SerializeField]
-    private float _nearViewDepth = 1f;
-
-    [Tooltip("트랙 뒤쪽 끝의 광축 방향 거리입니다.")]
-    [SerializeField]
-    private float _farViewDepth = 1f;
-
-    public float HitLineRatio
-    {
-        get => _hitLineRatio;
-        set
-        {
-            _hitLineRatio = Mathf.Clamp01(value);
-            SetVerticesDirty();
-        }
-    }
-
-    /// <summary>
-    /// 카메라에서 트랙 양 끝까지의 광축 방향 거리입니다. 리그가 카메라 자세를 정한 뒤 넣어 줍니다.
-    /// </summary>
-    public void SetViewDepths(float nearViewDepth, float farViewDepth)
-    {
-        _nearViewDepth = nearViewDepth;
-        _farViewDepth = farViewDepth;
-    }
+    public LiveTrackShape Shape => _shape;
 
 #if UNITY_EDITOR
     protected override void OnValidate()
@@ -104,76 +68,30 @@ public class UI_LiveTrackLanes : MaskableGraphic
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {
-        vh.Clear();
-
-        Rect rect = GetPixelAdjustedRect();
-        float halfWidth = rect.width * 0.5f;
-        float halfLength = rect.height * 0.5f;
-
-        for (int i = 0; i < LiveLane.COUNT; i++)
-        {
-            float leftX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i]);
-            float rightX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i + 1]);
-            Color laneColor = (i < _laneColors.Count) ? _laneColors[i] : color;
-
-            AddQuad(vh,
-                new Vector2(leftX, -halfLength),
-                new Vector2(leftX, halfLength),
-                new Vector2(rightX, halfLength),
-                new Vector2(rightX, -halfLength),
-                laneColor);
-        }
-
-        for (int i = 1; i < LiveLane.COUNT; i++)
-        {
-            float x = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[i]);
-            AddThickLine(vh, new Vector2(x, -halfLength), new Vector2(x, halfLength), _dividerWidth, _dividerColor);
-        }
-
-        float hitY = Mathf.Lerp(-halfLength, halfLength, _hitLineRatio);
-        AddThickLine(vh, new Vector2(-halfWidth, hitY), new Vector2(halfWidth, hitY), _hitLineThickness, _hitLineColor);
-
-        AddThickLine(vh, new Vector2(-halfWidth, -halfLength), new Vector2(-halfWidth, halfLength), _sideBorderWidth, _sideBorderColor);
-        AddThickLine(vh, new Vector2(halfWidth, -halfLength), new Vector2(halfWidth, halfLength), _sideBorderWidth, _sideBorderColor);
+        _mesh.Rebuild(vh, _lineSettings, GetLaneBoundaryX, GetLocalY, GetHitLineVerticalRatio(),
+            _laneColors, color);
     }
 
     public float GetHitLineVerticalRatio()
     {
-        return _hitLineRatio;
+        return _shape.HitLineRatio;
     }
 
     /// <summary>
-    /// 누운 선의 화면 두께는 거리의 제곱에 반비례하므로, 거리 비율의 제곱만큼 두께를 늘려 되돌립니다.
-    /// 격자선이 서브픽셀로 떨어져 깜빡이는 것을 막습니다.
+    /// 판정선에서를 1로 봤을 때 그 높이의 겉보기 배율입니다. 트랙 폭에 정비례하므로 노트와 격자선,
+    /// 마디번호가 모두 이 값 하나로 같은 비율만큼 작아집니다.
+    /// 원근 카메라를 쓰던 시절의 두 보정(거리 제곱 되돌리기, 거리 비례 늘리기)을 대신합니다.
     /// </summary>
-    public float GetFlatThicknessCompensationAtRatio(float verticalRatio)
+    public float GetApparentScaleAtRatio(float verticalRatio)
     {
-        float depthScale = GetViewDepthScaleAtRatio(verticalRatio);
-        return depthScale * depthScale;
-    }
+        float hitLineWidth = _shape.GetWidthAtRatio(GetHitLineVerticalRatio());
 
-    /// <summary>
-    /// 바닥에 누운 노트는 거리의 제곱으로 얇아지므로, 깊이에 비례해 두께를 미리 늘려 둡니다.
-    /// 그 결과 화면에서는 폭과 같은 1/거리 비율로 줄어들어, 멀리서도 노트가 사라지지 않습니다.
-    /// </summary>
-    public float GetPerspectiveThicknessScaleAtRatio(float verticalRatio)
-    {
-        return GetViewDepthScaleAtRatio(verticalRatio);
-    }
-
-    /// <summary>
-    /// 판정선을 1로 봤을 때 그 높이의 광축 방향 거리 비율입니다. 겉보기 크기가 이 값에 반비례합니다.
-    /// </summary>
-    private float GetViewDepthScaleAtRatio(float verticalRatio)
-    {
-        float hitLineViewDepth = Mathf.Lerp(_nearViewDepth, _farViewDepth, _hitLineRatio);
-
-        if (hitLineViewDepth <= 0f)
+        if (hitLineWidth <= 0f)
         {
             return 1f;
         }
 
-        return Mathf.Lerp(_nearViewDepth, _farViewDepth, verticalRatio) / hitLineViewDepth;
+        return _shape.GetWidthAtRatio(verticalRatio) / hitLineWidth;
     }
 
     /// <summary>
@@ -184,56 +102,63 @@ public class UI_LiveTrackLanes : MaskableGraphic
     {
         GetLaneBoundsAtRatio(laneIndex, verticalRatio, out float leftX, out float rightX);
 
-        Rect rect = GetPixelAdjustedRect();
-        float y = Mathf.LerpUnclamped(-rect.height * 0.5f, rect.height * 0.5f, verticalRatio);
-
-        return new Vector2((leftX + rightX) * 0.5f, y);
+        return new Vector2((leftX + rightX) * 0.5f, GetLocalY(verticalRatio));
     }
 
     public void GetLaneBoundsAtRatio(int laneIndex, float verticalRatio, out float leftX, out float rightX)
     {
-        Rect rect = GetPixelAdjustedRect();
-        float halfWidth = rect.width * 0.5f;
-        int laneArrayIndex = laneIndex - 1;
+        int laneArrayIndex = laneIndex - LiveLane.FIRST;
 
-        leftX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[laneArrayIndex]);
-        rightX = Mathf.Lerp(-halfWidth, halfWidth, CUMULATIVE_LANE_RATIOS[laneArrayIndex + 1]);
+        leftX = GetLaneBoundaryX(laneArrayIndex, verticalRatio);
+        rightX = GetLaneBoundaryX(laneArrayIndex + 1, verticalRatio);
     }
 
     public void GetTrackEdgesAtRatio(float verticalRatio, out float leftX, out float rightX, out float y)
     {
+        leftX = GetLaneBoundaryX(0, verticalRatio);
+        rightX = GetLaneBoundaryX(LiveLane.COUNT, verticalRatio);
+        y = GetLocalY(verticalRatio);
+    }
+
+    /// <summary>
+    /// 세로 비율을 이 사각형의 로컬 세로 좌표로 옮깁니다. 비율은 깊이 기준이고 화면 높이와는 곡선 관계라
+    /// 단순 보간이 아니라 형태 정의를 거칩니다.
+    /// </summary>
+    public float GetLocalY(float verticalRatio)
+    {
         Rect rect = GetPixelAdjustedRect();
-        float halfWidth = rect.width * 0.5f;
+        float screenRatio = _shape.GetScreenYAtRatio(verticalRatio) / _shape.DesignScreenHeight;
 
-        leftX = -halfWidth;
-        rightX = halfWidth;
-        y = Mathf.Lerp(-rect.height * 0.5f, rect.height * 0.5f, verticalRatio);
+        return (screenRatio - 0.5f) * rect.height;
     }
 
-    private void AddQuad(VertexHelper vh, Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, Color col)
+    /// <summary>
+    /// 로컬 세로 좌표를 세로 비율로 되짚습니다. 트랙을 클릭한 지점이 어느 시각인지 구할 때 씁니다.
+    /// </summary>
+    public float GetRatioAtLocalY(float localY)
     {
-        int count = vh.currentVertCount;
-        UIVertex v = UIVertex.simpleVert;
-        v.color = col;
+        Rect rect = GetPixelAdjustedRect();
 
-        v.position = p0; vh.AddVert(v);
-        v.position = p1; vh.AddVert(v);
-        v.position = p2; vh.AddVert(v);
-        v.position = p3; vh.AddVert(v);
-
-        vh.AddTriangle(count, count + 1, count + 2);
-        vh.AddTriangle(count, count + 2, count + 3);
-    }
-
-    private void AddThickLine(VertexHelper vh, Vector2 start, Vector2 end, float width, Color col)
-    {
-        Vector2 dir = (end - start).normalized;
-        if (dir == Vector2.zero)
+        if (Mathf.Approximately(rect.height, 0f))
         {
-            return;
+            return 0f;
         }
 
-        Vector2 normal = new Vector2(-dir.y, dir.x) * (width * 0.5f);
-        AddQuad(vh, start - normal, end - normal, end + normal, start + normal, col);
+        return _shape.GetRatioAtScreenY((localY / rect.height + 0.5f) * _shape.DesignScreenHeight);
+    }
+
+    /// <summary>
+    /// 레인 경계(0이 트랙 왼쪽 끝, LiveLane.COUNT가 오른쪽 끝)의 그 높이 로컬 가로 좌표입니다.
+    /// 경계 비율은 맨 아래 폭 기준이므로, 그 높이의 폭을 곱하면 모이는 경계가 그대로 나옵니다.
+    /// </summary>
+    private float GetLaneBoundaryX(int boundaryIndex, float verticalRatio)
+    {
+        int clamped = Mathf.Clamp(boundaryIndex, 0, LiveLane.COUNT);
+        Rect rect = GetPixelAdjustedRect();
+
+        float widthScale = rect.width / _shape.BottomWidth;
+        float width = _shape.GetWidthAtRatio(verticalRatio) * widthScale;
+
+        return (CUMULATIVE_LANE_RATIOS[clamped] - 0.5f) * width;
     }
 }

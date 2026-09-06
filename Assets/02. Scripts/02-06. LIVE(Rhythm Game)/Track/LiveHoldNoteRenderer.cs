@@ -6,13 +6,15 @@ using UnityEngine;
 public class LiveHoldNoteRenderer
 {
     private readonly LiveNoteRenderSettings _settings;
+    private readonly LiveNoteDesignLayout _designLayout;
 
     private UI_LiveTrackLanes _lanes;
     private LiveScrollMapper _scrollMapper;
 
-    public LiveHoldNoteRenderer(LiveNoteRenderSettings settings)
+    public LiveHoldNoteRenderer(LiveNoteRenderSettings settings, LiveNoteDesignLayout designLayout)
     {
         _settings = settings;
+        _designLayout = designLayout;
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveScrollMapper scrollMapper)
@@ -40,7 +42,7 @@ public class LiveHoldNoteRenderer
         bool isTailVisible = 0f < length && tailRatio <= spawnRatio;
 
         handle.HoldVisual.RefreshBody(length, uvStart, uvStart + length / tileLength);
-        handle.HoldVisual.RefreshTail(length, _settings.GetNoteHeightAtRatio(_lanes, tailRatio), isTailVisible);
+        handle.HoldVisual.RefreshTail(length, _designLayout.GetNoteHeight(_lanes, tailRatio), isTailVisible);
     }
 
     private float GetTrackHeight()

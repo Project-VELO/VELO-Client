@@ -128,7 +128,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
 
         lineTransform.gameObject.SetActive(true);
         lineTransform.anchoredPosition = new Vector2((leftX + rightX) * 0.5f, y);
-        float compensation = Mathf.Lerp(1f, _lanes.GetFlatThicknessCompensationAtRatio(verticalRatio), _thicknessCompensation);
+        float compensation = Mathf.Lerp(1f, _lanes.GetApparentScaleAtRatio(verticalRatio), _thicknessCompensation);
         lineTransform.sizeDelta = new Vector2(rightX - leftX, baseThickness * compensation);
     }
 

@@ -856,9 +856,97 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1410
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420615504348278477, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032666501967851929, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8124435889424642752, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124435889424642752, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124435889424642752, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8276608687361271256, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -900,10 +988,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9119190306699531723, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2851571483572869736, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 539045738}
   m_SourcePrefab: {fileID: 100100000, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
 --- !u!224 &539045735 stripped
 RectTransform:
@@ -921,6 +1013,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebee7248fe6339841923b5fd7496e57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Live3DLanes
+--- !u!1 &539045737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2851571483572869736, guid: f0ee466018ae76f4db2e1e6ebae9871a, type: 3}
+  m_PrefabInstance: {fileID: 539045734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &539045738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539045737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!1 &553780143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,9 +2476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LiveTrackScroller
   _noteSpawnRatio: 1
   _noteRenderSettings:
-    NoteHeight: 80.49
-    MinNoteHeight: 24
-    ThicknessFalloff: 1
     HorizontalPaddingRatio: 0
     BodyTileLength: 64
   _noteSpriteTable:

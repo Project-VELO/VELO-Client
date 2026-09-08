@@ -4,9 +4,9 @@ using VInspector;
 /// <summary>
 /// 대본의 ID를 화면에 그릴 이미지로 바꿉니다.
 ///
-/// 아직 배경·초상 스프라이트가 없습니다. 전부 같은 회색으로 떨어뜨리면 2인 대화에서 화자가
-/// 바뀌었는지 화면만 보고 알 수 없으므로, 스프라이트가 없을 때는 캐릭터마다 다른 색의 단색
-/// 실루엣으로 대체합니다.
+/// 그림이 아직 없는 인물을 위한 임시 실루엣도 여기서 정합니다. 초상이 한 장도 없던 시기에는
+/// 화자가 바뀐 것을 알리는 유일한 표시였습니다. 지금은 주요 인물의 그림이 들어와
+/// 기본으로 꺼 두고 있습니다(_isPlaceholderVisible).
 ///
 /// 색은 실제 아트가 들어오면 버릴 개발용 값이라 characters.json에 넣지 않고 여기 인스펙터에만 둡니다.
 /// </summary>
@@ -46,6 +46,18 @@ public class StoryVisualBinder : MonoBehaviour
     [SerializeField]
     private bool _useDefaultExpressionOnly = true;
 
+    /// <summary>
+    /// 그림이 없는 인물을 임시 색 실루엣으로 대신 세울지 여부입니다.
+    ///
+    /// 꺼 두면 그 인물은 아예 서지 않습니다. 12화의 도깨비·요괴처럼 아직 디자인이 나오지 않은
+    /// 인물이 상자로 보이는데, 빌드를 받는 쪽에서는 이것이 연출인지 결함인지 구분되지 않습니다.
+    ///
+    /// 색을 지우지 않고 스위치를 따로 둔 이유는, 초상이 아직 한 장도 없던 시기에는
+    /// 이 실루엣이 화자가 바뀌었다는 유일한 표시였기 때문입니다. 다시 필요해지면 이 값만 켜면 됩니다.
+    /// </summary>
+    [SerializeField]
+    private bool _isPlaceholderVisible;
+
     [Header("스프라이트가 없을 때 쓰는 임시 색")]
     [SerializeField]
     private SerializableDictionary<string, Color> _characterPlaceholderColors = new SerializableDictionary<string, Color>();
@@ -68,6 +80,8 @@ public class StoryVisualBinder : MonoBehaviour
     }
 
     public Color BackgroundPlaceholderColor => _backgroundPlaceholderColor;
+
+    public bool IsPlaceholderVisible => _isPlaceholderVisible;
 
     /// <summary>
     /// 캐릭터 스프라이트를 돌려줍니다.

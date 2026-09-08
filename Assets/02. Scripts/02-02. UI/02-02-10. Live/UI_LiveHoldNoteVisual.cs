@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -8,6 +9,8 @@ using VInspector;
 /// </summary>
 public class UI_LiveHoldNoteVisual : MonoBehaviour
 {
+    private static readonly List<LiveHoldBodySample> EMPTY_SAMPLES = new List<LiveHoldBodySample>();
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UI_LiveHoldNoteBody _body;
@@ -24,13 +27,15 @@ public class UI_LiveHoldNoteVisual : MonoBehaviour
     /// <summary>
     /// 몸통은 노트 원점에서 위로 자랍니다. 원점은 판정선에 먹히고 남은 시작점입니다.
     /// </summary>
-    public void RefreshBody(float length, float uvStart, float uvEnd)
+    public void RefreshBody(List<LiveHoldBodySample> samples)
     {
-        _body.RefreshBody(length, uvStart, uvEnd);
-        _body.rectTransform.anchoredPosition = new Vector2(0f, length * 0.5f);
+        _body.RefreshBody(samples);
     }
 
-    public void RefreshTail(float offsetY, float thickness, bool isVisible)
+    /// <summary>
+    /// 꼬리를 끝 시각의 노트 자리에 그대로 올립니다. 그 높이의 레인 폭과 기울기를 따라야 몸통 끝과 어긋나지 않습니다.
+    /// </summary>
+    public void RefreshTail(Vector2 localCenter, Vector2 size, bool isVisible)
     {
         _tailImage.enabled = isVisible;
 
@@ -40,8 +45,8 @@ public class UI_LiveHoldNoteVisual : MonoBehaviour
         }
 
         RectTransform tailTransform = _tailImage.rectTransform;
-        tailTransform.anchoredPosition = new Vector2(0f, offsetY);
-        tailTransform.sizeDelta = new Vector2(tailTransform.sizeDelta.x, thickness);
+        tailTransform.anchoredPosition = localCenter;
+        tailTransform.sizeDelta = size;
     }
 
     /// <summary>
@@ -49,8 +54,8 @@ public class UI_LiveHoldNoteVisual : MonoBehaviour
     /// </summary>
     public void ResetHold()
     {
-        RefreshBody(0f, 0f, 0f);
-        RefreshTail(0f, 0f, false);
+        RefreshBody(EMPTY_SAMPLES);
+        RefreshTail(Vector2.zero, Vector2.zero, false);
         SetHoldSprites(null, null);
     }
 }

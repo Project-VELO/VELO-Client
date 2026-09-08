@@ -38,4 +38,15 @@ public static class MasterDataPaths
     {
         return Path.Combine(StoryScriptsRoot, $"{storyId}.json");
     }
+
+    /// <summary>
+    /// 회차별 번역문 파일의 경로입니다. 대본과 같은 이름을 언어 폴더 아래에 둡니다.
+    ///
+    /// 파일명에 언어를 붙이지 않고 폴더로 나눈 것은, 기획 시트에서 대본을 다시 뽑을 때
+    /// 덮어쓸 파일과 손대지 말아야 할 파일이 한 폴더에 섞이지 않게 하기 위해서입니다.
+    /// </summary>
+    public static string GetStoryTextOverlayPath(string storyId, string languageFolder)
+    {
+        return Path.Combine(StoryScriptsRoot, languageFolder, $"{storyId}.json");
+    }
 }

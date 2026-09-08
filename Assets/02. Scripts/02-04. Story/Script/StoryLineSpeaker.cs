@@ -19,7 +19,12 @@ public static class StoryLineSpeaker
             return string.Empty;
         }
 
-        if (!string.IsNullOrEmpty(line.SpeakerId))
+        // 번역문은 화자 표기도 함께 옮겨 옵니다. characters.json의 표시명은 한국어뿐이라,
+        // 원문 언어가 아니고 대본에 표기가 있으면 그쪽을 씁니다.
+        bool prefersScriptName = LanguageSetting.Current != ELanguage.KOREAN
+            && !string.IsNullOrWhiteSpace(line.SpeakerName);
+
+        if (!prefersScriptName && !string.IsNullOrEmpty(line.SpeakerId))
         {
             return MasterDataProvider.Instance.GetCharacterDisplayName(line.SpeakerId);
         }

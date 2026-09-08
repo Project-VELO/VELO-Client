@@ -14,7 +14,8 @@ public class UI_LiveHoldNoteBody : MaskableGraphic
 
     // 넘겨받은 목록을 그대로 들고 있지 않고 자기 것에 옮겨 담습니다.
     // 메시 생성은 캔버스 갱신 시점으로 미뤄지는데, 그 사이 호출자의 버퍼는 이미 다음 노트의 것으로 덮이기 때문입니다.
-    private readonly List<LiveHoldBodySample> _samples = new List<LiveHoldBodySample>();
+    // 용량을 처음부터 최대치로 잡아 두어야 첫 롱노트를 채우는 동안 내부 배열이 여러 번 할당되지 않습니다.
+    private readonly List<LiveHoldBodySample> _samples = new List<LiveHoldBodySample>(LiveHoldBodySample.MAX_COUNT);
 
     public override Texture mainTexture => _bodySprite == null ? s_WhiteTexture : _bodySprite.texture;
 

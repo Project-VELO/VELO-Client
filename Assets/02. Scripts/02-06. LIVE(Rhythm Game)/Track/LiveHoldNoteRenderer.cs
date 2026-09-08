@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 롱노트 몸통과 꼬리의 배치를 전담합니다. 머리 마커는 LiveNoteRenderer가 일반 노트와 같은 방식으로 처리합니다.
+/// 롱노트 몸통의 배치를 전담합니다. 머리 마커는 LiveNoteRenderer가 일반 노트와 같은 방식으로 처리합니다.
 ///
 /// 트랙이 사다리꼴이라 몸통은 위로 갈수록 좁아지면서 레인을 따라 안쪽으로 기웁니다. 직사각형 하나로는 그 모양이 나오지 않으므로
 /// 깊이를 잘게 나눠 각 높이의 노트 자리를 그대로 재고, 그 줄들을 이어 띠로 만듭니다.
@@ -12,11 +12,13 @@ public class LiveHoldNoteRenderer
     // 몸통을 나눌 깊이 간격입니다. 겉보기 폭이 깊이에 반비례해 휘므로, 양 끝만 이으면 몸통 경계가 레인에서 떠 보입니다.
     private const float SEGMENT_DEPTH_STEP = 1f / 64f;
     private const int MIN_SEGMENT_COUNT = 1;
-    private const int MAX_SEGMENT_COUNT = 32;
+
+    // 줄은 구간 수보다 하나 많으므로, 버퍼 크기에서 거꾸로 구해 두 값이 어긋나지 않게 합니다.
+    private const int MAX_SEGMENT_COUNT = LiveHoldBodySample.MAX_COUNT - 1;
 
     private readonly LiveNoteRenderSettings _settings;
     private readonly LiveNoteDesignLayout _designLayout;
-    private readonly List<LiveHoldBodySample> _bodySamples = new List<LiveHoldBodySample>(MAX_SEGMENT_COUNT + 1);
+    private readonly List<LiveHoldBodySample> _bodySamples = new List<LiveHoldBodySample>(LiveHoldBodySample.MAX_COUNT);
 
     private UI_LiveTrackLanes _lanes;
     private LiveScrollMapper _scrollMapper;

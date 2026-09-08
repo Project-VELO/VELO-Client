@@ -6,7 +6,7 @@ using VInspector;
 /// <summary>
 /// 홈 화면의 스토리 바로가기 상자입니다(기획서 SCREEN-001).
 ///
-/// 제목과 버튼 문구는 그림으로 박혀 있어 바뀌지 않고, 여기서 갱신하는 것은 챕터 표기 한 줄뿐입니다.
+/// 제목과 버튼 문구는 그림으로 박혀 있어 바뀌지 않고, 여기서 갱신하는 것은 챕터와 회차 한 줄뿐입니다.
 /// 마지막으로 본 회차의 다음 화 — 곧 아직 완료하지 않은 가장 앞선 회차 — 가 속한 챕터를 적어,
 /// 상자를 눌렀을 때 어디로 이어지는지 미리 보이게 합니다.
 ///
@@ -28,7 +28,20 @@ public class UI_HomeStoryBox : MonoBehaviour
         }
 
         StoryData nextStory = FindNextStory();
-        _chapterText.text = StoryChapterDisplayName.Get(nextStory?.ChapterId);
+        _chapterText.text = BuildLabel(nextStory);
+    }
+
+    /// <summary>
+    /// "CHAPTER 0 2화"처럼 챕터와 회차를 함께 적습니다.
+    ///
+    /// 챕터만 적으면 한 챕터를 보는 동안 이 줄이 한 번도 바뀌지 않아, 어디까지 봤는지
+    /// 상자만 보고는 알 수 없습니다. 회차 번호는 stories.json이 0부터 매기며 화면 표기와 같습니다.
+    /// </summary>
+    private static string BuildLabel(StoryData story)
+    {
+        string chapter = StoryChapterDisplayName.Get(story?.ChapterId);
+
+        return story == null ? chapter : $"{chapter} {story.EpisodeNumber}화";
     }
 
     /// <summary>

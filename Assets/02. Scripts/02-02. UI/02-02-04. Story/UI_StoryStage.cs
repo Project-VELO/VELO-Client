@@ -80,49 +80,7 @@ public class UI_StoryStage : MonoBehaviour
         // 스프라이트가 없으면 단색으로 떨어집니다. 흰색으로 두면 화면이 하얗게 날아갑니다.
         _background.color = sprite == null ? _visualBinder.BackgroundPlaceholderColor : Color.white;
 
-        ApplyBackgroundCover(sprite);
-    }
-
-    /// <summary>
-    /// 배경을 원본 비율 그대로 화면에 채웁니다. 짧은 쪽을 화면에 맞추고 긴 쪽은 넘겨 잘라 냅니다.
-    ///
-    /// 배경이 전부 16:9는 아닙니다. 4화의 4-A는 4:3이고 10화의 10-C는 세로로 긴 그림입니다.
-    /// 화면 틀에 그대로 늘리면 인물이 옆으로 퍼지므로 비율은 반드시 지켜야 합니다.
-    ///
-    /// 그림 전체가 보이도록 틀 안에 담아 본 적이 있는데, 그러면 비율이 다른 배경에서
-    /// 테두리 바깥의 빈 자리가 드러났습니다. 특히 시점 이동과 흔들림이 그 자리를 화면 안으로
-    /// 끌고 들어옵니다. 잘리더라도 빈 자리를 보이지 않는 쪽을 택했습니다.
-    ///
-    /// 잘리는 것이 아까우면 배경을 16:9로 다시 뽑는 것이 답입니다. 40장 중 36장은 이미 16:9라
-    /// 이 계산에 걸리지 않습니다.
-    /// </summary>
-    private void ApplyBackgroundCover(Sprite sprite)
-    {
-        RectTransform rect = _background.rectTransform;
-
-        if (sprite == null || !(rect.parent is RectTransform frame))
-        {
-            return;
-        }
-
-        Vector2 frameSize = frame.rect.size;
-
-        if (frameSize.x <= 0f || frameSize.y <= 0f || sprite.rect.height <= 0f)
-        {
-            return;
-        }
-
-        float spriteAspect = sprite.rect.width / sprite.rect.height;
-        float frameAspect = frameSize.x / frameSize.y;
-
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.anchoredPosition = Vector2.zero;
-
-        rect.sizeDelta = spriteAspect < frameAspect
-            ? new Vector2(frameSize.x, frameSize.x / spriteAspect)
-            : new Vector2(frameSize.y * spriteAspect, frameSize.y);
+        StoryBackgroundFit.Cover(_background, sprite);
     }
 
     /// <summary>
@@ -167,6 +125,7 @@ public class UI_StoryStage : MonoBehaviour
         // 그림과 자리를 먼저 잡습니다. 등장 연출이 제자리를 기준으로 움직이므로,
         // 자리가 정해지기 전에 시작하면 앞 인물의 자리에서 들어옵니다.
         Sprite sprite = _visualBinder.GetCharacter(characterId, expressionId);
+
         target.sprite = sprite;
 
         // 아직 초상 자산이 없어 대부분 여기로 옵니다. 캐릭터마다 색을 달리해 화자 교체가 눈에 보이게 합니다.

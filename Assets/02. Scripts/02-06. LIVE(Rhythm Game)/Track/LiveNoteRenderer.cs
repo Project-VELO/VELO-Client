@@ -94,7 +94,6 @@ public class LiveNoteRenderer
         }
 
         float hitLineRatio = _lanes.GetHitLineVerticalRatio();
-        float trackHeight = GetTrackHeight();
 
         foreach (NoteData note in _chart.Notes)
         {
@@ -112,7 +111,7 @@ public class LiveNoteRenderer
 
             // 가시 판정은 노트의 한 점만 보므로, 반높이만큼 아래로 넓혀 두어야 트랙 끝에서 노트가 잘린 채 사라지지 않습니다.
             // 트랙 끝에 마지막까지 걸리는 것은 꼬리이고 두께는 위로 갈수록 두꺼워지므로, 여유도 꼬리 높이에서 잽니다.
-            float halfHeightRatio = GetHalfHeightRatio(tailRatio, trackHeight);
+            float halfHeightRatio = GetHalfHeightRatio(tailRatio);
             bool isVisible = _scrollMapper.IsSpanVisible(headRatio, tailRatio + halfHeightRatio)
                 && !_hiddenNoteIds.Contains(note.NoteId);
             handle.RectTransform.gameObject.SetActive(isVisible);
@@ -129,7 +128,7 @@ public class LiveNoteRenderer
             // 길이가 0이어도 넘깁니다. 편집 중 길이가 줄어든 롱노트의 몸통이 그대로 남지 않게 하려면 매번 다시 재야 합니다.
             if (handle.HoldVisual != null)
             {
-                _holdRenderer.RefreshHold(handle, headRatio, tailRatio, drawRatio);
+                _holdRenderer.RefreshHold(handle, note.Lane, headRatio, tailRatio, drawRatio);
             }
         }
     }
@@ -140,24 +139,15 @@ public class LiveNoteRenderer
     }
 
     /// <summary>
-    /// 노트 두께의 절반을 트랙 세로 비율로 환산합니다. 세로 비율은 트랙 길이에 정비례하므로 나눗셈 한 번이면 됩니다.
+    /// 노트 두께의 절반을 깊이 비율로 환산합니다. 깊이와 화면 높이는 곡선 관계라
+    /// 트랙 전체 높이로 나누는 선형 환산은 판정선 근처에서 크게 어긋납니다.
     /// </summary>
-    private float GetHalfHeightRatio(float verticalRatio, float trackHeight)
+    private float GetHalfHeightRatio(float verticalRatio)
     {
-        if (trackHeight <= 0f)
-        {
-            return 0f;
-        }
+        float halfHeight = _designLayout.GetNoteHeight(_lanes, verticalRatio) * 0.5f;
+        float ratioAtTop = _lanes.GetRatioAtLocalY(_lanes.GetLocalY(verticalRatio) + halfHeight);
 
-        return _designLayout.GetNoteHeight(_lanes, verticalRatio) * 0.5f / trackHeight;
-    }
-
-    private float GetTrackHeight()
-    {
-        _lanes.GetTrackEdgesAtRatio(0f, out _, out _, out float nearY);
-        _lanes.GetTrackEdgesAtRatio(1f, out _, out _, out float farY);
-
-        return farY - nearY;
+        return Mathf.Max(0f, ratioAtTop - verticalRatio);
     }
 
     /// <summary>

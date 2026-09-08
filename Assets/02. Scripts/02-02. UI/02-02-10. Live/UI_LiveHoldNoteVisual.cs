@@ -1,47 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 롱노트의 몸통과 꼬리를 붙잡는 겉모습입니다.
-/// 머리는 일반 노트와 같은 마커라 UI_LiveNoteVisual이 그대로 맡습니다.
+/// 롱노트의 몸통을 붙잡는 겉모습입니다.
+/// 머리는 일반 노트와 같은 마커라 UI_LiveNoteVisual이 그대로 맡고, 끝은 몸통이 끊기는 자리로 보여 줍니다.
 /// </summary>
 public class UI_LiveHoldNoteVisual : MonoBehaviour
 {
+    private static readonly List<LiveHoldBodySample> EMPTY_SAMPLES = new List<LiveHoldBodySample>();
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private UI_LiveHoldNoteBody _body;
 
-    [SerializeField]
-    private Image _tailImage;
-
-    public void SetHoldSprites(Sprite bodySprite, Sprite tailSprite)
+    public void SetBodySprite(Sprite bodySprite)
     {
         _body.SetBodySprite(bodySprite);
-        _tailImage.sprite = tailSprite;
     }
 
     /// <summary>
     /// 몸통은 노트 원점에서 위로 자랍니다. 원점은 판정선에 먹히고 남은 시작점입니다.
     /// </summary>
-    public void RefreshBody(float length, float uvStart, float uvEnd)
+    public void RefreshBody(List<LiveHoldBodySample> samples)
     {
-        _body.RefreshBody(length, uvStart, uvEnd);
-        _body.rectTransform.anchoredPosition = new Vector2(0f, length * 0.5f);
-    }
-
-    public void RefreshTail(float offsetY, float thickness, bool isVisible)
-    {
-        _tailImage.enabled = isVisible;
-
-        if (!isVisible)
-        {
-            return;
-        }
-
-        RectTransform tailTransform = _tailImage.rectTransform;
-        tailTransform.anchoredPosition = new Vector2(0f, offsetY);
-        tailTransform.sizeDelta = new Vector2(tailTransform.sizeDelta.x, thickness);
+        _body.RefreshBody(samples);
     }
 
     /// <summary>
@@ -49,8 +32,7 @@ public class UI_LiveHoldNoteVisual : MonoBehaviour
     /// </summary>
     public void ResetHold()
     {
-        RefreshBody(0f, 0f, 0f);
-        RefreshTail(0f, 0f, false);
-        SetHoldSprites(null, null);
+        RefreshBody(EMPTY_SAMPLES);
+        SetBodySprite(null);
     }
 }

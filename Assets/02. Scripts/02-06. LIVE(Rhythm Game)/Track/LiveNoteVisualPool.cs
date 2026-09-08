@@ -83,7 +83,7 @@ public class LiveNoteVisualPool
 
         if (holdVisual != null)
         {
-            holdVisual.SetHoldSprites(_spriteTable.GetHoldBodySprite(note.Lane), _spriteTable.GetHoldTailSprite(note.Lane));
+            holdVisual.SetBodySprite(_spriteTable.GetHoldBodySprite(note.Lane));
         }
 
         _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType, noteVisual, holdVisual);

@@ -18,9 +18,6 @@ public class LiveNoteSpriteTable
     [Tooltip("롱노트 몸통입니다. 세로로 반복되므로 아틀라스가 아닌 Wrap Mode = Repeat 단독 텍스처여야 합니다.")]
     public List<Sprite> HoldBodySprites = new List<Sprite>();
 
-    [Tooltip("롱노트 꼬리입니다.")]
-    public List<Sprite> HoldTailSprites = new List<Sprite>();
-
     public Sprite GetSprite(int lane)
     {
         return GetSpriteAt(LaneSprites, lane);
@@ -29,11 +26,6 @@ public class LiveNoteSpriteTable
     public Sprite GetHoldBodySprite(int lane)
     {
         return GetSpriteAt(HoldBodySprites, lane);
-    }
-
-    public Sprite GetHoldTailSprite(int lane)
-    {
-        return GetSpriteAt(HoldTailSprites, lane);
     }
 
     private static Sprite GetSpriteAt(List<Sprite> sprites, int lane)

@@ -38,22 +38,16 @@ public class LiveHoldNoteRenderer
     /// </summary>
     public void RefreshHold(LiveNoteVisualHandle handle, int lane, float headRatio, float tailRatio, float drawStartRatio)
     {
-        float spawnRatio = _scrollMapper.SpawnRatio;
-        float endRatio = Mathf.Min(tailRatio, spawnRatio);
+        float endRatio = Mathf.Min(tailRatio, _scrollMapper.SpawnRatio);
 
         _designLayout.GetNoteRect(_lanes, lane, drawStartRatio, out Vector2 origin, out _);
         RefreshBodySamples(lane, headRatio, drawStartRatio, endRatio, origin);
         handle.HoldVisual.RefreshBody(_bodySamples);
-
-        // 길이가 0이면 단타와 다를 것이 없으므로 꼬리를 감춥니다. 편집 중 길이를 0으로 줄인 롱노트도 여기로 걸립니다.
-        bool isTailVisible = drawStartRatio < endRatio && tailRatio <= spawnRatio;
-
-        _designLayout.GetNoteRect(_lanes, lane, tailRatio, out Vector2 tailCenter, out Vector2 tailSize);
-        handle.HoldVisual.RefreshTail(tailCenter - origin, tailSize, isTailVisible);
     }
 
     /// <summary>
     /// 몸통을 이룰 가로 줄들을 쌓습니다. 줄이 타는 선은 머리 마커의 아랫변이며, 노트가 트랙 위에 놓이는 기준선과 같습니다.
+    /// 길이가 0이면 단타와 다를 것이 없으므로 빈 목록을 넘겨 몸통을 감춥니다. 편집 중 길이를 0으로 줄인 롱노트도 여기로 걸립니다.
     /// </summary>
     private void RefreshBodySamples(int lane, float headRatio, float startRatio, float endRatio, Vector2 origin)
     {

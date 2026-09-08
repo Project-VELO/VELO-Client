@@ -68,12 +68,17 @@ public class LiveHoldNoteRenderer
         {
             float ratio = Mathf.Lerp(startRatio, endRatio, (float)i / segmentCount);
             _designLayout.GetNoteRect(_lanes, lane, ratio, out Vector2 center, out Vector2 size);
+            _lanes.GetLaneBoundsAtRatio(lane, ratio, out float laneLeftX, out float laneRightX);
 
+            // 노트 그림은 기울어진 평행사변형이라 시안 폭이 레인 폭보다 넓습니다. 머리 마커는 얇아 그 넘침이
+            // 그림의 일부로 읽히지만, 몸통은 길게 이어져 옆 레인을 침범한 띠로 보이므로 레인 안으로 잘라 냅니다.
+            float leftX = Mathf.Max(center.x - size.x * 0.5f, laneLeftX);
+            float rightX = Mathf.Min(center.x + size.x * 0.5f, laneRightX);
             float lineY = center.y - size.y * 0.5f;
 
             _bodySamples.Add(new LiveHoldBodySample(
-                center.x - size.x * 0.5f - origin.x,
-                center.x + size.x * 0.5f - origin.x,
+                leftX - origin.x,
+                rightX - origin.x,
                 lineY - origin.y,
                 (lineY - headY) / tileLength));
         }

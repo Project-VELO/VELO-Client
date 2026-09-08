@@ -126,6 +126,14 @@ public class UI_StoryStage : MonoBehaviour
         // 자리가 정해지기 전에 시작하면 앞 인물의 자리에서 들어옵니다.
         Sprite sprite = _visualBinder.GetCharacter(characterId, expressionId);
 
+        // 아직 그림이 없는 인물입니다. 임시 실루엣을 끈 동안에는 자리를 비웁니다.
+        // 빈 채로 두면 앞 줄 인물이 남아 이 인물의 대사를 대신 받게 됩니다.
+        if (sprite == null && !_visualBinder.IsPlaceholderVisible)
+        {
+            standing.Exit(transition, _characterFadeSeconds, cancellationToken);
+            return;
+        }
+
         target.sprite = sprite;
 
         // 아직 초상 자산이 없어 대부분 여기로 옵니다. 캐릭터마다 색을 달리해 화자 교체가 눈에 보이게 합니다.

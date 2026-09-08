@@ -31,6 +31,7 @@ public static class FontSdfAssetBuilder
     public static void CreateNotoSansKr()
     {
         Create("NotoSansKR-Regular.ttf");
+        Create("NotoSansKR-Medium.ttf");
     }
 
     /// <summary>

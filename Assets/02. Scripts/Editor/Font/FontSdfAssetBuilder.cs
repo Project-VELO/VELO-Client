@@ -33,7 +33,21 @@ public static class FontSdfAssetBuilder
         Create("NotoSansKR-Regular.ttf");
     }
 
-    private static void Create(string sourceFileName)
+    /// <summary>
+    /// 일본어 대사가 쓰는 신자체 한자는 한국어 폰트에 없습니다(NotoSerifKR 기준 104자).
+    /// 이 에셋을 한국어 폰트의 폴백으로 걸어 두면 없는 글자만 여기서 나옵니다.
+    ///
+    /// 파일명이 아니라 짧은 이름으로 만드는 것은 원본이 가변 폰트라 이름에 축 정보가
+    /// 붙어 있기 때문입니다("NotoSansJP-VariableFont_wght SDF"는 읽기 어렵습니다).
+    /// </summary>
+    [MenuItem("VELO/Font/일본어 SDF 만들기")]
+    public static void CreateJapanese()
+    {
+        Create("NotoSansJP-VariableFont_wght.ttf", "NotoSansJP-Regular");
+        Create("NotoSerifJP-VariableFont_wght.ttf", "NotoSerifJP-Regular");
+    }
+
+    private static void Create(string sourceFileName, string assetName = null)
     {
         string sourcePath = Path.Combine(FONT_FOLDER, sourceFileName).Replace('\\', '/');
         Font source = AssetDatabase.LoadAssetAtPath<Font>(sourcePath);
@@ -44,7 +58,8 @@ public static class FontSdfAssetBuilder
             return;
         }
 
-        string assetPath = $"{FONT_FOLDER}/{Path.GetFileNameWithoutExtension(sourceFileName)} SDF.asset";
+        string name = string.IsNullOrEmpty(assetName) ? Path.GetFileNameWithoutExtension(sourceFileName) : assetName;
+        string assetPath = $"{FONT_FOLDER}/{name} SDF.asset";
 
         if (AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(assetPath) != null)
         {

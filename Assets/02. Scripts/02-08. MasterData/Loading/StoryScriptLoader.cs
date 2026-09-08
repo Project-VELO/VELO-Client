@@ -10,6 +10,8 @@ using UnityEngine;
 /// </summary>
 public class StoryScriptLoader
 {
+    private readonly StoryTextOverlayLoader _overlayLoader = new StoryTextOverlayLoader();
+
     /// <summary>
     /// 대본을 읽습니다. 파일이 없거나 손상되었으면 null을 돌려주며,
     /// 호출부는 기획서 3-L에 따라 오류 안내 후 스토리 목록으로 되돌립니다.
@@ -44,6 +46,9 @@ public class StoryScriptLoader
             Debug.LogWarning($"[StoryScriptLoader] 파일명과 StoryId가 다릅니다(파일 {storyId} / 내용 {script.StoryId}): {path}");
         }
 
+        // 번역문을 먼저 덮고 캐리오버를 펼칩니다. 순서를 바꿔도 결과는 같지만,
+        // 번역문이 연출 지시를 담지 않는다는 것이 이 순서에 드러납니다.
+        _overlayLoader.Apply(script, LanguageSetting.Current);
         ApplyCarryOverState(script);
 
         return script;

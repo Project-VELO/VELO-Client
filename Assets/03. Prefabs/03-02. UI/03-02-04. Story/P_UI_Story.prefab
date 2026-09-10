@@ -1057,8 +1057,16 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 9902450acb7d8f542ae20842d061cc6d, type: 3}
     - {fileID: 21300000, guid: 5a93ce16827fb4643842950d05023e8a, type: 3}
   _illustrationSprites:
-    _keys: []
-    _values: []
+    _keys:
+    - CG_HWANYEONG_RAILING
+    - CG_HWANYEONG_FALLING
+    - CG_HWANYEONG_HANDS
+    - CG_HWANYEONG_SMILE
+    _values:
+    - {fileID: 21300000, guid: ba6d7be2b6729ca4594b4e795694f866, type: 3}
+    - {fileID: 21300000, guid: 32e14cd6dfb391a458fe4332efd61ed4, type: 3}
+    - {fileID: 21300000, guid: 61d2c0ab63dd4324e9f03e125714d620, type: 3}
+    - {fileID: 21300000, guid: d2319f2b6249e9f4bb2fc4f97ab830ad, type: 3}
   _useDefaultExpressionOnly: 1
   _isPlaceholderVisible: 0
   _characterPlaceholderColors:

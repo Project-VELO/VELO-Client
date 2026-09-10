@@ -14,6 +14,10 @@ public class UI_LiveEditorPanel : MonoBehaviour
     private const string PLAYTEST_START_LABEL = "테스트 플레이";
     private const string PLAYTEST_STOP_LABEL = "테스트 중지";
 
+    private const string SAVE_COMPLETED_TOAST = "채보 저장을 완료했습니다.";
+    private const string SAVE_AND_PUBLISH_TOAST = "채보를 저장하고 수록본까지 갱신했습니다.";
+    private const string PUBLISH_FAILED_TOAST = "채보는 저장했지만 수록본 갱신에 실패했습니다.";
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private Button _saveButton;
@@ -57,18 +61,47 @@ public class UI_LiveEditorPanel : MonoBehaviour
 
     private void OnSaveClicked()
     {
-        bool isSaved = _controller.SaveCurrentChart(out List<string> errors);
+        bool isSaved = _controller.SaveCurrentChart(out List<string> errors, out ELivePublishSyncResult syncResult);
         if (isSaved)
         {
-            if (_toast != null)
-            {
-                _toast.Show("채보 저장을 완료했습니다.");
-            }
+            ShowSaveToast(syncResult);
             return;
         }
 
         string reason = errors == null ? "편집 중인 채보가 없습니다." : string.Join("\n", errors);
         Debug.LogError($"[UI_LiveEditorPanel] 채보 저장 실패:\n{reason}");
+    }
+
+    /// <summary>
+    /// 수록된 채보는 이 저장으로 게임에도 반영되지만 수록되지 않은 채보는 그렇지 않습니다.
+    /// 저장했으니 반영됐겠거니 하는 오해가 이 화면에서 시작되므로, 결과에 따라 문구를 나눕니다.
+    /// </summary>
+    private void ShowSaveToast(ELivePublishSyncResult syncResult)
+    {
+        if (syncResult == ELivePublishSyncResult.Failed)
+        {
+            Debug.LogError($"[UI_LiveEditorPanel] {PUBLISH_FAILED_TOAST}");
+        }
+
+        if (_toast == null)
+        {
+            return;
+        }
+
+        switch (syncResult)
+        {
+            case ELivePublishSyncResult.Updated:
+                _toast.Show(SAVE_AND_PUBLISH_TOAST);
+                break;
+
+            case ELivePublishSyncResult.Failed:
+                _toast.Show(PUBLISH_FAILED_TOAST);
+                break;
+
+            default:
+                _toast.Show(SAVE_COMPLETED_TOAST);
+                break;
+        }
     }
 
     /// <summary>

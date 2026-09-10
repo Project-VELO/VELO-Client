@@ -77,3 +77,9 @@ crashlytics-build.properties
 # 기획서 원본과 변환본, 작업 계획 문서는 버전 관리에서 제외한다
 /docs/기획서/
 /docs/plans/
+
+# 성능 테스트 패키지가 빌드할 때마다 다시 만드는 파일이라 커밋하지 않는다
+/[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json
+/[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json.meta
+/[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json
+/[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json.meta

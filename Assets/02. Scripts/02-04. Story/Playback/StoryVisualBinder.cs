@@ -35,6 +35,15 @@ public class StoryVisualBinder : MonoBehaviour
     [SerializeField]
     private SerializableDictionary<string, Sprite> _characterFaceSprites = new SerializableDictionary<string, Sprite>();
 
+    /// <summary>
+    /// 한 장면을 통째로 덮는 삽화입니다(이벤트 CG).
+    ///
+    /// 배경 표와 나눈 이유는 고르는 기준이 다르기 때문입니다. 배경은 장소가 바뀔 때 갈리고
+    /// 빈 칸이 "직전 유지"지만, 삽화는 특정 컷에서만 얹혔다 걷힙니다.
+    /// </summary>
+    [SerializeField]
+    private SerializableDictionary<string, Sprite> _illustrationSprites = new SerializableDictionary<string, Sprite>();
+
     [Foldout("Settings")]
     /// <summary>
     /// 표정을 무시하고 인물의 기본 그림만 씁니다.
@@ -112,6 +121,15 @@ public class StoryVisualBinder : MonoBehaviour
     private string BuildExpressionKey(string characterId, string expressionId)
     {
         return characterId + EXPRESSION_KEY_SEPARATOR + expressionId;
+    }
+
+    /// <summary>
+    /// 삽화를 돌려줍니다. 없으면 null이며 호출부는 삽화를 띄우지 않습니다.
+    /// 그림이 없는 삽화 자리에 빈 사각형을 띄우면 배경까지 가려 장면이 통째로 사라집니다.
+    /// </summary>
+    public Sprite GetIllustration(string illustrationId)
+    {
+        return TryGet(_illustrationSprites, illustrationId);
     }
 
     /// <summary>

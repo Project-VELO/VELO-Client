@@ -26,6 +26,9 @@ public class UI_Story : MonoBehaviour
     private UI_StoryStage _stage;
 
     [SerializeField]
+    private UI_StoryIllustration _illustration;
+
+    [SerializeField]
     private UI_StoryDialogBox _dialogBox;
 
     [SerializeField]
@@ -58,6 +61,7 @@ public class UI_Story : MonoBehaviour
     private UI_StoryExitConfirmPopup _exitConfirmPopup;
 
     public UI_StoryStage Stage => _stage;
+    public UI_StoryIllustration Illustration => _illustration;
     public UI_StoryDialogBox DialogBox => _dialogBox;
     public UI_StoryEffectLayer EffectLayer => _effectLayer;
     public StoryAudioBinder AudioBinder => _audioBinder;

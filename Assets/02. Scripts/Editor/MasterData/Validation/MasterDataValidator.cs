@@ -13,6 +13,7 @@ public class MasterDataValidator
     private readonly ScheduleValidator _scheduleValidator = new ScheduleValidator();
     private readonly NewGameConfigValidator _newGameConfigValidator = new NewGameConfigValidator();
     private readonly StoryScriptValidator _scriptValidator = new StoryScriptValidator();
+    private readonly LiveSongValidator _liveSongValidator = new LiveSongValidator();
 
     public MasterDataValidationReport Validate()
     {
@@ -30,6 +31,7 @@ public class MasterDataValidator
         _scheduleValidator.Validate(provider, report);
         _newGameConfigValidator.Validate(provider, report);
         _scriptValidator.Validate(report);
+        _liveSongValidator.Validate(report);
 
         return report;
     }

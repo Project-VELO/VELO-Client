@@ -64,6 +64,7 @@ public class StoryLinePlayer
     {
         _ui.Stage.SetBackground(line.BackgroundId);
         _ui.Stage.SetSpeakers(line);
+        _ui.Illustration.Set(line.IllustrationId);
         _ui.DialogBox.Refresh(line);
 
         // 장면이 바뀌면 앞 장면의 암전·필터·줌을 걷습니다.

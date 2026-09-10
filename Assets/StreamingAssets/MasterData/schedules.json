@@ -56,7 +56,7 @@
             "Description": "지정곡을 클리어하면 완료됩니다.",
             "IsRequired": true,
             "ClearCondition": {
-                "TargetSongId": "Till The End 136 1-16",
+                "TargetSongId": "TILL_THE_END",
                 "RequiredDifficultyName": "NORMAL",
                 "MinimumRankName": "C",
                 "MinimumScore": 0,

@@ -93,9 +93,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 20
-  m_fontSizeBase: 36
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -467,7 +467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 93, y: -19.5}
+  m_AnchoredPosition: {x: 98, y: -12.5}
   m_SizeDelta: {x: 173, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7246684712769117125
@@ -582,8 +582,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293372088
-  m_fontColor: {r: 0.72156864, g: 0.65882355, b: 0.90588236, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -601,9 +601,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 16.55
-  m_fontSizeBase: 36
+  m_fontSizeBase: 16.55
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -679,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 93, y: -52}
+  m_AnchoredPosition: {x: 98, y: -52}
   m_SizeDelta: {x: 260, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &701479720400939243
@@ -739,9 +739,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 14
-  m_fontSizeBase: 36
+  m_fontSizeBase: 14
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -1132,8 +1132,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293372088
-  m_fontColor: {r: 0.72156864, g: 0.65882355, b: 0.90588236, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1151,9 +1151,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 16.55
-  m_fontSizeBase: 36
+  m_fontSizeBase: 16.55
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 20
   m_fontStyle: 0
@@ -1288,9 +1288,9 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 20
-  m_fontSizeBase: 36
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 8
   m_fontSizeMax: 20
   m_fontStyle: 0

@@ -63,6 +63,15 @@ public class UI_OfficeDayCell : MonoBehaviour
     [SerializeField]
     private GameObject _finishGuideRoot;
 
+    /// <summary>
+    /// 마무리 안내와 완료 표시 뒤로 스케줄 목록이 비쳐 보이지 않도록 덮는 판입니다.
+    ///
+    /// 두 표시가 배경 없는 글자뿐이라, 덮지 않으면 그 날의 스케줄 글자와 겹쳐 둘 다 읽기 어렵습니다.
+    /// 목록을 끄지 않고 덮는 것은, 칸의 높이가 목록에서 나와 끄면 칸이 접히기 때문입니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject _scheduleCover;
+
     private void Awake()
     {
         _button.onClick.AddListener(NotifyClicked);
@@ -87,6 +96,9 @@ public class UI_OfficeDayCell : MonoBehaviour
         _lockOverlay.SetActive(state == EDayViewState.LOCKED);
         _completedRoot.SetActive(state == EDayViewState.COMPLETED);
         _finishGuideRoot.SetActive(state == EDayViewState.COMPLETABLE);
+
+        // 마무리 안내나 완료 표시가 올라오는 두 상태에서만 덮습니다.
+        _scheduleCover.SetActive(state == EDayViewState.COMPLETABLE || state == EDayViewState.COMPLETED);
         _button.interactable = state == EDayViewState.COMPLETABLE;
     }
 

@@ -17,10 +17,19 @@ public class LiveScrollMapper
     public const float MIN_HI_SPEED = 0.5f;
     public const float MAX_HI_SPEED = 10f;
 
+    /// <summary>
+    /// 값을 따로 정하지 않은 모든 곳에서 쓰는 하이스피드입니다.
+    /// 리듬게임과 채보 에디터가 같은 속도로 보여야 에디터에서 맞춘 배치가 실제 플레이와 어긋나지 않으므로,
+    /// 기본값을 각자 적지 않고 여기 한 곳에 둡니다.
+    ///
+    /// 1.0배는 판정선부터 트랙 최상단까지 4마디가 한꺼번에 보여 노트가 너무 느리게 다가옵니다.
+    /// </summary>
+    public const float DEFAULT_HI_SPEED = 1.5f;
+
     public const float MIN_SPAWN_RATIO = 0.5f;
     public const float MAX_SPAWN_RATIO = 1f;
 
-    private float _hiSpeed = 1f;
+    private float _hiSpeed = DEFAULT_HI_SPEED;
     private float _spawnRatio = MAX_SPAWN_RATIO;
 
     public float HiSpeed

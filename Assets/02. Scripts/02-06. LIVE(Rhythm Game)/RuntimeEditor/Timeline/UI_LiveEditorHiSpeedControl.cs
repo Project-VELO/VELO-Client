@@ -9,8 +9,9 @@ using VInspector;
 /// </summary>
 public class UI_LiveEditorHiSpeedControl : MonoBehaviour
 {
-    private const string HI_SPEED_PREFS_KEY = "LiveEditor.HiSpeed";
-    private const float DEFAULT_HI_SPEED = 1.0f;
+    // 작업자가 한 번이라도 에디터를 열면 그때의 값이 저장되므로, 기본값만 바꾸면 이미 열어 본 사람에게는
+    // 옛 값이 계속 이깁니다. 기본값을 바꿀 때 키도 함께 올려 모두가 새 값에서 다시 시작하게 합니다.
+    private const string HI_SPEED_PREFS_KEY = "LiveEditor.HiSpeed.2";
 
     [Header("Step")]
     [SerializeField]
@@ -48,7 +49,7 @@ public class UI_LiveEditorHiSpeedControl : MonoBehaviour
 
     private void Start()
     {
-        SetHiSpeed(PlayerPrefs.GetFloat(HI_SPEED_PREFS_KEY, DEFAULT_HI_SPEED));
+        SetHiSpeed(PlayerPrefs.GetFloat(HI_SPEED_PREFS_KEY, LiveScrollMapper.DEFAULT_HI_SPEED));
     }
 
     private void DecreaseCoarse()

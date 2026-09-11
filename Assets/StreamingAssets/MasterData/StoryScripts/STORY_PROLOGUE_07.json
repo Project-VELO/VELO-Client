@@ -527,7 +527,7 @@
             "TextSpeedName": "INSTANT",
             "TextPlacementName": "DIALOG_BOX",
             "TextStyleId": "STYLE_P_DIALOGUE",
-            "EffectId": "FX_SCREEN_WARM_BRIGHTEN",
+            "EffectId": "FX_BRIGHTNESS_RECOVER",
             "BgmId": "",
             "SfxId": ""
         },
@@ -941,7 +941,7 @@
             "TextSpeedName": "NORMAL",
             "TextPlacementName": "DIALOG_BOX",
             "TextStyleId": "STYLE_NARRATION",
-            "EffectId": "FX_DISSOLVE_WARM",
+            "EffectId": "",
             "BgmId": "",
             "SfxId": ""
         },

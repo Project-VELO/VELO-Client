@@ -35,7 +35,7 @@ public class UI_OfficeCharacterPanel : MonoBehaviour
 
     private void Start()
     {
-        _nameText.text = _speakerName;
-        _dialogText.text = TextWrapUtils.Wrap(_fixedDialog, _maxWidthPerLine, _maxLineCount);
+        _nameText.text = UiText.Localize(_speakerName);
+        _dialogText.text = TextWrapUtils.Wrap(UiText.Localize(_fixedDialog), _maxWidthPerLine, _maxLineCount);
     }
 }

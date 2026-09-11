@@ -1,0 +1,80 @@
+{
+  "SchemaVersion": 1,
+  "Items": [
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_01",
+      "Title": "Ch0 第1話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_02",
+      "Title": "Ch0 第2話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_03",
+      "Title": "till the end 1回クリア",
+      "Description": "指定曲をクリアすると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D2_01",
+      "Title": "Ch0 第3話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D2_02",
+      "Title": "Ch0 第4話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D3_01",
+      "Title": "Ch0 第5話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D3_02",
+      "Title": "Ch0 第6話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_01",
+      "Title": "Ch0 第7話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_02",
+      "Title": "Ch0 第8話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_03",
+      "Title": "11:59 1回クリア",
+      "Description": "指定曲をクリアすると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D5_01",
+      "Title": "Ch0 第9話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D5_02",
+      "Title": "Ch0 第10話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D6_01",
+      "Title": "Ch0 第11話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D7_01",
+      "Title": "Ch0 第12話 鑑賞",
+      "Description": "指定の話を最後まで鑑賞すると完了します。"
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D7_02",
+      "Title": "till the end → 11:59 連続クリア",
+      "Description": "till the endに続けて11:59まで連続でクリアするスケジュールです。現在は完了条件に曲を一つしか書けないため、11:59のクリアのみで判定します。"
+    }
+  ]
+}

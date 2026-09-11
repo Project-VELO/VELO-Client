@@ -56,7 +56,7 @@ public class UI_LiveEditorChartSwitcher : MonoBehaviour
     /// </summary>
     private void SaveAndChangeChart()
     {
-        if (!_controller.SaveCurrentChart(out List<string> errors))
+        if (!_controller.SaveCurrentChart(out List<string> errors, out _))
         {
             string reason = errors == null ? "편집 중인 채보가 없습니다." : string.Join("\n", errors);
             Debug.LogError($"[UI_LiveEditorChartSwitcher] 채보 저장 실패로 변경을 중단했습니다:\n{reason}");

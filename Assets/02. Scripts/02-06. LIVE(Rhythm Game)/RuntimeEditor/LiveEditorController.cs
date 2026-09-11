@@ -25,6 +25,7 @@ public class LiveEditorController : MonoBehaviour
 
     private readonly LiveEditorChartIO _chartIO = new LiveEditorChartIO();
     private readonly LiveEditorSongIO _songIO = new LiveEditorSongIO();
+    private readonly LivePublishedChartSync _publishedChartSync = new LivePublishedChartSync();
 
     private LiveEditorSongMetadataWriter _songMetadataWriter;
     private LiveEditorUndoRedoManager _undoRedoManager;
@@ -151,9 +152,14 @@ public class LiveEditorController : MonoBehaviour
         UndoRedo.Clear();
     }
 
-    public bool SaveCurrentChart(out List<string> errors)
+    /// <summary>
+    /// 편집 중인 채보를 작업 공간에 저장하고, 이미 수록된 채보라면 수록본까지 맞춥니다.
+    /// 수록본 갱신 결과를 따로 알리는 이유는, 저장은 됐는데 게임에는 반영되지 않는 상태를 화면에서 구분해야 하기 때문입니다.
+    /// </summary>
+    public bool SaveCurrentChart(out List<string> errors, out ELivePublishSyncResult syncResult)
     {
         errors = null;
+        syncResult = ELivePublishSyncResult.NotPublished;
 
         if (ReferenceEquals(_currentChart, null))
         {
@@ -166,6 +172,7 @@ public class LiveEditorController : MonoBehaviour
         if (isSaved)
         {
             SongMetadataWriter.WriteChartMetadata(_currentSong, _currentDifficulty, _currentChart);
+            syncResult = _publishedChartSync.SyncChart(_currentSong, _currentDifficulty, _currentChart);
             UndoRedo.MarkSaved();
         }
 

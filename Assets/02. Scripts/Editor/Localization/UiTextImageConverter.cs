@@ -28,6 +28,12 @@ public static class UiTextImageConverter
 {
     private const string FONT_PATH = "Assets/10. Fonts/NotoSansKR-Regular SDF.asset";
 
+    /// <summary>
+    /// 자동 크기 조절의 하한입니다. 이보다 작아지면 읽히지 않으므로, 여기까지 줄여도 넘치면
+    /// 상자가 좁다는 뜻이고 자리를 손봐야 합니다.
+    /// </summary>
+    private const int MIN_FONT_SIZE = 10;
+
     [MenuItem("VELO/Localization/글자 그림을 TMP로 바꾸기")]
     public static void ConvertAll()
     {
@@ -141,11 +147,6 @@ public static class UiTextImageConverter
             return false;
         }
 
-        if (node.GetComponent<TMP_Text>() != null)
-        {
-            return false;
-        }
-
         Image image = node.GetComponent<Image>();
 
         if (image != null)
@@ -153,15 +154,29 @@ public static class UiTextImageConverter
             Object.DestroyImmediate(image, true);
         }
 
-        TextMeshProUGUI text = node.gameObject.AddComponent<TextMeshProUGUI>();
+        // 이미 바꿔 둔 자리는 값만 다시 맞춥니다. 크기나 색을 고쳐 다시 돌릴 때
+        // 붙였다 떼면 다른 컴포넌트가 들고 있던 참조가 끊깁니다.
+        TextMeshProUGUI text = node.GetComponent<TextMeshProUGUI>();
+
+        if (text == null)
+        {
+            text = node.gameObject.AddComponent<TextMeshProUGUI>();
+        }
+
         text.font = font;
         text.text = target.Korean;
-        text.fontSize = target.FontSize;
         text.color = target.Color;
         // TMP의 정렬은 가로와 세로 값을 비트로 겹쳐 씁니다. 512는 세로 가운데입니다.
         text.alignment = (TextAlignmentOptions)(target.HorizontalAlignment | 512);
         text.enableWordWrapping = false;
         text.raycastTarget = false;
+
+        // 원본 그림은 글자를 좁게 그려 두었고 일본어는 한국어보다 글자 수가 많습니다.
+        // 고정 크기로 두면 어느 한쪽에서 반드시 상자를 넘칩니다. 상자에 맞춰 줄어들게 둡니다.
+        text.enableAutoSizing = true;
+        text.fontSizeMax = target.FontSize;
+        text.fontSizeMin = MIN_FONT_SIZE;
+        text.fontSize = target.FontSize;
 
         if (target.IsBold)
         {

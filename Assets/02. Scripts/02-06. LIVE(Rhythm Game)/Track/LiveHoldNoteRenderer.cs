@@ -48,7 +48,7 @@ public class LiveHoldNoteRenderer
     }
 
     /// <summary>
-    /// 몸통을 이룰 가로 줄들을 쌓습니다. 줄이 타는 선은 머리 마커의 아랫변이며, 노트가 트랙 위에 놓이는 기준선과 같습니다.
+    /// 몸통을 이룰 가로 줄들을 쌓습니다. 줄이 타는 선은 그 깊이의 기준선, 곧 머리와 꼬리가 올라타는 시각의 선입니다.
     /// 길이가 0이면 단타와 다를 것이 없으므로 빈 목록을 넘겨 몸통을 감춥니다. 편집 중 길이를 0으로 줄인 롱노트도 여기로 걸립니다.
     /// </summary>
     private void RefreshBodySamples(int lane, float headRatio, float startRatio, float endRatio, Vector2 origin)
@@ -72,11 +72,13 @@ public class LiveHoldNoteRenderer
             _designLayout.GetNoteRect(_lanes, lane, ratio, out Vector2 center, out Vector2 size);
             _lanes.GetLaneBoundsAtRatio(lane, ratio, out float laneLeftX, out float laneRightX);
 
-            // 노트 그림은 기울어진 평행사변형이라 시안 폭이 레인 폭보다 넓습니다. 머리 마커는 얇아 그 넘침이
-            // 그림의 일부로 읽히지만, 몸통은 길게 이어져 옆 레인을 침범한 띠로 보이므로 레인 안으로 잘라 냅니다.
+            // 머리 마커가 이미 레인 폭이지만, 여백 설정이 들어와도 몸통이 옆 레인으로 새지 않도록 레인 안으로 잘라 둡니다.
             float leftX = Mathf.Max(center.x - size.x * 0.5f, laneLeftX);
             float rightX = Mathf.Min(center.x + size.x * 0.5f, laneRightX);
-            float lineY = center.y - size.y * 0.5f;
+
+            // 줄은 노트 사각형이 아니라 기준선을 따라갑니다. 사각형의 아랫변으로 잡으면 기준선을 노트 한가운데에
+            // 맞추는 채보 에디터에서 몸통만 반높이 아래로 처지고 꼬리도 그만큼 일찍 끝납니다.
+            float lineY = _lanes.GetLocalY(ratio);
 
             _bodySamples.Add(new LiveHoldBodySample(
                 leftX - origin.x,

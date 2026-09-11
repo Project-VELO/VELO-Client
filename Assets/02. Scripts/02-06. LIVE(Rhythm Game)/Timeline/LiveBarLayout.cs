@@ -20,10 +20,15 @@ public class LiveBarLayout
     private int _beatsPerBar = DEFAULT_BEATS_PER_BAR;
     private int _songLengthMs;
 
+    // 마디는 곡 끝을 넘어 통째로 만들어지므로, 마지막 마디 안에서 음원이 실제로 끝나는 자리를 마디 좌표로 따로 들고 있습니다.
+    // 곡 길이를 모르는 동안에는 상한을 두지 않습니다.
+    private double _songEndBarPosition = double.MaxValue;
+
     public IReadOnlyList<LiveBarInfo> Bars => _bars;
     public int BarCount => _bars.Count;
     public int BeatsPerBar => _beatsPerBar;
     public int SongLengthMs => _songLengthMs;
+    public double SongEndBarPosition => _songEndBarPosition;
     public bool IsBuilt => 0 < _bars.Count;
 
     /// <summary>
@@ -34,6 +39,7 @@ public class LiveBarLayout
         _bars.Clear();
         _chart = chart;
         _songLengthMs = songLengthMs;
+        _songEndBarPosition = double.MaxValue;
 
         if (ReferenceEquals(chart, null))
         {
@@ -54,6 +60,11 @@ public class LiveBarLayout
             {
                 break;
             }
+        }
+
+        if (0 < songLengthMs)
+        {
+            _songEndBarPosition = GetBarPosition(songLengthMs);
         }
     }
 
@@ -123,6 +134,8 @@ public class LiveBarLayout
 
     /// <summary>
     /// 연속 마디 좌표를 가장 가까운 격자 셀로 스냅합니다. 화면에 그려진 격자와 실제 배치 위치를 일치시킵니다.
+    /// 음원이 끝난 뒤의 칸은 거절합니다. 그 자리의 노트는 곡이 끝나는 순간 남은 노트로 한꺼번에 닫혀
+    /// 플레이어가 어떻게 쳐도 BAD가 되므로, 처음부터 고를 수 없어야 합니다.
     /// </summary>
     public bool TryGetCellAtBarPosition(double barPosition, ESnapDivision division, out int barIndex, out int cellIndex)
     {
@@ -150,7 +163,7 @@ public class LiveBarLayout
             return false;
         }
 
-        return true;
+        return barIndex + (double)cellIndex / cellsPerBar <= _songEndBarPosition;
     }
 
     private int FindBarIndexByTime(int timeMs)

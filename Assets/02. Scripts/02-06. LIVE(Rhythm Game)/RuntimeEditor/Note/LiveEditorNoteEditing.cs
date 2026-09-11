@@ -19,10 +19,6 @@ public class LiveEditorNoteEditing : MonoBehaviour
     private LiveEditorTimeline _timeline;
 
     [Header("Track Pointer")]
-    [Tooltip("클릭 좌표를 레인으로 환산할 기준이 되는 트랙 영역입니다.")]
-    [SerializeField]
-    private RectTransform _laneAreaRect;
-
     [Tooltip("트랙이 올라가 있는 캔버스입니다. 렌더 모드에 따라 좌표 변환에 넘길 카메라가 달라집니다.")]
     [SerializeField]
     private Canvas _canvas;
@@ -31,17 +27,20 @@ public class LiveEditorNoteEditing : MonoBehaviour
     private LiveEditorNoteSelection _selection;
     private LiveEditorNoteWriter _noteWriter;
     private LiveEditorTrackPointer _trackPointer;
+    private LiveEditorLongNotePlacer _longNotePlacer;
 
     public LiveEditorEditContext EditContext => _editContext;
     public LiveEditorNoteSelection Selection => _selection;
     public LiveEditorNoteWriter NoteWriter => _noteWriter;
     public LiveEditorTrackPointer TrackPointer => _trackPointer;
+    public LiveEditorLongNotePlacer LongNotePlacer => _longNotePlacer;
 
     private void Awake()
     {
         _editContext = new LiveEditorEditContext(_controller, _timeline);
         _selection = new LiveEditorNoteSelection(_controller);
         _noteWriter = new LiveEditorNoteWriter(_controller, _controller.UndoRedo);
-        _trackPointer = new LiveEditorTrackPointer(_timeline, _laneAreaRect, _canvas);
+        _trackPointer = new LiveEditorTrackPointer(_timeline, _canvas);
+        _longNotePlacer = new LiveEditorLongNotePlacer(_editContext, _noteWriter);
     }
 }

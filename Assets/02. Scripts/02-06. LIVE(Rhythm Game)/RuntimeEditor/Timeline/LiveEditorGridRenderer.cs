@@ -1,15 +1,16 @@
-using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
 
 /// <summary>
 /// 마디 경계선과 분박선을 그리는 것을 전담합니다.
 /// 선의 위치를 절대 시각이 아닌 마디 좌표에서 직접 산출하므로 BPM 변환 없이 매 프레임 GC 할당 없이 갱신됩니다.
-/// 선 오브젝트는 Awake에서 최대 개수만큼 풀에서 미리 확보한 뒤, 이후에는 활성/비활성 토글만 수행합니다.
-/// 확보한 선은 매 프레임 반환하지 않으므로 파괴될 때 한 번에 풀로 되돌려 줍니다.
+/// 선 오브젝트를 빌리고 돌려주는 일은 LiveEditorGridLinePool이 맡습니다.
 /// </summary>
 public class LiveEditorGridRenderer : MonoBehaviour
 {
+    // 화면 두께가 1픽셀 아래로 내려가면 스크롤할 때 픽셀에 걸렸다 말았다 하며 선이 깜빡이므로 하한을 둡니다.
+    private const float MIN_LINE_THICKNESS = 1f;
+
     [Header("Pool Capacity")]
     [SerializeField]
     private int _maxSubdivisionLineCount = 256;
@@ -18,36 +19,32 @@ public class LiveEditorGridRenderer : MonoBehaviour
     private int _maxBarLineCount = 16;
 
     [Header("Thickness")]
-    [Tooltip("멀리 있는 선의 두께를 되살리는 정도입니다. 1이면 어느 높이에서나 화면상 두께가 같고, 0이면 보정을 끕니다. 0에서는 원경의 선이 1픽셀 아래로 내려가 스크롤할 때 깜빡입니다.")]
+    [Tooltip("멀리 있는 선을 트랙과 같은 비율로 얇게 만드는 정도입니다. 1이면 트랙과 함께 줄어들어 원근이 살고, 0이면 어느 높이에서나 화면상 두께가 같습니다.")]
     [Range(0f, 1f)]
     [SerializeField]
-    private float _thicknessCompensation = 1f;
+    private float _depthShrink = 1f;
 
     [Foldout("Hierarchy")]
     [SerializeField]
     private RectTransform _gridLineLayer;
 
-    private readonly List<RectTransform> _subdivisionLines = new List<RectTransform>();
-    private readonly List<RectTransform> _barLines = new List<RectTransform>();
+    private readonly LiveEditorGridLinePool _subdivisionLines = new LiveEditorGridLinePool(EPoolable.EditorGridLine);
+    private readonly LiveEditorGridLinePool _barLines = new LiveEditorGridLinePool(EPoolable.EditorBarLine);
 
     private UI_LiveTrackLanes _lanes;
     private LiveBarLayout _barLayout;
     private LiveScrollMapper _scrollMapper;
 
-    // 매 프레임 두께에 원근 보정을 곱하므로, 배율이 누적되지 않도록 프리팹 원본 두께를 따로 기억해 둡니다.
-    private float _subdivisionLineThickness;
-    private float _barLineThickness;
-
     private void Awake()
     {
-        _subdivisionLineThickness = FillLinePool(_subdivisionLines, EPoolable.EditorGridLine, _maxSubdivisionLineCount);
-        _barLineThickness = FillLinePool(_barLines, EPoolable.EditorBarLine, _maxBarLineCount);
+        _subdivisionLines.Fill(_gridLineLayer, _maxSubdivisionLineCount);
+        _barLines.Fill(_gridLineLayer, _maxBarLineCount);
     }
 
     private void OnDestroy()
     {
-        ReturnLinePool(_subdivisionLines, EPoolable.EditorGridLine);
-        ReturnLinePool(_barLines, EPoolable.EditorBarLine);
+        _subdivisionLines.ReturnAll();
+        _barLines.ReturnAll();
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
@@ -61,8 +58,8 @@ public class LiveEditorGridRenderer : MonoBehaviour
     {
         if (ReferenceEquals(_barLayout, null) || !_barLayout.IsBuilt || _lanes == null)
         {
-            DeactivateFrom(_barLines, 0);
-            DeactivateFrom(_subdivisionLines, 0);
+            _barLines.DeactivateFrom(0);
+            _subdivisionLines.DeactivateFrom(0);
             return;
         }
 
@@ -78,20 +75,21 @@ public class LiveEditorGridRenderer : MonoBehaviour
             float barRatio = _scrollMapper.ToVerticalRatio(barIndex, currentBarPosition, hitLineRatio);
             if (_scrollMapper.IsRatioVisible(barRatio) && usedBarLineCount < _barLines.Count)
             {
-                PlaceLine(_barLines[usedBarLineCount], _barLineThickness, barRatio);
+                PlaceLine(_barLines.GetLine(usedBarLineCount), _barLines.BaseThickness, barRatio);
                 usedBarLineCount++;
             }
 
             usedSubdivisionLineCount = FillBarSubdivisionLines(barIndex, cellsPerBar, currentBarPosition, hitLineRatio, usedSubdivisionLineCount);
         }
 
-        DeactivateFrom(_barLines, usedBarLineCount);
-        DeactivateFrom(_subdivisionLines, usedSubdivisionLineCount);
+        _barLines.DeactivateFrom(usedBarLineCount);
+        _subdivisionLines.DeactivateFrom(usedSubdivisionLineCount);
     }
 
     /// <summary>
     /// 마디 하나 안쪽의 분박선을 배치하고, 다음에 사용할 선 인덱스를 반환합니다.
     /// 마디 경계(cellIndex 0)는 마디선이 담당하므로 1번 셀부터 그립니다.
+    /// 음원이 끝난 뒤의 칸에는 노트를 놓을 수 없으므로(LiveBarLayout.TryGetCellAtBarPosition) 선도 그리지 않습니다.
     /// </summary>
     private int FillBarSubdivisionLines(int barIndex, int cellsPerBar, double currentBarPosition, float hitLineRatio, int usedLineCount)
     {
@@ -103,6 +101,12 @@ public class LiveEditorGridRenderer : MonoBehaviour
             }
 
             double barPosition = barIndex + (double)cellIndex / cellsPerBar;
+
+            if (_barLayout.SongEndBarPosition < barPosition)
+            {
+                break;
+            }
+
             float ratio = _scrollMapper.ToVerticalRatio(barPosition, currentBarPosition, hitLineRatio);
 
             if (!_scrollMapper.IsRatioVisible(ratio))
@@ -110,7 +114,7 @@ public class LiveEditorGridRenderer : MonoBehaviour
                 continue;
             }
 
-            PlaceLine(_subdivisionLines[usedLineCount], _subdivisionLineThickness, ratio);
+            PlaceLine(_subdivisionLines.GetLine(usedLineCount), _subdivisionLines.BaseThickness, ratio);
             usedLineCount++;
         }
 
@@ -118,73 +122,19 @@ public class LiveEditorGridRenderer : MonoBehaviour
     }
 
     /// <summary>
-    /// 선을 배치하면서 두께에 원근 보정을 곱합니다.
-    /// 3D 트랙에서 누운 선은 멀어질수록 거리의 제곱으로 얇아지는데, 화면 두께가 1픽셀 아래로 내려가면
-    /// 스크롤할 때 픽셀에 걸렸다 말았다 하며 깜빡이므로 트랙이 알려 주는 배율로 되돌려 줍니다.
+    /// 선을 배치하면서 두께에 그 높이의 트랙 축소 배율을 곱합니다.
+    /// 선을 트랙과 같이 좁혀야 멀리 있는 마디가 원근감 있게 보이지만, 그대로 두면 원경에서 서브픽셀까지 얇아져
+    /// 스크롤할 때 깜빡이므로 하한을 둡니다.
     /// </summary>
     private void PlaceLine(RectTransform lineTransform, float baseThickness, float verticalRatio)
     {
         _lanes.GetTrackEdgesAtRatio(verticalRatio, out float leftX, out float rightX, out float y);
 
+        float depthScale = Mathf.Lerp(1f, _lanes.GetApparentScaleAtRatio(verticalRatio), _depthShrink);
+        float thickness = Mathf.Max(MIN_LINE_THICKNESS, baseThickness * depthScale);
+
         lineTransform.gameObject.SetActive(true);
         lineTransform.anchoredPosition = new Vector2((leftX + rightX) * 0.5f, y);
-        float compensation = Mathf.Lerp(1f, _lanes.GetApparentScaleAtRatio(verticalRatio), _thicknessCompensation);
-        lineTransform.sizeDelta = new Vector2(rightX - leftX, baseThickness * compensation);
-    }
-
-    /// <summary>
-    /// 선 오브젝트를 미리 확보하고, 프리팹에 설정된 원본 두께를 돌려줍니다.
-    /// </summary>
-    private float FillLinePool(List<RectTransform> lines, EPoolable poolType, int capacity)
-    {
-        float baseThickness = 0f;
-
-        while (lines.Count < capacity)
-        {
-            GameObject go = PoolManager.Instance.Pop(poolType);
-
-            if (go == null)
-            {
-                break;
-            }
-
-            RectTransform rectTransform = go.GetComponent<RectTransform>();
-            baseThickness = rectTransform.sizeDelta.y;
-            rectTransform.SetParent(_gridLineLayer, false);
-            rectTransform.gameObject.SetActive(false);
-            lines.Add(rectTransform);
-        }
-
-        return baseThickness;
-    }
-
-    /// <summary>
-    /// 확보해 둔 선을 풀로 되돌립니다.
-    /// 풀은 꺼내 간 오브젝트를 추적하므로 반환하지 않고 사라지면 사용량 집계가 실제와 어긋나고,
-    /// 풀 정리 시점에 주인 없는 오브젝트가 남습니다.
-    /// 풀이 먼저 파괴된 뒤라면 되돌릴 곳이 없으므로 목록만 비웁니다.
-    /// </summary>
-    private static void ReturnLinePool(List<RectTransform> lines, EPoolable poolType)
-    {
-        if (PoolManager.HasInstance)
-        {
-            foreach (RectTransform line in lines)
-            {
-                if (line != null)
-                {
-                    PoolManager.Instance.Push(poolType, line.gameObject);
-                }
-            }
-        }
-
-        lines.Clear();
-    }
-
-    private static void DeactivateFrom(List<RectTransform> lines, int startIndex)
-    {
-        for (int i = startIndex; i < lines.Count; i++)
-        {
-            lines[i].gameObject.SetActive(false);
-        }
+        lineTransform.sizeDelta = new Vector2(rightX - leftX, thickness);
     }
 }

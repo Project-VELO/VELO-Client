@@ -13,6 +13,9 @@ public class LiveNoteRenderSettings
     [Range(0f, 0.25f)]
     public float HorizontalPaddingRatio = 0f;
 
+    [Tooltip("노트 한가운데를 그 시각의 기준선에 맞춥니다. 끄면 아랫변을 맞춥니다. 리듬게임은 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로 아랫변 기준이지만, 박자선이 한 줄뿐인 채보 에디터에서는 노트가 선을 덮도록 켭니다.")]
+    public bool IsCenteredOnBeatLine = false;
+
     [Tooltip("롱노트 몸통 텍스처 한 장이 차지하는 트랙 위 세로 길이입니다. 트랙 기준이라 하이스피드를 바꿔도 밀도가 일정합니다.")]
     public float BodyTileLength = 64f;
 }
@@ -29,7 +32,7 @@ public class LiveNoteRenderer
     private readonly LiveNoteRenderSettings _settings;
     private readonly LiveNoteVisualPool _visualPool;
     private readonly LiveHoldNoteRenderer _holdRenderer;
-    private readonly LiveNoteDesignLayout _designLayout = new LiveNoteDesignLayout();
+    private readonly LiveNoteDesignLayout _designLayout;
 
     // 리듬게임에서 판정이 끝난 노트를 가리는 목록입니다. 채보 데이터에서 노트를 지우면 결과 집계와
     // 다시하기가 망가지므로, 표시 여부만 따로 관리합니다. 채보 에디터는 이 목록을 채우지 않습니다.
@@ -43,6 +46,7 @@ public class LiveNoteRenderer
     public LiveNoteRenderer(LiveNoteRenderSettings settings, RectTransform noteLayer, LiveNoteSpriteTable spriteTable)
     {
         _settings = settings;
+        _designLayout = new LiveNoteDesignLayout(settings.IsCenteredOnBeatLine);
         _visualPool = new LiveNoteVisualPool(noteLayer, spriteTable);
         _holdRenderer = new LiveHoldNoteRenderer(settings, _designLayout);
     }
@@ -122,6 +126,8 @@ public class LiveNoteRenderer
             }
 
             // 롱노트는 머리를 판정선에 세워 두고 몸통이 먹혀 들어가게 합니다. 판정선을 넘긴 만큼이 곧 지나간 길이입니다.
+            // 이 하한은 연출인 동시에 안전장치입니다. 롱노트는 꼬리가 남아 있는 한 계속 그려지므로 머리가 깊이 -0.22를
+            // 지나 소실선 너머로 갈 수 있고, 그 구간에서는 트랙 폭이 뒤집혀 몸통이 화면 위쪽에 엉뚱하게 맺힙니다.
             float drawRatio = isHold ? Mathf.Max(headRatio, hitLineRatio) : headRatio;
             RefreshMarker(handle, note.Lane, drawRatio);
 
@@ -151,13 +157,11 @@ public class LiveNoteRenderer
     }
 
     /// <summary>
-    /// 노트 머리를 시안이 정한 자리에 놓습니다.
+    /// 노트 머리를 그 높이의 레인에 맞춰 놓습니다. 자리와 크기를 구하는 근거는 LiveNoteDesignLayout에 적어 두었습니다.
     ///
-    /// 레인 중심에서 계산하지 않는 이유는 노트가 기울어진 평행사변형이라 그림이 레인을 채우는 자리와
-    /// 사각형의 자리가 다르기 때문입니다(LiveNoteDesignLayout 참고).
-    ///
-    /// 세로 기준은 아랫변입니다. 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로,
+    /// 세로 기준은 리듬게임에서 아랫변입니다. 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로,
     /// 중심을 맞추면 노트가 아래쪽 줄을 반쯤 넘어갑니다(3차 빌드 피드백).
+    /// 박자선이 한 줄뿐인 채보 에디터만 IsCenteredOnBeatLine으로 기준을 한가운데로 옮깁니다.
     /// </summary>
     private void RefreshMarker(LiveNoteVisualHandle handle, int lane, float verticalRatio)
     {

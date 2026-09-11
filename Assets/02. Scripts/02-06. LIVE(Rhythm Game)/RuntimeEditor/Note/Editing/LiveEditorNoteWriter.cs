@@ -20,21 +20,35 @@ public class LiveEditorNoteWriter
 
     public NoteData AddNote(int lane, int timeMs, ENoteType noteType)
     {
+        return AddNote(lane, timeMs, noteType, 0);
+    }
+
+    public NoteData AddNote(int lane, int timeMs)
+    {
+        return AddNote(lane, timeMs, GetNoteTypeForLane(lane), 0);
+    }
+
+    /// <summary>
+    /// 길이가 0인 롱노트는 저장 시 검증에서 거부되므로(LiveEditorChartValidator), 놓는 순간부터 길이를 함께 받습니다.
+    /// </summary>
+    public NoteData AddHoldNote(int lane, int timeMs, int holdDurationMs)
+    {
+        return AddNote(lane, timeMs, ENoteType.LONG, holdDurationMs);
+    }
+
+    private NoteData AddNote(int lane, int timeMs, ENoteType noteType, int holdDurationMs)
+    {
         var note = new NoteData
         {
             NoteId = System.Guid.NewGuid().ToString(),
             TimeMs = timeMs,
             Lane = lane,
             NoteType = noteType,
+            HoldDurationMs = holdDurationMs,
         };
 
         _undoRedoManager.PushCommand(new AddNoteCommand(_controller.CurrentChart.Notes, note));
         return note;
-    }
-
-    public NoteData AddNote(int lane, int timeMs)
-    {
-        return AddNote(lane, timeMs, GetNoteTypeForLane(lane));
     }
 
     /// <summary>

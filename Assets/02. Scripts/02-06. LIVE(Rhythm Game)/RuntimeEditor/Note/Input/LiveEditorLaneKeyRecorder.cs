@@ -65,6 +65,10 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 정지 상태에서 같은 키를 두 번 누르면 같은 셀로 스냅되므로, 이미 그 자리에 있는 노트를 먼저 걸러 냅니다.
+    /// 시각까지 똑같이 겹친 노트는 화면에서 한 장으로 보여 알아차리기 어렵습니다.
+    /// </summary>
     private void RecordNoteOnLane(int lane)
     {
         if (!_noteEditing.EditContext.CanEdit)
@@ -73,6 +77,11 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
         }
 
         if (!_noteEditing.EditContext.TryGetCellAtTime(_audioPlayer.CurrentTimeMs, out int timeMs))
+        {
+            return;
+        }
+
+        if (_noteEditing.Selection.FindNoteNear(lane, timeMs) != null)
         {
             return;
         }

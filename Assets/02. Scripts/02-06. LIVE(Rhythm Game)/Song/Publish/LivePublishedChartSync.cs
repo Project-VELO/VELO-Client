@@ -19,6 +19,8 @@ using UnityEngine;
 /// </summary>
 public class LivePublishedChartSync
 {
+    private readonly LiveSongPublishWriter _publishWriter = new LiveSongPublishWriter();
+
     /// <summary>
     /// 저장된 작업본 채보를 수록본에도 반영합니다. 반영 대상이 아니면 아무것도 하지 않고 NotPublished로 답합니다.
     /// </summary>
@@ -48,30 +50,17 @@ public class LivePublishedChartSync
         return WritePublishedChart(song.SongId, difficulty, chart, songFolder, publishedSong, metadata);
     }
 
-    /// <summary>
-    /// 곡이 어느 챕터에 수록되어 있는지는 폴더 구조에만 남아 있으므로(SongData.ChapterId는 직렬화되지 않습니다)
-    /// 챕터를 훑어 찾습니다.
-    /// </summary>
     private bool TryFindPublishedSongFolder(string songId, out string songFolder)
     {
         songFolder = null;
 
-        if (string.IsNullOrEmpty(songId))
+        if (!_publishWriter.TryFindPublishedChapterFolder(songId, out string chapterFolder))
         {
             return false;
         }
 
-        foreach (string chapterFolder in LiveSongPaths.GetPublishedChapterFolders())
-        {
-            string candidate = LiveSongPaths.GetPublishedSongFolder(chapterFolder, songId);
-            if (Directory.Exists(candidate))
-            {
-                songFolder = candidate;
-                return true;
-            }
-        }
-
-        return false;
+        songFolder = LiveSongPaths.GetPublishedSongFolder(chapterFolder, songId);
+        return true;
     }
 
     private SongData LoadPublishedSong(string songFolder)

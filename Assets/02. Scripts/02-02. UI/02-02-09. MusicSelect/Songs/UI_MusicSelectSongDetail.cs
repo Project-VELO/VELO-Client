@@ -8,6 +8,8 @@ using VInspector;
 /// </summary>
 public class UI_MusicSelectSongDetail : MonoBehaviour
 {
+    private const string NOTE_COUNT_LABEL = "노트 수";
+
     private const string EMPTY_VALUE_TEXT = "-";
     private const string UNKNOWN_LENGTH_TEXT = "--:--";
 
@@ -31,14 +33,16 @@ public class UI_MusicSelectSongDetail : MonoBehaviour
 
         _bpmText.text = $"BPM {Mathf.RoundToInt(song.Bpm)}";
         _lengthText.text = FormatLength(song.Duration);
-        _noteCountText.text = summary.HasChart ? $"노트 수 {summary.NoteCount}" : $"노트 수 {EMPTY_VALUE_TEXT}";
+        _noteCountText.text = summary.HasChart
+            ? $"{UiText.Localize(NOTE_COUNT_LABEL)} {summary.NoteCount}"
+            : $"{UiText.Localize(NOTE_COUNT_LABEL)} {EMPTY_VALUE_TEXT}";
     }
 
     public void Clear()
     {
         _bpmText.text = $"BPM {EMPTY_VALUE_TEXT}";
         _lengthText.text = UNKNOWN_LENGTH_TEXT;
-        _noteCountText.text = $"노트 수 {EMPTY_VALUE_TEXT}";
+        _noteCountText.text = $"{UiText.Localize(NOTE_COUNT_LABEL)} {EMPTY_VALUE_TEXT}";
     }
 
     /// <summary>

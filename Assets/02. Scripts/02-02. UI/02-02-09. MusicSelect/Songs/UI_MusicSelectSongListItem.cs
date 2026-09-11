@@ -68,7 +68,7 @@ public class UI_MusicSelectSongListItem : MonoBehaviour
     {
         _itemIndex = itemIndex;
         _isLocked = isLocked;
-        _songNameText.text = songTitle;
+        _songNameText.text = UiText.Localize(songTitle);
         _button.interactable = isInteractable && !isLocked;
 
         SetRank(bestRecord, isLocked);

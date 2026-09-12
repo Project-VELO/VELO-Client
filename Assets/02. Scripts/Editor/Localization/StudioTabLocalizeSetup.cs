@@ -13,8 +13,15 @@ using UnityEngine;
 /// </summary>
 public static class StudioTabLocalizeSetup
 {
-    private const string PANEL = "Assets/03. Prefabs/03-02. UI/03-02-07. Studio/P_UI_Panel_Studio.prefab";
-    private const string TABS_NODE = "Layoutgroup_Horizontal_Buttons";
+    /// <summary>
+    /// 스튜디오 화면과 라이브 준비 팝업 둘 다 손봐야 합니다. 팝업은 스튜디오 패널을 중첩한 것이
+    /// 아니라 언팩한 복사본이라, 한쪽만 고치면 다른 쪽에 한글이 그대로 남습니다.
+    /// </summary>
+    private static readonly string[,] PANELS =
+    {
+        { "Assets/03. Prefabs/03-02. UI/03-02-07. Studio/P_UI_Panel_Studio.prefab", "Layoutgroup_Horizontal_Buttons" },
+        { "Assets/03. Prefabs/03-02. UI/03-02-09. MusicSelect/P_UI_Popup_PhotocardSelect.prefab", "P_UI_Panel_Studio/Layoutgroup_Horizontal_Buttons" },
+    };
     private const string FONT_PATH = "Assets/10. Fonts/NotoSansKR-Regular SDF.asset";
     private const string IMAGE_FOLDER = "Assets/04. Images/04-02. UI/04-02-09. MusicSelect/Setting/";
 
@@ -28,31 +35,43 @@ public static class StudioTabLocalizeSetup
 
     private static readonly string[,] TABS =
     {
-        { "P_UI_Button_PhotocardSetting", "_photocardTabLabel", "_photocardSelectedSprite", "Image_Setting_Tab_Photocard_Selected" },
-        { "P_UI_Button_PhotocardSetting", "_photocardTabLabel", "_photocardNormalSprite", "Image_Setting_Tab_Photocard_Normal" },
-        { "P_UI_Button_ItemSetting", "_itemTabLabel", "_itemSelectedSprite", "Image_Setting_Tab_Costume_Selected" },
-        { "P_UI_Button_ItemSetting", "_itemTabLabel", "_itemNormalSprite", "Image_Setting_Tab_Costume_Normal" },
+        { "P_UI_Button_PhotocardSetting", "_photocardTabLabel", "_photocardSelectedSprite", "Image_Setting_Tab_Photocard_Selected", "1. 포토카드 세팅" },
+        { "P_UI_Button_PhotocardSetting", "_photocardTabLabel", "_photocardNormalSprite", "Image_Setting_Tab_Photocard_Normal", "1. 포토카드 세팅" },
+        { "P_UI_Button_ItemSetting", "_itemTabLabel", "_itemSelectedSprite", "Image_Setting_Tab_Costume_Selected", "2. 의상 & 악세서리" },
+        { "P_UI_Button_ItemSetting", "_itemTabLabel", "_itemNormalSprite", "Image_Setting_Tab_Costume_Normal", "2. 의상 & 악세서리" },
     };
 
     [MenuItem("VELO/Localization/스튜디오 탭 글자를 TMP로 돌리기")]
     public static void Apply()
     {
         TMP_FontAsset font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
-        GameObject root = PrefabUtility.LoadPrefabContents(PANEL);
-        Transform tabs = root.transform.Find(TABS_NODE);
+
+        for (int i = 0; i < PANELS.GetLength(0); i++)
+        {
+            ApplyTo(PANELS[i, 0], PANELS[i, 1], font);
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+
+    private static void ApplyTo(string panelPath, string tabsNode, TMP_FontAsset font)
+    {
+        GameObject root = PrefabUtility.LoadPrefabContents(panelPath);
+        Transform tabs = root.transform.Find(tabsNode);
 
         if (tabs == null)
         {
-            Debug.LogError($"[StudioTabLocalizeSetup] 탭 묶음을 찾지 못했습니다: {TABS_NODE}");
+            Debug.LogError($"[StudioTabLocalizeSetup] 탭 묶음을 찾지 못했습니다: {panelPath} / {tabsNode}");
             PrefabUtility.UnloadPrefabContents(root);
             return;
         }
 
-        UI_StudioTabs owner = root.GetComponentInChildren<UI_StudioTabs>(true);
+        MonoBehaviour owner = FindTabsComponent(root);
 
         if (owner == null)
         {
-            Debug.LogError("[StudioTabLocalizeSetup] UI_StudioTabs를 찾지 못했습니다.");
+            Debug.LogError($"[StudioTabLocalizeSetup] 탭 컴포넌트를 찾지 못했습니다: {panelPath}");
             PrefabUtility.UnloadPrefabContents(root);
             return;
         }
@@ -71,7 +90,7 @@ public static class StudioTabLocalizeSetup
 
             serialized.FindProperty(TABS[i, 2]).objectReferenceValue = erased;
 
-            TMP_Text label = EnableLabel(tabs.Find(TABS[i, 0]), font);
+            TMP_Text label = EnableLabel(tabs.Find(TABS[i, 0]), font, TABS[i, 4]);
 
             if (label != null)
             {
@@ -80,18 +99,16 @@ public static class StudioTabLocalizeSetup
         }
 
         serialized.ApplyModifiedPropertiesWithoutUndo();
-        PrefabUtility.SaveAsPrefabAsset(root, PANEL);
+        PrefabUtility.SaveAsPrefabAsset(root, panelPath);
         PrefabUtility.UnloadPrefabContents(root);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-        Debug.Log("[StudioTabLocalizeSetup] 탭 글자를 TMP로 돌렸습니다.");
+        Debug.Log($"[StudioTabLocalizeSetup] 탭 글자를 TMP로 돌렸습니다: {System.IO.Path.GetFileName(panelPath)}");
     }
 
     /// <summary>
     /// 프리팹에 꺼진 채 놓여 있던 글자 오브젝트를 켜고 값을 맞춥니다.
     /// 새로 만들지 않는 것은 자리와 정렬이 이미 디자인대로 잡혀 있기 때문입니다.
     /// </summary>
-    private static TMP_Text EnableLabel(Transform tab, TMP_FontAsset font)
+    private static TMP_Text EnableLabel(Transform tab, TMP_FontAsset font, string korean)
     {
         if (tab == null)
         {
@@ -116,6 +133,7 @@ public static class StudioTabLocalizeSetup
         }
 
         label.font = font;
+        label.text = korean;
         label.alignment = TextAlignmentOptions.Center;
         label.enableWordWrapping = false;
         label.raycastTarget = false;
@@ -126,5 +144,31 @@ public static class StudioTabLocalizeSetup
         ((RectTransform)node).sizeDelta = new Vector2(LABEL_WIDTH, LABEL_HEIGHT);
 
         return label;
+    }
+
+    /// <summary>
+    /// 탭을 맡은 컴포넌트를 찾습니다. 클래스 이름으로 찾지 않는 것은 스튜디오 화면과 라이브 준비
+    /// 팝업이 이름만 다른 같은 모양의 컴포넌트를 각자 쓰고 있기 때문입니다. 칸 이름으로 알아봅니다.
+    /// </summary>
+    private static MonoBehaviour FindTabsComponent(GameObject root)
+    {
+        MonoBehaviour[] behaviours = root.GetComponentsInChildren<MonoBehaviour>(true);
+
+        for (int i = 0; i < behaviours.Length; i++)
+        {
+            if (behaviours[i] == null)
+            {
+                continue;
+            }
+
+            SerializedObject probe = new SerializedObject(behaviours[i]);
+
+            if (probe.FindProperty("_photocardSelectedSprite") != null)
+            {
+                return behaviours[i];
+            }
+        }
+
+        return null;
     }
 }

@@ -55,8 +55,19 @@ public static class UiTextImageTargetTable
     public static readonly UiTextImageTarget[] Scenes =
     {
         new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Image_Title", "일시정지", 60, "#302850", 2, true),
-        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Quit/Image_Label", "나가기", 43, "#282048", 2, true),
-        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Restart/Image_Label", "처음부터", 44, "#000000", 2, true),
-        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Resume/Image_Label", "계속하기", 43, "#282048", 2, true),
+
+        // 한 줄 안에서 제목과 설명의 왼쪽 끝이 x=-160으로 맞춰져 있습니다. 글자로 바뀐 뒤에도
+        // 그 줄을 지키도록 왼쪽 정렬로 두고 상자를 넓힙니다. 가운데 정렬로 두면 언어마다
+        // 글자 길이가 달라 시작 자리가 흔들립니다.
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Quit/Image_Label", "나가기", 43, "#282048", 1, true, 300f, 34f),
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Restart/Image_Label", "처음부터", 44, "#000000", 1, true, 300f, 34f),
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Resume/Image_Label", "계속하기", 43, "#282048", 1, true, 300f, 34f),
+
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Quit/Image_Desc",
+            "FAILED 처리 후 결과 화면 이동", 24, "#585878", 1, false, 340f, 26f),
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Restart/Image_Desc",
+            "같은 곡 처음부터 재시작", 24, "#585878", 1, false, 340f, 26f),
+        new UiTextImageTarget(LIVE_SCENE, PAUSE_ROOT + "Button_Resume/Image_Desc",
+            "3초 카운트다운 후 재개", 24, "#585878", 1, false, 340f, 26f),
     };
 }

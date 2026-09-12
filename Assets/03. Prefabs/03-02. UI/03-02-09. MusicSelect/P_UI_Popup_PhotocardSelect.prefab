@@ -5597,7 +5597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4400738590985058954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5615,7 +5615,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 420, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &575102415235795641
 CanvasRenderer:
@@ -5639,13 +5639,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2. \uC758\uC0C1 & \uC545\uC138\uC11C\uB9AC\n"
+  m_text: "2. \uC758\uC0C1 & \uC545\uC138\uC11C\uB9AC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
   m_sharedMaterial: {fileID: -2427164502970520381, guid: 6a3df12e033f463489a70fffaf477ae6, type: 2}
@@ -5672,12 +5672,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 14
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -5689,7 +5689,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -6834,11 +6834,15 @@ MonoBehaviour:
   _itemTabButton: {fileID: 6787301023000067869}
   _itemPanel: {fileID: 7441872666874283578}
   _photocardTabImage: {fileID: 9079040027174932003}
+  _photocardTabLabel: {fileID: 7865051995580805449}
   _itemTabImage: {fileID: 3240479499867345854}
-  _photocardSelectedSprite: {fileID: 21300000, guid: 5da9e5b11cf9ebb45938d4513ee4ce93, type: 3}
-  _photocardNormalSprite: {fileID: 21300000, guid: b14f21b1f100313489ff100db09916e6, type: 3}
-  _itemSelectedSprite: {fileID: 21300000, guid: 7fe973d3195bcbb4e99e5a11ed6832eb, type: 3}
-  _itemNormalSprite: {fileID: 21300000, guid: 5819aa93073eb954bb44c48b419396b2, type: 3}
+  _itemTabLabel: {fileID: 4332747874791451860}
+  _photocardSelectedSprite: {fileID: -7333527699993998442, guid: 45d0aa99beebc93439130b2fc591dc92, type: 3}
+  _photocardNormalSprite: {fileID: 9062337749729849112, guid: 1e2a366c3e2c47b48b3f9e99a14a3499, type: 3}
+  _itemSelectedSprite: {fileID: 1335086989938454427, guid: a8e3692375cec5a4e91aed81dad7e805, type: 3}
+  _itemNormalSprite: {fileID: 5143940405706111787, guid: bc84fc1d698d097498dc69799e182e65, type: 3}
+  _selectedTextColor: {r: 1, g: 1, b: 1, a: 1}
+  _normalTextColor: {r: 0.19, g: 0.14, b: 0.45, a: 1}
 --- !u!1 &2956368426122609041
 GameObject:
   m_ObjectHideFlags: 0
@@ -15764,7 +15768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7788364554761905943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15782,7 +15786,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 420, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6267999935829808932
 CanvasRenderer:
@@ -15806,7 +15810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15839,12 +15843,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 14
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -15856,7 +15860,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

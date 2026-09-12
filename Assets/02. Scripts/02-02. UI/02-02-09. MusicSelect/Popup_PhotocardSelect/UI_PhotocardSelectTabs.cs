@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -35,8 +36,17 @@ public class UI_PhotocardSelectTabs : MonoBehaviour
     [SerializeField]
     private Image _photocardTabImage;
 
+    /// <summary>
+    /// 탭 글자입니다. 그림에 구워 두면 언어를 바꿔도 한글이 남아 밖으로 빼냈습니다.
+    /// </summary>
+    [SerializeField]
+    private TMP_Text _photocardTabLabel;
+
     [SerializeField]
     private Image _itemTabImage;
+
+    [SerializeField]
+    private TMP_Text _itemTabLabel;
 
     [Foldout("Project")]
     [Header("탭 배경 그림")]
@@ -51,6 +61,14 @@ public class UI_PhotocardSelectTabs : MonoBehaviour
 
     [SerializeField]
     private Sprite _itemNormalSprite;
+
+    [Foldout("Settings")]
+    [Header("탭 글자색")]
+    [SerializeField]
+    private Color _selectedTextColor = Color.white;
+
+    [SerializeField]
+    private Color _normalTextColor = new Color(0.19f, 0.14f, 0.45f, 1f);
 
     public EPhotocardSelectTab SelectedTab { get; private set; } = EPhotocardSelectTab.PHOTOCARD;
 
@@ -79,6 +97,20 @@ public class UI_PhotocardSelectTabs : MonoBehaviour
         bool isPhotocard = tab == EPhotocardSelectTab.PHOTOCARD;
         SetSprite(_photocardTabImage, isPhotocard ? _photocardSelectedSprite : _photocardNormalSprite);
         SetSprite(_itemTabImage, isPhotocard ? _itemNormalSprite : _itemSelectedSprite);
+
+        // 배경만 바꾸면 진한 보라 위에 진한 글자가 얹혀 읽히지 않습니다.
+        SetLabelColor(_photocardTabLabel, isPhotocard);
+        SetLabelColor(_itemTabLabel, !isPhotocard);
+    }
+
+    private void SetLabelColor(TMP_Text target, bool isSelected)
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        target.color = isSelected ? _selectedTextColor : _normalTextColor;
     }
 
     /// <summary>

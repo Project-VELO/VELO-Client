@@ -27,6 +27,9 @@ public static class UiTextImageConverter
     /// </summary>
     private const int MIN_FONT_SIZE = 10;
 
+    /// <summary>TMP의 HorizontalAlignmentOptions에서 왼쪽 정렬 값입니다.</summary>
+    private const int LEFT_ALIGNMENT = 1;
+
     [MenuItem("VELO/Localization/글자 그림을 TMP로 바꾸기")]
     public static void ConvertAll()
     {
@@ -150,9 +153,20 @@ public static class UiTextImageConverter
         text.fontSize = target.FontSize;
 
         // 그림 크기로 잡혀 있던 상자는 글자를 담기에 좁습니다. 표에 적힌 값이 있으면 다시 잡습니다.
+        //
+        // 왼쪽 정렬인 자리는 넓히면서 왼쪽 끝을 그대로 둡니다. 가운데를 기준으로 넓히면
+        // 글자가 시작하는 자리가 왼쪽으로 밀려, 위아래로 줄을 맞춰 둔 배치가 어긋납니다.
         if (target.RectSize != Vector2.zero)
         {
-            ((RectTransform)node).sizeDelta = target.RectSize;
+            RectTransform rect = (RectTransform)node;
+            float widened = target.RectSize.x - rect.sizeDelta.x;
+
+            rect.sizeDelta = target.RectSize;
+
+            if (target.HorizontalAlignment == LEFT_ALIGNMENT)
+            {
+                rect.anchoredPosition += new Vector2(widened * 0.5f, 0f);
+            }
         }
 
         UiTextImageRewire.Apply(node, text);

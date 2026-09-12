@@ -32,7 +32,7 @@ public class UI_ErrorPopup : UI_Popup
 
     public void SetError(string message, Action onConfirmed)
     {
-        _messageText.text = message;
+        _messageText.text = UiText.Localize(message);
         _onConfirmed = onConfirmed;
     }
 

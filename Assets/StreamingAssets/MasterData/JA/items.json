@@ -1,0 +1,25 @@
+{
+  "SchemaVersion": 1,
+  "Items": [
+    {
+      "ItemId": "ITEM_COSTUME_SHABBY_UNIFORM",
+      "DisplayName": "くたびれた制服",
+      "Description": "新規ゲーム開始時に初期装備となる衣装です。"
+    },
+    {
+      "ItemId": "ITEM_COSTUME_MIDNIGHT_STAGE",
+      "DisplayName": "真夜中のステージ衣装",
+      "Description": "着せ替え動作の確認用、二着目の衣装です。"
+    },
+    {
+      "ItemId": "ITEM_ACCESSORY_RUSTED_NECKLACE",
+      "DisplayName": "錆びたネックレス",
+      "Description": "新規ゲーム開始時に初期装備となるアクセサリーです。"
+    },
+    {
+      "ItemId": "ITEM_ACCESSORY_SILVER_CROSS",
+      "DisplayName": "銀の十字架",
+      "Description": "着せ替え動作の確認用、二つ目のアクセサリーです。"
+    }
+  ]
+}

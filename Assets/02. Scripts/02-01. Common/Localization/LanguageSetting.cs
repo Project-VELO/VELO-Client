@@ -16,9 +16,18 @@ public static class LanguageSetting
     private const string PREFS_KEY = "Language";
 
     /// <summary>
-    /// 언어가 바뀌었습니다. 이미 화면에 떠 있는 글자를 다시 그리는 쪽이 구독합니다.
+    /// 언어가 바뀌었습니다. 새 언어로 데이터를 다시 읽는 쪽이 구독합니다.
     /// </summary>
     public static event Action<ELanguage> OnChanged;
+
+    /// <summary>
+    /// 데이터가 새 언어로 갖춰진 뒤입니다. 이미 떠 있는 화면을 다시 그리는 쪽이 구독합니다.
+    ///
+    /// OnChanged와 나눈 것은 순서 때문입니다. 화면을 다시 그리는 쪽이 먼저 돌면 아직 옛 언어인
+    /// 마스터 데이터를 읽어, 한 번 누른 것이 반영되지 않은 것처럼 보입니다. 구독 순서에 맡기면
+    /// 누가 언제 구독했는지(게임 시작 vs 씬 진입)에 따라 달라져 믿고 쓸 수 없습니다.
+    /// </summary>
+    public static event Action<ELanguage> OnApplied;
 
     private static ELanguage? _current;
 
@@ -47,6 +56,7 @@ public static class LanguageSetting
         PlayerPrefs.Save();
 
         OnChanged?.Invoke(language);
+        OnApplied?.Invoke(language);
     }
 
     /// <summary>

@@ -47,7 +47,7 @@ public static class UiTextImageConverter
 
     private static int ConvertPrefabs(TMP_FontAsset font)
     {
-        Dictionary<string, List<UiTextImageTarget>> byAsset = GroupByAsset(UiTextImageTargetTable.Prefabs);
+        Dictionary<string, List<UiTextImageTarget>> byAsset = UiTextImageLookup.GroupByAsset(UiTextImageTargetTable.Prefabs);
         int changed = 0;
 
         foreach (KeyValuePair<string, List<UiTextImageTarget>> pair in byAsset)
@@ -81,7 +81,7 @@ public static class UiTextImageConverter
 
     private static int ConvertScenes(TMP_FontAsset font)
     {
-        Dictionary<string, List<UiTextImageTarget>> byAsset = GroupByAsset(UiTextImageTargetTable.Scenes);
+        Dictionary<string, List<UiTextImageTarget>> byAsset = UiTextImageLookup.GroupByAsset(UiTextImageTargetTable.Scenes);
         int changed = 0;
 
         foreach (KeyValuePair<string, List<UiTextImageTarget>> pair in byAsset)
@@ -91,7 +91,7 @@ public static class UiTextImageConverter
 
             foreach (UiTextImageTarget target in pair.Value)
             {
-                applied += Convert(FindInScene(scene, target.NodePath), target, font) ? 1 : 0;
+                applied += Convert(UiTextImageLookup.FindInScene(scene, target.NodePath), target, font) ? 1 : 0;
             }
 
             if (0 < applied)
@@ -105,28 +105,6 @@ public static class UiTextImageConverter
         }
 
         return changed;
-    }
-
-    /// <summary>
-    /// 씬은 루트가 여럿이라 경로의 첫 칸으로 루트를 고른 뒤 나머지를 따라 내려갑니다.
-    /// </summary>
-    private static Transform FindInScene(Scene scene, string nodePath)
-    {
-        int split = nodePath.IndexOf('/');
-        string rootName = 0 <= split ? nodePath.Substring(0, split) : nodePath;
-        string rest = 0 <= split ? nodePath.Substring(split + 1) : string.Empty;
-
-        foreach (GameObject root in scene.GetRootGameObjects())
-        {
-            if (root.name != rootName)
-            {
-                continue;
-            }
-
-            return string.IsNullOrEmpty(rest) ? root.transform : root.transform.Find(rest);
-        }
-
-        return null;
     }
 
     /// <summary>
@@ -185,23 +163,5 @@ public static class UiTextImageConverter
         }
 
         return true;
-    }
-
-    private static Dictionary<string, List<UiTextImageTarget>> GroupByAsset(UiTextImageTarget[] targets)
-    {
-        Dictionary<string, List<UiTextImageTarget>> byAsset = new Dictionary<string, List<UiTextImageTarget>>();
-
-        for (int i = 0; i < targets.Length; i++)
-        {
-            if (!byAsset.TryGetValue(targets[i].AssetPath, out List<UiTextImageTarget> list))
-            {
-                list = new List<UiTextImageTarget>();
-                byAsset[targets[i].AssetPath] = list;
-            }
-
-            list.Add(targets[i]);
-        }
-
-        return byAsset;
     }
 }

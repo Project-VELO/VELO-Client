@@ -12,17 +12,10 @@ using UnityEngine.UI;
 /// 그림에 글자가 박혀 있으면 언어를 바꿔도 한글이 그대로 남습니다. 일본어판 그림을 따로 그리는
 /// 대신 TMP로 바꾸면 UiText의 번역 표에 얹혀 글자가 함께 바뀝니다.
 ///
-/// 바꾸는 것은 글자만 든 그림뿐입니다. 아이콘이나 배경이 함께 구워진 그림은 TMP로 바꾸면
-/// 그 그림이 사라지므로 표에 넣지 않았습니다(홈 내비게이션 세 장, 스크립트 확인 버튼,
-/// 자동 편성과 초기화 버튼 네 장). 그쪽은 일본어판 그림이 필요합니다.
+/// 무엇을 바꾸고 무엇을 남겼는지는 UiTextImageTargetTable에 적어 두었습니다.
 ///
 /// Image와 TextMeshProUGUI는 둘 다 Graphic이라 한 오브젝트에 함께 둘 수 없습니다.
-/// 반드시 지운 뒤에 답니다.
-///
-/// 일정 카드의 '바로가기'와 '완료'도 표에 없습니다. 그 둘은 UI_ScheduleShortcutButton이
-/// 완료 여부에 따라 Image의 스프라이트를 갈아 끼우고 SetNativeSize로 자리까지 잡는 구조라,
-/// Image만 떼면 _label 참조가 끊겨 완료 상태에서도 '바로가기'가 그대로 남습니다.
-/// 그쪽을 옮기려면 컴포넌트를 글자 기준으로 다시 써야 합니다.
+/// 반드시 지운 뒤에 답니다. 순서를 바꾸면 조용히 실패합니다.
 /// </summary>
 public static class UiTextImageConverter
 {
@@ -177,6 +170,14 @@ public static class UiTextImageConverter
         text.fontSizeMax = target.FontSize;
         text.fontSizeMin = MIN_FONT_SIZE;
         text.fontSize = target.FontSize;
+
+        // 그림 크기로 잡혀 있던 상자는 글자를 담기에 좁습니다. 표에 적힌 값이 있으면 다시 잡습니다.
+        if (target.RectSize != Vector2.zero)
+        {
+            ((RectTransform)node).sizeDelta = target.RectSize;
+        }
+
+        UiTextImageRewire.Apply(node, text);
 
         if (target.IsBold)
         {

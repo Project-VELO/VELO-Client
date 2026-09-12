@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -8,8 +9,9 @@ using VInspector;
 /// 두 화면을 따로 두지 않고 한 화면에서 바꾸는 것은, 어느 쪽을 보고 있든 LIVE START까지의
 /// 거리가 같아야 하기 때문입니다. 탭을 오갈 때 편성이 초기화되지도 않습니다.
 ///
-/// 탭 배경은 선택·비선택 두 장을 갈아 끼웁니다. 글자가 그림에 들어 있어 색만 바꾸는 것으로는
-/// 선택 상태가 드러나지 않습니다.
+/// 탭 배경은 선택·비선택 두 장을 갈아 끼웁니다. 글자는 그림에서 빼내 TMP로 얹었습니다.
+/// 그림에 글자가 들어 있으면 언어를 바꿔도 한글이 남기 때문입니다. 대신 선택 상태에 따라
+/// 글자색까지 여기서 바꿉니다. 배경만 바꾸면 진한 배경 위에 진한 글자가 얹혀 읽히지 않습니다.
 /// </summary>
 public class UI_StudioTabs : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class UI_StudioTabs : MonoBehaviour
     private Image _photocardTabImage;
 
     [SerializeField]
+    private TMP_Text _photocardTabLabel;
+
+    [SerializeField]
     private GameObject _photocardPanel;
 
     [Foldout("Hierarchy")]
@@ -31,6 +36,9 @@ public class UI_StudioTabs : MonoBehaviour
 
     [SerializeField]
     private Image _itemTabImage;
+
+    [SerializeField]
+    private TMP_Text _itemTabLabel;
 
     [SerializeField]
     private GameObject _itemPanel;
@@ -48,6 +56,14 @@ public class UI_StudioTabs : MonoBehaviour
 
     [SerializeField]
     private Sprite _itemNormalSprite;
+
+    [Foldout("Settings")]
+    [Header("탭 글자색")]
+    [SerializeField]
+    private Color _selectedTextColor = Color.white;
+
+    [SerializeField]
+    private Color _normalTextColor = new Color(0.19f, 0.14f, 0.45f, 1f);
 
     private void Awake()
     {
@@ -94,6 +110,19 @@ public class UI_StudioTabs : MonoBehaviour
 
         SetSprite(_photocardTabImage, isPhotocard ? _photocardSelectedSprite : _photocardNormalSprite);
         SetSprite(_itemTabImage, isPhotocard ? _itemNormalSprite : _itemSelectedSprite);
+
+        SetLabelColor(_photocardTabLabel, isPhotocard);
+        SetLabelColor(_itemTabLabel, !isPhotocard);
+    }
+
+    private void SetLabelColor(TMP_Text target, bool isSelected)
+    {
+        if (target == null)
+        {
+            return;
+        }
+
+        target.color = isSelected ? _selectedTextColor : _normalTextColor;
     }
 
     /// <summary>

@@ -12,6 +12,7 @@ public static class UiTextImageTargetTable
     private const string HOME = "Assets/03. Prefabs/03-02. UI/03-02-01. Home/";
     private const string STORY = "Assets/03. Prefabs/03-02. UI/03-02-04. Story/";
     private const string OFFICE = "Assets/03. Prefabs/03-02. UI/03-02-08. Office/";
+    private const string LIVE_RESULT = "Assets/03. Prefabs/03-02. UI/03-02-11. LiveResult/";
     private const string MUSIC_SELECT = "Assets/03. Prefabs/03-02. UI/03-02-09. MusicSelect/";
     private const string LIVE_SCENE = "Assets/01. Scenes/01-02. Sub/10_LiveScene.unity";
 
@@ -38,6 +39,11 @@ public static class UiTextImageTargetTable
             "Button_ScheduleEnter/Image_Label", "바로가기", 21, "#F8F8F8", 2, true, 96f, 28f),
         new UiTextImageTarget(OFFICE + "P_UI_Item_TodaySchedule.prefab",
             "Button_ScheduleEnter/Image_Label", "바로가기", 21, "#F8F8F8", 2, true, 96f, 28f),
+        // 결과 화면의 두 버튼입니다. 공용 버튼 프리팹 안에 있어 상자가 글자 그림 크기로 잡혀 있습니다.
+        new UiTextImageTarget(LIVE_RESULT + "P_UI_LiveResult.prefab",
+            "Panel_LiveResult/P_UI_Button_Okay/Image_Text", "확인", 30, "#F8F8F8", 2, true, 120f, 40f),
+        new UiTextImageTarget(LIVE_RESULT + "P_UI_LiveResult.prefab",
+            "Panel_LiveResult/P_UI_Button_Replay/Image_Text", "처음부터", 30, "#4018F8", 2, true, 160f, 40f),
         new UiTextImageTarget(MUSIC_SELECT + "P_UI_Popup_PhotocardSelect.prefab",
             "P_UI_Panel_Studio/P_UI_Panel_ItemSetting/P_UI_Button_Reset/Image_ButtonText",
             "초기화", 26, "#5038E8", 2, true),

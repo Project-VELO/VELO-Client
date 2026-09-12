@@ -54,9 +54,8 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
     /// <summary>
     /// 바뀐 언어로 테이블을 다시 읽습니다.
     ///
-    /// 이미 화면에 떠 있는 글자까지 바꾸지는 않습니다. 그 화면을 다시 열면 새 언어로 나옵니다.
-    /// 언어를 고르는 자리가 종료 확인 팝업이라 고른 직후 보고 있는 화면이 정해져 있지 않고,
-    /// 화면마다 다시 그리는 경로를 만들면 화면 수만큼 손댈 곳이 늘어납니다.
+    /// 여기서는 표만 갈아 둡니다. 이미 화면에 박혀 있는 글자는 LanguageChangeRefresher가
+    /// 이어받아 다시 그립니다. 그쪽은 OnApplied를 구독하므로 이 갱신이 끝난 뒤에 돕니다.
     /// </summary>
     private void OnLanguageChanged(ELanguage language)
     {

@@ -74,12 +74,21 @@ public class UI_SelectStoryEpisodeItem : MonoBehaviour
     public void SetItem(StoryData story, IStoryProgress progress)
     {
         _storyId = story.StoryId;
-        _episodeNumberText.text = string.Format(EPISODE_FORMAT, story.EpisodeNumber);
-        _titleText.text = string.IsNullOrEmpty(story.Title) ? story.StoryId : story.Title;
+        RefreshTexts(story);
 
         SetProgress(progress);
         SetSelected(false);
         SetHighlight(false);
+    }
+
+    /// <summary>
+    /// 글자만 다시 씁니다. 언어를 고른 자리에서 부르므로 선택·강조 표시는 건드리지 않습니다.
+    /// SetItem을 다시 부르면 그 표시가 함께 풀려, 고른 카드가 언어를 바꾼 것만으로 풀립니다.
+    /// </summary>
+    public void RefreshTexts(StoryData story)
+    {
+        _episodeNumberText.text = string.Format(UiText.Localize(EPISODE_FORMAT), story.EpisodeNumber);
+        _titleText.text = string.IsNullOrEmpty(story.Title) ? story.StoryId : story.Title;
     }
 
     /// <summary>

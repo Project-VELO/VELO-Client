@@ -13,7 +13,7 @@ using VInspector;
 /// 그림에 맞춰 다듬어져 있어 글자로 다시 그리면 미묘하게 달라지기 때문입니다.
 /// 바꿔야 하는 쪽만 바꿉니다.
 /// </summary>
-public class UI_LocalizedNavButton : MonoBehaviour
+public class UI_LocalizedNavButton : MonoBehaviour, ILanguageRefreshable
 {
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -40,6 +40,15 @@ public class UI_LocalizedNavButton : MonoBehaviour
     /// 팝업에서 언어를 바꾸고 돌아왔을 때 여기서 따라잡습니다.
     /// </summary>
     private void OnEnable()
+    {
+        Refresh();
+    }
+
+    /// <summary>
+    /// 언어를 고른 자리에서 부릅니다. 바꿔야 할 것이 글자가 아니라 판이라 훑기로는 바뀌지 않고,
+    /// 홈 화면은 팝업 뒤에 켜진 채로 남아 있어 OnEnable도 오지 않습니다.
+    /// </summary>
+    public void RefreshLanguage()
     {
         Refresh();
     }

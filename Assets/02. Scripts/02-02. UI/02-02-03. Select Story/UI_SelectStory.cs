@@ -12,7 +12,7 @@ using VInspector;
 /// 진행 상태를 바꾸지 않습니다. NEW 해제와 완료 처리는 감상 화면의 몫이고 여기서는 읽기만 합니다.
 /// 화면이 상태를 직접 바꾸면 저장이 함께 일어나지 않습니다.
 /// </summary>
-public class UI_SelectStory : MonoBehaviour
+public class UI_SelectStory : MonoBehaviour, ILanguageRefreshable
 {
     [Foldout("Hierarchy")]
     [Header("Buttons")]
@@ -57,6 +57,15 @@ public class UI_SelectStory : MonoBehaviour
     // 함께 파괴합니다. 화면이 따로 반환하면 두 OnDestroy의 실행 순서에 따라 이미 사라진 풀에 밀어 넣게 되어
     // "풀이 아직 없어 반환에 실패했습니다" 경고가 뜹니다.
     // 같은 씬 안에서 목록을 다시 그릴 때의 반환은 UI_SelectStoryList.Build가 앞머리에서 처리합니다.
+
+    /// <summary>
+    /// 언어를 고른 자리에서 부릅니다. 회차 제목이 마스터 데이터에서 오고 회차 번호는 숫자를
+    /// 끼워 만든 글자라, 둘 다 글자만 훑어서는 바뀌지 않습니다.
+    /// </summary>
+    public void RefreshLanguage()
+    {
+        _list.RefreshTexts();
+    }
 
     /// <summary>
     /// 목록을 다 채운 뒤에야 할 수 있는 것들입니다.

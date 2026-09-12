@@ -9,7 +9,7 @@ using VInspector;
 /// 스케줄·날짜 판정은 전부 GameProgressService에서 읽기만 하고, 이 화면은 하위 패널 조립과
 /// 입력 배선만 맡습니다. 판정을 여기서 다시 짜면 홈 화면과 표시가 어긋납니다(기획서 16-6).
 /// </summary>
-public class UI_Office : MonoBehaviour
+public class UI_Office : MonoBehaviour, ILanguageRefreshable
 {
     [Foldout("Hierarchy")]
     [Header("Panels")]
@@ -42,6 +42,15 @@ public class UI_Office : MonoBehaviour
         // 뒤로가기만은 살아 있어야 화면을 빠져나갈 수 있습니다. 사무실은 홈으로 돌아가는 경로가
         // 이 버튼뿐이라, 여기서 막히면 게임을 다시 켜는 수밖에 없습니다.
         InitButtons();
+        RefreshScreen();
+    }
+
+    /// <summary>
+    /// 언어를 고른 자리에서 부릅니다. 오늘과 주간 표의 스케줄 이름이 마스터 데이터에서 오므로
+    /// 글자만 훑어서는 바뀌지 않습니다.
+    /// </summary>
+    public void RefreshLanguage()
+    {
         RefreshScreen();
     }
 

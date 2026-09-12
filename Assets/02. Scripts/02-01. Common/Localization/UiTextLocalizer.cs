@@ -9,9 +9,14 @@ using UnityEngine.SceneManagement;
 /// 그 자리마다 컴포넌트를 붙이는 대신, 화면이 열릴 때 한 번 훑어 바꿉니다.
 /// 프리팹을 고치지 않으므로 다른 작업과 충돌하지 않고, 앞으로 글자가 늘어도 손댈 곳이 없습니다.
 ///
-/// 훑는 시점은 두 곳입니다. 씬이 올라올 때 그 씬의 화면 전체를, 팝업이 열릴 때 그 팝업을 봅니다.
+/// 훑는 시점은 세 곳입니다. 씬이 올라올 때 그 씬의 화면 전체를, 팝업이 열릴 때 그 팝업을,
+/// 언어를 고른 순간 떠 있는 화면 전체를(LanguageChangeRefresher) 봅니다.
 /// 풀에서 꺼내 쓰는 항목은 여기서 훑지 않아도 됩니다. 그런 자리의 글자는 마스터 데이터에서
 /// 오고, 마스터 데이터는 읽는 순간 이미 번역되어 있습니다.
+///
+/// 한국어일 때도 훑습니다. UiText가 옮긴 글자를 원문으로 되돌릴 줄 알기 때문에, 일본어로 보다가
+/// 한국어로 돌아오는 길도 같은 훑기로 처리됩니다. 한국어에서 한국어뿐인 화면을 훑는 비용은
+/// 글자 하나당 사전 조회 두 번이라 화면이 올라오는 시점에 묻힙니다.
 /// </summary>
 public static class UiTextLocalizer
 {
@@ -28,7 +33,7 @@ public static class UiTextLocalizer
     /// </summary>
     public static void Apply(GameObject root)
     {
-        if (root == null || LanguageSetting.Current == ELanguage.KOREAN)
+        if (root == null)
         {
             return;
         }
@@ -59,11 +64,6 @@ public static class UiTextLocalizer
 
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (LanguageSetting.Current == ELanguage.KOREAN)
-        {
-            return;
-        }
-
         GameObject[] roots = scene.GetRootGameObjects();
 
         for (int i = 0; i < roots.Length; i++)

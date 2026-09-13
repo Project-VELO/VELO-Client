@@ -139,10 +139,10 @@ public class LiveEditorBarLabelRenderer : MonoBehaviour
         label.gameObject.SetActive(true);
         label.rectTransform.anchoredPosition = new Vector2(leftX + _horizontalOffset, y);
 
-        // 3D 트랙에서 라벨은 바닥에 누워 있어 세로만 거리의 제곱으로 찌그러집니다.
-        // 가로는 이미 거리에 반비례해 줄어드므로, 세로도 같은 비율이 되도록 되돌려 글자 비율을 지킵니다.
-        float verticalScale = _lanes.GetApparentScaleAtRatio(verticalRatio);
-        label.rectTransform.localScale = new Vector3(1f, verticalScale, 1f);
+        // 라벨은 트랙 옆에 세워 두는 2D 글자라 저절로 줄어들지 않으므로, 트랙이 좁아지는 배율을 그대로 곱해 붙여 둡니다.
+        // 가로세로에 같은 배율을 써야 합니다. 한쪽만 줄이면 멀리 있는 마디번호가 납작하게 눌립니다.
+        float labelScale = _lanes.GetApparentScaleAtRatio(verticalRatio);
+        label.rectTransform.localScale = new Vector3(labelScale, labelScale, 1f);
     }
 
     private void FillLabelPool()

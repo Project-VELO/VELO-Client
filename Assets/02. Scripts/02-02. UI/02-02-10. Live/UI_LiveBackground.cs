@@ -4,12 +4,12 @@ using VInspector;
 /// <summary>
 /// 라이브 화면의 배경 캔버스를 그 씬의 메인 카메라에 붙입니다.
 ///
-/// 트랙은 월드 공간 캔버스라 Screen Space - Overlay 캔버스보다 항상 아래에 그려집니다.
-/// 배경과 트랙 플레이트는 노트보다 뒤에 깔려야 하므로 Overlay가 아니라 Screen Space - Camera로 두고,
-/// sortingOrder를 트랙보다 낮춰 순서를 맞춥니다.
+/// 배경과 트랙 플레이트는 노트와 HUD보다 뒤에 깔려야 합니다. 트랙과 HUD 캔버스가 모두 Screen Space - Overlay이고
+/// Overlay는 sortingOrder와 무관하게 카메라가 그린 것 위에 얹히므로, 배경만 Screen Space - Camera로 두면
+/// 무엇을 더 얹어도 항상 아래에 남습니다. 배경을 Overlay로 바꾸면 이 보장이 사라집니다.
 ///
-/// 메인 카메라는 PersistentScene의 프리팹 인스턴스라 씬 에셋에 참조를 담아 둘 수 없어 실행 시점에 찾습니다.
-/// LiveTrackRig가 같은 카메라를 Camera.main으로 찾아 쓰므로 방식을 맞췄습니다.
+/// 그래서 이 캔버스에는 렌더 카메라가 필요한데, 메인 카메라는 PersistentScene의 프리팹 인스턴스라
+/// 씬 에셋에 참조를 담아 둘 수 없어 실행 시점에 찾습니다.
 /// </summary>
 public class UI_LiveBackground : MonoBehaviour
 {

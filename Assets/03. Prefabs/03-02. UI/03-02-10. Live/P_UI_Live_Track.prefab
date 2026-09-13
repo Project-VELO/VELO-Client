@@ -128,7 +128,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebee7248fe6339841923b5fd7496e57b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_Live3DLanes
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LiveTrackLanes
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0

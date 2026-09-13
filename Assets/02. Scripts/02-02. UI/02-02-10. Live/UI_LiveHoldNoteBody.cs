@@ -5,10 +5,14 @@ using UnityEngine.UI;
 /// <summary>
 /// 롱노트 몸통을 트랙 사다리꼴을 따라가는 띠로 그립니다.
 /// 타일링과 판정선 클리핑을 UV로만 처리하므로 노트마다 머티리얼 인스턴스가 생기지 않습니다.
+///
+/// 몸통 아트가 아직 없어 지금은 텍스처 없이 단색 띠로 그려집니다. 그동안은 프리팹 Color가 곧 띠 색이며,
+/// 머리 노트 그림과 같은 계열로 맞춰 두었습니다. 판정선에서 잘라 내는 일은 LiveNoteRenderer가 시작 깊이를
+/// 이미 줄여 넘기므로 여기서는 하지 않습니다.
 /// </summary>
 public class UI_LiveHoldNoteBody : MaskableGraphic
 {
-    [Tooltip("세로로 반복되므로 아틀라스에 묶이지 않은 Wrap Mode = Repeat 텍스처여야 합니다.")]
+    [Tooltip("세로로 반복되므로 아틀라스에 묶이지 않은 Wrap Mode = Repeat 텍스처여야 합니다. 비워 두면 흰 텍스처로 그려져 Color 값이 그대로 띠 색이 됩니다. 몸통 아트가 들어오면 Color를 흰색으로 되돌려 텍스처 색이 그대로 나오게 하십시오.")]
     [SerializeField]
     private Sprite _bodySprite;
 

@@ -47,7 +47,7 @@ public class UI_StoryRewardPopup : UI_Popup
 
         if (_messageText != null)
         {
-            _messageText.text = MESSAGE;
+            _messageText.text = UiText.Localize(MESSAGE);
         }
 
         SetAmount(_moneyText, reward.Money);

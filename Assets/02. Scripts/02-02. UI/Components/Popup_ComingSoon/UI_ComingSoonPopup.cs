@@ -48,7 +48,7 @@ public class UI_ComingSoonPopup : UI_Popup
 
         if (_messageText != null)
         {
-            _messageText.text = MESSAGE;
+            _messageText.text = UiText.Localize(MESSAGE);
         }
     }
 

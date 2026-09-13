@@ -1,0 +1,181 @@
+using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+/// <summary>
+/// 한글이 구워진 글자 그림을 TMP 텍스트로 바꿉니다.
+///
+/// 그림에 글자가 박혀 있으면 언어를 바꿔도 한글이 그대로 남습니다. 일본어판 그림을 따로 그리는
+/// 대신 TMP로 바꾸면 UiText의 번역 표에 얹혀 글자가 함께 바뀝니다.
+///
+/// 무엇을 바꾸고 무엇을 남겼는지는 UiTextImageTargetTable에 적어 두었습니다.
+///
+/// Image와 TextMeshProUGUI는 둘 다 Graphic이라 한 오브젝트에 함께 둘 수 없습니다.
+/// 반드시 지운 뒤에 답니다. 순서를 바꾸면 조용히 실패합니다.
+/// </summary>
+public static class UiTextImageConverter
+{
+    private const string FONT_PATH = "Assets/10. Fonts/NotoSansKR-Regular SDF.asset";
+
+    /// <summary>
+    /// 자동 크기 조절의 하한입니다. 이보다 작아지면 읽히지 않으므로, 여기까지 줄여도 넘치면
+    /// 상자가 좁다는 뜻이고 자리를 손봐야 합니다.
+    /// </summary>
+    private const int MIN_FONT_SIZE = 10;
+
+    /// <summary>TMP의 HorizontalAlignmentOptions에서 왼쪽 정렬 값입니다.</summary>
+    private const int LEFT_ALIGNMENT = 1;
+
+    [MenuItem("VELO/Localization/글자 그림을 TMP로 바꾸기")]
+    public static void ConvertAll()
+    {
+        TMP_FontAsset font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
+
+        if (font == null)
+        {
+            Debug.LogError($"[UiTextImageConverter] 폰트 에셋을 찾지 못했습니다: {FONT_PATH}");
+            return;
+        }
+
+        int changed = ConvertPrefabs(font) + ConvertScenes(font);
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+        Debug.Log($"[UiTextImageConverter] {changed}곳을 바꿨습니다.");
+    }
+
+    private static int ConvertPrefabs(TMP_FontAsset font)
+    {
+        Dictionary<string, List<UiTextImageTarget>> byAsset = UiTextImageLookup.GroupByAsset(UiTextImageTargetTable.Prefabs);
+        int changed = 0;
+
+        foreach (KeyValuePair<string, List<UiTextImageTarget>> pair in byAsset)
+        {
+            GameObject root = PrefabUtility.LoadPrefabContents(pair.Key);
+
+            if (root == null)
+            {
+                Debug.LogError($"[UiTextImageConverter] 프리팹을 열지 못했습니다: {pair.Key}");
+                continue;
+            }
+
+            int applied = 0;
+
+            foreach (UiTextImageTarget target in pair.Value)
+            {
+                applied += Convert(root.transform.Find(target.NodePath), target, font) ? 1 : 0;
+            }
+
+            if (0 < applied)
+            {
+                PrefabUtility.SaveAsPrefabAsset(root, pair.Key);
+                changed += applied;
+            }
+
+            PrefabUtility.UnloadPrefabContents(root);
+        }
+
+        return changed;
+    }
+
+    private static int ConvertScenes(TMP_FontAsset font)
+    {
+        Dictionary<string, List<UiTextImageTarget>> byAsset = UiTextImageLookup.GroupByAsset(UiTextImageTargetTable.Scenes);
+        int changed = 0;
+
+        foreach (KeyValuePair<string, List<UiTextImageTarget>> pair in byAsset)
+        {
+            Scene scene = EditorSceneManager.OpenScene(pair.Key, OpenSceneMode.Additive);
+            int applied = 0;
+
+            foreach (UiTextImageTarget target in pair.Value)
+            {
+                applied += Convert(UiTextImageLookup.FindInScene(scene, target.NodePath), target, font) ? 1 : 0;
+            }
+
+            if (0 < applied)
+            {
+                EditorSceneManager.MarkSceneDirty(scene);
+                EditorSceneManager.SaveScene(scene);
+                changed += applied;
+            }
+
+            EditorSceneManager.CloseScene(scene, true);
+        }
+
+        return changed;
+    }
+
+    /// <summary>
+    /// 이미 찾아 둔 오브젝트를 바꿉니다. 찾는 방식이 프리팹과 씬에서 다르므로 부르는 쪽이 찾아 넘깁니다.
+    /// </summary>
+    private static bool Convert(Transform node, UiTextImageTarget target, TMP_FontAsset font)
+    {
+        if (node == null)
+        {
+            Debug.LogWarning($"[UiTextImageConverter] 오브젝트를 찾지 못했습니다: {target.AssetPath} / {target.NodePath}");
+            return false;
+        }
+
+        Image image = node.GetComponent<Image>();
+
+        if (image != null)
+        {
+            Object.DestroyImmediate(image, true);
+        }
+
+        // 이미 바꿔 둔 자리는 값만 다시 맞춥니다. 크기나 색을 고쳐 다시 돌릴 때
+        // 붙였다 떼면 다른 컴포넌트가 들고 있던 참조가 끊깁니다.
+        TextMeshProUGUI text = node.GetComponent<TextMeshProUGUI>();
+
+        if (text == null)
+        {
+            text = node.gameObject.AddComponent<TextMeshProUGUI>();
+        }
+
+        text.font = font;
+        text.text = target.Korean;
+        text.color = target.Color;
+        // TMP의 정렬은 가로와 세로 값을 비트로 겹쳐 씁니다. 512는 세로 가운데입니다.
+        text.alignment = (TextAlignmentOptions)(target.HorizontalAlignment | 512);
+        text.enableWordWrapping = false;
+        text.raycastTarget = false;
+
+        // 원본 그림은 글자를 좁게 그려 두었고 일본어는 한국어보다 글자 수가 많습니다.
+        // 고정 크기로 두면 어느 한쪽에서 반드시 상자를 넘칩니다. 상자에 맞춰 줄어들게 둡니다.
+        text.enableAutoSizing = true;
+        text.fontSizeMax = target.FontSize;
+        text.fontSizeMin = MIN_FONT_SIZE;
+        text.fontSize = target.FontSize;
+
+        // 그림 크기로 잡혀 있던 상자는 글자를 담기에 좁습니다. 표에 적힌 값이 있으면 다시 잡습니다.
+        //
+        // 왼쪽 정렬인 자리는 넓히면서 왼쪽 끝을 그대로 둡니다. 가운데를 기준으로 넓히면
+        // 글자가 시작하는 자리가 왼쪽으로 밀려, 위아래로 줄을 맞춰 둔 배치가 어긋납니다.
+        if (target.RectSize != Vector2.zero)
+        {
+            RectTransform rect = (RectTransform)node;
+            float widened = target.RectSize.x - rect.sizeDelta.x;
+
+            rect.sizeDelta = target.RectSize;
+
+            if (target.HorizontalAlignment == LEFT_ALIGNMENT)
+            {
+                rect.anchoredPosition += new Vector2(widened * 0.5f, 0f);
+            }
+        }
+
+        UiTextImageRewire.Apply(node, text);
+
+        if (target.IsBold)
+        {
+            text.fontStyle = FontStyles.Bold;
+        }
+
+        return true;
+    }
+}

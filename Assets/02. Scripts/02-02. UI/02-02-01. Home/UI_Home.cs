@@ -6,7 +6,7 @@ using VInspector;
 /// <summary>
 /// 홈 화면입니다(기획서 SCREEN-001).
 /// </summary>
-public class UI_Home : MonoBehaviour
+public class UI_Home : MonoBehaviour, ILanguageRefreshable
 {
     [Foldout("Hierarchy")]
     [Header("활성 버튼")]
@@ -38,6 +38,15 @@ public class UI_Home : MonoBehaviour
 
         RefreshScreen();
         InitButtons();
+    }
+
+    /// <summary>
+    /// 언어를 고른 자리에서 부릅니다. 스케줄 이름과 스토리 제목이 마스터 데이터에서 오므로
+    /// 글자만 훑어서는 바뀌지 않습니다.
+    /// </summary>
+    public void RefreshLanguage()
+    {
+        RefreshScreen();
     }
 
     private void RefreshScreen()

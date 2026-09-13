@@ -32,6 +32,15 @@ public static class MasterDataPaths
     }
 
     /// <summary>
+    /// 테이블 번역문의 경로입니다. 원본과 같은 파일명을 언어 폴더 아래에 둡니다.
+    /// 대본 번역문(GetStoryTextOverlayPath)과 같은 규칙이라 기획이 두 곳을 다르게 기억하지 않아도 됩니다.
+    /// </summary>
+    public static string GetTableOverlayPath(string fileName, string languageFolder)
+    {
+        return Path.Combine(MasterDataRoot, languageFolder, fileName);
+    }
+
+    /// <summary>
     /// 회차별 대본 파일의 경로입니다. 파일명을 StoryId에서 유도하므로 StoryData에 경로 필드를 두지 않습니다.
     /// </summary>
     public static string GetStoryScriptPath(string storyId)

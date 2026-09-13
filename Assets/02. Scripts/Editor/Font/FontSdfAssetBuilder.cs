@@ -19,6 +19,16 @@ public static class FontSdfAssetBuilder
     private const string FONT_FOLDER = "Assets/10. Fonts";
 
     /// <summary>
+    /// 구글 폰트에서 받은 폴더 구조 그대로입니다. Create가 FONT_FOLDER 아래로 경로를 이어 붙이므로,
+    /// 하위 폴더에 있는 굵기도 파일명 자리에 그대로 넘기면 됩니다.
+    /// </summary>
+    private const string SANS_KR_STATIC = "Noto_Sans_KR/static";
+
+    private const string SANS_JP_STATIC = "Noto_Sans_JP/static";
+    private const string SERIF_KR_STATIC = "Noto_Serif_KR/static";
+    private const string SERIF_JP_STATIC = "Noto_Serif_JP/static";
+
+    /// <summary>
     /// 아래 값은 기존 NotoSerifKR-Regular SDF에서 그대로 가져왔습니다. 폰트마다 다르면
     /// 같은 크기로 찍어도 두께와 번짐이 달라 보입니다.
     /// </summary>
@@ -46,6 +56,35 @@ public static class FontSdfAssetBuilder
     {
         Create("NotoSansJP-VariableFont_wght.ttf", "NotoSansJP-Regular");
         Create("NotoSerifJP-VariableFont_wght.ttf", "NotoSerifJP-Regular");
+    }
+
+    /// <summary>
+    /// 결과 화면의 점수와 판정 수치가 가늘다는 피드백에 쓸 굵기입니다.
+    ///
+    /// NotoSansKR-Regular SDF의 굵기 표 700 칸에 물려 두면, 이미 Bold로 지정돼 있던 수치들이
+    /// TMP의 가짜 굵게 대신 진짜 Bold 글리프로 그려집니다.
+    ///
+    /// 일본어 쪽을 함께 만드는 것은 한국어 Bold의 폴백으로 걸기 위해서입니다. Regular 폴백을
+    /// 그대로 두면 한 문장 안에서 일본어 구간만 얇게 튑니다.
+    /// </summary>
+    [MenuItem("VELO/Font/굵은 SDF 만들기")]
+    public static void CreateBold()
+    {
+        Create($"{SANS_KR_STATIC}/NotoSansKR-Bold.ttf");
+        Create($"{SANS_JP_STATIC}/NotoSansJP-Bold.ttf");
+    }
+
+    /// <summary>
+    /// 스토리 본문이 가녀리다는 피드백에 쓸, Regular(400)와 Bold(700) 사이 굵기입니다.
+    /// 어느 쪽이 맞는지는 눈으로 비교해야 정해지므로 Medium(500)과 SemiBold(600)를 함께 만듭니다.
+    /// </summary>
+    [MenuItem("VELO/Font/스토리 중간 굵기 SDF 만들기")]
+    public static void CreateStoryMidWeights()
+    {
+        Create($"{SERIF_KR_STATIC}/NotoSerifKR-Medium.ttf");
+        Create($"{SERIF_KR_STATIC}/NotoSerifKR-SemiBold.ttf");
+        Create($"{SERIF_JP_STATIC}/NotoSerifJP-Medium.ttf");
+        Create($"{SERIF_JP_STATIC}/NotoSerifJP-SemiBold.ttf");
     }
 
     private static void Create(string sourceFileName, string assetName = null)

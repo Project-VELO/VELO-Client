@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -26,7 +27,7 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     /// 글자가 배경 그림에 이미 그려져 있는 화면에서 물려 두면 같은 글자가 한 번 더 찍혀 겹칩니다.
     /// </summary>
     [SerializeField]
-    private Image _label;
+    private TMP_Text _label;
 
     [SerializeField]
     private Image _background;
@@ -42,12 +43,17 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     [SerializeField]
     private Sprite _completedSprite;
 
-    [Foldout("Project")]
+    /// <summary>
+    /// 라벨 글자입니다. 한국어로 적어 두면 UiText가 지금 언어로 바꿔 줍니다.
+    ///
+    /// 그림 대신 글자로 두는 것은 그림에 글자가 구워져 있으면 언어를 바꿔도 한글이 남기 때문입니다.
+    /// </summary>
+    [Foldout("Settings")]
     [SerializeField]
-    private Sprite _shortcutLabelSprite;
+    private string _shortcutLabel = "바로가기";
 
     [SerializeField]
-    private Sprite _completedLabelSprite;
+    private string _completedLabel = "완료";
 
     /// <summary>
     /// 바로가기 상태에서 라벨을 끌어올리는 양입니다.
@@ -82,8 +88,8 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
     }
 
     /// <summary>
-    /// 두 글자 그림은 폭이 서로 다르므로("바로가기" 57, "완료" 28) 바꿔 끼울 때마다 원본 크기로 되돌립니다.
-    /// 한 크기로 고정해 두면 짧은 쪽이 늘어나 글자가 뭉개집니다.
+    /// 글자는 상자 안에서 가운데로 놓이므로 그림을 쓰던 때처럼 폭을 다시 잴 필요가 없습니다.
+    /// 대신 바로가기와 완료의 글자 수가 달라 상자를 넘지 않도록 프리팹에서 자동 크기 조절을 켜 둡니다.
     /// </summary>
     private void RefreshLabel(bool isCompleted)
     {
@@ -92,17 +98,16 @@ public class UI_ScheduleShortcutButton : MonoBehaviour
             return;
         }
 
-        Sprite sprite = isCompleted ? _completedLabelSprite : _shortcutLabelSprite;
+        string label = isCompleted ? _completedLabel : _shortcutLabel;
 
-        _label.enabled = sprite != null;
+        _label.enabled = !string.IsNullOrEmpty(label);
 
-        if (sprite == null)
+        if (string.IsNullOrEmpty(label))
         {
             return;
         }
 
-        _label.sprite = sprite;
-        _label.SetNativeSize();
+        _label.text = UiText.Localize(label);
 
         Vector2 position = _label.rectTransform.anchoredPosition;
         position.y = isCompleted ? 0f : _shortcutLabelOffsetY;

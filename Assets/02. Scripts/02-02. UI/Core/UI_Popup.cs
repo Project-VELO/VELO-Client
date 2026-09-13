@@ -36,6 +36,10 @@ public abstract class UI_Popup : MonoBehaviour
 
     public virtual async UniTask OpenAsync()
     {
+        // 팝업 글자는 프리팹에 박혀 있어 화면 코드가 건드리지 않습니다. 열릴 때마다 훑는 것은
+        // 팝업이 한 번 만들어진 뒤 계속 살아 있어, 도중에 언어를 바꾸면 열 때 다시 맞춰야 하기 때문입니다.
+        UiTextLocalizer.Apply(gameObject);
+
         gameObject.SetActive(true);
         if (TryGetComponent<UI_ScaleAnimator>(out var animator))
         {

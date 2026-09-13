@@ -12,6 +12,8 @@ using UnityEngine;
 /// </summary>
 public class MasterDataLoader
 {
+    private readonly MasterDataTextOverlay _overlay = new MasterDataTextOverlay();
+
     /// <summary>
     /// 테이블 파일 하나를 읽습니다. 파일이 없거나 파싱에 실패하면 빈 목록을 돌려주고 경고만 남깁니다.
     /// 데이터 한 종류 때문에 게임 전체가 뜨지 않는 상황을 만들지 않기 위해서입니다.
@@ -37,6 +39,10 @@ public class MasterDataLoader
         {
             Debug.LogWarning($"[MasterDataLoader] 스키마 버전이 다릅니다(파일 {table.SchemaVersion} / 코드 {MasterDataSchema.CURRENT_VERSION}): {path}");
         }
+
+        // 읽자마자 덮습니다. 조회하는 쪽(MasterDataProvider)이 언어를 알 필요가 없고,
+        // 화면마다 번역을 찾아 쓰는 코드가 생기지 않습니다.
+        _overlay.Apply(table.Items, fileName, LanguageSetting.Current);
 
         return table.Items;
     }

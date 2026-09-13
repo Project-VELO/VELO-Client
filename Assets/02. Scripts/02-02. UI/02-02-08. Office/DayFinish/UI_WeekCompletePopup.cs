@@ -30,8 +30,8 @@ public class UI_WeekCompletePopup : UI_Popup
     public void SetResult(int unlockedStoryCount)
     {
         _messageText.text = 0 < unlockedStoryCount
-            ? string.Format(UNLOCK_MESSAGE_FORMAT, unlockedStoryCount)
-            : NO_UNLOCK_MESSAGE;
+            ? string.Format(UiText.Localize(UNLOCK_MESSAGE_FORMAT), unlockedStoryCount)
+            : UiText.Localize(NO_UNLOCK_MESSAGE);
     }
 
     public override async UniTask CloseAsync()

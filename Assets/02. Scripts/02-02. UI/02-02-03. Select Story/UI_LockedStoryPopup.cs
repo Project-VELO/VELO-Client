@@ -22,7 +22,7 @@ public class UI_LockedStoryPopup : UI_Popup
 
         if (_messageText != null)
         {
-            _messageText.text = MESSAGE;
+            _messageText.text = UiText.Localize(MESSAGE);
         }
     }
 }

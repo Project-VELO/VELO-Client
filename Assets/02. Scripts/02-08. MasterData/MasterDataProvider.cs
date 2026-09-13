@@ -42,6 +42,23 @@ public class MasterDataProvider : POCOSingleton<MasterDataProvider>
             return;
         }
 
+        // 언어가 바뀌면 이름과 제목을 다시 읽습니다. 대본은 감상 화면에 들어갈 때마다 읽으므로
+        // 저절로 따라오지만, 마스터 데이터는 시작할 때 한 번 읽고 끝이라 여기서 걸어 둡니다.
+        // 먼저 떼고 거는 것은 싱글톤이 다시 만들어졌을 때 같은 대리자가 두 번 물리지 않게 하기 위해서입니다.
+        LanguageSetting.OnChanged -= OnLanguageChanged;
+        LanguageSetting.OnChanged += OnLanguageChanged;
+
+        Rebuild();
+    }
+
+    /// <summary>
+    /// 바뀐 언어로 테이블을 다시 읽습니다.
+    ///
+    /// 여기서는 표만 갈아 둡니다. 이미 화면에 박혀 있는 글자는 LanguageChangeRefresher가
+    /// 이어받아 다시 그립니다. 그쪽은 OnApplied를 구독하므로 이 갱신이 끝난 뒤에 돕니다.
+    /// </summary>
+    private void OnLanguageChanged(ELanguage language)
+    {
         Rebuild();
     }
 

@@ -50,6 +50,26 @@ public class UI_SelectStoryChapterSection : MonoBehaviour
     }
 
     /// <summary>
+    /// 챕터 이름과 카드 글자만 다시 씁니다. 카드를 풀에 되돌렸다 꺼내지 않으므로 스크롤 위치와
+    /// 선택·강조 표시가 그대로 남습니다.
+    ///
+    /// 넘겨받은 묶음은 목록을 세울 때와 같은 순서로 다시 만든 것이라 칸이 하나씩 맞아떨어집니다.
+    /// 그래도 수가 어긋나면 짧은 쪽까지만 씁니다. 스토리가 늘고 줄기까지 했다면 글자만 고쳐서는
+    /// 될 일이 아니라 목록을 다시 세워야 하고, 그 판단은 부르는 쪽 몫입니다.
+    /// </summary>
+    public void RefreshTexts(StoryChapterGroup group)
+    {
+        _chapterNameText.text = group.DisplayName;
+
+        int count = Mathf.Min(_items.Count, group.Stories.Count);
+
+        for (int i = 0; i < count; i++)
+        {
+            _items[i].RefreshTexts(group.Stories[i]);
+        }
+    }
+
+    /// <summary>
     /// 기록이 없는 것은 정상 상태가 아니라 데이터 오류입니다. StoryProgressService.SyncStoryProgresses가
     /// 신규 게임과 세이브 로드 양쪽에서 모든 스토리의 기록을 채우기 때문입니다.
     /// 조용히 넘어가면 잠긴 것처럼 보이는 이유를 찾기 어려우므로 로그를 남깁니다.

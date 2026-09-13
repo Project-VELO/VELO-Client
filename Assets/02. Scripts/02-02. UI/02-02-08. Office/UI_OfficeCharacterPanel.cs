@@ -9,7 +9,7 @@ using VInspector;
 /// 적혀 있어 확정 시 코드 수정 없이 바꿀 수 있어야 하기 때문입니다. 기본값은 9.6 결정표를 따릅니다 —
 /// 서두의 "P님! 어디 있다가…"는 홈 화면 확정 대사와 동일해 사무실에 쓰면 두 화면이 같은 대사가 됩니다.
 /// </summary>
-public class UI_OfficeCharacterPanel : MonoBehaviour
+public class UI_OfficeCharacterPanel : MonoBehaviour, ILanguageRefreshable
 {
     [Foldout("Hierarchy")]
     [SerializeField]
@@ -35,7 +35,21 @@ public class UI_OfficeCharacterPanel : MonoBehaviour
 
     private void Start()
     {
-        _nameText.text = _speakerName;
-        _dialogText.text = TextWrapUtils.Wrap(_fixedDialog, _maxWidthPerLine, _maxLineCount);
+        Refresh();
+    }
+
+    /// <summary>
+    /// 언어를 고른 자리에서 부릅니다. 대사는 줄바꿈을 넣어 접어 두므로 접힌 모양이 원문과 달라,
+    /// 훑기가 되돌릴 짝을 찾지 못합니다. 원문에서 다시 접습니다.
+    /// </summary>
+    public void RefreshLanguage()
+    {
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        _nameText.text = UiText.Localize(_speakerName);
+        _dialogText.text = TextWrapUtils.Wrap(UiText.Localize(_fixedDialog), _maxWidthPerLine, _maxLineCount);
     }
 }

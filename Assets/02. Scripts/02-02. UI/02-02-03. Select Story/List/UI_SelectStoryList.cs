@@ -40,6 +40,31 @@ public class UI_SelectStoryList : MonoBehaviour
     }
 
     /// <summary>
+    /// 목록을 그대로 둔 채 글자만 다시 씁니다. 언어를 고른 자리에서 부릅니다.
+    ///
+    /// Build를 다시 부르지 않는 것은 그것이 카드를 풀에 되돌렸다 새로 꺼내는 일이기 때문입니다.
+    /// 스크롤이 맨 위로 튀고 고른 카드와 강조가 풀립니다. 언어만 바뀌었을 뿐 목록의 구성은
+    /// 그대로이므로 글자만 갈아 끼웁니다.
+    ///
+    /// 챕터 수가 어긋나면 그때는 구성이 정말 달라진 것이라 다시 세웁니다.
+    /// </summary>
+    public void RefreshTexts()
+    {
+        List<StoryChapterGroup> groups = BuildGroups();
+
+        if (groups.Count != _sections.Count)
+        {
+            Build();
+            return;
+        }
+
+        for (int i = 0; i < _sections.Count; i++)
+        {
+            _sections[i].RefreshTexts(groups[i]);
+        }
+    }
+
+    /// <summary>
     /// 정렬된 스토리 목록을 챕터 경계에서 자릅니다.
     /// 정렬은 GetAllStoriesInDisplayOrder가 챕터 순서 → 회차 순서로 이미 보장합니다.
     /// </summary>

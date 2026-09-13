@@ -81,7 +81,7 @@ public class LiveEditorLaneKeyRecorder : MonoBehaviour
             return;
         }
 
-        if (_noteEditing.Selection.FindNoteNear(lane, timeMs) != null)
+        if (_noteEditing.NoteWriter.HasNoteAt(lane, timeMs))
         {
             return;
         }

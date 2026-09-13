@@ -22,6 +22,7 @@ public class LiveEditorLongNotePlacer
     ///
     /// 시작만 해 둔 상태에도 길이를 주는 이유는 길이가 0인 롱노트가 저장 시 검증에서 거부되기 때문입니다
     /// (LiveEditorChartValidator). 두 번째 클릭 없이 다른 작업으로 넘어가도 채보에는 유효한 롱노트만 남습니다.
+    /// 같은 이유로 곡의 마지막 칸에서는 시작하지 않습니다. 한 칸만 줘도 꼬리가 음원 밖으로 나가 역시 거부됩니다.
     /// 다른 레인이나 앞쪽 칸을 클릭하면 늘리는 대신 그 자리에서 새로 시작하며, 잘못 놓은 것은 우클릭으로 지웁니다.
     /// </summary>
     public void Place(int lane, int barIndex, int cellIndex, int timeMs)
@@ -32,6 +33,13 @@ public class LiveEditorLongNotePlacer
         }
 
         int nextCellTimeMs = _editContext.GetCellTimeMs(barIndex, cellIndex + 1);
+
+        if (!_editContext.IsWithinSong(nextCellTimeMs))
+        {
+            Cancel();
+            return;
+        }
+
         _pendingNote = _noteWriter.AddHoldNote(lane, timeMs, nextCellTimeMs - timeMs);
     }
 

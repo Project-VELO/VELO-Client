@@ -86,20 +86,35 @@ public class LiveEditorNoteWriter
             return false;
         }
 
+        return !HasNoteAt(lane, timeMs, note);
+    }
+
+    /// <summary>
+    /// 같은 레인·같은 시각에 이미 노트가 있는지 봅니다.
+    /// 클릭 선택에 쓰는 LiveEditorNoteSelection.FindNoteNear는 시간차를 넉넉히 봐주므로, 배치 판정에 쓰면
+    /// 칸 간격이 그보다 좁은 분박(빠른 곡의 32분박 등)에서 옆 칸의 노트까지 걸려 빈 칸에 놓지 못합니다.
+    /// </summary>
+    public bool HasNoteAt(int lane, int timeMs)
+    {
+        return HasNoteAt(lane, timeMs, null);
+    }
+
+    private bool HasNoteAt(int lane, int timeMs, NoteData ignoredNote)
+    {
         foreach (NoteData other in _controller.CurrentChart.Notes)
         {
-            if (ReferenceEquals(other, note))
+            if (ReferenceEquals(other, ignoredNote))
             {
                 continue;
             }
 
             if (other.Lane == lane && other.TimeMs == timeMs)
             {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public static ENoteType GetNoteTypeForLane(int lane)

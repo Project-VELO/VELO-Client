@@ -36,6 +36,15 @@ public class LiveEditorEditContext
     }
 
     /// <summary>
+    /// 그 시각이 음원이 끝나기 전인지 봅니다. 곡 길이를 아직 모르면 막을 기준이 없으므로 허용합니다.
+    /// </summary>
+    public bool IsWithinSong(int timeMs)
+    {
+        int songLengthMs = _timeline.BarLayout.SongLengthMs;
+        return songLengthMs <= 0 || timeMs <= songLengthMs;
+    }
+
+    /// <summary>
     /// 임의의 시각을 현재 스냅 단위에서 가장 가까운 격자 셀의 시각으로 바꿉니다.
     /// </summary>
     public bool TryGetCellAtTime(int rawTimeMs, out int timeMs)

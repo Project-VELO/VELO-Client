@@ -62,9 +62,12 @@ public class LiveBarLayout
             }
         }
 
+        // 셀 좌표는 박자를 고르게 나눈 값이므로 곡 끝도 박자로 환산해야 같은 잣대로 비교됩니다.
+        // GetBarPosition은 마디 안을 시간으로 선형 보간해서, 마지막 마디 안에서 BPM이 바뀌면 실제 박자 위치와 어긋나
+        // 곡 안쪽 칸을 막거나 곡 밖 칸을 열어 줍니다. 격자선이 매 프레임 이 값과 비교하므로 BPM 변환은 여기서 한 번만 합니다.
         if (0 < songLengthMs)
         {
-            _songEndBarPosition = GetBarPosition(songLengthMs);
+            _songEndBarPosition = LiveBpmTimeConverter.TimeMsToBeat(chart, songLengthMs) / _beatsPerBar;
         }
     }
 

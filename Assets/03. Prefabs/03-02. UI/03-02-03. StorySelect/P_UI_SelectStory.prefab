@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 7295670883741316902}
   - component: {fileID: 8075665412618405448}
   - component: {fileID: 7662419281075948886}
+  - component: {fileID: 5927948823127190525}
   m_Layer: 5
   m_Name: Image_BackGround
   m_TagString: Untagged
@@ -1054,3 +1055,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5850d1b1014ff15409447c6317ba8b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_CurrencyHud
+--- !u!114 &5927948823127190525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598932410950672226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf2a9b312c748f99df70f7070aa01ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_LocalizedImage
+  _image: {fileID: 7662419281075948886}
+  _koreanSprite: {fileID: 21300000, guid: 08d3c9befa19b674498538d56bd24e3f, type: 3}
+  _japaneseSprite: {fileID: 21300000, guid: b7ac4085eca337e48ac805bb84733d6e, type: 3}

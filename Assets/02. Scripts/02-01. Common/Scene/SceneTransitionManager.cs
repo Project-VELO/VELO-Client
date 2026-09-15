@@ -97,6 +97,51 @@ public class SceneTransitionManager : MonoBehaviourSingleton<SceneTransitionMana
         }
     }
 
+    /// <summary>
+    /// 지금 떠 있는 화면이라도 처음부터 다시 올립니다.
+    ///
+    /// LoadSceneAsync는 같은 화면을 요청하면 아무 일도 하지 않습니다. 세이브를 새로 만든 뒤에는
+    /// 화면에 그려 둔 재화와 진행 표시가 옛 값이라, 같은 화면이어도 다시 올려야 합니다.
+    ///
+    /// 같은 화면은 내린 뒤에 올립니다. 같은 이름의 씬이 둘 겹치면 이름으로 내릴 때 어느 쪽이 내려갈지
+    /// 정해지지 않기 때문입니다. 이 매니저가 있다는 것은 PersistentScene이 떠 있다는 뜻이라,
+    /// 먼저 내려도 씬이 하나도 남지 않는 순간은 생기지 않습니다.
+    /// </summary>
+    public async UniTask ReloadSceneAsync(ESceneNames eSceneName, CancellationToken cancellationToken = default)
+    {
+        if (_isTransitioning)
+        {
+            return;
+        }
+
+        string actualSceneName = GetActualSceneName(eSceneName);
+        if (_currentLoadedSubScene != actualSceneName)
+        {
+            await LoadSceneAsync(eSceneName, cancellationToken);
+            return;
+        }
+
+        try
+        {
+            PrepareTransition();
+
+            AsyncOperation unloadOp = SceneManager.UnloadSceneAsync(actualSceneName);
+            if (unloadOp != null)
+            {
+                await unloadOp.WithCancellation(cancellationToken);
+            }
+
+            // 다시 올리기에 실패했을 때 내린 화면의 이름이 남으면, 이후의 같은 화면 요청이 전부 무시됩니다.
+            _currentLoadedSubScene = null;
+
+            await LoadAndActivateSceneAsync(actualSceneName, cancellationToken);
+        }
+        finally
+        {
+            CleanupTransition();
+        }
+    }
+
     private string GetActualSceneName(ESceneNames eSceneName)
     {
         string enumName = eSceneName.ToString();

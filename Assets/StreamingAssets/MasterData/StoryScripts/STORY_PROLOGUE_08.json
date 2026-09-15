@@ -735,7 +735,7 @@
             "TextPlacementName": "DIALOG_BOX",
             "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_EMERGENCY_LIGHT",
-            "BgmId": "BGM_MBEAT_DESPAIR",
+            "BgmId": "",
             "SfxId": "SFX_CROWD_MURMUR"
         },
         {
@@ -1149,7 +1149,7 @@
             "TextPlacementName": "DIALOG_BOX",
             "TextStyleId": "STYLE_NARRATION",
             "EffectId": "FX_PAN_ROUGH",
-            "BgmId": "",
+            "BgmId": "BGM_MBEAT_NEXT_TEAM",
             "SfxId": "SFX_RUSH_FOOTSTEP"
         },
         {

@@ -16,6 +16,12 @@ using VInspector;
 /// </summary>
 public class UI_HomeStoryBox : MonoBehaviour
 {
+    /// <summary>
+    /// 스토리 선택 화면의 회차 카드(UI_SelectStoryEpisodeItem)와 같은 원문입니다. 번역표는 한국어 원문을
+    /// 키로 쓰므로, 한 글자라도 다르면 일본어에서 이 자리만 "화"가 그대로 남습니다.
+    /// </summary>
+    private const string EPISODE_FORMAT = "{0}화";
+
     [Foldout("Hierarchy")]
     [SerializeField]
     private TMP_Text _chapterText;
@@ -41,7 +47,12 @@ public class UI_HomeStoryBox : MonoBehaviour
     {
         string chapter = StoryChapterDisplayName.Get(story?.ChapterId);
 
-        return story == null ? chapter : $"{chapter} {story.EpisodeNumber}화";
+        if (ReferenceEquals(story, null))
+        {
+            return chapter;
+        }
+
+        return $"{chapter} {string.Format(UiText.Localize(EPISODE_FORMAT), story.EpisodeNumber)}";
     }
 
     /// <summary>

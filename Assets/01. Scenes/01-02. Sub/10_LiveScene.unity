@@ -2567,6 +2567,10 @@ MonoBehaviour:
     Prefab: {fileID: 2732597805570092809, guid: 2d9fd50e51ba6e244b375a8d9a476cc0, type: 3}
   - Type: 4
     Prefab: {fileID: 6671396236928425393, guid: 4528ff194557e8b489c08773d0c6dc47, type: 3}
+  - Type: 12
+    Prefab: {fileID: 353526734260982027, guid: d8b450532e0c7cf4e9f236a8ed3d1b35, type: 3}
+  - Type: 13
+    Prefab: {fileID: 8304552601822761151, guid: e9d335009c61a614687a03003e524ef0, type: 3}
 --- !u!4 &1584998886
 Transform:
   m_ObjectHideFlags: 0

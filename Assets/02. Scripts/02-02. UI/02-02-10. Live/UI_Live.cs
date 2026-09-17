@@ -24,6 +24,10 @@ public class UI_Live : MonoBehaviour
     [SerializeField]
     private UI_LiveLaneFeedback _laneFeedback;
 
+    [Tooltip("판정이 확정될 때 판정선 자리에 띄우는 타격 이펙트입니다. PERFECT만 크게, GREAT와 GOOD은 작게 띄우고 BAD는 띄우지 않습니다.")]
+    [SerializeField]
+    private UI_LiveHitEffect _hitEffect;
+
     private LiveJudgementProcessor _judgementProcessor;
 
     public UI_LiveScorePanel ScorePanel => _scorePanel;
@@ -32,6 +36,14 @@ public class UI_Live : MonoBehaviour
     public UI_LiveTrackLanes NoteLanes => _noteLanes;
     public UI_LiveCountdownPanel CountdownPanel => _countdownPanel;
     public UI_LiveLaneFeedback LaneFeedback => _laneFeedback;
+
+    /// <summary>
+    /// 타격 이펙트는 레인 모양을 트랙에서 받아야 하는데 트랙은 다른 프리팹이라, 씬에서 이어 둔 레인 참조를 여기서 넘깁니다.
+    /// </summary>
+    private void Awake()
+    {
+        _hitEffect.Init(_noteLanes);
+    }
 
     private void OnDestroy()
     {
@@ -83,6 +95,7 @@ public class UI_Live : MonoBehaviour
     private void RefreshJudgement(NoteData note, EJudgement judgement)
     {
         _judgementPanel.RefreshJudgement(judgement);
+        _hitEffect.RefreshHitEffect(note.Lane, judgement);
     }
 
     private void RefreshScoreHud()
@@ -103,5 +116,6 @@ public class UI_Live : MonoBehaviour
     {
         RefreshScoreHud();
         _judgementPanel.ClearJudgement();
+        _hitEffect.ClearHitEffects();
     }
 }

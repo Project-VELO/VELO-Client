@@ -15,9 +15,6 @@ public class LiveNoteRenderSettings
 
     [Tooltip("노트 한가운데를 그 시각의 기준선에 맞춥니다. 끄면 아랫변을 맞춥니다. 리듬게임은 판정선이 위아래 두 줄이고 시안이 그 사이를 노트로 채우므로 아랫변 기준이지만, 박자선이 한 줄뿐인 채보 에디터에서는 노트가 선을 덮도록 켭니다.")]
     public bool IsCenteredOnBeatLine = false;
-
-    [Tooltip("롱노트 몸통 텍스처 한 장이 차지하는 트랙 위 세로 길이입니다. 트랙 기준이라 하이스피드를 바꿔도 밀도가 일정합니다.")]
-    public float BodyTileLength = 64f;
 }
 
 /// <summary>
@@ -48,7 +45,7 @@ public class LiveNoteRenderer
         _settings = settings;
         _designLayout = new LiveNoteDesignLayout(settings.IsCenteredOnBeatLine);
         _visualPool = new LiveNoteVisualPool(noteLayer, spriteTable);
-        _holdRenderer = new LiveHoldNoteRenderer(settings, _designLayout);
+        _holdRenderer = new LiveHoldNoteRenderer(_designLayout);
     }
 
     public void Init(UI_LiveTrackLanes lanes, LiveBarLayout barLayout, LiveScrollMapper scrollMapper)
@@ -134,7 +131,7 @@ public class LiveNoteRenderer
             // 길이가 0이어도 넘깁니다. 편집 중 길이가 줄어든 롱노트의 몸통이 그대로 남지 않게 하려면 매번 다시 재야 합니다.
             if (handle.HoldVisual != null)
             {
-                _holdRenderer.RefreshHold(handle, note.Lane, headRatio, tailRatio, drawRatio);
+                _holdRenderer.RefreshHold(handle, note.Lane, tailRatio, drawRatio);
             }
         }
     }

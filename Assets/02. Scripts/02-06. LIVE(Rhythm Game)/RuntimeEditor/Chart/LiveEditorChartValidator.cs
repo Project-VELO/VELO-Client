@@ -122,8 +122,10 @@ public class LiveEditorChartValidator
     /// 바로 앞 노트 하나만 보면 안 됩니다. 긴 롱노트 뒤에 짧은 노트가 끼면 그 짧은 노트가 기준이 되어,
     /// 롱노트 몸통 한가운데에 묻힌 다음 노트를 놓칩니다. 지금까지 가장 멀리 뻗은 끝 시각을 이어 가며 비교합니다.
     ///
-    /// 시각이 완전히 같은 중복 노트는 여기서 걸리지 않습니다(앞 노트의 끝이 곧 자기 시작 시각이라 부등호가 성립하지 않습니다).
-    /// 이미 수록된 채보에 그런 노트가 남아 있어, 오류로 올리면 손대지 않은 채보까지 저장이 막히므로 배치 단계에서만 막습니다.
+    /// 시작 시각이 같은 노트는 끝 시각 비교로는 걸리지 않으므로(앞 노트가 단타면 그 끝이 곧 자기 시작 시각이라 부등호가
+    /// 성립하지 않습니다) 바로 앞 노트와 따로 비교합니다. 이런 노트는 화면에서 한 장으로 겹쳐 보이는데 판정은 입력 하나에
+    /// 노트 하나라, 친 노트 밑에 깔린 쪽이 반드시 BAD가 됩니다. 11_59에 남아 있던 두 쌍이 "제대로 쳤는데 BAD"로 제보됐습니다.
+    /// 배치 단계의 중복 검사를 거치지 않는 붙여넣기·좌우 반전으로도 생기므로 저장 시점에 한 번 더 막습니다.
     /// </summary>
     private void ValidateLaneOverlaps(int lane, List<NoteData> laneNotes, List<string> errors)
     {
@@ -134,9 +136,14 @@ public class LiveEditorChartValidator
 
         for (int i = 1; i < laneNotes.Count; i++)
         {
+            NoteData previous = laneNotes[i - 1];
             NoteData current = laneNotes[i];
 
-            if (current.TimeMs < coveredUntilMs)
+            if (current.TimeMs == previous.TimeMs)
+            {
+                errors.Add($"[{previous.NoteId}]-[{current.NoteId}] 같은 레인({lane})의 같은 시각({current.TimeMs}ms)에 노트가 겹쳐 있습니다.");
+            }
+            else if (current.TimeMs < coveredUntilMs)
             {
                 errors.Add($"[{coveringNote.NoteId}]-[{current.NoteId}] 같은 레인({lane})에서 노트 구간이 겹칩니다.");
             }

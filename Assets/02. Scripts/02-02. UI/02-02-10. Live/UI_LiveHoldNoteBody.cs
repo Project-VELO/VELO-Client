@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 /// <summary>
 /// 롱노트 몸통을 트랙 사다리꼴을 따라가는 띠로 그립니다.
-/// 타일링과 판정선 클리핑을 UV로만 처리하므로 노트마다 머티리얼 인스턴스가 생기지 않습니다.
+/// 그림 매핑을 UV로만 처리하므로 노트마다 머티리얼 인스턴스가 생기지 않습니다.
 ///
-/// 몸통 아트가 아직 없어 지금은 텍스처 없이 단색 띠로 그려집니다. 그동안은 프리팹 Color가 곧 띠 색이며,
-/// 머리 노트 그림과 같은 계열로 맞춰 두었습니다. 판정선에서 잘라 내는 일은 LiveNoteRenderer가 시작 깊이를
-/// 이미 줄여 넘기므로 여기서는 하지 않습니다.
+/// 몸통 그림은 화면에 고정된 레인 띠이고, 줄마다 그 그림 안의 픽셀 좌표를 넘겨받아 UV로 바꾸기만 합니다.
+/// 그림 속 자리를 정하는 일은 LiveHoldNoteRenderer가, 판정선에서 잘라 내는 일은 LiveNoteRenderer가 시작 깊이를
+/// 줄여 넘기는 것으로 이미 끝내므로 여기서는 하지 않습니다.
 /// </summary>
 public class UI_LiveHoldNoteBody : MaskableGraphic
 {
-    [Tooltip("세로로 반복되므로 아틀라스에 묶이지 않은 Wrap Mode = Repeat 텍스처여야 합니다. 비워 두면 흰 텍스처로 그려져 Color 값이 그대로 띠 색이 됩니다. 몸통 아트가 들어오면 Color를 흰색으로 되돌려 텍스처 색이 그대로 나오게 하십시오.")]
+    [Tooltip("레인 띠를 화면 높이 1080 전체에 보이는 모양 그대로 1:1로 그린 그림입니다. 반복하지 않고 화면에 고정된 채 몸통 구간만 드러나므로 Wrap Mode는 Clamp로 둡니다. 비워 두면 흰 텍스처로 그려져 Color 값이 그대로 띠 색이 되므로, 그림을 쓰는 동안 Color는 흰색으로 둡니다.")]
     [SerializeField]
     private Sprite _bodySprite;
 
@@ -32,15 +32,18 @@ public class UI_LiveHoldNoteBody : MaskableGraphic
             return;
         }
 
+        GetUvMapping(out Vector2 uvOrigin, out Vector2 uvPerPixel);
+
         UIVertex vertex = UIVertex.simpleVert;
         vertex.color = color;
 
         for (int i = 0; i < _samples.Count; i++)
         {
             LiveHoldBodySample sample = _samples[i];
+            float v = uvOrigin.y + sample.ArtY * uvPerPixel.y;
 
-            AddVertex(vh, ref vertex, sample.LeftX, sample.LocalY, 0f, sample.V);
-            AddVertex(vh, ref vertex, sample.RightX, sample.LocalY, 1f, sample.V);
+            AddVertex(vh, ref vertex, sample.LeftX, sample.LocalY, uvOrigin.x + sample.LeftArtX * uvPerPixel.x, v);
+            AddVertex(vh, ref vertex, sample.RightX, sample.LocalY, uvOrigin.x + sample.RightArtX * uvPerPixel.x, v);
         }
 
         for (int i = 0; i + 1 < _samples.Count; i++)
@@ -69,6 +72,26 @@ public class UI_LiveHoldNoteBody : MaskableGraphic
         }
 
         SetVerticesDirty();
+    }
+
+    /// <summary>
+    /// 그림 안의 픽셀 좌표를 텍스처 UV로 바꾸는 기준입니다. 텍스처 전체가 아니라 스프라이트가 차지한 영역을 원점으로 삼습니다.
+    /// 그림이 없으면 흰 텍스처 한 점만 찍으면 되므로 모두 0으로 둡니다.
+    /// </summary>
+    private void GetUvMapping(out Vector2 uvOrigin, out Vector2 uvPerPixel)
+    {
+        if (_bodySprite == null)
+        {
+            uvOrigin = Vector2.zero;
+            uvPerPixel = Vector2.zero;
+            return;
+        }
+
+        Texture texture = _bodySprite.texture;
+        Rect textureRect = _bodySprite.textureRect;
+
+        uvPerPixel = new Vector2(1f / texture.width, 1f / texture.height);
+        uvOrigin = new Vector2(textureRect.x * uvPerPixel.x, textureRect.y * uvPerPixel.y);
     }
 
     private static void AddVertex(VertexHelper vh, ref UIVertex vertex, float x, float y, float u, float v)

@@ -4908,6 +4908,10 @@ MonoBehaviour:
     Prefab: {fileID: 275794545756765712, guid: 9380dc89b4a9c774a98c0a553dbe4ca9, type: 3}
   - Type: 7
     Prefab: {fileID: 3978850592986456496, guid: 88516f5a8e70b63459c5921a2f8d530b, type: 3}
+  - Type: 12
+    Prefab: {fileID: 353526734260982027, guid: d8b450532e0c7cf4e9f236a8ed3d1b35, type: 3}
+  - Type: 13
+    Prefab: {fileID: 8304552601822761151, guid: e9d335009c61a614687a03003e524ef0, type: 3}
 --- !u!1 &631340753
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,7 +9062,6 @@ MonoBehaviour:
   _noteRenderSettings:
     HorizontalPaddingRatio: 0
     IsCenteredOnBeatLine: 1
-    BodyTileLength: 64
   _noteSpriteTable:
     LaneSprites:
     - {fileID: 21300000, guid: 4f10340f82d156c44832e7dcbe69fc60, type: 3}
@@ -9067,7 +9070,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: eb751009d2cddc94588a31f80171e54d, type: 3}
     - {fileID: 21300000, guid: 60acfdeac4072b349a0aedadc73d177d, type: 3}
     - {fileID: 21300000, guid: ddf4ddee8ce10044883735b2b90b804c, type: 3}
-    HoldBodySprites: []
+    HoldBodySprites:
+    - {fileID: 21300000, guid: 1c97827fbec444246849a1dcae9f450b, type: 3}
+    - {fileID: 21300000, guid: d0dc58e5100093f46be05eca73a0b924, type: 3}
+    - {fileID: 21300000, guid: 0888b110ce64bd840bc134cb8914f8cf, type: 3}
+    - {fileID: 21300000, guid: 3339e08f83e091049a3714ba81d76549, type: 3}
+    - {fileID: 21300000, guid: 6ee4c56ce5d10004d9effe9790dde03a, type: 3}
+    - {fileID: 21300000, guid: de0846ef311ab7a408388d772844f33c, type: 3}
   _lanes: {fileID: 971251312}
   _noteLayer: {fileID: 1142410481}
   _snapDivision: 1

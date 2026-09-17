@@ -148,6 +148,22 @@ public class UI_LiveTrackLanes : MaskableGraphic
     }
 
     /// <summary>
+    /// 로컬 가로 좌표를 시안(1920x1080) 픽셀 거리로 옮깁니다. 트랙 한가운데가 0입니다.
+    /// 시안 해상도로 그린 그림을 트랙에 겹쳐 붙일 때 그림 안의 자리를 구하는 데 쓰며, 세로는 LiveTrackShape.GetScreenYAtRatio가 같은 일을 합니다.
+    /// </summary>
+    public float GetDesignX(float localX)
+    {
+        Rect rect = GetPixelAdjustedRect();
+
+        if (Mathf.Approximately(rect.width, 0f))
+        {
+            return 0f;
+        }
+
+        return localX * _shape.BottomWidth / rect.width;
+    }
+
+    /// <summary>
     /// 레인 경계(0이 트랙 왼쪽 끝, LiveLane.COUNT가 오른쪽 끝)의 그 높이 로컬 가로 좌표입니다.
     /// 경계 비율은 맨 아래 폭 기준이므로, 그 높이의 폭을 곱하면 모이는 경계가 그대로 나옵니다.
     /// </summary>

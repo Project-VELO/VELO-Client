@@ -22,4 +22,8 @@ public enum EPoolable
     SelectStoryChapterSection,
     SelectStoryEpisodeItem,
     StoryLogItem,
+
+    // 리듬게임 판정선의 타격 이펙트입니다. PERFECT만 큰 이펙트를 쓰므로 크기별로 풀을 나눕니다.
+    LiveHitEffectPerfect,
+    LiveHitEffectGreat,
 }

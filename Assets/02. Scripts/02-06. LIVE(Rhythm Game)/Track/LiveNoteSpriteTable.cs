@@ -17,7 +17,7 @@ public class LiveNoteSpriteTable
     [Tooltip("레인 1번부터 순서대로 넣습니다. 비어 있는 칸은 노트 프리팹의 기본 표시를 그대로 씁니다.")]
     public List<Sprite> LaneSprites = new List<Sprite>();
 
-    [Tooltip("롱노트 몸통입니다. 세로로 반복되므로 아틀라스가 아닌 Wrap Mode = Repeat 단독 텍스처여야 합니다. 몸통 아트가 아직 없어 비어 있는 것이 정상이며, 그동안은 P_UI_Live_NoteLong의 Body Color가 띠 색을 냅니다. 레인 노트 스프라이트는 Wrap Mode가 Clamp이고 모서리가 둥근 평행사변형이라 여기에 넣으면 안 됩니다.")]
+    [Tooltip("롱노트 몸통 그림(Image_Live_Note_Long_Lane1~6)을 레인 1번부터 순서대로 넣습니다. 레인 띠를 화면 높이 전체에 보이는 모양 그대로 그린 그림이라 반복하지 않고 화면에 고정해 씁니다. 그림이 놓이는 가로 자리는 LiveHoldNoteRenderer가 레인별로 들고 있으므로 그림을 새로 뽑으면 그 값도 다시 재야 합니다. 비어 있는 칸은 P_UI_Live_NoteLong Body의 Color 단색 띠로 그려집니다.")]
     public List<Sprite> HoldBodySprites = new List<Sprite>();
 
     public Sprite GetSprite(int lane)

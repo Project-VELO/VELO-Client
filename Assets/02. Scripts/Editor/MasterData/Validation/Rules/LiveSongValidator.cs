@@ -14,6 +14,8 @@ using System.Linq;
 /// </summary>
 public class LiveSongValidator
 {
+    private readonly LiveEditorChartValidator _chartValidator = new LiveEditorChartValidator();
+
     public void Validate(MasterDataValidationReport report)
     {
         List<SongData> songs = LiveSongCatalog.Instance.Chapters.SelectMany(chapter => chapter.Songs).ToList();
@@ -49,7 +51,33 @@ public class LiveSongValidator
             if (!File.Exists(path))
             {
                 report.AddError($"[곡] '{song.SongId}'의 {pair.Key} 채보 파일이 없습니다: {path}");
+                continue;
             }
+
+            ValidateChartNotes(song, pair.Key, path, report);
+        }
+    }
+
+    /// <summary>
+    /// 수록된 채보의 노트를 채보 에디터가 저장할 때와 같은 규칙으로 검사합니다.
+    ///
+    /// 저장 검증에 규칙이 생기기 전에 저장했거나 파일을 손으로 고친 채보는 그 규칙을 거치지 않고 게임에 나갑니다.
+    /// 11_59에는 같은 레인·같은 시각에 겹친 노트가 그렇게 남아, 제대로 쳐도 BAD가 떴습니다.
+    /// 규칙을 여기에 따로 적지 않고 저장 검증을 그대로 불러, 두 검사의 기준이 갈라지지 않게 합니다.
+    /// </summary>
+    private void ValidateChartNotes(SongData song, EDifficulty difficulty, string path, MasterDataValidationReport report)
+    {
+        ChartData chart = LiveChartLoader.Load(path);
+
+        if (ReferenceEquals(chart, null))
+        {
+            report.AddError($"[곡] '{song.SongId}'의 {difficulty} 채보를 읽지 못했습니다: {path}");
+            return;
+        }
+
+        foreach (string error in _chartValidator.Validate(chart, song))
+        {
+            report.AddError($"[곡] '{song.SongId}'의 {difficulty} 채보: {error}");
         }
     }
 

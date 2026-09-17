@@ -15,15 +15,20 @@ public readonly struct LiveHoldBodySample
     public readonly float LocalY;
 
     /// <summary>
-    /// 몸통 텍스처의 세로 좌표입니다. 머리에서부터 잰 화면 거리를 타일 길이로 나눈 값이라 무늬가 노트에 붙어 따라옵니다.
+    /// 줄의 양 끝과 높이를 몸통 그림 안의 픽셀 좌표로 적은 값입니다(그림 왼쪽 아래가 원점).
+    /// 그림 속 자리가 화면 위치로만 정해지므로 무늬는 화면에 고정되고, 몸통은 자기가 덮은 구간만 드러냅니다.
     /// </summary>
-    public readonly float V;
+    public readonly float LeftArtX;
+    public readonly float RightArtX;
+    public readonly float ArtY;
 
-    public LiveHoldBodySample(float leftX, float rightX, float localY, float v)
+    public LiveHoldBodySample(float leftX, float rightX, float localY, float leftArtX, float rightArtX, float artY)
     {
         LeftX = leftX;
         RightX = rightX;
         LocalY = localY;
-        V = v;
+        LeftArtX = leftArtX;
+        RightArtX = rightArtX;
+        ArtY = artY;
     }
 }

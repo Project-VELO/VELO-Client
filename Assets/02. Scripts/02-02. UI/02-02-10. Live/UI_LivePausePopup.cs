@@ -7,6 +7,9 @@ using VInspector;
 /// <summary>
 /// 리듬게임 일시정지 팝업입니다(기획서 3-I-9).
 /// 음악·노트·타이머를 멈추는 것은 LiveGameController의 몫이고, 이 팝업은 세 가지 선택지를 전달만 합니다.
+///
+/// 설정 탭의 하이스피드 조절은 UI_LiveHiSpeedControl이 따로 들고 있습니다. 이 팝업은 탭을 어느 쪽으로
+/// 열어 둘지만 정하고, 설정값이 무엇이고 어디에 반영되는지는 알지 않습니다.
 /// </summary>
 public class UI_LivePausePopup : UI_Popup
 {
@@ -25,6 +28,11 @@ public class UI_LivePausePopup : UI_Popup
     [SerializeField]
     private Button _quitButton;
 
+    [Foldout("Hierarchy")]
+    [Header("Tabs")]
+    [SerializeField]
+    private UI_LivePauseTabs _tabs;
+
     /// <summary>
     /// 세 버튼 중 하나로 고른 선택입니다. 닫힘 연출이 끝난 뒤에 실행하려고 들고 있습니다.
     /// 비어 있으면 선택 없이 닫힌 것으로 봅니다.
@@ -38,11 +46,26 @@ public class UI_LivePausePopup : UI_Popup
         _resumeButton.onClick.AddListener(RequestResume);
         _restartButton.onClick.AddListener(RequestRestart);
         _quitButton.onClick.AddListener(RequestQuit);
+
+        _tabs.OnTabSelected += _tabs.SetSelectedTab;
     }
 
+    private void OnDestroy()
+    {
+        if (_tabs != null)
+        {
+            _tabs.OnTabSelected -= _tabs.SetSelectedTab;
+        }
+    }
+
+    /// <summary>
+    /// 설정 탭을 보다 닫았더라도 다음에 열 때는 선택지부터 보이게 합니다.
+    /// 멈춘 게임을 이어 갈 방법이 한 번 더 누른 뒤에야 나타나면 안 됩니다.
+    /// </summary>
     public override async UniTask OpenAsync()
     {
         _pendingChoice = null;
+        _tabs.SetSelectedTab(ELivePauseTab.PAUSE);
 
         await base.OpenAsync();
     }

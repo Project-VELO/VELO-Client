@@ -80,7 +80,7 @@ public class LiveGameController : MonoBehaviour
             return;
         }
 
-        _judgementProcessor.RefreshExpiredNotes(_conductor.SongTimeMs);
+        _judgementProcessor.RefreshExpiredNotes(_conductor.JudgementTimeMs);
 
         if (_conductor.IsSongFinished)
         {
@@ -166,7 +166,7 @@ public class LiveGameController : MonoBehaviour
             _liveUI.LaneFeedback.RefreshLanePress(lane);
         }
 
-        _judgementProcessor.PressLane(lane, _conductor.SongTimeMs);
+        _judgementProcessor.PressLane(lane, _conductor.JudgementTimeMs);
     }
 
     private void ReleaseLane(int lane)
@@ -176,7 +176,7 @@ public class LiveGameController : MonoBehaviour
             return;
         }
 
-        _judgementProcessor.ReleaseLane(lane, _conductor.SongTimeMs);
+        _judgementProcessor.ReleaseLane(lane, _conductor.JudgementTimeMs);
     }
 
     /// <summary>

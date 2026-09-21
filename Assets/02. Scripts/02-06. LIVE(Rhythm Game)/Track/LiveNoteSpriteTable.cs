@@ -20,6 +20,9 @@ public class LiveNoteSpriteTable
     [Tooltip("롱노트 몸통 그림(Image_Live_Note_Long_Lane1~6)을 레인 1번부터 순서대로 넣습니다. 레인 띠를 화면 높이 전체에 보이는 모양 그대로 그린 그림이라 반복하지 않고 화면에 고정해 씁니다. 그림이 놓이는 가로 자리는 LiveHoldNoteRenderer가 레인별로 들고 있으므로 그림을 새로 뽑으면 그 값도 다시 재야 합니다. 비어 있는 칸은 P_UI_Live_NoteLong Body의 Color 단색 띠로 그려집니다.")]
     public List<Sprite> HoldBodySprites = new List<Sprite>();
 
+    [Tooltip("롱노트 머리 그림(Image_Live_Note_Long_Lane1~6_Start)을 레인 1번부터 순서대로 넣습니다. 레인별 일반 노트 그림과 모양·크기가 같고 색만 달라 배치 계산은 그대로 씁니다. 비어 있는 칸은 일반 노트 그림으로 대신 그립니다.")]
+    public List<Sprite> HoldHeadSprites = new List<Sprite>();
+
     public Sprite GetSprite(int lane)
     {
         return GetSpriteAt(LaneSprites, lane);
@@ -28,6 +31,17 @@ public class LiveNoteSpriteTable
     public Sprite GetHoldBodySprite(int lane)
     {
         return GetSpriteAt(HoldBodySprites, lane);
+    }
+
+    /// <summary>
+    /// 머리 그림이 비어 있으면 일반 노트 그림을 돌려줍니다.
+    /// 빈 스프라이트를 그대로 넘기면 머리가 흰 사각형으로 그려집니다(UI_LiveNoteVisual.SetLaneSprite).
+    /// </summary>
+    public Sprite GetHoldHeadSprite(int lane)
+    {
+        Sprite sprite = GetSpriteAt(HoldHeadSprites, lane);
+
+        return sprite != null ? sprite : GetSprite(lane);
     }
 
     private static Sprite GetSpriteAt(List<Sprite> sprites, int lane)

@@ -17,6 +17,14 @@ public class UI_LiveHitPanel : MonoBehaviour
     [SerializeField]
     private Image _judgementImage;
 
+    /// <summary>
+    /// 판정이 뜰 때마다 로고를 절반 크기에서 원래 크기로 빠르게 키우는 연출입니다.
+    /// 로고는 그림만 갈아 끼우며 같은 자리에 머물러, 연속으로 같은 판정이 나면 바뀐 줄 모르고 지나칩니다.
+    /// 매번 다시 커지게 해서 판정이 새로 들어왔다는 것이 눈에 띄게 합니다.
+    /// </summary>
+    [SerializeField]
+    private UI_ScaleAnimator _popAnimator;
+
     [Foldout("Project")]
     [Header("Judgement Sprites")]
     [SerializeField]
@@ -31,11 +39,11 @@ public class UI_LiveHitPanel : MonoBehaviour
     [SerializeField]
     private Sprite _badSprite;
 
-    private CancellationTokenSource _hideCancellation;
+    private CancellationTokenSource _displayCancellation;
 
     private void OnDestroy()
     {
-        CancelHide();
+        CancelDisplay();
     }
 
     /// <summary>
@@ -58,26 +66,38 @@ public class UI_LiveHitPanel : MonoBehaviour
 
     /// <summary>
     /// 판정 로고를 띄우고 잠시 뒤 지웁니다. 다음 노트가 곧바로 판정되면 타이머를 새로 걸어 그림만 갈아 끼웁니다.
+    ///
+    /// 앞선 연출을 취소하고 다시 재생하므로, 커지는 도중에 다음 판정이 나도 중간 크기에서 이어지지 않고
+    /// 처음 크기부터 다시 커집니다(재생 시작에서 시작 크기를 넣습니다).
     /// </summary>
     public void RefreshJudgement(EJudgement judgement)
     {
         SetJudgementSprite(GetJudgementSprite(judgement));
 
-        CancelHide();
-        _hideCancellation = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
-        HideAfterDelayAsync(_hideCancellation.Token).Forget();
+        CancelDisplay();
+        _displayCancellation = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
+
+        _popAnimator.PlayOpenAsync(_displayCancellation.Token).Forget();
+        HideAfterDelayAsync(_displayCancellation.Token).Forget();
     }
 
     public void ClearJudgement()
     {
-        CancelHide();
+        CancelDisplay();
         SetJudgementSprite(null);
     }
 
     private async UniTaskVoid HideAfterDelayAsync(CancellationToken cancellationToken)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(_displaySeconds), DelayType.UnscaledDeltaTime, cancellationToken: cancellationToken);
-        SetJudgementSprite(null);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(_displaySeconds), DelayType.UnscaledDeltaTime, cancellationToken: cancellationToken);
+            SetJudgementSprite(null);
+        }
+        catch (OperationCanceledException)
+        {
+            // 다음 판정이 타이머를 새로 걸었거나 화면을 떠난 것뿐입니다. 새로 뜬 로고는 새 타이머가 지웁니다.
+        }
     }
 
     private Sprite GetJudgementSprite(EJudgement judgement)
@@ -98,15 +118,19 @@ public class UI_LiveHitPanel : MonoBehaviour
         }
     }
 
-    private void CancelHide()
+    /// <summary>
+    /// 커지는 연출과 지우는 타이머를 한 토큰으로 묶어 함께 끊습니다.
+    /// 취소하면 트윈도 함께 죽으므로(TweenCancelBehaviour.Kill) 사라진 로고의 크기를 계속 건드리지 않습니다.
+    /// </summary>
+    private void CancelDisplay()
     {
-        if (_hideCancellation == null)
+        if (_displayCancellation == null)
         {
             return;
         }
 
-        _hideCancellation.Cancel();
-        _hideCancellation.Dispose();
-        _hideCancellation = null;
+        _displayCancellation.Cancel();
+        _displayCancellation.Dispose();
+        _displayCancellation = null;
     }
 }

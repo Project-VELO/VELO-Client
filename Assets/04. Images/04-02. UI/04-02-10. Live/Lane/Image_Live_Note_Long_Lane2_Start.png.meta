@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e51c78f949742364ba5a87cbb2ab2f43
+guid: b69352fd70dafce4ab66687b89c90e0d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2530564911472380330
-    second: Image_Live_Pause_Button_0
+      213: -2814072453242599640
+    second: Image_Live_Note_Long_Lane2_BothEnds_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 28, y: 40, z: 28, w: 24}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Image_Live_Pause_Button_0
+      name: Image_Live_Note_Long_Lane2_BothEnds_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 571
-        height: 146
+        width: 242
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa90165216f5e1320800000000000000
-      internalID: 2530564911472380330
+      spriteID: 827434c630862f8d0800000000000000
+      internalID: -2814072453242599640
       vertices: []
       indices: 
       edges: []
@@ -138,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: aa90165216f5e1320800000000000000
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Image_Live_Pause_Button_0: 2530564911472380330
+      Image_Live_Note_Long_Lane2_BothEnds_0: -2814072453242599640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

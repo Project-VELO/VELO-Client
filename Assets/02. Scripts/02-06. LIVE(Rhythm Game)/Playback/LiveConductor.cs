@@ -33,6 +33,21 @@ public class LiveConductor : MonoBehaviour
 
     public LiveAudioPlayer AudioPlayer => _audioPlayer;
     public int SongTimeMs { get; private set; }
+
+    /// <summary>
+    /// 판정에만 쓰는 시각입니다. 재생 시각에 플레이어가 고른 보정값을 더한, 한 칸 밀린 시계입니다.
+    ///
+    /// 입력뿐 아니라 노트 만료 검사까지 이 시각으로 봐야 합니다. 입력만 밀면 보정한 만큼
+    /// 노트가 먼저 만료되어, 제때 친 입력이 이미 사라진 노트를 향하게 됩니다.
+    ///
+    /// 음악과 노트 표시는 SongTimeMs 그대로 둡니다. 보정은 "이 사람의 입력이 언제 들어온 것으로 칠지"를
+    /// 정하는 값이지 곡을 밀거나 당기는 값이 아닙니다.
+    ///
+    /// 채보 에디터 테스트 플레이는 이 속성을 쓰지 않습니다. 작업자가 채보의 배치를 확인하는 자리에
+    /// 개인 버릇 보정이 끼면 찍은 자리와 다르게 느껴집니다.
+    /// </summary>
+    public int JudgementTimeMs => SongTimeMs + LiveJudgementOffsetSetting.CurrentMs;
+
     public int ClipLengthMs => _audioPlayer.ClipLengthMs;
     public bool IsRunning => _isRunning;
     public bool IsSongFinished => _audioPlayer.IsClipLoaded && _audioPlayer.ClipLengthMs <= SongTimeMs;

@@ -14,15 +14,20 @@ public static class LiveJudgementOffsetSetting
     private const string PREFS_KEY = "Live.JudgementOffsetMs";
 
     /// <summary>
-    /// PERFECT 판정창이 ±45ms(LiveJudgementRule)이므로, 그보다 조금 넓은 ±50ms까지 허용합니다.
-    /// 더 넓히면 눈에 보이는 노트와 판정이 뚜렷하게 어긋나기 시작합니다.
+    /// 사람의 버릇만이 아니라 블루투스 이어폰처럼 소리가 늦게 나오는 기기까지 맞출 수 있도록 ±100ms까지 엽니다.
+    /// PERFECT 판정창(±45ms, LiveJudgementRule)의 두 배가 넘어, 끝값 근처에서는 눈에 보이는 노트와 판정이 어긋나 보입니다.
     /// </summary>
-    public const int MIN_OFFSET_MS = -50;
-    public const int MAX_OFFSET_MS = 50;
+    public const int MIN_OFFSET_MS = -100;
+    public const int MAX_OFFSET_MS = 100;
+
+    /// <summary>
+    /// 보정하지 않은 상태입니다. 설정 탭의 0 버튼이 이 값으로 되돌립니다.
+    /// </summary>
+    public const int DEFAULT_OFFSET_MS = 0;
 
     /// <summary>
     /// 재생 시각이 정수 밀리초라(LiveConductor.SongTimeMs) 1ms보다 잘게 나눌 수 없습니다.
-    /// 끝에서 끝까지 100번을 눌러야 하므로 10ms 단위를 함께 둡니다.
+    /// 큰 폭은 슬라이더로 옮기고, 버튼은 그 뒤에 1ms·10ms 단위로 다듬는 데 씁니다.
     /// </summary>
     public const int FINE_STEP_MS = 1;
     public const int COARSE_STEP_MS = 10;
@@ -68,6 +73,6 @@ public static class LiveJudgementOffsetSetting
     /// </summary>
     private static int Load()
     {
-        return Mathf.Clamp(PlayerPrefs.GetInt(PREFS_KEY, 0), MIN_OFFSET_MS, MAX_OFFSET_MS);
+        return Mathf.Clamp(PlayerPrefs.GetInt(PREFS_KEY, DEFAULT_OFFSET_MS), MIN_OFFSET_MS, MAX_OFFSET_MS);
     }
 }

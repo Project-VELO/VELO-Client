@@ -76,7 +76,7 @@ public class LiveNoteVisualPool
 
         if (noteVisual != null)
         {
-            noteVisual.SetLaneSprite(_spriteTable.GetSprite(note.Lane));
+            noteVisual.SetLaneSprite(GetHeadSprite(note));
         }
 
         UI_LiveHoldNoteVisual holdVisual = go.GetComponent<UI_LiveHoldNoteVisual>();
@@ -87,6 +87,17 @@ public class LiveNoteVisualPool
         }
 
         _noteVisuals[note.NoteId] = new LiveNoteVisualHandle(rectTransform, poolType, noteVisual, holdVisual);
+    }
+
+    /// <summary>
+    /// 롱노트 머리는 레인별로 따로 그린 그림을 씁니다. 일반 노트와 모양이 같아 한눈에 구분되지 않기 때문입니다.
+    /// 프리팹을 고르는 기준(GetPoolTypeForNoteType)과 같이 노트 종류로 가릅니다.
+    /// </summary>
+    private Sprite GetHeadSprite(NoteData note)
+    {
+        return note.NoteType == ENoteType.LONG
+            ? _spriteTable.GetHoldHeadSprite(note.Lane)
+            : _spriteTable.GetSprite(note.Lane);
     }
 
     private void ReleaseStaleVisuals()

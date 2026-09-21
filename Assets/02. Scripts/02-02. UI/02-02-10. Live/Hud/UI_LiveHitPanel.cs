@@ -89,8 +89,15 @@ public class UI_LiveHitPanel : MonoBehaviour
 
     private async UniTaskVoid HideAfterDelayAsync(CancellationToken cancellationToken)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(_displaySeconds), DelayType.UnscaledDeltaTime, cancellationToken: cancellationToken);
-        SetJudgementSprite(null);
+        try
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(_displaySeconds), DelayType.UnscaledDeltaTime, cancellationToken: cancellationToken);
+            SetJudgementSprite(null);
+        }
+        catch (OperationCanceledException)
+        {
+            // 다음 판정이 타이머를 새로 걸었거나 화면을 떠난 것뿐입니다. 새로 뜬 로고는 새 타이머가 지웁니다.
+        }
     }
 
     private Sprite GetJudgementSprite(EJudgement judgement)

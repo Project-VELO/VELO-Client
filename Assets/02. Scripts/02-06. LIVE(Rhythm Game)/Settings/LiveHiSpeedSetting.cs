@@ -25,6 +25,9 @@ public static class LiveHiSpeedSetting
     public const float FINE_STEP = 0.1f;
     public const float COARSE_STEP = 1f;
 
+    // 1.0 안에 든 FINE_STEP 칸 수(10)입니다. Round가 이 수로 곱했다 나눠 값을 0.1 단위에 맞춥니다.
+    private const float STEPS_PER_UNIT = 1f / FINE_STEP;
+
     /// <summary>
     /// 하이스피드가 바뀌었습니다. 트랙에 물려 주는 쪽이 구독합니다.
     /// </summary>
@@ -73,10 +76,14 @@ public static class LiveHiSpeedSetting
     }
 
     /// <summary>
-    /// 0.1씩 더하다 보면 부동소수점 오차가 쌓여 4.9999 같은 값이 되므로 소수점 둘째 자리로 반올림해 고정합니다.
+    /// 값을 0.1 단위에 맞춥니다. 버튼으로만 바꾸면 늘 0.1 단위지만, 0.1씩 더하다 보면 부동소수점 오차가 쌓여
+    /// 4.9999 같은 값이 되고, 코드에서 Set(1.23f)처럼 넣으면 화면에는 1.2x로 보이는데 트랙은 1.23으로 흐릅니다.
+    ///
+    /// 칸 수를 FINE_STEP으로 곱해 되돌리지 않고 STEPS_PER_UNIT으로 나눕니다. 9 × 0.1f는 0.90000004가 되어
+    /// 0.9f와 어긋나는 칸이 생기지만(0.1은 float로 딱 떨어지지 않음), 9 / 10f는 0.9f 그대로 나옵니다.
     /// </summary>
     private static float Round(float hiSpeed)
     {
-        return Mathf.Round(hiSpeed * 100f) / 100f;
+        return Mathf.Round(hiSpeed * STEPS_PER_UNIT) / STEPS_PER_UNIT;
     }
 }

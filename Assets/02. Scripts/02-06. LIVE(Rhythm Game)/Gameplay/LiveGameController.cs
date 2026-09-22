@@ -61,6 +61,7 @@ public class LiveGameController : MonoBehaviour
 
     private void OnDestroy()
     {
+        _session.ReleaseSession();
         _inputRelay.Release();
         _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
     }

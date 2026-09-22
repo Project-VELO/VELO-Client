@@ -15,9 +15,10 @@ public class LiveJudgementProcessor
 {
     /// <summary>
     /// 판정 하나가 확정될 때마다 알립니다. 만료로 BAD가 된 노트도 포함합니다.
-    /// 여러 화면 요소가 함께 구독하므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
+    /// 판정 등급과 함께 확정 경로와 입력 오차를 실어 보내, 플레이테스트 통계가 이르게 쳤는지 놓쳤는지를 구분할 수 있게 합니다.
+    /// 여러 구독자가 함께 붙으므로, 대입으로 서로를 지우지 못하게 event로 선언합니다.
     /// </summary>
-    public event Action<NoteData, EJudgement> OnNoteJudged;
+    public event Action<LiveNoteJudgement> OnNoteJudged;
 
     /// <summary>
     /// 트랙에서 즉시 걷어 낼 노트를 알립니다. 놓친 단타는 판정선을 지나 화면 밖까지 흘러가야 하므로 제외되며,
@@ -31,7 +32,7 @@ public class LiveJudgementProcessor
     private readonly LiveScoreTracker _scoreTracker = new LiveScoreTracker();
     private readonly LiveHoldTracker _holdTracker = new LiveHoldTracker();
     private readonly List<NoteData> _expiredNotes = new List<NoteData>();
-    private readonly List<LiveHoldTracker.LiveHoldResult> _holdResults = new List<LiveHoldTracker.LiveHoldResult>();
+    private readonly List<LiveNoteJudgement> _holdResults = new List<LiveNoteJudgement>();
 
     public LiveScoreTracker ScoreTracker => _scoreTracker;
     public int TotalNoteCount => _noteQueue.TotalNoteCount;
@@ -68,11 +69,11 @@ public class LiveJudgementProcessor
         // 롱노트는 끝까지 유지해야 판정이 확정되므로, 시작 판정만 맡겨 두고 지금은 집계하지 않습니다.
         if (LiveHoldTracker.IsHoldNote(note))
         {
-            _holdTracker.BeginHold(note, judgement);
+            _holdTracker.BeginHold(note, judgement, errorMs);
             return;
         }
 
-        ApplyStruckJudgement(note, judgement);
+        ApplyStruckJudgement(new LiveNoteJudgement(note, judgement, ELiveJudgementCause.INPUT, errorMs));
     }
 
     /// <summary>
@@ -80,9 +81,9 @@ public class LiveJudgementProcessor
     /// </summary>
     public void ReleaseLane(int lane, int songTimeMs)
     {
-        if (_holdTracker.TryReleaseLane(lane, songTimeMs, out LiveHoldTracker.LiveHoldResult result))
+        if (_holdTracker.TryReleaseLane(lane, songTimeMs, out LiveNoteJudgement result))
         {
-            ApplyStruckJudgement(result.Note, result.Judgement);
+            ApplyStruckJudgement(result);
         }
     }
 
@@ -122,7 +123,7 @@ public class LiveJudgementProcessor
     {
         for (int i = 0; i < _holdResults.Count; i++)
         {
-            ApplyStruckJudgement(_holdResults[i].Note, _holdResults[i].Judgement);
+            ApplyStruckJudgement(_holdResults[i]);
         }
     }
 
@@ -131,39 +132,40 @@ public class LiveJudgementProcessor
         for (int i = 0; i < _expiredNotes.Count; i++)
         {
             NoteData note = _expiredNotes[i];
+            LiveNoteJudgement missed = new LiveNoteJudgement(note, EJudgement.BAD, ELiveJudgementCause.MISS, 0);
 
             // 놓친 단타는 판정선을 지나 화면 밖까지 흘려보내지만, 롱노트는 머리가 판정선에 고정되어 그려지므로
             // 그대로 두면 붙잡고 있는 것처럼 보인 채 몸통 길이만큼 남습니다. 롱노트만 즉시 걷어 냅니다.
             if (LiveHoldTracker.IsHoldNote(note))
             {
-                ApplyStruckJudgement(note, EJudgement.BAD);
+                ApplyStruckJudgement(missed);
                 continue;
             }
 
-            ApplyJudgement(note, EJudgement.BAD);
+            ApplyJudgement(missed);
         }
     }
 
     /// <summary>
     /// 판정과 함께 트랙에서 걷어 낼 것까지 알립니다. 플레이어가 건드린 노트와 놓친 롱노트가 여기로 옵니다.
     /// </summary>
-    private void ApplyStruckJudgement(NoteData note, EJudgement judgement)
+    private void ApplyStruckJudgement(in LiveNoteJudgement result)
     {
-        ApplyJudgement(note, judgement);
-        OnNoteStruck?.Invoke(note);
+        ApplyJudgement(result);
+        OnNoteStruck?.Invoke(result.Note);
     }
 
-    private void ApplyJudgement(NoteData note, EJudgement judgement)
+    private void ApplyJudgement(in LiveNoteJudgement result)
     {
-        _scoreTracker.Apply(judgement);
+        _scoreTracker.Apply(result.Judgement);
 
         // 감점을 통지보다 앞에 두어야 HUD가 이미 깎인 점수로 한 번만 갱신됩니다(3-I-6).
-        if (note.NoteType == ENoteType.GHOST && judgement == EJudgement.BAD)
+        if (result.Note.NoteType == ENoteType.GHOST && result.Judgement == EJudgement.BAD)
         {
             _scoreTracker.ApplyGhostMissPenalty();
         }
 
         OnScoreChanged?.Invoke();
-        OnNoteJudged?.Invoke(note, judgement);
+        OnNoteJudged?.Invoke(result);
     }
 }

@@ -59,13 +59,6 @@ public class LiveGameController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        _session.ReleaseSession();
-        _inputRelay.Release();
-        _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
-    }
-
     private void Update()
     {
         if (_state == ELiveGameState.Loading)
@@ -87,6 +80,13 @@ public class LiveGameController : MonoBehaviour
         {
             FinishPlay();
         }
+    }
+
+    private void OnDestroy()
+    {
+        _session.ReleaseSession();
+        _inputRelay.Release();
+        _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
     }
 
     /// <summary>

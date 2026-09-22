@@ -6,6 +6,7 @@ public enum ELiveJudgementCause
 {
     /// <summary>
     /// 입력 타이밍으로 판정되었습니다. 이르게 눌러 소비된 BAD와 끝까지 유지한 롱노트도 여기에 속합니다.
+    /// 이르게 눌러 이미 BAD가 된 롱노트는 일찍 떼도 여기에 남습니다.
     /// </summary>
     INPUT,
 
@@ -15,7 +16,7 @@ public enum ELiveJudgementCause
     MISS,
 
     /// <summary>
-    /// 롱노트를 눌렀지만 끝까지 유지하지 못했습니다. 오차 값은 누른 순간의 것입니다.
+    /// 롱노트를 GOOD 창 안에서 눌렀지만 끝까지 유지하지 못했습니다. 오차 값은 누른 순간의 것입니다.
     /// </summary>
     HOLD_BREAK,
 }

@@ -90,15 +90,18 @@ public class LiveHoldTracker
             }
 
             _holdingNotes[laneIndex] = null;
-            results.Add(CreateHeldToEndJudgement(laneIndex, note));
+            results.Add(CreateStartJudgement(laneIndex, note));
         }
     }
 
     /// <summary>
-    /// 아직 유지 중인 롱노트를 모두 BAD로 마무리합니다. 곡이 끝나거나 플레이가 중단되어 유지 여부를 더 볼 수 없을 때 사용합니다.
-    /// 완주 시점까지 유지 중이었다면 꼬리가 곡 끝을 넘은 채보이므로, 끝까지 유지하지 못한 것(HOLD_BREAK)으로 알립니다.
+    /// 곡이 끝나 유지 여부를 더 볼 수 없을 때, 아직 유지 중인 롱노트를 이 순간 뗀 것으로 보고 확정합니다.
+    ///
+    /// 곡 종료는 오프셋 없는 재생 시각으로 판단하므로, 판정 오프셋이 음수면 판정 시각이 곡 끝보다 앞서 멈춥니다.
+    /// 그때 곡 끝에 맞닿은 롱노트는 종료 시각을 채우지 못한 채 남는데, 무조건 실패로 닫으면 끝까지 누른 플레이어가 BAD를 받습니다.
+    /// 뗀 순간과 같은 허용치로 판단하면 정상 채보의 롱노트는 성공하고, 꼬리가 곡 끝을 넘은 채보만 HOLD_BREAK로 남습니다.
     /// </summary>
-    public void CollectRemaining(List<LiveNoteJudgement> results)
+    public void CollectRemaining(int songTimeMs, List<LiveNoteJudgement> results)
     {
         for (int laneIndex = 0; laneIndex < LiveLane.COUNT; laneIndex++)
         {
@@ -110,7 +113,7 @@ public class LiveHoldTracker
             }
 
             _holdingNotes[laneIndex] = null;
-            results.Add(CreateHoldBreakJudgement(laneIndex, note));
+            results.Add(GetJudgementOnRelease(laneIndex, note, songTimeMs));
         }
     }
 
@@ -118,16 +121,27 @@ public class LiveHoldTracker
     /// 허용치를 롱노트 길이로 제한합니다. 길이가 허용치보다 짧으면 인정 구간이 시작 시각보다 앞으로 가 버려,
     /// 누르자마자 떼도 끝까지 유지한 것이 됩니다. 격자가 촘촘한 채보에서는 그 길이가 쉽게 나옵니다
     /// (1/16박은 200BPM에서 75ms라 허용치 125ms보다 짧습니다).
+    ///
+    /// 누를 때 이미 이른 입력으로 BAD가 정해졌다면 뗀 시점과 관계없이 원인은 이른 입력입니다.
+    /// 조기 해제로 덮으면 늦게 찍힌 롱노트에서 이른 쪽 신호가 판정 통계에 남지 않습니다.
     /// </summary>
     private LiveNoteJudgement GetJudgementOnRelease(int laneIndex, NoteData note, int songTimeMs)
     {
         int toleranceMs = Math.Min(LiveJudgementRule.HOLD_RELEASE_TOLERANCE_MS, note.HoldDurationMs);
         bool isHeldToEnd = GetHoldEndTimeMs(note) - toleranceMs <= songTimeMs;
 
-        return isHeldToEnd ? CreateHeldToEndJudgement(laneIndex, note) : CreateHoldBreakJudgement(laneIndex, note);
+        if (isHeldToEnd || _startJudgements[laneIndex] == EJudgement.BAD)
+        {
+            return CreateStartJudgement(laneIndex, note);
+        }
+
+        return CreateHoldBreakJudgement(laneIndex, note);
     }
 
-    private LiveNoteJudgement CreateHeldToEndJudgement(int laneIndex, NoteData note)
+    /// <summary>
+    /// 누른 순간의 판정을 그대로 확정합니다.
+    /// </summary>
+    private LiveNoteJudgement CreateStartJudgement(int laneIndex, NoteData note)
     {
         return new LiveNoteJudgement(note, _startJudgements[laneIndex], ELiveJudgementCause.INPUT, _startErrorsMs[laneIndex]);
     }

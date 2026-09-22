@@ -102,15 +102,15 @@ public class LiveJudgementProcessor
     }
 
     /// <summary>
-    /// 완주 시점에 아직 판정되지 않은 노트를 모두 BAD로 마무리합니다.
+    /// 완주 시점에 아직 판정되지 않은 노트를 모두 확정합니다.
     /// 마지막 노트가 곡 끝에 붙어 있으면 유효 입력 시간이 끝나기 전에 곡이 먼저 끝날 수 있는데,
     /// 그대로 두면 정확도의 분모(전체 노트 수)에는 들어가면서 판정 개수에는 빠져 결과가 어긋납니다.
-    /// 유지 중이던 롱노트도 더 이상 끝까지 눌렀는지 확인할 수 없으므로 같은 이유로 BAD로 닫습니다.
+    /// 치지 않은 노트는 BAD로, 유지 중이던 롱노트는 songTimeMs에 뗀 것으로 보고 확정합니다.
     /// </summary>
-    public void FlushRemainingNotes()
+    public void FlushRemainingNotes(int songTimeMs)
     {
         _holdResults.Clear();
-        _holdTracker.CollectRemaining(_holdResults);
+        _holdTracker.CollectRemaining(songTimeMs, _holdResults);
         ApplyCollectedHoldResults();
 
         _expiredNotes.Clear();

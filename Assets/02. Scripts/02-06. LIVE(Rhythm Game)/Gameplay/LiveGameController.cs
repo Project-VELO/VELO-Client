@@ -170,8 +170,8 @@ public class LiveGameController : MonoBehaviour
         _conductor.Stop();
         _inputRelay.SetRelaying(false);
 
-        // 곡이 끝난 시점에 남아 있던 노트까지 마저 BAD로 확정하고 결과를 냅니다.
-        _judgementProcessor.FlushRemainingNotes();
+        // 곡이 끝난 시점에 남아 있던 노트까지 마저 확정하고 결과를 냅니다.
+        _judgementProcessor.FlushRemainingNotes(_conductor.JudgementTimeMs);
 
         _resultDispatcher.Dispatch(this.GetCancellationTokenOnDestroy());
     }

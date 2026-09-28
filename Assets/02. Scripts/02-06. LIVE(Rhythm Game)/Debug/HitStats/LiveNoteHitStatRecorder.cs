@@ -57,7 +57,7 @@ public class LiveNoteHitStatRecorder
             // 한 번 더 저장하면 백업까지 밀려나 쌓아 둔 기록이 조용히 사라지기 때문입니다.
             if (LiveChartHitStatsStorage.HasFile(songId, difficulty))
             {
-                Debug.LogWarning($"[LiveNoteHitStatRecorder] {songId}/{difficulty} 판정 통계 파일을 읽지 못해 이번 판은 기록하지 않습니다. VELO/Live/노트 판정 통계 창에서 확인하거나 초기화하세요.");
+                Debug.LogWarning($"[LiveNoteHitStatRecorder] {songId}/{difficulty} 판정 통계 파일을 읽지 못해 이번 판은 기록하지 않습니다. VELO/Live/노트 판정 통계 창에서 확인하거나 초기화하세요: {LiveChartHitStatsStorage.GetFilePath(songId, difficulty)}");
                 return;
             }
 

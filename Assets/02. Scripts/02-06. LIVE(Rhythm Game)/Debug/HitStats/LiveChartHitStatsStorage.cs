@@ -57,7 +57,7 @@ public static class LiveChartHitStatsStorage
     }
 
     /// <summary>
-    /// 경로로 통계 파일을 직접 읽습니다. 조회 창처럼 곡과 난이도를 모른 채 목록에서 고른 파일을 열 때 씁니다.
+    /// 경로로 통계 파일 하나를 직접 읽습니다. 곡과 난이도는 확인하지 않습니다.
     /// </summary>
     public static bool TryRead(string path, out LiveChartHitStats stats)
     {
@@ -88,6 +88,14 @@ public static class LiveChartHitStatsStorage
         return true;
     }
 
+    /// <summary>
+    /// 조회 창에서 목록의 파일을 열 때 씁니다. 정식 파일을 읽지 못하면 게임의 Load와 같이 직전 저장본을 읽습니다.
+    /// </summary>
+    public static bool TryReadWithBackup(string path, out LiveChartHitStats stats)
+    {
+        return TryRead(path, out stats) || TryRead(path + BACKUP_SUFFIX, out stats);
+    }
+
     public static bool Save(LiveChartHitStats stats)
     {
         stats.SetSchemaVersion(LiveChartHitStats.CURRENT_SCHEMA_VERSION);
@@ -114,6 +122,10 @@ public static class LiveChartHitStatsStorage
         DeleteIfExists(path + BACKUP_SUFFIX);
     }
 
+    /// <summary>
+    /// 채보별 통계 파일 경로 목록입니다. 정식 파일 없이 직전 저장본만 남은 채보도 정식 파일 경로로 올립니다.
+    /// 읽지 못하는 저장본만 남으면 게임은 그 채보를 기록하지 않는데, 목록에 없으면 조회 창에서 초기화로 풀 수 없습니다.
+    /// </summary>
     public static List<string> GetAllFilePaths()
     {
         List<string> paths = new List<string>();
@@ -125,9 +137,12 @@ public static class LiveChartHitStatsStorage
 
         foreach (string path in Directory.GetFiles(RootPath))
         {
-            if (path.EndsWith(FILE_EXTENSION, StringComparison.OrdinalIgnoreCase))
+            bool isBackup = path.EndsWith(BACKUP_SUFFIX, StringComparison.OrdinalIgnoreCase);
+            string statsPath = isBackup ? path.Substring(0, path.Length - BACKUP_SUFFIX.Length) : path;
+
+            if (statsPath.EndsWith(FILE_EXTENSION, StringComparison.OrdinalIgnoreCase) && !paths.Contains(statsPath))
             {
-                paths.Add(path);
+                paths.Add(statsPath);
             }
         }
 

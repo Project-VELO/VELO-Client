@@ -174,7 +174,7 @@ public class LiveNoteHitStatWindow : EditorWindow
     {
         _hasReport = false;
 
-        if (!HasSelectedFile() || !LiveChartHitStatsStorage.TryRead(_filePaths[_fileIndex], out LiveChartHitStats stats))
+        if (!HasSelectedFile() || !LiveChartHitStatsStorage.TryReadWithBackup(_filePaths[_fileIndex], out LiveChartHitStats stats))
         {
             return;
         }

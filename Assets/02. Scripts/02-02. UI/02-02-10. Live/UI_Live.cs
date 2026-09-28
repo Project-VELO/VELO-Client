@@ -92,10 +92,10 @@ public class UI_Live : MonoBehaviour
         panel.gameObject.SetActive(isVisible);
     }
 
-    private void RefreshJudgement(NoteData note, EJudgement judgement)
+    private void RefreshJudgement(LiveNoteJudgement result)
     {
-        _judgementPanel.RefreshJudgement(judgement);
-        _hitEffect.RefreshHitEffect(note.Lane, judgement);
+        _judgementPanel.RefreshJudgement(result.Judgement);
+        _hitEffect.RefreshHitEffect(result.Note.Lane, result.Judgement);
     }
 
     private void RefreshScoreHud()

@@ -5,7 +5,8 @@ using VInspector;
 
 /// <summary>
 /// 리듬게임 한 판의 진행 상태를 관리합니다(SCREEN-009).
-/// 카운트다운 → 플레이 → 일시정지 → 종료로 이어지는 전환과 입력 전달만 맡습니다.
+/// 카운트다운 → 플레이 → 일시정지 → 종료로 이어지는 전환만 맡습니다.
+/// 레인 입력을 판정기로 넘기는 일은 LiveLaneInputRelay가 하고, 여기서는 상태에 맞춰 켜고 끄기만 합니다.
 ///
 /// 일시정지에 Time.timeScale을 쓰지 않습니다. 음악은 어차피 따로 멈춰야 하고,
 /// SceneTransitionManager가 화면을 옮길 때마다 timeScale을 1로 되돌리기 때문에 상태로 다루는 편이 안전합니다.
@@ -27,6 +28,7 @@ public class LiveGameController : MonoBehaviour
 
     private LiveJudgementProcessor _judgementProcessor;
     private LivePlaySession _session;
+    private LiveLaneInputRelay _inputRelay;
     private LiveCountdown _countdown;
     private LiveResultDispatcher _resultDispatcher;
 
@@ -38,31 +40,23 @@ public class LiveGameController : MonoBehaviour
     {
         _judgementProcessor = new LiveJudgementProcessor();
         _session = new LivePlaySession(_conductor, _trackScroller, _judgementProcessor, _liveUI);
+        _inputRelay = new LiveLaneInputRelay(_playInput, _conductor, _judgementProcessor, _liveUI);
         _countdown = new LiveCountdown(_liveUI.CountdownPanel);
         _resultDispatcher = new LiveResultDispatcher(_judgementProcessor);
 
         _liveUI.BindJudgement(_judgementProcessor);
 
-        _playInput.OnLanePressed += PressLane;
-        _playInput.OnLaneReleased += ReleaseLane;
         _conductor.AudioPlayer.OnClipLoaded += OnAudioClipLoaded;
     }
 
     private void Start()
     {
-        _playInput.SetAcceptingInput(false);
+        _inputRelay.SetRelaying(false);
 
         if (!_session.TryInitSession())
         {
             LoadBackScene();
         }
-    }
-
-    private void OnDestroy()
-    {
-        _playInput.OnLanePressed -= PressLane;
-        _playInput.OnLaneReleased -= ReleaseLane;
-        _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
     }
 
     private void Update()
@@ -88,6 +82,13 @@ public class LiveGameController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        _session.ReleaseSession();
+        _inputRelay.Release();
+        _conductor.AudioPlayer.OnClipLoaded -= OnAudioClipLoaded;
+    }
+
     /// <summary>
     /// 플레이 중일 때만 멈추고, 실제로 멈췄는지를 돌려줍니다. 팝업을 띄우는 쪽이 이 결과를 보고 진행합니다.
     /// </summary>
@@ -100,7 +101,7 @@ public class LiveGameController : MonoBehaviour
 
         _state = ELiveGameState.Paused;
         _conductor.Pause();
-        _playInput.SetAcceptingInput(false);
+        _inputRelay.SetRelaying(false);
 
         return true;
     }
@@ -127,7 +128,7 @@ public class LiveGameController : MonoBehaviour
     public void QuitPlay()
     {
         _conductor.Stop();
-        _playInput.SetAcceptingInput(false);
+        _inputRelay.SetRelaying(false);
         LiveResultContext.Instance.Clear();
 
         LoadBackScene();
@@ -145,38 +146,13 @@ public class LiveGameController : MonoBehaviour
     private async UniTaskVoid StartCountdownAsync(CancellationToken cancellationToken)
     {
         _state = ELiveGameState.Countdown;
-        _playInput.SetAcceptingInput(false);
+        _inputRelay.SetRelaying(false);
 
         await _countdown.PlayAsync(cancellationToken);
 
         _conductor.Play();
-        _playInput.SetAcceptingInput(true);
+        _inputRelay.SetRelaying(true);
         _state = ELiveGameState.Playing;
-    }
-
-    private void PressLane(int lane)
-    {
-        if (_state != ELiveGameState.Playing)
-        {
-            return;
-        }
-
-        if (_liveUI.LaneFeedback != null)
-        {
-            _liveUI.LaneFeedback.RefreshLanePress(lane);
-        }
-
-        _judgementProcessor.PressLane(lane, _conductor.JudgementTimeMs);
-    }
-
-    private void ReleaseLane(int lane)
-    {
-        if (_state != ELiveGameState.Playing)
-        {
-            return;
-        }
-
-        _judgementProcessor.ReleaseLane(lane, _conductor.JudgementTimeMs);
     }
 
     /// <summary>
@@ -191,11 +167,15 @@ public class LiveGameController : MonoBehaviour
         }
 
         _state = ELiveGameState.Finishing;
-        _conductor.Stop();
-        _playInput.SetAcceptingInput(false);
 
-        // 곡이 끝난 시점에 남아 있던 노트까지 마저 BAD로 확정하고 결과를 냅니다.
-        _judgementProcessor.FlushRemainingNotes();
+        // Stop은 재생 시각을 오디오가 마지막으로 보고한 위치로 되돌려, 곡 끝을 감지한 시각보다 한두 프레임 앞당깁니다.
+        // 남은 롱노트는 이 시각으로 유지 여부를 확정하므로, 멈추기 전의 판정 시각을 먼저 잡아 둡니다.
+        int finishJudgementTimeMs = _conductor.JudgementTimeMs;
+        _conductor.Stop();
+        _inputRelay.SetRelaying(false);
+
+        // 곡이 끝난 시점에 남아 있던 노트까지 마저 확정하고 결과를 냅니다.
+        _judgementProcessor.FlushRemainingNotes(finishJudgementTimeMs);
 
         _resultDispatcher.Dispatch(this.GetCancellationTokenOnDestroy());
     }

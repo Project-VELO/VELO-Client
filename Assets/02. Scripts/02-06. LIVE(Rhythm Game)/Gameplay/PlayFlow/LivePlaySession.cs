@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 한 판에 쓰이는 곡·채보를 불러와 트랙과 판정기에 나눠 주고, 다시 시작할 때 그 상태를 처음으로 되돌립니다.
+/// 한 판에 쓰이는 곡·채보를 불러와 트랙과 판정기, 노트별 판정 통계 기록기에 나눠 주고, 다시 시작할 때 그 상태를 처음으로 되돌립니다.
 /// 무엇을 플레이하는지는 이 클래스가 알고, 언제 플레이하는지는 LiveGameController가 정합니다.
 ///
 /// 유니티 이벤트 메서드를 쓰지 않으므로 컴포넌트가 아니라 컨트롤러가 생성해 쓰는 일반 클래스입니다.
@@ -13,6 +13,7 @@ public class LivePlaySession
     private readonly LiveTrackScroller _trackScroller;
     private readonly LiveJudgementProcessor _judgementProcessor;
     private readonly UI_Live _liveUI;
+    private readonly LiveNoteHitStatRecorder _hitStatRecorder;
 
     public SongData Song { get; private set; }
     public ChartData Chart { get; private set; }
@@ -24,9 +25,9 @@ public class LivePlaySession
         _trackScroller = trackScroller;
         _judgementProcessor = judgementProcessor;
         _liveUI = liveUI;
+        _hitStatRecorder = new LiveNoteHitStatRecorder(judgementProcessor);
 
         // 판정기는 화면을 모르므로, 트랙을 쥔 이 클래스가 통지를 받아 노트를 지웁니다.
-        // 판정기와 세션은 같은 컨트롤러가 만들어 수명이 같으므로 따로 해제하지 않습니다.
         _judgementProcessor.OnNoteStruck += HideStruckNote;
     }
 
@@ -48,6 +49,7 @@ public class LivePlaySession
         Chart = chart;
 
         _trackScroller.SetChart(chart);
+        _hitStatRecorder.InitChart(song.SongId, LiveEntryContext.Instance.SelectedDifficulty, chart);
         _judgementProcessor.InitSession(chart);
         _conductor.AudioPlayer.Init(song);
 
@@ -68,6 +70,9 @@ public class LivePlaySession
     /// </summary>
     public void ResetSession()
     {
+        // 재시작은 씬을 떠나지 않으므로, 지금까지 쌓인 노트별 판정 통계를 여기서 먼저 파일에 남깁니다.
+        _hitStatRecorder.Save();
+
         _conductor.Rewind();
 
         _trackScroller.SetChart(Chart);
@@ -78,6 +83,17 @@ public class LivePlaySession
         {
             _liveUI.LaneFeedback.ClearLaneVfxs();
         }
+    }
+
+    /// <summary>
+    /// 씬을 떠날 때 호출합니다. 완주 후 결과 화면 이동, 중도 종료, 에디터 플레이 모드 종료가 모두 여기를 지나므로
+    /// 노트별 판정 통계는 이 시점에 한 번 저장합니다. 완주 처리(FinishPlay)는 Update 안에서 돌기 때문에 거기서는 쓰지 않습니다.
+    /// </summary>
+    public void ReleaseSession()
+    {
+        _hitStatRecorder.Save();
+        _hitStatRecorder.Release();
+        _judgementProcessor.OnNoteStruck -= HideStruckNote;
     }
 
     /// <summary>

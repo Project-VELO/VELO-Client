@@ -89,30 +89,7 @@ public class SaveService
 
     private bool TryWrite(string json, out string error)
     {
-        error = null;
-
-        try
-        {
-            SavePaths.EnsureSaveRoot();
-            File.WriteAllText(SavePaths.TempFilePath, json);
-
-            // File.Replace는 대상 파일이 있어야 동작하므로, 첫 저장은 단순 이동으로 처리합니다.
-            if (File.Exists(SavePaths.SaveFilePath))
-            {
-                File.Replace(SavePaths.TempFilePath, SavePaths.SaveFilePath, SavePaths.BackupFilePath);
-            }
-            else
-            {
-                File.Move(SavePaths.TempFilePath, SavePaths.SaveFilePath);
-            }
-
-            return true;
-        }
-        catch (Exception exception)
-        {
-            error = exception.Message;
-            return false;
-        }
+        return AtomicFileWriter.TryWrite(SavePaths.TempFilePath, SavePaths.SaveFilePath, SavePaths.BackupFilePath, json, out error);
     }
 
     private bool TryRead(string path, out PlayerData data)

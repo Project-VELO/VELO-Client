@@ -167,11 +167,15 @@ public class LiveGameController : MonoBehaviour
         }
 
         _state = ELiveGameState.Finishing;
+
+        // Stop은 재생 시각을 오디오가 마지막으로 보고한 위치로 되돌려, 곡 끝을 감지한 시각보다 한두 프레임 앞당깁니다.
+        // 남은 롱노트는 이 시각으로 유지 여부를 확정하므로, 멈추기 전의 판정 시각을 먼저 잡아 둡니다.
+        int finishJudgementTimeMs = _conductor.JudgementTimeMs;
         _conductor.Stop();
         _inputRelay.SetRelaying(false);
 
         // 곡이 끝난 시점에 남아 있던 노트까지 마저 확정하고 결과를 냅니다.
-        _judgementProcessor.FlushRemainingNotes(_conductor.JudgementTimeMs);
+        _judgementProcessor.FlushRemainingNotes(finishJudgementTimeMs);
 
         _resultDispatcher.Dispatch(this.GetCancellationTokenOnDestroy());
     }

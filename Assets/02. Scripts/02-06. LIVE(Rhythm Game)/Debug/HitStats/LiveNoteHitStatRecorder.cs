@@ -35,7 +35,8 @@ public class LiveNoteHitStatRecorder
     }
 
     /// <summary>
-    /// 플레이할 채보의 통계를 불러와 채보에 맞춥니다. 저장된 통계가 없으면 새로 만듭니다.
+    /// 플레이할 채보의 통계를 불러와 채보에 맞춥니다. 저장된 통계가 없으면 새로 만들고,
+    /// 파일은 있는데 읽지 못하면 기존 기록을 지키기 위해 이번 판은 기록하지 않습니다.
     /// 곡과 난이도를 통계 객체에 담아 두므로, 저장할 때는 싱글톤을 다시 읽지 않습니다.
     /// </summary>
     public void InitChart(string songId, EDifficulty difficulty, ChartData chart)
@@ -45,10 +46,21 @@ public class LiveNoteHitStatRecorder
             return;
         }
 
+        _chartStats = null;
+        _statsByNoteId.Clear();
+
         LiveChartHitStats stats = LiveChartHitStatsStorage.Load(songId, difficulty);
 
         if (ReferenceEquals(stats, null))
         {
+            // 파일이 있는데 읽지 못했다면 새 통계로 시작하지 않습니다. 씬을 떠날 때 빈 통계가 기존 누적을 덮어쓰고,
+            // 한 번 더 저장하면 백업까지 밀려나 쌓아 둔 기록이 조용히 사라지기 때문입니다.
+            if (LiveChartHitStatsStorage.HasFile(songId, difficulty))
+            {
+                Debug.LogWarning($"[LiveNoteHitStatRecorder] {songId}/{difficulty} 판정 통계 파일을 읽지 못해 이번 판은 기록하지 않습니다. VELO/Live/노트 판정 통계 창에서 확인하거나 초기화하세요.");
+                return;
+            }
+
             stats = new LiveChartHitStats();
             stats.InitChart(songId, difficulty);
         }

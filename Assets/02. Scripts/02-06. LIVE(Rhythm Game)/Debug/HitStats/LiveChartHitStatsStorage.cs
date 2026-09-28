@@ -27,6 +27,15 @@ public static class LiveChartHitStatsStorage
     }
 
     /// <summary>
+    /// 정식 파일이나 직전 저장본이 하나라도 있는지 봅니다. Load가 null일 때 "처음 기록"과 "있는데 못 읽음"을 가르는 데 씁니다.
+    /// </summary>
+    public static bool HasFile(string songId, EDifficulty difficulty)
+    {
+        string path = GetFilePath(songId, difficulty);
+        return File.Exists(path) || File.Exists(path + BACKUP_SUFFIX);
+    }
+
+    /// <summary>
     /// 해당 채보의 통계를 불러옵니다. 정식 파일을 쓸 수 없으면 직전 저장본을 시도하고, 둘 다 없으면 null을 돌려줍니다.
     /// </summary>
     public static LiveChartHitStats Load(string songId, EDifficulty difficulty)
@@ -65,7 +74,7 @@ public static class LiveChartHitStatsStorage
         }
         catch (Exception exception)
         {
-            Debug.LogWarning($"[LiveChartHitStatsStorage] 판정 통계 파싱에 실패했습니다({path}): {exception.Message}");
+            Debug.LogWarning($"[LiveChartHitStatsStorage] 판정 통계를 읽지 못했습니다({path}): {exception.Message}");
             return false;
         }
 

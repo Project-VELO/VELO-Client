@@ -32,6 +32,13 @@ public class UI_StoryDialogBox : MonoBehaviour
     private Image _boxBackground;
 
     /// <summary>
+    /// 대사 상자에 얹힌 부속입니다(AUTO 버튼, 클릭·Enter 안내). 상자를 감추는 줄에서 함께 끕니다.
+    /// 상자 그림과 달리 진행 버튼이 아니라서 꺼도 다음 줄로 넘기는 데 지장이 없습니다.
+    /// </summary>
+    [SerializeField]
+    private GameObject[] _boxAttachments;
+
+    /// <summary>
     /// 대화창 없이 화면 한가운데에 띄우는 문장입니다(연출표의 "화면 중앙 텍스트").
     /// 본문과 별도 오브젝트인 이유는 자리와 정렬이 다르기 때문입니다. 같은 TMP를 옮겨 쓰면
     /// 줄마다 앵커와 정렬을 되돌려야 하고, 되돌리기를 빠뜨리면 다음 줄이 가운데에 남습니다.
@@ -135,6 +142,11 @@ public class UI_StoryDialogBox : MonoBehaviour
         Color color = _boxBackground.color;
         color.a = hideBox ? 0f : 1f;
         _boxBackground.color = color;
+
+        for (int i = 0; i < _boxAttachments.Length; i++)
+        {
+            _boxAttachments[i].SetActive(!hideBox);
+        }
     }
 
     /// <summary>
@@ -169,28 +181,6 @@ public class UI_StoryDialogBox : MonoBehaviour
 
         _speakerRoot.SetActive(true);
         _speakerText.text = speakerName;
-        FitSpeakerName();
-    }
-
-    /// <summary>
-    /// 이름이 박스보다 길 때만 글자를 줄입니다. 짧은 이름은 기본 크기 그대로입니다.
-    ///
-    /// 영어 화자명(Station Director, Spirit Audience)이 한국어보다 길어 박스를 넘칩니다.
-    /// TMP의 자동 크기는 줄바꿈을 끈 상태에서 가로로 넘치는 것을 보지 않으므로 폭을 직접 재서 비율로 줄입니다.
-    /// 줄바꿈으로 두 줄을 만드는 대신 줄이는 것은, 이름표 높이가 한 줄 기준이기 때문입니다.
-    /// </summary>
-    private void FitSpeakerName()
-    {
-        _speakerText.fontSize = _defaultSpeakerFontSize;
-
-        float available = _speakerText.rectTransform.rect.width - _speakerPadding * 2f;
-        float preferred = _speakerText.preferredWidth;
-
-        if (available <= 0f || preferred <= available)
-        {
-            return;
-        }
-
-        _speakerText.fontSize = Mathf.Max(_speakerMinFontSize, _defaultSpeakerFontSize * available / preferred);
+        StorySpeakerNameFitter.Fit(_speakerText, _defaultSpeakerFontSize, _speakerMinFontSize, _speakerPadding);
     }
 }

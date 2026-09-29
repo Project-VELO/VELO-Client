@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using VInspector;
@@ -76,6 +77,11 @@ public class UI_Story : MonoBehaviour
     public UI_StoryExitConfirmPopup ExitConfirmPopup => _exitConfirmPopup;
     public UI_StoryAutoToggle AutoToggle => _autoToggle;
 
+    /// <summary>
+    /// 마지막으로 NEXT를 내보낸 프레임입니다. 한 프레임에 두 번 들어온 NEXT를 하나로 줄이는 데 씁니다.
+    /// </summary>
+    private int _lastNextFrame = -1;
+
     private void Awake()
     {
         _nextButton.onClick.AddListener(RequestNext);
@@ -103,18 +109,50 @@ public class UI_Story : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 한 프레임에 한 번만 내보냅니다.
+    ///
+    /// Enter는 두 길로 들어옵니다. 여기 Update가 읽는 키 입력과, 직전에 누른 버튼이 선택된 채 남아
+    /// EventSystem이 Enter를 그 버튼의 "제출"로 돌려 주는 클릭입니다. 둘이 같은 프레임에 들어오면
+    /// 첫 번째가 다음 줄로 넘기고 두 번째가 그 줄을 즉시 채워, 누른 사람에게는 대사가 한 번에
+    /// 다 뜬 것으로 보입니다.
+    /// </summary>
     private void RequestNext()
     {
+        ClearSelection();
+
+        if (Time.frameCount == _lastNextFrame)
+        {
+            return;
+        }
+
+        _lastNextFrame = Time.frameCount;
         OnNextRequested?.Invoke();
     }
 
     private void RequestLog()
     {
+        ClearSelection();
         OnLogRequested?.Invoke();
     }
 
     private void RequestBack()
     {
+        ClearSelection();
         OnBackRequested?.Invoke();
+    }
+
+    /// <summary>
+    /// 누른 버튼을 선택된 채로 두지 않습니다. 남겨 두면 다음 Enter가 그 버튼을 다시 눌러,
+    /// 스크립트 확인을 닫은 뒤의 Enter가 팝업을 또 여는 식으로 엉뚱한 곳이 눌립니다.
+    /// </summary>
+    private static void ClearSelection()
+    {
+        EventSystem eventSystem = EventSystem.current;
+
+        if (eventSystem != null)
+        {
+            eventSystem.SetSelectedGameObject(null);
+        }
     }
 }

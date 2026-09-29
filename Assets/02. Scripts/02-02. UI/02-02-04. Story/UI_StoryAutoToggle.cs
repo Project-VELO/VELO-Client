@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VInspector;
 
@@ -44,6 +45,12 @@ public class UI_StoryAutoToggle : MonoBehaviour
 
     private void Toggle()
     {
+        // 선택된 채로 두면 다음 Enter가 대사를 넘기는 대신 이 버튼을 다시 눌러 AUTO가 꺼집니다.
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
         StoryAutoPlaySetting.Set(!IsOn);
         Refresh();
         OnChanged?.Invoke(IsOn);

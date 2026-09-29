@@ -1,0 +1,25 @@
+{
+  "SchemaVersion": 1,
+  "Items": [
+    {
+      "ItemId": "ITEM_COSTUME_SHABBY_UNIFORM",
+      "DisplayName": "Shabby Uniform",
+      "Description": "The default outfit worn when starting a new game."
+    },
+    {
+      "ItemId": "ITEM_COSTUME_MIDNIGHT_STAGE",
+      "DisplayName": "Midnight Stage Outfit",
+      "Description": "A second outfit for checking the swap behavior."
+    },
+    {
+      "ItemId": "ITEM_ACCESSORY_RUSTED_NECKLACE",
+      "DisplayName": "Rusted Necklace",
+      "Description": "The default accessory worn when starting a new game."
+    },
+    {
+      "ItemId": "ITEM_ACCESSORY_SILVER_CROSS",
+      "DisplayName": "Silver Cross",
+      "Description": "A second accessory for checking the swap behavior."
+    }
+  ]
+}

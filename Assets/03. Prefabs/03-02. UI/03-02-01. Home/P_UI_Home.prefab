@@ -511,10 +511,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 7830649174739082452}
     m_Modifications:
     - target: {fileID: 144169924066750246, guid: 8219e9c8c6e905e42b2a73bed6af3cb4, type: 3}
-      propertyPath: m_fontSize
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 144169924066750246, guid: 8219e9c8c6e905e42b2a73bed6af3cb4, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294506744
       objectReference: {fileID: 0}

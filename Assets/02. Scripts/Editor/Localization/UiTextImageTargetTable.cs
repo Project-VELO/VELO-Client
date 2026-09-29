@@ -21,8 +21,9 @@ public static class UiTextImageTargetTable
 
     public static readonly UiTextImageTarget[] Prefabs =
     {
+        // 기획 확정 크기 17. 상자가 그림 원본(106x16)이라 자동 크기로 12 근처까지 줄어들던 것을 넓혀 고정합니다.
         new UiTextImageTarget(HOME + "P_UI_Panel_StoryBox.prefab",
-            "Button_Continue/Image_Label", "이야기 보러가기", 21, "#F8F8F8"),
+            "Button_Continue/Image_Label", "이야기 보러가기", 17, "#F8F8F8", 2, false, 150f, 28f),
         new UiTextImageTarget(HOME + "P_UI_Panel_StoryBox.prefab",
             "Image_Text_Title", "스토리", 78, "#F8F8F8", 1, true),
         new UiTextImageTarget(STORY + "P_UI_Button_Log.prefab",

@@ -30,13 +30,15 @@ public class StoryPlaybackController : MonoBehaviour
     private readonly StoryExitFlow _exitFlow = new StoryExitFlow();
 
     private StoryProgressFlow _progress;
+    private StoryAutoPlay _autoPlay;
     private StoryUiBindings _bindings;
     private StoryData _story;
 
     private void Start()
     {
         _bindings = new StoryUiBindings(_ui);
-        _bindings.Bind(_visualBinder, OnNextClicked, OpenLog, OpenExitConfirm, ResumeFromPause, ExitWithoutCompleting);
+        _bindings.Bind(_visualBinder, OnNextClicked, OpenLog, OpenExitConfirm, ResumeFromPause, ExitWithoutCompleting,
+            OnAutoChanged);
 
         Begin();
     }
@@ -46,6 +48,11 @@ public class StoryPlaybackController : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
+        if (_autoPlay != null)
+        {
+            _autoPlay.Dispose();
+        }
+
         if (_progress != null)
         {
             _progress.Dispose();
@@ -75,6 +82,9 @@ public class StoryPlaybackController : MonoBehaviour
             this.GetCancellationTokenOnDestroy());
         _progress.OnFinished = CompleteAndReturn;
 
+        // 앞 회차에서 켜 둔 AUTO는 이 회차에서도 켜진 채 시작합니다(StoryAutoPlaySetting).
+        _autoPlay = new StoryAutoPlay(_progress, this.GetCancellationTokenOnDestroy());
+        _autoPlay.SetEnabled(_ui.AutoToggle.IsOn);
         _progress.Begin();
     }
 
@@ -86,6 +96,11 @@ public class StoryPlaybackController : MonoBehaviour
     private void OnNextClicked()
     {
         _progress.Next();
+    }
+
+    private void OnAutoChanged(bool isOn)
+    {
+        _autoPlay.SetEnabled(isOn);
     }
 
     private void OpenLog()

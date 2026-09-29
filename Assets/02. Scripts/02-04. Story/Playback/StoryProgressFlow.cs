@@ -19,6 +19,12 @@ public class StoryProgressFlow : IDisposable
     /// </summary>
     public Action OnFinished;
 
+    /// <summary>
+    /// 한 줄이 다 나와 다음 입력을 기다리기 시작할 때 알립니다. 자동 진행(StoryAutoPlay)이 시계를 맞추는 신호입니다.
+    /// 컷씬은 알리지 않습니다. 컷은 연출이 길이를 정하므로 시계가 먼저 넘기면 안 됩니다.
+    /// </summary>
+    public Action OnWaitingNext;
+
     private readonly StoryLineCursor _cursor;
     private readonly StoryLinePlayer _linePlayer;
     private readonly StoryCutRunner _cutRunner;
@@ -39,19 +45,13 @@ public class StoryProgressFlow : IDisposable
     }
 
     /// <summary>
-    /// 대사가 다 나온 뒤 다음으로 넘길 수 있게 되기까지의 시간입니다.
-    ///
-    /// 마지막 글자가 찍히는 순간에 이미 눌러 둔 손가락이 그대로 다음 줄로 넘겨 버리면,
-    /// 방금 나온 문장을 읽지 못한 채 화면이 바뀝니다. 읽을 틈을 두려고 잠깐 잠급니다.
-    /// </summary>
-    private const float NEXT_LOCK_SECONDS = 0.5f;
-
-    /// <summary>
     /// 이 줄의 마지막 글자가 찍힌 시각입니다. 화면이 멈춰도 흘러야 하므로 스케일 없는 시간을 씁니다.
     /// </summary>
     private float _completedAt = float.NegativeInfinity;
 
     public StoryLineCursor Cursor => _cursor;
+
+    public bool IsWaitingNext => _state == EStoryPlaybackState.WAITING_NEXT;
 
     public void Begin()
     {
@@ -59,50 +59,24 @@ public class StoryProgressFlow : IDisposable
     }
 
     /// <summary>
-    /// 기획서 6.3의 NEXT 3단계입니다.
+    /// 기획서 6.3의 NEXT 3단계입니다. 무엇이 될지는 StoryNextDecider가 정하고 여기서는 실행만 합니다.
     /// 출력 중 → 즉시 전체 출력 / 출력 완료 → 다음 대사 / 마지막 대사 → 완료 후 목록 복귀.
-    /// PAUSED와 FINISHING에서는 아무 반응도 하지 않습니다(기획서 6.4, 3-L).
     /// </summary>
     public void Next()
     {
-        if (_state != EStoryPlaybackState.TYPING && _state != EStoryPlaybackState.WAITING_NEXT)
-        {
-            return;
-        }
+        EStoryNextAction action = StoryNextDecider.Decide(_state, _linePlayer.HasTextStarted, _completedAt,
+            _cursor.Current);
 
-        // 대사가 아직 뜨지 않았습니다. 컷씬은 그림이 자리를 잡을 동안 글자를 늦춰 내는데,
-        // 이때 누른 건너뛰기는 채울 글자가 없어 빈 화면만 남깁니다.
-        if (_state == EStoryPlaybackState.TYPING && !_linePlayer.HasTextStarted)
+        switch (action)
         {
-            return;
+            case EStoryNextAction.FILL_TEXT:
+                _state = EStoryPlaybackState.WAITING_NEXT;
+                _linePlayer.Skip();
+                break;
+            case EStoryNextAction.MOVE_NEXT:
+                MoveToNextLine();
+                break;
         }
-
-        // 다 나온 지 얼마 되지 않았습니다. 마지막 글자와 같이 눌린 손가락이 그대로 넘기지 않게 잠급니다.
-        if (_state == EStoryPlaybackState.WAITING_NEXT
-            && Time.unscaledTime - _completedAt < NEXT_LOCK_SECONDS)
-        {
-            return;
-        }
-
-        // 글자가 없는 컷은 채울 것이 없어 누르는 즉시 넘어갑니다. 컷은 그림과 소리가 함께 흐르는
-        // 한 덩어리라, 읽을 문장이 없으면 1단계를 두어 봐야 헛누름이 됩니다.
-        //
-        // 글자가 있는 컷은 보통 줄과 같이 두 번에 나눕니다. 한 번에 넘기면 읽던 문장이 잘려 나가고,
-        // 컷 길이는 읽는 속도를 모르는 값이라 사람이 다 읽었는지를 대신 판단할 수 없습니다.
-        if (StoryCutRunner.IsCut(_cursor.Current) && string.IsNullOrEmpty(_cursor.Current.Text))
-        {
-            MoveToNextLine();
-            return;
-        }
-
-        if (_state == EStoryPlaybackState.TYPING)
-        {
-            _state = EStoryPlaybackState.WAITING_NEXT;
-            _linePlayer.Skip();
-            return;
-        }
-
-        MoveToNextLine();
     }
 
     /// <summary>
@@ -144,7 +118,11 @@ public class StoryProgressFlow : IDisposable
         if (StoryCutRunner.IsCut(_cursor.Current))
         {
             PlayCurrentLine();
+            return;
         }
+
+        // 멈춰 있던 동안 자동 진행 시계는 버려졌습니다. 같은 줄에서 다시 재도록 알립니다.
+        OnWaitingNext?.Invoke();
     }
 
     /// <summary>
@@ -205,6 +183,11 @@ public class StoryProgressFlow : IDisposable
         if (_state == EStoryPlaybackState.TYPING)
         {
             _state = EStoryPlaybackState.WAITING_NEXT;
+        }
+
+        if (_state == EStoryPlaybackState.WAITING_NEXT && !StoryCutRunner.IsCut(_cursor.Current))
+        {
+            OnWaitingNext?.Invoke();
         }
     }
 }

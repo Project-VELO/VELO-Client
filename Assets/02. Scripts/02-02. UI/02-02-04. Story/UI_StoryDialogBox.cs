@@ -43,6 +43,17 @@ public class UI_StoryDialogBox : MonoBehaviour
     [SerializeField]
     private StoryTextStyleBinder _textStyleBinder;
 
+    [Foldout("Settings")]
+    [Header("화자명이 박스보다 길 때 줄이는 한계")]
+    [SerializeField]
+    private float _speakerMinFontSize = 16f;
+
+    /// <summary>
+    /// 화자명 박스의 좌우 안쪽 여백입니다. 글자가 테두리에 닿지 않도록 이만큼 뺀 폭에 맞춥니다.
+    /// </summary>
+    [SerializeField]
+    private float _speakerPadding = 12f;
+
     /// <summary>
     /// 이번 줄의 글자가 찍힐 자리입니다. Refresh가 정한 위치를 따릅니다.
     /// 타이핑은 이 TMP 하나의 maxVisibleCharacters로 이루어지므로, 위치가 바뀌면 대상도 함께 바뀌어야 합니다.
@@ -58,6 +69,11 @@ public class UI_StoryDialogBox : MonoBehaviour
     private TMP_FontAsset _defaultBodyFont;
 
     /// <summary>
+    /// 짧은 이름이 돌아갈 화자명 크기입니다. 프리팹 값을 한 번 기억해 두고 긴 이름에서만 줄입니다.
+    /// </summary>
+    private float _defaultSpeakerFontSize;
+
+    /// <summary>
     /// 글자 떨림을 돌리는 쪽입니다. 줄마다 다시 시작하므로 상자가 하나만 들고 돌려 씁니다.
     /// </summary>
     private readonly StoryTextTrembler _trembler = new StoryTextTrembler();
@@ -65,6 +81,7 @@ public class UI_StoryDialogBox : MonoBehaviour
     private void Awake()
     {
         _defaultBodyFont = _bodyText.font;
+        _defaultSpeakerFontSize = _speakerText.fontSize;
     }
 
     /// <summary>
@@ -152,5 +169,28 @@ public class UI_StoryDialogBox : MonoBehaviour
 
         _speakerRoot.SetActive(true);
         _speakerText.text = speakerName;
+        FitSpeakerName();
+    }
+
+    /// <summary>
+    /// 이름이 박스보다 길 때만 글자를 줄입니다. 짧은 이름은 기본 크기 그대로입니다.
+    ///
+    /// 영어 화자명(Station Director, Spirit Audience)이 한국어보다 길어 박스를 넘칩니다.
+    /// TMP의 자동 크기는 줄바꿈을 끈 상태에서 가로로 넘치는 것을 보지 않으므로 폭을 직접 재서 비율로 줄입니다.
+    /// 줄바꿈으로 두 줄을 만드는 대신 줄이는 것은, 이름표 높이가 한 줄 기준이기 때문입니다.
+    /// </summary>
+    private void FitSpeakerName()
+    {
+        _speakerText.fontSize = _defaultSpeakerFontSize;
+
+        float available = _speakerText.rectTransform.rect.width - _speakerPadding * 2f;
+        float preferred = _speakerText.preferredWidth;
+
+        if (available <= 0f || preferred <= available)
+        {
+            return;
+        }
+
+        _speakerText.fontSize = Mathf.Max(_speakerMinFontSize, _defaultSpeakerFontSize * available / preferred);
     }
 }

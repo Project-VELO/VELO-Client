@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using VInspector;
 
@@ -52,6 +53,12 @@ public class UI_Story : MonoBehaviour
     [SerializeField]
     private Button _backButton;
 
+    /// <summary>
+    /// 대사 상자 우상단의 AUTO 버튼입니다. 켜고 끄는 일만 하고, 실제 자동 진행은 컨트롤러가 StoryAutoPlay로 돌립니다.
+    /// </summary>
+    [SerializeField]
+    private UI_StoryAutoToggle _autoToggle;
+
     [Foldout("Hierarchy")]
     [Header("Popups")]
     [SerializeField]
@@ -67,12 +74,33 @@ public class UI_Story : MonoBehaviour
     public StoryAudioBinder AudioBinder => _audioBinder;
     public UI_StoryLogPopup LogPopup => _logPopup;
     public UI_StoryExitConfirmPopup ExitConfirmPopup => _exitConfirmPopup;
+    public UI_StoryAutoToggle AutoToggle => _autoToggle;
 
     private void Awake()
     {
         _nextButton.onClick.AddListener(RequestNext);
         _logButton.onClick.AddListener(RequestLog);
         _backButton.onClick.AddListener(RequestBack);
+    }
+
+    /// <summary>
+    /// Enter 키도 대사 상자 클릭과 같은 NEXT입니다(대사 상자의 "클릭 or Enter" 안내).
+    /// 팝업이 떠 있을 때 눌린 Enter는 진행 흐름이 PAUSED에서 무시하므로 여기서 가리지 않습니다.
+    /// 키보드가 없는 플랫폼에서는 Keyboard.current가 null이라 매 프레임 확인합니다.
+    /// </summary>
+    private void Update()
+    {
+        Keyboard keyboard = Keyboard.current;
+
+        if (keyboard == null)
+        {
+            return;
+        }
+
+        if (keyboard.enterKey.wasPressedThisFrame || keyboard.numpadEnterKey.wasPressedThisFrame)
+        {
+            RequestNext();
+        }
     }
 
     private void RequestNext()

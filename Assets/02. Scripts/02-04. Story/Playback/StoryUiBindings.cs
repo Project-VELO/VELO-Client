@@ -19,11 +19,12 @@ public class StoryUiBindings : IDisposable
     }
 
     public void Bind(StoryVisualBinder visualBinder, Action onNext, Action onLog, Action onBack,
-        Action onPopupClosed, Action onExitConfirmed)
+        Action onPopupClosed, Action onExitConfirmed, Action<bool> onAutoChanged)
     {
         _ui.OnNextRequested = onNext;
         _ui.OnLogRequested = onLog;
         _ui.OnBackRequested = onBack;
+        _ui.AutoToggle.OnChanged = onAutoChanged;
 
         _ui.LogPopup.Init(visualBinder);
 
@@ -43,6 +44,11 @@ public class StoryUiBindings : IDisposable
         _ui.OnNextRequested = null;
         _ui.OnLogRequested = null;
         _ui.OnBackRequested = null;
+
+        if (_ui.AutoToggle != null)
+        {
+            _ui.AutoToggle.OnChanged = null;
+        }
 
         if (_ui.LogPopup != null)
         {

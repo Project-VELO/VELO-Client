@@ -1,0 +1,80 @@
+{
+  "SchemaVersion": 1,
+  "Items": [
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_01",
+      "Title": "Read Ch0 Ep. 1",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_02",
+      "Title": "Read Ch0 Ep. 2",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D1_03",
+      "Title": "Clear till the end once",
+      "Description": "Complete by clearing the specified song."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D2_01",
+      "Title": "Read Ch0 Ep. 3",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D2_02",
+      "Title": "Read Ch0 Ep. 4",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D3_01",
+      "Title": "Read Ch0 Ep. 5",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D3_02",
+      "Title": "Read Ch0 Ep. 6",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_01",
+      "Title": "Read Ch0 Ep. 7",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_02",
+      "Title": "Read Ch0 Ep. 8",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D4_03",
+      "Title": "Clear 11:59 for the first time",
+      "Description": "Complete by clearing the specified song."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D5_01",
+      "Title": "Read Ch0 Ep. 9",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D5_02",
+      "Title": "Read Ch0 Ep. 10",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D6_01",
+      "Title": "Read Ch0 Ep. 11",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D7_01",
+      "Title": "Read Ch0 Ep. 12",
+      "Description": "Complete by reading the specified episode to the end."
+    },
+    {
+      "ScheduleId": "SCHEDULE_W1_D7_02",
+      "Title": "Clear till the end → 11:59 back-to-back",
+      "Description": "Clear till the end, then 11:59 back-to-back. The clear condition can currently hold only one song, so only the 11:59 clear is checked."
+    }
+  ]
+}

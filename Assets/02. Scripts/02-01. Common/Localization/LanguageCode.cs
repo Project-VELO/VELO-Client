@@ -9,6 +9,7 @@ public static class LanguageCode
 {
     public const string KOREAN = "KO";
     public const string JAPANESE = "JA";
+    public const string ENGLISH = "EN";
 
     /// <summary>
     /// 번역문 폴더 이름입니다. 한국어는 원본이라 폴더가 없으며 빈 문자열을 돌려줍니다.
@@ -18,6 +19,7 @@ public static class LanguageCode
         switch (language)
         {
             case ELanguage.JAPANESE: return JAPANESE;
+            case ELanguage.ENGLISH: return ENGLISH;
             default: return string.Empty;
         }
     }

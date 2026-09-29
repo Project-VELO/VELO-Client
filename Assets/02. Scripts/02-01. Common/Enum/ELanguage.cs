@@ -7,5 +7,8 @@
 public enum ELanguage
 {
     KOREAN,
-    JAPANESE
+    JAPANESE,
+
+    // 뒤에 붙입니다. PlayerPrefs에 정수로 저장되므로 앞의 값이 밀리면 저장된 언어가 바뀝니다.
+    ENGLISH
 }

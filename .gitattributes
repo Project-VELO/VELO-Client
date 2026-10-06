@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# FMOD Setup Wizard 권장값. macOS 라이브러리 번들의 줄바꿈이 CRLF로 바뀌면 코드 서명이 깨진다.
+Assets/Plugins/FMOD/**/*.bundle text eol=lf
+Assets/Plugins/FMOD/**/Info.plist text eol=lf

@@ -83,3 +83,28 @@ crashlytics-build.properties
 /[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json.meta
 /[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json
 /[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json.meta
+
+# FMOD
+# Never ignore DLLs in the FMOD subfolder.
+!/[Aa]ssets/Plugins/FMOD/**/lib/*
+
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/[Aa]ssets/Gizmos/FMOD/*
+!/[Aa]ssets/Editor Default Resources/FMOD/*
+
+# Ignore the Cache folder since it is updated locally.
+/[Aa]ssets/Plugins/FMOD/Cache/*
+
+# Ignore bank files in the StreamingAssets folder.
+/[Aa]ssets/StreamingAssets/**/*.bank
+/[Aa]ssets/StreamingAssets/**/*.bank.meta
+
+# If the source bank files are kept outside of the StreamingAssets folder then these can be ignored.
+# Log files can be ignored.
+fmod_editor.log
+
+# FMOD Studio 프로젝트(/FMOD)에서 사용자별 상태·자동 저장·캐시는 각자 PC에서 다시 생기므로 커밋하지 않는다.
+# Build/는 Studio가 없는 팀원도 뱅크를 받을 수 있도록 커밋한다.
+/FMOD/.user/
+/FMOD/.unsaved/
+/FMOD/.cache/

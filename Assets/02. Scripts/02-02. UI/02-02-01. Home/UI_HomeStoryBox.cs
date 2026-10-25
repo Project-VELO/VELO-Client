@@ -4,11 +4,12 @@ using UnityEngine;
 using VInspector;
 
 /// <summary>
-/// 홈 화면의 스토리 바로가기 상자입니다(기획서 SCREEN-001).
+/// 홈 화면의 스토리 카드입니다(개발 기획서 v1.15 2장 H02·H03).
 ///
-/// 제목과 버튼 문구는 그림으로 박혀 있어 바뀌지 않고, 여기서 갱신하는 것은 챕터와 회차 한 줄뿐입니다.
-/// 마지막으로 본 회차의 다음 화 — 곧 아직 완료하지 않은 가장 앞선 회차 — 가 속한 챕터를 적어,
-/// 상자를 눌렀을 때 어디로 이어지는지 미리 보이게 합니다.
+/// 제목과 버튼 문구는 고정이고, 여기서 갱신하는 것은 챕터·회차 한 줄과 진행 중 배지입니다.
+/// 아직 완료하지 않은 가장 앞선 회차를 적어, 이어하기를 눌렀을 때 어디로 이어지는지 미리 보이게 합니다.
+/// 이어하기가 실제로 들어가는 회차도 NextStory를 그대로 씁니다. 카드에 적힌 회차와 들어가는 회차가
+/// 따로 계산되면 둘이 어긋날 수 있기 때문입니다.
 ///
 /// 다음 화를 앞에서부터 훑어 찾는 것은 목록 순서가 곧 진행 순서이기 때문입니다
 /// (기획서 3-F-3-1, MasterDataQuery.GetAllStoriesInDisplayOrder가 챕터 순서 → 회차 순서를 보장).
@@ -26,15 +27,19 @@ public class UI_HomeStoryBox : MonoBehaviour
     [SerializeField]
     private TMP_Text _chapterText;
 
+    [SerializeField]
+    private GameObject _inProgressBadge;
+
+    /// <summary>
+    /// 이어서 볼 회차입니다. 전부 완료했다면 마지막 회차이고, 스토리가 하나도 없으면 비어 있습니다.
+    /// </summary>
+    public StoryData NextStory { get; private set; }
+
     public void Refresh()
     {
-        if (_chapterText == null)
-        {
-            return;
-        }
-
-        StoryData nextStory = FindNextStory();
-        _chapterText.text = BuildLabel(nextStory);
+        NextStory = FindNextStory();
+        _chapterText.text = BuildLabel(NextStory);
+        RefreshInProgressBadge();
     }
 
     /// <summary>
@@ -53,6 +58,22 @@ public class UI_HomeStoryBox : MonoBehaviour
         }
 
         return $"{chapter} {string.Format(UiText.Localize(EPISODE_FORMAT), story.EpisodeNumber)}";
+    }
+
+    /// <summary>
+    /// 들어갔다가 끝내지 않은 회차에만 "진행 중"을 붙입니다(개발 기획서 5장 회차 상태).
+    ///
+    /// NEW 배지는 감상 화면에 들어가는 순간 내려가므로, NEW가 아니면서 완료하지 않은 회차가 곧 진행 중입니다.
+    /// 처음 보는 회차·잠긴 회차·전부 완료한 뒤에 쓸 배지 문구는 아직 정해지지 않아 그때는 숨깁니다.
+    /// </summary>
+    private void RefreshInProgressBadge()
+    {
+        IStoryProgress progress = ReferenceEquals(NextStory, null)
+            ? null
+            : GameProgressService.Instance.GetStoryProgress(NextStory.StoryId);
+
+        bool isInProgress = !ReferenceEquals(progress, null) && progress.CanEnter && !progress.IsNew && !progress.IsCompleted;
+        _inProgressBadge.SetActive(isInProgress);
     }
 
     /// <summary>

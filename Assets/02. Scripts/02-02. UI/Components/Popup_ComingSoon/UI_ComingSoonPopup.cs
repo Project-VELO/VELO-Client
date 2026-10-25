@@ -28,10 +28,16 @@ public class UI_ComingSoonPopup : UI_Popup
     [SerializeField]
     private TMP_Text _messageText;
 
+    /// <summary>
+    /// Persistent Canvas에는 켜진 채로 올려 둡니다. 꺼 둔 채 올라오면 Awake가 한 번도 돌지 않아
+    /// _instance가 비고, Open은 늘 "팝업이 없습니다"로 끝납니다. 등록한 직후 스스로 숨기며,
+    /// Awake는 첫 렌더보다 먼저 돌기 때문에 시작 화면에 팝업이 비치는 일은 없습니다.
+    /// </summary>
     protected override void Awake()
     {
         base.Awake();
         _instance = this;
+        gameObject.SetActive(false);
     }
 
     private void OnDestroy()

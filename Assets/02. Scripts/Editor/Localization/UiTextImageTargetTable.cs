@@ -4,12 +4,11 @@
 /// 바꾸는 일(UiTextImageConverter)과 나눈 것은 목록이 앞으로 늘기 때문입니다.
 ///
 /// 글자만 든 그림만 넣습니다. 아이콘이나 배경이 글자와 한 장에 구워진 그림은 TMP로 바꾸면
-/// 그 그림이 사라집니다. 홈 내비게이션 세 장(배경 사진과 화살표), 스크립트 확인 버튼(테두리),
-/// 자동 편성과 초기화 버튼 네 장(아이콘)이 그렇습니다. 그쪽은 일본어판 그림이 필요합니다.
+/// 그 그림이 사라집니다. 스크립트 확인 버튼(테두리), 자동 편성과 초기화 버튼 네 장(아이콘)이
+/// 그렇습니다. 그쪽은 일본어판 그림이 필요합니다.
 /// </summary>
 public static class UiTextImageTargetTable
 {
-    private const string HOME = "Assets/03. Prefabs/03-02. UI/03-02-01. Home/";
     private const string STORY = "Assets/03. Prefabs/03-02. UI/03-02-04. Story/";
     private const string OFFICE = "Assets/03. Prefabs/03-02. UI/03-02-08. Office/";
     private const string LIVE_RESULT = "Assets/03. Prefabs/03-02. UI/03-02-11. LiveResult/";
@@ -21,11 +20,6 @@ public static class UiTextImageTargetTable
 
     public static readonly UiTextImageTarget[] Prefabs =
     {
-        // 기획 확정 크기 17. 상자가 그림 원본(106x16)이라 자동 크기로 12 근처까지 줄어들던 것을 넓혀 고정합니다.
-        new UiTextImageTarget(HOME + "P_UI_Panel_StoryBox.prefab",
-            "Button_Continue/Image_Label", "이야기 보러가기", 17, "#F8F8F8", 2, false, 150f, 28f),
-        new UiTextImageTarget(HOME + "P_UI_Panel_StoryBox.prefab",
-            "Image_Text_Title", "스토리", 78, "#F8F8F8", 1, true),
         new UiTextImageTarget(STORY + "P_UI_Button_Log.prefab",
             "Image_Text_ScriptCheck", "스크립트 확인", 31, "#584878"),
         new UiTextImageTarget(STORY + "P_UI_Popup_StoryReward.prefab",
@@ -36,8 +30,6 @@ public static class UiTextImageTargetTable
             "Panel/Button/Image_Text_Confirm", "확인", 42, "#6848B0", 2, true),
         // 일정 카드의 라벨입니다. UI_ScheduleShortcutButton이 완료 여부에 따라 글자를 바꿔 넣습니다.
         // 상자가 그림의 원본 크기(57x15)로 잡혀 있어 글자를 담기에 좁아 다시 잡습니다.
-        new UiTextImageTarget(HOME + "P_UI_Item_Schedule_Today.prefab",
-            "Button_ScheduleEnter/Image_Label", "바로가기", 21, "#F8F8F8", 2, true, 96f, 28f),
         new UiTextImageTarget(OFFICE + "P_UI_Item_TodaySchedule.prefab",
             "Button_ScheduleEnter/Image_Label", "바로가기", 21, "#F8F8F8", 2, true, 96f, 28f),
         // 결과 화면의 두 버튼입니다. 공용 버튼 프리팹 안에 있어 상자가 글자 그림 크기로 잡혀 있습니다.

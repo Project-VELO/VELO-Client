@@ -1,0 +1,1755 @@
+fileFormatVersion: 2
+guid: c9830c0566531e546b9b018fc6c471f6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7786452276544604758
+    second: Spine_Character_Mina_0
+  - first:
+      213: 5571961648035085790
+    second: Spine_Character_Mina_1
+  - first:
+      213: 6334945202078113651
+    second: Spine_Character_Mina_2
+  - first:
+      213: 8349603418793936914
+    second: Spine_Character_Mina_3
+  - first:
+      213: -1159078324826236151
+    second: Spine_Character_Mina_4
+  - first:
+      213: -4635034097622068067
+    second: Spine_Character_Mina_5
+  - first:
+      213: -2132897220888369018
+    second: Spine_Character_Mina_6
+  - first:
+      213: -7190140091803097819
+    second: Spine_Character_Mina_7
+  - first:
+      213: 8715232074062718732
+    second: Spine_Character_Mina_8
+  - first:
+      213: 8174192559933652478
+    second: Spine_Character_Mina_9
+  - first:
+      213: -4380575690826554771
+    second: Spine_Character_Mina_10
+  - first:
+      213: 145841034159622536
+    second: Spine_Character_Mina_11
+  - first:
+      213: -1042169947953038891
+    second: Spine_Character_Mina_12
+  - first:
+      213: 4756491447653900262
+    second: Spine_Character_Mina_13
+  - first:
+      213: 3064979159603371878
+    second: Spine_Character_Mina_14
+  - first:
+      213: 4736768658275401510
+    second: Spine_Character_Mina_15
+  - first:
+      213: -7835216101408182080
+    second: Spine_Character_Mina_16
+  - first:
+      213: 445782066695127145
+    second: Spine_Character_Mina_17
+  - first:
+      213: -5442998861041534301
+    second: Spine_Character_Mina_18
+  - first:
+      213: 8771062363736508862
+    second: Spine_Character_Mina_19
+  - first:
+      213: -1097026301789748506
+    second: Spine_Character_Mina_20
+  - first:
+      213: 3963103526802551456
+    second: Spine_Character_Mina_21
+  - first:
+      213: 6427295070287291016
+    second: Spine_Character_Mina_22
+  - first:
+      213: 6679639139643693870
+    second: Spine_Character_Mina_23
+  - first:
+      213: -5509173018779279446
+    second: Spine_Character_Mina_24
+  - first:
+      213: -6635360669305085250
+    second: Spine_Character_Mina_25
+  - first:
+      213: 5967593386693209320
+    second: Spine_Character_Mina_26
+  - first:
+      213: 8117576799603519191
+    second: Spine_Character_Mina_27
+  - first:
+      213: -641125157476115587
+    second: Spine_Character_Mina_28
+  - first:
+      213: -6067972528579946677
+    second: Spine_Character_Mina_29
+  - first:
+      213: 7843788900675930857
+    second: Spine_Character_Mina_30
+  - first:
+      213: -7268789092121414320
+    second: Spine_Character_Mina_31
+  - first:
+      213: -857633447323523200
+    second: Spine_Character_Mina_32
+  - first:
+      213: -4850773151584791299
+    second: Spine_Character_Mina_33
+  - first:
+      213: 4624737728376991510
+    second: Spine_Character_Mina_34
+  - first:
+      213: 6926970219927099440
+    second: Spine_Character_Mina_35
+  - first:
+      213: -576446766434454919
+    second: Spine_Character_Mina_36
+  - first:
+      213: 1288263040585095525
+    second: Spine_Character_Mina_37
+  - first:
+      213: 7470708833614893821
+    second: Spine_Character_Mina_38
+  - first:
+      213: 4694471701113767097
+    second: Spine_Character_Mina_39
+  - first:
+      213: -3925596874635340846
+    second: Spine_Character_Mina_40
+  - first:
+      213: 2506275054223313674
+    second: Spine_Character_Mina_41
+  - first:
+      213: 7748108498294406799
+    second: Spine_Character_Mina_42
+  - first:
+      213: 8602206945739793454
+    second: Spine_Character_Mina_43
+  - first:
+      213: -3264807076066268782
+    second: Spine_Character_Mina_44
+  - first:
+      213: 2078338319726590658
+    second: Spine_Character_Mina_45
+  - first:
+      213: -4451558631576305223
+    second: Spine_Character_Mina_46
+  - first:
+      213: 5248860398449958144
+    second: Spine_Character_Mina_47
+  - first:
+      213: 3396189139371831863
+    second: Spine_Character_Mina_48
+  - first:
+      213: 4037961995280152809
+    second: Spine_Character_Mina_49
+  - first:
+      213: 8055538639793562062
+    second: Spine_Character_Mina_50
+  - first:
+      213: -198857009684421373
+    second: Spine_Character_Mina_51
+  - first:
+      213: -7334525529110680950
+    second: Spine_Character_Mina_52
+  - first:
+      213: -28817858697094231
+    second: Spine_Character_Mina_53
+  - first:
+      213: 3255798724728322024
+    second: Spine_Character_Mina_54
+  - first:
+      213: 2492412119387476336
+    second: Spine_Character_Mina_55
+  - first:
+      213: -121487016461115914
+    second: Spine_Character_Mina_56
+  - first:
+      213: -8609753594692990344
+    second: Spine_Character_Mina_57
+  - first:
+      213: 5755628326471528476
+    second: Spine_Character_Mina_58
+  - first:
+      213: -5498102437951271578
+    second: Spine_Character_Mina_59
+  - first:
+      213: 8872538257076854677
+    second: Spine_Character_Mina_60
+  - first:
+      213: 4865677443694056062
+    second: Spine_Character_Mina_61
+  - first:
+      213: 2320250382946030330
+    second: Spine_Character_Mina_62
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spine_Character_Mina_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1980
+        width: 83
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65a09f357190f0c60800000000000000
+      internalID: 7786452276544604758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 2023
+        width: 57
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edd3b3de895935d40800000000000000
+      internalID: 5571961648035085790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1980
+        width: 121
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37f5e69e81f3ae750800000000000000
+      internalID: 6334945202078113651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 1980
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21889904210cfd370800000000000000
+      internalID: 8349603418793936914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_4
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1916
+        width: 106
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b90e597602aefe0800000000000000
+      internalID: -1159078324826236151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_5
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1970
+        width: 69
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94d961bb0d0dafb0800000000000000
+      internalID: -4635034097622068067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_6
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1867
+        width: 245
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 688e786374d6662e0800000000000000
+      internalID: -2132897220888369018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_7
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1937
+        width: 52
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52528c67ead773c90800000000000000
+      internalID: -7190140091803097819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1917
+        width: 232
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0769956569b2f870800000000000000
+      internalID: 8715232074062718732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_9
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1916
+        width: 106
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efd7c7413d0907170800000000000000
+      internalID: 8174192559933652478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_10
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1916
+        width: 102
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6262945e911533c0800000000000000
+      internalID: -4380575690826554771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_11
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1604
+        width: 451
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88982cad5a1260200800000000000000
+      internalID: 145841034159622536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_12
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 1605
+        width: 251
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d9fba834f77981f0800000000000000
+      internalID: -1042169947953038891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_13
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1867
+        width: 65
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ef189a45c3720240800000000000000
+      internalID: 4756491447653900262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_14
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 1607
+        width: 567
+        height: 308
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66f52248e4ef88a20800000000000000
+      internalID: 3064979159603371878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_15
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1622
+        width: 263
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f75bb8ff16cb140800000000000000
+      internalID: 4736768658275401510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_16
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1684
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0f421f778b34390800000000000000
+      internalID: -7835216101408182080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_17
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1307
+        width: 249
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9604a948d6cbf2600800000000000000
+      internalID: 445782066695127145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_18
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1622
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa73c6cf559674b0800000000000000
+      internalID: -5442998861041534301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_19
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1619
+        width: 42
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb9005dafb219b970800000000000000
+      internalID: 8771062363736508862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_20
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 1619
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2cf8c046496c0f0800000000000000
+      internalID: -1097026301789748506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_21
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 1619
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a2f92309a5cff630800000000000000
+      internalID: 3963103526802551456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_22
+      rect:
+        serializedVersion: 2
+        x: 1777
+        y: 1546
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 882e71b20d6523950800000000000000
+      internalID: 6427295070287291016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_23
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 1620
+        width: 69
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2b12424868d2bc50800000000000000
+      internalID: 6679639139643693870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_24
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 1605
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf9e79045c7b83b0800000000000000
+      internalID: -5509173018779279446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_25
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 1604
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb2e87d70a67ae3a0800000000000000
+      internalID: -6635360669305085250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_26
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 1205
+        width: 227
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eca1d9419621d250800000000000000
+      internalID: 5967593386693209320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_27
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 1547
+        width: 69
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dee159271d67a070800000000000000
+      internalID: 8117576799603519191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_28
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1343
+        width: 1304
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7bd11ce0144a17f0800000000000000
+      internalID: -641125157476115587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_29
+      rect:
+        serializedVersion: 2
+        x: 1777
+        y: 1426
+        width: 174
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b47d92f722b3acba0800000000000000
+      internalID: -6067972528579946677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_30
+      rect:
+        serializedVersion: 2
+        x: 1778
+        y: 1204
+        width: 182
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eac0fd627cbadc60800000000000000
+      internalID: 7843788900675930857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_31
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1352
+        width: 40
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0557ed815d2102b90800000000000000
+      internalID: -7268789092121414320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_32
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1278
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087a9c07ce21914f0800000000000000
+      internalID: -857633447323523200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_33
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 271
+        height: 1339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df459c5e4879eacb0800000000000000
+      internalID: -4850773151584791299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_34
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 941
+        width: 722
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61fe147067e5e2040800000000000000
+      internalID: 4624737728376991510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_35
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 1288
+        width: 118
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 038d670e6ba812060800000000000000
+      internalID: 6926970219927099440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_36
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1287
+        width: 109
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97270c658bc0008f0800000000000000
+      internalID: -576446766434454919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_37
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 1288
+        width: 30
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 569d65fe864d0e110800000000000000
+      internalID: 1288263040585095525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_38
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 1288
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df21df74a1a4da760800000000000000
+      internalID: 7470708833614893821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_39
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 836
+        width: 245
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b48209c32d162140800000000000000
+      internalID: 4694471701113767097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_40
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 1205
+        width: 12
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d31af3f07a7589c0800000000000000
+      internalID: -3925596874635340846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_41
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 836
+        width: 287
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b476c02e318c220800000000000000
+      internalID: 2506275054223313674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_42
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 796
+        width: 307
+        height: 407
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ef502c0afc68b60800000000000000
+      internalID: 7748108498294406799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_43
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 1154
+        width: 85
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e24e73504ad216770800000000000000
+      internalID: 8602206945739793454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_44
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 1154
+        width: 68
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29963e2134311b2d0800000000000000
+      internalID: -3264807076066268782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_45
+      rect:
+        serializedVersion: 2
+        x: 1961
+        y: 1200
+        width: 37
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cab266b0bdb7dc10800000000000000
+      internalID: 2078338319726590658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_46
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 2
+        width: 631
+        height: 939
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1021c8203e832c0800000000000000
+      internalID: -4451558631576305223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_47
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 836
+        width: 86
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d993509b2b7d840800000000000000
+      internalID: 5248860398449958144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_48
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 1
+        width: 564
+        height: 835
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7323c4a4700b12f20800000000000000
+      internalID: 3396189139371831863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_49
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 796
+        width: 144
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e873396a09b90830800000000000000
+      internalID: 4037961995280152809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_50
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 796
+        width: 53
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec1245b76b50bcf60800000000000000
+      internalID: 8055538639793562062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_51
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 2
+        width: 496
+        height: 791
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 305e9a07a948d3df0800000000000000
+      internalID: -198857009684421373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_52
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 690
+        width: 32
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8ae25924e7863a90800000000000000
+      internalID: -7334525529110680950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_53
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 603
+        width: 28
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ab1c296f4e999ff0800000000000000
+      internalID: -28817858697094231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_54
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 518
+        width: 33
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e7f99fa0bbee2d20800000000000000
+      internalID: 3255798724728322024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_55
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 431
+        width: 34
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07118f10e93d69220800000000000000
+      internalID: 2492412119387476336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_56
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 340
+        width: 39
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fd5303c334605ef0800000000000000
+      internalID: -121487016461115914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_57
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 431
+        width: 40
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87a8ea8d8b2048880800000000000000
+      internalID: -8609753594692990344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_58
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 244
+        width: 35
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c10f282e77910ef40800000000000000
+      internalID: 5755628326471528476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_59
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 113
+        width: 27
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66d843f76f0d2b3b0800000000000000
+      internalID: -5498102437951271578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_60
+      rect:
+        serializedVersion: 2
+        x: 1997
+        y: 109
+        width: 38
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f112d3986912b70800000000000000
+      internalID: 8872538257076854677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_61
+      rect:
+        serializedVersion: 2
+        x: 1969
+        y: 1
+        width: 67
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72d3070bdb568340800000000000000
+      internalID: 4865677443694056062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Mina_62
+      rect:
+        serializedVersion: 2
+        x: 2037
+        y: 1
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af256791e6f233020800000000000000
+      internalID: 2320250382946030330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spine_Character_Mina_0: 7786452276544604758
+      Spine_Character_Mina_1: 5571961648035085790
+      Spine_Character_Mina_10: -4380575690826554771
+      Spine_Character_Mina_11: 145841034159622536
+      Spine_Character_Mina_12: -1042169947953038891
+      Spine_Character_Mina_13: 4756491447653900262
+      Spine_Character_Mina_14: 3064979159603371878
+      Spine_Character_Mina_15: 4736768658275401510
+      Spine_Character_Mina_16: -7835216101408182080
+      Spine_Character_Mina_17: 445782066695127145
+      Spine_Character_Mina_18: -5442998861041534301
+      Spine_Character_Mina_19: 8771062363736508862
+      Spine_Character_Mina_2: 6334945202078113651
+      Spine_Character_Mina_20: -1097026301789748506
+      Spine_Character_Mina_21: 3963103526802551456
+      Spine_Character_Mina_22: 6427295070287291016
+      Spine_Character_Mina_23: 6679639139643693870
+      Spine_Character_Mina_24: -5509173018779279446
+      Spine_Character_Mina_25: -6635360669305085250
+      Spine_Character_Mina_26: 5967593386693209320
+      Spine_Character_Mina_27: 8117576799603519191
+      Spine_Character_Mina_28: -641125157476115587
+      Spine_Character_Mina_29: -6067972528579946677
+      Spine_Character_Mina_3: 8349603418793936914
+      Spine_Character_Mina_30: 7843788900675930857
+      Spine_Character_Mina_31: -7268789092121414320
+      Spine_Character_Mina_32: -857633447323523200
+      Spine_Character_Mina_33: -4850773151584791299
+      Spine_Character_Mina_34: 4624737728376991510
+      Spine_Character_Mina_35: 6926970219927099440
+      Spine_Character_Mina_36: -576446766434454919
+      Spine_Character_Mina_37: 1288263040585095525
+      Spine_Character_Mina_38: 7470708833614893821
+      Spine_Character_Mina_39: 4694471701113767097
+      Spine_Character_Mina_4: -1159078324826236151
+      Spine_Character_Mina_40: -3925596874635340846
+      Spine_Character_Mina_41: 2506275054223313674
+      Spine_Character_Mina_42: 7748108498294406799
+      Spine_Character_Mina_43: 8602206945739793454
+      Spine_Character_Mina_44: -3264807076066268782
+      Spine_Character_Mina_45: 2078338319726590658
+      Spine_Character_Mina_46: -4451558631576305223
+      Spine_Character_Mina_47: 5248860398449958144
+      Spine_Character_Mina_48: 3396189139371831863
+      Spine_Character_Mina_49: 4037961995280152809
+      Spine_Character_Mina_5: -4635034097622068067
+      Spine_Character_Mina_50: 8055538639793562062
+      Spine_Character_Mina_51: -198857009684421373
+      Spine_Character_Mina_52: -7334525529110680950
+      Spine_Character_Mina_53: -28817858697094231
+      Spine_Character_Mina_54: 3255798724728322024
+      Spine_Character_Mina_55: 2492412119387476336
+      Spine_Character_Mina_56: -121487016461115914
+      Spine_Character_Mina_57: -8609753594692990344
+      Spine_Character_Mina_58: 5755628326471528476
+      Spine_Character_Mina_59: -5498102437951271578
+      Spine_Character_Mina_6: -2132897220888369018
+      Spine_Character_Mina_60: 8872538257076854677
+      Spine_Character_Mina_61: 4865677443694056062
+      Spine_Character_Mina_62: 2320250382946030330
+      Spine_Character_Mina_7: -7190140091803097819
+      Spine_Character_Mina_8: 8715232074062718732
+      Spine_Character_Mina_9: 8174192559933652478
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

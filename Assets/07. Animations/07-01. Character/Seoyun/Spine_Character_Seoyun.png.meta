@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: 0d684f43a9b704d4694c82688d71dac5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -132129191257359283
+    second: Spine_Character_Seoyun_0
+  - first:
+      213: 2699552050412834077
+    second: Spine_Character_Seoyun_1
+  - first:
+      213: -8266352312646974522
+    second: Spine_Character_Seoyun_2
+  - first:
+      213: 6153028979696442201
+    second: Spine_Character_Seoyun_3
+  - first:
+      213: -6159014599680679515
+    second: Spine_Character_Seoyun_4
+  - first:
+      213: 5703545153334631414
+    second: Spine_Character_Seoyun_5
+  - first:
+      213: -9040533593029513041
+    second: Spine_Character_Seoyun_6
+  - first:
+      213: 6769063058235282181
+    second: Spine_Character_Seoyun_7
+  - first:
+      213: -9044581934092080132
+    second: Spine_Character_Seoyun_8
+  - first:
+      213: -9023510959464600763
+    second: Spine_Character_Seoyun_9
+  - first:
+      213: 5694090375506757977
+    second: Spine_Character_Seoyun_10
+  - first:
+      213: 4085862886764619543
+    second: Spine_Character_Seoyun_11
+  - first:
+      213: 8338664904169045532
+    second: Spine_Character_Seoyun_12
+  - first:
+      213: -7810181587848785912
+    second: Spine_Character_Seoyun_13
+  - first:
+      213: -4507903871758680952
+    second: Spine_Character_Seoyun_14
+  - first:
+      213: 6377543909384078097
+    second: Spine_Character_Seoyun_15
+  - first:
+      213: 215859005067750629
+    second: Spine_Character_Seoyun_16
+  - first:
+      213: -2375684837160587227
+    second: Spine_Character_Seoyun_17
+  - first:
+      213: -5410527693124217228
+    second: Spine_Character_Seoyun_18
+  - first:
+      213: 1802028253365390437
+    second: Spine_Character_Seoyun_19
+  - first:
+      213: 4004285405784196173
+    second: Spine_Character_Seoyun_20
+  - first:
+      213: 8802913734205178021
+    second: Spine_Character_Seoyun_21
+  - first:
+      213: 7881311423688875103
+    second: Spine_Character_Seoyun_22
+  - first:
+      213: 4889567581115747775
+    second: Spine_Character_Seoyun_23
+  - first:
+      213: -6921225188725859238
+    second: Spine_Character_Seoyun_24
+  - first:
+      213: -6466091991476005726
+    second: Spine_Character_Seoyun_25
+  - first:
+      213: -735028902914882420
+    second: Spine_Character_Seoyun_26
+  - first:
+      213: -2199941290073805103
+    second: Spine_Character_Seoyun_27
+  - first:
+      213: -3706585349712621975
+    second: Spine_Character_Seoyun_28
+  - first:
+      213: 2785026835739245592
+    second: Spine_Character_Seoyun_29
+  - first:
+      213: -2709491378770810918
+    second: Spine_Character_Seoyun_30
+  - first:
+      213: 6265641713047854363
+    second: Spine_Character_Seoyun_31
+  - first:
+      213: -2637573135932068414
+    second: Spine_Character_Seoyun_32
+  - first:
+      213: 6087124384613494388
+    second: Spine_Character_Seoyun_33
+  - first:
+      213: -2281908358641471769
+    second: Spine_Character_Seoyun_34
+  - first:
+      213: 2026692476774739054
+    second: Spine_Character_Seoyun_35
+  - first:
+      213: 8585627399656321741
+    second: Spine_Character_Seoyun_36
+  - first:
+      213: 7195976375762043327
+    second: Spine_Character_Seoyun_37
+  - first:
+      213: 8101495999776262711
+    second: Spine_Character_Seoyun_38
+  - first:
+      213: 8770627450172017377
+    second: Spine_Character_Seoyun_39
+  - first:
+      213: 3062512281909524508
+    second: Spine_Character_Seoyun_40
+  - first:
+      213: -3192231414870828277
+    second: Spine_Character_Seoyun_41
+  - first:
+      213: 3071813484364516613
+    second: Spine_Character_Seoyun_42
+  - first:
+      213: -1441281140567376256
+    second: Spine_Character_Seoyun_43
+  - first:
+      213: 5743936898803999632
+    second: Spine_Character_Seoyun_44
+  - first:
+      213: -2875660854427494797
+    second: Spine_Character_Seoyun_45
+  - first:
+      213: 5955523477177067500
+    second: Spine_Character_Seoyun_46
+  - first:
+      213: 2931855640011818195
+    second: Spine_Character_Seoyun_47
+  - first:
+      213: -1441792000956678903
+    second: Spine_Character_Seoyun_48
+  - first:
+      213: 8812998582429770698
+    second: Spine_Character_Seoyun_49
+  - first:
+      213: -2663746325666450721
+    second: Spine_Character_Seoyun_50
+  - first:
+      213: -7737216969876934182
+    second: Spine_Character_Seoyun_51
+  - first:
+      213: -7939111399725693416
+    second: Spine_Character_Seoyun_52
+  - first:
+      213: -6667122025879335349
+    second: Spine_Character_Seoyun_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2034
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c35aa53359a2ef0800000000000000
+      internalID: -132129191257359283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1956
+        width: 84
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1dc889794cb67520800000000000000
+      internalID: 2699552050412834077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_2
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1955
+        width: 55
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3c2706e54084d80800000000000000
+      internalID: -8266352312646974522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 2003
+        width: 47
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95b9d73c143f36550800000000000000
+      internalID: 6153028979696442201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_4
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 1818
+        width: 134
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a1a69b7ad8c68aa0800000000000000
+      internalID: -6159014599680679515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_5
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 883
+        width: 293
+        height: 1072
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fb59e82910172f40800000000000000
+      internalID: 5703545153334631414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_6
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1955
+        width: 50
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa07d7f8892998280800000000000000
+      internalID: -9040533593029513041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_7
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 1955
+        width: 43
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5035558ccfa80fd50800000000000000
+      internalID: 6769063058235282181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_8
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 1867
+        width: 227
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfba684b6a03b7280800000000000000
+      internalID: -9044581934092080132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_9
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1929
+        width: 67
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54ba44a479c06c280800000000000000
+      internalID: -9023510959464600763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_10
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1818
+        width: 214
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9590d072709750f40800000000000000
+      internalID: 5694090375506757977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_11
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1818
+        width: 185
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717ae8ec5a6e3b830800000000000000
+      internalID: 4085862886764619543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_12
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1866
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1e330adc83e8b370800000000000000
+      internalID: 8338664904169045532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_13
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 1867
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8001af8d939ac9390800000000000000
+      internalID: -7810181587848785912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 876
+        width: 315
+        height: 990
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c37320055b071c0800000000000000
+      internalID: -4507903871758680952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_15
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1585
+        width: 538
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1134b4a5566918850800000000000000
+      internalID: 6377543909384078097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_16
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1584
+        width: 36
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ece1a61f92eef200800000000000000
+      internalID: 215859005067750629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_17
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 1627
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 520f2ce3a3fd70fd0800000000000000
+      internalID: -2375684837160587227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_18
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 707
+        width: 456
+        height: 877
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476dae3bab1f9e4b0800000000000000
+      internalID: -5410527693124217228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_19
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1531
+        width: 65
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56ccf0d1627120910800000000000000
+      internalID: 1802028253365390437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_20
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 1567
+        width: 60
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d444c076c54129730800000000000000
+      internalID: 4004285405784196173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_21
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 1531
+        width: 51
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a005b3c66b3a2a70800000000000000
+      internalID: 8802913734205178021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_22
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1483
+        width: 118
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5c143d9bfa006d60800000000000000
+      internalID: 7881311423688875103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_23
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 1231
+        width: 210
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd8ba91fcb3bd340800000000000000
+      internalID: 4889567581115747775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_24
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 1483
+        width: 70
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5c528f6c5ed2ff90800000000000000
+      internalID: -6921225188725859238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_25
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 1451
+        width: 87
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a41313b793d346a0800000000000000
+      internalID: -6466091991476005726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_26
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 1230
+        width: 207
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c840d1e6b17acc5f0800000000000000
+      internalID: -735028902914882420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_27
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 1451
+        width: 67
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1deaf6e6d0d3871e0800000000000000
+      internalID: -2199941290073805103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_28
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 1451
+        width: 43
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96e46b443409f8cc0800000000000000
+      internalID: -3706585349712621975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_29
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 859
+        width: 326
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81cfa22c62766a620800000000000000
+      internalID: 2785026835739245592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_30
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 858
+        width: 131
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad7e16e42f3f56ad0800000000000000
+      internalID: -2709491378770810918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_31
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 1179
+        width: 121
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1d5614f0f704f650800000000000000
+      internalID: 6265641713047854363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_32
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 859
+        width: 134
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cde7a31535756bd0800000000000000
+      internalID: -2637573135932068414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_33
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 1092
+        width: 188
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47e6188706fc97450800000000000000
+      internalID: 6087124384613494388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_34
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 1148
+        width: 74
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee2e2910780550e0800000000000000
+      internalID: -2281908358641471769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_35
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 870
+        width: 163
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6c6d1bd112402c10800000000000000
+      internalID: 2026692476774739054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_36
+      rect:
+        serializedVersion: 2
+        x: 1741
+        y: 1148
+        width: 42
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc23062a1a6462770800000000000000
+      internalID: 8585627399656321741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_37
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 610
+        height: 875
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb14669436e3dd360800000000000000
+      internalID: 7195976375762043327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_38
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 872
+        width: 187
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a89ef20bb4e6070800000000000000
+      internalID: 8101495999776262711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_39
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 824
+        width: 67
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ea0bc8723787b970800000000000000
+      internalID: 8770627450172017377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_40
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 707
+        width: 143
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18fc7bc1ba308a20800000000000000
+      internalID: 3062512281909524508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_41
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 824
+        width: 49
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b18cbf07ae2b3d0800000000000000
+      internalID: -3192231414870828277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_42
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 824
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50d4dcfb61641aa20800000000000000
+      internalID: 3071813484364516613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_43
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 2
+        width: 452
+        height: 856
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ef20b507a8ffbe0800000000000000
+      internalID: -1441281140567376256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_44
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 503
+        width: 294
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 093a8714d2096bf40800000000000000
+      internalID: 5743936898803999632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_45
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 748
+        width: 29
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3765a5550b99718d0800000000000000
+      internalID: -2875660854427494797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_46
+      rect:
+        serializedVersion: 2
+        x: 1217
+        y: 707
+        width: 29
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce763ac7c0546a250800000000000000
+      internalID: 5955523477177067500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_47
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 1
+        width: 634
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d441a3cb2b00b820800000000000000
+      internalID: 2931855640011818195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_48
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 1
+        width: 280
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90d3af660d9bdfbe0800000000000000
+      internalID: -1441792000956678903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_49
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 235
+        width: 24
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac36fb7748f0e4a70800000000000000
+      internalID: 8812998582429770698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_50
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 119
+        width: 41
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd236e674d8780bd0800000000000000
+      internalID: -2663746325666450721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_51
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 1
+        width: 66
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad17c50d822ef9490800000000000000
+      internalID: -7737216969876934182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_52
+      rect:
+        serializedVersion: 2
+        x: 2022
+        y: 116
+        width: 15
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8168813ce3c92d190800000000000000
+      internalID: -7939111399725693416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Seoyun_53
+      rect:
+        serializedVersion: 2
+        x: 2037
+        y: 116
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e874567df9973a0800000000000000
+      internalID: -6667122025879335349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spine_Character_Seoyun_0: -132129191257359283
+      Spine_Character_Seoyun_1: 2699552050412834077
+      Spine_Character_Seoyun_10: 5694090375506757977
+      Spine_Character_Seoyun_11: 4085862886764619543
+      Spine_Character_Seoyun_12: 8338664904169045532
+      Spine_Character_Seoyun_13: -7810181587848785912
+      Spine_Character_Seoyun_14: -4507903871758680952
+      Spine_Character_Seoyun_15: 6377543909384078097
+      Spine_Character_Seoyun_16: 215859005067750629
+      Spine_Character_Seoyun_17: -2375684837160587227
+      Spine_Character_Seoyun_18: -5410527693124217228
+      Spine_Character_Seoyun_19: 1802028253365390437
+      Spine_Character_Seoyun_2: -8266352312646974522
+      Spine_Character_Seoyun_20: 4004285405784196173
+      Spine_Character_Seoyun_21: 8802913734205178021
+      Spine_Character_Seoyun_22: 7881311423688875103
+      Spine_Character_Seoyun_23: 4889567581115747775
+      Spine_Character_Seoyun_24: -6921225188725859238
+      Spine_Character_Seoyun_25: -6466091991476005726
+      Spine_Character_Seoyun_26: -735028902914882420
+      Spine_Character_Seoyun_27: -2199941290073805103
+      Spine_Character_Seoyun_28: -3706585349712621975
+      Spine_Character_Seoyun_29: 2785026835739245592
+      Spine_Character_Seoyun_3: 6153028979696442201
+      Spine_Character_Seoyun_30: -2709491378770810918
+      Spine_Character_Seoyun_31: 6265641713047854363
+      Spine_Character_Seoyun_32: -2637573135932068414
+      Spine_Character_Seoyun_33: 6087124384613494388
+      Spine_Character_Seoyun_34: -2281908358641471769
+      Spine_Character_Seoyun_35: 2026692476774739054
+      Spine_Character_Seoyun_36: 8585627399656321741
+      Spine_Character_Seoyun_37: 7195976375762043327
+      Spine_Character_Seoyun_38: 8101495999776262711
+      Spine_Character_Seoyun_39: 8770627450172017377
+      Spine_Character_Seoyun_4: -6159014599680679515
+      Spine_Character_Seoyun_40: 3062512281909524508
+      Spine_Character_Seoyun_41: -3192231414870828277
+      Spine_Character_Seoyun_42: 3071813484364516613
+      Spine_Character_Seoyun_43: -1441281140567376256
+      Spine_Character_Seoyun_44: 5743936898803999632
+      Spine_Character_Seoyun_45: -2875660854427494797
+      Spine_Character_Seoyun_46: 5955523477177067500
+      Spine_Character_Seoyun_47: 2931855640011818195
+      Spine_Character_Seoyun_48: -1441792000956678903
+      Spine_Character_Seoyun_49: 8812998582429770698
+      Spine_Character_Seoyun_5: 5703545153334631414
+      Spine_Character_Seoyun_50: -2663746325666450721
+      Spine_Character_Seoyun_51: -7737216969876934182
+      Spine_Character_Seoyun_52: -7939111399725693416
+      Spine_Character_Seoyun_53: -6667122025879335349
+      Spine_Character_Seoyun_6: -9040533593029513041
+      Spine_Character_Seoyun_7: 6769063058235282181
+      Spine_Character_Seoyun_8: -9044581934092080132
+      Spine_Character_Seoyun_9: -9023510959464600763
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

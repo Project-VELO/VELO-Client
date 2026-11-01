@@ -1,0 +1,1573 @@
+fileFormatVersion: 2
+guid: 83145d89643083e46b4af1228816b9f9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4278600080363246879
+    second: Spine_Character_Hana_0
+  - first:
+      213: 8889512127516573929
+    second: Spine_Character_Hana_1
+  - first:
+      213: 2601247590196233423
+    second: Spine_Character_Hana_2
+  - first:
+      213: -6708644963795559714
+    second: Spine_Character_Hana_3
+  - first:
+      213: -2898982740405478263
+    second: Spine_Character_Hana_4
+  - first:
+      213: -2727984917291648423
+    second: Spine_Character_Hana_5
+  - first:
+      213: 5689445910741020397
+    second: Spine_Character_Hana_6
+  - first:
+      213: 1117012680459532622
+    second: Spine_Character_Hana_7
+  - first:
+      213: -5987928373423994250
+    second: Spine_Character_Hana_8
+  - first:
+      213: -819495550544648159
+    second: Spine_Character_Hana_9
+  - first:
+      213: -9156217575326431187
+    second: Spine_Character_Hana_10
+  - first:
+      213: 7619196928692106486
+    second: Spine_Character_Hana_11
+  - first:
+      213: 7433919337311240046
+    second: Spine_Character_Hana_12
+  - first:
+      213: -2621534931095764068
+    second: Spine_Character_Hana_13
+  - first:
+      213: -1475305008646844069
+    second: Spine_Character_Hana_14
+  - first:
+      213: -6312383087480741876
+    second: Spine_Character_Hana_15
+  - first:
+      213: -4479868797493380659
+    second: Spine_Character_Hana_16
+  - first:
+      213: -6342711912885113539
+    second: Spine_Character_Hana_17
+  - first:
+      213: 8504173604511788047
+    second: Spine_Character_Hana_18
+  - first:
+      213: 2227198256921284460
+    second: Spine_Character_Hana_19
+  - first:
+      213: 883953966041728593
+    second: Spine_Character_Hana_20
+  - first:
+      213: 5740104993839902674
+    second: Spine_Character_Hana_21
+  - first:
+      213: -5452746199276938466
+    second: Spine_Character_Hana_22
+  - first:
+      213: 3326623938872592804
+    second: Spine_Character_Hana_23
+  - first:
+      213: -2635303825337017707
+    second: Spine_Character_Hana_24
+  - first:
+      213: 9162652028781607874
+    second: Spine_Character_Hana_25
+  - first:
+      213: 2029092259434645142
+    second: Spine_Character_Hana_26
+  - first:
+      213: 8645976743501550166
+    second: Spine_Character_Hana_27
+  - first:
+      213: -4707609036082366045
+    second: Spine_Character_Hana_28
+  - first:
+      213: 4451352302043784411
+    second: Spine_Character_Hana_29
+  - first:
+      213: 2277278334472133689
+    second: Spine_Character_Hana_30
+  - first:
+      213: 2248771425811970980
+    second: Spine_Character_Hana_31
+  - first:
+      213: 4323495235195645404
+    second: Spine_Character_Hana_32
+  - first:
+      213: 1735176132385783757
+    second: Spine_Character_Hana_33
+  - first:
+      213: -4065369942043435810
+    second: Spine_Character_Hana_34
+  - first:
+      213: 8814250267619387843
+    second: Spine_Character_Hana_35
+  - first:
+      213: 3564741658280169643
+    second: Spine_Character_Hana_36
+  - first:
+      213: -8897295194499867104
+    second: Spine_Character_Hana_37
+  - first:
+      213: 6386245313704989350
+    second: Spine_Character_Hana_38
+  - first:
+      213: 1555560587260057102
+    second: Spine_Character_Hana_39
+  - first:
+      213: 5802818141974300788
+    second: Spine_Character_Hana_40
+  - first:
+      213: -3009693707816818269
+    second: Spine_Character_Hana_41
+  - first:
+      213: -872846866394690277
+    second: Spine_Character_Hana_42
+  - first:
+      213: 4489507297986188472
+    second: Spine_Character_Hana_43
+  - first:
+      213: 4493555941272732541
+    second: Spine_Character_Hana_44
+  - first:
+      213: -5596094626326143871
+    second: Spine_Character_Hana_45
+  - first:
+      213: 8264771853549402985
+    second: Spine_Character_Hana_46
+  - first:
+      213: -2709155742648888380
+    second: Spine_Character_Hana_47
+  - first:
+      213: -180470679515069130
+    second: Spine_Character_Hana_48
+  - first:
+      213: 6055393488044978858
+    second: Spine_Character_Hana_49
+  - first:
+      213: -4133016090346398339
+    second: Spine_Character_Hana_50
+  - first:
+      213: -363432823588753124
+    second: Spine_Character_Hana_51
+  - first:
+      213: 4231852769645857091
+    second: Spine_Character_Hana_52
+  - first:
+      213: -5132653198141405855
+    second: Spine_Character_Hana_53
+  - first:
+      213: -110246870430323558
+    second: Spine_Character_Hana_54
+  - first:
+      213: -8196511586273147212
+    second: Spine_Character_Hana_55
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spine_Character_Hana_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2022
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1eaadf955eb5f94c0800000000000000
+      internalID: -4278600080363246879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_1
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 1949
+        width: 60
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e0072b6e24ed5b70800000000000000
+      internalID: 8889512127516573929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_2
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1949
+        width: 61
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc4cc7ab6ec791420800000000000000
+      internalID: 2601247590196233423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_3
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1950
+        width: 183
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eda90c803fa16e2a0800000000000000
+      internalID: -6708644963795559714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_4
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1986
+        width: 70
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98c942c9e8eb4c7d0800000000000000
+      internalID: -2898982740405478263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_5
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 1931
+        width: 70
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95a3534db20442ad0800000000000000
+      internalID: -2727984917291648423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_6
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 1931
+        width: 33
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dee648e69e8f4fe40800000000000000
+      internalID: 5689445910741020397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_7
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 1931
+        width: 37
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49b56c5d1d608f00800000000000000
+      internalID: 1117012680459532622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1376
+        width: 296
+        height: 573
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67a8499aeda96eca0800000000000000
+      internalID: -5987928373423994250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_9
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1856
+        width: 147
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 128e5ce732190a4f0800000000000000
+      internalID: -819495550544648159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_10
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 1857
+        width: 28
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d28ca7080a49ee080800000000000000
+      internalID: -9156217575326431187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_11
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1859
+        width: 48
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f4b0780d33dcb960800000000000000
+      internalID: 7619196928692106486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_12
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1860
+        width: 51
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6ff75d20469a2760800000000000000
+      internalID: 7433919337311240046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_13
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1859
+        width: 50
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9342c1aedf6e9bd0800000000000000
+      internalID: -2621534931095764068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_14
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 1385
+        width: 180
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b51104049e9a68be0800000000000000
+      internalID: -1475305008646844069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_15
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1384
+        width: 169
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c00e680c609e568a0800000000000000
+      internalID: -6312383087480741876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_16
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 1384
+        width: 129
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc9fc05601f44d1c0800000000000000
+      internalID: -4479868797493380659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_17
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1824
+        width: 87
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3d28dfce192af7a0800000000000000
+      internalID: -6342711912885113539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_18
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1771
+        width: 34
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0cad2516d4e40670800000000000000
+      internalID: 8504173604511788047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_19
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 1680
+        width: 204
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f8924b30998ee10800000000000000
+      internalID: 2227198256921284460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_20
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1771
+        width: 88
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15607bfd27f644c00800000000000000
+      internalID: 883953966041728593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_21
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 1384
+        width: 121
+        height: 387
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dfe54b5413f8af40800000000000000
+      internalID: 5740104993839902674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_22
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 1681
+        width: 24
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1b9cbdb834f354b0800000000000000
+      internalID: -5452746199276938466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_23
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1682
+        width: 50
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9cfc1e8da8a2e20800000000000000
+      internalID: 3326623938872592804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_24
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 1362
+        width: 233
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a1f8f12258d6bd0800000000000000
+      internalID: -2635303825337017707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_25
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1553
+        width: 217
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cb3a007977482f70800000000000000
+      internalID: 9162652028781607874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_26
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1655
+        width: 53
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 696c81cc8a8c82c10800000000000000
+      internalID: 2029092259434645142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_27
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 1553
+        width: 94
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 652d2b43a0eacf770800000000000000
+      internalID: 8645976743501550166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_28
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 1394
+        width: 369
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a934ee06863baeb0800000000000000
+      internalID: -4707609036082366045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_29
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 1553
+        width: 53
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4ef6d955166cd30800000000000000
+      internalID: 4451352302043784411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_30
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 505
+        width: 282
+        height: 889
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93c97e464948a9f10800000000000000
+      internalID: 2277278334472133689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_31
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1394
+        width: 19
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab329082bd353f10800000000000000
+      internalID: 2248771425811970980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 345
+        height: 1374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd2ee17204200c30800000000000000
+      internalID: 4323495235195645404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_33
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1091
+        width: 480
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcf3791cf75941810800000000000000
+      internalID: 1735176132385783757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_34
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 1362
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc53f3b397e497c0800000000000000
+      internalID: -4065369942043435810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_35
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 1221
+        width: 405
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c968d22be1825a70800000000000000
+      internalID: 8814250267619387843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_36
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 1362
+        width: 78
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba093d1c6a1887130800000000000000
+      internalID: 3564741658280169643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_37
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 1338
+        width: 158
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e9b061925768480800000000000000
+      internalID: -8897295194499867104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_38
+      rect:
+        serializedVersion: 2
+        x: 1690
+        y: 1339
+        width: 74
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a293ebe64080a850800000000000000
+      internalID: 6386245313704989350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_39
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 2
+        width: 332
+        height: 1088
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e06db36cc16769510800000000000000
+      internalID: 1555560587260057102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_40
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 651
+        width: 568
+        height: 412
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47802900b50c78050800000000000000
+      internalID: 5802818141974300788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_41
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1063
+        width: 75
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a9a9dec48b6b36d0800000000000000
+      internalID: -3009693707816818269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_42
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1063
+        width: 63
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1d4b39466603e3f0800000000000000
+      internalID: -872846866394690277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_43
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 1063
+        width: 404
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b49df0e91fed4e30800000000000000
+      internalID: 4489507297986188472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_44
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 1063
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7348e912515c5e30800000000000000
+      internalID: 4493555941272732541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_45
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 505
+        width: 231
+        height: 833
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c9b54369da652b0800000000000000
+      internalID: -5596094626326143871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_46
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1055
+        width: 180
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96b7570563e52b270800000000000000
+      internalID: 8264771853549402985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_47
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 1
+        width: 527
+        height: 650
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3143ea435276ad0800000000000000
+      internalID: -2709155742648888380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_48
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 505
+        width: 20
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63581278fd6de7df0800000000000000
+      internalID: -180470679515069130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_49
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 1
+        width: 642
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa272266b44190450800000000000000
+      internalID: 6055393488044978858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_50
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 505
+        width: 164
+        height: 550
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7ddde373c394a6c0800000000000000
+      internalID: -4133016090346398339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_51
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 390
+        width: 64
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c117642c5c3d4faf0800000000000000
+      internalID: -363432823588753124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_52
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 390
+        width: 88
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3498e743caf8aba30800000000000000
+      internalID: 4231852769645857091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_53
+      rect:
+        serializedVersion: 2
+        x: 2003
+        y: 456
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16542893c1725c8b0800000000000000
+      internalID: -5132653198141405855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_54
+      rect:
+        serializedVersion: 2
+        x: 1851
+        y: 1
+        width: 196
+        height: 389
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ce6623e03587ef0800000000000000
+      internalID: -110246870430323558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spine_Character_Hana_55
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 390
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b6c0d6a324204e80800000000000000
+      internalID: -8196511586273147212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Spine_Character_Hana_0: -4278600080363246879
+      Spine_Character_Hana_1: 8889512127516573929
+      Spine_Character_Hana_10: -9156217575326431187
+      Spine_Character_Hana_11: 7619196928692106486
+      Spine_Character_Hana_12: 7433919337311240046
+      Spine_Character_Hana_13: -2621534931095764068
+      Spine_Character_Hana_14: -1475305008646844069
+      Spine_Character_Hana_15: -6312383087480741876
+      Spine_Character_Hana_16: -4479868797493380659
+      Spine_Character_Hana_17: -6342711912885113539
+      Spine_Character_Hana_18: 8504173604511788047
+      Spine_Character_Hana_19: 2227198256921284460
+      Spine_Character_Hana_2: 2601247590196233423
+      Spine_Character_Hana_20: 883953966041728593
+      Spine_Character_Hana_21: 5740104993839902674
+      Spine_Character_Hana_22: -5452746199276938466
+      Spine_Character_Hana_23: 3326623938872592804
+      Spine_Character_Hana_24: -2635303825337017707
+      Spine_Character_Hana_25: 9162652028781607874
+      Spine_Character_Hana_26: 2029092259434645142
+      Spine_Character_Hana_27: 8645976743501550166
+      Spine_Character_Hana_28: -4707609036082366045
+      Spine_Character_Hana_29: 4451352302043784411
+      Spine_Character_Hana_3: -6708644963795559714
+      Spine_Character_Hana_30: 2277278334472133689
+      Spine_Character_Hana_31: 2248771425811970980
+      Spine_Character_Hana_32: 4323495235195645404
+      Spine_Character_Hana_33: 1735176132385783757
+      Spine_Character_Hana_34: -4065369942043435810
+      Spine_Character_Hana_35: 8814250267619387843
+      Spine_Character_Hana_36: 3564741658280169643
+      Spine_Character_Hana_37: -8897295194499867104
+      Spine_Character_Hana_38: 6386245313704989350
+      Spine_Character_Hana_39: 1555560587260057102
+      Spine_Character_Hana_4: -2898982740405478263
+      Spine_Character_Hana_40: 5802818141974300788
+      Spine_Character_Hana_41: -3009693707816818269
+      Spine_Character_Hana_42: -872846866394690277
+      Spine_Character_Hana_43: 4489507297986188472
+      Spine_Character_Hana_44: 4493555941272732541
+      Spine_Character_Hana_45: -5596094626326143871
+      Spine_Character_Hana_46: 8264771853549402985
+      Spine_Character_Hana_47: -2709155742648888380
+      Spine_Character_Hana_48: -180470679515069130
+      Spine_Character_Hana_49: 6055393488044978858
+      Spine_Character_Hana_5: -2727984917291648423
+      Spine_Character_Hana_50: -4133016090346398339
+      Spine_Character_Hana_51: -363432823588753124
+      Spine_Character_Hana_52: 4231852769645857091
+      Spine_Character_Hana_53: -5132653198141405855
+      Spine_Character_Hana_54: -110246870430323558
+      Spine_Character_Hana_55: -8196511586273147212
+      Spine_Character_Hana_6: 5689445910741020397
+      Spine_Character_Hana_7: 1117012680459532622
+      Spine_Character_Hana_8: -5987928373423994250
+      Spine_Character_Hana_9: -819495550544648159
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

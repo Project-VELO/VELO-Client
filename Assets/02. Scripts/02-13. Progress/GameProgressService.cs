@@ -124,11 +124,15 @@ public class GameProgressService : POCOSingleton<GameProgressService>
     }
 
     /// <summary>
-    /// 스토리 감상 화면에 진입할 때 호출해 NEW 배지를 내립니다(기획서 3-F-3).
+    /// 스토리 감상 화면에 진입할 때 호출해 NEW 배지를 내립니다(기획서 3-F-3). 들어갔다는 기록도 여기서 함께 남깁니다.
+    /// 감상 화면이 진입 때 부르는 곳이 이 한 군데라, 기록을 따로 부르게 하면 스토리 쪽 코드를 고쳐야 하기 때문입니다.
     /// </summary>
     public void ClearStoryNewFlag(string storyId)
     {
-        if (StoryProgressService.TryClearNewFlag(Data.Progress, storyId))
+        bool isNewCleared = StoryProgressService.TryClearNewFlag(Data.Progress, storyId);
+        bool isFirstStart = StoryProgressService.TryMarkStarted(Data.Progress, storyId);
+
+        if (isNewCleared || isFirstStart)
         {
             Save();
         }

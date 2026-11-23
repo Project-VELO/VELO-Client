@@ -63,8 +63,9 @@ public class UI_HomeStoryBox : MonoBehaviour
     /// <summary>
     /// 들어갔다가 끝내지 않은 회차에만 "진행 중"을 붙입니다(개발 기획서 5장 회차 상태).
     ///
-    /// NEW 배지는 감상 화면에 들어가는 순간 내려가므로, NEW가 아니면서 완료하지 않은 회차가 곧 진행 중입니다.
-    /// 처음 보는 회차·잠긴 회차·전부 완료한 뒤에 쓸 배지 문구는 아직 정해지지 않아 그때는 숨깁니다.
+    /// 감상 화면에 들어간 기록이 있고 아직 완료하지 않은 회차가 진행 중입니다(IStoryProgress.IsInProgress).
+    /// NEW로 가르면 해금 조건 없이 처음부터 NEW가 꺼진 회차가 새 게임부터 진행 중으로 보입니다.
+    /// 처음 보는 회차, 잠긴 회차, 전부 완료한 뒤에 쓸 배지 문구는 아직 정해지지 않아 그때는 숨깁니다.
     /// </summary>
     private void RefreshInProgressBadge()
     {
@@ -72,7 +73,7 @@ public class UI_HomeStoryBox : MonoBehaviour
             ? null
             : GameProgressService.Instance.GetStoryProgress(NextStory.StoryId);
 
-        bool isInProgress = !ReferenceEquals(progress, null) && progress.CanEnter && !progress.IsNew && !progress.IsCompleted;
+        bool isInProgress = !ReferenceEquals(progress, null) && progress.IsInProgress;
         _inProgressBadge.SetActive(isInProgress);
     }
 

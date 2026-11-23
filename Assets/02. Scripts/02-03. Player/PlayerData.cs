@@ -65,6 +65,9 @@ public class PlayerData
     [SerializeField]
     private GameProgressData _progress = new GameProgressData();
 
+    [SerializeField]
+    private HomeProfileData _homeProfile = new HomeProfileData();
+
     public int SchemaVersion { get => _schemaVersion; set => _schemaVersion = value; }
 
     public int Level { get => _level; set => _level = value; }
@@ -101,6 +104,23 @@ public class PlayerData
             }
 
             return _progress;
+        }
+    }
+
+    /// <summary>
+    /// 홈 프로필 팝업에서 고른 초상, 홈 캐릭터, 프로듀서 이름입니다. 바꿀 때는 HomeProfileService를 통해야 저장이 함께 이루어집니다.
+    /// </summary>
+    public HomeProfileData HomeProfile
+    {
+        get
+        {
+            // 이 필드가 생기기 전의 세이브를 읽으면 null일 수 있습니다. 빈 값은 기본값으로 해석되므로 빈 상태로 채웁니다.
+            if (ReferenceEquals(_homeProfile, null))
+            {
+                _homeProfile = new HomeProfileData();
+            }
+
+            return _homeProfile;
         }
     }
 
@@ -156,5 +176,6 @@ public class PlayerData
         }
 
         Progress.Clear();
+        _homeProfile = new HomeProfileData();
     }
 }

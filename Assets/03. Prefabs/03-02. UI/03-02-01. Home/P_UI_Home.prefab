@@ -159,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 621007588138584229}
+  - component: {fileID: 6466529624158814361}
   m_Layer: 5
   m_Name: Panel_Dialog
   m_TagString: Untagged
@@ -188,6 +189,20 @@ RectTransform:
   m_AnchoredPosition: {x: -97, y: 80}
   m_SizeDelta: {x: 770, y: 218}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &6466529624158814361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401930598720502498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 812b2b45e0f3bd3448989e5746cf6974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeDialog
+  _nameText: {fileID: 7261337691842359606}
+  _dialogText: {fileID: 5359896893689218765}
 --- !u!1 &441962193800691635
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380087099345609022}
   - component: {fileID: 3782846739070379978}
+  - component: {fileID: 3860890946626243290}
   m_Layer: 5
   m_Name: Panel_StoryCard
   m_TagString: Untagged
@@ -250,6 +266,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_HomeStoryBox
   _chapterText: {fileID: 995235280839992285}
   _inProgressBadge: {fileID: 4295033859098964499}
+--- !u!114 &3860890946626243290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441962193800691635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed4245ab7d47084da6c1f14e1dc799f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeContinue
+  _storyBox: {fileID: 3782846739070379978}
+  _continueButton: {fileID: 2323408872870540442}
+  _labelText: {fileID: 8348967544561433634}
+  _noticePopup: {fileID: 0}
+  _allCompletedNotice: 
 --- !u!1 &758310820016063589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,8 +1256,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Home
   _storyBox: {fileID: 3782846739070379978}
-  _continueButton: {fileID: 2323408872870540442}
+  _continue: {fileID: 3860890946626243290}
   _episodeListButton: {fileID: 789189366138767240}
+  _profile: {fileID: 6250975670322031317}
+  _homeCharacter: {fileID: 2924395286917617129}
+  _dialog: {fileID: 6466529624158814361}
+  _collectionButton: {fileID: 586320030828437945}
   _practiceButton: {fileID: 3348253351191766053}
   _settingButton: {fileID: 5730708134051532591}
   _exitButton: {fileID: 3993120864077331799}
@@ -1403,7 +1440,6 @@ GameObject:
   - component: {fileID: 2393735006024140501}
   - component: {fileID: 7029795056708014074}
   - component: {fileID: 3256618587983426564}
-  - component: {fileID: 7997529182280840017}
   m_Layer: 5
   m_Name: Button_ChangeCharacter
   m_TagString: Untagged
@@ -1512,19 +1548,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7997529182280840017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1844616586873587242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 3256618587983426564}
 --- !u!1 &1915511340244766216
 GameObject:
   m_ObjectHideFlags: 0
@@ -3275,6 +3298,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1457122857485155043}
+  - component: {fileID: 6250975670322031317}
   m_Layer: 5
   m_Name: Panel_Profile
   m_TagString: Untagged
@@ -3307,6 +3331,23 @@ RectTransform:
   m_AnchoredPosition: {x: 59, y: -48}
   m_SizeDelta: {x: 390, y: 123}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &6250975670322031317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472350444656094673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf446dc659adeb45bdd686b69c2c2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeProfile
+  _portraitImage: {fileID: 3893751426495970845}
+  _producerNameText: {fileID: 2501944671309323093}
+  _changeButton: {fileID: 3256618587983426564}
+  _homeCharacter: {fileID: 2924395286917617129}
+  _profilePopup: {fileID: 0}
 --- !u!1 &6597296852807139133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,6 +3509,8 @@ GameObject:
   - component: {fileID: 3051072911536589513}
   - component: {fileID: 1041204333188738318}
   - component: {fileID: 341063406451610560}
+  - component: {fileID: 2924395286917617129}
+  - component: {fileID: 3452836048883014232}
   m_Layer: 5
   m_Name: Spine_Character
   m_TagString: Untagged
@@ -3516,7 +3559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: spine-unity::Spine.Unity.SkeletonGraphic
   m_Material: {fileID: 2100000, guid: b66cf7a186d13054989b33a5c90044e4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3566,6 +3609,75 @@ MonoBehaviour:
       immutableTriangles: 0
   updateTiming: 1
   unscaledTime: 0
+--- !u!114 &2924395286917617129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351963352224949702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197c5de849bdace48b649226e536b510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeCharacter
+  _skeletonGraphic: {fileID: 341063406451610560}
+  _entries:
+  - _characterId: CHAR_RIA
+    _skeletonDataAsset: {fileID: 11400000, guid: f18464fa6db4a554bb99c6f446dd3b6a, type: 2}
+    _reactionAnimationName: idle_happy
+    _portrait: {fileID: 21300000, guid: c67365b2cb783c34bab283c33842237d, type: 3}
+    _hasLayout: 0
+    _anchoredPosition: {x: 0, y: 0}
+    _scale: 1
+    _dialogLines:
+    - "P\uB2D8! \uC5B4\uB514 \uC788\uB2E4\uAC00 \uC774\uC81C \uC628\uAC70\uC5D0\uC694!"
+  - _characterId: CHAR_JIWOO
+    _skeletonDataAsset: {fileID: 11400000, guid: 61f45ceb481a12a4188b41178dffcd4b, type: 2}
+    _reactionAnimationName: idle_happy
+    _portrait: {fileID: 0}
+    _hasLayout: 0
+    _anchoredPosition: {x: 0, y: 0}
+    _scale: 1
+    _dialogLines: []
+  - _characterId: CHAR_SEOYUN
+    _skeletonDataAsset: {fileID: 11400000, guid: a563505043880a449a85734b3a486fd8, type: 2}
+    _reactionAnimationName: idle_happy
+    _portrait: {fileID: 0}
+    _hasLayout: 0
+    _anchoredPosition: {x: 0, y: 0}
+    _scale: 1
+    _dialogLines: []
+  - _characterId: CHAR_MINA
+    _skeletonDataAsset: {fileID: 11400000, guid: e8222faad9d9e5f4ebdcc30a675494d2, type: 2}
+    _reactionAnimationName: idle_happy
+    _portrait: {fileID: 0}
+    _hasLayout: 0
+    _anchoredPosition: {x: 0, y: 0}
+    _scale: 1
+    _dialogLines: []
+  - _characterId: CHAR_HANA
+    _skeletonDataAsset: {fileID: 11400000, guid: 8ec9bc9ef1bca2c4f8e4bf60bb670405, type: 2}
+    _reactionAnimationName: idle_happy
+    _portrait: {fileID: 0}
+    _hasLayout: 0
+    _anchoredPosition: {x: 0, y: 0}
+    _scale: 1
+    _dialogLines: []
+--- !u!114 &3452836048883014232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351963352224949702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca3c9fe289376f45a65bceede2b7586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_HomeCharacterReaction
+  _skeletonGraphic: {fileID: 341063406451610560}
+  _homeCharacter: {fileID: 2924395286917617129}
 --- !u!1 &7509614227878270377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3883,7 +3995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4124,7 +4236,6 @@ GameObject:
   - component: {fileID: 6585867125939381829}
   - component: {fileID: 1374324715051179481}
   - component: {fileID: 586320030828437945}
-  - component: {fileID: 3243949869117478868}
   m_Layer: 5
   m_Name: Button_Collection
   m_TagString: Untagged
@@ -4235,19 +4346,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3243949869117478868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8842094110430613937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9773a6fc09f797262123e8f576d59ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ComingSoonButton
-  _button: {fileID: 586320030828437945}
 --- !u!1 &9033115089148931773
 GameObject:
   m_ObjectHideFlags: 0

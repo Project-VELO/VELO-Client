@@ -4,11 +4,11 @@ using UnityEngine.UI;
 using VInspector;
 
 /// <summary>
-/// 홈 화면입니다(기획서 SCREEN-001, 개발 기획서 v1.15 2장 H01~H09).
+/// 홈 화면입니다(기획서 SCREEN-001, 개발 기획서 v1.16 2장 H01~H09).
 ///
-/// 버튼은 화면 이동만 맡고, 화면에 그릴 값은 스토리 카드가 갱신합니다.
-/// 컬렉션(H04)과 캐릭터 교체(H01)는 아직 갈 화면이 없어 버튼에 붙은 UI_ComingSoonButton이
-/// 준비 중 안내를 띄웁니다. 화면이 생기면 그 컴포넌트를 떼고 여기에 배선합니다.
+/// 이 클래스는 화면 이동 버튼을 배선하고 진입, 언어 변경, 프로필 저장 때 화면 조각들을 다시 그리게 합니다.
+/// 그리는 일은 위치별 컴포넌트가 나눠 맡습니다: 프로필(H01) UI_HomeProfile, 이어하기(H02) UI_HomeContinue,
+/// 가운데 캐릭터(H06) UI_HomeCharacter, 대사창(H07) UI_HomeDialog.
 /// </summary>
 public class UI_Home : MonoBehaviour, ILanguageRefreshable
 {
@@ -18,13 +18,27 @@ public class UI_Home : MonoBehaviour, ILanguageRefreshable
     private UI_HomeStoryBox _storyBox;
 
     [SerializeField]
-    private Button _continueButton;
+    private UI_HomeContinue _continue;
 
     [SerializeField]
     private Button _episodeListButton;
 
     [Foldout("Hierarchy")]
+    [Header("Character")]
+    [SerializeField]
+    private UI_HomeProfile _profile;
+
+    [SerializeField]
+    private UI_HomeCharacter _homeCharacter;
+
+    [SerializeField]
+    private UI_HomeDialog _dialog;
+
+    [Foldout("Hierarchy")]
     [Header("Menu")]
+    [SerializeField]
+    private Button _collectionButton;
+
     [SerializeField]
     private Button _practiceButton;
 
@@ -52,6 +66,12 @@ public class UI_Home : MonoBehaviour, ILanguageRefreshable
         InitButtons();
     }
 
+    private void OnDestroy()
+    {
+        _continue.OnStoryListRequested -= MoveToStoryList;
+        _profile.OnProfileApplied -= RefreshScreen;
+    }
+
     /// <summary>
     /// 언어를 고른 자리에서 부릅니다. 챕터 이름이 마스터 데이터에서 오므로
     /// 글자만 훑어서는 바뀌지 않습니다.
@@ -61,54 +81,31 @@ public class UI_Home : MonoBehaviour, ILanguageRefreshable
         RefreshScreen();
     }
 
+    /// <summary>
+    /// 대사창의 화자는 가운데 홈 캐릭터입니다(검수 1 답, 개발 기획서 16장 권고). 그래서 캐릭터를 먼저 바꾸고 대사창을 그립니다.
+    /// </summary>
     private void RefreshScreen()
     {
         _storyBox.Refresh();
+        _continue.Refresh();
+        _profile.Refresh();
+        _homeCharacter.SetCharacter(HomeProfileService.Instance.HomeCharacterId);
+        _dialog.SetSpeaker(_homeCharacter.CurrentEntry);
     }
 
     private void InitButtons()
     {
-        _continueButton.onClick.AddListener(ContinueStory);
+        _continue.OnStoryListRequested += MoveToStoryList;
+        _profile.OnProfileApplied += RefreshScreen;
+
         _episodeListButton.onClick.AddListener(MoveToStoryList);
+        _collectionButton.onClick.AddListener(MoveToCollection);
         _practiceButton.onClick.AddListener(StartFreeLive);
 
         // 설정 화면이 아직 없어 설정과 나가기가 같은 팝업을 엽니다. 이 팝업이 언어 선택·데이터 초기화와
         // 게임 종료를 함께 들고 있는 임시 설정 창이라, 다른 화면의 설정 버튼(UI_TopRightMenu)과도 같은 배선입니다.
         _settingButton.onClick.AddListener(OpenQuitConfirm);
         _exitButton.onClick.AddListener(OpenQuitConfirm);
-    }
-
-    /// <summary>
-    /// 이어하기(H02)입니다. 카드에 적힌 회차를 목록을 거치지 않고 처음부터 엽니다(개발 기획서 1장 이어하기 공통 규칙).
-    ///
-    /// 잠겨 있거나 전부 완료해 이어갈 회차가 없으면 회차 목록으로 보냅니다. 막힌 이유와 다시볼 회차를
-    /// 고를 수 있는 곳이 목록이기 때문입니다.
-    /// </summary>
-    private void ContinueStory()
-    {
-        StoryData nextStory = _storyBox.NextStory;
-
-        if (!CanContinue(nextStory))
-        {
-            MoveToStoryList();
-            return;
-        }
-
-        StoryEntryContext.Instance.SetEntry(nextStory.StoryId);
-        StoryEntryContext.Instance.ClearHighlight();
-        LoadScene(ESceneNames.StoryScene);
-    }
-
-    private static bool CanContinue(StoryData story)
-    {
-        if (ReferenceEquals(story, null))
-        {
-            return false;
-        }
-
-        IStoryProgress progress = GameProgressService.Instance.GetStoryProgress(story.StoryId);
-
-        return !ReferenceEquals(progress, null) && progress.CanEnter && !progress.IsCompleted;
     }
 
     /// <summary>
@@ -119,6 +116,14 @@ public class UI_Home : MonoBehaviour, ILanguageRefreshable
     {
         StoryEntryContext.Instance.ClearHighlight();
         LoadScene(ESceneNames.SelectStoryScene);
+    }
+
+    /// <summary>
+    /// 컬렉션(H04)입니다. 컬렉션 화면 안의 규칙은 이 작업의 범위 밖이라 이동만 합니다(검수 1 답).
+    /// </summary>
+    private void MoveToCollection()
+    {
+        LoadScene(ESceneNames.CollectionScene);
     }
 
     /// <summary>

@@ -85,6 +85,23 @@ public static class StoryProgressService
     }
 
     /// <summary>
+    /// 감상 화면에 들어갔다는 기록을 남깁니다. 처음 들어간 경우에만 true를 돌려주며, 호출부는 이때 저장합니다.
+    /// 홈 이어하기가 들어간 적 없는 회차와 중간에 나간 회차를 가르는 근거입니다(개발 기획서 1장 이어하기 공통 규칙).
+    /// </summary>
+    public static bool TryMarkStarted(GameProgressData progress, string storyId)
+    {
+        StoryProgress storyProgress = progress.GetStoryProgress(storyId);
+
+        if (ReferenceEquals(storyProgress, null) || storyProgress.IsStarted)
+        {
+            return false;
+        }
+
+        storyProgress.IsStarted = true;
+        return true;
+    }
+
+    /// <summary>
     /// 해당 주차 완료로 열리는 스토리를 모두 해금하고, 실제로 열린 스토리 ID를 돌려줍니다(기획서 3-F-2).
     /// 이미 열려 있던 스토리는 건드리지 않으므로 NEW 배지가 다시 켜지지 않습니다.
     /// </summary>

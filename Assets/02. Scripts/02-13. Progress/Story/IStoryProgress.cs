@@ -13,7 +13,11 @@ public interface IStoryProgress
 
     bool IsNew { get; }
 
+    bool IsStarted { get; }
+
     bool IsCompleted { get; }
+
+    bool IsInProgress { get; }
 
     bool CanEnter { get; }
 }
